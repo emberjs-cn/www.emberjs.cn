@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Ember Blog</title>
-  <subtitle>Ember News and Updates</subtitle>
-  <id>http://emberjs.com/blog</id>
-  <link href="http://emberjs.com/blog"/>
-  <link href="http://emberjs.com/blog/feed.xml" rel="self"/>
+  <title>EmberJS.CN Blog</title>
+  <subtitle>Ember JS相关新闻与资源</subtitle>
+  <id>http://emberjs.cn/blog</id>
+  <link href="http://emberjs.cn/blog"/>
+  <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
   <updated>2013-02-18T00:00:00Z</updated>
   <author>
-    <name>Ember</name>
+    <name>EmberJS.CN</name>
   </author>
   <entry>
     <title>EmberJS.CN之诞生</title>
@@ -16,7 +16,7 @@
     <published>2013-02-18T00:00:00Z</published>
     <updated>2013-02-18T00:00:00Z</updated>
     <author>
-      <name>Ember</name>
+      <name>EmberJS.CN</name>
     </author>
     <summary type="html">&lt;p&gt;&lt;a href="http://emberjs.com"&gt;Ember JS&lt;/a&gt; RC
 1在2013-02-15发布了。关注和使用EmberJS已经一年有余了，鉴于其API一直没有稳定，所以一直没有在正式的项目中采用。根据 &lt;a href="http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/"&gt;http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/&lt;/a&gt; 中的描述：&lt;/p&gt;
