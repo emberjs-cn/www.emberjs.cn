@@ -1,7 +1,7 @@
 www.emberjs.cn
 ==============
 
-emberjs(http://emberjs.com)中文资源分享网站，旨在中文开发者社区推广emberjs。
+emberjs (http://emberjs.com) 中文资源分享网站，旨在中文开发者社区推广emberjs。
 
 ROADMAP
 =======
