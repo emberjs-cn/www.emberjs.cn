@@ -17,9 +17,9 @@ activate :toc
 activate :highlighter
 activate :i18n, mount_as_root: 'zh-CN'
 
-activate :api_docs,
-  default_class: 'Ember',
-  repo_url: 'https://github.com/emberjs/ember.js'
+#activate :api_docs,
+  #default_class: 'Ember',
+  #repo_url: 'https://github.com/emberjs/ember.js'
 
 ###
 # Blog
