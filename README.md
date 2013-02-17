@@ -3,8 +3,7 @@ www.emberjs.cn
 
 emberjs (http://emberjs.com) 中文资源分享网站，旨在中文开发者社区推广emberjs。
 
-ROADMAP
-=======
+### 路线图
 
 1. 翻译emberjs官方网站的Guides和API；
 2. 收集、编写、提供emberjs相关的文章和资源；
@@ -15,10 +14,10 @@ ROADMAP
 To get started:
 
 ```
-git clone git://github.com/emberjs/website.git
-cd website
+git clone git://github.com/emberjs-cn/www.emberjs.cn.git
+cd www.emberjs.cn
 bundle
-bundle exec middleman
+bundle exec rake preview
 ```
 
 Then visit [http://localhost:4567/](http://localhost:4567/)
