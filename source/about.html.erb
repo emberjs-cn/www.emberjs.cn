@@ -1,0 +1,126 @@
+---
+title: "About"
+---
+
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(function() {
+      $('#slider').bxSlider({
+        displaySlideQty: 4,
+        moveSlideQty: 4,
+        auto: true,
+        pager: true,
+        speed: 700,
+        pause: 5000
+      });
+
+      // Hack to force proper sizing
+      $('.bx-wrapper, .bx-window').css('width', 940);
+    });
+  </script>
+<% end %>
+
+<img class="about-header-text" src="/images/about/header-text.png" alt="A framework for creating ambitious web applications.">
+<div id="download">
+  <div id="download-ember">
+    <a class="orange button" href="https://raw.github.com/emberjs/ember.js/release-builds/ember-1.0.0-rc.1.js">
+      Download Ember 1.0.0-rc.1
+    </a>
+    <div class="info">49k min+gzip |
+      <a class="debug" href="https://raw.github.com/emberjs/ember.js/release-builds/ember-1.0.0-rc.1.min.js">
+        minified
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="features section">
+  <h2>More Productive Out of the Box.</h2>
+  <div class="feature">
+    <img src="/images/about/ember-handlebars-sm.png" alt="Handlebars">
+    <p>Write dramatically less code with Ember's Handlebars integrated templates that update automatically when the underlying data changes.<br><a href="http://handlebarsjs.com/">Download Handlebars</a></p>
+  </div>
+  <div class="feature">
+    <img src="/images/about/ember-structure-sm.png" alt="Structure">
+    <p>Don't waste time making trivial choices. Ember.js incorporates common idioms so you can focus on what makes your app special, not reinventing the wheel.</p>
+  </div>
+  <div class="feature">
+    <img src="/images/about/ember-productivity-sm.png" alt="Productivity">
+    <p>Ember.js is built for productivity. Designed with developer ergonomics in mind, its friendly APIs help you get your job done&mdash;fast.</p>
+  </div>
+</div>
+
+<div class="getting-started section">
+  <h2>Getting Started with Ember.js is Easy.</h2>
+
+<% highlight :javascript, :left do %>
+App.Person = DS.Model.extend({
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
+
+  fullName: function() {
+    return this.get('firstName') +
+           " " + this.get('lastName');
+  }.property('firstName', 'lastName')
+});
+
+App.peopleController = Em.ArrayController.create({
+  content: App.Person.findAll()
+});
+<% end %>
+
+<% highlight :handlebars, :right do %>
+<h1>People</h1>
+
+<ul>
+{{#each peopleController}}
+  <li>Hello, <b>{{fullName}}</b>!</li>
+{{/each}}
+</ul>
+<% end %>
+
+</div>
+
+<div class="users section">
+  <h2>Who's Using Ember.js?</h2>
+
+  <div class="surround">
+    <ul id="slider">
+    <% data.users.slice(0,12).each do |user| %>
+      <li class="user">
+        <a href="<%= user.url %>" rel="nofollow">
+          <img src="/images/about/<%= user.image %>">
+        </a>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div id="listed">
+    <a class="orange button" href="/ember-users">
+        Meet More Users
+      </a>
+  </div>
+</div>
+
+
+<div class="gears section">
+	<h2>Buy Ember.js Gear and Support Development</h2>
+	<div class="gear">
+		<a href="http://devswag.com/products/ember-sticker">
+			<img src="/images/about/ember-sticker.png">
+		</a>
+		<div class="gearplus">
+			<img src="/images/about/plus-icon.png">
+		</div>
+		<a href="http://devswag.com/products/ember-js-tshirt">
+			<img src="/images/about/ember-shirt.png">
+		</a>
+		<div class="gearplus">
+			<img src="/images/about/plus-icon.png">
+		</div>
+		<a href="http://devswag.com/products/ember-mascot-stickers-4">
+			<img src="/images/about/ember-hamster-sticker.png">
+		</a>
+	</div>
+</div>

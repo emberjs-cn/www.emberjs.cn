@@ -1,0 +1,1369 @@
+@import "compass";
+@import "compass/reset";
+@import "compass/typography/text/ellipsis";
+
+@import "fonts";
+
+/* Calculated page dimensions. */
+$page-width: 940px;
+
+$col-width: 40px;
+$col-spacing: 20px;
+$sidebar-width: $col-width * 4 + $col-spacing * 3;
+$content-width: $page-width - $sidebar-width - $col-spacing * 2;
+
+$orange-color: #e1563f;
+$blue-color: #1f58ce;
+$black-color: #252525;
+
+@mixin width-for-columns($cols) {
+  width: $cols * $col-width + ($cols - 1) * $col-spacing;
+}
+
+body {
+  background: url(/images/background-shades.png) no-repeat top center #faf4f1;
+  margin: 60px 0 0 0;
+  padding: 0;
+  font-family: Helvetica neue;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #444444;
+  font-weight: 200;
+}
+sup {
+  vertical-align: super;
+  font-weight: 100;
+  color: gray;
+  font-size: 11px
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+// Typography
+
+a {
+  color: #f23818;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px dotted #f23818;
+}
+
+p {
+  margin: 1.5em 0;
+}
+
+em {
+  font-style: italic;
+}
+
+code {
+  font-family: Menlo, Courier, monospace;
+  font-size: 90%;
+  color: #666;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 3px;
+  @include border-radius(5px);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase;
+  font-family: "MavenProBold";
+
+  code {
+    text-transform: none;
+  }
+}
+
+h1 {
+  font-size: 22px;
+  color: $orange-color;
+  padding: 0px 0px 1em 2em;
+  margin-bottom: 1.5em;
+  background: no-repeat url(/images/chapter-mark.png) top left;
+  border-bottom: 1px solid #dfd7d4;
+}
+
+
+h2 {
+  font-size: 22px;
+}
+
+h2,h3{
+  font-family: "MavenProBold";
+  color: $black-color;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 1.618em;
+  color: $orange-color;
+  letter-spacing: 1px;
+  margin: 24px 0 12px 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  margin: 40px 0;
+  background-color: #dfd7d4;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+.hidden {
+  display: none;
+}
+
+// Structure
+
+.section {
+  margin: 0 auto;
+  width: 960px;
+}
+
+// components
+/**
+  Tabs
+**/
+
+.tabs {
+  margin-top: 1em;
+  border: 1px solid #e0e0e0;
+          border-radius: 5px;
+       -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+     -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  > ul {
+    list-style: none;
+    overflow: hidden; // Clearfix
+    display: table;
+    width: 100%;
+
+    li {
+      display: table-cell;
+      a {
+        display: block;
+        border-top: solid 1px rgb(250, 250, 250);
+        border-right: solid 1px #e6e4e3;
+        background-color: #f3f3f3;
+        background-image:         linear-gradient( #f3f3f3, #ebebeb);
+        background-image:      -o-linear-gradient( #f3f3f3, #ebebeb);
+        background-image:    -moz-linear-gradient( #f3f3f3, #ebebeb);
+        background-image:     -ms-linear-gradient( #f3f3f3, #ebebeb);
+        background-image: -webkit-linear-gradient( #f3f3f3, #ebebeb);
+        padding: 0.5em 1em;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: normal;
+        color: #443331;
+        font-family: helvetica neue;
+
+        &:hover {
+          background-color: #ebebeb;
+          background-image:         linear-gradient( #ebebeb, #f3f3f3);
+          background-image:      -o-linear-gradient( #ebebeb, #f3f3f3);
+          background-image:    -moz-linear-gradient( #ebebeb, #f3f3f3);
+          background-image:     -ms-linear-gradient( #ebebeb, #f3f3f3);
+          background-image: -webkit-linear-gradient( #ebebeb, #f3f3f3);
+          color: black;
+          border-bottom: none;
+        }
+
+      }
+    }
+
+    border-bottom: solid 1px #e6e4e3;
+    margin-bottom: 20px;
+  }
+  .pane {
+    margin: 2em 1.5em;
+  }
+}
+
+/**
+  Sidebar
+**/
+
+#sidebar {
+  font-family: "MavenProMedium";
+  margin-top: 38px;
+  float: left;
+  width: $sidebar-width;
+  min-height: 475px;
+  margin-bottom: 28px;
+  padding-bottom: 120px;
+  background: #f4ece9;
+  border-left: 1px solid #d4ccc8;
+  border-right: 1px solid #d4ccc8;
+  position: relative;
+
+  #back-to-top {
+    text-align: center;
+    display: none;
+    @include transition(opacity 0.05s linear);
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1.5em;
+    border-bottom: none;
+    color: #d84a32;
+    font-family: MavenProBlack;
+    cursor: pointer;
+
+    &:hover {
+      color: $black-color;
+    }
+
+    &.active {
+      color: $black-color;
+    }
+  }
+
+  ol#toc-list {
+    background: #f9e7e4;
+    li {
+      font-size: 12px;
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+
+      p {
+        padding-left: 7px;
+      }
+
+      a {
+        padding: 0 0 0 1em;
+        line-height: 1.2em;
+      }
+
+      > ol {
+        display: none;
+        margin: 10px 0;
+
+        &.selected {
+          display: block;
+        }
+
+        li.sub-selected {
+          background-color: #F2D1CB;
+          > a {
+            color: #282828;
+          }
+        }
+
+        li {
+          a.api-file-link {
+            display: none;
+            color: #717171;
+            font-size: 11px;
+            margin: 0;
+            padding: 0 0 0 0.5em;
+            &:hover {
+              color: black;
+            }
+          }
+
+          &:hover a.api-file-link{
+            display: inline-block;
+          }
+        }
+      }
+
+      &.level-1 {
+        text-transform: uppercase;
+
+        > a {
+          display: block;
+          color: #443331;
+          outline: 1px solid #d5ccc8;
+          padding: 12px 12px 10px 12px;
+          margin-top: 1px;
+          background-color: rgb(244, 236, 233);
+        }
+
+        &.selected > a {
+          background-color: #f16f58;
+          background-image: -webkit-linear-gradient(-90deg, #f67862, #e7624b);
+          outline: 1px solid #b23e2a;
+          color: white;
+          border-top: 1px solid rgba(255,255,255,0.4);
+        }
+
+        &:last-of-type ol {
+          border-bottom: 1px solid #d5ccc8;
+          padding-bottom: 0.5em;
+        }
+      }
+
+      &.level-2, &.level-3 {
+        padding: 2px 0 2px 0;
+
+        a {
+          text-transform: none;
+          color: #d84a32;
+          font-weight: normal;
+          font-size: 12px;
+        }
+        &.sub-selected {
+          // fancy me up.
+        }
+      }
+    }
+  }
+
+  &:after {
+    @include background-image(linear-gradient(rgba(250, 244, 241, 0), rgba(251, 245, 241, 1)));
+    position: absolute;
+    bottom: 0px;
+    left: -2px;
+    right: 0;
+    width: 220px;
+    height: 120px;
+    content: '';
+  }
+}
+
+#guide_search {
+  background-color: #fbf8f7;
+  border: 1px solid #ccc;
+  position: relative;
+  color: #423432;
+  display: block;
+  width: 100%;
+  height: 40px;
+
+  label {
+    padding: 0px 0px 5px 15px;
+    padding-right: 10px;
+    margin-left: 10px;
+    background: no-repeat url(/images/search-icon.png);
+  }
+
+  border: 0;
+  input::-webkit-input-placeholder { font-style: italic; }
+  input:-moz-placeholder { font-style: italic; }
+  input::-moz-placeholder { font-style: italic; }
+
+  input {
+    background: none;
+    font-size: 12px;
+    border: 0px;
+    padding: 5px 0px 5px 5px;
+    height: 100%;
+    width: 165px;
+    outline: none;
+    font-style: normal;
+  }
+
+  button {
+    background: no-repeat url(/images/search-erase.png);
+    width: 14px;
+    border: 0px;
+    height: 14px;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 15px;
+  }
+}
+// pages
+
+/**
+  Header
+**/
+#header {
+  position: absolute;
+  width: 100%;
+  min-width: $page-width;
+  top: 0;
+  height: 60px;
+  background: url(/images/navigation_background.png) top center;
+  border-bottom: 1px solid #aa412f;
+  z-index: 10; // the header is on top to have a proper drop shadow
+  @include box-shadow(rgba(0,0,0,0.3) 0 0 3px);
+
+  #wrapper {
+    width: $page-width;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #logo {
+    position: absolute;
+    left: 7px;
+    top: 6px;
+    width: 103px;
+    height: 40px;
+    background: url(/images/ember_logo.png);
+    @include filter(drop-shadow(rgba(0,0,0,0.3) 0 1px 2px));
+
+    &:hover {
+      @include filter(drop-shadow(rgba(0,0,0,0.7) 0 1px 3px));
+      border: 0;
+    }
+  }
+
+  #nav {
+    width: 500px;
+    height: 65px;
+    margin: 0 auto;
+
+    text-align: center;
+
+    li {
+      line-height: 26px;
+      margin: 18px 0 0;
+      display: inline-block;
+
+      a {
+        font-family: "MavenProBold";
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #faf2ee;
+
+        @include text-shadow(rgba(0,0,0,0.3) 0px 1px 0px);
+        display: block;
+        padding: 0px 1em;
+        height: 26px;
+        line-height: 26px;
+        text-decoration: none;
+        border: 1px solid transparent;
+
+        &:hover { color: #fff }
+      }
+
+      &.active a {
+        color: #331915;
+        @include text-shadow(rgba(255,255,255,0.2) 0 1px 0px);
+        background-color: #bf4737;
+        background-color: rgba(0,0,0,0.2);
+        @include border-radius(3px);
+        border: 1px solid #923c2e;
+        @include box-shadow(
+          rgba(255, 255, 255, 0.15) 0 1px 0px,
+          inset rgba(0, 0, 0, 0.17) 0 1px 1px
+        );
+
+        &:hover {
+          color: black;
+          background-color: rgba(0,0,0,0.17);
+        }
+      }
+
+    }
+  }
+
+  #github {
+    position: absolute;
+    right: 7px;
+    top: 17px;
+
+    a {
+      img {
+        float: left;
+        margin-top: 7px;
+        margin-right: 6px;
+        display: block;
+      }
+
+      font-family: "MavenProBold";
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #faf2ee;
+      @include text-shadow(rgba(0,0,0,0.3) 0px 1px 0px);
+
+      display: block;
+      padding: 0px 1em;
+      height: 28px;
+      line-height: 28px;
+
+      background-color: #ff6e56;
+      @include filter-gradient(#ff6e56, #ed4f35, vertical);
+      @include background-image(linear-gradient(top, #ff6e56 0%,#ed4f35 100%));
+
+      border: 1px solid #a93926;
+      @include border-radius(4px);
+      @include box-shadow(
+        inset rgba(255,255,255, 0.17) 0 1px 1px
+      );
+
+      &:hover {
+        color: #fff;
+        background: #f86c55;
+      }
+    }
+  }
+}
+
+#content-wrapper {
+  @include clearfix;
+  width: 960px;
+  padding: 0px 0px 20px 0px;
+  margin: 0 auto;
+  position: relative;
+
+  &.grid {
+    background-image: url(/images/grid.png);
+  }
+}
+
+
+#content {
+  &.has-sidebar {
+    margin: 38px 0 90px 1.5em;
+    width: $content-width;
+    float: left;
+  }
+
+  ol, ul{
+    margin: 1em 1.5em;
+  }
+
+  .tabs > ul{
+    margin: 0 0;
+    padding: 0 0;
+  }
+
+  table {
+    margin: 1em 0;
+    tbody tr{
+      background: rgba(255, 249, 249, 0.56);
+      border-bottom: 1px solid rgba(223, 215, 212, 0.28);
+    }
+  }
+}
+
+
+/**
+  About Page
+**/
+.about-header-text {
+  display: block;
+  margin: 60px auto 0 auto;
+}
+
+#download {
+  width: 465px;
+  margin: 0 auto;
+  position: relative;
+
+  #download-ember, #download-starter-kit {
+    width: 220px;
+    text-align: center;
+    margin: 4em auto 0 auto;
+  }
+
+  #download-ember {
+    left: 0;
+
+    .button {
+      font-size: 13px; /* Due to long version name */
+    }
+  }
+
+  #download-starter-kit {
+    left: 240px;
+  }
+
+  .info {
+    margin-top: 4px;
+    color: #888;
+  }
+}
+
+.section {
+  margin-top: 60px;
+  overflow: hidden;
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  table.columns {
+    margin: 0 auto;
+
+    td {
+      vertical-align: top;
+      padding-right: 50px;
+    }
+  }
+}
+#content{
+  .getting-started.section {
+    .highlight, p {
+      float: left;
+      width: $col-width * 8 + $col-spacing * 6;
+
+      &.right {
+        margin-left: $col-width * 1 + $col-spacing * 1;
+      }
+    }
+
+    p {
+      text-align: center;
+      color: #222;
+    }
+  }
+}
+
+.features.section {
+  @include clearfix;
+
+  .feature {
+    @include width-for-columns(4);
+    float: left;
+    margin-left: $col-width + $col-spacing;
+    margin-right: $col-spacing;
+
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+#content .users.section {
+  .surround {
+    width: 940px;
+    margin: 0 auto;
+    padding-top: 19px;
+
+    @include border-radius(3px);
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1), 0 1px 0 #fff);
+    @include clearfix;
+    background: url('/images/about/carousel_bg.png');
+    border: 1px solid #d1d1d1;
+
+    a:hover {
+      border: 0;
+    }
+
+    ul {
+      margin: 0;
+    }
+
+    .bx-wrapper,
+    .bx-window {
+      width: 940px;
+    }
+
+    .bx-wrapper {
+
+      .bx-prev,
+      .bx-next {
+        background: url('/images/about/carousel_controls.png') no-repeat;
+        float: left;
+        height: 28px;
+        width: 30px;
+      }
+
+      .bx-prev,
+      .bx-next,
+      .pager-link {
+        text-indent: -9999px;
+      }
+
+      .bx-prev {
+        background-position: left;
+        border-right: 1px solid #d1d1d1;
+        float: right;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      .bx-next {
+        background-position: right;
+        border-left: 1px solid #d1d1d1;
+        float: right;
+        position: absolute;
+        bottom: 0;
+        right: 1px;
+      }
+
+      .bx-window {
+        border-bottom: 1px solid #d1d1d1;
+        height: 124px;
+      }
+
+      .bx-pager {
+        @include clearfix;
+        background: url('/images/about/carousel_pager_bg.png') bottom repeat-x #f4f4f4;
+        border-left: 1px solid #fafafa;
+        border-right: 1px solid #fafafa;
+        border-top: 1px solid #fefefe;
+        font-size: 0;
+        height: 28px;
+        line-height: 0;
+        margin: 0 29px;
+        padding-top: 9px;
+        text-align: center;
+
+        .pager-link {
+          background: url('/images/about/carousel_dots.png') 0 0 no-repeat;
+          height: 11px;
+          width: 10px;
+          margin-left: 10px;
+          display: inline-block;
+
+          &.pager-active,
+          &.pager-active:hover {
+            background-position: -22px 0;
+          }
+
+          &:hover {
+            background-position: -11px 0;
+          }
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .user {
+    position: relative;
+    float: left;
+    width: 230px;
+
+    &.empty {
+      display: block;
+      height: 210px;
+      visibility: hidden; // Take up space, but be invisible
+    }
+
+    a {
+      @include border-radius(4px);
+      @include box-shadow(0 1px 2px rgba(0,0,0,0.1));
+      background: url('/images/about/user_bg.png') no-repeat;
+      display: block;
+      height: 103px;
+      margin-left: 20px;
+      width: 210px;
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+
+  #listed {
+    float: left;
+    margin-left: $col-width * 9;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+.gears.section {
+  .gear {
+    text-align: center;
+    height: 120px;
+
+    .gearplus {
+      padding: 0px 30px 0px 30px;
+      display: inline;
+      line-height: 120px;
+      img {
+        vertical-align: top;
+        padding-top: 50px;
+      }
+    }
+  }
+}
+
+
+.samples.section {
+  .sample {
+    float: left;
+    position: relative;
+    margin-left: $col-spacing;
+    border: 1px solid rgba(0,0,0,0.1);
+    overflow: hidden;
+    @include box-shadow(rgba(0,0,0,0.1) 0 2px 3px);
+    @include border-radius(6px);
+    @include width-for-columns(4);
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    .info {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      background-color: rgba(0,0,0,0.85);
+      -webkit-font-smoothing: antialiased;
+      @include transition(opacity 0.1s linear);
+      @include border-radius(6px);
+
+      .name {
+        text-align: center;
+        color: white;
+        font-family: MavenProMedium;
+        font-size: 18px;
+        margin-top: 55px;
+        text-transform: uppercase;
+      }
+
+      .actions {
+        text-align: center;
+        margin-top: 16px;
+
+        > div {
+          display: inline-block;
+          margin: 0 3px;
+        }
+      }
+    }
+
+    img {
+      @include border-radius(6px);
+    }
+
+    &:hover .info {
+      opacity: 1;
+    }
+  }
+}
+
+
+/**
+  Guides Page
+**/
+
+.guides {
+  .chapter {
+    $h3-indent: 32px;
+    $body-indent: $h3-indent;
+
+    ul, ol {
+      margin-left: $body-indent;
+      list-style-type: disc;
+      margin-bottom: 28px;
+
+      li {
+        font-size: 15px;
+        margin: 10px 0 10px 0;
+
+        p {
+          padding-left: 7px;
+        }
+      }
+    }
+  }
+
+  .anchorable-toc {
+    position: relative;
+
+    &:hover a.toc-anchor {
+      display: block;
+    }
+  }
+
+  a.toc-anchor {
+    display: none;
+    position: absolute;
+    text-decoration: none;
+    border: none;
+    left: -1em;
+    width: 30px;
+    height: 13px;
+    background: url(/images/link.png) no-repeat;
+    background-size: 18px 9px;
+    left: -19px;
+    margin-top: 7px;
+    opacity: 0.5;
+  }
+
+  table {
+    width: 100%;
+
+    thead {
+      background-color: #F9E7E4;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    th, td {
+      padding: 5px 10px;
+    }
+
+  }
+}
+
+.previous-guide {
+  float: left;
+}
+
+.next-guide {
+  float: right;
+}
+
+/**
+  Blog
+**/
+.blog {
+
+  article {
+    margin: 0 0 3em 0;
+    padding: 0 0 3em 0;
+
+    $h3-indent: 0;
+    $body-indent: $h3-indent;
+    border-bottom: solid 1px #e0e0e0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    figure {
+      width: 100%;
+      background-color: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      background-color: white;
+      max-width: 100%;
+      /*max-width: $content-width;*/
+    }
+
+    ul, ol {
+      margin-left: 1.5em;
+    }
+
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style: decimal;
+    }
+
+    table.figure {
+      float: left;
+      margin-bottom: 20px;
+
+      & + table.figure {
+        margin-left: 20px;
+      }
+
+      & + table.figure + * {
+        clear: left;
+      }
+
+      th, td {
+        padding: 5px 10px;
+      }
+
+      thead th {
+        font-weight: bold;
+        border-bottom: 2px solid $orange-color;
+      }
+
+      tbody td {
+        border-bottom: 1px solid lighten($orange-color, 20%);
+      }
+    }
+
+  }
+}
+
+
+/**
+  Community Page
+**/
+
+body.community #content {
+  margin: 3em auto 0 auto;
+  width: 54em;;
+
+  h1, h1:first-child {
+    margin-top: 0;
+    color: $orange-color;
+    border-bottom: solid 1px #d0d0d0;
+    padding-bottom: 20px;
+  }
+
+  .section {
+    width: auto;
+    img {
+      float: left;
+      margin: 0 20px 15px 0;
+    }
+
+    &.bugs img {
+      float: right;
+      margin: 0 0 15px 20px;
+    }
+    table {
+      margin: 2em auto;
+    }
+  }
+}
+
+/**
+  Ember Users Page
+**/
+
+.ember-users {
+
+  .section {
+    width: 100%;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  #content {
+    margin: 3em auto 0 auto;
+    width: 54em;
+  }
+
+  .button {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+}
+
+.ember-users_index .users.section {
+  margin-top: 0px;
+}
+
+#showcase {
+  margin: 0 auto;
+  width: 100%;
+}
+
+#content #showcase tr {
+  background: transparent;
+  border-bottom: none;
+}
+
+#showcase td {
+
+  &:nth-child(2) a {
+    margin: 0 auto;
+  }
+
+  &:nth-child(3) a {
+    margin-left: auto;
+  }
+
+  padding: 10px;
+  a {
+    background-image: url("/images/about/user_bg.png");
+    display: block;
+    height: 103px;
+    width: 210px;
+  }
+}
+
+#showcase a:hover {
+  border-bottom: none;
+}
+
+/**
+  Footer
+**/
+
+#footer {
+  margin-top: 60px;
+  padding: 25px 0;
+  border-top: 1px solid #e5dbd6;
+  background-color: #f2ece9;
+  overflow: hidden;
+  font-family: "MavenProBold";
+
+  #footer-wrapper {
+    width: 940px;
+    margin: 0 auto;
+    position: relative;
+    @include clearfix;
+  }
+
+  .info {
+    width: 200px;
+    color: #717171;
+    text-transform: uppercase;
+    font-size: 10px;
+    float: left;
+
+    a {
+      color: $orange-color;
+      text-decoration: none;
+    }
+  }
+
+  .statement {
+    font-size: 14px;
+    color: #bbb;
+    text-transform: uppercase;
+    position: absolute;
+    text-align: center;
+    left: 200px;
+    right: 200px;
+    top: 10px;
+  }
+
+  .links {
+    width: 200px;
+    text-align: right;
+    float: right;
+
+    a {
+      margin: 0 10px;
+      border-bottom: none;
+      opacity: 0.7; 
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .twitter, .github, .googleplus {
+    background: no-repeat url(/images/footer-links.png);
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+    text-indent: 9999px;
+    overflow: hidden;
+  }
+
+  .twitter { background-position: 0 2px }
+  .github { background-position: -59px 2px }
+  .googleplus { background-position: -119px 2px }
+
+}
+
+
+
+.screenshot {
+  margin-left: -60px;
+}
+
+/**
+  Buttons
+*/
+
+.button {
+  display: block;
+  width: 226px;
+  height: 46px;
+  font-family: "MavenProBold";
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 47px;
+  font-size: 14px;
+  color: #f6ece8;
+  @include text-shadow(rgba(0,0,0,0.3) 0 1px 0);
+
+  &.orange {
+    background-image: url(/images/orange_buttons.png);
+
+    &:hover {
+      background-position: 0 -46px;
+      border-bottom: none;
+    }
+
+    &:active {
+      background-position: 0 -92px;
+      @include text-shadow(rgba(0,0,0,0.3) 0 -1px 0);
+    }
+  }
+
+  &.black {
+    background-image: url(/images/black_buttons.png);
+
+    &:hover {
+      background-position: 0 -46px;
+      border-bottom: none;
+    }
+
+    &:active {
+      background-position: 0 -92px;
+      @include text-shadow(rgba(0,0,0,0.3) 0 -1px 0);
+    }
+  }
+
+  &:hover {
+    background-position: 0 -46px;
+  }
+
+  &:active {
+  }
+}
+
+.small-button {
+  width: 74px;
+  height: 22px;
+
+  font-family: "MavenProMedium";
+  color: #fff;
+  line-height: 24px;
+  text-transform: uppercase;
+  @include text-shadow(rgba(0,0,0,0.3) 0 1px 0);
+
+  &.orange {
+    background-image: url(/images/small-orange-button.png);
+  }
+
+  &.black {
+    background-image: url(/images/small-black-button.png);
+  }
+}
+
+
+/**
+  API
+**/
+
+body.api {
+  h3 {
+    &.name {
+      text-transform: none;
+      float: left;
+      margin-right: 5px;
+    }
+  }
+
+  .meta {
+    line-height: 16px;
+    font-size: 11px;
+    clear: left;
+  }
+
+  .args {
+    font-style: italic;
+    color: #444444;
+  }
+
+  .method h3{
+    text-transform: none;
+  }
+  dl {
+    margin: 1em 0 1em 1em;
+    dt {
+    }
+
+    dd {
+      margin: 0em 0 0.5em 0;
+    }
+  }
+
+  .type {
+    border-bottom: 1px dotted #afafaf;
+    font-size: 13px;
+    color: gray;
+  }
+
+  #api-options {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .class-info {
+    margin-bottom: 2em;
+    p {
+      color: #443331;
+      font-weight: bold;
+      margin: 0;
+      text-transform: uppercase;
+      a {
+        text-transform: none;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .description {
+    p {
+      font-family: Helvetica neue;
+      font-weight: 200;
+    }
+  }
+
+  ul.index-list {
+    margin-left: 1.5em;
+    overflow: hidden; // Clearfix
+
+    li {
+      float: left;
+      width: 300px;
+      padding-right: 1em;
+      display: block;
+      overflow: hidden;
+      @include ellipsis;
+    }
+  }
+
+  div.method, div.property, div.event {
+    padding-bottom: 1em;
+    border-bottom: solid 1px #e0e0e0;
+    margin-bottom: 2em;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  h3.name code {
+    background-color: transparent;
+    color: black;
+    padding: 0;
+    font-weight: bold;
+  }
+
+  span.flag {
+    background-color: gray;
+    color: white;
+    border-radius: 3px;
+  }
+
+  #sidebar ol#toc-list li > ol {
+    display: block;
+  }
+}

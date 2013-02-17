@@ -1,0 +1,165 @@
+<% wrap_layout :layout do %>
+  <% content_for :head do %>
+    <script>
+      $(function() {
+        var ls = window['localStorage'];
+
+        // Restoring method visibility preference from localStorage
+        function initApiOptions() {
+          var type = this.getAttribute('data-type'),
+            checked = ls ? ls.getItem('api-options-' + type) : undefined;
+
+          if (checked != undefined) {
+            // Bools are stored as strings in localStorage
+            checked = checked == 'true';
+            $(this).attr('checked', checked);
+          }
+        };
+
+        // Type toggling
+        function toggleType() {
+          var type = this.getAttribute('data-type');
+
+          $('.'+type).toggle(this.checked);
+
+          if(ls)
+            ls.setItem('api-options-' + type, this.checked);
+        }
+
+        $('#api-options input').each(initApiOptions);
+        $('#api-options input').each(toggleType);
+        $('#api-options input').on('change', toggleType);
+
+        // Tabs
+        $('.tabs .pane').hide();
+        $('.tabs .pane:first').show();
+        $('.tabs ul li:first').addClass('active');
+
+        function showPane($tabs, href) {
+          var $ul = $tabs.find('> ul'),
+              $tab = $ul.find('a[href='+href+']'),
+              $pane = $(href);
+
+          $ul.find('li').removeClass('active');
+          $tab.parent().addClass('active');
+          $tabs.find('.pane').hide();
+
+          $pane.show();
+        }
+
+        $('.tabs > ul li a').click(function(){
+          var $el = $(this),
+              $tabs = $el.parents('.tabs'),
+              href = $el.attr('href');
+
+          showPane($tabs, href);
+
+          return false;
+        });
+
+        // Auto tab
+        function checkHash() {
+          var hash = window.location.hash;
+          var $el = $(hash);
+          if ($el.length > 0 && !$el.is(':visible')) {
+            showPane($el.parents('.tabs'), '#'+$el.parents('.pane').attr('id'));
+            $("html, body").scrollTop($el.offset().top);
+          } else if ($el.length == 0) {
+            showPane($('.tabs'), '#index');
+          }
+        }
+
+        $(window).on('hashchange', checkHash);
+        checkHash();
+      });
+    $(function(){
+      $("#toc-list .level-1 > a").not('[target=_blank]').click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+    </script>
+  <% end %>
+
+  <% content_for :sidebar do %>
+    <ol id='toc-list'>
+      <li class='level-1'><a href="<%= sha_url %>" target="_blank"> Tag: <%= sha %></a></li>
+
+      <% li_for(:modules) do %>
+        <a href='#'>Modules</a>
+        <% ol_for(:modules) do %>
+          <% api_modules.each do |id, data| %>
+            <% li_for(:modules, name: data['name'], class: 'sub-selected') do %>
+              <%= api_module_link data['name'] %>
+              <%= api_file_link data, title: 'github', target: '_blank' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% li_for(:namespaces) do %>
+        <a href='#'>Namespaces</a>
+        <% ol_for(:namespaces) do %>
+          <% api_namespaces.each do |id, data| %>
+            <% li_for(:namespaces, name: data['name'], class: 'sub-selected') do %>
+              <%= api_namespace_link data['name'] %>
+              <%= api_file_link data, title: 'github', target: '_blank' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% li_for(:classes) do %>
+        <a href='#'>Classes</a>
+        <% ol_for(:classes) do %>
+          <% api_classes.each do |id, data| %>
+            <% li_for(:classes, name:data['name'], class: 'sub-selected') do %>
+              <%= api_class_link data['name'] %>
+              <%= api_file_link data, title: 'github', target: '_blank' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
+
+  <div id='api-options' class="hidden">
+    Show:
+
+    <label>
+      <input type='checkbox' data-type='inherited' checked>
+      Inherited
+    </label>
+
+    <label>
+      <input type='checkbox' data-type='protected'>
+      Protected
+    </label>
+
+    <label>
+      <input type='checkbox' data-type='private'>
+      Private
+    </label>
+
+    <label>
+      <input type='checkbox' data-type='deprecated'>
+      Deprecated
+    </label>
+  </div>
+
+  <%= yield %>
+<% end %>
