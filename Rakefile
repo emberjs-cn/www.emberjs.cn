@@ -3,7 +3,7 @@ require "bundler/setup"
 def git_initialize(repository)
   unless File.exist?(".git")
     system "git init"
-    system "git remote add origin https://github.com/emberjs/#{repository}.git"
+    system "git remote add origin https://github.com/emberjs-cn/#{repository}.git"
   end
 end
 
@@ -56,7 +56,7 @@ task :generate_docs do
 end
 
 desc "Build the website"
-task :build => :generate_docs do
+task :build do # => :generate_docs do
   build
 end
 
@@ -64,12 +64,12 @@ desc "Preview"
 task :preview do
   require 'listen'
 
-  generate_docs
+  #generate_docs
 
-  paths = Dir.glob(File.join(ember_path, "packages/*/lib"))
-  listener = Listen.to(*paths, :filter => /\.js$/)
-  listener.change { generate_docs }
-  listener.start(false)
+  #paths = Dir.glob(File.join(ember_path, "packages/*/lib"))
+  #listener = Listen.to(*paths, :filter => /\.js$/)
+  #listener.change { generate_docs }
+  #listener.start(false)
 
   system "middleman server"
 end
@@ -84,7 +84,7 @@ task :deploy do |t, args|
 
   mkdir_p "build"
   Dir.chdir "build" do
-    git_initialize("emberjs.github.com")
+    git_initialize("emberjs-cn.github.com")
     git_update
 
     build
@@ -93,7 +93,7 @@ task :deploy do |t, args|
     # rm_r "source/examples"
 
     File.open("CNAME", 'w') do |f|
-      f.write "emberjs.com"
+      f.write "emberjs.cn"
     end
 
     system "git add -A"

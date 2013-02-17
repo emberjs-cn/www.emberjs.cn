@@ -11,7 +11,7 @@
       var _gaq = _gaq || [];
       var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
       _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-      _gaq.push(['_setAccount', 'UA-27675533-1']);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
       _gaq.push(['_trackPageview']);
 
       (function() {
@@ -80,15 +80,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <%= link_to_page "about", "/about" %>
-          <%= link_to_page "guides", "/guides" %>
-          <%= link_to_page "api", "/api" %>
-          <%= link_to_page "community", "/community" %>
           <%= link_to_page "blog", "/blog" %>
+          <%= link_to_page "guides", "/guides" %>
         </ul>
-        <div id="github">
-          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Us!</a>
-        </div>
       </div>
     </div>
 
@@ -97,7 +91,7 @@
       <% if sidebar %>
         <div id="sidebar">
           <%= sidebar %>
-          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; Back to Top</a></div>
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
         </div>
       <% end %>
       <div id="content" <% if sidebar %>class="has-sidebar"<% end %>>
@@ -107,13 +101,7 @@
 
     <div id="footer">
       <div id="footer-wrapper">
-        <div class="info">Copyright 2012 <a href="http://tilde.io">Tilde Inc.</a><br>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
-        <div class="statement">Ember.js is free, open source and always will be.</div>
-        <div class="links">
-          <a class="twitter" href="http://twitter.com/emberjs">Twitter</a>
-          <a class="github" href="https://github.com/emberjs/ember.js">GitHub</a>
-          <a class="googleplus" href="https://plus.google.com/communities/106387049790387471205">Google+</a>
-        </div>
+        <div class="info">Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
       </div>
     </div>
   </body>
