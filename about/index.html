@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - About</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+      <script type="text/javascript">
+    $(function() {
+      $('#slider').bxSlider({
+        displaySlideQty: 4,
+        moveSlideQty: 4,
+        auto: true,
+        pager: true,
+        speed: 700,
+        pause: 5000
+      });
+
+      // Hack to force proper sizing
+      $('.bx-wrapper, .bx-window').css('width', 940);
+    });
+  </script>
+
+  </head>
+
+  <body class="about about_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+      <div id="content" >
+        
+<img class="about-header-text" src="/images/about/header-text.png" alt="A framework for creating ambitious web applications.">
+<div id="download">
+  <div id="download-ember">
+    <a class="orange button" href="https://raw.github.com/emberjs/ember.js/release-builds/ember-1.0.0-rc.1.js">
+      Download Ember 1.0.0-rc.1
+    </a>
+    <div class="info">49k min+gzip |
+      <a class="debug" href="https://raw.github.com/emberjs/ember.js/release-builds/ember-1.0.0-rc.1.min.js">
+        minified
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="features section">
+  <h2>More Productive Out of the Box.</h2>
+  <div class="feature">
+    <img src="/images/about/ember-handlebars-sm.png" alt="Handlebars">
+    <p>Write dramatically less code with Ember's Handlebars integrated templates that update automatically when the underlying data changes.<br><a href="http://handlebarsjs.com/">Download Handlebars</a></p>
+  </div>
+  <div class="feature">
+    <img src="/images/about/ember-structure-sm.png" alt="Structure">
+    <p>Don't waste time making trivial choices. Ember.js incorporates common idioms so you can focus on what makes your app special, not reinventing the wheel.</p>
+  </div>
+  <div class="feature">
+    <img src="/images/about/ember-productivity-sm.png" alt="Productivity">
+    <p>Ember.js is built for productivity. Designed with developer ergonomics in mind, its friendly APIs help you get your job done&mdash;fast.</p>
+  </div>
+</div>
+
+<div class="getting-started section">
+  <h2>Getting Started with Ember.js is Easy.</h2>
+
+<div class="highlight javascript left"><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.Person = DS.Model.extend({
+  <span class="key">firstName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>),
+  <span class="key">lastName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>),
+
+  <span class="function">fullName</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>) +
+           <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
+});
+
+App.peopleController = Em.ArrayController.create({
+  <span class="key">content</span>: App.Person.findAll()
+});
+</pre></td>
+</tr></table>
+</div>
+<div class="highlight handlebars right"><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>People<span class="tag">&lt;/h1&gt;</span>
+
+<span class="tag">&lt;ul&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">peopleController</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span>Hello, <span class="tag">&lt;b&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">fullName</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/b&gt;</span>!<span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+</div>
+
+<div class="users section">
+  <h2>Who's Using Ember.js?</h2>
+
+  <div class="surround">
+    <ul id="slider">
+    
+      <li class="user">
+        <a href="http://livingsocial.com/" rel="nofollow">
+          <img src="/images/about/livingsocial.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://squareup.com/" rel="nofollow">
+          <img src="/images/about/square.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://tilde.io/" rel="nofollow">
+          <img src="/images/about/tilde.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.zendesk.com/" rel="nofollow">
+          <img src="/images/about/zendesk.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.groupon.com" rel="nofollow">
+          <img src="/images/about/groupon.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.timbuk2.com/" rel="nofollow">
+          <img src="/images/about/timbuk2.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.mhelabs.com/" rel="nofollow">
+          <img src="/images/about/mhelabs.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="https://www.yapp.us/" rel="nofollow">
+          <img src="/images/about/yapp.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.benefitcloud.com/" rel="nofollow">
+          <img src="/images/about/benefitcloud.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.topicus.nl/" rel="nofollow">
+          <img src="/images/about/topicus.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.gemfury.com/" rel="nofollow">
+          <img src="/images/about/gemfury.png">
+        </a>
+      </li>
+    
+      <li class="user">
+        <a href="http://www.batterii.com/" rel="nofollow">
+          <img src="/images/about/batterii.png">
+        </a>
+      </li>
+    
+    </ul>
+  </div>
+
+  <div id="listed">
+    <a class="orange button" href="/ember-users">
+        Meet More Users
+      </a>
+  </div>
+</div>
+
+
+<div class="gears section">
+	<h2>Buy Ember.js Gear and Support Development</h2>
+	<div class="gear">
+		<a href="http://devswag.com/products/ember-sticker">
+			<img src="/images/about/ember-sticker.png">
+		</a>
+		<div class="gearplus">
+			<img src="/images/about/plus-icon.png">
+		</div>
+		<a href="http://devswag.com/products/ember-js-tshirt">
+			<img src="/images/about/ember-shirt.png">
+		</a>
+		<div class="gearplus">
+			<img src="/images/about/plus-icon.png">
+		</div>
+		<a href="http://devswag.com/products/ember-mascot-stickers-4">
+			<img src="/images/about/ember-hamster-sticker.png">
+		</a>
+	</div>
+</div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+      </div>
+    </div>
+  </body>
+</html>

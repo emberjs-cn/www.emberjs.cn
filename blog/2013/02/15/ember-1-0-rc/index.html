@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - Ember 1.0 RC</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="blog blog_2013 blog_2013_02 blog_2013_02_15 blog_2013_02_15_ember-1-0-rc blog_2013_02_15_ember-1-0-rc_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          <ol id='toc-list'>
+  <li class='level-1'>
+    <a href="#">最近文章</a>
+    <ol style="display:block">
+      
+      <li class='level-3'><a href="/blog/2013/02/15/ember-1-0-rc/">Ember 1.0 RC</a></li>
+    
+    </ol>
+  </li>
+</ol>
+
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          <article class="blog-post">
+    <h1>Ember 1.0 RC</h1>
+
+    <p>Today at Ember Camp, we announced the release of Ember.js 1.0 RC1.</p>
+
+<p>This release is all about fixing bugs from the <code>pre4</code> release, and
+gets us that much closer to a final 1.0 release. Between this release
+and the 1.0 final, we will mostly be focusing on stability and documentation.</p>
+
+<p>If you discover any blocking bugs or undocumented areas, please file tickets at
+the emberjs/ember.js repo on GitHub and consider helping out.</p>
+<h3 class='anchorable-toc' id='toc_route-replacement'>Route Replacement</h3>
+<p>You can now transition to a new route without creating an entry in the history:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="comment">// instead of this, which creates a history entry</span>
+router.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>);
+
+<span class="comment">// do this</span>
+router.replaceWith(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div>
+<p>In the <code>redirect</code> hook, you can just use <code>replaceWith</code> and Ember won&#39;t create
+a history entry.</p>
+
+<p>In a controller, you can use <code>replaceRoute</code> (instead of <code>transitionToRoute</code>)
+to do the same thing.</p>
+<h3 class='anchorable-toc' id='toc_item-controller'>Item Controller</h3>
+<p>If you want every item in a <code>{{#each}}</code> to be wrapped in an <code>ObjectController</code>,
+you can do so easily:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>{{<span class="error">#</span>each posts itemController=<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>}}
+  {{!-- <span class="error">`</span><span class="local-variable">this</span><span class="error">`</span> <span class="keyword">in</span> here is each post wrapped <span class="keyword">in</span> an App.PostController --}}
+{{<span class="regexp"><span class="delimiter">/</span><span class="content">each}}
+</span></span></pre></td>
+</tr></table>
+</div><h3 class='anchorable-toc' id='toc_register-and-inject'>Register and Inject</h3>
+<p>Internally, Ember uses a &quot;container&quot; to instantiate your controllers and other
+objects.</p>
+
+<p>As of Ember 1.0 RC1, you can use <code>App.register</code> to override the default lookup
+for controllers and other objects. For example:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>App.register(<span class="string"><span class="delimiter">'</span><span class="content">controller:post</span><span class="delimiter">'</span></span>, Ember.ObjectController.extend());
+</pre></td>
+</tr></table>
+</div>
+<p>In general, you should use the default naming conventions, which Ember will use
+to find objects, but you can use this API for advanced usages.</p>
+
+<p>Similarly, you can use <code>App.inject</code> to tell Ember to automatically inject
+objects into other Ember objects.</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>App.register(<span class="string"><span class="delimiter">'</span><span class="content">network:main</span><span class="delimiter">'</span></span>, App.NetworkAdapter);
+App.inject(<span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">network</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">network:main</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div>
+<p>This will create a single instance of <code>App.NetworkAdapter</code> and give it to every
+controller created over the course of building your application. Internally,
+Ember Data uses this API to give every controller the application&#39;s store:</p>
+<h3 class='anchorable-toc' id='toc_router-activate-and-deactivate'>Router Activate and Deactivate</h3>
+<p>Currently, many people are using the undocumented and private <code>enter</code> and
+<code>exit</code> hooks to run code whenever Ember activates a route handler or
+deactivates it.</p>
+
+<p>As of Ember 1.0 RC1, there are public hooks: <code>activate</code> and <code>deactivate</code>. Note
+that the <code>activate</code> hook will run only when a route handler is activated for
+the first time. If a route handler&#39;s context changes, the <code>setupController</code>
+hook will run again, but not the <code>activate</code> hook.</p>
+<h3 class='anchorable-toc' id='toc_code-app-reset-code'><code>App.reset()</code></h3>
+<p>If you are trying to run integration tests with Ember, you might have noticed
+that there is no good way to reset all of an application&#39;s state.</p>
+
+<p>No more!</p>
+
+<p>As of Ember 1.0 RC1, you can call <code>App.reset()</code> to destroy all objects created
+for the application, and bring the application back to <code>/</code>.</p>
+<h3 class='anchorable-toc' id='toc_big-list-of-changes'>Big List of Changes</h3>
+<p>Since <code>.pre4</code>, we&#39;ve added these features:</p>
+
+<ul>
+<li>Added the ability to replace the current route without adding a history
+entry, using <code>router.replaceWith</code></li>
+<li>Added support for String literals in <code>{{action}}</code> and <code>{{linkTo}}</code> to
+differentiate between static String parameters and properties on the current
+context</li>
+<li>Allow redirection from routes that are not the final resting route</li>
+<li>Fix a bug where using named outlets would confuse where child templates should
+be rendered into</li>
+<li>Add <code>itemController</code>, which allows a <code>{{#each}}</code> to wrap each iterated element
+in a controller that can be used to store transient state</li>
+<li>Fix a bug involving {{else}} templates only working a single time</li>
+<li>Add <code>intersection</code> to <code>EnumerableUtils</code></li>
+<li>Added <code>App.register</code> and <code>App.inject</code> to control the default application&#39;s
+dependency injection container</li>
+<li>Fixes regressions in jQuery 1.9 to address changes made to .attr and .prop</li>
+<li>Add support for <code>{{unbound helper}}</code> where <code>helper</code> is a custom helper
+registered via <code>Ember.Handlebars.registerBoundHelper</code></li>
+<li>Added <code>Ember.debug</code> to print debug-level warnings and use it to print the
+current version of Ember and its dependencies on boot</li>
+<li>Fix a bug where changing the model property passed to <code>{{render}}</code> does not
+update the rendered template</li>
+<li>Added public <code>activate</code> and <code>deactivate</code> hooks in the router. If you were
+using the private <code>enter</code> and <code>exit</code> methods, please switch!</li>
+<li>Added <code>Application#reset</code> to help with integration tests</li>
+<li>Several fixes for the Ember Inspector</li>
+<li>Many bug and performance fixes</li>
+</ul>
+
+<p>You can see the full changelog at <a href="https://github.com/emberjs/ember.js/blob/master/CHANGELOG">the official CHANGELOG</a>.</p>
+
+
+    <hr>
+
+    <div id="disqus_thread"></div> 
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'emberblog'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+      </div>
+    </div>
+  </body>
+</html>

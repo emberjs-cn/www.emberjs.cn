@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ember Blog</title>
+  <subtitle>Ember News and Updates</subtitle>
+  <id>http://emberjs.com/blog</id>
+  <link href="http://emberjs.com/blog"/>
+  <link href="http://emberjs.com/blog/feed.xml" rel="self"/>
+  <updated>2013-02-15T00:00:00Z</updated>
+  <author>
+    <name>Ember</name>
+  </author>
+  <entry>
+    <title>Ember 1.0 RC</title>
+    <link rel="alternate" href="/blog/2013/02/15/ember-1-0-rc/"/>
+    <id>/blog/2013/02/15/ember-1-0-rc/</id>
+    <published>2013-02-15T00:00:00Z</published>
+    <updated>2013-02-15T00:00:00Z</updated>
+    <author>
+      <name>Ember</name>
+    </author>
+    <summary type="html">&lt;p&gt;Today at Ember Camp, we announced the release of Ember.js 1.0 RC1.&lt;/p&gt;
+
+&lt;p&gt;This release is all about fixing bugs from the &lt;code&gt;pre4&lt;/code&gt; release, and
+gets us that much closer to a final 1.0 release. Between this release
+and the 1.0 final, we will mostly be focusing on stability and documentation.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;Today at Ember Camp, we announced the release of Ember.js 1.0 RC1.&lt;/p&gt;
+
+&lt;p&gt;This release is all about fixing bugs from the &lt;code&gt;pre4&lt;/code&gt; release, and
+gets us that much closer to a final 1.0 release. Between this release
+and the 1.0 final, we will mostly be focusing on stability and documentation.&lt;/p&gt;
+
+&lt;p&gt;If you discover any blocking bugs or undocumented areas, please file tickets at
+the emberjs/ember.js repo on GitHub and consider helping out.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_route-replacement'&gt;Route Replacement&lt;/h3&gt;
+&lt;p&gt;You can now transition to a new route without creating an entry in the history:&lt;/p&gt;
+&lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="comment"&gt;// instead of this, which creates a history entry&lt;/span&gt;
+router.transitionTo(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;index&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+
+&lt;span class="comment"&gt;// do this&lt;/span&gt;
+router.replaceWith(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;index&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;In the &lt;code&gt;redirect&lt;/code&gt; hook, you can just use &lt;code&gt;replaceWith&lt;/code&gt; and Ember won&amp;#39;t create
+a history entry.&lt;/p&gt;
+
+&lt;p&gt;In a controller, you can use &lt;code&gt;replaceRoute&lt;/code&gt; (instead of &lt;code&gt;transitionToRoute&lt;/code&gt;)
+to do the same thing.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_item-controller'&gt;Item Controller&lt;/h3&gt;
+&lt;p&gt;If you want every item in a &lt;code&gt;{{#each}}&lt;/code&gt; to be wrapped in an &lt;code&gt;ObjectController&lt;/code&gt;,
+you can do so easily:&lt;/p&gt;
+&lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;{{&lt;span class="error"&gt;#&lt;/span&gt;each posts itemController=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;post&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;}}
+  {{!-- &lt;span class="error"&gt;`&lt;/span&gt;&lt;span class="local-variable"&gt;this&lt;/span&gt;&lt;span class="error"&gt;`&lt;/span&gt; &lt;span class="keyword"&gt;in&lt;/span&gt; here is each post wrapped &lt;span class="keyword"&gt;in&lt;/span&gt; an App.PostController --}}
+{{&lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;each}}
+&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_register-and-inject'&gt;Register and Inject&lt;/h3&gt;
+&lt;p&gt;Internally, Ember uses a &amp;quot;container&amp;quot; to instantiate your controllers and other
+objects.&lt;/p&gt;
+
+&lt;p&gt;As of Ember 1.0 RC1, you can use &lt;code&gt;App.register&lt;/code&gt; to override the default lookup
+for controllers and other objects. For example:&lt;/p&gt;
+&lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;App.register(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;controller:post&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, Ember.ObjectController.extend());
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;In general, you should use the default naming conventions, which Ember will use
+to find objects, but you can use this API for advanced usages.&lt;/p&gt;
+
+&lt;p&gt;Similarly, you can use &lt;code&gt;App.inject&lt;/code&gt; to tell Ember to automatically inject
+objects into other Ember objects.&lt;/p&gt;
+&lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;App.register(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;network:main&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, App.NetworkAdapter);
+App.inject(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;controller&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;network&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;network:main&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;This will create a single instance of &lt;code&gt;App.NetworkAdapter&lt;/code&gt; and give it to every
+controller created over the course of building your application. Internally,
+Ember Data uses this API to give every controller the application&amp;#39;s store:&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_router-activate-and-deactivate'&gt;Router Activate and Deactivate&lt;/h3&gt;
+&lt;p&gt;Currently, many people are using the undocumented and private &lt;code&gt;enter&lt;/code&gt; and
+&lt;code&gt;exit&lt;/code&gt; hooks to run code whenever Ember activates a route handler or
+deactivates it.&lt;/p&gt;
+
+&lt;p&gt;As of Ember 1.0 RC1, there are public hooks: &lt;code&gt;activate&lt;/code&gt; and &lt;code&gt;deactivate&lt;/code&gt;. Note
+that the &lt;code&gt;activate&lt;/code&gt; hook will run only when a route handler is activated for
+the first time. If a route handler&amp;#39;s context changes, the &lt;code&gt;setupController&lt;/code&gt;
+hook will run again, but not the &lt;code&gt;activate&lt;/code&gt; hook.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_code-app-reset-code'&gt;&lt;code&gt;App.reset()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;If you are trying to run integration tests with Ember, you might have noticed
+that there is no good way to reset all of an application&amp;#39;s state.&lt;/p&gt;
+
+&lt;p&gt;No more!&lt;/p&gt;
+
+&lt;p&gt;As of Ember 1.0 RC1, you can call &lt;code&gt;App.reset()&lt;/code&gt; to destroy all objects created
+for the application, and bring the application back to &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_big-list-of-changes'&gt;Big List of Changes&lt;/h3&gt;
+&lt;p&gt;Since &lt;code&gt;.pre4&lt;/code&gt;, we&amp;#39;ve added these features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Added the ability to replace the current route without adding a history
+entry, using &lt;code&gt;router.replaceWith&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Added support for String literals in &lt;code&gt;{{action}}&lt;/code&gt; and &lt;code&gt;{{linkTo}}&lt;/code&gt; to
+differentiate between static String parameters and properties on the current
+context&lt;/li&gt;
+&lt;li&gt;Allow redirection from routes that are not the final resting route&lt;/li&gt;
+&lt;li&gt;Fix a bug where using named outlets would confuse where child templates should
+be rendered into&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;itemController&lt;/code&gt;, which allows a &lt;code&gt;{{#each}}&lt;/code&gt; to wrap each iterated element
+in a controller that can be used to store transient state&lt;/li&gt;
+&lt;li&gt;Fix a bug involving {{else}} templates only working a single time&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;intersection&lt;/code&gt; to &lt;code&gt;EnumerableUtils&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;App.register&lt;/code&gt; and &lt;code&gt;App.inject&lt;/code&gt; to control the default application&amp;#39;s
+dependency injection container&lt;/li&gt;
+&lt;li&gt;Fixes regressions in jQuery 1.9 to address changes made to .attr and .prop&lt;/li&gt;
+&lt;li&gt;Add support for &lt;code&gt;{{unbound helper}}&lt;/code&gt; where &lt;code&gt;helper&lt;/code&gt; is a custom helper
+registered via &lt;code&gt;Ember.Handlebars.registerBoundHelper&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Ember.debug&lt;/code&gt; to print debug-level warnings and use it to print the
+current version of Ember and its dependencies on boot&lt;/li&gt;
+&lt;li&gt;Fix a bug where changing the model property passed to &lt;code&gt;{{render}}&lt;/code&gt; does not
+update the rendered template&lt;/li&gt;
+&lt;li&gt;Added public &lt;code&gt;activate&lt;/code&gt; and &lt;code&gt;deactivate&lt;/code&gt; hooks in the router. If you were
+using the private &lt;code&gt;enter&lt;/code&gt; and &lt;code&gt;exit&lt;/code&gt; methods, please switch!&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Application#reset&lt;/code&gt; to help with integration tests&lt;/li&gt;
+&lt;li&gt;Several fixes for the Ember Inspector&lt;/li&gt;
+&lt;li&gt;Many bug and performance fixes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can see the full changelog at &lt;a href="https://github.com/emberjs/ember.js/blob/master/CHANGELOG"&gt;the official CHANGELOG&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

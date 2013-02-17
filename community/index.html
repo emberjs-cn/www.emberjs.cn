@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - Community</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="community community_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+      <div id="content" >
+        <h1>Get Involved by Joining the Growing Ember.js Community</h1>
+
+<div class="community section">
+  <h2>In a Giving Mood? Contribute to the Project</h2>
+
+  <img src="/images/community/give.png">
+
+  <p>The Ember.js source is hosted on <a href="https://github.com/emberjs/ember.js/">Github</a>.
+    To contribute patches, create a fork of the project on GitHub and submit a pull request.
+    Please be sure to include unit tests and documentation for any new features you add.
+    See the <a href="https://github.com/emberjs/ember.js/blob/master/CONTRIBUTING.md">full guidelines</a>
+    for more information.</p>
+</div>
+
+<div class="community section bugs">
+  <h2>Something Fishy? Report it to the Team</h2>
+
+  <img src="/images/community/bug.png">
+
+  <p>If you've found a bug or issue in Ember.js, please let us know. To file a bug, go to the
+    <a href="https://github.com/emberjs/ember.js/issues">issue tracker</a> and create a new
+    issue. Great bug reports include a clear description of what is not happening and what
+    you expected to happen. Issues that include a failing test or a reduced test case
+    created on <a href="http://jsfiddle.net">JSFiddle</a> or
+    <a href="http://jsbin.com">JSBin</a> are much more likely to receive attention.
+    See the <a href="https://github.com/emberjs/ember.js/blob/master/CONTRIBUTING.md">full guidelines</a>
+    for more information.</p>
+
+    <p>The source code for this website is also <a href="https://github.com/emberjs/website">available on GitHub</a>.
+       If you have found a typo or incorrect documentation, please file an issue on the GitHub project page,
+       or even better, submit a pull request.</p>
+</div>
+
+<div class="community section">
+  <h2>Stuck? Lost? Get Help from the Community</h2>
+
+  <img src="/images/community/sos.png">
+
+  <p><a href="http://stackoverflow.com/questions/tagged/ember.js">StackOverflow</a> is used to
+  track questions. Just tag your question with <code>ember.js</code> or
+    <a href="http://stackoverflow.com/questions/tagged/ember.js">search for questions with that tag</a>.
+    Please check to see if your question has already been answered before asking a new one.</p>
+
+    <p>You can also check out our IRC channel at <code>#emberjs</code> on freenode.net.</p>
+</div>
+
+<div class="community section">
+  <h2>Meetups</h2>
+
+  <p>There are a number of different Ember.js meetups around the world.
+    Going to a meetup is a great way to learn more about Ember.js and meet
+    other developers.</p>
+
+  <table class="columns">
+    <tr>
+      
+        <td>
+          <h3>United States</h3>
+
+          <ul>
+            
+              <li><a href="http://www.meetup.com/Ember-Atlanta-Meetup/">Atlanta, GA</a></li>
+            
+              <li><a href="http://www.meetup.com/Boston-Ember-js/">Boston, MA</a></li>
+            
+              <li><a href="http://www.meetup.com/Chicago-Ember-js/">Chicago, IL</a></li>
+            
+              <li><a href="http://www.meetup.com/EmberJS-NYC/">New York, NY</a></li>
+            
+              <li><a href="http://www.meetup.com/OC-EmberJS/">Orange County, CA</a></li>
+            
+              <li><a href="http://www.meetup.com/Emberjs-Philly/">Philadelphia, PA</a></li>
+            
+              <li><a href="http://www.meetup.com/Ember-SF/">San Francisco, CA</a></li>
+            
+              <li><a href="http://www.meetup.com/Ember-js-Seattle-Meetup/">Seattle, WA</a></li>
+            
+          </ul>
+        </td>
+      
+        <td>
+          <h3>Worldwide</h3>
+
+          <ul>
+            
+              <li><a href="http://www.meetup.com/Ember-js-Berlin/">Berlin, Germany</a></li>
+            
+              <li><a href="http://www.meetup.com/emberjsdublin/">Dublin, Ireland</a></li>
+            
+              <li><a href="http://www.meetup.com/London-Emberjs-User-Group/">London, UK</a></li>
+            
+              <li><a href="http://www.meetup.com/Ember-js-Munich/">Munich, Germany</a></li>
+            
+              <li><a href="http://www.meetup.com/EmberJS-Paris/">Paris, France</a></li>
+            
+              <li><a href="http://www.torontoemberjs.com/">Toronto, Canada</a></li>
+            
+          </ul>
+        </td>
+      
+    </tr>
+  </table>
+</div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+      </div>
+    </div>
+  </body>
+</html>

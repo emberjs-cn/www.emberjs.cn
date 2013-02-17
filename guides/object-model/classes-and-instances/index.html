@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - The Object Model</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="guides guides_object-model guides_object-model_classes-and-instances guides_object-model_classes-and-instances_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li class="active"><a href="/guides">指南</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started/core-concepts">Getting Started with Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started/core-concepts">Core Concepts</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">Application</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/application/the-application-template">The Application Template</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/handlebars-basics">Templates</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars Basics</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">Conditionals</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">Displaying a List of Items</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">Changing Scope</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">Binding Element Attributes</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">Binding Element Class Names</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">Links</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">Actions</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">Routing</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">Defining Your Routes</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">Setting Up a Controller</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">Redirecting to a Different URL</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">Specifying the location API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">Controllers</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">Representing a Single Model with ObjectController</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">Models</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-a-store">Defining a Store</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">Defining Models</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-models">Finding Models</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">Views</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">Defining a View</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">Handling Events</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/object-model/classes-and-instances">The Object Model</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/guides/object-model/classes-and-instances">Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>The Object Model</h1>
+    <h2 class='anchorable-toc' id='toc_classes-and-instances'>Classes and Instances</h2>
+<p>To define a new Ember <em>class</em>, call the <code>extend()</code> method on
+<code>Ember.Object</code>:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Person = Ember.Object.extend({
+  <span class="function">say</span>: <span class="keyword">function</span>(thing) {
+    alert(thing);
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>This defines a new <code>App.Person</code> class with a <code>say()</code> method.</p>
+
+<p>You can also create a <em>subclass</em> from any existing class by calling
+its <code>extend()</code> method. For example, you might want to create a subclass
+of Ember&#39;s built-in <code>Ember.View</code> class:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.PersonView = Ember.View.extend({
+  <span class="key">tagName</span>: <span class="string"><span class="delimiter">'</span><span class="content">li</span><span class="delimiter">'</span></span>,
+  <span class="key">classNameBindings</span>: [<span class="string"><span class="delimiter">'</span><span class="content">isAdministrator</span><span class="delimiter">'</span></span>]
+});
+</pre></td>
+</tr></table>
+</div>
+<p>When defining a subclass, you can override methods but still access the
+implementation of your parent class by calling the special <code>_super()</code>
+method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>App.Person = Ember.Object.extend({
+  <span class="function">say</span>: <span class="keyword">function</span>(thing) {
+    <span class="keyword">var</span> name = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
+
+    alert(name + <span class="string"><span class="delimiter">&quot;</span><span class="content"> says: </span><span class="delimiter">&quot;</span></span> + thing);
+  }
+});
+
+App.Soldier = App.Person.extend({
+  <span class="function">say</span>: <span class="keyword">function</span>(thing) {
+    <span class="local-variable">this</span>._super(thing + <span class="string"><span class="delimiter">&quot;</span><span class="content">, sir!</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+
+<span class="keyword">var</span> yehuda = App.Soldier.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Yehuda Katz</span><span class="delimiter">&quot;</span></span>
+});
+
+yehuda.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Yes</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// alerts &quot;Yehuda Katz says: Yes, sir!&quot;</span>
+</pre></td>
+</tr></table>
+</div><h3 class='anchorable-toc' id='toc_creating-instances'>Creating Instances</h3>
+<p>Once you have defined a class, you can create new <em>instances</em> of that
+class by calling its <code>create()</code> method. Any methods, properties and
+computed properties you defined on the class will be available to
+instances:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> person = Person.create();
+person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>) <span class="comment">// alerts &quot;Hello&quot;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>When creating an instance, you can initialize the value of its properties
+by passing an optional hash to the <code>create()</code> method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>Person = Ember.Object.extend({
+  <span class="function">helloWorld</span>: <span class="keyword">function</span>() {
+    alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hi, my name is </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>));
+  }
+});
+
+<span class="keyword">var</span> tom = Person.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tom Dale</span><span class="delimiter">&quot;</span></span>
+});
+
+tom.helloWorld() <span class="comment">// alerts &quot;Hi my name is Tom Dale&quot;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>For performance reasons, note that you cannot redefine an instance&#39;s
+computed properties or methods when calling <code>create()</code>, nor can you
+define new ones. You should only set simple properties when calling
+<code>create()</code>. If you need to define or redefine methods or computed
+properties, create a new subclass and instantiate that.</p>
+
+<p>By convention, properties or variables that hold classes are
+capitalized, while instances are not. So, for example, the variable
+<code>Person</code> would contain a class, while <code>person</code> would contain an instance
+(usually of the <code>Person</code> class). You should stick to these naming
+conventions in your Ember applications.</p>
+<h3 class='anchorable-toc' id='toc_initializing-instances'>Initializing Instances</h3>
+<p>When a new instance is created, its <code>init</code> method is invoked
+automatically. This is the ideal place to do setup required on new
+instances:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>Person = Ember.Object.extend({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> name = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
+    alert(name + <span class="string"><span class="delimiter">&quot;</span><span class="content">, reporting for duty!</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+
+Person.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Stefan Penner</span><span class="delimiter">&quot;</span></span>
+});
+
+<span class="comment">// alerts &quot;Stefan Penner, reporting for duty!&quot;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>If you are subclassing a framework like class, like <code>Ember.View</code> or
+<code>Ember.ArrayController</code>, and you override the <code>init</code> method, make sure
+you call <code>this._super()</code>! If you don&#39;t, the system may not have an
+opportunity to do important setup work, and you&#39;ll see strange behavior
+in your application.</p>
+
+<p>When accessing the properties of an object, use the <code>get</code>
+and <code>set</code> accessor methods:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> person = App.Person.create();
+
+<span class="keyword">var</span> name = person.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Tobias Fünke</span><span class="delimiter">&quot;</span></span>);
+</pre></td>
+</tr></table>
+</div>
+<p>Make sure to use these accessor methods; otherwise, computed properties won&#39;t
+recalculate, observers won&#39;t fire, and templates won&#39;t update.</p>
+
+    
+      <footer>
+         
+      <a class="next-guide" href="/guides/object-model/observers">
+        Observers →
+      </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+      </div>
+    </div>
+  </body>
+</html>
