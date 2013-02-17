@@ -43,7 +43,7 @@ end
 
 page 'community.html'
 
-page 'index.html', proxy: 'about.html'
+page 'index.html', proxy: 'blog/index.html'
 
 page '404.html', directory_index: false
 
@@ -78,7 +78,7 @@ helpers do
     path = request.path
     current = path =~ Regexp.new(url)
 
-    if path == '/index.html' and name == 'about'
+    if path == '/index.html' and name == 'guides'
       current = true
     end
 
