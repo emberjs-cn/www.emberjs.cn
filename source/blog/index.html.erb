@@ -9,6 +9,6 @@ title: "Blog"
   <article class="blog-post-summary">
     <h2><%= link_to article.title, article %> &ndash; <time><%= article.date.strftime('%b %d, %Y') %></time></span></h2>
     <%= article.summary %>
-    <%= link_to "Read more...", article %>
+    <%= link_to "阅读全文", article %>
   </article>
 <% end %>
