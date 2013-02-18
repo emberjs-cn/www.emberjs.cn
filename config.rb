@@ -79,7 +79,7 @@ helpers do
     path = request.path
     current = path =~ Regexp.new(url)
 
-    if path == '/index.html' and name == 'guides'
+    if path == '/index.html' and name == 'blog'
       current = true
     end
 
