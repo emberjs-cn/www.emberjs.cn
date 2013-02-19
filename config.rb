@@ -44,7 +44,7 @@ end
 
 page 'community.html'
 
-page 'index.html', proxy: 'blog/index.html'
+page 'index.html'
 
 page '404.html', directory_index: false
 
