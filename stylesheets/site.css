@@ -1286,3 +1286,13 @@ body.api span.flag {
 /* line 1366, site.css.scss */
 body.api #sidebar ol#toc-list li > ol {
   display: block; }
+
+/* line 1370, site.css.scss */
+blockquote {
+  border-left: 5px solid #CCC;
+  padding: 5px 10px;
+  background-color: white; }
+  /* line 1374, site.css.scss */
+  blockquote p {
+    margin: 5px;
+    color: #888; }

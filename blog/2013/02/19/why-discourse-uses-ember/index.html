@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - EmberJS.CN之诞生</title>
+    <title>Ember.js - 为什么Discourse选择Ember.JS</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -75,7 +76,7 @@
     
   </head>
 
-  <body class="blog blog_index">
+  <body class="blog blog_2013 blog_2013_02 blog_2013_02_19 blog_2013_02_19_why-discourse-uses-ember blog_2013_02_19_why-discourse-uses-ember_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -107,19 +108,63 @@
         </div>
       
       <div id="content" class="has-sidebar">
-        
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/02/19/why-discourse-uses-ember/">为什么Discourse选择Ember.JS</a> &ndash; <time>Feb 19, 2013</time></span></h2>
+          <article class="blog-post">
+    <h1>为什么Discourse选择Ember.JS</h1>
+
     <p>Discourse的推出在整个社区赚足了眼球，由于Discourse选择使用Ember.JS作为前端MVC框架，这促使Ember.JS也成为了热议的话题。一年多以前SproutCore2正式改名为Ember.JS后，本人持续的关注了Ember.JS的开发过程，见证这Ember.JS的成长。Ember.JS的API在整个社区共同协作的基础上日趋稳定，Ember.JS 1.0.rc1的推出，更是标着其API已经成熟。我相信越来越多基于Ember.JS实现的优秀的应用，将会像雨后春笋般涌现出来。</p>
 
-    <a href="/blog/2013/02/19/why-discourse-uses-ember/">阅读全文</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/02/18/come-into-being/">EmberJS.CN之诞生</a> &ndash; <time>Feb 18, 2013</time></span></h2>
-    <p><a href="http://emberjs.com">Ember JS</a> RC
-1在2013-02-15发布了。关注和使用EmberJS已经一年有余了，鉴于其API一直没有稳定，所以一直没有在正式的项目中采用。根据 <a href="http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/">http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/</a> 中的描述：</p>
+<p><a href="http://eviltrout.com/">Robin
+Ward</a>（Discourse的发起者之一）在2013年2月10日撰写了一片博文<a href="http://eviltrout.com/2013/02/10/why-discourse-uses-emberjs.html">Why Discourse Uses Ember.JS</a>，从他个人的角度阐述了为什么Discourse选择Ember.JS作为前端MVC框架。一下为Robin Ward的几个核心观点：</p>
 
-    <a href="/blog/2013/02/18/come-into-being/">阅读全文</a>
+<ul>
+<li>Ember.JS的文档简单易懂</li>
+</ul>
+
+<p>Robin Ward通过与<a href="http://docs.angularjs.org/guide/directive">Angular.JS
+Guides</a>比较，Robin认为较Angular.JS而言，Ember.JS的文档简单易懂，对于初学者来说更是如此。</p>
+
+<ul>
+<li>Ember.JS早期已经取得了令人瞩目的成绩，近期更是有了大幅的改进</li>
+</ul>
+
+<p><a href="http://meteor.com/">Meteor</a>在推出的时候，同时给出了一个非常精彩的示例，但是它却缺少了一些非常重要的安全特性。但是就Ember.JS而言，在其最早期的时候（我想应该是指0.9.x），其提供的功能就已经相当的棒了。Robin感慨选择用Ember.JS来开发Discourse的正确性。另外，从Ember.JS的首次发布到现在，其API经过了非常大的调整，运行也变得越来越快。最新的API里面包括一个新的<em>路由（Router）</em>接口，这从很大程度上进一步降低了让人讨厌的重复代码。</p>
+
+<ul>
+<li>Ember.JS核心开发团队在开源社区有骄人的历史成绩</li>
+</ul>
+
+<p>Yehuda Katz在Rails
+3和Bundler完成了让人称口叫绝的工作（还有Merb、jQuery等），而且团队的其他成员也非常的优秀。Yehuda在与Robin的交谈时说他自己已经疯狂的迷恋上了Ember.JS，而Robin也深信这一点，因为Ember.JS实在是太优秀了。</p>
+
+<ul>
+<li>Ember.JS采用了字符串类型的模版</li>
+</ul>
+
+<p>Ember.JS与Angular.JS不一同的一点是其采用了字符串类型的模版，而Angular.JS采用的是DOM类型的。这点完全是因为Robin的个人喜好，但是他也强调了如果要做一些服务器端的渲染，那么字符串类型的模版要比DOM类型的容易很多，因为不需要启动一个完整的PhantomJS的环境。</p>
+
+<ul>
+<li>Ember.JS的运行循环</li>
+</ul>
+
+<p>Ember.JS的运行循环机制是其能得意获得高性能的一个基础，Ember.JS采用批量更新的方式来保持DOM的同步。相比其他很多框架采用循环逐一进行同步更新的机制来说要快了许多。</p>
+
+
+    <hr>
+
+    <div id="disqus_thread"></div> 
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'emberjs-cn'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript><a href="http://disqus.com/?ref_noscript">基于Disqus的评论需要启用Javascript</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">博客评论基于<span class="logo-disqus">Disqus</span></a>
   </article>
 
       </div>
