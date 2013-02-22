@@ -28,7 +28,7 @@ Having an application object is important for several reasons:
 3. It automatically renders the [_application
    template_](the-application-template), the root-most
    template, into which your other templates will be rendered.
-   它会自动帮你把最上层的模板[_application template_](the-application-template)渲染到其他需要用到的模板中。
+   它会自动帮你把最上层的模板[_application template_](application/the-application-template)渲染到其他需要用到的模板中。
 4. It automatically creates a router and begins routing, based on the
    current URL.
    它会基于当前的路径自动帮你创建路由系统并启动路由。
