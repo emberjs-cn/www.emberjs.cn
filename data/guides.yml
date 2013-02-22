@@ -14,10 +14,10 @@ Getting Started with Ember.js:
   #- title: "Understanding Web Apps"
     #url: "getting-started/understanding-web-apps"
 
-Application:
-  - title: "Introduction"
+应用:
+  - title: "介绍"
     url: "application"
-  - title: "The Application Template"
+  - title: "应用模版"
     url: "application/the-application-template"
 
 Templates:
