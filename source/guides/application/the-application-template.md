@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/application/the-application-template/](http://emberjs.com/guides/application/the-application-template/)
+
 ## 应用模板（The Application Template）
 
 The application template is the default template that is rendered when
