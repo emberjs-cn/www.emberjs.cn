@@ -46,10 +46,10 @@ Guides&lt;/a&gt;比较，Robin认为较Angular.JS而言，Ember.JS的文档简�
 3和Bundler完成了让人称口叫绝的工作（还有Merb、jQuery等），而且团队的其他成员也非常的优秀。Yehuda在与Robin的交谈时说他自己已经疯狂的迷恋上了Ember.JS，而Robin也深信这一点，因为Ember.JS实在是太优秀了。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Ember.JS采用了字符串类型的模版&lt;/li&gt;
+&lt;li&gt;Ember.JS采用了字符串类型的模板&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Ember.JS与Angular.JS不一同的一点是其采用了字符串类型的模版，而Angular.JS采用的是DOM类型的。这点完全是因为Robin的个人喜好，但是他也强调了如果要做一些服务器端的渲染，那么字符串类型的模版要比DOM类型的容易很多，因为不需要启动一个完整的PhantomJS的环境。&lt;/p&gt;
+&lt;p&gt;Ember.JS与Angular.JS不一同的一点是其采用了字符串类型的模板，而Angular.JS采用的是DOM类型的。这点完全是因为Robin的个人喜好，但是他也强调了如果要做一些服务器端的渲染，那么字符串类型的模板要比DOM类型的容易很多，因为不需要启动一个完整的PhantomJS的环境。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Ember.JS的运行循环&lt;/li&gt;
