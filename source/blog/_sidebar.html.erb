@@ -1,6 +1,6 @@
 <ol id='toc-list'>
   <li class='level-1'>
-    <a href="#">最近文章</a>
+    <a href="<%= tag_path '最近文章'%>">最近文章</a>
     <ol style="display:block">
       <% blog.tags['最近文章'].sort_by(&:date).reverse.each_with_index do |article, i| %>
       <li class='level-3'><%= link_to article.title, article %></li>
