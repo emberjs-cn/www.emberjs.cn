@@ -14,12 +14,10 @@ use attributes just like any other property, including as part of a
 computed property.
 
 ```javascript
-var attr = DS.attr;
-
 App.Person = DS.Model.extend({
-  firstName: attr('string'),
-  lastName: attr('string'),
-  birthday: attr('date'),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
+  birthday: DS.attr('date'),
 
   fullName: function() {
     return this.get('firstName') + ' ' + this.get('lastName');
@@ -29,7 +27,8 @@ App.Person = DS.Model.extend({
 
 By default, the REST adapter supports attribute types of `string`,
 `number`, `boolean`, and `date`. Custom adapters may offer additional
-attribute types.
+attribute types, and new types can be registered as transforms. See the
+[documentation section on the REST Adapter](/guides/models/the-rest-adapter).
 
 ### Relationships
 
