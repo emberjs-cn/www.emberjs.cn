@@ -40,7 +40,7 @@ the user interface of your application. In addition to plain HTML,
 templates can contain:
 
 **模板**， 是由Handlebars模板语言写成，它描述了一个应用程序的用户接口。
-此外，为了简单的HTML,模板还需要包含：
+此外，相对于纯HTML，模板还提供了：
 
 * **Expressions**, like `{{firstName}}`, which take information from
   controllers and models, place them into HTML, and automatically keep them
@@ -51,12 +51,12 @@ templates can contain:
   moves around your app, different templates can be plugged into the
   outlet by the router. You can put outlets into your template using the
   `{{outlet}}` helper.
-* 占位符(**Outlets**), 它是其他模板的占位符。当用户搬迁你的应用时，不
-  同的模板会通过路由插入到outlet中。你可以使用 `{{outlet}}` 帮助将outlets放到
+* **出口**, 它是其他模板的占位符。当用户使用你的应用时，不
+  同的模板会通过路由插入到出口中。你可以使用 `{{outlet}}` 助手将出口放到
   模板中去。
 * **Views**, which are responsible for handling user events. You can put
   views into your templates using the `{{view}}` helper.
-* **视图**, 它负责处理用户事件。你可以使用`{{view}}`帮助将视图放到模板中。
+* **视图**, 它负责处理用户事件。你可以使用`{{view}}`助手将视图放到模板中。
 
 #### 视图(Views)
 
@@ -65,7 +65,7 @@ translating _primitive events_ (like clicks, taps, and swipes) into
 _semantic events_ that have meaning to your application and are sent to
 the controller.
 
-一个**视图**被嵌入在一个模板中,它负责把 _原始事件_ (如点击,轻拍,猛击)翻译
+一个**视图**被嵌入在一个模板中,它负责把 _原始事件_ (如点击,触摸,滑动)翻译
 成对你的应用程序有意义的 _语义事件_ ,然后将他们传输到控制器。
 
 For example, a view might translate a `click` event into the more
@@ -110,8 +110,9 @@ Usually, you'll use Ember Data to translate the _raw JSON payloads_
 delivered by your API server into full-blown Ember.js objects with
 associations, computed properties, and more.
 
-通常情况下，你应该使用Ember数据去将你的API服务器传递的原始JSON负载文件转换成
-更成熟的Ember.js对象，它们有更好的关联性，计算属性及其他优点。
+通常情况下，你应该使用`Ember Data`去将你的API服务器传递的
+_原始JSON负载文件_ 转换成
+更为全面的`Ember.js`对象，它们有更好的关联性，计算属性及其他优点。
 
 #### 路由(Router)
 
@@ -131,7 +132,7 @@ router automatically keeps the URL up-to-date. Users can save the URL
 and re-enter the application at this state later, or share the app in
 its current state with others.
 
-当你在不同的状态切换应用程序时，路由将自动保持URL为最新。用户可以保存URL
+当你在在应用程序中切换到不同的状态时，路由会自动更新URL。用户可以保存URL
 并且可以以后重新进入这个状态，或者与他人分享应用程序的当前状态。
 
 ---
@@ -141,7 +142,7 @@ your Ember.js app. If you stick to these basics, we've designed the
 system to scale up in complexity, so that adding new functionality
 doesn't require you to go back and change the entire system.
 
-以上这些所在开发Ember.js应用时需要了解的核心概念。如果你信守这些概念，我们
+以上这些是你在开发`Ember.js`应用时需要了解的核心概念。如果你信守这些概念，我们
 已经设计了能成比例增加复杂性的系统，以至于当你要增加新功能时就不需要重新改变
 整个系统
 
