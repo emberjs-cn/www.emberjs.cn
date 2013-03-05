@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -85,6 +86,10 @@
           <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
         </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
       </div>
     </div>
 
@@ -95,11 +100,11 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Getting Started with Ember.js</a>
+            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">Core Concepts</a>
+              <a href="/guides/getting-started/core-concepts">核心概念</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -201,6 +206,10 @@
             <li class="level-3">
               <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+            </li>
           </ol></li>
           <li class="level-1 selected">
             <a href="/guides/models">Models</a>
@@ -252,6 +261,10 @@
           
             <li class="level-3">
               <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layerouts-to-views">Adding Layouts to Views</a>
             </li>
           
             <li class="level-3">
@@ -356,22 +369,7 @@ with based on the name of the model. For example, if you ask for a
 </pre></td>
 </tr></table>
 </div>
-<p>The REST adapter will automatically send a <code>GET</code> request to <code>/posts/1</code>.
-You can specify irregular pluralizations via the adapter&#39;s <code>configure</code>
-API:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre>DS.RESTAdapter.configure(<span class="string"><span class="delimiter">&quot;</span><span class="content">plurals</span><span class="delimiter">&quot;</span></span>, {
-  <span class="key">person</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">people</span><span class="delimiter">&quot;</span></span>
-});
-</pre></td>
-</tr></table>
-</div>
-<p>This will tell the REST adapter that requests for <code>App.Person</code> requests
-should go to <code>/people/1</code> instead of <code>/persons/1</code>.</p>
+<p>The REST adapter will automatically send a <code>GET</code> request to <code>/posts/1</code>.</p>
 
 <p>The actions you can take on a record map onto the following URLs in the
 REST adapter:</p>
@@ -388,6 +386,51 @@ REST adapter:</p>
     <tr><th>Delete</th><td>DELETE</td><td>/people/123</td></tr>
   </tbody>
 </table>
+<h4 class='anchorable-toc' id='toc_pluralization-customization'>Pluralization Customization</h4>
+<p>Irregular pluralizations can be specified via the adapter&#39;s <code>configure</code>
+API:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>DS.RESTAdapter.configure(<span class="string"><span class="delimiter">&quot;</span><span class="content">plurals</span><span class="delimiter">&quot;</span></span>, {
+  <span class="key">person</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">people</span><span class="delimiter">&quot;</span></span>
+});
+</pre></td>
+</tr></table>
+</div>
+<p>This will tell the REST adapter that requests for <code>App.Person</code> requests
+should go to <code>/people/1</code> instead of <code>/persons/1</code>.</p>
+<h4 class='anchorable-toc' id='toc_endpoint-path-customization'>Endpoint Path Customization</h4>
+<p>Endpoint paths can be prefixed with a namespace by setting the <code>namespace</code>
+property on the adapter:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>DS.RESTAdapter.reopen({
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">api/1</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Requests for <code>App.Person</code> would now target <code>/api/1/people/1</code>.</p>
+<h4 class='anchorable-toc' id='toc_host-customization'>Host Customization</h4>
+<p>An adapter can target other hosts by setting the <code>url</code> property.</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>DS.RESTAdapter.reopen({
+  <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://api.example.com</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Requests for <code>App.Person</code> would now target <code>https://api.example.com/people/1</code>.</p>
 <h3 class='anchorable-toc' id='toc_json-conventions'>JSON Conventions</h3>
 <p>When requesting a record, the REST adapter expects your server to return
 a JSON representation of the record that conforms to the following
@@ -451,6 +494,26 @@ in your Ember Data models. For example, if you have a model like this:</p>
 }
 </pre></td>
 </tr></table>
+</div>
+<p>Irregular keys can be mapped on the adapter. If the JSON
+has a key of <code>lastNameOfPerson</code>, and the desired attribute
+name is simply <code>lastName</code>, inform the adapter:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.Person = DS.Model.extend({
+  <span class="key">lastName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>)
+});
+DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span class="content">App.Person</span><span class="delimiter">'</span></span>, {
+  <span class="key">lastName</span>: { <span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">lastNameOfPerson</span><span class="delimiter">'</span></span> }
+});
+</pre></td>
+</tr></table>
 </div><h4 class='anchorable-toc' id='toc_relationships'>Relationships</h4>
 <p>References to other records should be done by ID. For example, if you
 have a model with a <code>hasMany</code> relationship:</p>
@@ -475,7 +538,7 @@ have a model with a <code>hasMany</code> relationship:</p>
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">comment_ids</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
   }
 }
 </pre></td>
@@ -540,7 +603,7 @@ outside the JSON root, and are represented as an array of hashes:</p>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Rails is omakase</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">comment_ids</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
   },
 
   <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [{
@@ -558,14 +621,76 @@ outside the JSON root, and are represented as an array of hashes:</p>
 }
 </pre></td>
 </tr></table>
+</div><h3 class='anchorable-toc' id='toc_creating-custom-transformations'>Creating Custom Transformations</h3>
+<p>In some circumstances, the built in attribute types of <code>string</code>,
+<code>number</code>, <code>boolean</code>, and <code>date</code> may be inadequate. For example, a
+server may return a non-standard date format.</p>
+
+<p>The <code>RESTAdapter</code>, like any Ember adapter, can have new tranforms
+registered for use as attributes:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>DS.RESTAdapter.registerTransform(<span class="string"><span class="delimiter">'</span><span class="content">coordinatePoint</span><span class="delimiter">'</span></span>, {
+  <span class="function">serialize</span>: <span class="keyword">function</span>(value) {
+    <span class="keyword">return</span> [value.get(<span class="string"><span class="delimiter">'</span><span class="content">x</span><span class="delimiter">'</span></span>), value.get(<span class="string"><span class="delimiter">'</span><span class="content">y</span><span class="delimiter">'</span></span>)];
+  },
+  <span class="function">deserialize</span>: <span class="keyword">function</span>(value) {
+    <span class="keyword">return</span> Ember.create({ <span class="key">x</span>: value[<span class="integer">0</span>], <span class="key">y</span>: value[<span class="integer">1</span>] });
+  }
+});
+App.Cursor = DS.Model.extend({
+  <span class="key">position</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">coordinatePoint</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
 </div>
+<p>When <code>coordinatePoint</code> is recieved from the API, it is
+expected to be an array:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key">cursor</span>: {
+    <span class="key">position</span>: [<span class="integer">4</span>,<span class="integer">9</span>]
+  }
+}
+</pre></td>
+</tr></table>
+</div>
+<p>But once loaded on a model instance, it will behave as an object:</p>
+<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> cursor = App.Cursor.find(<span class="integer">1</span>);
+cursor.get(<span class="string"><span class="delimiter">'</span><span class="content">position.x</span><span class="delimiter">'</span></span>); <span class="comment">//=&gt; 4</span>
+cursor.get(<span class="string"><span class="delimiter">'</span><span class="content">position.y</span><span class="delimiter">'</span></span>); <span class="comment">//=&gt; 9</span>
+</pre></td>
+</tr></table>
+</div>
+<p>If <code>position</code> is modified and saved, it will pass through the
+<code>serialize</code> function in the transform and again be presented as
+an array in JSON.</p>
+
     
       <footer>
-        
-        <a class="previous-guide" href="/guides/models/model-lifecycle">
-          ← Model Lifecycle
-        </a>
-       
+         
       </footer>
       
   </div>

@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -85,6 +86,10 @@
           <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
         </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
       </div>
     </div>
 
@@ -95,11 +100,11 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Getting Started with Ember.js</a>
+            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">Core Concepts</a>
+              <a href="/guides/getting-started/core-concepts">核心概念</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -201,6 +206,10 @@
             <li class="level-3">
               <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/models">Models</a>
@@ -252,6 +261,10 @@
           
             <li class="level-3">
               <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layerouts-to-views">Adding Layouts to Views</a>
             </li>
           
             <li class="level-3">
@@ -340,9 +353,15 @@
   <div class="chapter">
     <h1>Views</h1>
     <h2 class='anchorable-toc' id='toc_manually-managed-views-with-ember-containerview'>Manually Managed Views with Ember.ContainerView</h2>
-<p>Usually, views create their child views by using the <code>{{view}}</code> helper. Sometimes it is useful to manually manage a view&#39;s
-child views. If you create an instance of <code>Ember.ContainerView</code>, the <code>childViews</code> array is editable. Views that you add
-are rendered to the page, and views that you remove are removed from the DOM.</p>
+<p>As you probably know by now, views usually create their child views
+by using the <code>{{view}}</code> helper. However, it is sometimes useful to
+<em>manually</em> manage a view&#39;s child views.
+<a href="/api/classes/Ember.MutableArray.html"><code>Ember.ContainerView</code></a>
+is the way to do just that.</p>
+
+<p>As you programmatically add or remove views to a <code>ContainerView</code>,
+those views&#39; rendered HTML are added or removed from the DOM to
+match.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -351,19 +370,60 @@ are rendered to the page, and views that you remove are removed from the DOM.</p
 5
 6
 7
+8
+9
+<strong>10</strong>
+11
+12
+13
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create();
 container.append();
 
-<span class="keyword">var</span> coolView = App.CoolView.create(),
-    childViews = container.get(<span class="string"><span class="delimiter">'</span><span class="content">childViews</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> firstView = App.FirstView.create(),
+    secondView = App.SecondView.create();
 
-childViews.pushObject(coolView);
+container.pushObject(firstView);
+container.pushObject(secondView);
+
+<span class="comment">// When the rendering completes, the DOM</span>
+<span class="comment">// will contain a `div` for the ContainerView</span>
+<span class="comment">// and nested inside of it, a `div` for each of</span>
+<span class="comment">// firstView and secondView.</span>
+</pre></td>
+</tr></table>
+</div><h3 class='anchorable-toc' id='toc_defining-the-initial-views-of-a-container-view'>Defining the Initial Views of a Container View</h3>
+<p>There are a few ways to specify what initial child views that a
+<code>ContainerView</code> should render. The most straight-forward way is to
+add them in <code>init</code>:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>._super();
+    <span class="local-variable">this</span>.pushObject(App.FirstView.create());
+    <span class="local-variable">this</span>.pushObject(App.SecondView.create());
+  }
+};
+
+container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
 </pre></td>
 </tr></table>
 </div>
-<p>As a shorthand, you can specify the child views as properties and the child views as a list of keys. When the
-container view is created, these views will be instantiated and added to the child views array:</p>
+<p>As a shorthand, you can specify a <code>childViews</code> property that will be
+consulted on instantiation of the <code>ContainerView</code> also. This example is
+equivalent to the one above:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -372,22 +432,59 @@ container view is created, these views will be instantiated and added to the chi
 5
 6
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create({
-  <span class="key">childViews</span>: [<span class="string"><span class="delimiter">'</span><span class="content">firstView</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>],
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.extend({
+  <span class="key">childViews</span>: [App.FirstView, App.SecondView]
+};
 
-  <span class="key">firstView</span>: App.FirstView,
-  <span class="key">secondView</span>: App.SecondView
-});
+container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
 </pre></td>
 </tr></table>
 </div>
+<p>Another bit of syntactic sugar is available as an option as well:
+specifyig string names in the childViews property that correspond
+to properties on the <code>ContainerView</code>. This style is less intuitive
+at first but has the added bonus that the each named property will
+be updated to reference its instantiated child view:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create({
+  <span class="key">childViews</span>: [<span class="string"><span class="delimiter">'</span><span class="content">firstView</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>],
+  <span class="key">firstView</span>: App.FirstView,
+  <span class="key">secondView</span>: App.SecondView
+});
+
+container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
+
+container.get(<span class="string"><span class="delimiter">'</span><span class="content">firstView</span><span class="delimiter">'</span></span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.get(<span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
+</pre></td>
+</tr></table>
+</div><h3 class='anchorable-toc' id='toc_it-feels-like-an-array-because-it-em-is-em-an-array'>It Feels Like an Array Because it <em>is</em> an Array</h3>
+<p>You may have noticed that some of these examples use <code>pushObject</code> to add
+a child view, just like you would interact with an Ember array.
+<a href="/api/classes/Ember.ContainerView.html"><code>Ember.ContainerView</code></a>
+gains its collection-like behavior by mixing in
+<a href="/api/classes/Ember.MutableArray.html"><code>Ember.MutableArray</code></a>. That means
+that you can manipulate the collection of views very expressively, using
+methods like <code>pushObject</code>, <code>popObject</code>, <code>shiftObject</code>, <code>unshiftObject</code>, <code>insertAt</code>,
+<code>removeAt</code>, or any other method you would use to interact with an Ember array.</p>
+
     
       <footer>
-        
-        <a class="previous-guide" href="/guides/views/built-in-views">
-          ← Built-in Views
-        </a>
-       
+         
       </footer>
       
   </div>

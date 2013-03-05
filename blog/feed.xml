@@ -11,14 +11,16 @@
   </author>
   <entry>
     <title>为什么Discourse选择Ember.JS</title>
-    <link rel="alternate" href="/blog/2013/02/19/why-discourse-uses-ember/"/>
-    <id>/blog/2013/02/19/why-discourse-uses-ember/</id>
+    <link rel="alternate" href="/blog/2013/02/19/why-discourse-uses-ember.html"/>
+    <id>/blog/2013/02/19/why-discourse-uses-ember.html</id>
     <published>2013-02-19T00:00:00Z</published>
     <updated>2013-02-19T00:00:00Z</updated>
     <author>
       <name>EmberJS.CN</name>
     </author>
     <summary type="html">&lt;p&gt;Discourse的推出在整个社区赚足了眼球，由于Discourse选择使用Ember.JS作为前端MVC框架，这促使Ember.JS也成为了热议的话题。一年多以前SproutCore2正式改名为Ember.JS后，本人持续的关注了Ember.JS的开发过程，见证这Ember.JS的成长。Ember.JS的API在整个社区共同协作的基础上日趋稳定，Ember.JS 1.0.rc1的推出，更是标着其API已经成熟。我相信越来越多基于Ember.JS实现的优秀的应用，将会像雨后春笋般涌现出来。&lt;/p&gt;
+
+&lt;p&gt;[Robin&lt;/p&gt;
 </summary>
     <content type="html">&lt;p&gt;Discourse的推出在整个社区赚足了眼球，由于Discourse选择使用Ember.JS作为前端MVC框架，这促使Ember.JS也成为了热议的话题。一年多以前SproutCore2正式改名为Ember.JS后，本人持续的关注了Ember.JS的开发过程，见证这Ember.JS的成长。Ember.JS的API在整个社区共同协作的基础上日趋稳定，Ember.JS 1.0.rc1的推出，更是标着其API已经成熟。我相信越来越多基于Ember.JS实现的优秀的应用，将会像雨后春笋般涌现出来。&lt;/p&gt;
 
@@ -60,8 +62,8 @@ Guides&lt;/a&gt;比较，Robin认为较Angular.JS而言，Ember.JS的文档简�
   </entry>
   <entry>
     <title>EmberJS.CN之诞生</title>
-    <link rel="alternate" href="/blog/2013/02/18/come-into-being/"/>
-    <id>/blog/2013/02/18/come-into-being/</id>
+    <link rel="alternate" href="/blog/2013/02/18/come-into-being.html"/>
+    <id>/blog/2013/02/18/come-into-being.html</id>
     <published>2013-02-18T00:00:00Z</published>
     <updated>2013-02-18T00:00:00Z</updated>
     <author>
@@ -69,6 +71,10 @@ Guides&lt;/a&gt;比较，Robin认为较Angular.JS而言，Ember.JS的文档简�
     </author>
     <summary type="html">&lt;p&gt;&lt;a href="http://emberjs.com"&gt;Ember JS&lt;/a&gt; RC
 1在2013-02-15发布了。关注和使用EmberJS已经一年有余了，鉴于其API一直没有稳定，所以一直没有在正式的项目中采用。根据 &lt;a href="http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/"&gt;http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/&lt;/a&gt; 中的描述：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;When we release the first RC, we will no longer make changes that&lt;/p&gt;
+&lt;/blockquote&gt;
 </summary>
     <content type="html">&lt;p&gt;&lt;a href="http://emberjs.com"&gt;Ember JS&lt;/a&gt; RC
 1在2013-02-15发布了。关注和使用EmberJS已经一年有余了，鉴于其API一直没有稳定，所以一直没有在正式的项目中采用。根据 &lt;a href="http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/"&gt;http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/&lt;/a&gt; 中的描述：&lt;/p&gt;

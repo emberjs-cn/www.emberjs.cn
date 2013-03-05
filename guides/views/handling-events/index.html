@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -85,6 +86,10 @@
           <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
         </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
       </div>
     </div>
 
@@ -95,11 +100,11 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Getting Started with Ember.js</a>
+            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">Core Concepts</a>
+              <a href="/guides/getting-started/core-concepts">核心概念</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -201,6 +206,10 @@
             <li class="level-3">
               <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/models">Models</a>
@@ -252,6 +261,10 @@
           
             <li class="level-3">
               <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layerouts-to-views">Adding Layouts to Views</a>
             </li>
           
             <li class="level-3">
@@ -356,7 +369,7 @@ This is a clickable area!
 </pre></td>
 </tr></table>
 </div>
-<p>Let&#39;s implement App.ClickableView such that when it is
+<p>Let&#39;s implement <code>App.ClickableView</code> such that when it is
 clicked, an alert is displayed:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -375,19 +388,65 @@ clicked, an alert is displayed:</p>
 </div>
 <p>Events bubble up from the target view to each parent view in
 succession, until the root view. These values are read-only. If you want to manually manage views in JavaScript (instead of creating them
-using the {{view}} helper in Handlebars), see the Ember.ContainerView documentation below.</p>
-
+using the {{view}} helper in Handlebars), see the <code>Ember.ContainerView</code>
+documentation below.</p>
+<h3 class='anchorable-toc' id='toc_sending-events'>Sending Events</h3>
+<p>To have the click event from <code>App.ClickableView</code> affect the state of
+your application, simply send an event to the view&#39;s controller:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.ClickableView = Ember.View.extend({
+  <span class="function">click</span>: <span class="keyword">function</span>(evt) {
+    <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>).send(<span class="string"><span class="delimiter">'</span><span class="content">turnItUp</span><span class="delimiter">'</span></span>, <span class="integer">11</span>); 
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>If the controller has a method called <code>turnItUp</code>, it will be called:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.PlaybackController = Ember.ObjectController.extend({
+  <span class="function">turnItUp</span>: <span class="keyword">function</span>(level){
+    <span class="comment">//Do your thing</span>
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>If it doesn&#39;t, the message will be passed to the current route:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.PlaybackRoute = Ember.Route.extend({
+  <span class="key">events</span>: {
+    <span class="function">turnItUp</span>: <span class="keyword">function</span>(level){
+      <span class="comment">//This won't be called if it's defined on App.PlaybackController</span>
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
     
       <footer>
-        
-        <a class="previous-guide" href="/guides/views/defining-a-view">
-          ← Defining a View
-        </a>
-       
-      <a class="next-guide" href="/guides/views/inserting-views-in-templates">
-        Inserting Views in Templates →
-      </a>
-      
+         
       </footer>
       
   </div>

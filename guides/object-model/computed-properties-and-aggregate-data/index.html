@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -85,6 +86,10 @@
           <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
         </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
       </div>
     </div>
 
@@ -95,11 +100,11 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Getting Started with Ember.js</a>
+            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">Core Concepts</a>
+              <a href="/guides/getting-started/core-concepts">核心概念</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -201,6 +206,10 @@
             <li class="level-3">
               <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/models">Models</a>
@@ -252,6 +261,10 @@
           
             <li class="level-3">
               <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layerouts-to-views">Adding Layouts to Views</a>
             </li>
           
             <li class="level-3">
@@ -424,15 +437,7 @@ App.todosController.get(<span class="string"><span class="delimiter">'</span><sp
 </div>
     
       <footer>
-        
-        <a class="previous-guide" href="/guides/object-model/computed-properties">
-          ← Computed Properties
-        </a>
-       
-      <a class="next-guide" href="/guides/object-model/bindings">
-        Bindings →
-      </a>
-      
+         
       </footer>
       
   </div>
