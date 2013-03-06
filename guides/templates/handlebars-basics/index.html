@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Templates</title>
+    <title>Ember.js - 模版</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -120,11 +120,11 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/templates/handlebars-basics">Templates</a>
+            <a href="/guides/templates/handlebars-basics">模版</a>
             <ol class='selected'>
         
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/handlebars-basics">Handlebars Basics</a>
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
             </li>
           
             <li class="level-3">
@@ -351,21 +351,30 @@
           
 
   <div class="chapter">
-    <h1>Templates</h1>
-    <h2 class='anchorable-toc' id='toc_handlebars-basics'>Handlebars Basics</h2>
+    <h1>模版</h1>
+    <h2 class='anchorable-toc' id='toc_code-handlebars-code-handlebars-basics'><code>Handlebars</code>基础 (Handlebars Basics)</h2>
 <p>Ember.js uses the <a href="http://www.handlebarsjs.com">Handlebars templating library</a>
 to power your app&#39;s user interface. Handlebars templates are just like
 regular HTML, but also give you the ability to embed expressions that
 change what is displayed.</p>
+
+<p><code>Ember.js</code> 使用 <a href="http://www.handlebarsjs.com">Handlebars模板库</a>
+来增强你的应用程序的用户界面。<code>Handlebars</code>模板与普通的HTML类似，但是它还提供了嵌入
+改变显示内容的表达式的功能。</p>
 
 <p>We take Handlebars and extend it with many powerful features. It may
 help to think of your Handlebars templates as an HTML-like DSL for
 describing the user interface of your app. And, once you&#39;ve told
 Ember.js to render a given template on the screen, you don&#39;t need to
 write any additional code to make sure it keeps up-to-date.</p>
-<h3 class='anchorable-toc' id='toc_defining-templates'>Defining Templates</h3>
+
+<p>我们采用了<code>Handlebars</code>,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可要认为<code>Handlebars</code>模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用<code>Ember.js</code>在屏幕上渲染一个
+模板,开发人员就不需要编写额外的代码来确保其更新。</p>
+<h3 class='anchorable-toc' id='toc_defining-templates'>定义模板(Defining Templates)</h3>
 <p>If you&#39;re not using build tools, you can define your application&#39;s main
 template inside your HTML by putting it inside a <code>&lt;script&gt;</code> tag, like so:</p>
+
+<p>如果你没有在使用构建工具,你仍然可以在HTML文档中定义应用程序的主模板，只需要在HTML中加上<code>&lt;script&gt;</code>标签,如下所示：</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -389,11 +398,16 @@ template inside your HTML by putting it inside a <code>&lt;script&gt;</code> tag
 <em>application template</em>, which will be displayed on the page by the
 router when your app loads.</p>
 
+<p>这个模板将会被自动编译成为你的应用程序的主模板,它将在应用程序加载时通过路由显示在页面上。</p>
+
 <p>You can also define templates by name that can be used later. For
 example, you may want to define a reusable control that is used in many
 different places in your user interface. To tell Ember.js to save the
 template for later, instead of displaying it immediately, you can add
 the <code>data-template-name</code> attribute:</p>
+
+<p>你也可以为模板定义一个名称,以便复用。例如,你可能想定义一个在多个不同的应用程序用户界面处都可以使用的可重用控件。
+如果只是希望<code>Ember.js</code>先保存模板留做复用，而不是即时显示，那么可以使用<code>data-template-name</code>属性：</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -416,12 +430,18 @@ the <code>data-template-name</code> attribute:</p>
 <p>If you are using build tools to manage your application&#39;s assets, most
 will know how to precompile Handlebars templates and make them available
 to Ember.js.</p>
-<h3 class='anchorable-toc' id='toc_handlebars-expressions'>Handlebars Expressions</h3>
+
+<p>如果你正在使用构建工具管理应用程序，那么大多数工具可以对<code>Handlebars</code>模板进行预编译并使它们可以用于<code>Ember.js</code></p>
+<h3 class='anchorable-toc' id='toc_handlerbars-handlebars-expressions'>Handlerbars表达式(Handlebars Expressions)</h3>
 <p>Each template has an associated <em>controller</em>: this is where the template 
 finds the properties that it displays.</p>
 
+<p>每一个模板都有其相关的控制器：模板从中获取要显示的属性。</p>
+
 <p>You can display a property from your controller by wrapping the property
 name in curly braces, like this:</p>
+
+<p>使用花括号将属性名称括起来，就可以显示控制器中所定义的属性,如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -433,7 +453,11 @@ name in curly braces, like this:</p>
 controller, insert them into the HTML described in the template, then
 put them into the DOM.</p>
 
+<p>上面的语句将会到控制器中查询<code>firstName</code>和<code>lastName</code>属性值,插入到模板所描述的HTML文档中,然后放到<code>DOM</code>中去。</p>
+
 <p>By default, your top-most application template is bound to your <code>ApplicationController</code>:</p>
+
+<p>默认情况下，最上层的应用程序模板与<code>ApplicationController</code>关联，即：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -449,6 +473,8 @@ put them into the DOM.</p>
 </div>
 <p>The above template and controller would combine to display the following
 rendered HTML:</p>
+
+<p>上面的模板和控制器将协作呈现出被渲染的HTML,如下所示：</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -460,8 +486,13 @@ rendered HTML:</p>
 about next) are <em>bindings aware</em>. That means that if the values used
 by your templates ever change, your HTML will be updated automatically.</p>
 
+<p>这些表达式 (以及接下来你将了解的其他<code>Handlerbars</code>功能)
+都有绑定机制。这意味着HTML文档将随着模板使用的属性值的改变而自动更新。</p>
+
 <p>As your application grows in size, it will have many templates, each
 bound to different controllers.</p>
+
+<p>随着一个应用程序规模的扩大，将会存在许多的模板，它们将与不同的控制器关联。</p>
 
     
       <footer>
