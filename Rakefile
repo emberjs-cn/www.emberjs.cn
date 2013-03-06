@@ -93,9 +93,9 @@ task :deploy do |t, args|
     # This screws up the build and isn't necessary
     # rm_r "source/examples"
 
-    #File.open("CNAME", 'w') do |f|
-      #f.write "emberjs.cn"
-    #end
+    File.open("CNAME", 'w') do |f|
+      f.write "emberjs.cn"
+    end
 
     system "git add -A"
     system "git commit -m '#{message.gsub("'", "\\'")}'"
