@@ -5,10 +5,32 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-02-19T00:00:00Z</updated>
+  <updated>2013-03-06T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>Emberjs.cn域名正式启用</title>
+    <link rel="alternate" href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html"/>
+    <id>/blog/2013/03/06/domain-name-emberjs-cn-enabled.html</id>
+    <published>2013-03-06T00:00:00Z</published>
+    <updated>2013-03-06T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始&lt;a href="http://emberjs.cn"&gt;http://emberjs.cn&lt;/a&gt;域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。&lt;/p&gt;
+
+&lt;p&gt;另外，最近翻译团队加入了一位给力的成员&lt;a href="https://github.com/TiffanyZhou"&gt;TiffanyZhou&lt;/a&gt;，提供了很多高质量的翻译作品。随着队伍的不断壮大，我们一定能打造出一个高质量、精品的&lt;code&gt;Ember.js&lt;/code&gt;中文社区。&lt;/p&gt;
+
+&lt;p&gt;BTW，我们已经开始在实际的项目全面采用&lt;code&gt;Ember.js&lt;/code&gt;进行前端开发，在后续的日子里面，我们将会将我们在开发过程中遇到的问题，总结出来的经验拿出来，与大家一起分享。&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始&lt;a href="http://emberjs.cn"&gt;http://emberjs.cn&lt;/a&gt;域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。&lt;/p&gt;
+
+&lt;p&gt;另外，最近翻译团队加入了一位给力的成员&lt;a href="https://github.com/TiffanyZhou"&gt;TiffanyZhou&lt;/a&gt;，提供了很多高质量的翻译作品。随着队伍的不断壮大，我们一定能打造出一个高质量、精品的&lt;code&gt;Ember.js&lt;/code&gt;中文社区。&lt;/p&gt;
+
+&lt;p&gt;BTW，我们已经开始在实际的项目全面采用&lt;code&gt;Ember.js&lt;/code&gt;进行前端开发，在后续的日子里面，我们将会将我们在开发过程中遇到的问题，总结出来的经验拿出来，与大家一起分享。&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>为什么Discourse选择Ember.JS</title>
     <link rel="alternate" href="/blog/2013/02/19/why-discourse-uses-ember.html"/>
