@@ -20,8 +20,8 @@ Ember.js入门:
   - title: "应用模版"
     url: "application/the-application-template"
 
-Templates:
-  - title: "Handlebars Basics"
+模版:
+  - title: "Handlebars基础"
     url: "templates/handlebars-basics"
   - title: "Conditionals"
     url: "templates/conditionals"
