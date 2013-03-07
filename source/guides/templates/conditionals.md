@@ -1,3 +1,6 @@
+英文原文：[http://emberjs.com/guides/templates/conditionals/](http://emberjs.com/guides/templates/conditionals/)
+
+
 ## 条件语句(Conditionals)
 
 Sometimes you may only want to display part of your template if a property
