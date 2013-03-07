@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/templates/conditionals/](http://emberjs.com/guides/templates/conditionals/)
+英文原文：[http://emberjs.com/guides/templates/displaying-a-list-of-items/](http://emberjs.com/guides/templates/displaying-a-list-of-items/)
 
 ## 显示项目列表(Displaying a List of Items)
 
