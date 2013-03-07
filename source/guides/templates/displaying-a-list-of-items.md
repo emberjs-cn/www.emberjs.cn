@@ -16,7 +16,7 @@ The template inside of the `{{#each}}` block will be repeated once for
 each item in the array, with the context of the template set to the
 current item.
 
-对于数组中的每一个对象，`{{#each}}`块内的模板都会被执行一次，模板的内容将被对象的值所带替。
+对于数组中的每一个对象，`{{#each}}`块内的模板都会被执行一次，模板的内容将被对象的值所代替。
 
 The above example will print a list like this:
 
