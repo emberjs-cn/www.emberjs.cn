@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/getting-started/core-concepts/](http://emberjs.com/guides/getting-started/core-concepts)
+英文原文：[http://emberjs.com/guides/concepts/core-concepts/](http://emberjs.com/guides/concepts/core-concepts)
 
 
 ## 核心概念(Core Concepts)

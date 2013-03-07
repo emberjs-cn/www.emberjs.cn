@@ -2,9 +2,11 @@
   - title: 'Ember.js 指南'
     url: 'index.html'
     skip_sidebar: true
-Ember.js入门:
+概念:
   - title: "核心概念"
-    url: "getting-started/core-concepts"
+    url: "concepts/core-concepts"
+  - title: "命名规范"
+    url: "concepts/naming-conventions"
   #- title: "What is Ember.js?"
     #url: "getting-started/what-is-ember-js"
   #- title: "Getting Ember.js"
