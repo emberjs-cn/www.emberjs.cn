@@ -23,7 +23,7 @@ Handlebars will not render the block if the argument passed evaluates to
 If the expression evaluates to falsy, we can also display an alternate template
 using `{{else}}`:
 
-如果表达式的值为假,我们也可以使用{{else}}助手显示一个可选的模板,如下所示：
+如果表达式的值为假,我们也可以使用{{else}}助手显示另外一个模板,如下所示：
 
 ```handlebars
 {{#if person}}
@@ -35,7 +35,7 @@ using `{{else}}`:
 
 To only render a block if a value is falsy, use `{{#unless}}`:
 
-如果只希望在一个值为假的时候渲染一个模块，那么应该使用`{{#unless}}`助手:
+如果只希望在一个值为假的时候渲染一个区块，那么应该使用`{{#unless}}`助手:
 
 ```handlebars
 {{#unless hasPaid}}
