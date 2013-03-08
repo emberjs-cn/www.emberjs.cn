@@ -27,7 +27,7 @@
     url: "templates/handlebars-basics"
   - title: "条件表达式"
     url: "templates/conditionals"
-  - title: "Displaying a List of Items"
+  - title: "显示项目列表"
     url: "templates/displaying-a-list-of-items"
   - title: "切换作用域"
     url: "templates/changing-scope"
