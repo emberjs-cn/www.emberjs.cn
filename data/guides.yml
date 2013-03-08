@@ -95,6 +95,8 @@ Models:
     url: "models/model-lifecycle"
   - title: "The REST Adapter"
     url: "models/the-rest-adapter"
+  #- title: "The Basic Adapter"
+    #url: "modells/the-basic-adapter"
 
 Views:
   - title: "Introduction"
@@ -119,12 +121,12 @@ Views:
 The Object Model:
   - title: "Classes and Instances"
     url: "object-model/classes-and-instances"
-  - title: "Observers"
-    url: "object-model/observers"
   - title: "Computed Properties"
     url: "object-model/computed-properties"
   - title: "Computed Properties and Aggregate Data with @each"
     url: "object-model/computed-properties-and-aggregate-data"
+  - title: "Observers"
+    url: "object-model/observers"
   - title: "Bindings"
     url: "object-model/bindings"
   - title: "Reopening Classes and Instances"
