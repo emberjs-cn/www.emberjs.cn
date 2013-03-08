@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Enumerables</title>
+    <title>Ember.js - 概念</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -78,7 +78,7 @@
     
   </head>
 
-  <body class="guides guides_enumerables guides_enumerables_index">
+  <body class="guides guides_concepts guides_concepts_naming-conventions guides_concepts_naming-conventions_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -99,15 +99,15 @@
         <div id="sidebar">
           
     <ol id="toc-list">
-          <li class="level-1">
+          <li class="level-1 selected">
             <a href="/guides/concepts/core-concepts">概念</a>
-            <ol>
+            <ol class='selected'>
         
             <li class="level-3">
               <a href="/guides/concepts/core-concepts">核心概念</a>
             </li>
           
-            <li class="level-3">
+            <li class="level-3 sub-selected">
               <a href="/guides/concepts/naming-conventions">命名规范</a>
             </li>
           </ol></li>
@@ -315,11 +315,11 @@
               <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
             </li>
           </ol></li>
-          <li class="level-1 selected">
+          <li class="level-1">
             <a href="/guides/enumerables">Enumerables</a>
-            <ol class='selected'>
+            <ol>
         
-            <li class="level-3 sub-selected">
+            <li class="level-3">
               <a href="/guides/enumerables">Introduction</a>
             </li>
           </ol></li>
@@ -355,187 +355,33 @@
           
 
   <div class="chapter">
-    <h1>Enumerables</h1>
-    <h2 class='anchorable-toc' id='toc_enumerables'>Enumerables</h2>
-<p>In Ember.js, an Enumerable is any object that contains a number of child
-objects, and which allows you to work with those children using the
-<code>Ember.Enumerable</code> API. The most common Enumerable in the majority of
-apps is the native JavaScript array, which Ember.js extends to conform
-to the Enumerable interface.</p>
+    <h1>概念</h1>
+    <h2 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h2>
+<p>Ember.js uses naming conventions to wire up your objects without a 
+lot  of boilerplate. You will want to  use the conventional names 
+for your routes, controllers and templates.</p>
 
-<p>By providing a standardized interface for dealing with enumerables,
-Ember.js allows you to completely change the way your underlying data is
-stored without having to modify the other parts of your application that
-access it.</p>
-
-<p>For example, you might display a list of items from fixture data during
-development. If you switch the underlying data from synchronous fixtures
-to an array that fetches data from the server lazily, your view,
-template and controller code do not change at all.</p>
-
-<p>The Enumerable API follows ECMAScript specifications as much as
-possible.  This minimizes incompatibility with other libraries, as well
-as allows Ember.js to use the native browser implementations in arrays
-where available.</p>
-
-<p>For instance, all Enumerables support the standard <code>forEach</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td>
-  <td class="code"><pre>[<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>].forEach(<span class="keyword">function</span>(item) {
-  console.log(item);
-});
-
-<span class="comment">//=&gt; 1</span>
-<span class="comment">//=&gt; 2</span>
-<span class="comment">//=&gt; 3</span>
-</pre></td>
-</tr></table>
-</div>
-<p>In general, Enumerable methods, like <code>forEach</code>, take an optional second
-parameter, which will become the value of <code>this</code> in the callback
-function:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> array = [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>];
-
-array.forEach(<span class="keyword">function</span>(item) {
-  console.log(item, <span class="local-variable">this</span>.indexOf(item));
-}, array)
-
-<span class="comment">//=&gt; 1 0</span>
-<span class="comment">//=&gt; 2 1</span>
-<span class="comment">//=&gt; 3 2</span>
-</pre></td>
-</tr></table>
-</div><h3 class='anchorable-toc' id='toc_enumerables-in-ember-js'>Enumerables in Ember.js</h3>
-<p>Usually, objects that represent lists implement the Enumerable interface. Some examples:</p>
+<p>You can usually guess the names, but this guide outlines, in one place, all of the naming conventions.</p>
+<h2 class='anchorable-toc' id='toc_the-application'>The Application</h2>
+<p>When your application boots, Ember will look for these objects:</p>
 
 <ul>
-<li><strong>Array</strong> - Ember extends the native JavaScript <code>Array</code> with the
-Enumerable interface (unless you <a href="/guides/configuring-ember/disabling-prototype-extensions/">disable prototype
-extensions.</a>)</li>
-<li><strong>Ember.ArrayController</strong> - A controller that wraps an underlying array and
-adds additional functionality for the view layer.</li>
-<li><strong>Ember.Set</strong> - A data structure that can efficiently answer whether it
-includes an object.</li>
+<li><code>App.ApplicationRoute</code></li>
+<li><code>App.ApplicationController</code></li>
+<li>the <code>application</code> template</li>
 </ul>
-<h3 class='anchorable-toc' id='toc_api-overview'>API Overview</h3>
-<p>In this guide, we&#39;ll explore some of the most common Enumerable
-conveniences. For the full list, please see the <a href="/api/classes/Ember.Enumerable.html">Ember.Enumerable API
-reference documentation.</a></p>
-<h4 class='anchorable-toc' id='toc_iterating-over-an-enumerable'>Iterating Over an Enumerable</h4>
-<p>To enumerate all the values of an enumerable object, use the <code>forEach</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> food = [<span class="string"><span class="delimiter">&quot;</span><span class="content">Poi</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Ono</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Adobo Chicken</span><span class="delimiter">&quot;</span></span>];
 
-food.forEach(<span class="keyword">function</span>(item, index) {
-  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Menu Item %@: %@</span><span class="delimiter">'</span></span>.fmt(index+<span class="integer">1</span>, item));
-});
+<p>Ember.js will render the <code>application</code> template as the main template.
+If <code>App.ApplicationController</code> is provided, Ember.js will set an
+instance of <code>App.ApplicationController</code> as the controller for the
+template. This means that the template will get its properties from
+the controller.</p>
 
-<span class="comment">// Menu Item 1: Poi</span>
-<span class="comment">// Menu Item 2: Ono</span>
-<span class="comment">// Menu Item 3: Adobo Chicken</span>
-</pre></td>
-</tr></table>
-</div><h4 class='anchorable-toc' id='toc_making-an-array-copy'>Making an Array Copy</h4>
-<p>You can make a native array copy of any object that implements
-<code>Ember.Enumerable</code> by calling the <code>toArray()</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> states = Ember.Set.create();
+<p>If your app provides an <code>App.ApplicationRoute</code>, Ember.js will invoke
+<a href="/guides/routing/specifying-a-routes-model">the</a> <a href="/guides/routing/setting-up-a-controller">router&#39;s</a> <a href="/guides/routing/rendering-a-template">hooks</a> first, before rendering the
+<code>application</code> template.</p>
 
-states.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hawaii</span><span class="delimiter">&quot;</span></span>);
-states.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">California</span><span class="delimiter">&quot;</span></span>)
-
-states.toArray()
-<span class="comment">//=&gt; [&quot;Hawaii&quot;, &quot;California&quot;]</span>
-</pre></td>
-</tr></table>
-</div>
-<p>Note that in many enumerables, such as the <code>Ember.Set</code> used in this
-example, the order of the resulting array is not guaranteed.</p>
-<h4 class='anchorable-toc' id='toc_first-and-last-objects'>First and Last Objects</h4>
-<p>All Enumerables expose <code>firstObject</code> and <code>lastObject</code> properties
-that you can bind to.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> animals = [<span class="string"><span class="delimiter">&quot;</span><span class="content">rooster</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">pig</span><span class="delimiter">&quot;</span></span>];
-
-animals.get(<span class="string"><span class="delimiter">'</span><span class="content">lastObject</span><span class="delimiter">'</span></span>);
-<span class="comment">//=&gt; &quot;pig&quot;</span>
-
-animals.pushObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">peacock</span><span class="delimiter">&quot;</span></span>);
-
-animals.get(<span class="string"><span class="delimiter">'</span><span class="content">lastObject</span><span class="delimiter">'</span></span>);
-<span class="comment">//=&gt; &quot;peacock&quot;</span>
-</pre></td>
-</tr></table>
-</div><h4 class='anchorable-toc' id='toc_map'>Map</h4>
-<p>You can easily transform each item in an enumerable using the
-<code>map()</code> method, which creates a new array with results of calling a
-function on each item in the enumerable.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> words = [<span class="string"><span class="delimiter">&quot;</span><span class="content">goodbye</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cruel</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>];
-
-<span class="keyword">var</span> emphaticWords = words.map(<span class="keyword">function</span>(item) {
-  <span class="keyword">return</span> item + <span class="string"><span class="delimiter">&quot;</span><span class="content">!</span><span class="delimiter">&quot;</span></span>;
-});
-<span class="comment">// [&quot;goodbye!&quot;, &quot;cruel!&quot;, &quot;world!&quot;]</span>
-</pre></td>
-</tr></table>
-</div>
-<p>If your enumerable is composed of objects, there is a <code>mapProperty()</code>
-method that will extract the named property from each of those objects
-in turn and return a new array:</p>
+<p>Here&#39;s a simple example that uses a route, controller, and model:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -547,31 +393,76 @@ in turn and return a new array:</p>
 8
 9
 <strong>10</strong>
-11
-12
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> hawaii = Ember.Object.create({
-  <span class="key">capital</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Honolulu</span><span class="delimiter">&quot;</span></span>
+  <td class="code"><pre>App.ApplicationRoute = Ember.Route.extend({
+  <span class="function">setupController</span>: <span class="keyword">function</span>(controller) {
+    <span class="comment">// `controller` is the instance of ApplicationController</span>
+    controller.set(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello world!</span><span class="delimiter">&quot;</span></span>);
+  }
 });
 
-<span class="keyword">var</span> california = Ember.Object.create({
-  <span class="key">capital</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Sacramento</span><span class="delimiter">&quot;</span></span>
+App.ApplicationController = Ember.Controller.extend({
+  <span class="key">appName</span>: <span class="string"><span class="delimiter">'</span><span class="content">My First Example</span><span class="delimiter">'</span></span>
 });
-
-<span class="keyword">var</span> states = [hawaii, california];
-
-states.mapProperty(<span class="string"><span class="delimiter">'</span><span class="content">capital</span><span class="delimiter">'</span></span>);
-<span class="comment">//=&gt; [&quot;Honolulu&quot;, &quot;Sacramento&quot;]</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_filtering'>Filtering</h4>
-<p>Another common task to perform on an Enumerable is to take the
-Enumerable as input, and return an Array after filtering it based on
-some criteria.</p>
+</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- application template --&gt;</span>
+<span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">appName</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
 
-<p>For arbitrary filtering, use the <code>filter</code> method.  The filter method
-expects the callback to return <code>true</code> if Ember should include it in the
-final Array, and <code>false</code> or <code>undefined</code> if Ember should not.</p>
+<span class="tag">&lt;h2&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h2&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>In Ember.js applications, you will always specify your controllers 
+as <strong>classes</strong>, and the framework is responsible for instantiating
+them and providing them to your templates.</p>
+
+<p>This makes it super-simple to test your controllers, and ensures that
+your entire application shares a single instance of each controller.</p>
+<h2 class='anchorable-toc' id='toc_simple-routes'>Simple Routes</h2>
+<p>Each of your routes will also have a route, a controller and a 
+template named after the route.</p>
+
+<p>Let&#39;s start with a simple router:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div>
+<p>If your user navigates to <code>/favorites</code>, Ember.js will look for these 
+objects:</p>
+
+<ul>
+<li><code>App.FavoritesRoute</code></li>
+<li><code>App.FavoritesController</code></li>
+<li>the <code>favorites</code> template</li>
+</ul>
+
+<p>Ember.js will render the <code>favorites</code> template into the <code>{{outlet}}</code>
+in the <code>application</code> template. It will set an instance of the
+<code>App.FavoritesController</code> as the controller for the template.</p>
+
+<p>If your app provides an <code>App.FavoritesRoute</code>, the framework will 
+invoke it before rendering the template. Yes, this is a bit 
+repetitive.</p>
+
+<p>For a route like <code>App.FavoritesRoute</code>, you will probably implement
+the <code>model</code> hook to specify what model your controller will present
+to the template.</p>
+
+<p>Here&#39;s an example:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -579,19 +470,77 @@ final Array, and <code>false</code> or <code>undefined</code> if Ember should no
 4
 5
 6
-7
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> arr = [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>,<span class="integer">5</span>];
-
-arr.filter(<span class="keyword">function</span>(item, index, self) {
-  <span class="keyword">if</span> (item &lt; <span class="integer">4</span>) { <span class="keyword">return</span> <span class="predefined-constant">true</span>; }
-})
-
-<span class="comment">// returns [1,2,3]</span>
+  <td class="code"><pre>App.FavoritesRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="comment">// the model is an Array of all of the posts</span>
+    <span class="keyword">return</span> App.Post.find();
+  }
+});
 </pre></td>
 </tr></table>
 </div>
-<p>When working with a collection of Ember objects, you will often want to filter a set of objects based upon the value of some property. The <code>filterProperty</code> method provides a shortcut.</p>
+<p>In this example, we didn&#39;t provide a <code>FavoritesController</code>. Because
+the model is an Array, Ember.js will automatically supply an instance
+of <code>Ember.ArrayController</code>, which will present the backing Array as
+its model.</p>
+
+<p>You can treat the <code>ArrayController</code> as if it was the model itself. 
+This has two major benefits:</p>
+
+<ul>
+<li>You can replace the controller&#39;s model at any time without having
+to directly notify the view of the change.</li>
+<li>The controller can provide additional computed properties or
+view-specific state that do not belong in the model layer. This
+allows a clean separation of concerns between the view, the
+controller and the model.</li>
+</ul>
+
+<p>The template can iterate over the elements of the controller:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></td>
+</tr></table>
+</div><h2 class='anchorable-toc' id='toc_dynamic-segments'>Dynamic Segments</h2>
+<p>If a route uses a dynamic segment, the route&#39;s model will be based
+on the value of that segment provided by the user.</p>
+
+<p>Consider this router definition:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span> });
+});
+</pre></td>
+</tr></table>
+</div>
+<p>In this case, the route&#39;s name is <code>post</code>, so Ember.js will look for
+these objects:</p>
+
+<ul>
+<li><code>App.PostRoute</code></li>
+<li><code>App.PostController</code></li>
+<li>the <code>post</code> template</li>
+</ul>
+
+<p>Your route handler&#39;s <code>model</code> hook converts the dynamic <code>:post_id</code>
+parameter into a model. The <code>serialize</code> hook converts a model object
+back into the URL parameters for this route (for example, when 
+generating a link for a model object).</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -602,30 +551,166 @@ arr.filter(<span class="keyword">function</span>(item, index, self) {
 7
 8
 9
-<strong>10</strong>
-11
-12
-13
 </pre></td>
-  <td class="code"><pre>Todo = Ember.Object.extend({
-  <span class="key">title</span>: <span class="predefined-constant">null</span>,
-  <span class="key">isDone</span>: <span class="predefined-constant">false</span>
+  <td class="code"><pre>App.PostRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> App.Post.find(params.post_id);
+  },
+
+  <span class="function">serialize</span>: <span class="keyword">function</span>(post) {
+    <span class="keyword">return</span> { <span class="key">post_id</span>: post.get(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>) };
+  }
 });
-
-todos = [
-  Todo.create({ <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">Write code</span><span class="delimiter">'</span></span>, <span class="key">isDone</span>: <span class="predefined-constant">true</span> }),
-  Todo.create({ <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">Go to sleep</span><span class="delimiter">'</span></span> })
-];
-
-todos.filterProperty(<span class="string"><span class="delimiter">'</span><span class="content">isDone</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
-
-<span class="comment">// returns an Array containing only items with `isDone == true`</span>
 </pre></td>
 </tr></table>
 </div>
-<p>If you want to return just the first matched value, rather than an Array containing all of the matched values, you can use <code>find</code> and <code>findProperty</code>, which work just like <code>filter</code> and <code>filterProperty</code>, but return only one item.</p>
-<h4 class='anchorable-toc' id='toc_aggregate-information-all-or-any'>Aggregate Information (All or Any)</h4>
-<p>If you want to find out whether every item in an Enumerable matches some condition, you can use the <code>every</code> method:</p>
+<p>Because this pattern is so common, it is the default for route
+handlers.</p>
+
+<ul>
+<li>If your dynamic segment ends in <code>_id</code>, the default <code>model</code>
+hook will convert the first part into a model class on the
+application&#39;s namespace (<code>post</code> becomes <code>App.Post</code>). It will
+then call <code>find</code> on that class with the value of the dynamic
+segment.</li>
+<li>The default <code>serialize</code> hook will pull replace the dynamic
+segment with the <code>id</code> property of the model object.</li>
+</ul>
+<h2 class='anchorable-toc' id='toc_route-controller-and-template-defaults'>Route, Controller and Template Defaults</h2>
+<p>If you don&#39;t specify a route handler for the <code>post</code> route
+(<code>App.PostRoute</code>), Ember.js  will still render the <code>post</code> 
+template with the app&#39;s instance of <code>App.PostController</code>.</p>
+
+<p>If you don&#39;t specify the controller (<code>App.PostController</code>),
+Ember will automatically make one for you based on the return value
+of the route&#39;s <code>model</code> hook. If the model is an Array, you get an
+<code>ArrayController</code>. Otherwise, you get an <code>ObjectController</code>.</p>
+
+<p>If you don&#39;t specify a <code>post</code> template, Ember.js won&#39;t render 
+anything!</p>
+<h2 class='anchorable-toc' id='toc_nesting'>Nesting</h2>
+<p>You can nest routes under a <code>resource</code>.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() { <span class="comment">// the `posts` route</span>
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);          <span class="comment">// the `posts.favorites` route</span>
+    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>);            <span class="comment">// the `post` route</span>
+  });
+});
+</pre></td>
+</tr></table>
+</div>
+<p>A <strong>resource</strong> is the beginning of a route, controller, or template 
+name. Even though the <code>post</code> resource is nested, its route is named
+<code>App.PostRoute</code>, its controller is named <code>App.PostController</code> and its
+template is <code>post</code>.</p>
+
+<p>When you nest a <strong>route</strong> inside a resource, the route name is added
+to the resource name, after a <code>.</code>.</p>
+
+<p>Here are the naming conventions for each of the routes defined in
+this router:</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Route Name</th>
+    <th>Controller</th>
+    <th>Route</th>
+    <th>Template</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><code>posts</code></td>
+    <td><code>PostsController</code></td>
+    <td><code>PostsRoute</code></td>
+    <td><code>posts</code></td>
+  </tr>
+  <tr>
+    <td><code>posts.favorites</code></td>
+    <td><code>PostsFavoritesController</code></td>
+    <td><code>PostsFavoritesRoute</code></td>
+    <td><code>posts/favorites</code></td>
+  </tr>
+  <tr>
+    <td><code>post</code></td>
+    <td><code>PostController</code></td>
+    <td><code>PostRoute</code></td>
+    <td><code>post</code></td>
+  </tr>
+</table>
+
+<p>The rule of thumb is to use resources for nouns, and routes for
+adjectives (<code>favorites</code>) or verbs (<code>edit</code>). This ensures that 
+nesting does not create ridiculously long names, but avoids 
+collisions with common adjectives and verbs.</p>
+<h2 class='anchorable-toc' id='toc_the-index-route'>The Index Route</h2>
+<p>At every level of nesting (including the top level), Ember.js 
+automatically provides a route for the <code>/</code> path named <code>index</code>.</p>
+
+<p>For example, if you write a simple router like this:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div>
+<p>It is the equivalent of:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div>
+<p>If the user visits <code>/</code>, Ember.js will look for these objects:</p>
+
+<ul>
+<li><code>App.IndexRoute</code></li>
+<li><code>App.IndexController</code></li>
+<li>the <code>index</code> template</li>
+</ul>
+
+<p>The <code>index</code> template will be rendered into the <code>{{outlet}}</code> in the 
+<code>application</code> template. If the user navigates to <code>/favorites</code>,
+Ember.js will replace the <code>index</code> template with the <code>favorites</code>
+template.</p>
+
+<p>A nested router like this:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Is the equivalent of:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -634,59 +719,34 @@ todos.filterProperty(<span class="string"><span class="delimiter">'</span><span 
 5
 6
 7
-8
-9
-<strong>10</strong>
-11
-12
-13
-14
-15
 </pre></td>
-  <td class="code"><pre>Person = Ember.Object.extend({
-  <span class="key">name</span>: <span class="predefined-constant">null</span>,
-  <span class="key">isHappy</span>: <span class="predefined-constant">false</span>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+  });
 });
-
-<span class="keyword">var</span> people = [
-  Person.create({ <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Yehuda</span><span class="delimiter">'</span></span>, <span class="key">isHappy</span>: <span class="predefined-constant">true</span> }),
-  Person.create({ <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Majd</span><span class="delimiter">'</span></span>, <span class="key">isHappy</span>: <span class="predefined-constant">false</span> })
-];
-
-people.every(<span class="keyword">function</span>(person, index, self) {
-  <span class="keyword">if</span>(person.get(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>)) { <span class="keyword">return</span> <span class="predefined-constant">true</span>; }
-});
-
-<span class="comment">// returns false</span>
 </pre></td>
 </tr></table>
 </div>
-<p>If you want to find out whether at least one item in an Enumerable matches some conditions, you can use the <code>some</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-</pre></td>
-  <td class="code"><pre>people.some(<span class="keyword">function</span>(person, index, self) {
-  <span class="keyword">if</span>(person.get(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>)) { <span class="keyword">return</span> <span class="predefined-constant">true</span>; }
-});
+<p>If the user navigates to <code>/posts</code>, the current route will be
+<code>posts.index</code>. Ember.js will look for objects named:</p>
 
-<span class="comment">// returns true</span>
-</pre></td>
-</tr></table>
-</div>
-<p>Just like the filtering methods, the <code>every</code> and <code>some</code> methods have analogous <code>everyProperty</code> and <code>someProperty</code> methods.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-</pre></td>
-  <td class="code"><pre>people.everyProperty(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>) <span class="comment">// false</span>
-people.someProperty(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>)  <span class="comment">// true</span>
-</pre></td>
-</tr></table>
-</div>
+<ul>
+<li><code>App.PostsIndexRoute</code></li>
+<li><code>App.PostsIndexController</code></li>
+<li>The <code>posts/index</code> template</li>
+</ul>
+
+<p>First, the <code>posts</code> template will be rendered into the <code>{{outlet}}</code> 
+in the <code>application</code> template. Then, the <code>posts/index</code> template
+will be rendered into the <code>{{outlet}}</code> in the <code>posts</code> template.</p>
+
+<p>If the user then navigates to <code>/posts/favorites</code>, Ember.js will
+replace the <code>{{outlet}}</code> in the <code>posts</code> template with the
+<code>posts/favorites</code> template.</p>
+
     
       <footer>
          

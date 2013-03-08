@@ -100,11 +100,15 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
+            <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">核心概念</a>
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名规范</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -128,7 +132,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/conditionals">Conditionals</a>
+              <a href="/guides/templates/conditionals">条件表达式</a>
             </li>
           
             <li class="level-3">
@@ -136,11 +140,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/changing-scope">Changing Scope</a>
+              <a href="/guides/templates/changing-scope">切换作用域</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/binding-element-attributes">Binding Element Attributes</a>
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
             </li>
           
             <li class="level-3">
@@ -184,11 +188,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting to a Different URL</a>
+              <a href="/guides/routing/redirection">Redirecting</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the location API</a>
+              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
@@ -244,11 +248,11 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/views">Views</a>
+            <a href="/guides/views">视图</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/views">Introduction</a>
+              <a href="/guides/views">介绍</a>
             </li>
           
             <li class="level-3">
@@ -288,15 +292,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/object-model/computed-properties">Computed Properties</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
             </li>
           
             <li class="level-3">
@@ -353,40 +357,208 @@
   <div class="chapter">
     <h1>Controllers</h1>
     <h2 class='anchorable-toc' id='toc_controllers'>Controllers</h2>
-<p>A controller may have one or both of these responsibilities:</p>
+<p>In Ember.js, controllers allow you to decorate your models with 
+display logic. In general, your models will have properties that
+are saved to the server, while controllers will have properties
+that your app does not need to save to the server.</p>
+
+<p>For example, if you were building a blog, you would have a
+<code>BlogPost</code> model that you would present in a <code>blog_post</code> template.</p>
+
+<p>Your <code>BlogPost</code> model would have properties like:</p>
 
 <ul>
-<li>Representing a model for a template.</li>
-<li>Storing application properties that do not need to be saved to the server.</li>
+<li><code>title</code></li>
+<li><code>intro</code></li>
+<li><code>body</code></li>
+<li><code>author</code></li>
 </ul>
 
-<p>Most of your controllers will be very small. Unlike other
-frameworks, where the state of your application is spread amongst many
-controllers, in Ember.js, we encapsulate that state in the router. This
-allows your controllers to be lightweight and focused on one thing.</p>
+<p>Your template would bind to these properties in the <code>blog_post</code> 
+template:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>{{title}}<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>by {{author}}<span class="tag">&lt;/h2&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">intro</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  {{intro}}
+<span class="tag">&lt;/div&gt;</span>
+&lt;hr&gt;
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  {{body}}
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>In this simple example, we don&#39;t have any display-specific properties
+or actions just yet. For now, our controller just acts as a
+pass-through (or &quot;proxy&quot;) for the model properties. (Remember that
+a controller gets the model it represents from its route handler.)</p>
+
+<p>Let&#39;s say we wanted to add a feature that would allow the user to 
+toggle the display of the body section. To implement this, we would
+first modify our template to show the body only if the value of a 
+new <code>isExpanded</code> property is true.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>{{title}}<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>by {{author}}<span class="tag">&lt;/h2&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">intro</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  {{intro}}
+<span class="tag">&lt;/div&gt;</span>
+&lt;hr&gt;
+
+{{<span class="error">#</span><span class="keyword">if</span> isExpanded}}
+  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>Hide Body<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+    {{body}}
+  <span class="tag">&lt;/div&gt;</span>
+{{<span class="keyword">else</span>}}
+  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>Show Body<span class="tag">&lt;/button&gt;</span>
+{{<span class="regexp"><span class="delimiter">/</span><span class="content">if}}
+</span></span></pre></td>
+</tr></table>
+</div>
+<p>You might think you should put this property on the model, but 
+whether the  body is expanded or not is strictly a display concern.</p>
+
+<p>Putting this property on the controller cleanly separates logic
+related to your data model from logic related to what you display
+on the screen. This makes it easy to unit-test your model without
+having to worry about logic related to your display creeping into
+your test setup.</p>
+<h2 class='anchorable-toc' id='toc_a-note-on-coupling'>A Note on Coupling</h2>
+<p>In Ember.js, templates get their properties from controllers, which
+decorate a model.</p>
+
+<p>This means that templates <em>know about</em> controllers and controllers
+<em>know about</em> models, but the reverse is not true. A model knows
+nothing about which (if any) controllers are decorating it, and
+controller does not know which views are presenting its properties.</p>
+
+<figure>
+<img src="/images/controller-guide/objects.png">
+</figure>
+
+<p>This also means that as far as a template is concerned, all of its
+properties come from its controller, and it doesn&#39;t need to know
+about the model directly.</p>
+
+<p>In practice, Ember.js will create a template&#39;s controller once for
+the entire application, but the controller&#39;s model may change
+throughout the lifetime of the application without requiring that
+the view knows anything about those mechanics.</p>
+
+<p><aside>
+For example, if the user navigates from <code>/posts/1</code> to <code>/posts/2</code>,
+the <code>PostController</code> will change its model from <code>User.find(1)</code> to
+<code>User.find(2)</code>. The template will update its representations of any
+properties on the model, as well as any computed properties on the
+controller that depend on the model.
+</aside></p>
+
+<p>This makes it easy to test a template in isolation by rendering it 
+with a controller object that contains the properties the template
+expects. From the template&#39;s perspective, a <strong>controller</strong> is simply
+an object that provides its data.</p>
 <h3 class='anchorable-toc' id='toc_representing-models'>Representing Models</h3>
-<p>Templates are always connected to controllers, not models. This makes it
-easy to separate display-specific properties from model-specific
-properties.</p>
+<p>Templates are always connected to controllers, not models. This 
+makes it easy to separate display-specific properties from model 
+specific properties, and to swap out the controller&#39;s model as the
+user navigates around the page.</p>
 
-<p>Often, however, it is convenient for your templates to be able to
-retrieve properties directly from a model. Ember.js makes this easy with
-<code>Ember.ObjectController</code> and <code>Ember.ArrayController</code>.</p>
+<p>For convenience, Ember.js provides controllers that <em>proxy</em> 
+properties from their models so that you can say <code>{{name}}</code> in your
+template rather than <code>{{model.name}}. An</code>Ember.ArrayController<code>
+proxies properties from an Array, and an</code>Ember.ObjectController` 
+proxies properties from an obect.</p>
+
+<p>If your controller is an <code>ArrayController</code>, you can iterate directly
+over the controller using <code>{{#each controller}}</code>. This keeps the
+template from having to know about how the controller is implemented
+and makes isolation testing and refactoring easier.</p>
 <h3 class='anchorable-toc' id='toc_storing-application-properties'>Storing Application Properties</h3>
-<p>Often, your application will need to store information that does not
-belong in the model. Any time you need to save information that does not
-need to be persisted to the server, you should put it in a controller.</p>
+<p>Not all properties in your application need to be saved to the 
+server. Any time you need to store information only for the lifetime
+of this application run, you should store it on a controller.</p>
 
-<p>For example, imagine your application has a search field that is always
-present. You would have a <code>SearchController</code> with a <code>query</code> property, to
-which the search field would be bound.</p>
+<p>For example, imagine your application has a search field that is 
+always present. You could have store a <code>query</code> property on your
+<code>ApplicationController</code>, and bind the <code>search</code> field in the <code>
+application</code> template to that  property.</p>
+<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- application.handlebars --&gt;</span>
+<span class="tag">&lt;header&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">search</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/header&gt;</span>
 
-<p>If your user wants to search, she would type her query in the search
-field, then hit the enter key.</p>
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>App.ApplicationController = Ember.Controller.extend({
+  <span class="comment">// the initial value of the `search` property</span>
+  <span class="key">search</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
 
-<p>When your router initiates the query to the server, it should retrieve
-the current query from the <code>SearchController</code>, instead of trying to
-retrieve it from the search field.</p>
+  <span class="function">query</span>: <span class="keyword">function</span>() {
+    <span class="comment">// the current value of the text field</span>
+    <span class="keyword">var</span> query = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>, { <span class="key">query</span>: query });
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The <code>application</code> template stores its properties and sends its 
+actions to the <code>ApplicationController</code>. In this case, when the user
+hits enter, the application will transition to the <code>search</code> route,
+passing the query as a parameter.</p>
 
     
       <footer>

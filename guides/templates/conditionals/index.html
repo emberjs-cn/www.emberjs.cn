@@ -100,11 +100,15 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
+            <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">核心概念</a>
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名规范</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -128,7 +132,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/conditionals">Conditionals</a>
+              <a href="/guides/templates/conditionals">条件表达式</a>
             </li>
           
             <li class="level-3">
@@ -136,11 +140,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/changing-scope">Changing Scope</a>
+              <a href="/guides/templates/changing-scope">切换作用域</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/binding-element-attributes">Binding Element Attributes</a>
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
             </li>
           
             <li class="level-3">
@@ -184,11 +188,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting to a Different URL</a>
+              <a href="/guides/routing/redirection">Redirecting</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the location API</a>
+              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -244,11 +248,11 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/views">Views</a>
+            <a href="/guides/views">视图</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/views">Introduction</a>
+              <a href="/guides/views">介绍</a>
             </li>
           
             <li class="level-3">
@@ -288,15 +292,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/object-model/computed-properties">Computed Properties</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
             </li>
           
             <li class="level-3">
@@ -352,11 +356,16 @@
 
   <div class="chapter">
     <h1>模版</h1>
-    <h2 class='anchorable-toc' id='toc_conditionals'>Conditionals</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/conditionals/">http://emberjs.com/guides/templates/conditionals/</a></p>
+<h2 class='anchorable-toc' id='toc_conditionals'>条件语句(Conditionals)</h2>
 <p>Sometimes you may only want to display part of your template if a property
 exists.</p>
 
+<p>有些时候，或许我们只希望在一个属性存在的时候显示一部分模板。</p>
+
 <p>We can use the <code>{{#if}}</code> helper to conditionally render a block:</p>
+
+<p>这时，我们就可以使用<code>{{#if}}</code>助手按条件渲染一个代码块,如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -371,8 +380,12 @@ exists.</p>
 <p>Handlebars will not render the block if the argument passed evaluates to
 <code>false</code>, <code>undefined</code>, <code>null</code> or <code>[]</code> (i.e., any &quot;falsy&quot; value).</p>
 
+<p>如果传入的参数的值是<code>false</code>,<code>undefined</code>,<code>null</code>或者<code>[]</code>(例如，任何&quot;假&quot;值),那么<code>Handlebars</code>将不会渲染这个代码块。</p>
+
 <p>If the expression evaluates to falsy, we can also display an alternate template
 using <code>{{else}}</code>:</p>
+
+<p>如果表达式的值为假,我们也可以使用{{else}}助手显示另外一个模板,如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -389,6 +402,8 @@ using <code>{{else}}</code>:</p>
 </tr></table>
 </div>
 <p>To only render a block if a value is falsy, use <code>{{#unless}}</code>:</p>
+
+<p>如果只希望在一个值为假的时候渲染一个区块，那么应该使用<code>{{#unless}}</code>助手:</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -404,6 +419,9 @@ using <code>{{else}}</code>:</p>
 to invoke a helper with a portion of your template. Block expressions look like
 normal expressions except that they contain a hash (#) before the helper name,
 and require a closing expression.</p>
+
+<p><code>{{#if}}</code>和<code>{{#unless}}</code>都是块表达式的例子。通过使用他们可以只执行模板的一部分。块表达式与普通的表达式类似，
+不同的地方只在于：在助手名称前面需要有一个<code>#</code>，并且需要一个结束表达式。</p>
 
     
       <footer>

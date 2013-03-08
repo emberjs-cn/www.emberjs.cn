@@ -100,11 +100,15 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
+            <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">核心概念</a>
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名规范</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -128,7 +132,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/conditionals">Conditionals</a>
+              <a href="/guides/templates/conditionals">条件表达式</a>
             </li>
           
             <li class="level-3">
@@ -136,11 +140,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/changing-scope">Changing Scope</a>
+              <a href="/guides/templates/changing-scope">切换作用域</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/binding-element-attributes">Binding Element Attributes</a>
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
             </li>
           
             <li class="level-3">
@@ -184,11 +188,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting to a Different URL</a>
+              <a href="/guides/routing/redirection">Redirecting</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the location API</a>
+              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -244,11 +248,11 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/views">Views</a>
+            <a href="/guides/views">视图</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/views">Introduction</a>
+              <a href="/guides/views">介绍</a>
             </li>
           
             <li class="level-3">
@@ -288,15 +292,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/object-model/computed-properties">Computed Properties</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
             </li>
           
             <li class="level-3">
@@ -352,7 +356,8 @@
 
   <div class="chapter">
     <h1>模版</h1>
-    <h2 class='anchorable-toc' id='toc_code-handlebars-code-handlebars-basics'><code>Handlebars</code>基础 (Handlebars Basics)</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/handlebars-basics/">http://emberjs.com/guides/templates/handlebars-basics/</a></p>
+<h2 class='anchorable-toc' id='toc_code-handlebars-code-handlebars-basics'><code>Handlebars</code>基础 (Handlebars Basics)</h2>
 <p>Ember.js uses the <a href="http://www.handlebarsjs.com">Handlebars templating library</a>
 to power your app&#39;s user interface. Handlebars templates are just like
 regular HTML, but also give you the ability to embed expressions that
@@ -368,7 +373,7 @@ describing the user interface of your app. And, once you&#39;ve told
 Ember.js to render a given template on the screen, you don&#39;t need to
 write any additional code to make sure it keeps up-to-date.</p>
 
-<p>我们采用了<code>Handlebars</code>,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可要认为<code>Handlebars</code>模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用<code>Ember.js</code>在屏幕上渲染一个
+<p>我们采用了<code>Handlebars</code>,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可以认为<code>Handlebars</code>模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用<code>Ember.js</code>在屏幕上渲染一个
 模板,开发人员就不需要编写额外的代码来确保其更新。</p>
 <h3 class='anchorable-toc' id='toc_defining-templates'>定义模板(Defining Templates)</h3>
 <p>If you&#39;re not using build tools, you can define your application&#39;s main

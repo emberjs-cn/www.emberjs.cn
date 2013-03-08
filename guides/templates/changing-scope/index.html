@@ -100,11 +100,15 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
+            <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">核心概念</a>
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名规范</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -128,7 +132,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/conditionals">Conditionals</a>
+              <a href="/guides/templates/conditionals">条件表达式</a>
             </li>
           
             <li class="level-3">
@@ -136,11 +140,11 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/changing-scope">Changing Scope</a>
+              <a href="/guides/templates/changing-scope">切换作用域</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/binding-element-attributes">Binding Element Attributes</a>
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
             </li>
           
             <li class="level-3">
@@ -184,11 +188,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting to a Different URL</a>
+              <a href="/guides/routing/redirection">Redirecting</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the location API</a>
+              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -244,11 +248,11 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/views">Views</a>
+            <a href="/guides/views">视图</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/views">Introduction</a>
+              <a href="/guides/views">介绍</a>
             </li>
           
             <li class="level-3">
@@ -288,15 +292,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/object-model/computed-properties">Computed Properties</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
             </li>
           
             <li class="level-3">
@@ -352,11 +356,16 @@
 
   <div class="chapter">
     <h1>模版</h1>
-    <h2 class='anchorable-toc' id='toc_changing-scope'>Changing Scope</h2>
+    <p>英文原文:<a href="http://emberjs.com/guides/templates/changing-scope/">http://emberjs.com/guides/templates/changing-scope/</a></p>
+<h2 class='anchorable-toc' id='toc_changing-scope'>切换作用域(Changing Scope)</h2>
 <p>Sometimes you may want to invoke a section of your template with a
 different context.</p>
 
+<p>有些时候，你可能希望在模版中的一个特定部分使用不同的上下文：</p>
+
 <p>For example, instead of repeating a long path, like in this example:</p>
+
+<p>例如，通过切换上下文，我们可以不需重复的指定属性的上下文路径，如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -365,6 +374,8 @@ different context.</p>
 </tr></table>
 </div>
 <p>We can use the <code>{{#with}}</code> helper to clean it up:</p>
+
+<p>我们可以使用<code>{{#with}}</code>助手来简化它，如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -380,6 +391,9 @@ different context.</p>
 context, by default, is the template&#39;s controller. By using the <code>{{#with}}</code>
 helper, you can change the context of all of the Handlebars expressions
 contained inside the block.</p>
+
+<p><code>{{#with}}</code>切换了区块内的属性的 <em>上下文</em>。默认情况下，一个模板的上下文是其对应的控制器。
+通过使用<code>{{#with}}</code>助手，你可以切换在这个区块内的所有<code>Handlebars</code>表达式的上下文。</p>
 
     
       <footer>

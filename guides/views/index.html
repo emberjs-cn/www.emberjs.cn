@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Views</title>
+    <title>Ember.js - 视图</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -100,11 +100,15 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/guides/getting-started/core-concepts">Ember.js入门</a>
+            <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
             <li class="level-3">
-              <a href="/guides/getting-started/core-concepts">核心概念</a>
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名规范</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -128,7 +132,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/conditionals">Conditionals</a>
+              <a href="/guides/templates/conditionals">条件表达式</a>
             </li>
           
             <li class="level-3">
@@ -136,11 +140,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/changing-scope">Changing Scope</a>
+              <a href="/guides/templates/changing-scope">切换作用域</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/binding-element-attributes">Binding Element Attributes</a>
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
             </li>
           
             <li class="level-3">
@@ -184,11 +188,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting to a Different URL</a>
+              <a href="/guides/routing/redirection">Redirecting</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the location API</a>
+              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -244,11 +248,11 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/views">Views</a>
+            <a href="/guides/views">视图</a>
             <ol class='selected'>
         
             <li class="level-3 sub-selected">
-              <a href="/guides/views">Introduction</a>
+              <a href="/guides/views">介绍</a>
             </li>
           
             <li class="level-3">
@@ -288,15 +292,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/object-model/computed-properties">Computed Properties</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
             </li>
           
             <li class="level-3">
@@ -351,28 +355,41 @@
           
 
   <div class="chapter">
-    <h1>Views</h1>
-    <h2 class='anchorable-toc' id='toc_introduction-to-views'>Introduction to Views</h2>
+    <h1>视图</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/views/">http://emberjs.com/guides/views/</a></p>
+<h2 class='anchorable-toc' id='toc_introduction-to-views'>视图介绍 (Introduction to Views)</h2>
 <p>Because Handlebars templates in Ember.js are so powerful, the majority
 of your application&#39;s user interface will be described using them. If
 you are coming from other JavaScript libraries, you may be surprised at
 how few views you have to create.</p>
 
+<p>因为<code>Ember.js</code>的<code>Handlebars</code>模板十分强大，所以你的应用中的大部分用户界面将采用模版来描述。如果你之前使用其他的<code>JavaScript</code>库，那么你可能会惊叹为什么<code>Ember.js</code>只需要创建这么少的视图。</p>
+
 <p>Views in Ember.js are typically only created for the following reasons:</p>
 
+<p><code>Ember.js</code>里视图的创建通常只有如下原因：</p>
+
 <ul>
-<li>When you need sophisticated handling of user events</li>
-<li>When you want to create a re-usable component</li>
+<li><p>When you need sophisticated handling of user events</p></li>
+<li><p>当你需要处理复杂的用户事件时</p></li>
+<li><p>When you want to create a re-usable component</p></li>
+<li><p>当你想要创建一个可重用的构件时</p></li>
 </ul>
 
 <p>Often, both of these requirements will be present at the same time.</p>
-<h3 class='anchorable-toc' id='toc_event-handling'>Event Handling</h3>
+
+<p>这两种需求经常会同时出现。</p>
+<h3 class='anchorable-toc' id='toc_event-handling'>事件处理(Event Handling)</h3>
 <p>The role of the view in an Ember.js application is to translate
 primitive browser events into events that have meaning to your
 application.</p>
 
+<p>视图在<code>Ember.js</code>的应用中起到将原始浏览器事件转变成你应用中有意义的事件的作用。</p>
+
 <p>For example, imagine you have a list of todo items. Next to each todo is
 a button to delete that item:</p>
+
+<p>例如，设想你有一系列的<code>todo</code>项。在每个<code>todo</code>后面有一个按键可以删除该项：</p>
 
 <p><img src="/guides/views/images/todo-list.png" alt="Todo List"></p>
 
@@ -380,6 +397,8 @@ a button to delete that item:</p>
 <em>semantic event</em>: delete this todo! These semantic events are sent to
 your application&#39;s router, which is responsible for reacting to the
 event based on the current state of the application.</p>
+
+<p>视图负责将一个 <em>原始事件</em> (点击) 转换成一个 <em>语义化事件</em>：删除此<code>todo</code>！这些语义化事件会发送到你应用的路由，路由负责根据当前应用的状态响应该事件。</p>
 
 <p><img src="/guides/views/images/primitive-to-semantic-event.png" alt="Todo List"></p>
 
