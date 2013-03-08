@@ -98,8 +98,8 @@ Models:
   #- title: "The Basic Adapter"
     #url: "modells/the-basic-adapter"
 
-Views:
-  - title: "Introduction"
+视图:
+  - title: "介绍"
     url: "views"
   - title: "Defining a View"
     url: "views/defining-a-view"
