@@ -1,3 +1,6 @@
+英文原文：[http://emberjs.com/guides/templates/handlebars-basics/](http://emberjs.com/guides/templates/handlebars-basics/)
+
+
 ## `Handlebars`基础 (Handlebars Basics)
 
 Ember.js uses the [Handlebars templating library](http://www.handlebarsjs.com)
@@ -15,7 +18,7 @@ describing the user interface of your app. And, once you've told
 Ember.js to render a given template on the screen, you don't need to
 write any additional code to make sure it keeps up-to-date.
 
-我们采用了`Handlebars`,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可要认为`Handlebars`模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用`Ember.js`在屏幕上渲染一个
+我们采用了`Handlebars`,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可以认为`Handlebars`模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用`Ember.js`在屏幕上渲染一个
 模板,开发人员就不需要编写额外的代码来确保其更新。
 
 ### 定义模板(Defining Templates)
