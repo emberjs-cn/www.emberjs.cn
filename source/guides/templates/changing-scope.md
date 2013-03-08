@@ -1,16 +1,16 @@
 英文原文:[http://emberjs.com/guides/templates/changing-scope/](http://emberjs.com/guides/templates/changing-scope/)
 
 
-## 改变作用域(Changing Scope)
+## 切换作用域(Changing Scope)
 
 Sometimes you may want to invoke a section of your template with a
 different context.
 
-有些时候，你可能希望在一个不同的上下文中调用模板。
+有些时候，你可能希望在模版中的一个特定部分使用不同的上下文：
 
 For example, instead of repeating a long path, like in this example:
 
-例如，为了不像下面例子这样写出重复代码：
+例如，通过切换上下文，我们可以不需重复的指定属性的上下文路径，如下所示：
 
 ```handlebars
 Welcome back, <b>{{person.firstName}} {{person.lastName}}</b>!
@@ -31,5 +31,5 @@ context, by default, is the template's controller. By using the `{{#with}}`
 helper, you can change the context of all of the Handlebars expressions
 contained inside the block.
 
-`{{#with}}`改变了区块内的属性的 _上下文。默认情况下，一个模板的上下文是其对应的控制器。
-通过使用`{{#with}}`助手，你可以改变在这个区块内的所有`Handlebars`表达式的上下文环境。
+`{{#with}}`切换了区块内的属性的 _上下文_。默认情况下，一个模板的上下文是其对应的控制器。
+通过使用`{{#with}}`助手，你可以切换在这个区块内的所有`Handlebars`表达式的上下文。
