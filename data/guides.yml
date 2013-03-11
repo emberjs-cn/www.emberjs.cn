@@ -33,7 +33,7 @@
     url: "templates/changing-scope"
   - title: "绑定元素属性"
     url: "templates/binding-element-attributes"
-  - title: "绑定元素类别名称"
+  - title: "绑定元素类名称"
     url: "templates/binding-element-class-names"
   - title: "Links"
     url: "templates/links"

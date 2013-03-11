@@ -1,7 +1,7 @@
 英文原文:[http://emberjs.com/guides/templates/binding-element-class-names/](http://emberjs.com/guides/templates/binding-element-class-names/)
 
 
-## 绑定元素类别名称 （Binding Element Class Names)
+## 绑定元素类名称 （Binding Element Class Names)
 
 An HTML element's `class` attribute can be bound like any other
 attribute:
@@ -29,7 +29,7 @@ If the controller's `priority` property is `"p4"`, this template will emit the f
 If the value to which you bind is a Boolean, Ember.js will apply the
 dasherized version of the property name as a class:
 
-如果你要绑定的值是布尔类型,`Ember.js`会将属性名称的中划线形式作为类的名称：
+如果你要绑定的值是布尔类型,`Ember.js`会将属性名称用中划线连接来作为类的名称：
 
 ```handlebars
 <div {{bindAttr class="isUrgent"}}>
@@ -160,7 +160,7 @@ Unlike other element attributes, you can bind multiple classes:
 This works how you would expect, applying the rules described above in
 order:
 
-上面的模板会对各个类依次执行上文提到的准则，从而可以达到你所想要的效果：
+`Ember.js`将依次对每个类执行上述准则，从而达到你所想要的效果：
 
 ```html
 <div class="is-urgent p4">
