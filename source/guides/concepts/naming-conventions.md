@@ -1,17 +1,17 @@
 英文原文：[http://emberjs.com/guides/concepts/naming-conventions/](http://emberjs.com/guides/concepts/naming-conventions/)
 
 
-## 命名规范(Naming Conventions)
+## 命名惯例(Naming Conventions)
 
 Ember.js uses naming conventions to wire up your objects without a 
 lot  of boilerplate. You will want to  use the conventional names 
 for your routes, controllers and templates.
 
-`Ember.js`使用命名规范来连接各个对象，而不是通过大量的引用。对于路由，控制器以及模板，你都应该使用规范的命名。
+`Ember.js`使用命名惯例来连接各个对象，而不是通过大量的引用。对于路由，控制器以及模板，你都应该使用此命名惯例。
 
 You can usually guess the names, but this guide outlines, in one place, all of the naming conventions.
 
-有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名规范。
+有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名惯例。
 
 ## 应用程序(The Application)
 
@@ -22,6 +22,7 @@ When your application boots, Ember will look for these objects:
 * `App.ApplicationRoute`
 * `App.ApplicationController`
 * the `application` template
+* `application`模板
 
 Ember.js will render the `application` template as the main template.
 If `App.ApplicationController` is provided, Ember.js will set an
@@ -75,7 +76,7 @@ them and providing them to your templates.
 This makes it super-simple to test your controllers, and ensures that
 your entire application shares a single instance of each controller.
 
-这将使测试控制器的工作变得轻而易举，并且确保了整个应用共享每个控制器唯一的一个实例。
+这将使测试控制器的工作变得轻而易举，并且确保每个控制器在整个应用中只有唯一的一个实例。
 
 ## 简单的路由（Simple Routes)
 
@@ -102,6 +103,8 @@ objects:
 * `App.FavoritesRoute`
 * `App.FavoritesController`
 * the `favorites` template
+* `favorites`模板 
+
 
 Ember.js will render the `favorites` template into the `{{outlet}}`
 in the `application` template. It will set an instance of the
@@ -120,7 +123,7 @@ For a route like `App.FavoritesRoute`, you will probably implement
 the `model` hook to specify what model your controller will present
 to the template.
 
-对于一个路由，例如`App.FavoritesRoute`,你可能需要实现`模型`钩子去指定你的控制器要呈现给模板的模型。
+对于一个路由，例如`App.FavoritesRoute`,你可能需要实现`model`钩子去指定你的控制器要呈现给模板的模型。
 
 Here's an example:
 
@@ -140,7 +143,7 @@ the model is an Array, Ember.js will automatically supply an instance
 of `Ember.ArrayController`, which will present the backing Array as
 its model.
 
-在这个例子中，我们并没有提供`FavoritesController`。因为该模型所一个数组，`Ember.js`会自动提供一个`Ember.ArrayController`，它将会把返回的数组视为模型。
+在这个例子中，我们并没有提供`FavoritesController`。因为该模型是一个数组，`Ember.js`会自动提供一个`Ember.ArrayController`，它将会把返回的数组视为模型。
 
 You can treat the `ArrayController` as if it was the model itself. 
 This has two major benefits:
@@ -196,13 +199,14 @@ these objects:
 * `App.PostRoute`
 * `App.PostController`
 * the `post` template
+* `post`模板 
 
 Your route handler's `model` hook converts the dynamic `:post_id`
 parameter into a model. The `serialize` hook converts a model object
 back into the URL parameters for this route (for example, when 
 generating a link for a model object).
 
-路由处理程序的`模型`钩子将把动态参数`:post_id`转换到模型中去。而`序列化`钩子将会为这个路由把一个模型对象转化回URL参数(例如，在为一个模型对象生成链接的情况下)。
+路由处理程序的`model`钩子将把动态参数`:post_id`转换到模型中去。而`serialize`钩子将会为这个路由把一个模型对象转化回URL参数(例如，在为一个模型对象生成链接的情况下)。
 
 ```javascript
 App.PostRoute = Ember.Route.extend({
@@ -219,7 +223,7 @@ App.PostRoute = Ember.Route.extend({
 Because this pattern is so common, it is the default for route
 handlers.
 
-由于这个模式太常见，现在它所默认的路由处理程序。
+由于这个模式太常见，现在它是默认的路由处理程序。
 
 * If your dynamic segment ends in `_id`, the default `model`
   hook will convert the first part into a model class on the
@@ -227,13 +231,13 @@ handlers.
   then call `find` on that class with the value of the dynamic
   segment.
 
-* 如果你的动态字段以`_id`结束，默认的`模型`钩子会将第一部分转化为在应用程序命名空间中的一个模型类(`post`变成`App.Post`).
+* 如果你的动态字段以`_id`结束，默认的`model`钩子会将第一部分转化为在应用程序命名空间中的一个模型类(`post`变成`App.Post`).
   然后，钩子将在这个模型类中调用`find`函数，函数的参数即是动态字段的值。
 
 * The default `serialize` hook will pull replace the dynamic
   segment with the `id` property of the model object.
 
-* 默认的`序列化`钩子将会使用模型对象的`id`属性代替动态字段。
+* 默认的`serialize`钩子将会使用模型对象的`id`属性代替动态字段。
 
 ## 路由，控制器和默认模板 (Route, Controller and Template Defaults)
 
@@ -248,7 +252,7 @@ Ember will automatically make one for you based on the return value
 of the route's `model` hook. If the model is an Array, you get an
 `ArrayController`. Otherwise, you get an `ObjectController`.
 
-如果你没有指定控制器(`App.PostController`)，`Ember`将会根据路由的`模型`钩子的返回值自动创建一个。如果模型是一个数组，那么就会创建`ArrayController`。
+如果你没有指定控制器(`App.PostController`)，`Ember`将会根据路由的`model`钩子的返回值自动创建一个。如果模型是一个数组，那么就会创建`ArrayController`。
 否则，将创建`ObjectController`。
 
 If you don't specify a `post` template, Ember.js won't render 
@@ -260,7 +264,7 @@ anything!
 
 You can nest routes under a `resource`.
 
-你可以在一个`资源`内嵌套路由。
+你可以在一个`resource`内嵌套路由。
 
 ```javascript
 App.Router.map(function() {
@@ -276,18 +280,18 @@ name. Even though the `post` resource is nested, its route is named
 `App.PostRoute`, its controller is named `App.PostController` and its
 template is `post`.
 
-**资源**的名称与路由，控制器或模板的起始名称一致。即使`post`资源被嵌套来，它的路由的名称
+**资源**的名称与路由，控制器或模板的起始名称一致。即使`post`资源被嵌套了，它的路由的名称
 仍是`App.PostRoute`, 控制器名称是`App.PostController`,模板名称是`post`。
 
 When you nest a **route** inside a resource, the route name is added
 to the resource name, after a `.`.
 
-如果你在一个资源内嵌套来一个**路由**,此路由的名称将变为`资源名称.路由名称`。
+如果你在一个资源内嵌套了一个**路由**,此路由的名称将变为`资源名称.路由名称`。
 
 Here are the naming conventions for each of the routes defined in
 this router:
 
-下面定义了上面例子中各个路由的命名规范：
+下面定义了上面例子中各个路由的命名惯例：
 
 <table>
   <thead>
@@ -359,6 +363,7 @@ If the user visits `/`, Ember.js will look for these objects:
 * `App.IndexRoute`
 * `App.IndexController`
 * the `index` template
+* `index`模板 
 
 The `index` template will be rendered into the `{{outlet}}` in the 
 `application` template. If the user navigates to `/favorites`,
@@ -402,6 +407,7 @@ If the user navigates to `/posts`, the current route will be
 * `App.PostsIndexRoute`
 * `App.PostsIndexController`
 * The `posts/index` template
+* `posts/index`模板 
 
 First, the `posts` template will be rendered into the `{{outlet}}` 
 in the `application` template. Then, the `posts/index` template
@@ -414,4 +420,4 @@ If the user then navigates to `/posts/favorites`, Ember.js will
 replace the `{{outlet}}` in the `posts` template with the
 `posts/favorites` template.
 
-如果用户又访问了`/posts/favorites`，`Ember.js`会使用`posts/favorites`模板代替`{{outlet}}`中的`posts`模板。
+如果用户又访问了`/posts/favorites`，`Ember.js`会使用`posts/favorites`模板来替换`posts`模板中的`{{outlet}}`。
