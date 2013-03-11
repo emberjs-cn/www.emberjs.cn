@@ -5,7 +5,7 @@
 概念:
   - title: "核心概念"
     url: "concepts/core-concepts"
-  - title: "命名规范"
+  - title: "命名惯例"
     url: "concepts/naming-conventions"
   #- title: "What is Ember.js?"
     #url: "getting-started/what-is-ember-js"
