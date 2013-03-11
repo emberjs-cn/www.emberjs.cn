@@ -108,7 +108,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/concepts/naming-conventions">命名规范</a>
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -356,19 +356,27 @@
 
   <div class="chapter">
     <h1>概念</h1>
-    <h2 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/concepts/naming-conventions/">http://emberjs.com/guides/concepts/naming-conventions/</a></p>
+<h2 class='anchorable-toc' id='toc_naming-conventions'>命名惯例(Naming Conventions)</h2>
 <p>Ember.js uses naming conventions to wire up your objects without a 
 lot  of boilerplate. You will want to  use the conventional names 
 for your routes, controllers and templates.</p>
 
+<p><code>Ember.js</code>使用命名惯例来连接各个对象，而不是通过大量的引用。对于路由，控制器以及模板，你都应该使用此命名惯例。</p>
+
 <p>You can usually guess the names, but this guide outlines, in one place, all of the naming conventions.</p>
-<h2 class='anchorable-toc' id='toc_the-application'>The Application</h2>
+
+<p>有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名惯例。</p>
+<h2 class='anchorable-toc' id='toc_the-application'>应用程序(The Application)</h2>
 <p>When your application boots, Ember will look for these objects:</p>
+
+<p>当你的应用程序启动时，<code>Ember</code>会查找下面几个对象:</p>
 
 <ul>
 <li><code>App.ApplicationRoute</code></li>
 <li><code>App.ApplicationController</code></li>
 <li>the <code>application</code> template</li>
+<li><code>application</code>模板</li>
 </ul>
 
 <p>Ember.js will render the <code>application</code> template as the main template.
@@ -377,11 +385,18 @@ instance of <code>App.ApplicationController</code> as the controller for the
 template. This means that the template will get its properties from
 the controller.</p>
 
+<p><code>Ember.js</code>会将<code>application</code>模板作为主模板来渲染。如果存在<code>App.ApplicationController</code>,
+<code>Ember.js</code>将使用<code>App.ApplicationController</code>的一个实例作为此模板的控制器。这意味着此模板将从这个控制器获得属性。</p>
+
 <p>If your app provides an <code>App.ApplicationRoute</code>, Ember.js will invoke
 <a href="/guides/routing/specifying-a-routes-model">the</a> <a href="/guides/routing/setting-up-a-controller">router&#39;s</a> <a href="/guides/routing/rendering-a-template">hooks</a> first, before rendering the
 <code>application</code> template.</p>
 
+<p>如果你的应用提供了<code>App.ApplicationRoute</code>,<code>Ember.js</code>将在渲染<code>application</code>模板前先调用<a href="/guides/routing/specifying-a-routes-model">此</a><a href="/guides/routing/setting-up-a-controller">路由</a>的<a href="/guides/routing/rendering-a-template">钩子程序</a>。</p>
+
 <p>Here&#39;s a simple example that uses a route, controller, and model:</p>
+
+<p>下面这个例子中同时包含了路由，控制器和模型:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -423,13 +438,21 @@ App.ApplicationController = Ember.Controller.extend({
 as <strong>classes</strong>, and the framework is responsible for instantiating
 them and providing them to your templates.</p>
 
+<p>在<code>Ember.js</code>应用中，你可以总是将控制器看作是一个个的<strong>类</strong>，应用程序框架负责实例化类并且将他们提供给模板。</p>
+
 <p>This makes it super-simple to test your controllers, and ensures that
 your entire application shares a single instance of each controller.</p>
-<h2 class='anchorable-toc' id='toc_simple-routes'>Simple Routes</h2>
+
+<p>这将使测试控制器的工作变得轻而易举，并且确保每个控制器在整个应用中只有唯一的一个实例。</p>
+<h2 class='anchorable-toc' id='toc_simple-routes'>简单的路由（Simple Routes)</h2>
 <p>Each of your routes will also have a route, a controller and a 
 template named after the route.</p>
 
+<p>对于应用中的每一个路由，也都会有以路由名称命名的路由，及其对应的控制器以及模板。</p>
+
 <p>Let&#39;s start with a simple router:</p>
+
+<p>以下面这个简单的路由为例：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -444,25 +467,37 @@ template named after the route.</p>
 <p>If your user navigates to <code>/favorites</code>, Ember.js will look for these 
 objects:</p>
 
+<p>如果用户要访问<code>/favorites</code>，<code>Ember.js</code>会查找下面几个对象：</p>
+
 <ul>
 <li><code>App.FavoritesRoute</code></li>
 <li><code>App.FavoritesController</code></li>
 <li>the <code>favorites</code> template</li>
+<li><code>favorites</code>模板 </li>
 </ul>
 
 <p>Ember.js will render the <code>favorites</code> template into the <code>{{outlet}}</code>
 in the <code>application</code> template. It will set an instance of the
 <code>App.FavoritesController</code> as the controller for the template.</p>
 
+<p><code>Ember.js</code>会将<code>favorites</code>模板渲染到<code>application</code>模板中的<code>{{outlet}}</code>中去，
+还将会把<code>App.FavoritesController</code>的一个实例作为此模板的控制器。</p>
+
 <p>If your app provides an <code>App.FavoritesRoute</code>, the framework will 
 invoke it before rendering the template. Yes, this is a bit 
 repetitive.</p>
+
+<p>如果你的应用程序提供了<code>App.FavoritesRoute</code>，应用程序框架会在渲染模板前先调用它。当然，这里会有点重复过程。</p>
 
 <p>For a route like <code>App.FavoritesRoute</code>, you will probably implement
 the <code>model</code> hook to specify what model your controller will present
 to the template.</p>
 
+<p>对于一个路由，例如<code>App.FavoritesRoute</code>,你可能需要实现<code>model</code>钩子去指定你的控制器要呈现给模板的模型。</p>
+
 <p>Here&#39;s an example:</p>
+
+<p>下面是一个例子：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -485,19 +520,27 @@ the model is an Array, Ember.js will automatically supply an instance
 of <code>Ember.ArrayController</code>, which will present the backing Array as
 its model.</p>
 
+<p>在这个例子中，我们并没有提供<code>FavoritesController</code>。因为该模型是一个数组，<code>Ember.js</code>会自动提供一个<code>Ember.ArrayController</code>，它将会把返回的数组视为模型。</p>
+
 <p>You can treat the <code>ArrayController</code> as if it was the model itself. 
 This has two major benefits:</p>
 
+<p>你可以将<code>ArrayController</code>本身就看做是一个模型。这主要有两个优点：</p>
+
 <ul>
-<li>You can replace the controller&#39;s model at any time without having
-to directly notify the view of the change.</li>
-<li>The controller can provide additional computed properties or
+<li><p>You can replace the controller&#39;s model at any time without having
+to directly notify the view of the change.</p></li>
+<li><p>你可以在任何时候变更控制器的模型而无需直接考虑视图的变化。</p></li>
+<li><p>The controller can provide additional computed properties or
 view-specific state that do not belong in the model layer. This
 allows a clean separation of concerns between the view, the
-controller and the model.</li>
+controller and the model.</p></li>
+<li><p>控制器可以提供额外的不属于模型层的可计算属性或特定视图的状态。这使视图，控制器和模型之间的分层结构更清晰。</p></li>
 </ul>
 
 <p>The template can iterate over the elements of the controller:</p>
+
+<p>模板可以迭代控制器中的元素：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -512,11 +555,15 @@ controller and the model.</li>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div><h2 class='anchorable-toc' id='toc_dynamic-segments'>Dynamic Segments</h2>
+</div><h2 class='anchorable-toc' id='toc_dynamic-segments'>动态字段(Dynamic Segments)</h2>
 <p>If a route uses a dynamic segment, the route&#39;s model will be based
 on the value of that segment provided by the user.</p>
 
+<p>如果一个路由中使用了一个动态字段，它对应的模型将基于用户提供的那个字段的值。</p>
+
 <p>Consider this router definition:</p>
+
+<p>考虑下面这个路由的定义：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -531,16 +578,21 @@ on the value of that segment provided by the user.</p>
 <p>In this case, the route&#39;s name is <code>post</code>, so Ember.js will look for
 these objects:</p>
 
+<p>在这个例子中，路由的名称是<code>post</code>, 所以<code>Ember.js</code>将查找以下几个对象:</p>
+
 <ul>
 <li><code>App.PostRoute</code></li>
 <li><code>App.PostController</code></li>
 <li>the <code>post</code> template</li>
+<li><code>post</code>模板 </li>
 </ul>
 
 <p>Your route handler&#39;s <code>model</code> hook converts the dynamic <code>:post_id</code>
 parameter into a model. The <code>serialize</code> hook converts a model object
 back into the URL parameters for this route (for example, when 
 generating a link for a model object).</p>
+
+<p>路由处理程序的<code>model</code>钩子将把动态参数<code>:post_id</code>转换到模型中去。而<code>serialize</code>钩子将会为这个路由把一个模型对象转化回URL参数(例如，在为一个模型对象生成链接的情况下)。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -567,29 +619,43 @@ generating a link for a model object).</p>
 <p>Because this pattern is so common, it is the default for route
 handlers.</p>
 
+<p>由于这个模式太常见，现在它是默认的路由处理程序。</p>
+
 <ul>
-<li>If your dynamic segment ends in <code>_id</code>, the default <code>model</code>
+<li><p>If your dynamic segment ends in <code>_id</code>, the default <code>model</code>
 hook will convert the first part into a model class on the
 application&#39;s namespace (<code>post</code> becomes <code>App.Post</code>). It will
 then call <code>find</code> on that class with the value of the dynamic
-segment.</li>
-<li>The default <code>serialize</code> hook will pull replace the dynamic
-segment with the <code>id</code> property of the model object.</li>
+segment.</p></li>
+<li><p>如果你的动态字段以<code>_id</code>结束，默认的<code>model</code>钩子会将第一部分转化为在应用程序命名空间中的一个模型类(<code>post</code>变成<code>App.Post</code>).
+然后，钩子将在这个模型类中调用<code>find</code>函数，函数的参数即是动态字段的值。</p></li>
+<li><p>The default <code>serialize</code> hook will pull replace the dynamic
+segment with the <code>id</code> property of the model object.</p></li>
+<li><p>默认的<code>serialize</code>钩子将会使用模型对象的<code>id</code>属性代替动态字段。</p></li>
 </ul>
-<h2 class='anchorable-toc' id='toc_route-controller-and-template-defaults'>Route, Controller and Template Defaults</h2>
+<h2 class='anchorable-toc' id='toc_route-controller-and-template-defaults'>路由，控制器和默认模板 (Route, Controller and Template Defaults)</h2>
 <p>If you don&#39;t specify a route handler for the <code>post</code> route
 (<code>App.PostRoute</code>), Ember.js  will still render the <code>post</code> 
 template with the app&#39;s instance of <code>App.PostController</code>.</p>
+
+<p>如果你没有为<code>post</code>路由(<code>App.PostRoute</code>)指定一个路由处理程序，<code>Ember.js</code>仍然会使用<code>App.PostController</code>的一个实例来渲染<code>post</code>模板。</p>
 
 <p>If you don&#39;t specify the controller (<code>App.PostController</code>),
 Ember will automatically make one for you based on the return value
 of the route&#39;s <code>model</code> hook. If the model is an Array, you get an
 <code>ArrayController</code>. Otherwise, you get an <code>ObjectController</code>.</p>
 
+<p>如果你没有指定控制器(<code>App.PostController</code>)，<code>Ember</code>将会根据路由的<code>model</code>钩子的返回值自动创建一个。如果模型是一个数组，那么就会创建<code>ArrayController</code>。
+否则，将创建<code>ObjectController</code>。</p>
+
 <p>If you don&#39;t specify a <code>post</code> template, Ember.js won&#39;t render 
 anything!</p>
-<h2 class='anchorable-toc' id='toc_nesting'>Nesting</h2>
+
+<p>如果你没有指定一个<code>post</code>模板，那么，<code>Ember.js</code>什么也不会渲染。</p>
+<h2 class='anchorable-toc' id='toc_nesting'>嵌套 (Nesting)</h2>
 <p>You can nest routes under a <code>resource</code>.</p>
+
+<p>你可以在一个<code>resource</code>内嵌套路由。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -612,11 +678,18 @@ name. Even though the <code>post</code> resource is nested, its route is named
 <code>App.PostRoute</code>, its controller is named <code>App.PostController</code> and its
 template is <code>post</code>.</p>
 
+<p><strong>资源</strong>的名称与路由，控制器或模板的起始名称一致。即使<code>post</code>资源被嵌套了，它的路由的名称
+仍是<code>App.PostRoute</code>, 控制器名称是<code>App.PostController</code>,模板名称是<code>post</code>。</p>
+
 <p>When you nest a <strong>route</strong> inside a resource, the route name is added
 to the resource name, after a <code>.</code>.</p>
 
+<p>如果你在一个资源内嵌套了一个<strong>路由</strong>,此路由的名称将变为<code>资源名称.路由名称</code>。</p>
+
 <p>Here are the naming conventions for each of the routes defined in
 this router:</p>
+
+<p>下面定义了上面例子中各个路由的命名惯例：</p>
 
 <table>
   <thead>
@@ -651,11 +724,18 @@ this router:</p>
 adjectives (<code>favorites</code>) or verbs (<code>edit</code>). This ensures that 
 nesting does not create ridiculously long names, but avoids 
 collisions with common adjectives and verbs.</p>
-<h2 class='anchorable-toc' id='toc_the-index-route'>The Index Route</h2>
+
+<p>命名的经验就是：资源名称为名词,路由名称应为形容词(<code>favorites</code>)或动词(<code>edit</code>).
+这不仅确保了在嵌套的时候不会产生冗长的名称，而且可以避免常见形容词和动词之间的冲突。</p>
+<h2 class='anchorable-toc' id='toc_the-index-route'>索引路由 (The Index Route)</h2>
 <p>At every level of nesting (including the top level), Ember.js 
 automatically provides a route for the <code>/</code> path named <code>index</code>.</p>
 
+<p>在嵌套的每一个层次(包括最上层),<code>Ember.js</code>自动为<code>/</code>路径提供了一个名称为<code>index</code>的路由。</p>
+
 <p>For example, if you write a simple router like this:</p>
+
+<p>例如，假如你写了如下这样一个简单的路由：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -683,10 +763,13 @@ automatically provides a route for the <code>/</code> path named <code>index</co
 </div>
 <p>If the user visits <code>/</code>, Ember.js will look for these objects:</p>
 
+<p>如果你的用户访问<code>/</code>路径，<code>Ember.js</code>会首先查找以下几个对象：</p>
+
 <ul>
 <li><code>App.IndexRoute</code></li>
 <li><code>App.IndexController</code></li>
 <li>the <code>index</code> template</li>
+<li><code>index</code>模板 </li>
 </ul>
 
 <p>The <code>index</code> template will be rendered into the <code>{{outlet}}</code> in the 
@@ -694,7 +777,12 @@ automatically provides a route for the <code>/</code> path named <code>index</co
 Ember.js will replace the <code>index</code> template with the <code>favorites</code>
 template.</p>
 
+<p><code>index</code>模板将被渲染到<code>application</code>模板中的<code>{{outlet}}</code>中去。如果用户访问<code>/favorites</code>,
+<code>Ember.js</code>将用<code>favorites</code>模板取代<code>index</code>模板。</p>
+
 <p>A nested router like this:</p>
+
+<p>例如，下面这个嵌套的路由：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -711,6 +799,8 @@ template.</p>
 </tr></table>
 </div>
 <p>Is the equivalent of:</p>
+
+<p>等价于：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -733,19 +823,27 @@ template.</p>
 <p>If the user navigates to <code>/posts</code>, the current route will be
 <code>posts.index</code>. Ember.js will look for objects named:</p>
 
+<p>如果用户访问<code>/posts</code>，当前路由就是<code>posts.index</code>。<code>Ember.js</code>将查找以下几个对象：</p>
+
 <ul>
 <li><code>App.PostsIndexRoute</code></li>
 <li><code>App.PostsIndexController</code></li>
 <li>The <code>posts/index</code> template</li>
+<li><code>posts/index</code>模板 </li>
 </ul>
 
 <p>First, the <code>posts</code> template will be rendered into the <code>{{outlet}}</code> 
 in the <code>application</code> template. Then, the <code>posts/index</code> template
 will be rendered into the <code>{{outlet}}</code> in the <code>posts</code> template.</p>
 
+<p>首先，<code>posts</code>模板将被渲染到<code>application</code>模板中的<code>{{outlet}}</code>中去。然后，<code>posts/index</code>模板
+将被渲染到<code>posts</code>模板的<code>{{outlet}}</code>中去。</p>
+
 <p>If the user then navigates to <code>/posts/favorites</code>, Ember.js will
 replace the <code>{{outlet}}</code> in the <code>posts</code> template with the
 <code>posts/favorites</code> template.</p>
+
+<p>如果用户又访问了<code>/posts/favorites</code>，<code>Ember.js</code>会使用<code>posts/favorites</code>模板来替换<code>posts</code>模板中的<code>{{outlet}}</code>。</p>
 
     
       <footer>

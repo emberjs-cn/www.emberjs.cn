@@ -108,7 +108,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/concepts/naming-conventions">命名规范</a>
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -434,7 +434,54 @@ will call <code>controller.select( context.post )</code> when clicked:</p>
   <td class="code"><pre><span class="tag">&lt;p&gt;</span><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_target-bubbling'>Target Bubbling</h3>
+</div><h3 class='anchorable-toc' id='toc_specifying-the-type-of-event'>Specifying the Type of Event</h3>
+<p>By default, the <code>{{action}}</code> helper listens for click events and triggers
+the action when the user clicks on the element.</p>
+
+<p>You can specify an alternative event by using the <code>on</code> option.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;p&gt;</span>
+  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span> <span class="attribute-name">on</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mouseUp</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span>
+  {{post.title}}
+<span class="tag">&lt;/p&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>You should use the normalized event names <a href="/guides/understanding-ember/the-view-layer/#toc_adding-new-events">listed in the View guide</a>.
+In general, two-word event names (like <code>keypress</code>) become <code>keyPress</code>.</p>
+<h3 class='anchorable-toc' id='toc_stopping-event-propagation'>Stopping Event Propagation</h3>
+<p>By default, the <code>{{action}}</code> helper allows events it handles to bubble
+up to parent DOM nodes. If you want to stop propagation, you can disable
+propagation to the parent node.</p>
+
+<p>For example, if you have a <strong>✗</strong> button inside of a link, you will want
+to ensure that if the user clicks on the <strong>✗</strong>, that the link is not
+clicked.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>{{<span class="error">#</span>linkTo <span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>}}
+  Post
+  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">close</span> <span class="attribute-name">bubbles</span>=<span class="attribute-value">false</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>✗<span class="tag">&lt;/button&gt;</span>
+{{<span class="regexp"><span class="delimiter">/</span><span class="content">linkTo}}
+</span></span></pre></td>
+</tr></table>
+</div>
+<p>Without <code>bubbles=false</code>, if the user clicked on the button, Ember.js
+will trigger the action, and then the browser will propagate the click
+to the link.</p>
+
+<p>With <code>bubbles=false</code>, Ember.js will stop the browser from propagating
+the event.</p>
+<h3 class='anchorable-toc' id='toc_target-bubbling'>Target Bubbling</h3>
 <p>If the action is not found on the current controller, it will bubble up
 to the current route handler. From there, it will bubble up to parent
 route handlers until it reaches the application route.</p>

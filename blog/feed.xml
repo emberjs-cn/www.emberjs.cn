@@ -5,10 +5,112 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-03-06T00:00:00Z</updated>
+  <updated>2013-03-11T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>Ember.js准备发布RC2了</title>
+    <link rel="alternate" href="/blog/2013/03/11/ember-js-1-0-rc2.html"/>
+    <id>/blog/2013/03/11/ember-js-1-0-rc2.html</id>
+    <published>2013-03-11T00:00:00Z</published>
+    <updated>2013-03-11T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;大新闻，&lt;code&gt;Ember.js&lt;/code&gt;团队已经开始了发布RC2的相关工作。&lt;/p&gt;
+
+&lt;p&gt;今天看到@wycats在&lt;a href="https://github.com/emberjs/website"&gt;website&lt;/a&gt;上创建了一个rc2-release的分支，并且在一篇即将发布的文章中说已经开始了&lt;code&gt;Ember.js&lt;/code&gt; RC2发布的的相关工作。这说明了什么呢？这说明了我们离1.0正式版的发布又近了一步。这实在是一个不得不让人为之兴奋的消息。&lt;/p&gt;
+
+&lt;p&gt;如RC1发布时所声明的一样，之后发布的版本只会做一些问题修正和增强性改变，不会进行破坏性变更。那么我们看看RC2会给我们带来些什么呢？&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;大新闻，&lt;code&gt;Ember.js&lt;/code&gt;团队已经开始了发布RC2的相关工作。&lt;/p&gt;
+
+&lt;p&gt;今天看到@wycats在&lt;a href="https://github.com/emberjs/website"&gt;website&lt;/a&gt;上创建了一个rc2-release的分支，并且在一篇即将发布的文章中说已经开始了&lt;code&gt;Ember.js&lt;/code&gt; RC2发布的的相关工作。这说明了什么呢？这说明了我们离1.0正式版的发布又近了一步。这实在是一个不得不让人为之兴奋的消息。&lt;/p&gt;
+
+&lt;p&gt;如RC1发布时所声明的一样，之后发布的版本只会做一些问题修正和增强性改变，不会进行破坏性变更。那么我们看看RC2会给我们带来些什么呢？&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;按命名空间查找控制器&lt;/h3&gt;
+&lt;p&gt;在之前的版本中，我们只能从应用的主命名空间来查找控制器。在RC2中，我们可以从其他的命名空间来查找了。&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;render&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;posts&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;意味着使用&lt;code&gt;App.PostsController&lt;/code&gt;来渲染&lt;code&gt;posts&lt;/code&gt;模板。现在我们还可以使用其他命名空间下的控制器来进行渲染。例如：&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;render&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;blog&lt;/span&gt;&lt;span class="error"&gt;/&lt;/span&gt;&lt;span class="attribute-name"&gt;posts&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;这里会使用&lt;code&gt;Blog.PostsController&lt;/code&gt;来渲染&lt;code&gt;blog/posts&lt;/code&gt;模板。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;用多模型进行渲染&lt;/h3&gt;
+&lt;p&gt;在RC1中，使用&lt;code&gt;{{render &amp;#39;posts&amp;#39;}}&lt;/code&gt;表示利用&lt;code&gt;App.PostsController&lt;/code&gt;的实例来渲染&lt;code&gt;posts&lt;/code&gt;模板。这种方法总是使用同一个单例的控制器来渲染模板。&lt;/p&gt;
+
+&lt;p&gt;而在RC2中，可以使用一个特定的模型来渲染模板，例如&lt;code&gt;{{render &amp;#39;post&amp;#39; post}}&lt;/code&gt;。如果我们使用&lt;code&gt;render&lt;/code&gt;渲染模板的时候指定了一个模型，那么&lt;code&gt;Ember.js&lt;/code&gt;会每次创建一个新的&lt;code&gt;App.PostController&lt;/code&gt;实例，而不是使用同一个。这样我们就可以在循环中使用&lt;code&gt;{{render}}&lt;/code&gt;。&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt; &lt;span class="attribute-name"&gt;post&lt;/span&gt; &lt;span class="attribute-name"&gt;in&lt;/span&gt; &lt;span class="attribute-name"&gt;posts&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;render&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;post&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt; &lt;span class="attribute-name"&gt;post&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_code-objectcontroller-code'&gt;打开&lt;code&gt;ObjectController&lt;/code&gt;的模型&lt;/h3&gt;
+&lt;p&gt;将一个&lt;code&gt;ObjectController&lt;/code&gt;作为参数传递给&lt;code&gt;action&lt;/code&gt;和&lt;code&gt;linkTo&lt;/code&gt;时，&lt;code&gt;Ember.js&lt;/code&gt;现在支持将控制器的模型取出并传递给&lt;code&gt;action&lt;/code&gt;和&lt;code&gt;linkTo&lt;/code&gt;。最为重要的是，这使得我们可以在不影响控制器和路由的操作处理函数的同时，为&lt;code&gt;{{#each}}&lt;/code&gt;添加一个&lt;code&gt;itemController&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果我们有一个这样的模板：&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="comment"&gt;&amp;lt;!-- posts.handlebars --&amp;gt;&lt;/span&gt;
+
+&lt;span class="tag"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt; &lt;span class="attribute-name"&gt;controller&lt;/span&gt; &lt;span class="attribute-name"&gt;itemController&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;postItem&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;action&lt;/span&gt; &lt;span class="attribute-name"&gt;selectPost&lt;/span&gt; &lt;span class="attribute-name"&gt;this&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;name&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;那么我们的&lt;code&gt;App.PostsController&lt;/code&gt;应该是这样的：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;App.PostsController = Ember.ArrayController.extend({
+  &lt;span class="key"&gt;needs&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;currentPost&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
+
+  &lt;span class="function"&gt;selectPost&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;(post) {
+    &lt;span class="comment"&gt;// `post` here is an `App.Post`, not an&lt;/span&gt;
+    &lt;span class="comment"&gt;// `App.PostItemController`&lt;/span&gt;
+    &lt;span class="local-variable"&gt;this&lt;/span&gt;.set(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;controllers.currentPost.model&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, post);
+  }
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;这使得使用&lt;code&gt;itemController&lt;/code&gt;减少了问题的出现。&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Emberjs.cn域名正式启用</title>
     <link rel="alternate" href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html"/>
