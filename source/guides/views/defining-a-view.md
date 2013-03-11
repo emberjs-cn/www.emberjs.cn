@@ -37,7 +37,7 @@ Note: For the remainder of the guide, the `templateName` property will be omitte
 
 You can append views to the document by calling `appendTo`:
 
-你可以通过调用`appendTo`将视图追加文档中：
+你可以通过调用`appendTo`将视图追加到文档中：
 
 ```javascript
 view.appendTo('#container');
@@ -45,7 +45,7 @@ view.appendTo('#container');
 
 As a shorthand, you can append a view to the document body by calling `append`:
 
-做为简写，你可以通过调用`append`来将视图追加文档中：
+做为简写，你可以通过调用`append`来将视图追加到文档中：
 
 ```javascript
 view.append();
