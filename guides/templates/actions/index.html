@@ -148,7 +148,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/binding-element-class-names">Binding Element Class Names</a>
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
             </li>
           
             <li class="level-3">
@@ -387,9 +387,9 @@ and supports expanding the post with additional information.</p>
 
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">isExpanded</span><span class="inline-delimiter">}}</span></span>
   <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">contract</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Contract<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">contract</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Contract<span class="tag">&lt;/button&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
-  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">expand</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show More...<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">expand</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show More...<span class="tag">&lt;/button&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
@@ -454,6 +454,27 @@ the action when the user clicks on the element.</p>
 </div>
 <p>You should use the normalized event names <a href="/guides/understanding-ember/the-view-layer/#toc_adding-new-events">listed in the View guide</a>.
 In general, two-word event names (like <code>keypress</code>) become <code>keyPress</code>.</p>
+<h3 class='anchorable-toc' id='toc_specifying-whitelisted-modifier-keys'>Specifying Whitelisted Modifier Keys</h3>
+<p>By default the <code>{{action}}</code> helper will ignore click event with
+pressed modifier keys. You can supply an <code>allowed-keys</code> option
+to specify which keys should not be ignored.</p>
+<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">a-template</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;div </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">anActionName</span> <span class="attribute-name">allowed-keys</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">alt</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="error">&gt;</span>
+    click me
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>This way the <code>{{action}}</code> will fire when clicking with the alt key
+pressed down.</p>
 <h3 class='anchorable-toc' id='toc_stopping-event-propagation'>Stopping Event Propagation</h3>
 <p>By default, the <code>{{action}}</code> helper allows events it handles to bubble
 up to parent DOM nodes. If you want to stop propagation, you can disable
