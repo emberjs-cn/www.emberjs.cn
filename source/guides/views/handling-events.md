@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/views/handling-a-view/](http://emberjs.com/guides/views/handling-a-view/)
+
 ## 处理事件 (Handling Events)
 
 Instead of having to register event listeners on elements you'd like to

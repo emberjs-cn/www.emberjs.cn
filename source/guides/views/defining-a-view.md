@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/views/defining-a-view/](http://emberjs.com/guides/views/defining-a-view/)
+
 ## 定义视图 (Defining a View)
 
 You can use `Ember.View` to render a Handlebars template and insert it into the DOM.
