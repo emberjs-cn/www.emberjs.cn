@@ -356,10 +356,14 @@
 
   <div class="chapter">
     <h1>视图</h1>
-    <h2 class='anchorable-toc' id='toc_defining-a-view'>Defining a View</h2>
+    <h2 class='anchorable-toc' id='toc_defining-a-view'>定义视图 (Defining a View)</h2>
 <p>You can use <code>Ember.View</code> to render a Handlebars template and insert it into the DOM.</p>
 
+<p>你可以使用<code>Ember.View</code>来渲染一个<code>Handlebars</code>模板并将它插入到<code>DOM</code>中。</p>
+
 <p>To tell the view which template to use, set its <code>templateName</code> property. For example, if I had a <code>&lt;script&gt;</code> tag like this:</p>
+
+<p>为了告诉视图要用哪个模板，可以设置它的<code>temaplateName</code>属性。例如，如果我有一个像这样的<code>&lt;script&gt;</code>标签:</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -380,6 +384,8 @@
 </tr></table>
 </div>
 <p>I would set the <code>templateName</code> property to <code>&quot;say-hello&quot;</code>.</p>
+
+<p>我会将<code>templateName</code>属性设置成<code>&quot;say-hello&quot;</code>。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -395,7 +401,11 @@
 </div>
 <p>Note: For the remainder of the guide, the <code>templateName</code> property will be omitted from most examples. You can assume that if we show a code sample that includes an Ember.View and a Handlebars template, the view has been configured to display that template via the <code>templateName</code> property.</p>
 
+<p>注意：本指南其余部分，大多数例子中的<code>templateName</code>属性将会被省略。你可以假定当我们展示包含<code>Ember.View</code>和<code>Handlebars</code>模板的代码例子时，视图已经通过配置<code>templateName</code>属性来显示指定的模板了。</p>
+
 <p>You can append views to the document by calling <code>appendTo</code>:</p>
+
+<p>你可以通过调用<code>appendTo</code>将视图追加到文档中：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -404,6 +414,8 @@
 </tr></table>
 </div>
 <p>As a shorthand, you can append a view to the document body by calling <code>append</code>:</p>
+
+<p>做为简写，你可以通过调用<code>append</code>来将视图追加到文档中：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -412,6 +424,8 @@
 </tr></table>
 </div>
 <p>To remove a view from the document, call <code>remove</code>:</p>
+
+<p>调用<code>remove</code>即可从文档中删除视图：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
