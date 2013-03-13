@@ -18,9 +18,9 @@ and supports expanding the post with additional information.
 
 {{#if isExpanded}}
   <div class='body'>{{body}}</div>
-  <button {{action "contract"}}>Contract</button>
+  <button {{action contract}}>Contract</button>
 {{else}}
-  <button {{action "expand"}}>Show More...</button>
+  <button {{action expand}}>Show More...</button>
 {{/if}}
 ```
 
@@ -68,6 +68,23 @@ You should use the normalized event names [listed in the View guide][1].
 In general, two-word event names (like `keypress`) become `keyPress`.
 
 [1]: /guides/understanding-ember/the-view-layer/#toc_adding-new-events
+
+### Specifying Whitelisted Modifier Keys
+
+By default the `{{action}}` helper will ignore click event with
+pressed modifier keys. You can supply an `allowed-keys` option
+to specify which keys should not be ignored.
+
+```handlebars
+<script type="text/x-handlebars" data-template-name='a-template'>
+  <div {{action anActionName allowed-keys="alt"}}>
+    click me
+  </div>
+</script>
+```
+
+This way the `{{action}}` will fire when clicking with the alt key
+pressed down.
 
 ### Stopping Event Propagation
 

@@ -234,7 +234,7 @@ handlers.
 * 如果你的动态字段以`_id`结束，默认的`model`钩子会将第一部分转化为在应用程序命名空间中的一个模型类(`post`变成`App.Post`).
   然后，钩子将在这个模型类中调用`find`函数，函数的参数即是动态字段的值。
 
-* The default `serialize` hook will pull replace the dynamic
+* The default `serialize` hook will pull the dynamic
   segment with the `id` property of the model object.
 
 * 默认的`serialize`钩子将会使用模型对象的`id`属性代替动态字段。
