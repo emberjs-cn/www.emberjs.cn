@@ -44,8 +44,8 @@
   - title: "Writing Helpers"
     url: "templates/writing-helpers"
 
-Routing:
-  - title: "Introduction"
+路由:
+  - title: "介绍"
     url: "routing"
   - title: "Defining Your Routes"
     url: "routing/defining-your-routes"
