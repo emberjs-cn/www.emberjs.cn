@@ -44,8 +44,8 @@
   - title: "Writing Helpers"
     url: "templates/writing-helpers"
 
-Routing:
-  - title: "Introduction"
+路由:
+  - title: "介绍"
     url: "routing"
   - title: "Defining Your Routes"
     url: "routing/defining-your-routes"
@@ -101,9 +101,9 @@ Models:
 视图:
   - title: "介绍"
     url: "views"
-  - title: "Defining a View"
+  - title: "定义视图"
     url: "views/defining-a-view"
-  - title: "Handling Events"
+  - title: "处理事件"
     url: "views/handling-events"
   - title: "Inserting Views in Templates"
     url: "views/inserting-views-in-templates"
