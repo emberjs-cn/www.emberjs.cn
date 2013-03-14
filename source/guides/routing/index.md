@@ -6,7 +6,7 @@ As users interact with your application, it moves through many
 different states. Ember.js gives you helpful tools for managing
 that state in a way that scales with your application.
 
-用户在使用你的应用时会产生许多不同的状态。
+当用户使用你的应用时, 应用可能要在不同的状态之间进行切换。
 Ember.js为你提供了许多帮助工具用于管理那些随着应用规模变化而变化的状态
 
 To understand why this is important, imagine we are writing a web app
@@ -17,7 +17,7 @@ they editing the current post?_
 
 为了说明它的重要性，设想一下我们在编写一个管理博客的web应用。
 在任何时刻，我们都应该能回答类似这样的问题：
-当前的访问者已经登陆了吗？他是管理员吗？他在看哪一篇文章？他在修改当前文章吗？设置页面现在是可以访问的吗？
+_当前的访问者已经登陆了吗？他是管理员吗？他在看哪一篇文章？开放了设置页面了吗？他在修改当前文章吗？_
 
 In Ember.js, each of the possible states in your application is
 represented by a URL. Because all of the questions we asked above—
@@ -25,7 +25,7 @@ _Are we logged in?  What post are we looking at?_ —are encapsulated by
 route handlers for the URLs, answering them is both simple and accurate.
 
 在Ember.js内，应用中的每一个可能的状态都会映射到一个URL上。通过将URL封装到路由处理器（route
-handlers）中, 我们可以简单而清晰地回答上面所问的问题：登陆了吗？在看哪篇文章？
+handlers）中, 我们可以简单而清晰地回答上面所问的问题：_登陆了吗？在看哪篇文章？_
 
 At any given time, your application has one or more _active route
 handlers_. The active handlers can change for one of two reasons:
