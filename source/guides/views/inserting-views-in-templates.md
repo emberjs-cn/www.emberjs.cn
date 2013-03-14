@@ -1,8 +1,10 @@
+英文原文：[http://emberjs.com/guides/views/inserting-views-in-templates/](http://emberjs.com/guides/views/inserting-views-in-templates/)
+
 ## 在模版中插入视图 (Inserting Views in Templates)
 
 So far, we've discussed writing templates for a single view. However, as your application grows, you will often want to create a hierarchy of views to encapsulate different areas on the page. Each view is responsible for handling events and maintaining the properties needed to display it.
 
-到目前为止，我们已经讨论了为一个单独的视图写模板。然而，随着应用开发深入，你将经常需要创建一个层次结构的视图来封装在页面上不同的区域。每个视图负责处理事件和维护需要显示的属性。
+到目前为止，我们已经讨论了如何为单独的视图编写模板。然而，随着应用开发的深入，为了封装页面上的不同区域，你可能会经常需要创建一个层次化的视图结构。每个视图负责处理事件和维护需要显示的属性。
 
 ### `{{view}}`
 
@@ -44,7 +46,7 @@ User: {{view.firstName}} {{view.lastName}}
 If we were to create an instance of `App.UserView` and render it, we would get
 a DOM representation like this:
 
-如果我们想要创建一个`App.UserView`的实例并渲染它，我们会得到如下的`DOM`表示方法：
+如果我们想要创建一个`App.UserView`的实例并渲染它，我们就会得到如下的`DOM`:
 
 ```html
 User: Albert Hofmann
@@ -61,7 +63,7 @@ Instead of specifying an absolute path, you can also specify which view class
 to use relative to the parent view. For example, we could nest the above view
 hierarchy like this:
 
-你可以声明哪个视图类使用相对的父视图而不是声明一个绝对路径。例如，我们可以像这样嵌套上面的视图层次结构：
+你可以使用一个子视图与其父视图之间的相对路径，而不使用绝对路径。例如，我们可以像这样嵌套上面的视图层次结构：
 
 ```javascript
 App.UserView = Ember.View.extend({
@@ -88,7 +90,7 @@ When nesting a view class like this, make sure to use a lowercase
 letter, as Ember will interpret a property with a capital letter as a
 global property.
 
-当以这种形式组织视图类时，要确保使用小写字母，因为`Ember`会把以大写字母开头的属性解释为全局属性。
+当以这种形式组织视图类时，要确保属性名称首字母小写，因为`Ember`会把以大写字母开头的属性解释为全局属性。
 
 ### 设置子视图模板 (Setting Child View Templates)
 
@@ -125,4 +127,4 @@ When you do this, it may be helpful to think of it as assigning views to
 portions of the page. This allows you to encapsulate event handling for just
 that part of the page.
 
-当你这么做的时候，把它想象成将视图应用到页面上的一部分的会更容易理解。这可以允许你只为页面中的那一部分封装事件处理器。
+当你这么做的时候，把它想象成视图对应着页面上的一部分，这样会更容易理解。同时，这允许你对这一部分页面的事件处理逻辑进行封装。
