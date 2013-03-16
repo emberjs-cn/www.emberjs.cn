@@ -32,10 +32,10 @@ Having an application object is important for several reasons:
    它会帮你监听网页的事件，同时负责发送事件到你的视图。
 
 3. It automatically renders the [_application
-   template_](application/the-application-template), the root-most
+   template_](/guides/application/the-application-template), the root-most
    template, into which your other templates will be rendered.
 
-   它会自动帮你渲染[_应用模版_](application/the-application-template)模版，应用模版是根模版，你其他的模版都会被渲染到该模版中去。
+   它会自动帮你渲染[_应用模版_](/guides/application/the-application-template)模版，应用模版是根模版，你其他的模版都会被渲染到该模版中去。
 
 4. It automatically creates a router and begins routing, based on the
    current URL.

@@ -43,9 +43,9 @@ If your app provides an `App.ApplicationRoute`, Ember.js will invoke
 [2]: /guides/routing/setting-up-a-controller
 [3]: /guides/routing/rendering-a-template
 
-Here's a simple example that uses a route, controller, and model:
+Here's a simple example that uses a route, controller, and template:
 
-下面这个例子中同时包含了路由，控制器和模型:
+下面这个例子中同时包含了路由，控制器和模板:
 
 ```javascript
 App.ApplicationRoute = Ember.Route.extend({
