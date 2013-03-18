@@ -114,7 +114,7 @@ user navigates around the page.
 
 For convenience, Ember.js provides controllers that _proxy_ 
 properties from their models so that you can say `{{name}}` in your
-template rather than `{{model.name}}. An `Ember.ArrayController` 
+template rather than `{{model.name}}`. An `Ember.ArrayController` 
 proxies properties from an Array, and an `Ember.ObjectController` 
 proxies properties from an obect.
 
@@ -137,7 +137,7 @@ application` template to that  property.
 ```handlebars
 <!-- application.handlebars -->
 <header>
-  {{#view Ember.TextField valueBinding="search" action="query"}}
+  {{view Ember.TextField valueBinding="search" action="query"}}
 </header>
 
 {{outlet}}
@@ -151,7 +151,7 @@ App.ApplicationController = Ember.Controller.extend({
   query: function() {
     // the current value of the text field
     var query = this.get('search');
-    this.transitionTo('search', { query: query });
+    this.transitionToRoute('search', { query: query });
   }
 });
 ```

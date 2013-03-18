@@ -2,7 +2,7 @@
 
 ## 显示项目列表(Displaying a List of Items)
 
-If you need to enumerate over a list of objects, use Handlebar's `{{#each}}` helper:
+If you need to enumerate over a list of objects, use Handlebars' `{{#each}}` helper:
 
 如果你需要枚举一个对象列表，可以使用`Handlebar`的`{{#each}}`助手:
 

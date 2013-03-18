@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/routing/]
+英文原文：[http://emberjs.com/guides/routing/](http://emberjs.com/guides/routing/)
 
 ## 路由 (Routing)
 
