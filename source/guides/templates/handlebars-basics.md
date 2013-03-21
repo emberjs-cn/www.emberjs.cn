@@ -21,6 +21,12 @@ write any additional code to make sure it keeps up-to-date.
 我们采用了`Handlebars`,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可以认为`Handlebars`模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用`Ember.js`在屏幕上渲染一个
 模板,开发人员就不需要编写额外的代码来确保其更新。
 
+If you'd prefer an indentation-based alternative to Handlebars syntax, 
+try [Emblem.js](http://www.emblemjs.com), but make sure you're comfortable
+with Handlebars first!
+
+在熟悉了`Handlebars`之后，如果相对`Handlebars`语法而言，你更加习惯基于缩进的写法，那么可以试试使用[Emblem.js](http://www.emblemjs.com)。
+
 ### 定义模板(Defining Templates)
 
 If you're not using build tools, you can define your application's main
