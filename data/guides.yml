@@ -47,7 +47,7 @@
 路由:
   - title: "介绍"
     url: "routing"
-  - title: "Defining Your Routes"
+  - title: "定义你的路由"
     url: "routing/defining-your-routes"
   - title: "Generated Objects"
     url: "routing/generated-objects"
