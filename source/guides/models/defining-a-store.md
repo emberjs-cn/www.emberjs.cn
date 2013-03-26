@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/models/defining-a-store/](http://emberjs.com/guides/models/defining-a-store/)
+
 ## 创建一个存储器（Defining a Store）
 
 Every application using Ember Data has a store. The store is the

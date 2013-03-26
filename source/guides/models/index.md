@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/models/](http://emberjs.com/guides/models/)
+
 ## 模型（Models）
 
 In most Ember.js apps, models are handled by [Ember Data][1]. Ember Data
