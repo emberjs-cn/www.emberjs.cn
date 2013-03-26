@@ -9,6 +9,7 @@
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -371,7 +372,7 @@
 4
 </pre></td>
   <td class="code"><pre>Ember.Handlebars.registerBoundHelper(<span class="string"><span class="delimiter">'</span><span class="content">highlight</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(value, options) {
-  escaped = Handlebars.Utils.escapeExpression(value);
+  <span class="keyword">var</span> escaped = Handlebars.Utils.escapeExpression(value);
   <span class="keyword">return</span> <span class="keyword">new</span> Handlebars.SafeString(<span class="string"><span class="delimiter">'</span><span class="content">&lt;span class=&quot;highlight&quot;&gt;</span><span class="delimiter">'</span></span> + escaped + <span class="string"><span class="delimiter">'</span><span class="content">&lt;/span&gt;</span><span class="delimiter">'</span></span>);
 });
 </pre></td>

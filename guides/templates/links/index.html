@@ -9,6 +9,7 @@
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -412,7 +413,7 @@ rendered HTML would look something like this:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>When the rendered link matches the current route, then the link is given <code>class=&quot;active&quot;</code>.</p>
+<p>When the rendered link matches the current route, and the same object instance is passed into the helper, then the link is given <code>class=&quot;active&quot;</code>.</p>
 
 <p>The <code>{{linkTo}}</code> helper takes:</p>
 
