@@ -80,14 +80,14 @@ Controllers:
   - title: "Managing Dependencies Between Controllers"
     url: "controllers/dependencies-between-controllers"
 
-Models:
-  - title: "Introduction"
+模型:
+  - title: "介绍"
     url: "models"
-  - title: "Defining a Store"
+  - title: "创建一个存储器"
     url: "models/defining-a-store"
-  - title: "Defining Models"
+  - title: "定义模型"
     url: "models/defining-models"
-  - title: "Finding Models"
+  - title: "查找模型"
     url: "models/finding-models"
   - title: "Modifying Attributes"
     url: "models/modifying-attributes"
@@ -154,4 +154,3 @@ Understanding Ember.js:
 #Understanding Ember Data:
   #- title: "Record Lifecycle"
     #url: "understanding-ember-data/record-lifecycle"
-
