@@ -1,6 +1,7 @@
 ---
 title: Emberjs.cn域名正式启用
 tags: 最近文章,杂谈
+author: Tower He
 ---
 
 经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始[http://emberjs.cn](http://emberjs.cn)域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。

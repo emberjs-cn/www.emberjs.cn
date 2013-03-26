@@ -1035,6 +1035,11 @@ ol {
 **/
 .blog {
 
+  h5.blog-post-summary-author {
+    font-size: 10px;
+    color: gray;
+  }
+
   article {
     margin: 0 0 3em 0;
     padding: 0 0 3em 0;
@@ -1045,6 +1050,14 @@ ol {
 
     &:last-child {
       border-bottom: none;
+    }
+
+    .blog-post-author { 
+      font-size: 10px;
+      color: gray;
+      position: absolute;
+      top: 59px;
+      margin-left: 45px;
     }
 
     figure {

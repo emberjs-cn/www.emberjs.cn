@@ -1,6 +1,7 @@
 ---
 title: 为什么Discourse选择Ember.JS
 tags: 最近文章
+author: Tower He
 ---
 
 Discourse的推出在整个社区赚足了眼球，由于Discourse选择使用Ember.JS作为前端MVC框架，这促使Ember.JS也成为了热议的话题。一年多以前SproutCore2正式改名为Ember.JS后，本人持续的关注了Ember.JS的开发过程，见证这Ember.JS的成长。Ember.JS的API在整个社区共同协作的基础上日趋稳定，Ember.JS 1.0.rc1的推出，更是标着其API已经成熟。我相信越来越多基于Ember.JS实现的优秀的应用，将会像雨后春笋般涌现出来。

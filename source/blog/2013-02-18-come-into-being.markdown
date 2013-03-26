@@ -1,6 +1,7 @@
 ---
 title: EmberJS.CN之诞生
 tags: 最近文章
+author: Tower He
 ---
 
 [Ember JS](http://emberjs.com) RC

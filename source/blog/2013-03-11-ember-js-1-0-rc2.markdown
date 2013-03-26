@@ -1,6 +1,7 @@
 ---
 title: Ember.js准备发布RC2了
 tags: 最近文章
+author: Tower He
 ---
 
 大新闻，`Ember.js`团队已经开始了发布RC2的相关工作。
