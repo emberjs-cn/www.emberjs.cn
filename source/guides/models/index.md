@@ -38,6 +38,3 @@ as part of the standard distribution, you can get your copy from the
 但是本节中提到的 API 已经趋于稳定。直到 Ember Data 作为标准配置的一部分，你可以从[GitHub page][1]获取它的副本。
 
 [1]: https://github.com/emberjs/data
-
-
-

@@ -83,7 +83,7 @@ Controllers:
 模型:
   - title: "介绍"
     url: "models"
-  - title: "Defining a Store"
+  - title: "创建一个存储器"
     url: "models/defining-a-store"
   - title: "Defining Models"
     url: "models/defining-models"
