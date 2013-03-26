@@ -80,8 +80,8 @@ Controllers:
   - title: "Managing Dependencies Between Controllers"
     url: "controllers/dependencies-between-controllers"
 
-Models:
-  - title: "Introduction"
+模型:
+  - title: "介绍"
     url: "models"
   - title: "Defining a Store"
     url: "models/defining-a-store"
