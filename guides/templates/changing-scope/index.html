@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 模版</title>
+    <title>Ember.js - 模板</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -121,11 +121,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/application/the-application-template">应用模版</a>
+              <a href="/guides/application/the-application-template">应用模板</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/templates/handlebars-basics">模版</a>
+            <a href="/guides/templates/handlebars-basics">模板</a>
             <ol class='selected'>
         
             <li class="level-3">
@@ -360,15 +360,10 @@
           
 
   <div class="chapter">
-    <h1>模版</h1>
+    <h1>模板</h1>
     <p>英文原文:<a href="http://emberjs.com/guides/templates/changing-scope/">http://emberjs.com/guides/templates/changing-scope/</a></p>
-<h2 class='anchorable-toc' id='toc_changing-scope'>切换作用域(Changing Scope)</h2>
-<p>Sometimes you may want to invoke a section of your template with a
-different context.</p>
-
+<h2 class='anchorable-toc' id='toc_'>切换作用域</h2>
 <p>有些时候，你可能希望在模版中的一个特定部分使用不同的上下文：</p>
-
-<p>For example, instead of repeating a long path, like in this example:</p>
 
 <p>例如，通过切换上下文，我们可以不需重复的指定属性的上下文路径，如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
@@ -378,8 +373,6 @@ different context.</p>
 </pre></td>
 </tr></table>
 </div>
-<p>We can use the <code>{{#with}}</code> helper to clean it up:</p>
-
 <p>我们可以使用<code>{{#with}}</code>助手来简化它，如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -392,11 +385,6 @@ different context.</p>
 </pre></td>
 </tr></table>
 </div>
-<p><code>{{#with}}</code> changes the <em>context</em> of the block you pass to it. The
-context, by default, is the template&#39;s controller. By using the <code>{{#with}}</code>
-helper, you can change the context of all of the Handlebars expressions
-contained inside the block.</p>
-
 <p><code>{{#with}}</code>切换了区块内的属性的 <em>上下文</em>。默认情况下，一个模板的上下文是其对应的控制器。
 通过使用<code>{{#with}}</code>助手，你可以切换在这个区块内的所有<code>Handlebars</code>表达式的上下文。</p>
 

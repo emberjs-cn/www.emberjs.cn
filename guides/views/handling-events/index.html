@@ -121,11 +121,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/application/the-application-template">应用模版</a>
+              <a href="/guides/application/the-application-template">应用模板</a>
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/templates/handlebars-basics">模版</a>
+            <a href="/guides/templates/handlebars-basics">模板</a>
             <ol>
         
             <li class="level-3">
@@ -362,14 +362,8 @@
   <div class="chapter">
     <h1>视图</h1>
     <p>英文原文：<a href="http://emberjs.com/guides/views/handling-a-view/">http://emberjs.com/guides/views/handling-a-view/</a></p>
-<h2 class='anchorable-toc' id='toc_handling-events'>处理事件 (Handling Events)</h2>
-<p>Instead of having to register event listeners on elements you&#39;d like to
-respond to, simply implement the name of the event you want to respond to
-as a method on your view.</p>
-
+<h2 class='anchorable-toc' id='toc_'>处理事件</h2>
 <p>你只需简单地将想要响应事件的名字作为你的视图的方法名实现即可，而不必为响应的每个元素上注册事件监听器。</p>
-
-<p>For example, imagine we have a template like this:</p>
 
 <p>例如，假设我们有这样一个模板：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
@@ -383,9 +377,6 @@ This is a clickable area!
 </pre></td>
 </tr></table>
 </div>
-<p>Let&#39;s implement <code>App.ClickableView</code> such that when it is
-clicked, an alert is displayed:</p>
-
 <p>我们这样实现<code>App.ClickableView</code>使之每当被点击，会显示一个警告框：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -402,16 +393,8 @@ clicked, an alert is displayed:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>Events bubble up from the target view to each parent view in
-succession, until the root view. These values are read-only. If you want to manually manage views in JavaScript (instead of creating them
-using the {{view}} helper in Handlebars), see the <code>Ember.ContainerView</code>
-documentation below.</p>
-
 <p>事件从目标视图向父级视图逐层地冒泡直至根视图。这些值是只读的。如果你想用<code>JavaScript</code>手动管理视图（而不是通过使用<code>Handlebars</code>的<code>{{view}}</code>助手来创建它们），请查看下文<code>Ember.ContainerView</code>的说明文档。</p>
-<h3 class='anchorable-toc' id='toc_sending-events'>发送事件(Sending Events)</h3>
-<p>To have the click event from <code>App.ClickableView</code> affect the state of
-your application, simply send an event to the view&#39;s controller:</p>
-
+<h3 class='anchorable-toc' id='toc_'>发送事件</h3>
 <p>为了让产生自<code>App.ClickableView</code>的事件对你的应用起到作用，很简单，向视图的控制器发送一个事件：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -428,8 +411,6 @@ your application, simply send an event to the view&#39;s controller:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>If the controller has a method called <code>turnItUp</code>, it will be called:</p>
-
 <p>如果控制器有一个叫<code>turnInUp</code>的方法，它将会被调用：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -446,8 +427,6 @@ your application, simply send an event to the view&#39;s controller:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>If it doesn&#39;t, the message will be passed to the current route:</p>
-
 <p>如果没有，这条信息将会传到当前路由：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1

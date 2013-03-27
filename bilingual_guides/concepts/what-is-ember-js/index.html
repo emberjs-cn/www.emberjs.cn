@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 概念</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_concepts bilingual_guides_concepts_what-is-ember-js bilingual_guides_concepts_what-is-ember-js_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">Links</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">Actions</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义你的路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">Generated Objects</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">Setting Up a Controller</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">Controllers</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">Representing a Single Model with ObjectController</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">Models</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-a-store">Defining a Store</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">Defining Models</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-models">Finding Models</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layerouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">The Object Model</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>概念</h1>
+    <h2 class='anchorable-toc' id='toc_what-is-ember-js'>What is Ember.js?</h2>
+<p>Ember.js is a JavaScript framework for creating ambitious web
+applications. It helps you:</p>
+
+<ol>
+<li>Write less code with templates that automatically update.</li>
+<li>Retrieve models, with rich relationships, from your server.</li>
+<li>Conventional app structure helps your app grow without messy code.</li>
+</ol>
+<h3 class='anchorable-toc' id='toc_enhancing-javascript'>Enhancing JavaScript</h3><h3 class='anchorable-toc' id='toc_eliminating-boilerplate'>Eliminating Boilerplate</h3>
+<p>There are some things that every web app developer has to do. For
+example, everyone has written code that loads data from a server,
+renders it to the screen, then updates if it changes.</p>
+
+<p>Since the tools provided to do this by the browser are quite primitive,
+you end up writing the same code over and over. Ember.js provides tools
+that let you focus on your app instead of writing the same code you&#39;ve
+written a hundred times.</p>
+
+<p>Because we&#39;ve built many applications ourselves, we&#39;ve extracted
+patterns that go beyond low-level event-driven abstractions. We&#39;ve
+eliminated much of the boilerplate associated with propagating changes
+throughout your application, and especially into the DOM itself.</p>
+
+<p>For example, to help manage changes in the view, Ember.js comes with a
+templating engine that will automatically update the DOM when the
+object it is bound to changes.</p>
+
+<p>For a simple example, consider this template:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">with</span> <span class="attribute-name">person</span><span class="inline-delimiter">}}</span></span>
+  User <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">name</span><span class="inline-delimiter">}}</span></span> is <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">age</span><span class="inline-delimiter">}}</span></span> years old.
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div>
+<p>As with any templating system, when the template is initially rendered,
+it will reflect the current state of the person.  In Ember.js, though,
+we also update the DOM automatically for you if the person&#39;s name or age
+changes—no re-render or update code needed. Just specify your template
+once, and Ember makes sure it stays up-to-date.</p>
+
+<p>Templates are just one example. As you read through these guides, you&#39;ll
+see how Ember.js allows you to forget about stuff that you&#39;d have to
+handle manually in other frameworks—from data persistence to memory
+management.</p>
+<h3 class='anchorable-toc' id='toc_application-architecture'>Application Architecture</h3>
+<p>Since web applications evolved from web pages, which were nothing more
+than static documents, the primitive APIs supplied by the browser give
+you just enough rope to hang yourself with.</p>
+
+<p>Ember.js helps you build your app with a clear separation of concerns in
+mind, leading to code that is more modular, more testable, and more
+consistent.</p>
+
+<p>We also supply built-in support for state management, so you&#39;ll have
+a way to describe how your application moves through various nested states
+(like signed-out, signed-in, viewing-post, and viewing-comment) out of the box.</p>
+<h3 class='anchorable-toc' id='toc_ember-js-at-a-glance'>Ember.js at a Glance</h3>
+<p>These are the three features that make Ember a joy to use:</p>
+
+<ol>
+<li>Bindings</li>
+<li>Computed properties</li>
+<li>Auto-updating templates</li>
+</ol>
+<h4 class='anchorable-toc' id='toc_bindings'>Bindings</h4>
+<p>Use bindings to keep properties between two different objects in sync. You just
+declare a binding once, and Ember will make sure changes get propagated in either
+direction.</p>
+
+<p>Here&#39;s how you create a binding between two objects:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>MyApp.president = Ember.Object.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Barack Obama</span><span class="delimiter">&quot;</span></span>
+});
+
+MyApp.country = Ember.Object.create({
+  <span class="comment">// Ending a property with 'Binding' tells Ember to</span>
+  <span class="comment">// create a binding to the presidentName property.</span>
+  <span class="key">presidentNameBinding</span>: <span class="string"><span class="delimiter">'</span><span class="content">MyApp.president.name</span><span class="delimiter">'</span></span>
+});
+
+<span class="comment">// Later, after Ember has resolved bindings...</span>
+MyApp.country.get(<span class="string"><span class="delimiter">'</span><span class="content">presidentName</span><span class="delimiter">'</span></span>);
+<span class="comment">// &quot;Barack Obama&quot;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>Bindings allow you to architect your application using the MVC (Model-View-Controller)
+pattern, then rest easy knowing that data will always flow correctly from layer to layer.</p>
+<h4 class='anchorable-toc' id='toc_computed-properties'>Computed Properties</h4>
+<p>Computed properties allow you to treat a function like a property:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>MyApp.president = Ember.Object.create({
+  <span class="key">firstName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Barack</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">lastName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Obama</span><span class="delimiter">&quot;</span></span>,
+
+  <span class="function">fullName</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
+
+  <span class="comment">// Call this flag to mark the function as a property</span>
+  }.property()
+});
+
+MyApp.president.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>);
+<span class="comment">// &quot;Barack Obama&quot;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>Computed properties are useful because they can work with bindings, just
+like any other property.</p>
+
+<p>Many computed properties have dependencies on other properties. For example, in the above
+example, the <code>fullName</code> property depends on <code>firstName</code> and <code>lastName</code> to determine its value.
+You can tell Ember about these dependencies like this:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>MyApp.president = Ember.Object.create({
+  <span class="key">firstName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Barack</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">lastName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Obama</span><span class="delimiter">&quot;</span></span>,
+
+  <span class="function">fullName</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
+
+  <span class="comment">// Tell Ember that this computed property depends on firstName</span>
+  <span class="comment">// and lastName</span>
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Make sure you list these dependencies so Ember knows when to update bindings that connect
+to a computed property.</p>
+<h4 class='anchorable-toc' id='toc_auto-updating-templates'>Auto-updating Templates</h4>
+<p>Ember uses Handlebars, a semantic templating library. To take data from your JavaScript application
+and put it into the DOM, create a <code>&lt;script&gt;</code> tag and put it into your HTML, wherever you&#39;d like the
+value to appear:</p>
+<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">  The President of the United States is {{MyApp.president.fullName}}.</span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>Here&#39;s the best part: templates are bindings-aware. That means that if you ever change the value of
+the property that you told us to display, we&#39;ll update it for you automatically. And because you&#39;ve
+specified dependencies, changes to <em>those</em> properties are reflected as well.</p>
+
+<p>Hopefully you can see how all three of these powerful tools work together: start with some primitive
+properties, then start building up more sophisticated properties and their dependencies using computed
+properties. Once you&#39;ve described the data, you only have to say how it gets displayed once, and Ember
+takes care of the rest. It doesn&#39;t matter how the underlying data changes, whether from an XHR request
+or the user performing an action; your user interface always stays up-to-date. This eliminates entire
+categories of edge cases that developers struggle with every day.</p>
+<h3 class='anchorable-toc' id='toc_differences-from-server-side-mvc'>Differences from Server-Side MVC</h3>
+<p>A common misconception about Ember.js&#39;s MVC implementation is that it must be similar to that of Ruby on Rails. This is incorrect. </p>
+
+<p>The reason for this difference is due to Ruby on Rails being a server-side framework, whereas Ember is a client-side framework.[1]</p>
+
+<p>Ember runs in the browser, so it can detect and respond to browser events such as mouse clicks, finger taps, scrolling, key presses, etc. The view objects that receive these events can then send them to controller objects, which can work with the data model to save changes. Everything happens client-side, in the browser, and ember-data takes care of sending and receiving appropriate data to and from the server API.</p>
+
+<figure>
+  <img alt="Ember.js MVC Diagram" src="/images/ember_mvc/embermvc.png">
+</figure>
+
+<p>Rails, on the other hand, runs on the server. As such, it can only communicate with the client through HTTP requests. Rather than receive direct user events, the server takes HTTP requests as input (GET /, POST /user/1, etc.), reads the route and maps it to a controller action. The controller then interacts with the model and the view templates to construct a response (usually in the form of an HTML document) to send back over HTTP. The user is always interacting with what is basically a flat page, assembled on demand for them based on their requests.</p>
+
+<figure>
+  <img alt="Rails MVC Diagram" src="/images/ember_mvc/railsmvc.png">
+</figure>
+
+<p>It is important to keep this difference in mind when architecting your applications. </p>
+
+<p>[1] Although it is possible to use Ember.js on the server side, that is beyond the scope of this guide.</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/index.html">
+             ← Ember.js 指南: Ember.js 指南
+          </a>
+         
+          <a class="next-guide" href="/bilingual_guides/application">
+             概念结束 下一章: 应用 - 介绍 →
+          </a>
+        
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -121,11 +121,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/application/the-application-template">应用模版</a>
+              <a href="/guides/application/the-application-template">应用模板</a>
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/templates/handlebars-basics">模版</a>
+            <a href="/guides/templates/handlebars-basics">模板</a>
             <ol>
         
             <li class="level-3">
@@ -362,10 +362,7 @@
   <div class="chapter">
     <h1>应用</h1>
     <p>英文原文：<a href="http://emberjs.com/guides/application/">http://emberjs.com/guides/application/</a></p>
-<h2 class='anchorable-toc' id='toc_creating-an-application'>创建一个应用（Creating an Application）</h2>
-<p>The first step in creating an Ember.js application is to make an
-instance of <code>Ember.Application</code>:</p>
-
+<h2 class='anchorable-toc' id='toc_'>创建一个应用</h2>
 <p>要创建一个 Ember.js 应用，首先需要创建一个<code>Ember.Application</code>的实例：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -374,44 +371,16 @@ instance of <code>Ember.Application</code>:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>Here we&#39;ve called our application <code>App</code>, but you can call it whatever
-makes the most sense for your application.</p>
-
 <p>在这里，我们把这个应用命名为<code>App</code>，你可以为它取一个有实际项目意义的名字。</p>
-
-<p>Having an application object is important for several reasons:</p>
 
 <p>一开始就创建一个应用对象有很多重要原因：</p>
 
 <ol>
-<li>It is your application&#39;s namespace. All of the classes in your application will
-be defined as properties on this object (e.g., <code>App.PostsView</code> and
-<code>App.PostsController</code>). This helps to prevent polluting the global scope.</li>
+<li><p>它是你应用的命名空间，应用里面所有的类都会作为它的属性去定义（例如：<code>App.PostsView</code>和<code>App.PostsController</code>）。这样避免你污染了公共的域。</p></li>
+<li><p>它会帮你监听网页的事件，同时负责发送事件到你的视图。</p></li>
+<li><p>它会自动帮你渲染<a href="/guides/application/the-application-template"><em>应用模版</em></a>模版，应用模版是根模版，你其他的模版都会被渲染到该模版中去。</p></li>
+<li><p>它会基于当前的路径自动帮你创建一个路由，并开始进行路由。</p></li>
 </ol>
-
-<p>它是你应用的命名空间，应用里面所有的类都会作为它的属性去定义（例如：<code>App.PostsView</code>和<code>App.PostsController</code>）。这样避免你污染了公共的域。</p>
-
-<ol>
-<li>It adds event listeners to the document and is responsible for
-sending events to your views.</li>
-</ol>
-
-<p>它会帮你监听网页的事件，同时负责发送事件到你的视图。</p>
-
-<ol>
-<li>It automatically renders the <a href="/guides/application/the-application-template"><em>application
-template</em></a>, the root-most
-template, into which your other templates will be rendered.</li>
-</ol>
-
-<p>它会自动帮你渲染<a href="/guides/application/the-application-template"><em>应用模版</em></a>模版，应用模版是根模版，你其他的模版都会被渲染到该模版中去。</p>
-
-<ol>
-<li>It automatically creates a router and begins routing, based on the
-current URL.</li>
-</ol>
-
-<p>它会基于当前的路径自动帮你创建一个路由，并开始进行路由。</p>
 
     
       <footer>
@@ -421,7 +390,7 @@ current URL.</li>
           </a>
          
         <a class="next-guide" href="/guides/application/the-application-template">
-          应用模版 →
+          应用模板 →
         </a>
       
       </footer>

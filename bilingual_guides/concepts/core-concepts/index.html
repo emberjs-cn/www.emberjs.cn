@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 概念</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_concepts bilingual_guides_concepts_core-concepts bilingual_guides_concepts_core-concepts_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">Links</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">Actions</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义你的路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">Generated Objects</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">Setting Up a Controller</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">Controllers</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">Representing a Single Model with ObjectController</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">Models</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-a-store">Defining a Store</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">Defining Models</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-models">Finding Models</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layerouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">The Object Model</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>概念</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/concepts/core-concepts">http://emberjs.com/guides/concepts/core-concepts/</a></p>
+<h2 class='anchorable-toc' id='toc_core-concepts'>核心概念(Core Concepts)</h2>
+<p>To get started with Ember.js, there are a few core concepts you
+should understand. </p>
+
+<p>要开始学习Ember.js,首先要了解一些核心概念。</p>
+
+<p>We want developers to be able to build ambitiously large web
+applications that are competitive with native apps. To do that, they
+need both sophisticated tools <em>and</em> the right vocabulary of concepts to
+help them communicate and collaborate.</p>
+
+<p>我们希望开发者能够创建能与本地应用媲美的优秀的大型的web应用。要达到这种效果,
+他们需要强大的工具<em>和</em>准确的词汇概念以帮助他们沟通与合作。</p>
+
+<p>We&#39;ve spent a lot of time borrowing liberally from ideas introduced
+by native application frameworks, like Cocoa. When we felt those
+concepts were more hindrance than help–or didn&#39;t fit within the unique
+constraints of the web–we turned to other popular open source projects
+like Ruby on Rails and Backbone.js for inspiration.</p>
+
+<p>我们曾经花费了大量的时间借鉴一些本地应用开发框架的思想，例如Cocoa。但是当
+我们发现那些概念的羁绊多于约束，或者不适用于web开发的唯一性约束后，我们
+把目光转向了其他流行的开源项目，例如，Ruby on Rails以及Backbone.js。</p>
+
+<p>Ember.js, therefore, is a synthesis of the powerful tools of our native
+forebearers with the lightweight sensibilities of the modern web. </p>
+
+<p>因此,Ember.js是结合了本地应用与现代web的轻量特性的一个强有力的工具。 </p>
+<h3 class='anchorable-toc' id='toc_concepts'>概念（Concepts）</h3><h4 class='anchorable-toc' id='toc_templates'>模板（Templates)</h4>
+<p>A <strong>template</strong>, written in the Handlebars templating language, describes
+the user interface of your application. In addition to plain HTML,
+templates can contain:</p>
+
+<p><strong>模板</strong>， 是由Handlebars模板语言写成，它描述了一个应用程序的用户接口。
+此外，相对于纯HTML，模板还提供了：</p>
+
+<ul>
+<li><strong>Expressions</strong>, like <code>{{firstName}}</code>, which take information from
+controllers and models, place them into HTML, and automatically keep them
+updated.</li>
+<li><strong>表达式</strong>, 例如 <code>{{firstName}}</code> , 它从控制器和模型接收数据，然后放
+到HTML文件中，并且保持他们自动更新。</li>
+<li><strong>Outlets</strong>, which are placeholders for other templates. As your user
+moves around your app, different templates can be plugged into the
+outlet by the router. You can put outlets into your template using the
+<code>{{outlet}}</code> helper.</li>
+<li><strong>出口</strong>, 它是其他模板的占位符。当用户使用你的应用时，不
+同的模板会通过路由插入到出口中。你可以使用 <code>{{outlet}}</code> 助手将出口放到
+模板中去。</li>
+<li><strong>Views</strong>, which are responsible for handling user events. You can put
+views into your templates using the <code>{{view}}</code> helper.</li>
+<li><strong>视图</strong>, 它负责处理用户事件。你可以使用<code>{{view}}</code>助手将视图放到模板中。</li>
+</ul>
+<h4 class='anchorable-toc' id='toc_views'>视图(Views)</h4>
+<p>A <strong>view</strong> is embedded inside a template and is responsible for
+translating <em>primitive events</em> (like clicks, taps, and swipes) into
+<em>semantic events</em> that have meaning to your application and are sent to
+the controller.</p>
+
+<p>一个<strong>视图</strong>被嵌入在一个模板中,它负责把 <em>原始事件</em> (如点击,触摸,滑动)翻译
+成对你的应用程序有意义的 <em>语义事件</em> ,然后将他们传输到控制器。</p>
+
+<p>For example, a view might translate a <code>click</code> event into the more
+meaningful <code>deleteItem</code> event, which would be sent to the controller.
+If the controller does not implement the <code>deleteItem</code> event, the event
+will be sent to the current route.</p>
+
+<p>例如，一个视图可能将一个<code>click</code>事件翻译成更有意义的<code>deleteItem</code>事件，
+然后将其发送给控制器。如果控制器没有实现<code>deleteItem</code>事件,事件将被发送给
+当前的路由。</p>
+<h4 class='anchorable-toc' id='toc_controllers'>控制器(Controllers)</h4>
+<p>A <strong>controller</strong> is an object that stores <em>application state</em>. Templates
+are connected to controllers and translate the current state of the
+controller into HTML.</p>
+
+<p><strong>控制器</strong>是存放 <em>应用程序状态</em> 的对象。模板会与控制器进行连接并将控制器
+的状态转变为HTML。</p>
+
+<p>Controllers often act as representations of <strong>models</strong> for templates. In
+these cases, the controller passes the properties of the model to the
+template, and can transform or augment the model to present it in a way
+the template is expecting.</p>
+
+<p>控制器往往扮演为模板呈现<strong>模型</strong>的表现的角色。在这些情况下，控制器将模型的属性
+传递给模板，并且可以改变或增加模型来以一种模板期待的方式来表现模型。</p>
+<h4 class='anchorable-toc' id='toc_models'>模型（Models）</h4>
+<p>A <strong>model</strong> is an object that stores <em>persistent state</em>. This is the
+data that your application operates on and what gives it value to your
+users.  These objects are usually loaded from your server, then saved
+back when changes are made on the client.</p>
+
+<p><strong>模型</strong>是一个存储 <em>持久化状态</em> 的对象。它是你的应用程序操作的数据，也是
+你返回给用户的值。这些对象通常从你的服务器进行加载，然后当它们在客户端被
+改变后会保存回服务器中。</p>
+
+<p>Usually, you&#39;ll use Ember Data to translate the <em>raw JSON payloads</em>
+delivered by your API server into full-blown Ember.js objects with
+associations, computed properties, and more.</p>
+
+<p>通常情况下，你应该使用<code>Ember Data</code>去将你的API服务器传递的
+<em>原始JSON负载文件</em> 转换成
+更为全面的<code>Ember.js</code>对象，它们有更好的关联性，计算属性及其他优点。</p>
+<h4 class='anchorable-toc' id='toc_router'>路由(Router)</h4>
+<p>The <strong>router</strong> is the object responsible for <em>managing application state</em>.</p>
+
+<p><strong>路由</strong>是 <em>负责管理应用程序状态</em> 的对象。</p>
+
+<p>When your user starts your application, it will look at the URL and make
+sure that the right set of templates is displayed, as well as pairing
+those templates with the right model objects.</p>
+
+<p>当用户启动你的应用程序时，路由将查看URL并且确保显示正确的模板集，以及将
+那些模板与正确的模型对象配对。</p>
+
+<p>As you move around the different states of your application, the
+router automatically keeps the URL up-to-date. Users can save the URL
+and re-enter the application at this state later, or share the app in
+its current state with others.</p>
+
+<p>当你在在应用程序中切换到不同的状态时，路由会自动更新URL。用户可以保存URL
+并且可以以后重新进入这个状态，或者与他人分享应用程序的当前状态。</p>
+
+<hr>
+
+<p>These are the core concepts you&#39;ll need to understand as you develop
+your Ember.js app. If you stick to these basics, we&#39;ve designed the
+system to scale up in complexity, so that adding new functionality
+doesn&#39;t require you to go back and change the entire system.</p>
+
+<p>以上这些是你在开发<code>Ember.js</code>应用时需要了解的核心概念。如果你信守这些概念，我们
+已经设计了能成比例增加复杂性的系统，以至于当你要增加新功能时就不需要重新改变
+整个系统</p>
+
+<p>We think it&#39;s important that multiple developers can look at a problem
+and, using the patterns of the framework, arrive at the same solution.
+Now that you understand the roles of these objects, you&#39;re equipped to
+dive deep into Ember.js and learn the details of how each of these
+individual pieces work.</p>
+
+<p>在我们看来一个很重要的方面是，当大多数开发人员遇到问题时,可以根据这个框架
+的某些模式解决问题。既然你已经理解了这些对象各自的角色，现在就已经可以深入到Ember.js
+的世界中，进一步了解这些部分如何工作的细节。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/index.html">
+             ← Ember.js 指南: Ember.js 指南
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/concepts/naming-conventions">
+          命名惯例 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

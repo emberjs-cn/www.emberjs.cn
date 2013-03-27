@@ -121,11 +121,11 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/application/the-application-template">应用模版</a>
+              <a href="/guides/application/the-application-template">应用模板</a>
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/templates/handlebars-basics">模版</a>
+            <a href="/guides/templates/handlebars-basics">模板</a>
             <ol>
         
             <li class="level-3">
@@ -362,20 +362,10 @@
   <div class="chapter">
     <h1>应用</h1>
     <p>英文原文：<a href="http://emberjs.com/guides/application/the-application-template/">http://emberjs.com/guides/application/the-application-template/</a></p>
-<h2 class='anchorable-toc' id='toc_the-application-template'>应用模板（The Application Template）</h2>
-<p>The application template is the default template that is rendered when
-your application starts. </p>
-
+<h2 class='anchorable-toc' id='toc_'>应用模板</h2>
 <p>应用模板是应用启动的时候默认渲染的模板。</p>
 
-<p>You should put your header, footer, and any other decorative content
-here. Additionally, you should have at least one <code>{{outlet}}</code>:
-a placeholder that the router will fill in with the appropriate template
-based on the current state of the application.</p>
-
 <p>你应该把你的header、footer和其他装饰性的内容放在应用模板里面。另外，应用模版中至少需要一个<code>{{outlet}}</code>占位符，以便路由能根据应用当前的状态将适当的模版渲染进来。</p>
-
-<p>Here&#39;s an example template:</p>
 
 <p>下面是一个应用模板的例子：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
@@ -405,15 +395,7 @@ based on the current state of the application.</p>
 </pre></td>
 </tr></table>
 </div>
-<p>The header and footer will always be displayed on screen, but the
-contents of the <code>&lt;div&gt;</code> will change depending on if the user is
-currently at <code>/posts</code> or <code>/posts/15</code>, for example.</p>
-
 <p>其中header和footer会一直显示在屏幕上，不过<code>&lt;div&gt;</code>里面的内容会根据用户所在位置而改变（<code>/posts</code>或<code>/posts/15</code>之类）。</p>
-
-<p>If you are keeping your templates in HTML, create a <code>&lt;script&gt;</code> tag
-without a template name. It will automatically be compiled and appended
-to the screen.</p>
 
 <p>如果你希望将应用模板放置在HTML文档中，你可以创建一个不带模板名字的<code>&lt;script&gt;</code>标签，它会自动被编译和加载到页面。</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
@@ -431,12 +413,7 @@ to the screen.</p>
 </pre></td>
 </tr></table>
 </div>
-<p>If you&#39;re using build tools to load your templates, make sure you name
-the template <code>application</code>.</p>
-
 <p>如果你使用编译工具来加载你的应用模板，请确定把模板名字命名为<code>application</code>。</p>
-
-<p>For more information, see <a href="/guides/templates/handlebars-basics">Templates</a> and <a href="/guides/routing/">Routing</a>.</p>
 
 <p>详细的内容可查看<a href="/guides/templates/handlebars-basics">模板</a> 和 <a href="/guides/routing/">路由</a>。</p>
 
@@ -448,7 +425,7 @@ the template <code>application</code>.</p>
           </a>
          
           <a class="next-guide" href="/guides/templates/handlebars-basics">
-             应用结束 下一章: 模版 - Handlebars基础 →
+             应用结束 下一章: 模板 - Handlebars基础 →
           </a>
         
       </footer>
