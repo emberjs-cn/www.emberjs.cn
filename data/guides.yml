@@ -19,10 +19,10 @@
 应用:
   - title: "介绍"
     url: "application"
-  - title: "应用模版"
+  - title: "应用模板"
     url: "application/the-application-template"
 
-模版:
+模板:
   - title: "Handlebars基础"
     url: "templates/handlebars-basics"
   - title: "条件表达式"
