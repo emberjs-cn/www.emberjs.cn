@@ -18,7 +18,7 @@ module TOC
   end
 
   module Helpers
-    def index_for(data)
+    def index_for(data, scope = :guides)
       result = '<ol id="toc-list">'
 
       data.each_entry do |section, entries|
@@ -38,7 +38,7 @@ module TOC
 
         result << %Q{
           <li class="level-1#{current ? ' selected' : ''}">
-            <a href="/guides/#{entries[0].url}">#{section}</a>
+            <a href="/#{scope}/#{entries[0].url}">#{section}</a>
             <ol#{current ? " class='selected'" : ''}>
         }
 
@@ -55,7 +55,7 @@ module TOC
 
           result << %Q{
             <li class="level-3#{sub_current ? ' sub-selected' : ''}">
-              <a href="/guides/#{entry.url}">#{entry.title}</a>
+              <a href="/#{scope}/#{entry.url}">#{entry.title}</a>
             </li>
           }
         end
@@ -116,25 +116,25 @@ module TOC
       end
     end
 
-    def chapter_links
+    def chapter_links(scope = :guides)
       %Q{
       <footer>
-        #{previous_chapter_link} #{next_chapter_link}
+        #{previous_chapter_link(scope)} #{next_chapter_link(scope)}
       </footer>
       }
     end
 
-    def previous_chapter_link
+    def previous_chapter_link(scope = :guides)
       if previous_chapter
         %Q{
-          <a class="previous-guide" href="/guides/#{previous_chapter.url}">
+          <a class="previous-guide" href="/#{scope}/#{previous_chapter.url}">
             \u2190 #{previous_chapter.title}
           </a>
         }
       elsif whats_before = previous_guide
         previous_chapter = whats_before[1][-1]
         %Q{
-          <a class="previous-guide" href="/guides/#{previous_chapter.url}">
+          <a class="previous-guide" href="/#{scope}/#{previous_chapter.url}">
              \u2190 #{whats_before[0]}: #{previous_chapter.title}
           </a>
         }
@@ -143,17 +143,17 @@ module TOC
       end
     end
 
-    def next_chapter_link
+    def next_chapter_link(scope = :guides)
       if next_chapter
       %Q{
-        <a class="next-guide" href="/guides/#{next_chapter.url}">
+        <a class="next-guide" href="/#{scope}/#{next_chapter.url}">
           #{next_chapter.title} \u2192
         </a>
       }
       elsif whats_next = next_guide
         next_chapter = whats_next[1][0]
         %Q{
-          <a class="next-guide" href="/guides/#{next_chapter.url}">
+          <a class="next-guide" href="/#{scope}/#{next_chapter.url}">
              #{current_section[0]}结束 下一章: #{whats_next[0]} - #{next_chapter.title} \u2192
           </a>
         }

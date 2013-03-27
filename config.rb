@@ -42,6 +42,10 @@ page 'guides*', layout: :guide do
   @guides = data.guides
 end
 
+page 'bilingual_guides*', layout: :bilingual_guide do
+  @bilingual_guides = data.bilingual_guides
+end
+
 page 'community.html'
 
 page 'index.html'
