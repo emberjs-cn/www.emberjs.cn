@@ -7,7 +7,7 @@ Ember.js attempts to find corresponding Route, Controller, View, and Template
 classes named according to naming conventions. If an implementation of any of
 these objects is not found, appropriate objects will be generated in memory for you.
 
-正如在[routing guide][1]中所说的，无论何时，只要你定义了一个新的路由，`Ember.js`都会试着根据命名规范
+正如在[routing guide][1]中所说的，无论何时，只要你定义了一个新的路由，`Ember.js`都会试着根据命名惯例
 寻找相对应的路由，控制器，视图还有模板类。一旦有任何一个对象找不到，那么在内存中，相对应的对象将会被生成。
 
 [1]: /guides/routing/defining-your-routes
@@ -27,7 +27,7 @@ App.Router.map(function() {
 When you navigate to `/posts`, Ember.js looks for `App.PostsRoute`.
 If it doesn't find it, it will automatically generate an `App.PostsRoute` for you.
 
-当你导航到`/posts`时，`Ember.js`会寻找`App.PostRoute`。如果找不到，它会自动地为你生成`App.PostRoute`。
+当你导航到`/posts`时，`Ember.js`会寻找`App.PostsRoute`。如果找不到，它会自动地为你生成`App.PostsRoute`。
 
 
 ##### 自定义生成的路由 （Custom Generated Routes）

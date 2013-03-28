@@ -2,7 +2,7 @@
 
 ## 生成的对象
 
-正如在[routing guide][1]中所说的，无论何时，只要你定义了一个新的路由，`Ember.js`都会试着根据命名规范
+正如在[routing guide][1]中所说的，无论何时，只要你定义了一个新的路由，`Ember.js`都会试着根据命名惯例
 寻找相对应的路由，控制器，视图还有模板类。一旦有任何一个对象找不到，那么在内存中，相对应的对象将会被生成。
 
 [1]: /guides/routing/defining-your-routes
@@ -17,7 +17,7 @@ App.Router.map(function() {
 });
 ```
 
-当你导航到`/posts`时，`Ember.js`会寻找`App.PostRoute`。如果找不到，它会自动地为你生成`App.PostRoute`。
+当你导航到`/posts`时，`Ember.js`会寻找`App.PostsRoute`。如果找不到，它会自动地为你生成`App.PostsRoute`。
 
 
 ##### 自定义生成的路由 
