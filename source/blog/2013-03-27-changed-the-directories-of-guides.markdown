@@ -1,5 +1,5 @@
 ---
-title: Ember.js中英双语对照指南
+title: 指南目录结构调整
 tags: 最近文章
 author: Tower He
 ---
