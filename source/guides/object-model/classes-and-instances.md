@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/object-model/classes-and-instances/](http://emberjs.com/guides/object-model/classes-and-instances/)
 
-## 类与实例（Classes and Instances）
+## 类与实例
 
 定义一个新的`Ember`的_类_，只需要调用`Ember.Object`的`extend()`方法即可：
 
@@ -48,7 +48,7 @@ yehuda.say("Yes");
 // alerts "Yehuda Katz says: Yes, sir!"
 ```
 
-### 创建实例（Creating Instances）
+### 创建实例
 
 当定义了一个类之后，就可以通过调用`create()`方法来创建类的_实例_。所有定义在类中的方法、属性、计算属性，都可以通过创建的实例来访问或调用。例如：
 
@@ -77,7 +77,7 @@ tom.helloWorld() // alerts "Hi my name is Tom Dale"
 
 按照惯例，用来保存类名的属性和变量名需首字母大写，而实例名首字母不大写。例如：变量`Person`代表一个类，而`person`则代表一个实例（通常是类`Person`的实例）。在`Ember`应用中，应该采用这样的命名惯例。
 
-### 初始化实例（Initializing Instances）
+### 初始化实例
 
 当一个实例被创建后，实例的`init`方法会被自动调用。可以通过自定义`init`方法，来对新实例进行初始化。
 
