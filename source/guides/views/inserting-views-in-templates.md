@@ -9,7 +9,6 @@
 为了将一个子视图添加到父视图中，可以使用`{{view}}`助手，它接受一个视图类的路径参数。
 
 ```javascript
-// Define parent view
 // 定义父视图
 App.UserView = Ember.View.extend({
   templateName: 'user',
@@ -18,7 +17,6 @@ App.UserView = Ember.View.extend({
   lastName: "Hofmann"
 });
 
-// Define child view
 // 定义子视图
 App.InfoView = Ember.View.extend({
   templateName: 'info',
