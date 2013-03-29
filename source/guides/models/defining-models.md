@@ -17,7 +17,7 @@ You can specify which attributes a model has by using `DS.attr`. You can
 use attributes just like any other property, including as part of a
 computed property.
 
-你可以通过`DS.attr`指定模型哪些属性标志（attributes）。你可以像其他属性一样使用属性标志，包括作为计算属性的一部分。
+你可以通过`DS.attr`指定模型具有哪些属性。你可以像其他属性一样使用属性标志，包括作为计算属性的一部分。
 
 ```javascript
 App.Person = DS.Model.extend({
@@ -45,7 +45,7 @@ attribute types, and new types can be registered as transforms. See the
 Ember Data includes several built-in relationship types to help you
 define how your models relate to each other.
 
-Ember Data 包括了几个内置的方法，以帮助你确定你的模型如何相互关联的。
+Ember Data 包括了几个内置的关联类型，以帮助你确定你的模型如何相互关联的。
 
 #### 一对一（One-to-One）
 
