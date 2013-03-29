@@ -14,7 +14,7 @@ your models. To do so, simply define a subclass of `DS.Store` on your
 `Ember.Application`:
 
 通常，你可以直接跟模型交互，而不使用存储器。但是你需要让 Ember.js 知道你现在在使用 Ember Data 来管理你的模型。
-要达到这们的目的，我们可以在你的`Ember.Application`里面简单地定义一个`DS.Store`的子类。
+要达到这样的目的，我们可以简单地在Ember.Application中定义一个DS.Store的子类，如下所示：
 
 ```js
 App.Store = DS.Store.extend({
@@ -36,7 +36,7 @@ If you want to customize the store, you can do so when creating the
 subclass. For example, if you wanted to use an adapter other than the
 default `DS.RESTAdapter`, you would do so like this:
 
-如果你想要定制存储器，你可以在创建子类的时候去定制。例如，如果你想要用另外一个适配器去替换默认的`DS.RESTAdapter`，你可以像下面这们做：
+如果你想要定制存储器，你可以在创建子类的时候去定制。例如，如果你想要用另外一个适配器去替换默认的`DS.RESTAdapter`，你可以像下面这样做：
 
 ```js
 App.Store = DS.Store.extend({
