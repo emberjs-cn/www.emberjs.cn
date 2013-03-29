@@ -43,7 +43,7 @@ page 'guides*', layout: :guide do
 end
 
 page 'bilingual_guides*', layout: :bilingual_guide do
-  @bilingual_guides = data.bilingual_guides
+  @bilingual_guides = data.guides
 end
 
 page 'community.html'
