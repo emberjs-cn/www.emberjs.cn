@@ -2,12 +2,12 @@
 
 ## 模型（Models）
 
-In most Ember.js apps, models are handled by [Ember Data][1]. Ember Data
+In most Ember.js apps, models are handled by [Ember Data](https://github.com/emberjs/data). Ember Data
 is a library, built with and for Ember.js, designed to make it easy to
 retrieve records from a server, make changes in the browser, then save
 those changes back to the server.
 
-在大部分的 Ember.js 应用里，模型是通过 [Ember Data][1] 来处理的。Ember
+在大部分的 Ember.js 应用里，模型是通过 [Ember Data](https://github.com/emberjs/data) 来处理的。Ember
 Data 是一个由 Ember.js 写的库，它使我们可以很方便从服务器端取回记录并动态改变浏览器中的内容，然后保存这些更改回服务器。
 
 It provides many of the facilities you'd find in server-side ORMs like
@@ -34,9 +34,7 @@ Currently, Ember Data ships as a separate library from Ember.js, while
 we expand the adapter API to support more features. The API described in
 this section tends to be stable, however.  Until Ember Data is included
 as part of the standard distribution, you can get your copy from the
-[GitHub page][1].
+[GitHub page](https://github.com/emberjs/data).
 
-目前，当我们需要扩展适配器的 API 来支持更多的功能时，Ember Data 会作为 Ember.js 一个独立的库。
-但是本节中提到的 API 已经趋于稳定。直到 Ember Data 作为标准配置的一部分，你可以从[GitHub page][1]获取它的副本。
-
-[1]: https://github.com/emberjs/data
+目前， Ember Data还是作为Ember.js的一个独立的库，与此同时，我们仍然在扩展适配器的API以便支持更多功能。
+在Ember Data被作为标准配置的一部分之前，你可以从其项目的[Github主页](https://github.com/emberjs/data)获取它。
