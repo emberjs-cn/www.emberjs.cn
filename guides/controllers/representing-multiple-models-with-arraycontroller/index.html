@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Controllers</title>
+    <title>Ember.js - 控制器</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -201,23 +201,23 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/controllers">Controllers</a>
+            <a href="/guides/controllers">控制器</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/guides/controllers">Introduction</a>
+              <a href="/guides/controllers">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">Representing a Single Model with ObjectController</a>
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -360,15 +360,12 @@
           
 
   <div class="chapter">
-    <h1>Controllers</h1>
-    <h2 class='anchorable-toc' id='toc_representing-multiple-models'>Representing Multiple Models</h2>
-<p>You can use <code>Ember.ArrayController</code> to represent an array of models. To tell an
-<code>ArrayController</code> which model to represent, set its <code>content</code> property
-in your route&#39;s <code>setupController</code> method.</p>
+    <h1>控制器</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/">http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/</a></p>
+<h2 class='anchorable-toc' id='toc_'>代表多模型</h2>
+<p><code>Ember.ArrayController</code>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>content</code>属性，来指定其代表的模型。</p>
 
-<p>You can treat an <code>ArrayController</code> just like its underlying array. For
-example, imagine we want to display the current playlist. In our router,
-we setup our <code>SongsController</code> to represent the songs in the playlist:</p>
+<p>可以将<code>ArrayController</code>作为一个数组来对待。例如，音乐播放器希望显示当前播放列表。在路由中，通过设置<code>SongsController</code>来代表播放列表中的歌曲。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -384,8 +381,7 @@ we setup our <code>SongsController</code> to represent the songs in the playlist
 </pre></td>
 </tr></table>
 </div>
-<p>In the <code>songs</code> template, we can use the <code>{{#each}}</code> helper to display
-each song:</p>
+<p>在<code>songs</code>模板中，可以使用<code>{{#each}}</code>助手来显示歌曲。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -405,10 +401,7 @@ each song:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>You can use the <code>ArrayController</code> to collect aggregate information about
-the models it represents. For example, imagine we want to display the
-number of songs that are over 30 seconds long. We can add a new computed
-property called <code>longSongCount</code> to the controller:</p>
+<p>另外，可以使用<code>ArrayController</code>来收集一些模型所代表的聚合类信息。例如，音乐播放器需要显示超过30秒长的歌曲的数量。那么只需要在控制器中添加一个名为<code>longSongCount</code>的计算属性。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -430,7 +423,7 @@ property called <code>longSongCount</code> to the controller:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>Now we can use this property in our template:</p>
+<p>现在便可以在模板中使用该属性。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -454,11 +447,11 @@ property called <code>longSongCount</code> to the controller:</p>
       <footer>
         
           <a class="previous-guide" href="/guides/controllers/representing-a-single-model-with-objectcontroller">
-            ← Representing a Single Model with ObjectController
+            ← 代表单一模型
           </a>
          
         <a class="next-guide" href="/guides/controllers/dependencies-between-controllers">
-          Managing Dependencies Between Controllers →
+          管理控制器间的依赖 →
         </a>
       
       </footer>

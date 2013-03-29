@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Controllers</title>
+    <title>Ember.js - 控制器</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -201,23 +201,23 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/controllers">Controllers</a>
+            <a href="/bilingual_guides/controllers">控制器</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/bilingual_guides/controllers">Introduction</a>
+              <a href="/bilingual_guides/controllers">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">Representing a Single Model with ObjectController</a>
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">Representing Multiple Models with ArrayController</a>
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/controllers/dependencies-between-controllers">Managing Dependencies Between Controllers</a>
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -360,11 +360,14 @@
           
 
   <div class="chapter">
-    <h1>Controllers</h1>
-    <h2 class='anchorable-toc' id='toc_managing-dependencies-between-controllers'>Managing Dependencies Between Controllers</h2>
+    <h1>控制器</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/controllers/dependencies-between-controllers/">http://emberjs.com/guides/controllers/dependencies-between-controllers/</a></p>
+<h2 class='anchorable-toc' id='toc_managing-dependencies-between-controllers'>管理控制器间的依赖（Managing Dependencies Between Controllers）</h2>
 <p>Sometimes, especially when nesting resources, we find ourselves needing
 to have some kind of connection between two controllers. Let&#39;s take this
 router as an example:</p>
+
+<p>有时候，特别是在嵌套资源时，可能需要为两个控制器建立某种联系。以下面的路由为例：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -385,9 +388,13 @@ loaded into a <code>PostController</code>&#39;s content, which means it is not d
 accessible in the <code>CommentsController</code>. We might however want to display
 some information about it in the <code>comments</code> template.</p>
 
+<p>如果访问<code>/posts/1/comments</code>这个URL，<code>Post</code>模型会被设置为<code>PostController</code>的<code>content</code>属性，其不可以在<code>CommentsController</code>中直接引用。然而又需要在<code>comments</code>模板中显示一些与其相关的信息。</p>
+
 <p>To be able to do this we define our <code>CommentsController</code> to <code>need</code> the
 <code>PostController</code>
 which has our desired <code>Post</code> model.</p>
+
+<p>为了实现这个功能，可以在<code>CommentsController</code>中声明其需要一个代表<code>Post</code>模型的<code>PostController</code>。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -402,6 +409,8 @@ which has our desired <code>Post</code> model.</p>
 <p>This tells Ember that our <code>CommentsController</code> should be able to access
 it&#39;s parent <code>PostController</code>, which can be done via <code>controllers.post</code>
 (either in the template or in the controller itself).</p>
+
+<p>这里告诉<code>Ember</code>，<code>CommentsController</code>应该能通过<code>controllers.post</code>来访问其父控制器<code>PostController</code>。（在模板和控制器中均可访问）。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -424,6 +433,8 @@ it&#39;s parent <code>PostController</code>, which can be done via <code>control
 <p>We can also create a binding to give ourselves a shorter way to access
 the <code>PostController</code> (since it is <code>ObjectController</code>, we don&#39;t need or
 want the <code>Post</code> instance directly).</p>
+
+<p>通过创建一个绑定，可以提供一种更为简便的方式来访问<code>PostController</code>（因为<code>PostController</code>是一个<code>ObjectController</code>，这里并不直接需要一个<code>Post</code>实例）。</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -441,11 +452,11 @@ want the <code>Post</code> instance directly).</p>
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">
-            ← Representing Multiple Models with ArrayController
+            ← 代表多模型
           </a>
          
           <a class="next-guide" href="/bilingual_guides/models">
-             Controllers结束 下一章: Models - Introduction →
+             控制器结束 下一章: Models - Introduction →
           </a>
         
       </footer>
