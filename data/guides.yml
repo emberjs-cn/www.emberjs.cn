@@ -53,7 +53,7 @@
     url: "routing/generated-objects"
   - title: "Specifying a Route's Model"
     url: "routing/specifying-a-routes-model"
-  - title: "Setting Up a Controller"
+  - title: "设置控制器"
     url: "routing/setting-up-a-controller"
   - title: "Rendering a Template"
     url: "routing/rendering-a-template"
