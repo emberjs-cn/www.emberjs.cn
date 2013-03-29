@@ -269,7 +269,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
             </li>
           
             <li class="level-3">
@@ -362,7 +362,7 @@
   <div class="chapter">
     <h1>视图</h1>
     <p>英文原文：<a href="http://emberjs.com/guides/views/inserting-views-in-templates/">http://emberjs.com/guides/views/inserting-views-in-templates/</a></p>
-<h2 class='anchorable-toc' id='toc_inserting-views-in-templates'>在模版中插入视图 (Inserting Views in Templates)</h2>
+<h2 class='anchorable-toc' id='toc_'>在模板中插入视图</h2>
 <p>到目前为止，我们已经讨论了如何为单独的视图编写模板。然而，随着应用开发的深入，为了封装页面上的不同区域，你可能会经常需要创建一个层次化的视图结构。每个视图负责处理事件和维护需要显示的属性。</p>
 <h3 class='anchorable-toc' id='toc_code-view-code'><code>{{view}}</code></h3>
 <p>为了将一个子视图添加到父视图中，可以使用<code>{{view}}</code>助手，它接受一个视图类的路径参数。</p>
@@ -382,11 +382,8 @@
 13
 14
 15
-16
-17
 </pre></td>
-  <td class="code"><pre><span class="comment">// Define parent view</span>
-<span class="comment">// 定义父视图</span>
+  <td class="code"><pre><span class="comment">// 定义父视图</span>
 App.UserView = Ember.View.extend({
   <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span>,
 
@@ -394,7 +391,6 @@ App.UserView = Ember.View.extend({
   <span class="key">lastName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Hofmann</span><span class="delimiter">&quot;</span></span>
 });
 
-<span class="comment">// Define child view</span>
 <span class="comment">// 定义子视图</span>
 App.InfoView = Ember.View.extend({
   <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">info</span><span class="delimiter">'</span></span>,

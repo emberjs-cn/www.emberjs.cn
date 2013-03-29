@@ -269,7 +269,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a>
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
             </li>
           
             <li class="level-3">
@@ -434,6 +434,12 @@ return <code>App.Post.find(params.post_id)</code> automatically.</p>
 <p>Not coincidentally, this is exactly what Ember Data expects. So if you
 use the Ember router with Ember Data, your dynamic segments will work
 as expected out of the box.</p>
+
+<p>Note: A route with a dynamic segment will only have it&#39;s <code>model</code> hook called
+when it is entered via the URL. If the route is entered through a transition
+(e.g. when using the <a href="/guides/templates/links">linkTo</a> Handlebars helper), then a model context is
+already provided and the hook is not executed. Routes without dynamic segments
+will always execute the model hook.</p>
 
     
       <footer>
