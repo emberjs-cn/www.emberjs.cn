@@ -73,11 +73,11 @@
 控制器:
   - title: "介绍"
     url: "controllers"
-  - title: "Representing a Single Model with ObjectController"
+  - title: "代表单一模型"
     url: "controllers/representing-a-single-model-with-objectcontroller"
-  - title: "Representing Multiple Models with ArrayController"
+  - title: "代表多模型"
     url: "controllers/representing-multiple-models-with-arraycontroller"
-  - title: "Managing Dependencies Between Controllers"
+  - title: "管理控制器间的依赖"
     url: "controllers/dependencies-between-controllers"
 
 Models:
