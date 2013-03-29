@@ -107,7 +107,7 @@ Models:
     url: "views/defining-a-view"
   - title: "处理事件"
     url: "views/handling-events"
-  - title: "Inserting Views in Templates"
+  - title: "在模板中插入视图"
     url: "views/inserting-views-in-templates"
   - title: "Adding Layouts to Views"
     url: "views/adding-layerouts-to-views"
