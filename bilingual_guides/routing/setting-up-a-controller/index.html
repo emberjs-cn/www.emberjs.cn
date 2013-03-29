@@ -185,7 +185,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/routing/setting-up-a-controller">Setting Up a Controller</a>
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
             </li>
           
             <li class="level-3">
@@ -361,21 +361,31 @@
 
   <div class="chapter">
     <h1>路由</h1>
-    <h2 class='anchorable-toc' id='toc_setting-up-a-controller'>Setting Up a Controller</h2>
+    <p>英文原文:
+<a href="http://emberjs.com/guides/routing/setting-up-a-controller/">http://emberjs.com/guides/routing/setting-up-a-controller/</a></p>
+<h2 class='anchorable-toc' id='toc_setting-up-a-controller'>设置控制器（Setting Up a Controller）</h2>
 <p>Changing the URL may also change which template is displayed on
 screen. Templates, however, are usually only useful if they have some
 source of information to display.</p>
 
+<p>URL的改变同时也可能改变显示的模板。而模板只有当其搭载了需要呈现的信息才有用。</p>
+
 <p>In Ember.js, a template retrieves information to display from a
 controller.</p>
+
+<p>在<code>Ember.js</code>中，模板从控制器中过去需要呈现的信息。</p>
 
 <p>Two built-in controllers—<code>Ember.ObjectController</code> and
 <code>Ember.ArrayController</code>—make it easy for a controller to present a
 model&#39;s properties to a template, along with any additional
 display-specific properties.</p>
 
+<p>内置的两个控制器<code>Ember.ObjectController</code>和<code>Ember.ArrayController</code>，使控制器可以非常方便的呈现模型的属性和其他一些附加的用于显示的属性到模板中去。</p>
+
 <p>To tell one of these controllers which model to present, set its
 <code>content</code> property in the route handler&#39;s <code>setupController</code> hook.</p>
+
+<p>通过在路由处理器的<code>setupController</code>钩子中设置控制器的<code>content</code>属性，来设置控制器所要呈现的模型。</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -404,14 +414,22 @@ controller as its first argument. In this case, the <code>PostRoute</code>&#39;s
 <code>setupController</code> receives the application&#39;s instance of
 <code>App.PostController</code>.</p>
 
+<p><code>setupController</code>钩子将路由处理器关联的控制器作为第一个参数。上例中<code>PostRoute</code>的<code>setupController</code>的第一个参数是应用中<code>App.PostController</code>的实例。</p>
+
 <p>As a second argument, it receives the route handler&#39;s model. For more
 information, see <a href="/guides/routing/specifying-a-routes-model">Specifying a Route&#39;s Model</a>.</p>
+
+<p>而第二个参数是路由处理器的模型。更多相关信息请参看<a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>一节。</p>
 
 <p>The default <code>setupController</code> hook sets the <code>model</code> property of the
 associated controller to the route handler&#39;s model.</p>
 
+<p>默认的<code>setupController</code>钩子将关联的控制器的<code>model</code>设置为路由处理器的模型。</p>
+
 <p>If you want to configure a controller other than the controller
 associated with the route handler, use the <code>controllerFor</code> method:</p>
+
+<p>如果系统设置其他的控制器来取代路由处理器关联的控制器，可以使用<code>controllerFor</code>方法。</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
