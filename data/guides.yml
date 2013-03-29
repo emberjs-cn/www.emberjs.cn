@@ -120,8 +120,8 @@ Models:
   #- title: "Building Reusable Views"
     #url: "views/building-reusable-views"
 
-The Object Model:
-  - title: "Classes and Instances"
+对象模型:
+  - title: "类与实例"
     url: "object-model/classes-and-instances"
   - title: "Computed Properties"
     url: "object-model/computed-properties"
