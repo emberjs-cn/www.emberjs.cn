@@ -5,10 +5,75 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-03-27T00:00:00Z</updated>
+  <updated>2013-03-29T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>Ember.js 1.0.0-rc2发布</title>
+    <link rel="alternate" href="/blog/2013/03/29/ember-js-1-0-rc2-released.html"/>
+    <id>/blog/2013/03/29/ember-js-1-0-rc2-released.html</id>
+    <published>2013-03-29T00:00:00Z</published>
+    <updated>2013-03-29T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;今天&lt;code&gt;Ember.js&lt;/code&gt;
+1.0.0-rc2发布了，改版本主要完成了Bug的修订和文档的增强，另外也改进了一些内部的处理逻辑，使&lt;code&gt;Ember.js&lt;/code&gt;更加趋于稳定。&lt;/p&gt;
+
+&lt;p&gt;变更记录：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;改进了应用初始化过程，废弃了&lt;code&gt;Ember.Application#initialize&lt;/code&gt;，使用&lt;code&gt;deferReadiness&lt;/code&gt;和&lt;code&gt;advanceReadiness&lt;/code&gt;取代。&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;Ember.Application#then&lt;/code&gt;，其如同&lt;code&gt;isReady&lt;/code&gt;钩子一样触发。&lt;/li&gt;
+&lt;li&gt;添加更多&lt;code&gt;Ember.computed&lt;/code&gt;宏。&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+    <content type="html">&lt;p&gt;今天&lt;code&gt;Ember.js&lt;/code&gt;
+1.0.0-rc2发布了，改版本主要完成了Bug的修订和文档的增强，另外也改进了一些内部的处理逻辑，使&lt;code&gt;Ember.js&lt;/code&gt;更加趋于稳定。&lt;/p&gt;
+
+&lt;p&gt;变更记录：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;改进了应用初始化过程，废弃了&lt;code&gt;Ember.Application#initialize&lt;/code&gt;，使用&lt;code&gt;deferReadiness&lt;/code&gt;和&lt;code&gt;advanceReadiness&lt;/code&gt;取代。&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;Ember.Application#then&lt;/code&gt;，其如同&lt;code&gt;isReady&lt;/code&gt;钩子一样触发。&lt;/li&gt;
+&lt;li&gt;添加更多&lt;code&gt;Ember.computed&lt;/code&gt;宏。&lt;/li&gt;
+&lt;li&gt;为计算属性添加&lt;code&gt;readOnly&lt;/code&gt;标记。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Enumerable#compact&lt;/code&gt;将删除&lt;code&gt;undefined&lt;/code&gt;值。&lt;/li&gt;
+&lt;li&gt;修正在虚拟视图上注销操作的问题。&lt;/li&gt;
+&lt;li&gt;公开&lt;code&gt;Ember.LinkView&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;支持jQuery 2.0。&lt;/li&gt;
+&lt;li&gt;支持火狐10或更低版本不支持&lt;code&gt;domElement.outerHTML&lt;/code&gt;的浏览器。&lt;/li&gt;
+&lt;li&gt;更容易增大应用容器的解析器。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;{{view}}&lt;/code&gt;助手中添加&lt;code&gt;tagName&lt;/code&gt;的别名&lt;code&gt;tag&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将&lt;code&gt;name&lt;/code&gt;加入&lt;code&gt;Ember.TextField&lt;/code&gt;和&lt;code&gt;Ember.Select&lt;/code&gt;的&lt;code&gt;attributeBinding&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ember.merge&lt;/code&gt;返回被合并的对象。&lt;/li&gt;
+&lt;li&gt;废除在&lt;code&gt;Metamorphs&lt;/code&gt;上设置&lt;code&gt;tagNames&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;避免了父级隐藏的&lt;code&gt;index&lt;/code&gt;路由影响子级显示的&lt;code&gt;index&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;App#reset&lt;/code&gt;行为更接近&lt;code&gt;App#create&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Evented#on、#off、#one&lt;/code&gt;支持链式调用。&lt;/li&gt;
+&lt;li&gt;为&lt;code&gt;{{action}}&lt;/code&gt;助手添加一个基本的&lt;code&gt;allowedKeys&lt;/code&gt;的实现。&lt;/li&gt;
+&lt;li&gt;改进了&lt;code&gt;Ember.Array#slice&lt;/code&gt;的实现。&lt;/li&gt;
+&lt;li&gt;修正了&lt;code&gt;ArrayProxy&lt;/code&gt;的&lt;code&gt;arrangedObject&lt;/code&gt;处理，修正了#2121，#2138。&lt;/li&gt;
+&lt;li&gt;支持自定义默认生成的控制器和路由。&lt;/li&gt;
+&lt;li&gt;改进了&lt;code&gt;HistoryLocation&lt;/code&gt;的&lt;code&gt;popstate&lt;/code&gt;处理，修正了#2234。&lt;/li&gt;
+&lt;li&gt;修正了IE7的问题。&lt;/li&gt;
+&lt;li&gt;标准化了&lt;code&gt;Ember.run.later&lt;/code&gt;和&lt;code&gt;Ember.run.next&lt;/code&gt;的行为。&lt;/li&gt;
+&lt;li&gt;修正了&lt;code&gt;classNameBindings&lt;/code&gt;尝试更新已经删除的元素的问题。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ember.Array&lt;/code&gt;方法总是返回&lt;code&gt;Ember.Arrays&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RSVP&lt;/code&gt;可以通过&lt;code&gt;Ember.RSVP&lt;/code&gt;来调用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ObjectProxy&lt;/code&gt;不再尝试在创建的时候代理不可知的属性。&lt;/li&gt;
+&lt;li&gt;可以通过将&lt;code&gt;ENV.LOG_VERSION&lt;/code&gt;设置为&lt;code&gt;false&lt;/code&gt;来关闭日志中输出版本信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ember.ArrayController#lastObject&lt;/code&gt;不再抛出异常，即便是空的。&lt;/li&gt;
+&lt;li&gt;Fixes to {{render}} helper when used with model&lt;/li&gt;
+&lt;li&gt;修正了&lt;code&gt;{{render}}&lt;/code&gt;助手与模型一起使用的时候的问题。&lt;/li&gt;
+&lt;li&gt;增强了&lt;code&gt;{{linkTo}}&lt;/code&gt;控制器处理。&lt;/li&gt;
+&lt;li&gt;修正了目标属性在&lt;code&gt;{{#each prop in array}}&lt;/code&gt;时的&lt;code&gt;{{bindAttr}}&lt;/code&gt; - #1523。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;String#camelize&lt;/code&gt;将首字母小写。&lt;/li&gt;
+&lt;li&gt;另外还修正了许多其他的问题，并改进了文档。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry>
     <title>指南目录结构调整</title>
     <link rel="alternate" href="/blog/2013/03/27/changed-the-directories-of-guides.html"/>
