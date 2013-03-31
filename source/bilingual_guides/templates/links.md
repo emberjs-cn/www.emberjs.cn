@@ -41,7 +41,7 @@ rendered HTML would look something like this:
 
 When the rendered link matches the current route, and the same object instance is passed into the helper, then the link is given `class="active"`.
 
-如果渲染后的链接与当前路由匹配，并且`{{linkTo}}`助手接收到相同的对象实例，那么，对应链接就会被激活，即`class="active"`
+当被渲染的链接与当前路由匹配时，并且传入{{linkTo}}助手的是相同的对象实例，那么链接的class被设置为active。
 
 The `{{linkTo}}` helper takes:
 
