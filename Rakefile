@@ -5,6 +5,7 @@ def git_initialize(repository)
   unless File.exist?(".git")
     system "git init"
     system "git remote add origin https://github.com/emberjs-cn/#{repository}.git"
+    system "git remote add menglifang git@gitlab.menglifang.org:opensource/emberjs-cn.git"
   end
 end
 
@@ -100,5 +101,6 @@ task :deploy do |t, args|
     system "git add -A"
     system "git commit -m '#{message.gsub("'", "\\'")}'"
     system "git push origin master" unless ENV['NODEPLOY']
+    system "git push menglifang master" unless ENV['NODEPLOY']
   end
 end
