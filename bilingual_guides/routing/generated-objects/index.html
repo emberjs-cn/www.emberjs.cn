@@ -153,7 +153,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/links">Links</a>
+              <a href="/bilingual_guides/templates/links">链接</a>
             </li>
           
             <li class="level-3">
@@ -221,23 +221,23 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/bilingual_guides/models">Models</a>
+            <a href="/bilingual_guides/models">模型</a>
             <ol>
         
             <li class="level-3">
-              <a href="/bilingual_guides/models">Introduction</a>
+              <a href="/bilingual_guides/models">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/defining-a-store">Defining a Store</a>
+              <a href="/bilingual_guides/models/defining-a-store">创建一个存储器</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/defining-models">Defining Models</a>
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-models">Finding Models</a>
+              <a href="/bilingual_guides/models/finding-models">查找模型</a>
             </li>
           
             <li class="level-3">
@@ -361,13 +361,19 @@
 
   <div class="chapter">
     <h1>路由</h1>
-    <h2 class='anchorable-toc' id='toc_generated-objects'>Generated Objects</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/routing/generated-objects/">http://emberjs.com/guides/routing/generated-objects/</a></p>
+<h2 class='anchorable-toc' id='toc_generated-objects'>生成的对象（Generated Objects）</h2>
 <p>As explained in the <a href="/guides/routing/defining-your-routes">routing guide</a>, whenever you define a new route,
 Ember.js attempts to find corresponding Route, Controller, View, and Template
 classes named according to naming conventions. If an implementation of any of
 these objects is not found, appropriate objects will be generated in memory for you.</p>
-<h4 class='anchorable-toc' id='toc_generated-routes'>Generated routes</h4>
+
+<p>正如在<a href="/guides/routing/defining-your-routes">routing guide</a>中所说的，无论何时，只要你定义了一个新的路由，<code>Ember.js</code>都会试着根据命名惯例
+寻找相对应的路由，控制器，视图还有模板类。一旦有任何一个对象找不到，那么在内存中，相对应的对象将会被生成。</p>
+<h4 class='anchorable-toc' id='toc_generated-routes'>生成的路由（Generated routes）</h4>
 <p>Given you have the following route:</p>
+
+<p>假设你有下列路由：</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -381,34 +387,57 @@ these objects is not found, appropriate objects will be generated in memory for 
 </div>
 <p>When you navigate to <code>/posts</code>, Ember.js looks for <code>App.PostsRoute</code>.
 If it doesn&#39;t find it, it will automatically generate an <code>App.PostsRoute</code> for you.</p>
-<h5 class='anchorable-toc' id='toc_custom-generated-routes'>Custom Generated Routes</h5>
+
+<p>当你导航到<code>/posts</code>时，<code>Ember.js</code>会寻找<code>App.PostsRoute</code>。如果找不到，它会自动地为你生成<code>App.PostsRoute</code>。</p>
+<h5 class='anchorable-toc' id='toc_custom-generated-routes'>自定义生成的路由 （Custom Generated Routes）</h5>
 <p>You can have all your generated routes extend a custom route.  If you define <code>App.Route</code>,
 all generated routes will be instances of that route.</p>
-<h4 class='anchorable-toc' id='toc_generated-controllers'>Generated Controllers</h4>
+
+<p>你可以让你所有生成的路由都扩展自一个自定义的路由。如果你定义了<code>App.Route</code>，所有生成的路由都将会是这个路由的实例。</p>
+<h4 class='anchorable-toc' id='toc_generated-controllers'>生成的控制器 （Generated Controllers）</h4>
 <p>If you navigate to route <code>posts</code>, Ember.js looks for a controller called <code>App.PostsController</code>.
 If you did not define it, one will be generated for you.</p>
+
+<p>如果你导航到<code>posts</code>路由，<code>Ember.js</code>会寻找名为<code>App.PostsController</code>的控制器。如果你没有定义它，他会被自动生成。</p>
 
 <p>Ember.js can generate three types of controllers:
 <code>Ember.ObjectController</code>, <code>Ember.ArrayController</code>, and <code>Ember.Controller</code>.</p>
 
+<p><code>Emeber.js</code>可以生成三种类型的控制器：
+<code>Ember.ObjectController</code>， <code>Ember.ArrayController</code>， 和 <code>Ember.Controller</code>。</p>
+
 <p>The type of controller Ember.js chooses to generate for you depends on your route&#39;s
 <code>model</code> hook:</p>
+
+<p><code>Ember.js</code>如何选择生成的控制器类型取决于路由中你的<code>model</code>钩子：</p>
 
 <ul>
 <li>If it returns an object (such as a single record), an <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">ObjectController</a> will be generated.</li>
 <li>If it returns an array, an <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">ArrayController</a> will be generated.</li>
-<li>If it does not return anything, an instance of <code>Ember.Controller</code> will be generated.</li>
+<li><p>If it does not return anything, an instance of <code>Ember.Controller</code> will be generated.</p></li>
+<li><p>如果返回一个对象（例如单个记录），生成一个<a href="/guides/controllers/representing-a-single-model-with-objectcontroller">ObjectController</a>。</p></li>
+<li><p>如果返回一个数组，生成一个<a href="/guides/controllers/representing-multiple-models-with-arraycontroller">ArrayController</a>。</p></li>
+<li><p>如果不返回任何东西，那么生成一个<code>Ember.Controller</code>的实例。</p></li>
 </ul>
-<h5 class='anchorable-toc' id='toc_custom-generated-controllers'>Custom Generated Controllers</h5>
+<h5 class='anchorable-toc' id='toc_custom-generated-controllers'>自定义生成的控制器 （Custom Generated Controllers）</h5>
 <p>If you want to customize generated controllers, you can define your own <code>App.Controller</code>, <code>App.ObjectController</code>
 and <code>App.ArrayController</code>.  Generated controllers will extend one of these three (depending on the conditions above).</p>
-<h4 class='anchorable-toc' id='toc_generated-views-and-templates'>Generated Views and Templates</h4>
+
+<p>如果你想要自定义生成的控制器，你可以定义你自己的<code>App.Controller</code>，<code>App.ObjectController</code>和<code>App.ArrayController</code>。生成的控制器会
+扩展自它们其中一个（取决于上面的条件）。</p>
+<h4 class='anchorable-toc' id='toc_generated-views-and-templates'>生成的视图和模板 （Generated Views and Templates）</h4>
 <p>A route also expects a view and a template.  If you don&#39;t define a view,
 a view will be generated for you.</p>
+
+<p>一个路由也会跟对应视图和模板匹配。如果你没有定义对应的视图，那么系统会为你自动地生成一个视图。</p>
 
 <p>A generated template is empty.
 If it&#39;s a resource template, the template will simply act
 as an <code>outlet</code> so that nested routes can be seemlessly inserted.  It is equivalent to:</p>
+
+<p>一个生成的模板是空的。
+如果它是个资源模板，基本上它像一个出口（<code>outlet</code>）一样，以便嵌套的路由可以无缝的插入。
+这个等同于：</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>

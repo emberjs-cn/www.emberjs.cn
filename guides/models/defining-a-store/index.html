@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Models</title>
+    <title>Ember.js - 模型</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -153,7 +153,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/links">Links</a>
+              <a href="/guides/templates/links">链接</a>
             </li>
           
             <li class="level-3">
@@ -221,23 +221,23 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/models">Models</a>
+            <a href="/guides/models">模型</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/guides/models">Introduction</a>
+              <a href="/guides/models">介绍</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/models/defining-a-store">Defining a Store</a>
+              <a href="/guides/models/defining-a-store">创建一个存储器</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/defining-models">Defining Models</a>
+              <a href="/guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/finding-models">Finding Models</a>
+              <a href="/guides/models/finding-models">查找模型</a>
             </li>
           
             <li class="level-3">
@@ -360,16 +360,13 @@
           
 
   <div class="chapter">
-    <h1>Models</h1>
-    <h2 class='anchorable-toc' id='toc_defining-a-store'>Defining a Store</h2>
-<p>Every application using Ember Data has a store. The store is the
-repository that holds loaded models, and is responsible for retrieving
-models that have not yet been loaded.</p>
+    <h1>模型</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/models/defining-a-store/">http://emberjs.com/guides/models/defining-a-store/</a></p>
+<h2 class='anchorable-toc' id='toc_'>创建一个存储器</h2>
+<p>每一个使用 Ember Data 的应用都会有一个存储器。这个存储器会成为已加载模型的贮存器，并且检索还未被加载的模型。</p>
 
-<p>Typically, you will interact with models directly, not the store.
-However, you do need to tell Ember.js that you want Ember Data to manage
-your models. To do so, simply define a subclass of <code>DS.Store</code> on your
-<code>Ember.Application</code>:</p>
+<p>通常，你可以直接跟模型交互，而不使用存储器。但是你需要让 Ember.js 知道你现在在使用 Ember Data 来管理你的模型。
+要达到这样的目的，我们可以简单地在Ember.Application中定义一个DS.Store的子类，如下所示：</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -381,14 +378,10 @@ your models. To do so, simply define a subclass of <code>DS.Store</code> on your
 </pre></td>
 </tr></table>
 </div>
-<p>Note the <code>revision</code> property defined here. This is the API revision
-number, and is used by Ember Data to notify you of breaking changes to
-the public API. This will be removed once Ember Data reaches 1.0. See
-the <a href="https://github.com/emberjs/data/blob/master/BREAKING_CHANGES.md">Breaking Changes document</a> for more information.</p>
+<p>注意这里的<code>revision</code>属性，它是 API 的修订版本号，在Ember Data 1.0 版本之前用来提醒你公共 API 的重大更改。
+查看<a href="https://github.com/emberjs/data/blob/master/BREAKING_CHANGES.md">Breaking Changes 文档</a>以获取更多信息。</p>
 
-<p>If you want to customize the store, you can do so when creating the
-subclass. For example, if you wanted to use an adapter other than the
-default <code>DS.RESTAdapter</code>, you would do so like this:</p>
+<p>如果你想要定制存储器，你可以在创建子类的时候去定制。例如，如果你想要用另外一个适配器去替换默认的<code>DS.RESTAdapter</code>，你可以像下面这样做：</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -406,11 +399,11 @@ default <code>DS.RESTAdapter</code>, you would do so like this:</p>
       <footer>
         
           <a class="previous-guide" href="/guides/models">
-            ← Introduction
+            ← 介绍
           </a>
          
         <a class="next-guide" href="/guides/models/defining-models">
-          Defining Models →
+          定义模型 →
         </a>
       
       </footer>
