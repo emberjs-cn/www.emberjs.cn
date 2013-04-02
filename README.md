@@ -28,12 +28,20 @@ bundle exec rake preview
 
 #### 如何参与
 
-1. 首先[fork本项目](https://github.com/emberjs-cn/www.emberjs.cn/fork_select)；
-2. 在你的分支完成工作；
-3. 提交一个申请（Pull Request）；
-4. 然后等待合并。
+1. 创建你要进行的翻译工作的[issue](https://github.com/emberjs-cn/www.emberjs.cn/issues)；（避免与其他人重复）
+2. [fork本项目](https://github.com/emberjs-cn/www.emberjs.cn/fork_select)；
+3. 在你的分支完成工作；
+4. 提交一个申请（Pull Request）；
+5. 然后等待合并。
 
 注：通常我们会在一至两个工作日内完成申请的处理，在此期间我们可能会根据你提交的内容，给出一定的修改意见。
+
+#### 指南翻译说明
+
+我们将中英文对照翻译与中文版进行分离，这不仅可以更好的保持指南与官方英文原文的同步，也让我们的工作更加清晰化。指南翻译的具体步骤：
+
+* 在`source/bilingual_guides`目录，完成中英文对照翻译；
+* 在`source/guides`中添加对应的中文版本。
 
 #### 注意事项
 
