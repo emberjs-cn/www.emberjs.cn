@@ -2,7 +2,7 @@
 
 欢迎来到Ember.js指南！本指南将引领你从Ember.js的初学者变成Ember.js专家。本指南将从Ember.js最基本的概念入手，逐渐深入到更为复杂的概念，直至让你掌握了使用Ember.js来构建一个非凡的Web应用的所有技术。
 
-为了帮助你更加快速的入门，Ember.js精心制作了一个30分钟的视频，这个视频将指导你构建一个完整的Ember.js应用。
+为了帮助你更加快速的入门，Ember.js精心制作了一个32分钟的视频，这个视频将指导你构建一个完整的Ember.js应用。
 
 <iframe width="640" height="360" src="http://www.youtube.com/embed/Ga99hMi7wfY?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
 

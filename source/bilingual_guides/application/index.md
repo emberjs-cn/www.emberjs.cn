@@ -22,7 +22,7 @@ Having an application object is important for several reasons:
 
 1. It is your application's namespace. All of the classes in your application will
    be defined as properties on this object (e.g., `App.PostsView` and
-   `App.PostsController`). This helps to prevent polluting the global scope.
+   `App.PostsController`). This helps to prevent polluting of the global scope.
 
    它是你应用的命名空间，应用里面所有的类都会作为它的属性去定义（例如：`App.PostsView`和`App.PostsController`）。这样避免你污染了公共的域。
 

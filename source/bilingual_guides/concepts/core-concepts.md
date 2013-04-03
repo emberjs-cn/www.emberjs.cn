@@ -18,8 +18,8 @@ help them communicate and collaborate.
 
 We've spent a lot of time borrowing liberally from ideas introduced
 by native application frameworks, like Cocoa. When we felt those
-concepts were more hindrance than help–or didn't fit within the unique
-constraints of the web–we turned to other popular open source projects
+concepts were more hindrance than help-–or didn't fit within the unique
+constraints of the web-–we turned to other popular open source projects
 like Ruby on Rails and Backbone.js for inspiration.
 
 我们曾经花费了大量的时间借鉴一些本地应用开发框架的思想，例如Cocoa。但是当
@@ -37,7 +37,7 @@ forebearers with the lightweight sensibilities of the modern web.
 
 A **template**, written in the Handlebars templating language, describes
 the user interface of your application. In addition to plain HTML,
-templates can contain:
+templates can contain the following:
 
 **模板**， 是由Handlebars模板语言写成，它描述了一个应用程序的用户接口。
 此外，相对于纯HTML，模板还提供了：
