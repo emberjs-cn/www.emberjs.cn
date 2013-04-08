@@ -92,7 +92,7 @@ as an `outlet` so that nested routes can be seemlessly inserted.  It is equivale
 如果它是个资源模板，基本上它像一个出口（`outlet`）一样，以便嵌套的路由可以无缝的插入。
 这个等同于：
 
-```html
+```handlebars
 {{outlet}}
 ```
 

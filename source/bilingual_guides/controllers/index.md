@@ -121,12 +121,12 @@ the view knows anything about those mechanics.
 
 <aside>
 For example, if the user navigates from `/posts/1` to `/posts/2`,
-the `PostController` will change its model from `User.find(1)` to
-`User.find(2)`. The template will update its representations of any
+the `PostController` will change its model from `Post.find(1)` to
+`Post.find(2)`. The template will update its representations of any
 properties on the model, as well as any computed properties on the
 controller that depend on the model.
 
-例如，如果用户从`/posts/1`跳转至`/posts/2`，`PostController`将其模型从`User.find(1)`变为`User.find(2)`。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
+例如，如果用户从`/posts/1`跳转至`/posts/2`，`PostController`将其模型从`Post.find(1)`变为`Post.find(2)`。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
 </aside>
 
 This makes it easy to test a template in isolation by rendering it 
