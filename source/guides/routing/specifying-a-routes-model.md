@@ -1,3 +1,4 @@
+英文原文: [http://emberjs.com/guides/routing/specifying-a-routes-model/](http://emberjs.com/guides/routing/specifying-a-routes-model/)
 ## 指定路由的模型 （Specifying a Route's Model）
 
 In the router, each URL is associated with one or more _route handlers_.
@@ -5,8 +6,8 @@ The route handler is responsible for converting the URL into a model
 object, telling a controller to represent that model, then rendering a
 template bound to that controller.
 
-在路由器中， 每一个URL都会有一个或多个路由处理器与之相关联。路由处理器会负责将URL转换成一个模型对象，
-并利用一个控制器来表示这个模型，然后将一个模型绑定到该控制器。
+在路由器中， 每一个URL都会有一个或多个路由处理器(`route handlers`)与之相关联。路由处理器会负责将URL转换成一个模型对象，
+并利用一个控制器来表示这个模型，然后渲染绑定于那个控制器的模板。
 
 ### 单一模型 （Singleton Models）
 
@@ -14,7 +15,7 @@ If a route does not have a dynamic segment, you can hardcode which model
 should be associated with that URL by implementing the route handler's
 `model` hook:
 
-如果一个路由不包含动态段，你就可以通过执行路由处理器的模型(`model`)钩子函数来写死与这个URL关联的模型(`model`)。
+如果一个路由不包含动态段，你就可以通过执行路由处理器的模型(`model`)钩子函数来写死与这个URL关联的模型(`model`):
 
 ```js
 App.Router.map(function() {
@@ -34,7 +35,7 @@ behavior by implementing the [setupControllers hook][1]. The `posts`
 controller is the context for the `posts` template.
 
 默认情况下，从模型(`model`)钩子函数返回的值将会赋值给`posts`控制器的`model`属性。
-你可以通过执行[setupControllers][1]钩子函数来改变这种默认的方式。`posts`控制器是`posts`模板的上下文环境。
+你可以通过执行[setupControllers hook][1]钩子函数来改变这种默认的方式。`posts`控制器是`posts`模板的上下文环境。
 
 [1]: /guides/routing/setting-up-a-controller
 
