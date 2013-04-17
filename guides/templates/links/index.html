@@ -164,6 +164,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/writing-helpers">Writing Helpers</a>
             </li>
           </ol></li>
@@ -184,7 +188,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
             </li>
           
             <li class="level-3">
@@ -375,8 +379,8 @@
 5
 </pre></td>
   <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
-  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">posts</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
-    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/:post_id</span><span class="delimiter">&quot;</span></span> });
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photos</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/:photo_id</span><span class="delimiter">&quot;</span></span> });
   });
 });
 </pre></td>
@@ -390,17 +394,17 @@
 6
 7
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!-- posts.handlebars --&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!-- photos.handlebars --&gt;</span>
 
 <span class="tag">&lt;ul&gt;</span>
-<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">post</span> <span class="attribute-name">in</span> <span class="attribute-name">posts</span><span class="inline-delimiter">}}</span></span>
-  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">posts.post</span> <span class="attribute-name">post</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">photo</span> <span class="attribute-name">in</span> <span class="attribute-name">photos</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">photos.photo</span> <span class="attribute-name">photo</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">photo.title</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
 </div>
-<p>如果<code>posts</code>模板对应的模型拥有三篇文章，那么，被渲染的HTML内容将如下所示：</p>
+<p>如果<code>photos</code>模板对应的模型拥有三张照片，那么，被渲染的HTML内容将如下所示：</p>
 <div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -409,9 +413,9 @@
 5
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
-  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Infinity Madness<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Hexadecimal Weirdness<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Slashes!<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/photos/1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Happy Kittens<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/photos/2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Puppy Running<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/photos/3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Mountain Landscape<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
@@ -421,7 +425,7 @@
 <p><code>{{linkTo}}</code>助手可以接收以下三个参数：</p>
 
 <ul>
-<li>路由名称。在上面例子中，可以是<code>index</code>, <code>posts</code>或者 <code>post</code>。</li>
+<li>路由名称。在上面例子中，可以是<code>index</code>, <code>photos</code>或者 <code>edit</code>。</li>
 <li>如果某个路由含有
 <a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>,且有一个模型表示这个段。那么，默认情况下，<code>Ember.js</code>将会使用对象的<code>id</code>属性的值替换这个动态段。</li>
 <li>此外，我们也可以提供一个链接名称绑定到<code>a</code>标签的<code>title</code>属性。</li>
@@ -439,8 +443,8 @@
 8
 </pre></td>
   <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
-  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">posts</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
-    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/:post_id</span><span class="delimiter">&quot;</span></span> }, <span class="keyword">function</span>(){
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photos</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
+    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photo</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/:photo_id</span><span class="delimiter">&quot;</span></span> }, <span class="keyword">function</span>(){
       <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>);
       <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">comment</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/comments/:comment_id</span><span class="delimiter">&quot;</span></span> });
     });
@@ -449,7 +453,7 @@
 </pre></td>
 </tr></table>
 </div>
-<p><code>postIndex</code>模板中的内容如下：</p>
+<p><code>photoIndex</code>模板中的内容如下：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -457,17 +461,17 @@
 4
 5
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">photo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/div&gt;</span>
 
-<span class="tag">&lt;p&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">post.comment</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>Main Comment<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">photo.comment</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>Main Comment<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
 </div>
-<p>因为我们只提供了一个模型，所以链接将会使用当前文章的id作为动态段<code>:post_id</code>的值。而<code>primaryComment</code>将成为<code>comment</code>路由处理器的新模型。</p>
+<p>因为我们只提供了一个模型，所以链接将会使用当前照片的id作为动态段<code>:photo_id</code>的值。而<code>primaryComment</code>将成为<code>comment</code>路由处理器的新模型。</p>
 
-<p>此外，你还可以同时给<code>{{linkTo}}</code>助手指定一篇文章和一条评论，如下所示：</p>
+<p>此外，你还可以同时给<code>{{linkTo}}</code>助手指定一张照片和一条评论，如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -476,14 +480,14 @@
 5
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;p&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">post.comment</span> <span class="attribute-name">nextPost</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>
-    Main Comment for the Next Post
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">photo.comment</span> <span class="attribute-name">nextPhoto</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>
+    Main Comment for the Next Photo
   <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
 </div>
-<p>在这个例子中，指定的模型将同时提供<code>:post_id</code>和<code>:comment_id</code>。指定的<code>nextPost</code>将称为<code>post</code>路由处理器的新模型，同时，<code>primaryComment</code>将成为<code>comment</code>路由处理器的新模型。</p>
+<p>在这个例子中，指定的模型将同时提供<code>:photo_id</code>和<code>:comment_id</code>。指定的<code>nextPhoto</code>将称为<code>photo</code>路由处理器的新模型，同时，<code>primaryComment</code>将成为<code>comment</code>路由处理器的新模型。</p>
 
 <p>如果要链接到一个新的URL地址，在下面两种情况下，路由将只执行它的处理器：</p>
 

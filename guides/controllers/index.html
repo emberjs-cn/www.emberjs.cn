@@ -164,6 +164,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/writing-helpers">Writing Helpers</a>
             </li>
           </ol></li>
@@ -184,7 +188,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
             </li>
           
             <li class="level-3">
@@ -462,7 +466,7 @@
 <p>实际情况下，<code>Ember.js</code>在这个应用中只创建一次模板的控制器，而控制器的模型可以在应用的生命周期中随意变换，不需要视图知道模型的改变。</p>
 
 <p><aside>
-例如，如果用户从<code>/posts/1</code>跳转至<code>/posts/2</code>，<code>PostController</code>将其模型从<code>User.find(1)</code>变为<code>User.find(2)</code>。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
+例如，如果用户从<code>/posts/1</code>跳转至<code>/posts/2</code>，<code>PostController</code>将其模型从<code>Post.find(1)</code>变为<code>Post.find(2)</code>。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
 </aside></p>
 
 <p>这样可以通过使用一个包含模板期望属性的控制器对象来独立的对模板进行测试。从模板的角度来看，<strong>控制器</strong>只是一个为其提供数据的不同对象。</p>

@@ -164,6 +164,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/writing-helpers">Writing Helpers</a>
             </li>
           </ol></li>
@@ -184,7 +188,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
             </li>
           
             <li class="level-3">
@@ -364,15 +368,12 @@
 
   <div class="chapter">
     <h1>路由</h1>
-    <h2 class='anchorable-toc' id='toc_specifying-a-route-s-model'>Specifying a Route&#39;s Model</h2>
-<p>In the router, each URL is associated with one or more <em>route handlers</em>.
-The route handler is responsible for converting the URL into a model
-object, telling a controller to represent that model, then rendering a
-template bound to that controller.</p>
-<h3 class='anchorable-toc' id='toc_singleton-models'>Singleton Models</h3>
-<p>If a route does not have a dynamic segment, you can hardcode which model
-should be associated with that URL by implementing the route handler&#39;s
-<code>model</code> hook:</p>
+    <p>英文原文: <a href="http://emberjs.com/guides/routing/specifying-a-routes-model/">http://emberjs.com/guides/routing/specifying-a-routes-model/</a></p>
+<h2 class='anchorable-toc' id='toc_'>指定路由的模型</h2>
+<p>在路由器中， 每一个URL都会有一个或多个路由处理器(<code>route handlers</code>)与之相关联。路由处理器会负责将URL转换成一个模型对象，
+并利用一个控制器来表示这个模型，然后渲染绑定于那个控制器的模板。</p>
+<h3 class='anchorable-toc' id='toc_'>单一模型</h3>
+<p>如果一个路由不包含动态段，你就可以通过执行路由处理器的模型(<code>model</code>)钩子函数来写死与这个URL关联的模型(<code>model</code>):</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -396,13 +397,10 @@ App.PostsRoute = Ember.Route.extend({
 </pre></td>
 </tr></table>
 </div>
-<p>By default, the value returned from your <code>model</code> hook will be assigned
-to the <code>model</code> property of the <code>posts</code> controller. You can change this
-behavior by implementing the <a href="/guides/routing/setting-up-a-controller">setupControllers hook</a>. The <code>posts</code>
-controller is the context for the <code>posts</code> template.</p>
-<h3 class='anchorable-toc' id='toc_dynamic-models'>Dynamic Models</h3>
-<p>If a route has a dynamic segment, you will want to use the parameters to
-decide which model to use:</p>
+<p>默认情况下，从模型(<code>model</code>)钩子函数返回的值将会赋值给<code>posts</code>控制器的<code>model</code>属性。
+你可以通过执行<a href="/guides/routing/setting-up-a-controller">setupControllers hook</a>钩子函数来改变这种默认的方式。<code>posts</code>控制器是<code>posts</code>模板的上下文环境。</p>
+<h3 class='anchorable-toc' id='toc_'>动态模型</h3>
+<p>如果一个路由包含动态段，你会想用参数来决定用哪个模型(<code>model</code>):</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -426,23 +424,15 @@ App.PostRoute = Ember.Route.extend({
 </pre></td>
 </tr></table>
 </div>
-<p>Because this pattern is so common, the above <code>model</code> hook is the
-default behavior.</p>
+<p>由于这种模式很常用，所以上面的模型（<code>model</code>）钩子函数就是默认的行为。</p>
 
-<p>For example, if the dynamic segment is <code>:post_id</code>, Ember.js is smart
-enough to know that it should use the model <code>App.Post</code> (with the ID
-provided in the URL). Specifically, unless you override <code>model</code>, the route will
-return <code>App.Post.find(params.post_id)</code> automatically.</p>
+<p>例如，如果动态段是<code>:post_id</code>，<code>ember.js</code>会智能地使用<code>App.post</code>（加上<code>URL</code>提供的<code>ID</code>)。
+特别地，如果你没有重写了模型（<code>model</code>），路由将会自动地返回<code>App.Post.find(params.post_id)</code>。</p>
 
-<p>Not coincidentally, this is exactly what Ember Data expects. So if you
-use the Ember router with Ember Data, your dynamic segments will work
-as expected out of the box.</p>
+<p>这不是巧合，而是<code>Ember Data</code>所想要的。所以如果你使用<code>Ember</code>路由和<code>Ember Data</code>，
+你的动态段将会以默认的方式工作。</p>
 
-<p>Note: A route with a dynamic segment will only have it&#39;s <code>model</code> hook called
-when it is entered via the URL. If the route is entered through a transition
-(e.g. when using the <a href="/guides/templates/links">linkTo</a> Handlebars helper), then a model context is
-already provided and the hook is not executed. Routes without dynamic segments
-will always execute the model hook.</p>
+<p>注意：一个具有动态段的路由只有在通过URL访问的时候，<code>model</code>钩子才会被调用。如果路由是从一个跳转进入的（例如：使用Handlebars的<a href="/guides/templates/links">linkTo</a>助手时），模型上下文已经准备好了，因此<code>model</code>钩子这时不会被执行。没有动态段的路由其<code>model</code>钩子每次都会被执行。</p>
 
     
       <footer>

@@ -79,7 +79,7 @@
     
   </head>
 
-  <body class="guides guides_templates guides_templates_binding-element-class-names guides_templates_binding-element-class-names_index">
+  <body class="guides guides_templates guides_templates_rendering-with-helpers guides_templates_rendering-with-helpers_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -151,7 +151,7 @@
               <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
             </li>
           
-            <li class="level-3 sub-selected">
+            <li class="level-3">
               <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
             </li>
           
@@ -163,7 +163,7 @@
               <a href="/guides/templates/actions">Actions</a>
             </li>
           
-            <li class="level-3">
+            <li class="level-3 sub-selected">
               <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
             </li>
           
@@ -368,189 +368,286 @@
 
   <div class="chapter">
     <h1>模板</h1>
-    <p>英文原文:<a href="http://emberjs.com/guides/templates/binding-element-class-names/">http://emberjs.com/guides/templates/binding-element-class-names/</a></p>
-<h2 class='anchorable-toc' id='toc_'>绑定元素类名称</h2>
-<p>像其他所有属性一样，HTML元素的<code>class</code>属性也可以被绑定，如下所示：</p>
+    <h2 class='anchorable-toc' id='toc_rendering-with-helpers'>Rendering with Helpers</h2>
+<p>Ember provides several helpers that allow you to render other views and templates in different ways.</p>
+<h3 class='anchorable-toc' id='toc_the-code-partial-code-helper'>The <code>{{partial}}</code> Helper</h3>
+<p><code>{{partial}}</code> takes the template to be rendered as an argument, and renders that template in place.</p>
+
+<p><code>{{partial}}</code> does not change context or scope.  It simply drops the given template into place with the current scope.  </p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
+4
+5
+6
+7
+8
+9
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">priority</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author.firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author.lastName</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">partial</span> <span class="error">&quot;</span><span class="attribute-name">author</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
-<p>如果控制器的<code>priority</code>属性的值是<code>&quot;p4&quot;</code>,上面的模板将生成如下的HTML：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div><div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">p4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div><h3 class='anchorable-toc' id='toc_'>绑定布尔值</h3>
-<p>如果你要绑定的值是布尔类型,<code>Ember.js</code>会将属性名称用中划线连接来作为类的名称：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isUrgent</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p>如果<code>isUrgent</code>的值为真，上面的模板就会生成下面的HTML:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">is-urgent</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p>否则，如果<code>isUrgent</code>是假,就不会添加类：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
+4
+5
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;div&gt;</span>
-  Warning!
+  <span class="tag">&lt;h1&gt;</span>Why You Should Use Ember.JS<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span>Because it's awesome!<span class="tag">&lt;/div&gt;</span>
+  Written by Yehuda Katz
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
 </div>
-<p>如果你想要显示的提供一个类的名称(而不使用<code>Ember.js</code>自动生成的中划线形式)，那么，你可以使用下面的语法：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<p>Note: in cases where you may have used <code>{{template}}</code> in the past, you should likely use <code>{{partial}}</code> instead.</p>
+<h3 class='anchorable-toc' id='toc_the-code-view-code-helper'>The <code>{{view}}</code> Helper</h3>
+<p>This helper works like the partial helper, except instead of providing a template to be rendered within the current template, you provide a view class.  The view controls what template is rendered.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isUrgent:urgent</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p>这样就不会产生中划线形式的名称，取而代之的将产生如下的名称：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urgent</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p>你也可以像下面这样显示的指定当一个属性为<code>false</code>时要添加的类的名称：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isEnabled:enabled:disabled</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p>在上面例子中,如果<code>isEnabled</code>属性的值是<code>true</code>,就会添加<code>enabled</code>类。否则，如果属性值为<code>false</code>,就会添加<code>disabled</code>类。</p>
+  <td class="code"><pre>App.AuthorView = Ember.View.extend({
+  <span class="comment">// We are setting templateName manually here to the default value</span>
+  <span class="key">templateName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>,
 
-<p>这种语法也可以用来在属性值为<code>false</code>时添加一个类,而在属性值为<code>true</code>时移除它，所以下面的例子：</p>
+  <span class="comment">// A fullName property should probably go on App.Author, </span>
+  <span class="comment">// but we're doing it here for the example</span>
+  <span class="key">fullName</span>: (<span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>).get(<span class="string"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>) + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>).get(<span class="string"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>);
+  }).property(<span class="string"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>)
+})
+</pre></td>
+</tr></table>
+</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">fullName</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.AuthorView</span> <span class="attribute-name">authorBinding</span>=<span class="attribute-value">author</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div><div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Why You Should Use Ember.JS<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span>Because it's awesome!<span class="tag">&lt;/div&gt;</span>
+  Written by Yehuda Katz
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>When using <code>{{partial &quot;author&quot;}}</code>:</p>
+
+<ul>
+<li>No instance of App.AuthorView will be created</li>
+<li>The given template will be rendered</li>
+</ul>
+
+<p>When using <code>{{view App.AuthorView}}</code>:</p>
+
+<ul>
+<li>An instance of App.AuthorView will be created</li>
+<li>It will be rendered here, using the template associated with that view (the default template being &quot;author&quot;)</li>
+</ul>
+
+<p>For more information, see <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a></p>
+<h3 class='anchorable-toc' id='toc_the-code-render-code-helper'>The <code>{{render}}</code> Helper</h3>
+<p><code>{{render}}</code> takes two parameters:</p>
+
+<ul>
+<li>The first parameter describes the context to be setup</li>
+<li>The optional second parameter is a model, which will be passed to the controller if provided</li>
+</ul>
+
+<p><code>{{render}}</code> does several things:</p>
+
+<ul>
+<li>Gets the singleton instance of the corresponding controller</li>
+<li>Renders the named template using this controller</li>
+<li>Sets the model of the corresponding controller </li>
+</ul>
+
+<p>Modifying the post / author example slightly:</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isEnabled::disabled</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">lastName</span><span class="inline-delimiter">}}</span></span>. 
+  Total Posts: <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">postCount</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">render</span> <span class="error">&quot;</span><span class="attribute-name">author</span><span class="error">&quot;</span> <span class="attribute-name">author</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
-<p>将会在<code>isEnabled</code>是<code>false</code>时添加<code>disabled</code>类，而在<code>isEnabled</code>为<code>true</code>时不添加类。</p>
-<h3 class='anchorable-toc' id='toc_'>静态类</h3>
-<p>如果你想要一个混合了静态类和绑定类的元素,你需要将静态类包含在绑定属性列表中,以<code>:</code>为前缀：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
+4
+5
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">:high-priority isUrgent</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p>这会直接把<code>high-priority</code>类加到元素中去：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">high-priority is-urgent</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
+  <td class="code"><pre>App.AuthorController = Ember.ObjectController.extend({
+  <span class="function">postCount</span>: <span class="keyword">function</span>() { 
+    <span class="keyword">return</span> App.Post.countForAuthor(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">model</span><span class="delimiter">&quot;</span></span>));
+  }.property(<span class="string"><span class="delimiter">&quot;</span><span class="content">model</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post.@each.author</span><span class="delimiter">&quot;</span></span>)
+})
 </pre></td>
 </tr></table>
 </div>
-<p>绑定类名称和静态类名称不能混合在一起。下面的例子<strong>就不会起什么作用</strong>：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">high-priority</span><span class="delimiter">&quot;</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isUrgent</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div><h3 class='anchorable-toc' id='toc_'>绑定多个类</h3>
-<p>与其他元素属性不同的是，你可以绑定多个类：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isUrgent priority</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-<p><code>Ember.js</code>将依次对每个类执行上述准则，从而达到你所想要的效果：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">is-urgent p4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  Warning!
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
+<p>In this example, render will:</p>
+
+<ul>
+<li>Gets an instance of App.AuthorView if that class exists, otherwise uses a default generated view</li>
+<li>Use the corresponding template (in this case the default of &quot;author&quot;)</li>
+<li>Get (or generate) the singleton instance of AuthorController</li>
+<li>Set the AuthorController&#39;s model to the 2nd argument passed to render, here the author field on the post</li>
+<li>Render the template in place, with the context created in the previous steps.</li>
+</ul>
+
+<p><code>{{render}}</code> does not require the presence of a matching route.  </p>
+
+<p><code>{{render}}</code> is similar to <code>{{outlet}}</code>. Both tell Ember to devote this portion of the page to something.</p>
+
+<p><code>{{outlet}}</code>: The router determines the route and sets up the appropriate controllers/views/models.
+<code>{{render}}</code>: You specify (directly and indirectly) the appropriate controllers/views/models.</p>
+
+<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route.  For that you&#39;ll need <code>{{control}}</code>.</p>
+<h3 class='anchorable-toc' id='toc_the-code-control-code-helper'>The <code>{{control}}</code> Helper</h3>
+<p><code>{{control}}</code> works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.</p>
+
+<p>This helper is currently under heavy development, and will likely change soon.</p>
+<h3 class='anchorable-toc' id='toc_comparison-table'>Comparison Table</h3><h4 class='anchorable-toc' id='toc_general'>General</h4>
+<table>
+  <thead>
+  <tr>
+    <th>Helper</th>
+    <th>Template</th>
+    <th>Model</th>
+    <th>View</th>
+    <th>Controller</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>{{partial}}</code></td>
+    <td>Specified Template</td>
+    <td>Current Model</td>
+    <td>Current View</td>
+    <td>Current Controller</td>
+  </tr>
+  <tr>
+    <td><code>{{view}}</code></td>
+    <td>View's Template</td>
+    <td>Current Model</td>
+    <td>Specified View</td>
+    <td>Current Controller</td>
+  </tr>
+  <tr>
+    <td><code>{{render}}</code></td>
+    <td>View's Template</td>
+    <td>Specified Model</td>
+    <td>Specified View</td>
+    <td>Specified Controller</td>
+  </tr>
+  </tbody>
+</table>
+<h4 class='anchorable-toc' id='toc_specific'>Specific</h4>
+<table>
+  <thead>
+  <tr>
+    <th>Helper</th>
+    <th>Template</th>
+    <th>Model</th>
+    <th>View</th>
+    <th>Controller</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>{{partial author}}</code></td>
+    <td><code>author.hbs</code></td>
+    <td>Post</td>
+    <td><code>App.PostView</code></td>
+    <td><code>App.PostController</code></td>
+  </tr>
+  <tr>
+    <td><code>{{view App.AuthorView}}</code></td>
+    <td><code>author.hbs</code></td>
+    <td>Post</td>
+    <td><code>App.AuthorView</code></td>
+    <td><code>App.PostController</code></td>
+  </tr>
+  <tr>
+    <td><code>{{render author author}}</code></td>
+    <td><code>author.hbs</code></td>
+    <td>Author</td>
+    <td><code>App.AuthorView</code></td>
+    <td><code>App.AuthorController</code></td>
+  </tr>
+  </tbody>
+</table>
+
     
       <footer>
         
-          <a class="previous-guide" href="/guides/templates/binding-element-attributes">
-            ← 绑定元素属性
+          <a class="previous-guide" href="/guides/templates/actions">
+            ← Actions
           </a>
          
-        <a class="next-guide" href="/guides/templates/links">
-          链接 →
+        <a class="next-guide" href="/guides/templates/writing-helpers">
+          Writing Helpers →
         </a>
       
       </footer>

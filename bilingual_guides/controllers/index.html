@@ -164,6 +164,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/templates/writing-helpers">Writing Helpers</a>
             </li>
           </ol></li>
@@ -184,7 +188,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
             </li>
           
             <li class="level-3">
@@ -512,12 +516,12 @@ the view knows anything about those mechanics.</p>
 
 <p><aside>
 For example, if the user navigates from <code>/posts/1</code> to <code>/posts/2</code>,
-the <code>PostController</code> will change its model from <code>User.find(1)</code> to
-<code>User.find(2)</code>. The template will update its representations of any
+the <code>PostController</code> will change its model from <code>Post.find(1)</code> to
+<code>Post.find(2)</code>. The template will update its representations of any
 properties on the model, as well as any computed properties on the
 controller that depend on the model.</p>
 
-<p>例如，如果用户从<code>/posts/1</code>跳转至<code>/posts/2</code>，<code>PostController</code>将其模型从<code>User.find(1)</code>变为<code>User.find(2)</code>。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
+<p>例如，如果用户从<code>/posts/1</code>跳转至<code>/posts/2</code>，<code>PostController</code>将其模型从<code>Post.find(1)</code>变为<code>Post.find(2)</code>。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
 </aside></p>
 
 <p>This makes it easy to test a template in isolation by rendering it 
@@ -557,9 +561,9 @@ of this application run, you should store it on a controller.</p>
 <p>不是所有在应用中的属性都需要保存到服务器端。当需要只为本次运行的应用保存一些信息的时候，可以将其保存到控制器中。</p>
 
 <p>For example, imagine your application has a search field that is 
-always present. You could have store a <code>query</code> property on your
+always present. You could store a <code>query</code> property on your
 <code>ApplicationController</code>, and bind the <code>search</code> field in the <code>
-application</code> template to that  property.</p>
+application</code> template to that property.</p>
 
 <p>例如，应用中有一个一直存在的搜索框，那么就可以在<code>ApplicationController</code>中存储一个<code>query</code>属性，并将在<code>application</code>模板中的搜索框绑定到该属性。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>

@@ -164,6 +164,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/writing-helpers">Writing Helpers</a>
             </li>
           </ol></li>
@@ -184,7 +188,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
             </li>
           
             <li class="level-3">
@@ -419,7 +423,19 @@ controller, pass the controller&#39;s name in the <code>controller</code> option
 </pre></td>
 </tr></table>
 </div>
-<p>If you want to render the template into a different named outlet:</p>
+<p>Ember allows you to name your outlets. For instance, this code allows
+you to specify two outlets with distinct names:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toolbar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span> <span class="attribute-name">toolbar</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sidebar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span> <span class="attribute-name">sidebar</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>So, if you want to render your posts into the <code>sidebar</code> outlet, use code
+like this:</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -429,7 +445,7 @@ controller, pass the controller&#39;s name in the <code>controller</code> option
 </pre></td>
   <td class="code"><pre>App.PostsRoute = Ember.Route.extend({
   <span class="function">renderTemplate</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.render({ <span class="key">outlet</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span> });
+    <span class="local-variable">this</span>.render({ <span class="key">outlet</span>: <span class="string"><span class="delimiter">'</span><span class="content">sidebar</span><span class="delimiter">'</span></span> });
   }
 });
 </pre></td>
@@ -468,14 +484,6 @@ combination you&#39;d like:</p>
 </pre></td>
 </tr></table>
 </div>
-<p>NOTE: When a template tries to render, and the parent route did not render a template, then you will see this warning:</p>
-
-<p>&quot;The immediate parent route did not render into the main outlet ...&quot;</p>
-
-<p>This means that the the current route tried to render into the parent routes template, but the parent route didn&#39;t render a template, or if it did, the template did not render &#39;into&#39; the main template (a default {{outlet}}). For the case of the following routes: Application &gt; Posts &gt; Post, if the posts route does not have a template, the post template will render into the application template.</p>
-
-<p>This default behavior could be what you expect, or it could be unexpected and the warning is there to point out the potential unexpected behavior.</p>
-
 <p>If you want to render two different templates into outlets of two different rendered templates of a route:</p>
 <div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -497,8 +505,8 @@ combination you&#39;d like:</p>
   <span class="function">renderTemplate</span>: <span class="keyword">function</span>() {
     <span class="local-variable">this</span>.render(<span class="string"><span class="delimiter">'</span><span class="content">favoritePost</span><span class="delimiter">'</span></span>, {   <span class="comment">// the template to render</span>
       <span class="key">into</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,                <span class="comment">// the template to render into</span>
-      <span class="key">outlet</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,       <span class="comment">// the name of the outlet in that template</span>
-      <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">blogPost</span><span class="delimiter">'</span></span>  <span class="comment">// the controller to use for the template</span>
+      <span class="key">outlet</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,              <span class="comment">// the name of the outlet in that template</span>
+      <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">blogPost</span><span class="delimiter">'</span></span>        <span class="comment">// the controller to use for the template</span>
     });
     <span class="local-variable">this</span>.render(<span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>, {
       <span class="key">into</span>: <span class="string"><span class="delimiter">'</span><span class="content">favoritePost</span><span class="delimiter">'</span></span>,
@@ -509,7 +517,20 @@ combination you&#39;d like:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div><h2 class='anchorable-toc' id='toc_rendering-warning'>Rendering Warning</h2>
+<p>When a template tries to render, and the parent route did not render a
+template, then you will see this warning:</p>
+
+<p>&quot;The immediate parent route did not render into the main outlet ...&quot;</p>
+
+<p>This means that the current route tried to render into the parent
+route&#39;s template, but the parent route didn&#39;t render a template, or, if
+it did, that the template which the parent route provided did not render
+into the main template (i.e., a default <code>{{outlet}}</code>).</p>
+
+<p>Ember provides this warning because it expects that you will want to
+render into the main template.</p>
+
     
       <footer>
         

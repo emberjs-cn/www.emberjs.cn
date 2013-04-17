@@ -164,6 +164,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/writing-helpers">Writing Helpers</a>
             </li>
           </ol></li>
@@ -184,7 +188,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-a-routes-model">Specifying a Route's Model</a>
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
             </li>
           
             <li class="level-3">
@@ -525,6 +529,22 @@ modification:</p>
   <span class="key">tagName</span>: <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>,
   <span class="key">attributeBindings</span>: [<span class="string"><span class="delimiter">'</span><span class="content">href</span><span class="delimiter">'</span></span>],
   <span class="key">href</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://emberjs.com</span><span class="delimiter">&quot;</span></span>
+});
+</pre></td>
+</tr></table>
+</div>
+<p>You can also bind these attributes to differently named properties:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.MyView = Ember.View.extend({
+  <span class="key">tagName</span>: <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>,
+  <span class="key">attributeBindings</span>: [<span class="string"><span class="delimiter">'</span><span class="content">customHref:href</span><span class="delimiter">'</span></span>],
+  <span class="key">customHref</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://emberjs.com</span><span class="delimiter">&quot;</span></span>
 });
 </pre></td>
 </tr></table>
