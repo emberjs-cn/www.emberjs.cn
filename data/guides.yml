@@ -51,7 +51,7 @@
     url: "routing/defining-your-routes"
   - title: "Generated Objects"
     url: "routing/generated-objects"
-  - title: "Specifying a Route's Model"
+  - title: "指定路由的模型"
     url: "routing/specifying-a-routes-model"
   - title: "设置控制器"
     url: "routing/setting-up-a-controller"
