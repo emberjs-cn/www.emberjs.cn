@@ -110,10 +110,10 @@ the duration as a formatted string.
 由于音乐播放器的用户是人类而非机器，因此应该将歌曲时长显示为可读的格式。
 
 This is very easy to do by defining a computed property on the
-controller that transforms the model's value into a format more useful
-by the template:
+controller which transforms the model's value into a human-readable
+format for the template:
 
-可以在控制器中定义一个计算属性来转换模型的值为一个对于模板来说更加有用的属性。
+可以在控制器中定义一个计算属性来转换模型的值为一个对于模板来说更加具有可读性的属性。
 
 ```javascript
 App.SongController = Ember.ObjectController.extend({

@@ -83,7 +83,10 @@ your entire application shares a single instance of each controller.
 Each of your routes will also have a route, a controller and a 
 template named after the route.
 
-对于应用中的每一个路由，也都会有以路由名称命名的路由，及其对应的控制器以及模板。
+Each of your routes will have a controller and a template with the 
++same name as the route.
+
+对于应用中的每一个路由，都会有以路由名称命名的控制器和模板。
 
 Let's start with a simple router:
 

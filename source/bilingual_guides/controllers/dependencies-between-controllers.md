@@ -36,7 +36,7 @@ App.CommentsController = Ember.ArrayController.extend({
 ```
 
 This tells Ember that our `CommentsController` should be able to access
-it's parent `PostController`, which can be done via `controllers.post`
+its parent `PostController`, which can be done via `controllers.post`
 (either in the template or in the controller itself).
 
 这里告诉`Ember`，`CommentsController`应该能通过`controllers.post`来访问其父控制器`PostController`。（在模板和控制器中均可访问）。
@@ -52,7 +52,7 @@ it's parent `PostController`, which can be done via `controllers.post`
 ```
 
 We can also create a binding to give ourselves a shorter way to access
-the `PostController` (since it is `ObjectController`, we don't need or
+the `PostController` (since it is an `ObjectController`, we don't need or
 want the `Post` instance directly).
 
 通过创建一个绑定，可以提供一种更为简便的方式来访问`PostController`（因为`PostController`是一个`ObjectController`，这里并不直接需要一个`Post`实例）。
@@ -63,3 +63,8 @@ App.CommentsController = Ember.ArrayController.extend({
   postBinding: "controllers.post"
 });
 ```
+
+For more information about bindings, see the API docs for
++`Ember.Binding`.
+
+更多关于绑定的信息，请查看API中的`Ember.Binding`。

@@ -67,7 +67,7 @@ App.SongRoute = Ember.Route.extend({
 
 由于音乐播放器的用户是人类而非机器，因此应该将歌曲时长显示为可读的格式。
 
-可以在控制器中定义一个计算属性来转换模型的值为一个对于模板来说更加有用的属性。
+可以在控制器中定义一个计算属性来转换模型的值为一个对于模板来说更加具有可读性的属性。
 
 ```javascript
 App.SongController = Ember.ObjectController.extend({

@@ -27,7 +27,7 @@ like Ruby on Rails and Backbone.js for inspiration.
 把目光转向了其他流行的开源项目，例如，Ruby on Rails以及Backbone.js。
 
 Ember.js, therefore, is a synthesis of the powerful tools of our native
-forebearers with the lightweight sensibilities of the modern web. 
+forebears with the lightweight sensibilities of the modern web. 
 
 因此,Ember.js是结合了本地应用与现代web的轻量特性的一个强有力的工具。 
 

@@ -33,7 +33,7 @@ App.ClickableView = Ember.View.extend({
 
 Events bubble up from the target view to each parent view in
 succession, until the root view. These values are read-only. If you want to manually manage views in JavaScript (instead of creating them
-using the {{view}} helper in Handlebars), see the `Ember.ContainerView`
+using the `{{view}}` helper in Handlebars), see the `Ember.ContainerView`
 documentation below.
 
 事件从目标视图向父级视图逐层地冒泡直至根视图。这些值是只读的。如果你想用`JavaScript`手动管理视图（而不是通过使用`Handlebars`的`{{view}}`助手来创建它们），请查看下文`Ember.ContainerView`的说明文档。

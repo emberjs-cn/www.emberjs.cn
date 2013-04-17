@@ -42,3 +42,5 @@ App.CommentsController = Ember.ArrayController.extend({
   postBinding: "controllers.post"
 });
 ```
+
+更多关于绑定的信息，请查看API中的`Ember.Binding`。

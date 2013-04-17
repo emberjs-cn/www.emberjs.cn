@@ -28,7 +28,7 @@ container.pushObject(secondView);
 
 ### Defining the Initial Views of a Container View
 
-There are a few ways to specify what initial child views that a
+There are a few ways to specify what initial child views a
 `ContainerView` should render. The most straight-forward way is to
 add them in `init`:
 
