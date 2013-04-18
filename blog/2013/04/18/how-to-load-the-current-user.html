@@ -105,6 +105,8 @@
     <a href="/blog/tags/.html">最近文章</a>
     <ol style="display:block">
       
+      <li class='level-3'><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a></li>
+    
       <li class='level-3'><a href="/blog/2013/03/31/ember-baby-steps.html">Ember入门实践</a></li>
     
       <li class='level-3'><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a></li>
@@ -153,6 +155,74 @@
 </pre></td>
 </tr></table>
 </div>
+<p>一般情况下，应用都会有一个拥有独立<code>layout</code>的登录页面，用户在成功登录后进入应用主界面。那么我们就可以在服务器端渲染应用主界面时，将登录成功的用户信息通过服务器端脚本定义到页面中。</p>
+<div class="highlight erb "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- 以Rails的erb模板为例 --&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">      window.CURRENT_USER = </span><span class="inline"><span class="inline-delimiter">&lt;%=</span>raw current_user.to_json <span class="inline-delimiter">%&gt;</span></span>;
+    <span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    ...
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+<p>现在我们就可以在Ember.js应用初始化的时候，将当前登录的用户设置到应用的一个session对象中：</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.initializer({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">session</span><span class="delimiter">'</span></span>,
+  <span class="function">initialize</span>: <span class="keyword">function</span>(container, application) {
+    App.set(<span class="string"><span class="delimiter">'</span><span class="content">session</span><span class="delimiter">'</span></span>, Ember.Object.create())
+
+    <span class="comment">// 获取store实例</span>
+    store = container.lookup(<span class="string"><span class="delimiter">'</span><span class="content">store:main</span><span class="delimiter">'</span></span>)
+    <span class="comment">// 将当前用户加载到store中</span>
+    store.adapterForType(App.User).load(store, App.User, window.CURRENT_USER)
+    <span class="comment">// 设置当前用户到session中</span>
+    App.set(<span class="string"><span class="delimiter">'</span><span class="content">session.currentUser</span><span class="delimiter">'</span></span>, App.User.find(window.CURRENT_USER.id))
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>至此，我们在之后的应用中就可以通过<code>App.get(&#39;session.currentUser&#39;)</code>来获取当前登录用户的信息了。</p>
+
+<p>回过头来，我们看看为什么我们需要在<code>initializer</code>中来加载当前用户到store中去。如果我们不先将当前用户实现加载到store中去的话，会出现什么情况呢？</p>
+
+<p>ember-data会自动发送一个ajax请求到服务器端，去获取当前登录的用户信息。由于ajax是采用异步通信的，这时并没有真正获取到当前用户信息，返回的只是ember-data创建的一个本地对象，所有的属性还是空，并没有被赋值，直到ajax成功返回（这里是Ember.js一个非常优秀的特性）。</p>
+
+<p>或许你会觉得这样没有什么问题，但是如果我们在用户信息还没有加载成功的时候就要去完成一些判断，这时候问题就出现了，因为我们的当前用户并没有完成初始化。所以为了避免信息同步的问题，我们事先将当前用户信息手动的加载到store中去。</p>
+
 
     <hr>
 
