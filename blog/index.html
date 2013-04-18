@@ -136,27 +136,9 @@
           作者： TowerHe
       </h5>
     
-    <p>在写应用的时候，几乎所有应用都有一个不变的需求，就是获取当前登录的用户的相关信息。比如用户的ID、用户名、头像、角色等等。那么在.js中应该如何解决这个需求呢？下面将尝试找出一个比较通用的方法，来获取应用当前登录的用户信息。</p>
+    <p><a href="http://discuss.emberjs.cn/t/topic/19">论坛</a>中发起了一个关于如何获取应用当前登录用户信息的最佳实践的讨论。在这里尝试采用讨论中给出的方案二来实现获取登录用户。其他的方案请查看http://discuss.emberjs.cn/t/topic/19。</p>
 
-<p>首先，假设我们需要获取的用户信息的数据结构如下所示：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-</pre></td>
-  <td class="code"><pre>{
-  <span class="key">id</span>: ...,
-  <span class="key">username</span>: ...,
-  <span class="key">avatar</span>: ...,
-  <span class="key">roles</span>: ... 
-}
-</pre></td>
-</tr></table>
-</div>
-<p>一般情况下，应用都会有一个拥有独立<code>layout</code>的登录页面，用户在成功登录后进入应用主界面。那么我们就可以在服务器端渲染应用主界面时，将登录成功的用户信息通过服务器端脚本定义到页面中。</p>
+<p>在写应用的时候，几乎所有应用都有一个不变的需求，就是获取当前登录的用户的相关信息。比如用户的ID、用户名、头像、角色等等。那么在.js中应该如何解决这个需求呢？下面将尝试找出一个比较通用的方法，来获取应用当前登录的用户信息。</p>
 
     <a href="/blog/2013/04/18/how-to-load-the-current-user.html">阅读全文</a>
   </article>
