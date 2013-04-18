@@ -1,6 +1,6 @@
 英文原文: [http://emberjs.com/guides/routing/defining-your-routes/](http://emberjs.com/guides/routing/defining-your-routes/)
 
-## 定义你的路由（Defining Your Route）
+## 定义路由（Defining Your Route）
 
 When your application starts, the router is responsible for displaying
 templates, loading data, and otherwise setting up application state.

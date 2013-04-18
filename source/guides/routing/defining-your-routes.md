@@ -1,6 +1,6 @@
 英文原文: [http://emberjs.com/guides/routing/defining-your-routes/](http://emberjs.com/guides/routing/defining-your-routes/)
 
-## 定义你的路由
+## 定义路由
 
 当启动你的应用时，路由器会负责展示模板，载入数据，以及设置应用状态等任务。
 这些都是通过将当前的URL与你定义的_路由_进行匹配来实现的。

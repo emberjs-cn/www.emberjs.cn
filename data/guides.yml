@@ -49,9 +49,9 @@
 路由:
   - title: "介绍"
     url: "routing"
-  - title: "定义你的路由"
+  - title: "定义路由"
     url: "routing/defining-your-routes"
-  - title: "Generated Objects"
+  - title: "生成的对象"
     url: "routing/generated-objects"
   - title: "指定路由的模型"
     url: "routing/specifying-a-routes-model"
