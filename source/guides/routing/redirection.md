@@ -1,7 +1,9 @@
-## Redirecting to a Different URL
+英文原文：[http://emberjs.com/guides/routing/redirection/](http://emberjs.com/guides/routing/redirection/)
 
-If you want to redirect from one route to another, simply implement the
-`redirect` hook in your route handler.
+
+##重定向到不同的URL
+
+如果你想从一个路由重定向到另外一个路由，只要在路由处理方法中实现一个`redirect`钩子即可。
 
 ```javascript
 App.Router.map(function() {
@@ -15,7 +17,7 @@ App.IndexRoute = Ember.Route.extend({
 });
 ```
 
-You can conditionally transition based on some other application state.
+可选地，你可以根据一些其他的应用程序状态来过渡。
 
 ```javascript
 App.Router.map(function() {
@@ -49,10 +51,7 @@ App.TopChartsArtistsRoute = App.FilterRoute.extend();
 App.TopChartsPlaylistsRoute = App.FilterRoute.extend();
 ```
 
-In this example, navigating to the `/` URL immediately transitions into
-the last filter URL that the user was at. The first time, it transitions
-to the `/songs` URL.
 
-Your route can also choose to transition only in some cases. If the
-`redirect` hook does not transition to a new route, the remaining hooks
-(`model`, `setupController`, `renderTemplate`) will execute as usual.
+在上面这个例子中，用户浏览到`/`网址的时候会被立即过渡到用户曾经访问过的最后过滤网址。第一次访问`/`的时候，会被过渡到`songs`网址。
+
+你的路由还可以选择在特定的情况下才过渡。如果`redirect`钩子没有过渡到新的路由，剩下的钩子们(`model`, `setupController`, `renderTemplate`)还会照常执行。
