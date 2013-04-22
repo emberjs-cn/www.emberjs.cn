@@ -5,6 +5,8 @@
 默认情况下，路由通过浏览器的哈希来加载应用程序的起始状态，并且你在程序里点来点去的时候也是通过哈希来保持同步的。
 目前，这依赖于浏览器中的[hashchange](http://caniuse.com/hashchange)事件。
 
+下面的这个路由会将你从`/#/posts/new` 带到 `posts.new` 路由中去。
+
 ```javascript
 App.Router.map(function() {
   this.resource('posts', function() {
