@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -373,7 +373,7 @@
 <p>If you need to enumerate over a list of objects, use Handlebars&#39; <code>{{#each}}</code> helper:</p>
 
 <p>如果你需要枚举一个对象列表，可以使用<code>Handlebar</code>的<code>{{#each}}</code>助手:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -387,7 +387,7 @@
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The template inside of the <code>{{#each}}</code> block will be repeated once for
 each item in the array, with the context of the template set to the
 current item.</p>
@@ -397,7 +397,7 @@ current item.</p>
 <p>The above example will print a list like this:</p>
 
 <p>上面的例子将会输出如下所示的一个列表：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -411,7 +411,7 @@ current item.</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Like everything in Handlebars, the <code>{{#each}}</code> helper is bindings-aware.
 If your application adds a new item to the array, or removes an item,
 the DOM will be updated without having to write any code.</p>
@@ -424,7 +424,7 @@ scope of its inner template. This is useful for cases where you need to
 access a property from the outer scope within the loop.</p>
 
 <p><code>{{#each}}</code>助手还有一个可选的语法形式，这种形式不会改变内部模板的作用域。如果你需要从循环内的外部空间访问一个属性，这个语法很有用。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -442,11 +442,11 @@ access a property from the outer scope within the loop.</p>
 <span class="tag">&lt;ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This would print a list like this:</p>
 
 <p>上面语句将输出这样一个列表：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -462,12 +462,12 @@ access a property from the outer scope within the loop.</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The <code>{{#each}}</code> helper can have a matching <code>{{else}}</code>.
 The contents of this block will render if the collection is empty:</p>
 
 <p><code>{{#each}}</code>助手也可以使用<code>{{else}}</code>助手。如果集合为空，这个块的内容就会被渲染。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -481,7 +481,7 @@ The contents of this block will render if the collection is empty:</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>  
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

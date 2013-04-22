@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -372,7 +372,7 @@
 <p>Sometimes, you may use the same HTML in your application multiple times. In those case, you can register a custom helper that can be invoked from any Handlebars template.</p>
 
 <p>For example, imagine you are frequently wrapping certain values in a <code>&lt;span&gt;</code> tag with a custom class. You can register a helper from your JavaScript like this:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -384,27 +384,27 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you return HTML from a helper, and you don&#39;t want it to be escaped,
 make sure to return a new <code>SafeString</code>. Make sure you first escape any
 user data!</p>
 
 <p>Anywhere in your Handlebars templates, you can now invoke this helper:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">highlight</span> <span class="attribute-name">name</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>and it will output the following:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">highlight</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Peter<span class="tag">&lt;/span&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If the <code>name</code> property on the current context changes, Ember.js will
 automatically execute the helper again and update the DOM with the new
 value.</p>
@@ -412,7 +412,7 @@ value.</p>
 <p>Imagine you want to render the full name of an <code>App.Person</code>. In this
 case, you will want to update the output if the person itself changes,
 or if the <code>firstName</code> or <code>lastName</code> properties change.</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -422,15 +422,15 @@ or if the <code>firstName</code> or <code>lastName</code> properties change.</p>
 }, <span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You would use the helper like this:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">fullName</span> <span class="attribute-name">person</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Now, whenever the context&#39;s person changes, or when any of the
 <em>dependent keys</em> change, the output will automatically update.</p>
 

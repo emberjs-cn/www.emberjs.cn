@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -399,7 +399,7 @@ determined at runtime based on user interaction.</p>
 
 <p>The template for the Application (<code>application.handlebars</code>) will look
 something like this:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -409,7 +409,7 @@ something like this:</p>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>By default, the router will initially enter the <em>list of posts</em> state,
 and fill in the outlet with <code>posts.handlebars</code>. We will see later how
 this works exactly.</p>
@@ -423,7 +423,7 @@ Clicking on the link for an individual post will replace the contents of
 the application&#39;s outlet with the template for an individual post.</p>
 
 <p>The template will look like this:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -435,7 +435,7 @@ the application&#39;s outlet with the template for an individual post.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When clicking on a link for an individual post, the application will
 move into the <em>individual post</em> state, and replace <code>posts.handlebars</code> in
 the application&#39;s outlet with <code>post.handlebars</code>.</p>
@@ -449,7 +449,7 @@ outlet will allow the user to choose between viewing comments or
 trackbacks.</p>
 
 <p>The template for an individual post looks like this:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -467,7 +467,7 @@ trackbacks.</p>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Again, the <code>{{outlet}}</code> simply specifies that the router will make the
 decision about what to put in that area of the template.</p>
 
@@ -509,7 +509,7 @@ controller.</p>
 through its states in response to user action.</p>
 
 <p>Let&#39;s start with a simple router:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -545,7 +545,7 @@ through its states in response to user action.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This router sets up three top-level states: an index state, a state that
 shows a list of posts, and a state that shows an individual post.</p>
 
@@ -557,7 +557,7 @@ In other applications, you may want to have a dedicated home page.</p>
 the <code>posts</code> state, we want it to connect the <code>{{outlet}}</code> in the
 application template. We accomplish this using the <code>connectOutlets</code>
 callback.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -601,7 +601,7 @@ callback.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This connectOutlet call does a few things for us:</p>
 
 <ul>
@@ -620,7 +620,7 @@ you create a view.</p>
 <p>Next, we will want to provide a way for an application in the <code>posts</code>
 state to move into the <code>post</code> state. We accomplish this by specifying a
 transition.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -640,10 +640,10 @@ transition.</p>
 })
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You invoke this transition by using the <code>{{action}}</code> helper in the
 current template.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -653,7 +653,7 @@ current template.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When a user clicks on a link with an <code>{{action}}</code> helper, Ember will
 dispatch an event to the current state with the specified name. In this
 case, the event is a transition.</p>
@@ -665,7 +665,7 @@ this link. Ember uses the <code>id</code> property of the context to fill in the
 <p>Next, we will need to implement <code>connectOutlets</code> on the <code>post</code> state.
 This time, the <code>connectOutlets</code> method will receive the post object
 specified as the context to the <code>{{action}}</code> helper.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -683,7 +683,7 @@ specified as the context to the <code>{{action}}</code> helper.</p>
 })
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>To recap, the <code>connectOutlet</code> call performs a number of steps:</p>
 
 <ul>
@@ -716,7 +716,7 @@ the <code>connectOutlets</code> method with the same object.</p>
 
 <p>Because the <code>post</code> state uses the same pattern as the <code>root</code> state, it
 will look very similar.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -784,7 +784,7 @@ will look very similar.</p>
 })
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>There are only a few changes here:</p>
 
 <ul>
@@ -799,7 +799,7 @@ directly from the <code>postController</code>.</li>
 </ul>
 
 <p>Here&#39;s the template for an individual post.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -827,7 +827,7 @@ directly from the <code>postController</code>.</li>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>And finally, coming back from a bookmarked link will work fine with this
 nested setup. Let&#39;s take a look at what happens when the user enters the
 site at <code>/posts/1/trackbacks</code>.</p>
@@ -866,7 +866,7 @@ along with the post, ember-data will also automatically update the
 
 <p>In your <code>trackbacks.handlebars</code> template, you will have done something
 like:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -880,13 +880,13 @@ like:</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When ember-data updates the <code>trackbacks</code> array, the change will
 propagate through the <code>trackbacksController</code> and into the DOM.</p>
 
 <p>You may also want to avoid showing partial data that is not yet loaded.
 In that case, you could do something like:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -908,7 +908,7 @@ In that case, you could do something like:</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When ember-data populates the <code>ManyArray</code> for the trackbacks from the
 server-provided data, it also sets the <code>isLoaded</code> property. Because all
 template constructs, including <code>#if</code> automatically update the DOM if the

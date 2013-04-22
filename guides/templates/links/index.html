@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -371,7 +371,7 @@
     <p>英文原文： <a href="http://emberjs.com/guides/templates/links/">http://emberjs.com/guides/templates/links/</a></p>
 <h2 class='anchorable-toc' id='toc_code-linkto-code'>链接 (<code>{{linkTo}}</code>助手)</h2>
 <p>你可以使用如下的方式创建一个指向一个路由的链接：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -385,7 +385,7 @@
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -403,9 +403,9 @@
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果<code>photos</code>模板对应的模型拥有三张照片，那么，被渲染的HTML内容将如下所示：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -419,7 +419,7 @@
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>当被渲染的链接与当前路由匹配时，并且传入{{linkTo}}助手的是相同的对象实例，那么链接的class被设置为active。</p>
 
 <p><code>{{linkTo}}</code>助手可以接收以下三个参数：</p>
@@ -432,7 +432,7 @@
 </ul>
 <h3 class='anchorable-toc' id='toc_'>多个上下文</h3>
 <p>如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型，如下所示：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -452,9 +452,9 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>photoIndex</code>模板中的内容如下：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -468,11 +468,11 @@
 <span class="tag">&lt;p&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">photo.comment</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>Main Comment<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>因为我们只提供了一个模型，所以链接将会使用当前照片的id作为动态段<code>:photo_id</code>的值。而<code>primaryComment</code>将成为<code>comment</code>路由处理器的新模型。</p>
 
 <p>此外，你还可以同时给<code>{{linkTo}}</code>助手指定一张照片和一条评论，如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -486,7 +486,7 @@
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在这个例子中，指定的模型将同时提供<code>:photo_id</code>和<code>:comment_id</code>。指定的<code>nextPhoto</code>将称为<code>photo</code>路由处理器的新模型，同时，<code>primaryComment</code>将成为<code>comment</code>路由处理器的新模型。</p>
 
 <p>如果要链接到一个新的URL地址，在下面两种情况下，路由将只执行它的处理器：</p>
@@ -504,7 +504,7 @@
           </a>
          
         <a class="next-guide" href="/guides/templates/actions">
-          Actions →
+          操作 →
         </a>
       
       </footer>

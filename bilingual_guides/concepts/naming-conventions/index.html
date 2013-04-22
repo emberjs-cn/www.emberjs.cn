@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -409,7 +409,7 @@ the controller.</p>
 <p>Here&#39;s a simple example that uses a route, controller, and template:</p>
 
 <p>下面这个例子中同时包含了路由，控制器和模板:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -433,7 +433,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -445,7 +445,7 @@ App.ApplicationController = Ember.Controller.extend({
 <span class="tag">&lt;h2&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h2&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In Ember.js applications, you will always specify your controllers 
 as <strong>classes</strong>, and the framework is responsible for instantiating
 them and providing them to your templates.</p>
@@ -465,7 +465,7 @@ your entire application shares a single instance of each controller.</p>
 <p>Let&#39;s start with a simple router:</p>
 
 <p>以下面这个简单的路由为例：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -475,7 +475,7 @@ your entire application shares a single instance of each controller.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If your user navigates to <code>/favorites</code>, Ember.js will look for these 
 objects:</p>
 
@@ -510,7 +510,7 @@ to the template.</p>
 <p>Here&#39;s an example:</p>
 
 <p>下面是一个例子：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -526,7 +526,7 @@ to the template.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this example, we didn&#39;t provide a <code>FavoritesController</code>. Because
 the model is an Array, Ember.js will automatically supply an instance
 of <code>Ember.ArrayController</code>, which will present the backing Array as
@@ -553,7 +553,7 @@ controller and the model.</p></li>
 <p>The template can iterate over the elements of the controller:</p>
 
 <p>模板可以迭代控制器中的元素：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -567,7 +567,7 @@ controller and the model.</p></li>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div><h2 class='anchorable-toc' id='toc_dynamic-segments'>动态字段(Dynamic Segments)</h2>
+</div></div><h2 class='anchorable-toc' id='toc_dynamic-segments'>动态字段(Dynamic Segments)</h2>
 <p>If a route uses a dynamic segment, the route&#39;s model will be based
 on the value of that segment provided by the user.</p>
 
@@ -576,7 +576,7 @@ on the value of that segment provided by the user.</p>
 <p>Consider this router definition:</p>
 
 <p>考虑下面这个路由的定义：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -586,7 +586,7 @@ on the value of that segment provided by the user.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this case, the route&#39;s name is <code>post</code>, so Ember.js will look for
 these objects:</p>
 
@@ -605,7 +605,7 @@ back into the URL parameters for this route (for example, when
 generating a link for a model object).</p>
 
 <p>路由处理程序的<code>model</code>钩子将把动态参数<code>:post_id</code>转换到模型中去。而<code>serialize</code>钩子将会为这个路由把一个模型对象转化回URL参数(例如，在为一个模型对象生成链接的情况下)。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -627,7 +627,7 @@ generating a link for a model object).</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Because this pattern is so common, it is the default for route
 handlers.</p>
 
@@ -668,7 +668,7 @@ anything!</p>
 <p>You can nest routes under a <code>resource</code>.</p>
 
 <p>你可以在一个<code>resource</code>内嵌套路由。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -684,7 +684,7 @@ anything!</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>A <strong>resource</strong> is the beginning of a route, controller, or template 
 name. Even though the <code>post</code> resource is nested, its route is named
 <code>App.PostRoute</code>, its controller is named <code>App.PostController</code> and its
@@ -748,7 +748,7 @@ automatically provides a route for the <code>/</code> path named <code>index</co
 <p>For example, if you write a simple router like this:</p>
 
 <p>例如，假如你写了如下这样一个简单的路由：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -758,9 +758,9 @@ automatically provides a route for the <code>/</code> path named <code>index</co
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>It is the equivalent of:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -772,7 +772,7 @@ automatically provides a route for the <code>/</code> path named <code>index</co
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If the user visits <code>/</code>, Ember.js will look for these objects:</p>
 
 <p>如果你的用户访问<code>/</code>路径，<code>Ember.js</code>会首先查找以下几个对象：</p>
@@ -795,7 +795,7 @@ template.</p>
 <p>A nested router like this:</p>
 
 <p>例如，下面这个嵌套的路由：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -809,11 +809,11 @@ template.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Is the equivalent of:</p>
 
 <p>等价于：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -831,7 +831,7 @@ template.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If the user navigates to <code>/posts</code>, the current route will be
 <code>posts.index</code>. Ember.js will look for objects named:</p>
 

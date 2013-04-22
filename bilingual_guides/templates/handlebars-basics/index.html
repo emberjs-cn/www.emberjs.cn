@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -398,7 +398,7 @@ with Handlebars first!</p>
 template inside your HTML by putting it inside a <code>&lt;script&gt;</code> tag, like so:</p>
 
 <p>如果你没有在使用构建工具,你仍然可以在HTML文档中定义应用程序的主模板，只需要在HTML中加上<code>&lt;script&gt;</code>标签,如下所示：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -416,7 +416,7 @@ template inside your HTML by putting it inside a <code>&lt;script&gt;</code> tag
 <span class="tag">&lt;/html&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This template will automatically be compiled and become your
 <em>application template</em>, which will be displayed on the page by the
 router when your app loads.</p>
@@ -431,7 +431,7 @@ the <code>data-template-name</code> attribute:</p>
 
 <p>你也可以为模板定义一个名称,以便复用。例如,你可能想定义一个在多个不同的应用程序用户界面处都可以使用的可重用控件。
 如果只是希望<code>Ember.js</code>先保存模板留做复用，而不是即时显示，那么可以使用<code>data-template-name</code>属性：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -449,7 +449,7 @@ the <code>data-template-name</code> attribute:</p>
 <span class="tag">&lt;/html&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you are using build tools to manage your application&#39;s assets, most
 will know how to precompile Handlebars templates and make them available
 to Ember.js.</p>
@@ -465,13 +465,13 @@ finds the properties that it displays.</p>
 name in curly braces, like this:</p>
 
 <p>使用花括号将属性名称括起来，就可以显示控制器中所定义的属性,如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>Hello, <span class="tag">&lt;strong&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">lastName</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/strong&gt;</span>!
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This would look up the <code>firstName</code> and <code>lastName</code> properties from the
 controller, insert them into the HTML described in the template, then
 put them into the DOM.</p>
@@ -481,7 +481,7 @@ put them into the DOM.</p>
 <p>By default, your top-most application template is bound to your <code>ApplicationController</code>:</p>
 
 <p>默认情况下，最上层的应用程序模板与<code>ApplicationController</code>关联，即：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -493,18 +493,18 @@ put them into the DOM.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The above template and controller would combine to display the following
 rendered HTML:</p>
 
 <p>上面的模板和控制器将协作呈现出被渲染的HTML,如下所示：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>Hello, <span class="tag">&lt;strong&gt;</span>Trek Glowacki<span class="tag">&lt;/strong&gt;</span>!
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>These expressions (and the other Handlebars features you will learn
 about next) are <em>bindings aware</em>. That means that if the values used
 by your templates ever change, your HTML will be updated automatically.</p>

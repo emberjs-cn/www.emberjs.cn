@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -382,13 +382,13 @@
 <p>It&#39;s worth noting that it&#39;s not at all necessary to host an Ember.js application using Ruby on Rails. It can be served from any standard web server (or a local file.)</p>
 <h3 class='anchorable-toc' id='toc_creating-a-new-project'>Creating a New Project</h3>
 <p>Use the <code>rails</code> command to generate a new project:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails new photoblog -m http://emberjs.com/template.rb
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The -m option specifies a template on which to base your new project. We have provided one for Ember.js apps which does the following:</p>
 
 <ul>
@@ -400,31 +400,31 @@
 </ul>
 
 <p>When rails has finished creating your application it will reside in the <code>photoblog</code> directory. Switch to this newly created directory:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>cd photoblog
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_creating-the-server-side-models'>Creating the Server-side Models</h3>
+</div></div><h3 class='anchorable-toc' id='toc_creating-the-server-side-models'>Creating the Server-side Models</h3>
 <p>This part will be familiar to anyone who has done Ruby on Rails development before. We&#39;ll create two new models, Photo and Comment. We start by asking Rails to generate the scaffolding for a Photo object.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate scaffold Photo title:string url:string
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Rails will generate a database migration, model, controller, resource routes, and other helpful files for us to start using. It will actually create more than we need: By default, rails scaffolding will generate standard CRUD (Create/Retrieve/Update/Destroy) views for our new model. Since our Ember.js application is going to be providing these views, we can safely remove them.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rm -rf app/views/photos
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>We should also ask Rails to generate our comment object and remove its views as well.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -432,9 +432,9 @@
 rm -rf app/views/comments
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>We should now describe the accessible fields and the relationship of our models to Rails. In app/models/photo.rb, add the appropriate lines below:</p>
-<div class="highlight ruby "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight ruby "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -446,9 +446,9 @@ rm -rf app/views/comments
 <span class="keyword">end</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>And in app/models/comment.rb:</p>
-<div class="highlight ruby "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight ruby "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -460,9 +460,9 @@ rm -rf app/views/comments
 <span class="keyword">end</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If we look inside <code>db/migrate</code>, you&#39;ll see the database migrations that have been generated for us. We&#39;ll need to modify the <code>&lt;datetime&gt;_create_comments.rb</code> file to reference our photo model. </p>
-<div class="highlight ruby "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight ruby "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -484,9 +484,9 @@ rm -rf app/views/comments
 <span class="keyword">end</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>We can now run <code>rake db:migrate</code> to run these migrations and set up our database.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -510,25 +510,25 @@ rm -rf app/views/comments
 ==  CreateComments: migrated (0.0016s) ========================================
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Our server-side models are now setup and ready for use! What we&#39;ve done here is basically create a  API server that allows basic CRUD actions for our photo and comment models.</p>
 <h3 class='anchorable-toc' id='toc_creating-our-client-side-models'>Creating our Client-side Models</h3>
 <p>Now that we have models set up to persist our data on the server, we need to describe them to Ember. ember-rails, included with our project template, provides generators to help us with this.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate ember:model Photo title:string url:string
 </pre></td>
 </tr></table>
-</div><div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate ember:model Comment text:string
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This creates the appropriate Ember.js models in <code>app/assets/javascripts/models</code>. We&#39;ll need to describe the relationship between them by hand. To do this, we can use <code>DS.hasMany</code> and <code>DS.belongsTo</code>. We pass string which represent the path of the model class, in this case, <code>Photoblog.Comment</code> and <code>Photoblog.Photo</code>, respectively.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -542,7 +542,7 @@ rm -rf app/views/comments
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -554,11 +554,11 @@ rm -rf app/views/comments
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>That&#39;s it! ember-data now knows about the structure of our data.</p>
 <h3 class='anchorable-toc' id='toc_setting-up-the-state-manager'>Setting up the State Manager</h3>
 <p>Our Ember.js application will be managed by a state manager. The state manger handles what view is currently being displayed, as well as some other application login. Our default template will have created one for us at <code>app/assets/javascripts/states/app_states.js</code>. We&#39;ll want to modify it to look like this:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -638,21 +638,21 @@ rm -rf app/views/comments
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Here, we&#39;re defining a state manager for our application. We set up our states object and include two states, <code>start</code> and <code>photos</code>. <code>start</code> is set as the initial state, and it handles only one event, called <code>ready</code>. In <code>ready</code>, it creates and configures our data store, and then it goes to the <code>photos</code> state. The <code>photos</code> state itself has a single substate, called <code>index</code>. This state is set as the initial substate for the <code>photos</code> parent state. The <code>index</code> substate has a single property, called &#39;view&#39; which we are going to set to a new <code>Photoblog.IndexView</code>, which will show an index of all our photos. We haven&#39;t written that yet, so lets do that.</p>
 <h3 class='anchorable-toc' id='toc_creating-the-index-view'>Creating the Index View</h3>
 <p>To see all our photos, we need an write an index view which shows them.  We have a generator that will help us with this.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate ember:view index photos
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note that we pass two additional arguments after &#39;ember:view&#39;, <code>index</code> and <code>photos</code>. <code>index</code> specifies the name of the view, and <code>photos</code> specifies the name of the owning controller. We&#39;ll get to that in the next step. </p>
 
 <p>Our generator creates two new files, one at <code>app/assets/javascripts/templates/photos/index.handlebars</code> and one at <code>app/assets/javascripts/views/photos/index_view.js</code>. First, let&#39;s look at the the <code>app/assets/javascripts/views/photos/index_view.js</code>.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -664,9 +664,9 @@ rm -rf app/views/comments
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This is where we define the Ember.js object which manages the view. We simply provide it with a <code>templateName</code> property, which points to our handlebars template, and a <code>controller</code> property, which manages the view. Here&#39;s the template that defines what the index view looks like. Make yours look like the following:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -708,9 +708,9 @@ rm -rf app/views/comments
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Let&#39;s go break this down and explain what&#39;s gong on.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -720,17 +720,17 @@ rm -rf app/views/comments
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Our view has a controller, the Photoblog.photosController, which will create in the next step. This is an Ember.ArrayController, so it implements the Ember.Enumerable interface. This means that we can loop over it&#39;s contents (each element of the array) using the <code>#each</code> Handlerbars experssion.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>For each photo managed by the photosController, we will create a subview with the following contents. The <code>{{#view}}</code> helper doesn&#39;t change context, so it&#39;s not necessary to set any bindings.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -742,9 +742,9 @@ rm -rf app/views/comments
       <span class="tag">&lt;br&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Here, we reference our photo to get its title, and user bindAttr to set the <code>&lt;img&gt;</code> tag&#39;s <code>src</code> attribute to the photo&#39;s url.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -764,9 +764,9 @@ rm -rf app/views/comments
       <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Next, we see if there are any comments on the photo. If there are, we create a section and list for comments, and iterate through them. Note that in this <code>{{#each}}</code> expression, we aren&#39;t binding the comment object to the content property, so the context is automatically set to it. We create a new <code>&lt;li&gt;</code> for each comment with the comments text, and close out our <code>{{#each}}</code> iteration, list, and {{#if}}.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -774,17 +774,17 @@ rm -rf app/views/comments
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Now that we&#39;re done, we close out the subview and our iteration block. Our view is complete.</p>
 <h3 class='anchorable-toc' id='toc_creating-our-client-side-controller'>Creating our Client-side Controller</h3>
 <p>Controllers serve as a mediator between your views and models. We&#39;ve already discussed that we&#39;re going to need an <code>Ember.ArrayController</code> to manage our photo objects, so let&#39;s create it. You can create a new controller using the <code>ember:controller</code> generator. We can also create a new array controller by invoking the generator with the <code>--array</code> option:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate ember:controller photos --array
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will generate a new array controller called <code>Photoblog.photosController</code> inside the <code>app/assets/javascripts/controllers/photos_controller.js</code> file. Note that this file also creates a class called <code>Photoblog.PhotosController</code>. This allows you to easily create new instances of the controller for unit testing without having to reset singletons to their original state.</p>
 
 <p>The <code>Ember.ArrayController</code> provides us with all the functionality we need for now, so no extra code is needed.</p>
@@ -794,7 +794,7 @@ rm -rf app/views/comments
 <p>The Rails template that we based out application off of came with a Rails controller called AssetsController and an associated view and route. This is designed to simply serve our application content, which is basically an empty page with the javascript code which will launch and run our app.</p>
 
 <p>The last thing for us to do is to add the bootstraping code for our app. In <code>assets/javascripts/application.js</code>, we should <em>append</em> the following:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -806,7 +806,7 @@ rm -rf app/views/comments
   Photoblog.photosView.append();
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>We&#39;re doing a few things here. First, we&#39;re getting all the photos in our data store, and setting the content of our <code>photosController</code> to the results array. Next, we set the data store&#39;s adapter mappings so that it knows comments are <code>Photoblog.Comments</code>. We then move to our initial state, and create an <code>Ember.ContainerView</code> with a <code>currentView</code> property that is bound to our current state&#39;s <code>view</code> property. Finally, add the <code>photosView</code> to the page.</p>
 
 <p>You can now view the app in your browser by running <code>rails server</code> going to <code>http://localhost:3000</code>. You should see something like this:</p>
@@ -816,13 +816,13 @@ rm -rf app/views/comments
 <p>There&#39;s our title, but there&#39;s no content! We need to add some photos first, of course.</p>
 <h3 class='anchorable-toc' id='toc_adding-a-test-photo'>Adding a Test Photo</h3>
 <p>We need to add the ability to add photos to our application in order to see some on the index page. First, let&#39;s verify everything is working as expected by sending a POST request to our API with a new photo object. Ensure the server is running, and execute the following command:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>curl -H &quot;Content-Type: application/json&quot; -X POST -d '{&quot;photo&quot;:{&quot;url&quot;:&quot;http://farm8.staticflickr.com/7101/7007178689_9cd571fa10.jpg&quot;, &quot;title&quot;:&quot;Books&quot;}}' http://localhost:3000/photos
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This sends a json payload to our server with data for a new photo. Reload the page. You should see a new photo with its title listed on the index page. You&#39;ll also see the logs in the console where your server is running, showing the request being handled. If you don&#39;t see the photo, jump down to the troubleshooting section below.</p>
 
 <p>Now that we&#39;re sure everything is working, we want to be able to add photos through our Ember.js app. To do this, we&#39;ll write a new view.</p>
@@ -830,23 +830,23 @@ rm -rf app/views/comments
 <p>We want to add a button at the bottom of of our index view that lets us create a new photo. To do so, we&#39;ll write a new view, a template and controller for it, and add a new state to the state manager to represent the user being in the add photo state.</p>
 
 <p>First create the controller. A standard controller will work fine, we don&#39;t need an array controller in this case.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate ember:controller photo
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Next, create the new view.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>rails generate ember:view create photo
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Modify the template for the create view at <code>app/assets/javascripts/templates/photos/create.handlebars</code> to look like this:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -854,11 +854,11 @@ rm -rf app/views/comments
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">template</span> <span class="error">&quot;</span><span class="attribute-name">photos</span><span class="error">/</span><span class="attribute-name">_form</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>We use the handlebars expression <code>template</code> to refer to another template we&#39;d like to load, in this case, the _form template. This should be very familiar to rails users. You&#39;ll see why this is important later.</p>
 
 <p>Let&#39;s create the <code>_form</code> template in <code>app/assets/javascripts/templates/photos/_form.handlebars</code>. It will include only the form elements for our photo, like so:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -872,13 +872,13 @@ rm -rf app/views/comments
 <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">cancel</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Photoblog.stateManager</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Cancel<span class="tag">&lt;/button&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>We create two Ember.TextField views, and we bind the value property (which will be the text in the text field) to that of our controllers&#39; contents&#39; title and url objects, repesctively. The controller is is the PhotoController, which we created above. Its content will be a photo object.</p>
 
 <p>We then have a save button and cancel button, both of which target our state manager.</p>
 
 <p>Next, Take a look at the view in <code>app/assets/javascripts/views/photos/create_view.js</code>. It should reference both the template and the controller we just created.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -890,11 +890,11 @@ rm -rf app/views/comments
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Let us now make the changes to our state manager to hook up all of these components together.</p>
 
 <p>Inside our <code>index</code> state, we should add a new action, which tells our manager to go to the <code>create</code> state.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -904,11 +904,11 @@ rm -rf app/views/comments
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note that you should always have actions within states that send the state manager to another state, as opposed to having other objects control the state manager. This allows for better encapsulation and more reusable code.</p>
 
 <p>Now, inside our <code>photos</code> parent state, we should add a new substate, called <code>create</code>.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -962,9 +962,9 @@ rm -rf app/views/comments
 })
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Let&#39;s go through this and explain what&#39;s going on.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -972,9 +972,9 @@ rm -rf app/views/comments
     <span class="key">view</span>: Photoblog.CreateView.create(),
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Create a new state called <code>create</code>, which uses a new Photoblog.CreateView as it&#39;s view.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -994,9 +994,9 @@ rm -rf app/views/comments
 },
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Here, we define the <code>enter</code> action of this state. <code>enter</code> and <code>exit</code> are special actions that are automatically called whenever the state manager enters or exits that particular state. Here, we set up a new transaction with our store, and create a new <code>photo</code> object from that transaction. We set it to be the content of our <code>photoController</code>, and save off the <code>transaction</code> for later use.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1026,23 +1026,23 @@ rm -rf app/views/comments
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Now we define the <code>save</code> and <code>cancel</code> actions we referenced in our create view template earlier. Both of them get the current transaction, and the save action calls <code>commit()</code> where as the cancel action calls <code>rollback()</code>. <code>commit()</code> saves our photo object to the data store, which takes care of making the API request to save the data on our backend for us. <code>rollback()</code> undos any changes made in the transaction. Both actions then tell the manager to go back to the index state.</p>
 
 <p>Finally, we will add a button to the index template, at the very bottom, which tells our state manager to show the create view.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">showCreate</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Photoblog.stateManager</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Add Photo<span class="tag">&lt;/button&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>With all of this in place, ensure your server is running, and reload the index page. You should see a button at the bottom which takes you to our new create view and lets you add photos!</p>
 <h3 class='anchorable-toc' id='toc_add-an-edit-photo-view'>Add an Edit Photo View</h3>
 <p>We should have an edit view to let us modify photo titles at URLs. Creating this will be very similar to the previous step. We will add a view, a template, and modify the state manager. We can use the same photo controller we used in the previous step.</p>
 
 <p>First, lets add the new view at <code>app/assets/javascripts/views/photos/edit_view.js</code></p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1054,9 +1054,9 @@ rm -rf app/views/comments
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Now, we&#39;ll add the template for it at <code>app/assets/javascripts/templates/photos/edit.handlebars</code>.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -1064,11 +1064,11 @@ rm -rf app/views/comments
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">template</span> <span class="error">&quot;</span><span class="attribute-name">templates</span><span class="error">/</span><span class="attribute-name">photos</span><span class="error">/</span><span class="attribute-name">_form</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note that we can reuse our form elements from the previous step. The only thing that is different is the header text.</p>
 
 <p>Now, the bulk of our change is in the state manager. Below our create substate, lets add a new substate called <code>edit</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1122,11 +1122,11 @@ rm -rf app/views/comments
 })
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Much like in the previous step, we set a view property which is a new <code>Photoblog.EditView</code>.  The <code>save</code> and <code>cancel</code> actions are the same, but the <code>enter</code> action is a little bit different. Here, instead of creating a new record, we get the existing one from the <code>photoController</code>, and add it to our transaction.</p>
 
 <p>Further up, in the state manager, we should add a function which lets us go from the index state to the edit state. In the index substate, add the following after <code>showCreate</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1140,17 +1140,17 @@ rm -rf app/views/comments
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Ensure that you add a comma to the previous <code>showCreate</code>. In this action, we&#39;re grabbing the photo from the event context and setting it to the content of our <code>photoController</code>.</p>
 
 <p>Lastly, lets add an edit button to each photo on the page. Below the <code>&lt;img&gt;</code> tag, add the following button, which targets our state manager&#39;s new <code>showEdit</code> action.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">showEdit</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Photoblog.stateManager</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Edit Photo<span class="tag">&lt;/a&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Reload the page. There should now be an &quot;Edit Photo&quot; link below each photo that will take you to our new Edit Photo view.</p>
 <h3 class='anchorable-toc' id='toc_troubleshooting'>Troubleshooting</h3>
 <p>We&#39;ll update this page with common issues as they come up. In the mean time, see our <a href="/community">Ember.js community</a> page for more info on how to get help.</p>

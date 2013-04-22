@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -371,13 +371,13 @@
     <p>英文原文：<a href="http://emberjs.com/guides/application/">http://emberjs.com/guides/application/</a></p>
 <h2 class='anchorable-toc' id='toc_'>创建一个应用</h2>
 <p>要创建一个 Ember.js 应用，首先需要创建一个<code>Ember.Application</code>的实例：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>window.App = Ember.Application.create();
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在这里，我们把这个应用命名为<code>App</code>，你可以为它取一个有实际项目意义的名字。</p>
 
 <p>一开始就创建一个应用对象有很多重要原因：</p>
@@ -385,7 +385,7 @@
 <ol>
 <li><p>它是你应用的命名空间，应用里面所有的类都会作为它的属性去定义（例如：<code>App.PostsView</code>和<code>App.PostsController</code>）。这样避免你污染了公共的域。</p></li>
 <li><p>它会帮你监听网页的事件，同时负责发送事件到你的视图。</p></li>
-<li><p>它会自动帮你渲染<a href="/guides/application/the-application-template"><em>应用模版</em></a>模版，应用模版是根模版，你其他的模版都会被渲染到该模版中去。</p></li>
+<li><p>它会自动帮你渲染<a href="/guides/application/the-application-template"><em>应用模板</em></a>模板，应用模板是根模板，你其他的模板都会被渲染到该模板中去。</p></li>
 <li><p>它会基于当前的路径自动帮你创建一个路由，并开始进行路由。</p></li>
 </ol>
 

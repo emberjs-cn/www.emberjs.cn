@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -378,7 +378,7 @@ exists.</p>
 <p>We can use the <code>{{#if}}</code> helper to conditionally render a block:</p>
 
 <p>这时，我们就可以使用<code>{{#if}}</code>助手按条件渲染一个代码块,如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -388,7 +388,7 @@ exists.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Handlebars will not render the block if the argument passed evaluates to
 <code>false</code>, <code>undefined</code>, <code>null</code> or <code>[]</code> (i.e., any &quot;falsy&quot; value).</p>
 
@@ -398,7 +398,7 @@ exists.</p>
 using <code>{{else}}</code>:</p>
 
 <p>如果表达式的值为假,我们也可以使用{{else}}助手显示另外一个模板,如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -412,11 +412,11 @@ using <code>{{else}}</code>:</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>To only render a block if a value is falsy, use <code>{{#unless}}</code>:</p>
 
 <p>如果只希望在一个值为假的时候渲染一个区块，那么应该使用<code>{{#unless}}</code>助手:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -426,7 +426,7 @@ using <code>{{else}}</code>:</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">unless</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>{{#if}}</code> and <code>{{#unless}}</code> are examples of block expressions. These allow you
 to invoke a helper with a portion of your template. Block expressions look like
 normal expressions except that they contain a hash (#) before the helper name,

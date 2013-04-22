@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -371,7 +371,7 @@
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/dependencies-between-controllers/">http://emberjs.com/guides/controllers/dependencies-between-controllers/</a></p>
 <h2 class='anchorable-toc' id='toc_'>管理控制器间的依赖</h2>
 <p>有时候，特别是在嵌套资源时，可能需要为两个控制器建立某种联系。以下面的路由为例：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -385,11 +385,11 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果访问<code>/posts/1/comments</code>这个URL，<code>Post</code>模型会被设置为<code>PostController</code>的<code>content</code>属性，其不可以在<code>CommentsController</code>中直接引用。然而又需要在<code>comments</code>模板中显示一些与其相关的信息。</p>
 
 <p>为了实现这个功能，可以在<code>CommentsController</code>中声明其需要一个代表<code>Post</code>模型的<code>PostController</code>。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -399,9 +399,9 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>这里告诉<code>Ember</code>，<code>CommentsController</code>应该能通过<code>controllers.post</code>来访问其父控制器<code>PostController</code>。（在模板和控制器中均可访问）。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -419,9 +419,9 @@
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>通过创建一个绑定，可以提供一种更为简便的方式来访问<code>PostController</code>（因为<code>PostController</code>是一个<code>ObjectController</code>，这里并不直接需要一个<code>Post</code>实例）。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -433,7 +433,7 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>更多关于绑定的信息，请查看API中的<code>Ember.Binding</code>。</p>
 
     

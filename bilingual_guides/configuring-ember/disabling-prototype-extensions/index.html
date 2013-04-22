@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -401,7 +401,7 @@ prototypes, Ember.js allows you to completely disable the extensions
 described above.</p>
 
 <p>To do so, simply set the <code>EXTEND_PROTOTYPES</code> flag to <code>false</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -409,7 +409,7 @@ described above.</p>
 Ember.EXTEND_PROTOTYPES = <span class="predefined-constant">false</span>;
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note that the above code must be evaluated <strong>before</strong> Ember.js loads. If
 you set the flag after the Ember.js JavaScript file has been evaluated,
 the native prototypes will already have been modified.</p>
@@ -430,7 +430,7 @@ exception since it no longer implements the <code>Ember.Array</code> interface.<
 
 <p>You can manually coerce a native array into an array that implements the
 required interfaces using the convenience method <code>Ember.A</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -454,12 +454,12 @@ islands.contains(<span class="string"><span class="delimiter">'</span><span clas
 <span class="comment">//=&gt; true</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_strings'>Strings</h4>
+</div></div><h4 class='anchorable-toc' id='toc_strings'>Strings</h4>
 <p>Strings will no longer have the convenience methods described in the
 <a href="/api/classes/Ember.String.html">Ember.String API reference.</a>. Instead,
 you can use the similarly-named methods of the <code>Ember.String</code> object and
 pass the string to use as the first parameter:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -473,10 +473,10 @@ Ember.String.camelize(<span class="string"><span class="delimiter">&quot;</span>
 <span class="comment">//=&gt; &quot;myCoolClass&quot;</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_functions'>Functions</h4>
+</div></div><h4 class='anchorable-toc' id='toc_functions'>Functions</h4>
 <p>To annotate computed properties, use the <code>Ember.computed()</code> method to
 wrap the function:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -500,9 +500,9 @@ fullName: Ember.computed(<span class="keyword">function</span>() {
 }).property(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Observers are annotated using <code>Ember.observer()</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -526,7 +526,7 @@ fullNameDidChange: Ember.observer(<span class="keyword">function</span>() {
 }, <span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>)
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

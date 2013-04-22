@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -373,7 +373,7 @@
 <p>你可以使用<code>Ember.View</code>来渲染一个<code>Handlebars</code>模板并将它插入到<code>DOM</code>中。</p>
 
 <p>为了告诉视图要用哪个模板，可以设置它的<code>temaplateName</code>属性。例如，如果我有一个像这样的<code>&lt;script&gt;</code>标签:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -391,9 +391,9 @@
 <span class="tag">&lt;/html&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>我会将<code>templateName</code>属性设置成<code>&quot;say-hello&quot;</code>。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -405,33 +405,33 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>注意：本指南其余部分，大多数例子中的<code>templateName</code>属性将会被省略。你可以假定当我们展示包含<code>Ember.View</code>和<code>Handlebars</code>模板的代码例子时，视图已经通过配置<code>templateName</code>属性来显示指定的模板了。</p>
 
 <p>你可以通过调用<code>appendTo</code>将视图追加到文档中：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>view.appendTo(<span class="string"><span class="delimiter">'</span><span class="content">#container</span><span class="delimiter">'</span></span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>做为简写，你可以通过调用<code>append</code>来将视图追加到文档中：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>view.append();
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>调用<code>remove</code>即可从文档中删除视图：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>view.remove();
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

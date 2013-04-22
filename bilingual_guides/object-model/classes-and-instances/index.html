@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -374,7 +374,7 @@
 <code>Ember.Object</code>:</p>
 
 <p>定义一个新的<code>Ember</code>的<em>类</em>，只需要调用<code>Ember.Object</code>的<code>extend()</code>方法即可：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -388,7 +388,7 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This defines a new <code>App.Person</code> class with a <code>say()</code> method.</p>
 
 <p>这里定义了一个新的<code>App.Person</code>的类，并且为该类定义了一个<code>say()</code>方法。</p>
@@ -398,7 +398,7 @@ its <code>extend()</code> method. For example, you might want to create a subcla
 of Ember&#39;s built-in <code>Ember.View</code> class:</p>
 
 <p>通过调用一个现有类的<code>extend()</code>方法，可以定义类的<em>子类</em>。例如可以通过定义一个<code>Ember</code>内建的<code>Ember.View</code>的子类来进行扩展：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -410,13 +410,13 @@ of Ember&#39;s built-in <code>Ember.View</code> class:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When defining a subclass, you can override methods but still access the
 implementation of your parent class by calling the special <code>_super()</code>
 method:</p>
 
 <p>当定义一个子类的时候，可以重写父类已有的方法。尽管重写了父类的方法，依然可以在重写的方法中通过<code>_super()</code>来调用被重写的父类方法。例如：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -460,14 +460,14 @@ yehuda.say(<span class="string"><span class="delimiter">&quot;</span><span class
 <span class="comment">// alerts &quot;Yehuda Katz says: Yes, sir!&quot;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_creating-instances'>创建实例（Creating Instances）</h3>
+</div></div><h3 class='anchorable-toc' id='toc_creating-instances'>创建实例（Creating Instances）</h3>
 <p>Once you have defined a class, you can create new <em>instances</em> of that
 class by calling its <code>create()</code> method. Any methods, properties and
 computed properties you defined on the class will be available to
 instances:</p>
 
 <p>当定义了一个类之后，就可以通过调用<code>create()</code>方法来创建类的<em>实例</em>。所有定义在类中的方法、属性、计算属性，都可以通过创建的实例来访问或调用。例如：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -475,12 +475,12 @@ instances:</p>
 person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>) <span class="comment">// alerts &quot;Hello&quot;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When creating an instance, you can initialize the value of its properties
 by passing an optional hash to the <code>create()</code> method:</p>
 
 <p>当创建一个类的实例时，可以将实例属性的初始值以<code>hash</code>形式的参数传给<code>create()</code>方法，从而实现对属性的初始化。例如：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -506,7 +506,7 @@ by passing an optional hash to the <code>create()</code> method:</p>
 tom.helloWorld() <span class="comment">// alerts &quot;Hi my name is Tom Dale&quot;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>For performance reasons, note that you cannot redefine an instance&#39;s
 computed properties or methods when calling <code>create()</code>, nor can you
 define new ones. You should only set simple properties when calling
@@ -528,7 +528,7 @@ automatically. This is the ideal place to do setup required on new
 instances:</p>
 
 <p>当一个实例被创建后，实例的<code>init</code>方法会被自动调用。可以通过自定义<code>init</code>方法，来对新实例进行初始化。</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -556,7 +556,7 @@ Person.create({
 <span class="comment">// alerts &quot;Stefan Penner, reporting for duty!&quot;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you are subclassing a framework class, like <code>Ember.View</code> or
 <code>Ember.ArrayController</code>, and you override the <code>init</code> method, make sure
 you call <code>this._super()</code>! If you don&#39;t, the system may not have an
@@ -569,7 +569,7 @@ in your application.</p>
 and <code>set</code> accessor methods:</p>
 
 <p>当访问一个对象的属性时，应该使用<code>get</code>方法，而设置属性值时则应该使用<code>set</code>方法。例如：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -581,7 +581,7 @@ and <code>set</code> accessor methods:</p>
 person.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Tobias Fünke</span><span class="delimiter">&quot;</span></span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Make sure to use these accessor methods; otherwise, computed properties won&#39;t
 recalculate, observers won&#39;t fire, and templates won&#39;t update.</p>
 

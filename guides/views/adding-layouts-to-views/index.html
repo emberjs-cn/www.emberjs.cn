@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -379,7 +379,7 @@ view&#39;s tag.</p>
 The HTML contents of a view&#39;s rendered <code>template</code> will be inserted where the <code>{{yield}}</code> helper is.</p>
 
 <p>First, you define the following layout template:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -393,9 +393,9 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>And then the following main template:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -405,9 +405,9 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Finally, you define a view, and instruct it to wrap the template with the defined layout:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -421,9 +421,9 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will result in view instances containing the following HTML</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -433,12 +433,12 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_applying-layouts-in-practice'>Applying Layouts in Practice</h4>
+</div></div><h4 class='anchorable-toc' id='toc_applying-layouts-in-practice'>Applying Layouts in Practice</h4>
 <p>Layouts are extremely useful when you have a view with a common wrapper and behavior, but its main template might change.
 One possible scenario is a Popup View.</p>
 
 <p>You can define your popup layout template:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -458,9 +458,9 @@ One possible scenario is a Popup View.</p>
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Then define your popup view:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -470,9 +470,9 @@ One possible scenario is a Popup View.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Now you can re-use your popup with different templates:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -496,7 +496,7 @@ One possible scenario is a Popup View.</p>
 {{/view}}
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

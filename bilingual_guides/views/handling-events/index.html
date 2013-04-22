@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -379,7 +379,7 @@ as a method on your view.</p>
 <p>For example, imagine we have a template like this:</p>
 
 <p>例如，假设我们有这样一个模板：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -389,12 +389,12 @@ This is a clickable area!
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Let&#39;s implement <code>App.ClickableView</code> such that when it is
 clicked, an alert is displayed:</p>
 
 <p>我们这样实现<code>App.ClickableView</code>使之每当被点击，会显示一个警告框：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -408,7 +408,7 @@ clicked, an alert is displayed:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Events bubble up from the target view to each parent view in
 succession, until the root view. These values are read-only. If you want to manually manage views in JavaScript (instead of creating them
 using the <code>{{view}}</code> helper in Handlebars), see the <code>Ember.ContainerView</code>
@@ -420,7 +420,7 @@ documentation below.</p>
 your application, simply send an event to the view&#39;s controller:</p>
 
 <p>为了让产生自<code>App.ClickableView</code>的事件对你的应用起到作用，很简单，向视图的控制器发送一个事件：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -434,11 +434,11 @@ your application, simply send an event to the view&#39;s controller:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If the controller has a method called <code>turnItUp</code>, it will be called:</p>
 
 <p>如果控制器有一个叫<code>turnInUp</code>的方法，它将会被调用：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -452,11 +452,11 @@ your application, simply send an event to the view&#39;s controller:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If it doesn&#39;t, the message will be passed to the current route:</p>
 
 <p>如果没有，这条信息将会传到当前路由：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -474,7 +474,7 @@ your application, simply send an event to the view&#39;s controller:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

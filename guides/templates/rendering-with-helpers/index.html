@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3 sub-selected">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -374,7 +374,7 @@
 <p><code>{{partial}}</code> takes the template to be rendered as an argument, and renders that template in place.</p>
 
 <p><code>{{partial}}</code> does not change context or scope.  It simply drops the given template into place with the current scope.  </p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -396,7 +396,7 @@
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div><div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -410,11 +410,11 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note: in cases where you may have used <code>{{template}}</code> in the past, you should likely use <code>{{partial}}</code> instead.</p>
 <h3 class='anchorable-toc' id='toc_the-code-view-code-helper'>The <code>{{view}}</code> Helper</h3>
 <p>This helper works like the partial helper, except instead of providing a template to be rendered within the current template, you provide a view class.  The view controls what template is rendered.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -438,7 +438,7 @@
 })
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -450,7 +450,7 @@
 9
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">fullName</span><span class="inline-delimiter">}}</span></span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view.fullName</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/script&gt;</span>
 
 <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
@@ -460,7 +460,7 @@
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div><div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -474,7 +474,7 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When using <code>{{partial &quot;author&quot;}}</code>:</p>
 
 <ul>
@@ -507,7 +507,7 @@
 </ul>
 
 <p>Modifying the post / author example slightly:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -531,7 +531,7 @@
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -545,7 +545,7 @@
 })
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this example, render will:</p>
 
 <ul>
@@ -643,7 +643,7 @@
       <footer>
         
           <a class="previous-guide" href="/guides/templates/actions">
-            ← Actions
+            ← 操作
           </a>
          
         <a class="next-guide" href="/guides/templates/writing-helpers">

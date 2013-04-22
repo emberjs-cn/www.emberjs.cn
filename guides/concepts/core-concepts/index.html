@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -372,7 +372,7 @@
 <h2 class='anchorable-toc' id='toc_'>核心概念</h2>
 <p>要开始学习Ember.js,首先要了解一些核心概念。</p>
 
-<p>我们希望开发者能够创建能与本地应用媲美的优秀的大型的web应用。要达到这种效果,
+<p>我们希望开发者能够创建能与本地应用媲美的优秀大型的web应用。要达到这种效果,
 他们需要强大的工具<em>和</em>准确的词汇概念以帮助他们沟通与合作。</p>
 
 <p>我们曾经花费了大量的时间借鉴一些本地应用开发框架的思想，例如Cocoa。但是当
@@ -387,9 +387,7 @@
 <ul>
 <li><strong>表达式</strong>, 例如 <code>{{firstName}}</code> , 它从控制器和模型接收数据，然后放
 到HTML文件中，并且保持他们自动更新。</li>
-<li><strong>出口</strong>, 它是其他模板的占位符。当用户使用你的应用时，不
-同的模板会通过路由插入到出口中。你可以使用 <code>{{outlet}}</code> 助手将出口放到
-模板中去。</li>
+<li><strong>插座</strong>(译注：类似于 Ruby on Rails 中的 <code>yield</code>), 它是其他模板的占位符。当用户使用你的应用时，不同的模板会通过路由插入到插座中。你可以使用 <code>{{outlet}}</code> 助手将插座放到模板中去。</li>
 <li><strong>视图</strong>, 它负责处理用户事件。你可以使用<code>{{view}}</code>助手将视图放到模板中。</li>
 </ul>
 <h4 class='anchorable-toc' id='toc_'>视图</h4>

@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -378,7 +378,7 @@ is the way to do just that.</p>
 <p>As you programmatically add or remove views to a <code>ContainerView</code>,
 those views&#39; rendered HTML are added or removed from the DOM to
 match.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -408,11 +408,11 @@ container.pushObject(secondView);
 <span class="comment">// firstView and secondView.</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_defining-the-initial-views-of-a-container-view'>Defining the Initial Views of a Container View</h3>
+</div></div><h3 class='anchorable-toc' id='toc_defining-the-initial-views-of-a-container-view'>Defining the Initial Views of a Container View</h3>
 <p>There are a few ways to specify what initial child views a
 <code>ContainerView</code> should render. The most straight-forward way is to
 add them in <code>init</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -436,11 +436,11 @@ container.objectAt(<span class="integer">0</span>).toString(); <span class="comm
 container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>As a shorthand, you can specify a <code>childViews</code> property that will be
 consulted on instantiation of the <code>ContainerView</code> also. This example is
 equivalent to the one above:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -456,13 +456,13 @@ container.objectAt(<span class="integer">0</span>).toString(); <span class="comm
 container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Another bit of syntactic sugar is available as an option as well:
 specifying string names in the childViews property that correspond
 to properties on the <code>ContainerView</code>. This style is less intuitive
 at first but has the added bonus that the each named property will
 be updated to reference its instantiated child view:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -488,7 +488,7 @@ container.get(<span class="string"><span class="delimiter">'</span><span class="
 container.get(<span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_it-feels-like-an-array-because-it-em-is-em-an-array'>It Feels Like an Array Because it <em>is</em> an Array</h3>
+</div></div><h3 class='anchorable-toc' id='toc_it-feels-like-an-array-because-it-em-is-em-an-array'>It Feels Like an Array Because it <em>is</em> an Array</h3>
 <p>You may have noticed that some of these examples use <code>pushObject</code> to add
 a child view, just like you would interact with an Ember array.
 <a href="/api/classes/Ember.ContainerView.html"><code>Ember.ContainerView</code></a>

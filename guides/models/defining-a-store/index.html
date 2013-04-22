@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -374,7 +374,7 @@
 
 <p>通常，你可以直接跟模型交互，而不使用存储器。但是你需要让 Ember.js 知道你现在在使用 Ember Data 来管理你的模型。
 要达到这样的目的，我们可以简单地在Ember.Application中定义一个DS.Store的子类，如下所示：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -384,12 +384,12 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>注意这里的<code>revision</code>属性，它是 API 的修订版本号，在Ember Data 1.0 版本之前用来提醒你公共 API 的重大更改。
 查看<a href="https://github.com/emberjs/data/blob/master/BREAKING_CHANGES.md">Breaking Changes 文档</a>以获取更多信息。</p>
 
 <p>如果你想要定制存储器，你可以在创建子类的时候去定制。例如，如果你想要用另外一个适配器去替换默认的<code>DS.RESTAdapter</code>，你可以像下面这样做：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -401,7 +401,7 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -370,13 +370,13 @@
     <h1>模型</h1>
     <h2 class='anchorable-toc' id='toc_finding-models'>Finding Models</h2>
 <p>You can retrieve a record by passing its unique ID to the <code>find()</code> method:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> post = App.Post.find(<span class="integer">1</span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If a record with that ID has already been created, it will be returned
 immediately. This feature is sometimes called an <em>identity map</em>.</p>
 
@@ -387,13 +387,13 @@ update as soon as the record finishes loading.</p>
 <h3 class='anchorable-toc' id='toc_finding-all-records'>Finding All Records</h3>
 <p>You can find all records for a given model by calling <code>find()</code> without
 arguments:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> posts = App.Post.find();
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will return an instance of <code>DS.RecordArray</code>. Like with records, the
 record array will start in a loading state with a <code>length</code> of <code>0</code>, but
 you can immediately use it in your templates. When the server responds
@@ -407,13 +407,13 @@ object is not a JavaScript array, using the <code>[]</code> notation will not wo
 For more information, see <a href="http://emberjs.com/api/classes/Ember.Enumerable.html">Ember.Enumerable</a> and <a href="http://emberjs.com/api/classes/Ember.Array.html">Ember.Array</a>.</p>
 <h3 class='anchorable-toc' id='toc_queries'>Queries</h3>
 <p>You can query the server by passing a hash  to <code>find()</code>.</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> people = App.Person.find({ <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Peter</span><span class="delimiter">&quot;</span></span> });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The contents of the hash is opaque to Ember Data; it is up to your
 server to interpret it and return a list of records.</p>
 
@@ -425,7 +425,7 @@ server to interpret it and return a list of records.</p>
           </a>
          
         <a class="next-guide" href="/guides/models/modifying-attributes">
-          Modifying Attributes →
+          修改属性 →
         </a>
       
       </footer>

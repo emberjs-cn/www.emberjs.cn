@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -372,7 +372,7 @@
 <h2 class='anchorable-toc' id='toc_'>定义路由</h2>
 <p>当启动你的应用时，路由器会负责展示模板，载入数据，以及设置应用状态等任务。
 这些都是通过将当前的URL与你定义的<em>路由</em>进行匹配来实现的。</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -384,13 +384,13 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>当用户访问&#39;/&#39;时，Ember.js就会渲染<code>index</code>的模板。访问&#39;/about&#39;渲染<code>about</code>的模板，
 访问&#39;/favs&#39;渲染<code>favorites</code>的模板。</p>
 
 <p>提示：如果路径（path）的名字跟路由（route）的名字是一样的话，你可以不用写上路径。
 所以下面的示例跟上面的是相同的。</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -402,10 +402,10 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在模板里面，你可以用{{linkTo}}来导向路由，这需要用到你在route方法中定义的名字
 （对于&#39;/&#39;来说，名字就是index）。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -421,12 +421,12 @@
 <span class="tag">&lt;/nav&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>{{linkTo}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。</p>
 
 <p>你也可以通过创建一个<code>Ember.Route</code>的子类来对路由的行为进行自定义。例如，创建
 <code>App.IndexRoute</code>类来定义当用户访问&#39;/&#39;时会发生什么。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -442,10 +442,10 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>IndexController</code>是<code>index</code>模板初始的上下文环境。如果你已经设置了<code>title</code>，
 那么你可以在模板里面使用它。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -453,7 +453,7 @@
 <span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>（如果你没有显式的声明<code>IndexController</code>，<code>Ember.js</code>会自动生成一个。）</p>
 
 <p><code>Ember.js</code>会自动地根据你在<code>this.route</code>设置的名字来找出对应的路由与控制器。</p>
@@ -492,7 +492,7 @@
 </table>
 <h3 class='anchorable-toc' id='toc_'>资源</h3>
 <p>你可以为一个资源定义一系列的路由：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -506,9 +506,9 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>跟<code>this.route</code>一样，如果路径名称跟路由名称相同，你可以忽略路径，所以下面的路由器跟上面是等效的：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -522,7 +522,7 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>这个路由器创建了三个路由：</p>
 
 <table>
@@ -588,7 +588,7 @@
 
 <p>例如，如果我们有一个资源<code>this.resource(&#39;/blog_posts&#39;);</code>，那么我们的路由处理器看起来
 可能像这样：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -602,7 +602,7 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>blog_posts</code>模板将会接收到一张所有可用的posts清单并将它们当做是上下文环境。</p>
 
 <p>由于<code>/blog_posts</code>映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
@@ -612,7 +612,7 @@
 <p>探究<em>动态段</em></p>
 
 <p>一个动态段是URL的一部分，由一个<code>:</code>起始，后面加上一个标示符组成。</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -636,7 +636,7 @@ App.PostRoute = Ember.Route.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>由于这种模式很常用，所以上面的模型（<code>model</code>）钩子函数就是默认的行为。</p>
 
 <p>例如，如果动态段是<code>:post_id</code>，<code>ember.js</code>会智能地使用<code>App.post</code>（加上<code>URL</code>提供的<code>ID</code>)。
@@ -646,7 +646,7 @@ App.PostRoute = Ember.Route.extend({
 你的动态段将会以默认的方式工作。</p>
 <h3 class='anchorable-toc' id='toc_'>嵌套资源</h3>
 <p>你不能嵌套路由，但是你可以嵌套资源：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -666,7 +666,7 @@ App.PostRoute = Ember.Route.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>这个路由器创建了五个路由：</p>
 
 <div style="overflow: auto">

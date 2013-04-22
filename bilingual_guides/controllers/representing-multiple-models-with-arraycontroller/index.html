@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -381,7 +381,7 @@ example, imagine we want to display the current playlist. In our router,
 we setup our <code>SongsController</code> to represent the songs in the playlist:</p>
 
 <p>可以将<code>ArrayController</code>作为一个数组来对待。例如，音乐播放器希望显示当前播放列表。在路由中，通过设置<code>SongsController</code>来代表播放列表中的歌曲。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -395,12 +395,12 @@ we setup our <code>SongsController</code> to represent the songs in the playlist
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In the <code>songs</code> template, we can use the <code>{{#each}}</code> helper to display
 each song:</p>
 
 <p>在<code>songs</code>模板中，可以使用<code>{{#each}}</code>助手来显示歌曲。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -418,14 +418,14 @@ each song:</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You can use the <code>ArrayController</code> to collect aggregate information about
 the models it represents. For example, imagine we want to display the
 number of songs that are over 30 seconds long. We can add a new computed
 property called <code>longSongCount</code> to the controller:</p>
 
 <p>另外，可以使用<code>ArrayController</code>来收集一些模型所代表的聚合类信息。例如，音乐播放器需要显示超过30秒长的歌曲的数量。那么只需要在控制器中添加一个名为<code>longSongCount</code>的计算属性。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -445,11 +445,11 @@ property called <code>longSongCount</code> to the controller:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Now we can use this property in our template:</p>
 
 <p>现在便可以在模板中使用该属性。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -467,7 +467,7 @@ property called <code>longSongCount</code> to the controller:</p>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">longSongCount</span><span class="inline-delimiter">}}</span></span> songs over 30 seconds.
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

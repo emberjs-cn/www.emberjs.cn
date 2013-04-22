@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -377,7 +377,7 @@
 <p>To add a child view to a parent, use the <code>{{view}}</code> helper, which takes a path to a view class.</p>
 
 <p>为了将一个子视图添加到父视图中，可以使用<code>{{view}}</code>助手，它接受一个视图类的路径参数。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -415,7 +415,7 @@ App.InfoView = Ember.View.extend({
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -423,7 +423,7 @@ App.InfoView = Ember.View.extend({
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.InfoView</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -433,12 +433,12 @@ App.InfoView = Ember.View.extend({
 <span class="tag">&lt;b&gt;</span>Hobbies:<span class="tag">&lt;/b&gt;</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view.hobbies</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If we were to create an instance of <code>App.UserView</code> and render it, we would get
 a DOM representation like this:</p>
 
 <p>如果我们想要创建一个<code>App.UserView</code>的实例并渲染它，我们就会得到如下的<code>DOM</code>:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -454,13 +454,13 @@ a DOM representation like this:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_relative-paths'>相对路径 (Relative Paths)</h4>
+</div></div><h4 class='anchorable-toc' id='toc_relative-paths'>相对路径 (Relative Paths)</h4>
 <p>Instead of specifying an absolute path, you can also specify which view class
 to use relative to the parent view. For example, we could nest the above view
 hierarchy like this:</p>
 
 <p>你可以使用一个子视图与其父视图之间的相对路径，而不使用绝对路径。例如，我们可以像这样嵌套上面的视图层次结构：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -490,7 +490,7 @@ hierarchy like this:</p>
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -498,7 +498,7 @@ hierarchy like this:</p>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">view.infoView</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When nesting a view class like this, make sure to use a lowercase
 letter, as Ember will interpret a property with a capital letter as a
 global property.</p>
@@ -510,7 +510,7 @@ the main template, you can use the block form of the <code>{{view}}</code> helpe
 We might rewrite the above example like this:</p>
 
 <p>如果你想在主模板中声明子视图类所使用的模板的话，可以使用<code>{{view}}</code>助手的区块形式。我们可以将上面的例子改写如下：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -536,7 +536,7 @@ App.InfoView = Ember.View.extend({
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -552,7 +552,7 @@ App.InfoView = Ember.View.extend({
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When you do this, it may be helpful to think of it as assigning views to
 portions of the page. This allows you to encapsulate event handling for just
 that part of the page.</p>

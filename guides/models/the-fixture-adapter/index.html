@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -383,7 +383,7 @@ without any changes to your application code.</p>
 </ol>
 <h4 class='anchorable-toc' id='toc_creating-a-fixture-adapter'>Creating a Fixture Adapter</h4>
 <p>Simply attach it to your instance of <code>Ember.Store</code>:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -397,11 +397,11 @@ App.FixtureStore = DS.Store.extend({
 });
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_define-your-model'>Define Your Model</h4>
+</div></div><h4 class='anchorable-toc' id='toc_define-your-model'>Define Your Model</h4>
 <p>You should refer to <a href="/guides/models/defining-models">Defining a Model</a> for a more in-depth guide on using
 Ember Data Models, but for the purposes of demonstration we&#39;ll use an example
 modeling people who document Ember.js.</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -413,10 +413,10 @@ modeling people who document Ember.js.</p>
 });
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_attach-fixtures-to-the-model-class'>Attach Fixtures to the Model Class</h4>
+</div></div><h4 class='anchorable-toc' id='toc_attach-fixtures-to-the-model-class'>Attach Fixtures to the Model Class</h4>
 <p>Attaching fixtures couldn&#39;t be simpler. Just attach a collection of plain
 JavaScript objects to your Model&#39;s class under the <code>FIXTURES</code> property:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -428,16 +428,16 @@ JavaScript objects to your Model&#39;s class under the <code>FIXTURES</code> pro
 ];
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>That&#39;s it! You can now use all of methods for <a href="/guides/models/finding-models">Finding Models</a> in your
 application. For example:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>App.Documenter.find(1); // returns the record representing Trek Glowacki
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h4>
+</div></div><h4 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h4>
 <p>Unlike the <a href="/guides/models/the-rest-adapter">REST Adapter</a>, the Fixture Adapter does not make any assumptions
 about the naming conventions of your model. As you saw in the example above,
 if you declare the attribute as <code>firstName</code> during <code>DS.Model.extend</code>, you use

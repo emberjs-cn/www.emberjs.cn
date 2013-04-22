@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -397,7 +397,7 @@ templating engine that will automatically update the DOM when the
 object it is bound to changes.</p>
 
 <p>For a simple example, consider this template:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -407,7 +407,7 @@ object it is bound to changes.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>As with any templating system, when the template is initially rendered,
 it will reflect the current state of the person.  In Ember.js, though,
 we also update the DOM automatically for you if the person&#39;s name or age
@@ -444,7 +444,7 @@ declare a binding once, and Ember will make sure changes get propagated in eithe
 direction.</p>
 
 <p>Here&#39;s how you create a binding between two objects:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -474,12 +474,12 @@ MyApp.country.get(<span class="string"><span class="delimiter">'</span><span cla
 <span class="comment">// &quot;Barack Obama&quot;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Bindings allow you to architect your application using the MVC (Model-View-Controller)
 pattern, then rest easy knowing that data will always flow correctly from layer to layer.</p>
 <h4 class='anchorable-toc' id='toc_computed-properties'>Computed Properties</h4>
 <p>Computed properties allow you to treat a function like a property:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -509,14 +509,14 @@ MyApp.president.get(<span class="string"><span class="delimiter">'</span><span c
 <span class="comment">// &quot;Barack Obama&quot;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Computed properties are useful because they can work with bindings, just
 like any other property.</p>
 
 <p>Many computed properties have dependencies on other properties. For example, in the above
 example, the <code>fullName</code> property depends on <code>firstName</code> and <code>lastName</code> to determine its value.
 You can tell Ember about these dependencies like this:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -542,14 +542,14 @@ You can tell Ember about these dependencies like this:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Make sure you list these dependencies so Ember knows when to update bindings that connect
 to a computed property.</p>
 <h4 class='anchorable-toc' id='toc_auto-updating-templates'>Auto-updating Templates</h4>
 <p>Ember uses Handlebars, a semantic templating library. To take data from your JavaScript application
 and put it into the DOM, create a <code>&lt;script&gt;</code> tag and put it into your HTML, wherever you&#39;d like the
 value to appear:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -559,7 +559,7 @@ value to appear:</p>
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Here&#39;s the best part: templates are bindings-aware. That means that if you ever change the value of
 the property that you told us to display, we&#39;ll update it for you automatically. And because you&#39;ve
 specified dependencies, changes to <em>those</em> properties are reflected as well.</p>

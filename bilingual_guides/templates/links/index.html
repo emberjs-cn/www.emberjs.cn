@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -373,7 +373,7 @@
 <p>You create a link to a route using the <code>{{linkTo}}</code> helper.</p>
 
 <p>你可以使用如下的方式创建一个指向一个路由的链接：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -387,7 +387,7 @@
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -405,12 +405,12 @@
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If the model for the <code>photos</code> template is a list of three photos, the
 rendered HTML would look something like this:</p>
 
 <p>如果<code>photos</code>模板对应的模型拥有三张照片，那么，被渲染的HTML内容将如下所示：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -424,7 +424,7 @@ rendered HTML would look something like this:</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When the rendered link matches the current route, and the same object instance is passed into the helper, then the link is given <code>class=&quot;active&quot;</code>.</p>
 
 <p>当被渲染的链接与当前路由匹配时，并且传入{{linkTo}}助手的是相同的对象实例，那么链接的class被设置为active。</p>
@@ -453,7 +453,7 @@ value of the object&#39;s <code>id</code> property.</li>
 segment.</p>
 
 <p>如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型，如下所示：</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -473,11 +473,11 @@ segment.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In the <code>photoIndex</code> template:</p>
 
 <p><code>photoIndex</code>模板中的内容如下：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -491,7 +491,7 @@ segment.</p>
 <span class="tag">&lt;p&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">photo.comment</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>Main Comment<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Since only a single model was supplied, the link will inherit the
 current photo for the dynamic segment <code>:photo_id</code>. The <code>primaryComment</code>
 will become the new model for the <code>comment</code> route handler.</p>
@@ -501,7 +501,7 @@ will become the new model for the <code>comment</code> route handler.</p>
 <p>Alternatively, you could pass both a photo and a comment to the helper:</p>
 
 <p>此外，你还可以同时给<code>{{linkTo}}</code>助手指定一张照片和一条评论，如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -515,7 +515,7 @@ will become the new model for the <code>comment</code> route handler.</p>
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this case, the models specified will populate both the <code>:photo_id</code>
 and <code>:comment_id</code>. The specified <code>nextPhoto</code> will become the new
 model for the <code>photo</code> handler and the <code>primaryComment</code> will become the
@@ -546,7 +546,7 @@ handler if:</p>
           </a>
          
         <a class="next-guide" href="/bilingual_guides/templates/actions">
-          Actions →
+          操作 →
         </a>
       
       </footer>

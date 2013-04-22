@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -378,7 +378,7 @@ then load the data returned into the store.</p>
 
 <p>You provide the hooks to Ember Data by implementing a <code>sync</code> object on
 each model:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -400,10 +400,10 @@ App.Person.sync = {
 };
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_finding-records'>Finding Records</h3>
+</div></div><h3 class='anchorable-toc' id='toc_finding-records'>Finding Records</h3>
 <p>When you use the <code>find</code> method on a model in your application, Ember
 Data will invoke the <code>find</code> hook on your model&#39;s <code>sync</code> object.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -425,7 +425,7 @@ App.Person.sync = {
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will load the JSON representation returned from the server for the
 <code>Person</code> with the given <code>id</code>.</p>
 
@@ -436,7 +436,7 @@ the JSON, you call <code>load</code> to load the normalized data into the record
 <p>Ember Data expects that the JSON you load in will have keys with the
 same name as the attributes and relationships that you have defined in
 the model. For example, if you have a <code>Person</code> model:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -450,9 +450,9 @@ the model. For example, if you have a <code>Person</code> model:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You need to load an object that looks like this:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -466,14 +466,14 @@ the model. For example, if you have a <code>Person</code> model:</p>
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Because underscored keys are so common, the <code>process</code> wrapper provides
 the <code>camelizeKeys</code> method to convert all keys from underscored keys
 to <code>camelized</code> keys.</p>
 
 <p>For other kinds of manipulations, the <code>process</code> wrapper provides a
 <code>munge</code> method you can use to change the JSON object:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -501,14 +501,14 @@ to <code>camelized</code> keys.</p>
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You can modify the JSON before passing it to <code>process</code>. The <code>munge</code>
 API is provided to make it easier to compose with other methods on
 the <code>process</code> wrapper.</p>
 <h3 class='anchorable-toc' id='toc_querying-for-multiple-records'>Querying for Multiple Records</h3>
 <p>When you use the <code>query</code> method on a model, Ember Data will invoke
 the <code>query</code> hook on your model&#39;s <code>sync</code> object.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -530,7 +530,7 @@ App.Person.sync = {
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In the case of a query, the <code>process</code> wrapper will wrap an Array of
 returned objects.</p>
 

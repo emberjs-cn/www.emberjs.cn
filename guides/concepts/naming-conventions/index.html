@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -388,7 +388,7 @@
 <p>如果你的应用提供了<code>App.ApplicationRoute</code>,<code>Ember.js</code>将在渲染<code>application</code>模板前先调用<a href="/guides/routing/specifying-a-routes-model">此</a><a href="/guides/routing/setting-up-a-controller">路由</a>的<a href="/guides/routing/rendering-a-template">钩子程序</a>。</p>
 
 <p>下面这个例子中同时包含了路由，控制器和模板:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -412,7 +412,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -424,7 +424,7 @@ App.ApplicationController = Ember.Controller.extend({
 <span class="tag">&lt;h2&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h2&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在<code>Ember.js</code>应用中，你可以总是将控制器看作是一个个的<strong>类</strong>，应用程序框架负责实例化类并且将他们提供给模板。</p>
 
 <p>这将使测试控制器的工作变得轻而易举，并且确保每个控制器在整个应用中只有唯一的一个实例。</p>
@@ -432,7 +432,7 @@ App.ApplicationController = Ember.Controller.extend({
 <p>对于应用中的每一个路由，都会有以路由名称命名的控制器和模板。</p>
 
 <p>以下面这个简单的路由为例：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -442,7 +442,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果用户要访问<code>/favorites</code>，<code>Ember.js</code>会查找下面几个对象：</p>
 
 <ul>
@@ -459,7 +459,7 @@ App.ApplicationController = Ember.Controller.extend({
 <p>对于一个路由，例如<code>App.FavoritesRoute</code>,你可能需要实现<code>model</code>钩子去指定你的控制器要呈现给模板的模型。</p>
 
 <p>下面是一个例子：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -475,7 +475,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在这个例子中，我们并没有提供<code>FavoritesController</code>。因为该模型是一个数组，<code>Ember.js</code>会自动提供一个<code>Ember.ArrayController</code>，它将会把返回的数组视为模型。</p>
 
 <p>你可以将<code>ArrayController</code>本身就看做是一个模型。这主要有两个优点：</p>
@@ -486,7 +486,7 @@ App.ApplicationController = Ember.Controller.extend({
 </ul>
 
 <p>模板可以迭代控制器中的元素：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -500,11 +500,11 @@ App.ApplicationController = Ember.Controller.extend({
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div><h2 class='anchorable-toc' id='toc_'>动态字段</h2>
+</div></div><h2 class='anchorable-toc' id='toc_'>动态字段</h2>
 <p>如果一个路由中使用了一个动态字段，它对应的模型将基于用户提供的那个字段的值。</p>
 
 <p>考虑下面这个路由的定义：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -514,7 +514,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在这个例子中，路由的名称是<code>post</code>, 所以<code>Ember.js</code>将查找以下几个对象:</p>
 
 <ul>
@@ -524,7 +524,7 @@ App.ApplicationController = Ember.Controller.extend({
 </ul>
 
 <p>路由处理程序的<code>model</code>钩子将把动态参数<code>:post_id</code>转换到模型中去。而<code>serialize</code>钩子将会为这个路由把一个模型对象转化回URL参数(例如，在为一个模型对象生成链接的情况下)。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -546,7 +546,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>由于这个模式太常见，现在它是默认的路由处理程序。</p>
 
 <ul>
@@ -563,7 +563,7 @@ App.ApplicationController = Ember.Controller.extend({
 <p>如果你没有指定一个<code>post</code>模板，那么，<code>Ember.js</code>什么也不会渲染。</p>
 <h2 class='anchorable-toc' id='toc_'>嵌套</h2>
 <p>你可以在一个<code>resource</code>内嵌套路由。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -579,7 +579,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><strong>资源</strong>的名称与路由，控制器或模板的起始名称一致。即使<code>post</code>资源被嵌套了，它的路由的名称
 仍是<code>App.PostRoute</code>, 控制器名称是<code>App.PostController</code>,模板名称是<code>post</code>。</p>
 
@@ -622,7 +622,7 @@ App.ApplicationController = Ember.Controller.extend({
 <p>在嵌套的每一个层次(包括最上层),<code>Ember.js</code>自动为<code>/</code>路径提供了一个名称为<code>index</code>的路由。</p>
 
 <p>例如，假如你写了如下这样一个简单的路由：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -632,7 +632,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -644,7 +644,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果你的用户访问<code>/</code>路径，<code>Ember.js</code>会首先查找以下几个对象：</p>
 
 <ul>
@@ -657,7 +657,7 @@ App.ApplicationController = Ember.Controller.extend({
 <code>Ember.js</code>将用<code>favorites</code>模板取代<code>index</code>模板。</p>
 
 <p>例如，下面这个嵌套的路由：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -671,9 +671,9 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>等价于：</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -691,7 +691,7 @@ App.ApplicationController = Ember.Controller.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果用户访问<code>/posts</code>，当前路由就是<code>posts.index</code>。<code>Ember.js</code>将查找以下几个对象：</p>
 
 <ul>

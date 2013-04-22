@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -378,7 +378,7 @@ using jQuery or event-based MVC frameworks.</p>
 <p>Let&#39;s use the most common asynchronous behavior in a web application,
 making an Ajax request, as an example. The browser APIs for making Ajax
 request provide an asynchronous API. jQuery&#39;s wrapper does as well:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -390,7 +390,7 @@ request provide an asynchronous API. jQuery&#39;s wrapper does as well:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In a raw jQuery application, you would use this callback to make
 whatever changes you needed to make to the DOM.</p>
 
@@ -398,7 +398,7 @@ whatever changes you needed to make to the DOM.</p>
 callback and into model and view objects. This improves things, but
 doesn&#39;t get rid of the need to explicitly deal with asynchronous
 callbacks:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -468,7 +468,7 @@ jQuery.getJSON(<span class="string"><span class="delimiter">'</span><span class=
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This example doesn&#39;t use any particular JavaScript library, but its
 approach is typical of event-driven MVC frameworks. It helps organize
 the asynchronous events, but asynchronous behavior is still the core
@@ -484,7 +484,7 @@ tasks.</p>
 
 <p>You would normally use ember-data for this example, but let&#39;s see how
 you would model the above example using jQuery for Ajax in Ember.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -536,7 +536,7 @@ jQuery.getJSON(<span class="string"><span class="delimiter">&quot;</span><span c
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In contrast to the above examples, the Ember approach eliminates the
 need to explicitly register an observer when the <code>post</code>&#39;s properties
 change.</p>
@@ -558,7 +558,7 @@ guarantee that a single change is only propagated one time in response
 to each user event.</p>
 
 <p>Let&#39;s take another look at the <code>author</code> computed property.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -572,14 +572,14 @@ to each user event.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Because we have specified that it depends on both <code>salutation</code> and
 <code>name</code>, changes to either of those two dependencies will invalidate the
 property, which will trigger an update to the <code>{{author}}</code> property in
 the DOM.</p>
 
 <p>Imagine that in response to a user event, I do something like this:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -587,7 +587,7 @@ the DOM.</p>
 post.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Katz</span><span class="delimiter">&quot;</span></span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You might imagine that these changes will cause the computed property to
 be invalidated twice, causing two updates to the DOM. And in fact, that
 is exactly what would happen when using an event-driven framework.</p>
@@ -632,7 +632,7 @@ method, like everything else in Ember, defers its side-effects, how can
 you execute the jQuery UI code at the right time?</p>
 
 <p>The answer is lifecycle callbacks.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -660,7 +660,7 @@ you execute the jQuery UI code at the right time?</p>
 }).appendTo(<span class="string"><span class="delimiter">'</span><span class="content">#something</span><span class="delimiter">'</span></span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this case, as soon as the button actually appears in the DOM, Ember
 will trigger the <code>didInsertElement</code> callback, and you can do whatever
 work you want.</p>
@@ -699,7 +699,7 @@ property&#39;s changes have propagated. As in the previous section, Ember
 provides a mechanism to hook into the property change notifications.</p>
 
 <p>Let&#39;s go back to our salutation example.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -713,10 +713,10 @@ provides a mechanism to hook into the property change notifications.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If we want to be notified when the author changes, we can register an
 observer. Let&#39;s say that the view object wants to be notified:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -736,7 +736,7 @@ observer. Let&#39;s say that the view object wants to be notified:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Ember triggers observers after it successfully propagates the change. In
 this case, that means that Ember will only call the <code>authorDidChange</code>
 callback once in response to each user event, even if both of <code>salutation</code>
@@ -750,7 +750,7 @@ Ember&#39;s binding system.</p>
 
 <p>Finally, you can also register observers manually, outside of an object
 definition:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -774,7 +774,7 @@ definition:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>However, when you use the object definition syntax, Ember will
 automatically tear down the observers when the object is destroyed. For
 example, if an <code>{{#if}}</code> statement changes from truthy to falsy, Ember
@@ -785,7 +785,7 @@ process, Ember also disconnects all bindings and inline observers.</p>
 In general, you will want to remove observers in the opposite callback
 to when you created it. In this case, you will want to remove the
 callback in <code>willDestroyElement</code>.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -817,7 +817,7 @@ callback in <code>willDestroyElement</code>.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you added the observer in the <code>init</code> method, you would want to tear
 it down in the <code>willDestroy</code> callback.</p>
 

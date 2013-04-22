@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -374,7 +374,7 @@
 并利用一个控制器来表示这个模型，然后渲染绑定于那个控制器的模板。</p>
 <h3 class='anchorable-toc' id='toc_'>单一模型</h3>
 <p>如果一个路由不包含动态段，你就可以通过执行路由处理器的模型(<code>model</code>)钩子函数来写死与这个URL关联的模型(<code>model</code>):</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -396,12 +396,12 @@ App.PostsRoute = Ember.Route.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>默认情况下，从模型(<code>model</code>)钩子函数返回的值将会赋值给<code>posts</code>控制器的<code>model</code>属性。
 你可以通过执行<a href="/guides/routing/setting-up-a-controller">setupControllers hook</a>钩子函数来改变这种默认的方式。<code>posts</code>控制器是<code>posts</code>模板的上下文环境。</p>
 <h3 class='anchorable-toc' id='toc_'>动态模型</h3>
 <p>如果一个路由包含动态段，你会想用参数来决定用哪个模型(<code>model</code>):</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -423,7 +423,7 @@ App.PostRoute = Ember.Route.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>由于这种模式很常用，所以上面的模型（<code>model</code>）钩子函数就是默认的行为。</p>
 
 <p>例如，如果动态段是<code>:post_id</code>，<code>ember.js</code>会智能地使用<code>App.post</code>（加上<code>URL</code>提供的<code>ID</code>)。

@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -378,13 +378,13 @@ get started.</p>
 <p>The REST adapter is smart enough to determine the URLs it communicates
 with based on the name of the model. For example, if you ask for a
 <code>Post</code> by ID:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> post = App.Post.find(<span class="integer">1</span>);
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The REST adapter will automatically send a <code>GET</code> request to <code>/posts/1</code>.</p>
 
 <p>The actions you can take on a record map onto the following URLs in the
@@ -405,7 +405,7 @@ REST adapter:</p>
 <h4 class='anchorable-toc' id='toc_pluralization-customization'>Pluralization Customization</h4>
 <p>Irregular pluralizations can be specified via the adapter&#39;s <code>configure</code>
 API:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -415,13 +415,13 @@ API:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will tell the REST adapter that requests for <code>App.Person</code> requests
 should go to <code>/people/1</code> instead of <code>/persons/1</code>.</p>
 <h4 class='anchorable-toc' id='toc_endpoint-path-customization'>Endpoint Path Customization</h4>
 <p>Endpoint paths can be prefixed with a namespace by setting the <code>namespace</code>
 property on the adapter:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -431,11 +431,11 @@ property on the adapter:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Requests for <code>App.Person</code> would now target <code>/api/1/people/1</code>.</p>
 <h4 class='anchorable-toc' id='toc_host-customization'>Host Customization</h4>
 <p>An adapter can target other hosts by setting the <code>url</code> property.</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -445,7 +445,7 @@ property on the adapter:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Requests for <code>App.Person</code> would now target <code>https://api.example.com/people/1</code>.</p>
 <h3 class='anchorable-toc' id='toc_json-conventions'>JSON Conventions</h3>
 <p>When requesting a record, the REST adapter expects your server to return
@@ -455,7 +455,7 @@ conventions.</p>
 <p>The primary record being returned should be in a named root. For
 example, if you request a record from <code>/people/123</code>, the response should
 be nested inside a property called <code>person</code>:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -471,10 +471,10 @@ be nested inside a property called <code>person</code>:</p>
 }
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_underscored-attribute-names'>Underscored Attribute Names</h4>
+</div></div><h4 class='anchorable-toc' id='toc_underscored-attribute-names'>Underscored Attribute Names</h4>
 <p>Attribute names should be the underscored version of the attribute name
 in your Ember Data models. For example, if you have a model like this:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -490,9 +490,9 @@ in your Ember Data models. For example, if you have a model like this:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The JSON returned from your server should look like this:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -510,11 +510,11 @@ in your Ember Data models. For example, if you have a model like this:</p>
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Irregular keys can be mapped on the adapter. If the JSON
 has a key of <code>lastNameOfPerson</code>, and the desired attribute
 name is simply <code>lastName</code>, inform the adapter:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -530,10 +530,10 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 });
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_relationships'>Relationships</h4>
+</div></div><h4 class='anchorable-toc' id='toc_relationships'>Relationships</h4>
 <p>References to other records should be done by ID. For example, if you
 have a model with a <code>hasMany</code> relationship:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -543,9 +543,9 @@ have a model with a <code>hasMany</code> relationship:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The JSON should encode the relationship as an array of IDs:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -559,14 +559,14 @@ have a model with a <code>hasMany</code> relationship:</p>
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>Comments</code> for a <code>post</code> can be loaded by <code>post.get(&#39;comments&#39;)</code>. The REST adapter
 will send a <code>GET</code> request to <code>/comments?ids[]=1&amp;ids[]=2&amp;ids[]=3</code></p>
 
 <p>Any <code>belongsTo</code> relationships in the JSON representation should be the
 underscored version of the Ember Data model&#39;s name, with the string
 <code>_id</code> appended. For example, if you have a model:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -576,9 +576,9 @@ underscored version of the Ember Data model&#39;s name, with the string
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The JSON should encode the relationship as an ID to another record:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -592,11 +592,11 @@ underscored version of the Ember Data model&#39;s name, with the string
 }
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_sideloaded-relationships'>Sideloaded Relationships</h4>
+</div></div><h4 class='anchorable-toc' id='toc_sideloaded-relationships'>Sideloaded Relationships</h4>
 <p>To reduce the number of HTTP requests necessary, you can sideload
 additional records in your JSON response. Sideloaded records live
 outside the JSON root, and are represented as an array of hashes:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -640,14 +640,14 @@ outside the JSON root, and are represented as an array of hashes:</p>
 }
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_creating-custom-transformations'>Creating Custom Transformations</h3>
+</div></div><h3 class='anchorable-toc' id='toc_creating-custom-transformations'>Creating Custom Transformations</h3>
 <p>In some circumstances, the built in attribute types of <code>string</code>,
 <code>number</code>, <code>boolean</code>, and <code>date</code> may be inadequate. For example, a
 server may return a non-standard date format.</p>
 
 <p>The <code>RESTAdapter</code>, like any Ember adapter, can have new transforms
 registered for use as attributes:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -673,10 +673,10 @@ App.Cursor = DS.Model.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When <code>coordinatePoint</code> is recieved from the API, it is
 expected to be an array:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -690,9 +690,9 @@ expected to be an array:</p>
 }
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>But once loaded on a model instance, it will behave as an object:</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -702,7 +702,7 @@ cursor.get(<span class="string"><span class="delimiter">'</span><span class="con
 cursor.get(<span class="string"><span class="delimiter">'</span><span class="content">position.y</span><span class="delimiter">'</span></span>); <span class="comment">//=&gt; 9</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If <code>position</code> is modified and saved, it will pass through the
 <code>serialize</code> function in the transform and again be presented as
 an array in JSON.</p>

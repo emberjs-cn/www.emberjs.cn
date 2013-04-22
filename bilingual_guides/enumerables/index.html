@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -391,7 +391,7 @@ allows Ember.js to use the native browser implementations in arrays
 where available.</p>
 
 <p>For instance, all Enumerables support the standard <code>forEach</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -409,11 +409,11 @@ where available.</p>
 <span class="comment">//=&gt; 3</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In general, Enumerable methods, like <code>forEach</code>, take an optional second
 parameter, which will become the value of <code>this</code> in the callback
 function:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -435,7 +435,7 @@ array.forEach(<span class="keyword">function</span>(item) {
 <span class="comment">//=&gt; 3 2</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_enumerables-in-ember-js'>Enumerables in Ember.js</h3>
+</div></div><h3 class='anchorable-toc' id='toc_enumerables-in-ember-js'>Enumerables in Ember.js</h3>
 <p>Usually, objects that represent lists implement the Enumerable interface. Some examples:</p>
 
 <ul>
@@ -453,7 +453,7 @@ conveniences. For the full list, please see the <a href="/api/classes/Ember.Enum
 reference documentation.</a></p>
 <h4 class='anchorable-toc' id='toc_iterating-over-an-enumerable'>Iterating Over an Enumerable</h4>
 <p>To enumerate all the values of an enumerable object, use the <code>forEach</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -475,10 +475,10 @@ food.forEach(<span class="keyword">function</span>(item, index) {
 <span class="comment">// Menu Item 3: Adobo Chicken</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_making-an-array-copy'>Making an Array Copy</h4>
+</div></div><h4 class='anchorable-toc' id='toc_making-an-array-copy'>Making an Array Copy</h4>
 <p>You can make a native array copy of any object that implements
 <code>Ember.Enumerable</code> by calling the <code>toArray()</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -496,13 +496,13 @@ states.toArray()
 <span class="comment">//=&gt; [&quot;Hawaii&quot;, &quot;California&quot;]</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note that in many enumerables, such as the <code>Ember.Set</code> used in this
 example, the order of the resulting array is not guaranteed.</p>
 <h4 class='anchorable-toc' id='toc_first-and-last-objects'>First and Last Objects</h4>
 <p>All Enumerables expose <code>firstObject</code> and <code>lastObject</code> properties
 that you can bind to.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -524,11 +524,11 @@ animals.get(<span class="string"><span class="delimiter">'</span><span class="co
 <span class="comment">//=&gt; &quot;peacock&quot;</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_map'>Map</h4>
+</div></div><h4 class='anchorable-toc' id='toc_map'>Map</h4>
 <p>You can easily transform each item in an enumerable using the
 <code>map()</code> method, which creates a new array with results of calling a
 function on each item in the enumerable.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -544,11 +544,11 @@ function on each item in the enumerable.</p>
 <span class="comment">// [&quot;goodbye!&quot;, &quot;cruel!&quot;, &quot;world!&quot;]</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If your enumerable is composed of objects, there is a <code>mapProperty()</code>
 method that will extract the named property from each of those objects
 in turn and return a new array:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -576,7 +576,7 @@ states.mapProperty(<span class="string"><span class="delimiter">'</span><span cl
 <span class="comment">//=&gt; [&quot;Honolulu&quot;, &quot;Sacramento&quot;]</span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_filtering'>Filtering</h4>
+</div></div><h4 class='anchorable-toc' id='toc_filtering'>Filtering</h4>
 <p>Another common task to perform on an Enumerable is to take the
 Enumerable as input, and return an Array after filtering it based on
 some criteria.</p>
@@ -584,7 +584,7 @@ some criteria.</p>
 <p>For arbitrary filtering, use the <code>filter</code> method.  The filter method
 expects the callback to return <code>true</code> if Ember should include it in the
 final Array, and <code>false</code> or <code>undefined</code> if Ember should not.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -602,9 +602,9 @@ arr.filter(<span class="keyword">function</span>(item, index, self) {
 <span class="comment">// returns [1,2,3]</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When working with a collection of Ember objects, you will often want to filter a set of objects based upon the value of some property. The <code>filterProperty</code> method provides a shortcut.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -634,11 +634,11 @@ todos.filterProperty(<span class="string"><span class="delimiter">'</span><span 
 <span class="comment">// returns an Array containing only items with `isDone == true`</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you want to return just the first matched value, rather than an Array containing all of the matched values, you can use <code>find</code> and <code>findProperty</code>, which work just like <code>filter</code> and <code>filterProperty</code>, but return only one item.</p>
 <h4 class='anchorable-toc' id='toc_aggregate-information-all-or-any'>Aggregate Information (All or Any)</h4>
 <p>If you want to find out whether every item in an Enumerable matches some condition, you can use the <code>every</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -672,9 +672,9 @@ people.every(<span class="keyword">function</span>(person, index, self) {
 <span class="comment">// returns false</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you want to find out whether at least one item in an Enumerable matches some conditions, you can use the <code>some</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -688,9 +688,9 @@ people.every(<span class="keyword">function</span>(person, index, self) {
 <span class="comment">// returns true</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Just like the filtering methods, the <code>every</code> and <code>some</code> methods have analogous <code>everyProperty</code> and <code>someProperty</code> methods.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -698,7 +698,7 @@ people.every(<span class="keyword">function</span>(person, index, self) {
 people.someProperty(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>)  <span class="comment">// true</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
          

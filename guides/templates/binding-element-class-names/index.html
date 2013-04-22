@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -371,7 +371,7 @@
     <p>英文原文:<a href="http://emberjs.com/guides/templates/binding-element-class-names/">http://emberjs.com/guides/templates/binding-element-class-names/</a></p>
 <h2 class='anchorable-toc' id='toc_'>绑定元素类名称</h2>
 <p>像其他所有属性一样，HTML元素的<code>class</code>属性也可以被绑定，如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -381,9 +381,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果控制器的<code>priority</code>属性的值是<code>&quot;p4&quot;</code>,上面的模板将生成如下的HTML：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -393,9 +393,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_'>绑定布尔值</h3>
+</div></div><h3 class='anchorable-toc' id='toc_'>绑定布尔值</h3>
 <p>如果你要绑定的值是布尔类型,<code>Ember.js</code>会将属性名称用中划线连接来作为类的名称：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -405,9 +405,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果<code>isUrgent</code>的值为真，上面的模板就会生成下面的HTML:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -417,9 +417,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>否则，如果<code>isUrgent</code>是假,就不会添加类：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -429,9 +429,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>如果你想要显示的提供一个类的名称(而不使用<code>Ember.js</code>自动生成的中划线形式)，那么，你可以使用下面的语法：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -441,9 +441,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>这样就不会产生中划线形式的名称，取而代之的将产生如下的名称：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -453,9 +453,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>你也可以像下面这样显示的指定当一个属性为<code>false</code>时要添加的类的名称：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -465,11 +465,11 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在上面例子中,如果<code>isEnabled</code>属性的值是<code>true</code>,就会添加<code>enabled</code>类。否则，如果属性值为<code>false</code>,就会添加<code>disabled</code>类。</p>
 
 <p>这种语法也可以用来在属性值为<code>false</code>时添加一个类,而在属性值为<code>true</code>时移除它，所以下面的例子：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -479,11 +479,11 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>将会在<code>isEnabled</code>是<code>false</code>时添加<code>disabled</code>类，而在<code>isEnabled</code>为<code>true</code>时不添加类。</p>
 <h3 class='anchorable-toc' id='toc_'>静态类</h3>
 <p>如果你想要一个混合了静态类和绑定类的元素,你需要将静态类包含在绑定属性列表中,以<code>:</code>为前缀：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -493,9 +493,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>这会直接把<code>high-priority</code>类加到元素中去：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -505,9 +505,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>绑定类名称和静态类名称不能混合在一起。下面的例子<strong>就不会起什么作用</strong>：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -517,9 +517,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_'>绑定多个类</h3>
+</div></div><h3 class='anchorable-toc' id='toc_'>绑定多个类</h3>
 <p>与其他元素属性不同的是，你可以绑定多个类：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -529,9 +529,9 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>Ember.js</code>将依次对每个类执行上述准则，从而达到你所想要的效果：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -541,7 +541,7 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -374,7 +374,7 @@
 attribute:</p>
 
 <p>像其他所有属性一样，HTML元素的<code>class</code>属性也可以被绑定，如下所示：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -384,11 +384,11 @@ attribute:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If the controller&#39;s <code>priority</code> property is <code>&quot;p4&quot;</code>, this template will emit the following HTML:</p>
 
 <p>如果控制器的<code>priority</code>属性的值是<code>&quot;p4&quot;</code>,上面的模板将生成如下的HTML：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -398,12 +398,12 @@ attribute:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_binding-to-boolean-values'>绑定布尔值 （Binding to Boolean Values)</h3>
+</div></div><h3 class='anchorable-toc' id='toc_binding-to-boolean-values'>绑定布尔值 （Binding to Boolean Values)</h3>
 <p>If the value to which you bind is a Boolean, Ember.js will apply the
 dasherized version of the property name as a class:</p>
 
 <p>如果你要绑定的值是布尔类型,<code>Ember.js</code>会将属性名称用中划线连接来作为类的名称：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -413,11 +413,11 @@ dasherized version of the property name as a class:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If <code>isUrgent</code> is true, this emits the following HTML:</p>
 
 <p>如果<code>isUrgent</code>的值为真，上面的模板就会生成下面的HTML:</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -427,11 +427,11 @@ dasherized version of the property name as a class:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If <code>isUrgent</code> is false, no class name is added:</p>
 
 <p>否则，如果<code>isUrgent</code>是假,就不会添加类：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -441,12 +441,12 @@ dasherized version of the property name as a class:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you want to explicitly provide a class name (instead of Ember.js
 dasherizing the property name), use the following syntax:</p>
 
 <p>如果你想要显示的提供一个类的名称(而不使用<code>Ember.js</code>自动生成的中划线形式)，那么，你可以使用下面的语法：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -456,11 +456,11 @@ dasherizing the property name), use the following syntax:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Instead of the dasherized name, this will produce:</p>
 
 <p>这样就不会产生中划线形式的名称，取而代之的将产生如下的名称：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -470,11 +470,11 @@ dasherizing the property name), use the following syntax:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You can also specify a class name to add when the property is <code>false</code>:</p>
 
 <p>你也可以像下面这样显示的指定当一个属性为<code>false</code>时要添加的类的名称：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -484,7 +484,7 @@ dasherizing the property name), use the following syntax:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this case, if the <code>isEnabled</code> property is <code>true</code>, the <code>enabled</code>
 class will be added. If the property is <code>false</code>, the class <code>disabled</code>
 will be added.</p>
@@ -495,7 +495,7 @@ will be added.</p>
 and remove it if the property is <code>true</code>, so this:</p>
 
 <p>这种语法也可以用来在属性值为<code>false</code>时添加一个类,而在属性值为<code>true</code>时移除它，所以下面的例子：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -505,7 +505,7 @@ and remove it if the property is <code>true</code>, so this:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Will add the class <code>disabled</code> when <code>isEnabled</code> is <code>false</code> and add no
 class if <code>isEnabled</code> is <code>true</code>.</p>
 
@@ -516,7 +516,7 @@ classes, you should include the static class in the list of bound
 properties, prefixed by a colon:</p>
 
 <p>如果你想要一个混合了静态类和绑定类的元素,你需要将静态类包含在绑定属性列表中,以<code>:</code>为前缀：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -526,11 +526,11 @@ properties, prefixed by a colon:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will add the literal <code>high-priority</code> class to the element:</p>
 
 <p>这会直接把<code>high-priority</code>类加到元素中去：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -540,12 +540,12 @@ properties, prefixed by a colon:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Bound class names and static class names cannot be combined. The
 following example <strong>will not work</strong>:</p>
 
 <p>绑定类名称和静态类名称不能混合在一起。下面的例子<strong>就不会起什么作用</strong>：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -555,11 +555,11 @@ following example <strong>will not work</strong>:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_binding-multiple-classes'>绑定多个类 （Binding Multiple Classes)</h3>
+</div></div><h3 class='anchorable-toc' id='toc_binding-multiple-classes'>绑定多个类 （Binding Multiple Classes)</h3>
 <p>Unlike other element attributes, you can bind multiple classes:</p>
 
 <p>与其他元素属性不同的是，你可以绑定多个类：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -569,12 +569,12 @@ following example <strong>will not work</strong>:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This works how you would expect, applying the rules described above in
 order:</p>
 
 <p><code>Ember.js</code>将依次对每个类执行上述准则，从而达到你所想要的效果：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -584,7 +584,7 @@ order:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         

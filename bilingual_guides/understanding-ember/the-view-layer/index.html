@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -491,7 +491,7 @@ are unnecessary for getting started with Ember.</p>
 </figure>
 <h3 class='anchorable-toc' id='toc_the-view-hierarchy'>The View Hierarchy</h3><h4 class='anchorable-toc' id='toc_parent-and-child-views'>Parent and Child Views</h4>
 <p>As Ember renders a templated view, it will generate a view hierarchy. Let&#39;s assume we have a template <code>form</code>.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -499,9 +499,9 @@ are unnecessary for getting started with Ember.</p>
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Button</span><span class="inline-delimiter">}}</span></span>Go!<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>And we insert it into the DOM like this:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -511,7 +511,7 @@ are unnecessary for getting started with Ember.</p>
 }).append();
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>This will create a small view hierarchy that looks like this:</p>
 
 <figure>
@@ -519,7 +519,7 @@ are unnecessary for getting started with Ember.</p>
 </figure>
 
 <p>You can move around in the view hierarchy using the <code>parentView</code> and <code>childViews</code> properties.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -527,9 +527,9 @@ are unnecessary for getting started with Ember.</p>
 children.objectAt(<span class="integer">0</span>).get(<span class="string"><span class="delimiter">'</span><span class="content">parentView</span><span class="delimiter">'</span></span>) <span class="comment">// view</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>One common use of the <code>parentView</code> method is inside of an instance of a child view.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -543,7 +543,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 })
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_lifecycle-hooks'>Lifecycle Hooks</h4>
+</div></div><h4 class='anchorable-toc' id='toc_lifecycle-hooks'>Lifecycle Hooks</h4>
 <p>In order to make it easy to take action at different points during your view&#39;s lifecycle, there are several hooks you can implement.</p>
 
 <ul>
@@ -556,7 +556,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 </ul>
 
 <p>Apps can implement these hooks by defining a method by the hook&#39;s name on the view. Alternatively, it is possible to register a listener for the hook on a view:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -566,7 +566,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 });
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_virtual-views'>Virtual Views</h4>
+</div></div><h4 class='anchorable-toc' id='toc_virtual-views'>Virtual Views</h4>
 <p>As described above, Handlebars creates views in the view hierarchy to
 represent bound values. Every time you use a Handlebars expression,
 whether it&#39;s a simple value or a block helper like <code>{{#with}}</code> or
@@ -578,7 +578,7 @@ API. The public view hierarchy reflects only views created using the
 <code>{{view}}</code> helper or through <code>ContainerView</code> (see below).</p>
 
 <p>For example, consider the following Handlebars template:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -606,7 +606,7 @@ please use the form below to submit a complaint to the FDA.
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Rendering this template would create a hierarchy like this:</p>
 
 <figure>
@@ -626,7 +626,7 @@ array of the single <code>TextArea</code> view.</p>
 
 <p>You can see the internal view hierarchy by asking for the <code>_parentView</code>
 or <code>_childViews</code>, which will include virtual views:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -636,7 +636,7 @@ console.log(_childViews.objectAt(<span class="integer">0</span>).toString());
 <span class="comment">//&gt; &lt;Ember._HandlebarsBoundView:ember1234&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><strong>Warning!</strong> You may not rely on these internal APIs in application code.
 They may change at any time and have no public contract. The return
 value may not be observable or bindable. It may not be an Ember object.
@@ -655,7 +655,7 @@ the application-specific &quot;remove this item from an array.&quot;</p>
 
 <p>In order to respond to user events, create a new view subclass that
 implements that event as a method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -671,7 +671,7 @@ implements that event as a method:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>When you create a new <code>Ember.Application</code> instance, it registers an event
 handler for each native browser event using jQuery&#39;s event delegation
 API. When the user triggers an event, the application&#39;s event dispatcher
@@ -693,7 +693,7 @@ techniques as normal jQuery event handlers:</p>
 </ul>
 
 <p>For example, imagine you defined the following view classes:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -733,9 +733,9 @@ App.ChildView = Ember.View.extend({
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>And here&#39;s the Handlebars template that uses them:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -753,10 +753,10 @@ App.ChildView = Ember.View.extend({
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>If you clicked on the <code>&lt;h1&gt;</code>, you&#39;d see the following output in your
 browser&#39;s console:</p>
-<div class="highlight  "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
@@ -764,7 +764,7 @@ browser&#39;s console:</p>
 Parent!
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You can see that Ember invokes the handler on the child-most view that
 received the event. The event continues to bubble to the <code>ParentView</code>,
 but does not reach the <code>GrandparentView</code> because <code>ParentView</code> returns
@@ -775,7 +775,7 @@ patterns. For example, you could implement a <code>FormView</code> that defines 
 <code>submit</code> method. Because the browser triggers the <code>submit</code> event when
 the user hits enter in a text field, defining a <code>submit</code> method on the
 form view will &quot;just work&quot;.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -795,7 +795,7 @@ form view will &quot;just work&quot;.</p>
 });
 </pre></td>
 </tr></table>
-</div><div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -809,7 +809,7 @@ form view will &quot;just work&quot;.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div><h4 class='anchorable-toc' id='toc_adding-new-events'>Adding New Events</h4>
+</div></div><h4 class='anchorable-toc' id='toc_adding-new-events'>Adding New Events</h4>
 <p>Ember comes with built-in support for the following native browser
 events:</p>
 
@@ -857,7 +857,7 @@ events:</p>
 
 <p>You can add additional events to the event dispatcher when you create a
 new application:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -875,7 +875,7 @@ new application:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In order for this to work for a custom event, the HTML5 spec must define
 the event as &quot;bubbling&quot;, or jQuery must have provided an event
 delegation shim for the event.</p>
@@ -937,7 +937,7 @@ the child views array. If there was a previous value of
 <p>Here is an example of using the <code>childViews</code> API to create a view that
 starts with a hypothetical <code>DescriptionView</code> and can add a new button at
 any time by calling the <code>addButton</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -977,12 +977,12 @@ any time by calling the <code>addButton</code> method:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>As you can see in the example above, we initialize the <code>ContainerView</code>
 with two views, and can add additional views during runtime. There is a
 convenient shorthand for doing this view setup without having to
 override the <code>init</code> method:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1012,7 +1012,7 @@ override the <code>init</code> method:</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>As you can see above, when using this shorthand, you specify the
 <code>childViews</code> as an array of strings. At initialization time, each of the
 strings is used as a key to look up a view instance or class. That view
@@ -1039,7 +1039,7 @@ re-render the block with the appropriate context. In the case of a
 context-preserving helper, Ember will re-use the original context when
 re-rendering the block. Otherwise, Ember will use the new value of the
 path as the context.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1057,7 +1057,7 @@ path as the context.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In the above template, when the <code>isAuthenticated</code> property changes from
 false to true, Ember will render the block, using the original outer
 scope as its context.</p>
@@ -1081,7 +1081,7 @@ properties on the view by using an expression like <code>view.propertyName</code
 You can get access to a view&#39;s parent using <code>view.parentView</code>.</p>
 
 <p>For example, imagine you had a view with the following properties:</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1093,9 +1093,9 @@ You can get access to a view&#39;s parent using <code>view.parentView</code>.</p
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>…and the following template:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1105,7 +1105,7 @@ You can get access to a view&#39;s parent using <code>view.parentView</code>.</p
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Even though the Handlebars context has changed to the current
 controller, you can still access the view&#39;s <code>bulletText</code> by referencing
 <code>view.bulletText</code>.</p>
@@ -1145,7 +1145,7 @@ without losing access to the parent scope.</p>
 the <code>{{#each person in people}}</code> form.
 In this form, descendent context have access to the <code>person</code> variable,
 but remain in the same scope as where the template invoked the <code>each</code>.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -1167,7 +1167,7 @@ but remain in the same scope as where the template invoked the <code>each</code>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Note that these variables inherit through <code>ContainerView</code>s, even though
 they are not part of the Handlebars context hierarchy.</p>
 <h4 class='anchorable-toc' id='toc_accessing-template-variables-from-views'>Accessing Template Variables from Views</h4>

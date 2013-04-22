@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -368,16 +368,12 @@
 
   <div class="chapter">
     <h1>模板</h1>
-    <h2 class='anchorable-toc' id='toc_actions-the-code-action-code-helper'>Actions (The <code>{{action}}</code> Helper)</h2>
-<p>You may want to trigger high level events in response to a simple user
-event (like a click).</p>
-
-<p>In general, these events will manipulate some property on the
-controller, which will change the current template via bindings.</p>
-
-<p>For example, imagine that you have a template that shows a blog post,
-and supports expanding the post with additional information.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/actions/">http://emberjs.com/guides/templates/actions/</a></p>
+<h2 class='anchorable-toc' id='toc_action'>操作（{{action}}助手方法）</h2>
+<p>你可能希望通过触发一个高层的事件来响应一个简单的用户操作（比如一次点击）。
+通常，这些事件将修改控制器的某些属性，并且将通过绑定来改变当前的模板。
+比如，你有一个显示一条博文的模板，博文可以展开以显示更多的信息。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -405,10 +401,9 @@ and supports expanding the post with additional information.</p>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div>
-<p>In this case, the <code>post</code> controller would be an <code>Ember.ObjectController</code>
-whose <code>content</code> is an instance of <code>App.Post</code>.</p>
-<div class="highlight js "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div>
+<p>这种情况下，<code>post</code>控制器就是<code>Ember.ObjectController</code>，它的<code>content</code> 是<code>App.Post</code>的一个实例。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -436,22 +431,18 @@ whose <code>content</code> is an instance of <code>App.Post</code>.</p>
 });
 </pre></td>
 </tr></table>
-</div>
-<p>By default, the <code>{{action}}</code> helper triggers a method on the current
-controller. You can also pass parameter paths to the method. The following
-will call <code>controller.select( context.post )</code> when clicked:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div>
+<p>默认情况下， <code>{{action}}</code>助手方法在当前的控制器上触发一个方法。你还可以传递参数路径到这个方法。下面代码中的按钮在被点击时会调用<code>controller.select( context.post )</code>。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;p&gt;</span><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div><h3 class='anchorable-toc' id='toc_specifying-the-type-of-event'>Specifying the Type of Event</h3>
-<p>By default, the <code>{{action}}</code> helper listens for click events and triggers
-the action when the user clicks on the element.</p>
-
-<p>You can specify an alternative event by using the <code>on</code> option.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><h3 class='anchorable-toc' id='toc_'>指定事件的类型</h3>
+<p>默认情况下，<code>{{action}}</code>助手方法侦听事件，并且在用户点击到此元素时触发指定的操作。
+你还可以通过<code>on</code>选项指定一个替代事件来侦听。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -463,14 +454,12 @@ the action when the user clicks on the element.</p>
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
-<p>You should use the normalized event names <a href="/guides/understanding-ember/the-view-layer/#toc_adding-new-events">listed in the View guide</a>.
-In general, two-word event names (like <code>keypress</code>) become <code>keyPress</code>.</p>
-<h3 class='anchorable-toc' id='toc_specifying-whitelisted-modifier-keys'>Specifying Whitelisted Modifier Keys</h3>
-<p>By default the <code>{{action}}</code> helper will ignore click event with
-pressed modifier keys. You can supply an <code>allowed-keys</code> option
-to specify which keys should not be ignored.</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div>
+<p>你应该使用标准化之后的事件名称<a href="/guides/understanding-ember/the-view-layer/#toc_adding-new-events">视图指南已详细列出</a>.
+通常，两个字的事件名（如<code>keypress</code>）,会变成（<code>keyPress</code>）。</p>
+<h3 class='anchorable-toc' id='toc_'>指定在白名单中的辅助键</h3>
+<p>默认情况下，<code>{{action}}</code>助手方法会忽略掉用户点击时同时按下的辅助键。你可以通过提供一个<code>allowed-keys</code>的选项来指定哪些键按下时不会被忽略掉。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -484,18 +473,12 @@ to specify which keys should not be ignored.</p>
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
-</div>
-<p>This way the <code>{{action}}</code> will fire when clicking with the alt key
-pressed down.</p>
-<h3 class='anchorable-toc' id='toc_stopping-event-propagation'>Stopping Event Propagation</h3>
-<p>By default, the <code>{{action}}</code> helper allows events it handles to bubble
-up to parent DOM nodes. If you want to stop propagation, you can disable
-propagation to the parent node.</p>
-
-<p>For example, if you have a <strong>✗</strong> button inside of a link, you will want
-to ensure that if the user clicks on the <strong>✗</strong>, that the link is not
-clicked.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div>
+<p>这样，{{action}}助手方法会在用户按下alt键后点击时被触发。</p>
+<h3 class='anchorable-toc' id='toc_'>阻止事件传递（译注：即不让冒泡）</h3>
+<p>{{action}}助手方法允许将由它处理的事件冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。
+比如，你有一个链接包含一个<strong>✗</strong>按钮，你想保证这个按钮点击时，链接却不会被点击。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -507,20 +490,14 @@ clicked.</p>
 {{<span class="regexp"><span class="delimiter">/</span><span class="content">linkTo}}
 </span></span></pre></td>
 </tr></table>
-</div>
-<p>Without <code>bubbles=false</code>, if the user clicked on the button, Ember.js
-will trigger the action, and then the browser will propagate the click
-to the link.</p>
+</div></div>
+<p>没指定<code>bubbles=false</code>时，用户点击了按钮，Ember.js 就会触发操作，同时浏览器会将此点击事件传递到父级元素。</p>
 
-<p>With <code>bubbles=false</code>, Ember.js will stop the browser from propagating
-the event.</p>
-<h3 class='anchorable-toc' id='toc_target-bubbling'>Target Bubbling</h3>
-<p>If the action is not found on the current controller, it will bubble up
-to the current route handler. From there, it will bubble up to parent
-route handlers until it reaches the application route.</p>
-
-<p>Define actions on the route&#39;s <code>events</code> property.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<p>指定<code>bubbles=false</code>时，Ember.js 就会阻止浏览器将此点击事件传递到父级元素。</p>
+<h3 class='anchorable-toc' id='toc_'>向目标冒泡</h3>
+<p>如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
+在路由的<code>events</code>属性里定义操作。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -538,12 +515,8 @@ route handlers until it reaches the application route.</p>
 });
 </pre></td>
 </tr></table>
-</div>
-<p>This allows you to create a button that has different behavior based on
-where you are in the application. For example, you might want to have a
-button in a sidebar that does one thing if you are somewhere inside of
-the <code>/posts</code> route, and another thing if you are inside of the <code>/about</code>
-route.</p>
+</div></div>
+<p>上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 <code>/posts</code>路由中，你想在侧边栏创建一个按钮来完成某种操作，而在<code>/about</code>路由中时，此按钮却是做另外一件不同的事。</p>
 
     
       <footer>

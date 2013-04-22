@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -384,7 +384,7 @@
 </ul>
 
 <p><code>blog_post</code>模板可能会绑定这些属性到模板中去。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -408,11 +408,11 @@
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在这个简单的例子中，没有涉及任何显示相关的属性或操作。目前控制器只是作为模型的一个透明代理。（控制器其路由处理器获取到其表示的模型）。</p>
 
 <p>假设现在要添加一个允许用户打开或关闭<code>body</code>部分的新功能。为了实现这个功能，首先需要编辑模板使其在<code>isExpanded</code>属性为<code>true</code>的时候才显示<code>body</code>。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -448,7 +448,7 @@
 {{<span class="regexp"><span class="delimiter">/</span><span class="content">if}}
 </span></span></pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>body</code>是否展开是一个明显的显示相关的逻辑，因此将其放入到模型中并不合适。</p>
 
 <p>将这个属性放置到控制器中则可以将数据模型与显示相关逻辑的属性清晰的分离开。这使得可以方便的对模型进行单元测试，而完全不需要担心在测试时去考虑相关的显示逻辑。</p>
@@ -481,7 +481,7 @@ controller}}</code>来直接遍历控制器。这样模板不需要知道控制�
 <p>不是所有在应用中的属性都需要保存到服务器端。当需要只为本次运行的应用保存一些信息的时候，可以将其保存到控制器中。</p>
 
 <p>例如，应用中有一个一直存在的搜索框，那么就可以在<code>ApplicationController</code>中存储一个<code>query</code>属性，并将在<code>application</code>模板中的搜索框绑定到该属性。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -497,7 +497,7 @@ controller}}</code>来直接遍历控制器。这样模板不需要知道控制�
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -521,14 +521,14 @@ controller}}</code>来直接遍历控制器。这样模板不需要知道控制�
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p><code>application</code>模板保存搜索框的属性，并将其操作发送给<code>ApplicationController</code>。在此情形下，当用户敲回车时，应用将转换至<code>search</code>路由，并将<code>query</code>作为参数传递。</p>
 
     
       <footer>
         
           <a class="previous-guide" href="/guides/routing/specifying-the-location-api">
-             ← 路由: Specifying the URL Type
+             ← 路由: 指定地址API
           </a>
          
         <a class="next-guide" href="/guides/controllers/representing-a-single-model-with-objectcontroller">

@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -372,7 +372,7 @@
 <p>Often, you will want a property that is computed based on other
 properties. Ember&#39;s object model allows you to define computed
 properties easily in a normal class definition.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -414,7 +414,7 @@ properties easily in a normal class definition.</p>
 tom.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>) <span class="comment">// &quot;Tom Dale&quot;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The <code>property</code> method defines the function as a computed property, and
 defines its dependencies. Those dependencies will come into play
 later when we discuss bindings and observers.</p>
@@ -424,7 +424,7 @@ later when we discuss bindings and observers.</p>
 <p>You can also define what Ember should do when setting a computed
 property. If you try to set a computed property, it will be invoked
 with the key and value you want to set it to.</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -486,7 +486,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 person.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>) <span class="comment">// Wagenet</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>Ember will call the computed property for both setters and getters, and
 you can check the number of arguments to determine whether it is being called
 as a getter or a setter.</p>

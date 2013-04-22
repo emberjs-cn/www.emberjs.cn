@@ -17,30 +17,33 @@
   -moz-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1); }
   /* line 21, highlight.css.scss */
+  #content .highlight .scroller {
+    overflow: auto; }
+  /* line 25, highlight.css.scss */
   #content .highlight table {
     margin: 0 0; }
-  /* line 25, highlight.css.scss */
+  /* line 29, highlight.css.scss */
   #content .highlight .ribbon {
     position: absolute;
     right: 0;
     bottom: 6px;
     width: 52px;
     height: 20px; }
-  /* line 33, highlight.css.scss */
+  /* line 37, highlight.css.scss */
   #content .highlight.javascript .ribbon, #content .highlight.js .ribbon {
     background-image: url("/images/js-ribbon.png"); }
-  /* line 36, highlight.css.scss */
+  /* line 40, highlight.css.scss */
   #content .highlight.html .ribbon {
     background-image: url("/images/html-ribbon.png"); }
-  /* line 39, highlight.css.scss */
+  /* line 43, highlight.css.scss */
   #content .highlight.handlebars .ribbon {
     background-image: url("/images/handlebars-ribbon.png"); }
 
-/* line 44, highlight.css.scss */
+/* line 48, highlight.css.scss */
 .CodeRay {
   width: 100%;
   /* HTML */ }
-  /* line 46, highlight.css.scss */
+  /* line 50, highlight.css.scss */
   .CodeRay td.line-numbers {
     width: 38px;
     text-align: center;
@@ -53,43 +56,43 @@
     -moz-border-radius-bottomleft: 5px;
     -webkit-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px; }
-  /* line 56, highlight.css.scss */
+  /* line 60, highlight.css.scss */
   .CodeRay td.code {
     padding: 8px 0 8px 13px; }
-  /* line 62, highlight.css.scss */
+  /* line 66, highlight.css.scss */
   .CodeRay .tag {
     color: #1f58ce; }
-  /* line 66, highlight.css.scss */
+  /* line 70, highlight.css.scss */
   .CodeRay .comment {
     color: #777777; }
-  /* line 70, highlight.css.scss */
+  /* line 74, highlight.css.scss */
   .CodeRay .attribute-name {
     color: #1f58ce; }
-  /* line 74, highlight.css.scss */
+  /* line 78, highlight.css.scss */
   .CodeRay .content {
     color: #153c8c; }
-  /* line 78, highlight.css.scss */
+  /* line 82, highlight.css.scss */
   .CodeRay .string {
     color: #1f58ce; }
-  /* line 82, highlight.css.scss */
+  /* line 86, highlight.css.scss */
   .CodeRay .keyword {
     color: #ce791f; }
-  /* line 86, highlight.css.scss */
+  /* line 90, highlight.css.scss */
   .CodeRay .key, .CodeRay .function {
     color: #2b1fce; }
-  /* line 90, highlight.css.scss */
+  /* line 94, highlight.css.scss */
   .CodeRay .local-variable {
     color: #1f58ce; }
 
-/* line 100, highlight.css.scss */
+/* line 104, highlight.css.scss */
 .handlebars .CodeRay .inline,
 .handlebars .CodeRay .inline .inline-delimiter,
 .handlebars .CodeRay .inline .delimiter {
   color: #00aa00; }
-/* line 104, highlight.css.scss */
+/* line 108, highlight.css.scss */
 .handlebars .CodeRay .inline .attribute-name {
   color: #007700; }
-/* line 108, highlight.css.scss */
+/* line 112, highlight.css.scss */
 .handlebars .CodeRay .inline .attribute-value,
 .handlebars .CodeRay .inline .content {
   color: #004400; }

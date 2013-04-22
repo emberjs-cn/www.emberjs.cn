@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/templates/actions">Actions</a>
+              <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/redirection">Redirecting</a>
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -397,7 +397,7 @@ that your app does not need to save to the server.</p>
 template:</p>
 
 <p><code>blog_post</code>模板可能会绑定这些属性到模板中去。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -421,7 +421,7 @@ template:</p>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>In this simple example, we don&#39;t have any display-specific properties
 or actions just yet. For now, our controller just acts as a
 pass-through (or &quot;proxy&quot;) for the model properties. (Remember that
@@ -435,7 +435,7 @@ first modify our template to show the body only if the value of a
 new <code>isExpanded</code> property is true.</p>
 
 <p>假设现在要添加一个允许用户打开或关闭<code>body</code>部分的新功能。为了实现这个功能，首先需要编辑模板使其在<code>isExpanded</code>属性为<code>true</code>的时候才显示<code>body</code>。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -471,7 +471,7 @@ new <code>isExpanded</code> property is true.</p>
 {{<span class="regexp"><span class="delimiter">/</span><span class="content">if}}
 </span></span></pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>You might think you should put this property on the model, but 
 whether the  body is expanded or not is strictly a display concern.</p>
 
@@ -566,7 +566,7 @@ always present. You could store a <code>query</code> property on your
 application</code> template to that property.</p>
 
 <p>例如，应用中有一个一直存在的搜索框，那么就可以在<code>ApplicationController</code>中存储一个<code>query</code>属性，并将在<code>application</code>模板中的搜索框绑定到该属性。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -582,7 +582,7 @@ application</code> template to that property.</p>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div><div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -606,7 +606,7 @@ application</code> template to that property.</p>
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>The <code>application</code> template stores its properties and sends its 
 actions to the <code>ApplicationController</code>. In this case, when the user
 hits enter, the application will transition to the <code>search</code> route,
@@ -618,7 +618,7 @@ passing the query as a parameter.</p>
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/routing/specifying-the-location-api">
-             ← 路由: Specifying the URL Type
+             ← 路由: 指定地址API
           </a>
          
         <a class="next-guide" href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">

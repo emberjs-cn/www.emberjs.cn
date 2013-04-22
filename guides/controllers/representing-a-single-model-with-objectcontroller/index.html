@@ -160,7 +160,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/actions">Actions</a>
+              <a href="/guides/templates/actions">操作</a>
             </li>
           
             <li class="level-3">
@@ -196,15 +196,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/rendering-a-template">Rendering a Template</a>
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/redirection">Redirecting</a>
+              <a href="/guides/routing/redirection">重定向</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/routing/specifying-the-location-api">Specifying the URL Type</a>
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           </ol></li>
           <li class="level-1 selected">
@@ -248,7 +248,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">Modifying Attributes</a>
+              <a href="/guides/models/modifying-attributes">修改属性</a>
             </li>
           
             <li class="level-3">
@@ -377,7 +377,7 @@
 <p>然而，当控制器没有定义该属性时，就将返回其代表的模型的该属性的值。</p>
 
 <p>例如，在编写一个音乐播放器时，可以定义一个<code>SongController</code>来代表当前播放的歌曲。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -387,9 +387,9 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在路由中，设置控制器的<code>content</code>属性为当前播放的歌曲。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -403,9 +403,9 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>在模板中，可以显示当前播放的歌曲的名称，以及播放的音量。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -421,7 +421,7 @@
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>因为<code>name</code>和<code>artist</code>都是在模型中被持久化的信息，控制器从模型中获取这些信息，并提供给模板。</p>
 
 <p>然而<code>soundVolume</code>则是与当前用户回话相关的，并存储在控制器中，因此控制器可以直接返回其值。</p>
@@ -429,7 +429,7 @@
 <p>这样的架构的优点是可以很容易的通过对象控制器来访问模型的属性。另外，如果需要为模板转换模型的属性，控制器是一个非常合适的地方来完成这样的工作，避免了将视图的逻辑放入到模型中去。</p>
 
 <p>例如，音乐播放器需要显示歌曲的时长。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -445,9 +445,9 @@
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>由于时长在服务器端被保存为一个以秒为单位的整数，这时模板的输出为：</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -463,11 +463,11 @@
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>由于音乐播放器的用户是人类而非机器，因此应该将歌曲时长显示为可读的格式。</p>
 
 <p>可以在控制器中定义一个计算属性来转换模型的值为一个对于模板来说更加具有可读性的属性。</p>
-<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -489,9 +489,9 @@
 });
 </pre></td>
 </tr></table>
-</div>
+</div></div>
 <p>现在，模板的输出变得更加友好。</p>
-<div class="highlight html "><div class="ribbon"></div><table class="CodeRay"><tr>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -507,7 +507,7 @@
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
-</div>
+</div></div>
     
       <footer>
         
