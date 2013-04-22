@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 指南目录结构调整</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="blog blog_2013 blog_2013_03 blog_2013_03_27 blog_2013_03_27_changed-the-directories-of-guides">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          <ol id='toc-list'>
+  <li class='level-1'>
+    <a href="/blog/tags/.html">最近文章</a>
+    <ol style="display:block">
+      
+        <li class='level-3'><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/03/31/ember-baby-steps.html">Ember入门实践</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/03/11/ember-js-1-0-rc2.html">Ember.js准备发布RC2了</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html">Emberjs.cn域名正式启用</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/02/19/why-discourse-uses-ember.html">为什么Discourse选择Ember.JS</a></li>
+      
+        <li class='level-3'><a href="/blog/2013/02/18/come-into-being.html">EmberJS.CN之诞生</a></li>
+      
+    </ol>
+  </li>
+  <li class='level-1'>
+    <a href="">Ember.js周报</a>
+    <ol style="display:block">
+      
+    </ol>
+  </li>
+</ol>
+
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          <article class="blog-post">
+    <h1>指南目录结构调整</h1>
+    
+      <h3 class="blog-post-author">作者：Tower He</h3>
+    
+
+    <p>为了更好的为大家提供信息，我们对指南的目录结构进行了调整。原来的中英对照指南改为<a href="http://emberjs.cn/guides">中文指南</a>，并将原来的<a href="http://emberjs.cn/bilingual_guides">中英双语对照指南</a>独立开来。这样我们可以更加方便的保持中文指南与官方的指南同步。但这会影响到现在已经在进行的翻译工作，需要各位根据最新的目录结构进行调整，由此带来的不便，敬请原谅！</p>
+
+<p>经过调整后，我们提供了独立的中英双语对照指南，这也就成为了我们翻译工作新的工作目录（<code>source/bilingual_guides</code>）。由于目录结构发生了改变，我们翻译工作的流程也随之需要进行一些调整。调整后的翻译步骤为：</p>
+
+<ol>
+<li>在<code>source/bilingual_guides</code>翻译对应的指南；</li>
+<li>在<code>source/guides</code>中创建对应的中文指南；</li>
+<li>将翻译的指南提交；</li>
+<li>在收到PR后，我们会在二至三个工作日内，完成校对（您可能需要参考我们的意见进行适当的修改）；</li>
+<li>完成修正后，合并PR。</li>
+</ol>
+
+
+    <hr>
+
+    <div id="disqus_thread"></div> 
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'emberjs-cn'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript><a href="http://disqus.com/?ref_noscript">基于Disqus的评论需要启用Javascript</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">博客评论基于<span class="logo-disqus">Disqus</span></a>
+  </article>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>
