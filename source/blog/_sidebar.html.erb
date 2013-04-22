@@ -7,4 +7,12 @@
     <% end %>
     </ol>
   </li>
+  <li class='level-1'>
+    <a href="<%= tag_path 'Ember.js周报'%>">Ember.js周报</a>
+    <ol style="display:block">
+      <% blog.tags['Ember.js周报'].sort_by(&:date).reverse.each_with_index do |article, i| %>
+      <li class='level-3'><%= link_to article.title, article %></li>
+    <% end %>
+    </ol>
+  </li>
 </ol>

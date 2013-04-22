@@ -16,6 +16,6 @@ window.App = Ember.Application.create();
 
 2. 它会帮你监听网页的事件，同时负责发送事件到你的视图。
 
-3. 它会自动帮你渲染[_应用模版_](/guides/application/the-application-template)模版，应用模版是根模版，你其他的模版都会被渲染到该模版中去。
+5. 它会自动帮你渲染[_应用模板_](/guides/application/the-application-template)模板，应用模板是根模板，你其他的模板都会被渲染到该模板中去。
 
 4. 它会基于当前的路径自动帮你创建一个路由，并开始进行路由。

@@ -13,4 +13,11 @@ Ember Data 并不需要任务配置就可以通过 RESTful JSON API 的惯例来
 Ember Data 被设计成可配置的，无论你想要怎么样的持久层它都可以满足。
 
 目前， Ember Data还是作为Ember.js的一个独立的库，与此同时，我们仍然在扩展适配器的API以便支持更多功能。
-在Ember Data被作为标准配置的一部分之前，你可以从其项目的[Github主页](https://github.com/emberjs/data)获取它。
+在Ember Data被作为标准配置的一部分之前，你可以从其[builds.emberjs.com][builds]下载到从"master"分支编译得到的最新的拷贝。
+
+* [Development][development-build]
+* [Minified][minified-build]
+ 
+[builds]: http://builds.emberjs.com
+[development-build]: http://builds.emberjs.com.s3.amazonaws.com/ember-data-latest.js
+[minified-build]: http://builds.emberjs.com.s3.amazonaws.com/ember-data-latest.min.js

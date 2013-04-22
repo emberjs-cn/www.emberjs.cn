@@ -1,8 +1,6 @@
 英文原文：[http://emberjs.com/guides/models/modifying-attributes/](http://emberjs.com/guides/models/modifying-attributes/)
 
-
 ## 修改属性
-
 
 一旦一条记录已经加载进来，你就可以开始修改它的属性(attributes)了。属性（attributes）和Ember.js中对象的普通属性（properties）差不多。（译注：这两个词我都译成了属性，读者自行判定其中潜在的区别）。修改记录就是修改记录的属性。
 
