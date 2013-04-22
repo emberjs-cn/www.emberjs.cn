@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - Community</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="ember-users ember-users_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+      <div id="content" >
+        <h1>
+  See Who's Using Ember.js
+</h1>
+
+<div class="users section">
+
+<table id="showcase">
+  
+    <tr>
+      
+        <td>
+          <a href="http://livingsocial.com/" rel="nofollow">
+            <img src="/images/about/livingsocial.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://squareup.com/" rel="nofollow">
+            <img src="/images/about/square.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://tilde.io/" rel="nofollow">
+            <img src="/images/about/tilde.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://www.zendesk.com/" rel="nofollow">
+            <img src="/images/about/zendesk.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.groupon.com" rel="nofollow">
+            <img src="/images/about/groupon.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.timbuk2.com/" rel="nofollow">
+            <img src="/images/about/timbuk2.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://www.mhelabs.com/" rel="nofollow">
+            <img src="/images/about/mhelabs.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="https://www.yapp.us/" rel="nofollow">
+            <img src="/images/about/yapp.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.benefitcloud.com/" rel="nofollow">
+            <img src="/images/about/benefitcloud.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://www.topicus.nl/" rel="nofollow">
+            <img src="/images/about/topicus.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.gemfury.com/" rel="nofollow">
+            <img src="/images/about/gemfury.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.batterii.com/" rel="nofollow">
+            <img src="/images/about/batterii.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://inst.ag/" rel="nofollow">
+            <img src="/images/about/instagrille.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.bluetubeinteractive.com" rel="nofollow">
+            <img src="/images/about/bluetube.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.mashape.com" rel="nofollow">
+            <img src="/images/about/mashape.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://www.skovik.com" rel="nofollow">
+            <img src="/images/about/skovik.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://entwine.me/" rel="nofollow">
+            <img src="/images/about/twine.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://tradegecko.com" rel="nofollow">
+            <img src="/images/about/tradegecko.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://grouptalent.com" rel="nofollow">
+            <img src="/images/about/grouptalent.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.kohactive.com" rel="nofollow">
+            <img src="/images/about/kohactive.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.capitainetrain.com" rel="nofollow">
+            <img src="/images/about/capitainetrain.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://withassociates.com" rel="nofollow">
+            <img src="/images/about/withassociates.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.nedap.com/" rel="nofollow">
+            <img src="/images/about/nedap.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.brainistic.com" rel="nofollow">
+            <img src="/images/about/brainistic.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://netminds.com/" rel="nofollow">
+            <img src="/images/about/netminds.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://mochaleaf.com" rel="nofollow">
+            <img src="/images/about/mochaleaf.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://fundinggates.com" rel="nofollow">
+            <img src="/images/about/fundinggates.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://witsbits.com" rel="nofollow">
+            <img src="/images/about/witsbits.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.cliptem.com" rel="nofollow">
+            <img src="/images/about/cliptem.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.yesmail.com/services/market-intelligence-measurement/yesmail-market-intelligence" rel="nofollow">
+            <img src="/images/about/yesmail.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://crashlog.io" rel="nofollow">
+            <img src="/images/about/crashlog.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://plasmiq.com" rel="nofollow">
+            <img src="/images/about/plasmiq.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.toushay.com" rel="nofollow">
+            <img src="/images/about/toushay.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://shopittome.com/threads" rel="nofollow">
+            <img src="/images/about/shopittome_threads_logo_emberjs.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.crowdstrike.com" rel="nofollow">
+            <img src="/images/about/crowdstrike.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.playtin.com" rel="nofollow">
+            <img src="/images/about/playtin.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://www.crowdcompass.com" rel="nofollow">
+            <img src="/images/about/crowdcompass.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.totango.com" rel="nofollow">
+            <img src="/images/about/totango.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.nearzero.org" rel="nofollow">
+            <img src="/images/about/nearzero.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="https://www.action.io/" rel="nofollow">
+            <img src="/images/about/actionio.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://porkepic.com/" rel="nofollow">
+            <img src="/images/about/porkepic.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.appdrones.com/" rel="nofollow">
+            <img src="/images/about/appdrones.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://dockyard.com" rel="nofollow">
+            <img src="/images/about/dockyard.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://www.montania.se/" rel="nofollow">
+            <img src="/images/about/montania.png">
+          </a>
+        </td>
+      
+        <td>
+          <a href="http://yourkarma.com" rel="nofollow">
+            <img src="/images/about/karma.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+    <tr>
+      
+        <td>
+          <a href="http://nosolosoftware.biz" rel="nofollow">
+            <img src="/images/about/nosolosoftware.png">
+          </a>
+        </td>
+      
+    </tr>
+  
+</table>
+
+<a class="orange button" href="mailto:hello@emberjs.com">
+  GET LISTED
+</a>
+
+</div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

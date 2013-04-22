@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 对象模型</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="guides guides_object-model guides_object-model_classes-and-instances guides_object-model_classes-and-instances_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>对象模型</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/classes-and-instances/">http://emberjs.com/guides/object-model/classes-and-instances/</a></p>
+<h2 class='anchorable-toc' id='toc_'>类与实例</h2>
+<p>定义一个新的<code>Ember</code>的<em>类</em>，只需要调用<code>Ember.Object</code>的<code>extend()</code>方法即可：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Person = Ember.Object.extend({
+  <span class="function">say</span>: <span class="keyword">function</span>(thing) {
+    alert(thing);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>这里定义了一个新的<code>App.Person</code>的类，并且为该类定义了一个<code>say()</code>方法。</p>
+
+<p>通过调用一个现有类的<code>extend()</code>方法，可以定义类的<em>子类</em>。例如可以通过定义一个<code>Ember</code>内建的<code>Ember.View</code>的子类来进行扩展：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.PersonView = Ember.View.extend({
+  <span class="key">tagName</span>: <span class="string"><span class="delimiter">'</span><span class="content">li</span><span class="delimiter">'</span></span>,
+  <span class="key">classNameBindings</span>: [<span class="string"><span class="delimiter">'</span><span class="content">isAdministrator</span><span class="delimiter">'</span></span>]
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>当定义一个子类的时候，可以重写父类已有的方法。尽管重写了父类的方法，依然可以在重写的方法中通过<code>_super()</code>来调用被重写的父类方法。例如：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>App.Person = Ember.Object.extend({
+  <span class="function">say</span>: <span class="keyword">function</span>(thing) {
+    <span class="keyword">var</span> name = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
+
+    alert(name + <span class="string"><span class="delimiter">&quot;</span><span class="content"> says: </span><span class="delimiter">&quot;</span></span> + thing);
+  }
+});
+
+App.Soldier = App.Person.extend({
+  <span class="function">say</span>: <span class="keyword">function</span>(thing) {
+    <span class="local-variable">this</span>._super(thing + <span class="string"><span class="delimiter">&quot;</span><span class="content">, sir!</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+
+<span class="keyword">var</span> yehuda = App.Soldier.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Yehuda Katz</span><span class="delimiter">&quot;</span></span>
+});
+
+yehuda.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Yes</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// alerts &quot;Yehuda Katz says: Yes, sir!&quot;</span>
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>创建实例</h3>
+<p>当定义了一个类之后，就可以通过调用<code>create()</code>方法来创建类的<em>实例</em>。所有定义在类中的方法、属性、计算属性，都可以通过创建的实例来访问或调用。例如：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> person = Person.create();
+person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>) <span class="comment">// alerts &quot;Hello&quot;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>当创建一个类的实例时，可以将实例属性的初始值以<code>hash</code>形式的参数传给<code>create()</code>方法，从而实现对属性的初始化。例如：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>Person = Ember.Object.extend({
+  <span class="function">helloWorld</span>: <span class="keyword">function</span>() {
+    alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hi, my name is </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>));
+  }
+});
+
+<span class="keyword">var</span> tom = Person.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tom Dale</span><span class="delimiter">&quot;</span></span>
+});
+
+tom.helloWorld() <span class="comment">// alerts &quot;Hi my name is Tom Dale&quot;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>考虑到性能问题，实例的计算属性或方法不能在调用<code>create()</code>方法的时候进行重定义。同样也不可以在此时定义新的计算属性或方法。因此，在调用<code>create()</code>方法时，只能设置基本属性。如果需要定义或者重新定义计算属性或方法，可以通过定义一个新的子类来实现。</p>
+
+<p>按照惯例，用来保存类名的属性和变量名需首字母大写，而实例名首字母不大写。例如：变量<code>Person</code>代表一个类，而<code>person</code>则代表一个实例（通常是类<code>Person</code>的实例）。在<code>Ember</code>应用中，应该采用这样的命名惯例。</p>
+<h3 class='anchorable-toc' id='toc_'>初始化实例</h3>
+<p>当一个实例被创建后，实例的<code>init</code>方法会被自动调用。可以通过自定义<code>init</code>方法，来对新实例进行初始化。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>Person = Ember.Object.extend({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> name = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
+    alert(name + <span class="string"><span class="delimiter">&quot;</span><span class="content">, reporting for duty!</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+
+Person.create({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Stefan Penner</span><span class="delimiter">&quot;</span></span>
+});
+
+<span class="comment">// alerts &quot;Stefan Penner, reporting for duty!&quot;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>假若继承了一个<code>Ember</code>内建的类，例如<code>Ember.View</code>或是<code>Ember.ArrayController</code>，并且重写了<code>init</code>方法，一定要在重写的<code>init</code>方法中调用<code>this._super()</code>！如果没有调用该方法，系统可能无法正常完成一些重要的初始化工作，从而导致应用出现一些怪异的行为。</p>
+
+<p>当访问一个对象的属性时，应该使用<code>get</code>方法，而设置属性值时则应该使用<code>set</code>方法。例如：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> person = App.Person.create();
+
+<span class="keyword">var</span> name = person.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Tobias Fünke</span><span class="delimiter">&quot;</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>请记住使用这些属性访问方法，否则计算属性不会重新计算，观测也不会被触发，模板也无法得到正常的更新。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/guides/views/manually-managing-view-hierarchy">
+             ← 视图: Manually Managing View Hierarchy
+          </a>
+         
+        <a class="next-guide" href="/guides/object-model/computed-properties">
+          Computed Properties →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

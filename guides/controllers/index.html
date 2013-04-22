@@ -1,0 +1,576 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 控制器</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="guides guides_controllers guides_controllers_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/controllers">控制器</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>控制器</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/controllers/">http://emberjs.com/guides/controllers/</a></p>
+<h2 class='anchorable-toc' id='toc_'>控制器</h2>
+<p>在<code>Ember.js</code>中，控制器用于将显示逻辑与模型绑定在一起。通常模型包含需要保存到服务器端的属性，而控制器的属性可以不需要保存至服务器端。</p>
+
+<p>例如，构建博客系统时，<code>blog_post</code>模板用于呈现<code>BlogPost</code>模型。</p>
+
+<p><code>BlogPost</code>模型可能包含如下属性：</p>
+
+<ul>
+<li><code>title</code></li>
+<li><code>intro</code></li>
+<li><code>body</code></li>
+<li><code>author</code></li>
+</ul>
+
+<p><code>blog_post</code>模板可能会绑定这些属性到模板中去。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>{{title}}<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>by {{author}}<span class="tag">&lt;/h2&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">intro</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  {{intro}}
+<span class="tag">&lt;/div&gt;</span>
+&lt;hr&gt;
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  {{body}}
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>在这个简单的例子中，没有涉及任何显示相关的属性或操作。目前控制器只是作为模型的一个透明代理。（控制器其路由处理器获取到其表示的模型）。</p>
+
+<p>假设现在要添加一个允许用户打开或关闭<code>body</code>部分的新功能。为了实现这个功能，首先需要编辑模板使其在<code>isExpanded</code>属性为<code>true</code>的时候才显示<code>body</code>。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>{{title}}<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>by {{author}}<span class="tag">&lt;/h2&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">intro</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  {{intro}}
+<span class="tag">&lt;/div&gt;</span>
+&lt;hr&gt;
+
+{{<span class="error">#</span><span class="keyword">if</span> isExpanded}}
+  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>Hide Body<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+    {{body}}
+  <span class="tag">&lt;/div&gt;</span>
+{{<span class="keyword">else</span>}}
+  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>Show Body<span class="tag">&lt;/button&gt;</span>
+{{<span class="regexp"><span class="delimiter">/</span><span class="content">if}}
+</span></span></pre></td>
+</tr></table>
+</div></div>
+<p><code>body</code>是否展开是一个明显的显示相关的逻辑，因此将其放入到模型中并不合适。</p>
+
+<p>将这个属性放置到控制器中则可以将数据模型与显示相关逻辑的属性清晰的分离开。这使得可以方便的对模型进行单元测试，而完全不需要担心在测试时去考虑相关的显示逻辑。</p>
+<h2 class='anchorable-toc' id='toc_'>相关性说明</h2>
+<p>在<code>Ember.js</code>中，模板从装饰了模型的控制器中获取属性。</p>
+
+<p>这就意味着模板<em>知道</em>控制器，而控制器<em>知道</em>模型，反之却不然。模型并不知道被那些控制器装饰，控制器也不知道那些视图呈现了控制器的属性。</p>
+
+<figure>
+<img src="/images/controller-guide/objects.png">
+</figure>
+
+<p>这也意味着涉及至某个模板时，其使用的属性全部来自控制器，模板并不需要直接了解模型。</p>
+
+<p>实际情况下，<code>Ember.js</code>在这个应用中只创建一次模板的控制器，而控制器的模型可以在应用的生命周期中随意变换，不需要视图知道模型的改变。</p>
+
+<p><aside>
+例如，如果用户从<code>/posts/1</code>跳转至<code>/posts/2</code>，<code>PostController</code>将其模型从<code>Post.find(1)</code>变为<code>Post.find(2)</code>。模板会更新呈现的模型的属性，以及控制器中依赖于模型的计算属性。
+</aside></p>
+
+<p>这样可以通过使用一个包含模板期望属性的控制器对象来独立的对模板进行测试。从模板的角度来看，<strong>控制器</strong>只是一个为其提供数据的不同对象。</p>
+<h3 class='anchorable-toc' id='toc_'>代表模型</h3>
+<p>模板总是连接着控制器，而非模型。这样可以很容易的将显示相关属性与模型属性分离开。当用户在不同的页面游弋的时候，也可以很方便的置换控制器的模型。</p>
+
+<p>为了方便起见，<code>Ember.js</code>的控制器代理了其模型的属性，因此可以在模板中使用<code>{{name}}</code>而非<code>{{model.name}}</code>来访问模型的属性。<code>Ember.ArrayController</code>代理了<code>Array</code>的属性，<code>Ember.ObjectController</code>则代理了一个对象的属性。</p>
+
+<p>如果控制器是一个<code>ArrayController</code>，那么可以使用<code>{{#each
+controller}}</code>来直接遍历控制器。这样模板不需要知道控制器是如何实现的，从而使独立测试和重构变得更加简单。</p>
+<h3 class='anchorable-toc' id='toc_'>保存应用属性</h3>
+<p>不是所有在应用中的属性都需要保存到服务器端。当需要只为本次运行的应用保存一些信息的时候，可以将其保存到控制器中。</p>
+
+<p>例如，应用中有一个一直存在的搜索框，那么就可以在<code>ApplicationController</code>中存储一个<code>query</code>属性，并将在<code>application</code>模板中的搜索框绑定到该属性。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- application.handlebars --&gt;</span>
+<span class="tag">&lt;header&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">search</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/header&gt;</span>
+
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>App.ApplicationController = Ember.Controller.extend({
+  <span class="comment">// the initial value of the `search` property</span>
+  <span class="key">search</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
+
+  <span class="function">query</span>: <span class="keyword">function</span>() {
+    <span class="comment">// the current value of the text field</span>
+    <span class="keyword">var</span> query = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.transitionToRoute(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>, { <span class="key">query</span>: query });
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><code>application</code>模板保存搜索框的属性，并将其操作发送给<code>ApplicationController</code>。在此情形下，当用户敲回车时，应用将转换至<code>search</code>路由，并将<code>query</code>作为参数传递。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/guides/routing/specifying-the-location-api">
+             ← 路由: 指定地址API
+          </a>
+         
+        <a class="next-guide" href="/guides/controllers/representing-a-single-model-with-objectcontroller">
+          代表单一模型 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

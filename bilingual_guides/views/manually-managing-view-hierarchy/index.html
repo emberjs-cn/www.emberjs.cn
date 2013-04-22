@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 视图</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_views bilingual_guides_views_manually-managing-view-hierarchy bilingual_guides_views_manually-managing-view-hierarchy_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>视图</h1>
+    <h2 class='anchorable-toc' id='toc_manually-managed-views-with-ember-containerview'>Manually Managed Views with Ember.ContainerView</h2>
+<p>As you probably know by now, views usually create their child views
+by using the <code>{{view}}</code> helper. However, it is sometimes useful to
+<em>manually</em> manage a view&#39;s child views.
+<a href="/api/classes/Ember.MutableArray.html"><code>Ember.ContainerView</code></a>
+is the way to do just that.</p>
+
+<p>As you programmatically add or remove views to a <code>ContainerView</code>,
+those views&#39; rendered HTML are added or removed from the DOM to
+match.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create();
+container.append();
+
+<span class="keyword">var</span> firstView = App.FirstView.create(),
+    secondView = App.SecondView.create();
+
+container.pushObject(firstView);
+container.pushObject(secondView);
+
+<span class="comment">// When the rendering completes, the DOM</span>
+<span class="comment">// will contain a `div` for the ContainerView</span>
+<span class="comment">// and nested inside of it, a `div` for each of</span>
+<span class="comment">// firstView and secondView.</span>
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_defining-the-initial-views-of-a-container-view'>Defining the Initial Views of a Container View</h3>
+<p>There are a few ways to specify what initial child views a
+<code>ContainerView</code> should render. The most straight-forward way is to
+add them in <code>init</code>:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>._super();
+    <span class="local-variable">this</span>.pushObject(App.FirstView.create());
+    <span class="local-variable">this</span>.pushObject(App.SecondView.create());
+  }
+};
+
+container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>As a shorthand, you can specify a <code>childViews</code> property that will be
+consulted on instantiation of the <code>ContainerView</code> also. This example is
+equivalent to the one above:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.extend({
+  <span class="key">childViews</span>: [App.FirstView, App.SecondView]
+};
+
+container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Another bit of syntactic sugar is available as an option as well:
+specifying string names in the childViews property that correspond
+to properties on the <code>ContainerView</code>. This style is less intuitive
+at first but has the added bonus that the each named property will
+be updated to reference its instantiated child view:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create({
+  <span class="key">childViews</span>: [<span class="string"><span class="delimiter">'</span><span class="content">firstView</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>],
+  <span class="key">firstView</span>: App.FirstView,
+  <span class="key">secondView</span>: App.SecondView
+});
+
+container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
+
+container.get(<span class="string"><span class="delimiter">'</span><span class="content">firstView</span><span class="delimiter">'</span></span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
+container.get(<span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_it-feels-like-an-array-because-it-em-is-em-an-array'>It Feels Like an Array Because it <em>is</em> an Array</h3>
+<p>You may have noticed that some of these examples use <code>pushObject</code> to add
+a child view, just like you would interact with an Ember array.
+<a href="/api/classes/Ember.ContainerView.html"><code>Ember.ContainerView</code></a>
+gains its collection-like behavior by mixing in
+<a href="/api/classes/Ember.MutableArray.html"><code>Ember.MutableArray</code></a>. That means
+that you can manipulate the collection of views very expressively, using
+methods like <code>pushObject</code>, <code>popObject</code>, <code>shiftObject</code>, <code>unshiftObject</code>, <code>insertAt</code>,
+<code>removeAt</code>, or any other method you would use to interact with an Ember array.</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/views/built-in-views">
+            ← Built-in Views
+          </a>
+         
+          <a class="next-guide" href="/bilingual_guides/object-model/classes-and-instances">
+             视图结束 下一章: 对象模型 - 类与实例 →
+          </a>
+        
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

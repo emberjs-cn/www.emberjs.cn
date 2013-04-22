@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 指南</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="guides guides_wip guides_wip_outlets guides_wip_outlets_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    
+    <h1 class='anchorable-toc' id='toc_ember-application-structure'>Ember Application Structure</h1>
+<p>On a high-level, you structure an Ember application by designing a series of nested routes that correspond to nested application state. This guide will first cover the high-level concepts, and then walk you through an example.</p>
+<h2 class='anchorable-toc' id='toc_routing'>Routing</h2>
+<p>A user navigates through your application by making choices about what
+to view. For example, if you had a blog, your user might first choose
+between your Posts and your About page. In general, you want to have a
+default for this first choice (in this case, probably Posts).</p>
+
+<p>Once the user has made their first choice, they&#39;re usually not done. In
+the context of Posts, the user will eventually view an individual post
+and its comments. Inside of an individual post, they can choose between
+viewing a list of comments and a list of trackbacks.</p>
+
+<p>Importantly, in all of these cases, the user is choosing what to display
+on the page. As you descend deeper into your application state, those
+choices affect smaller areas of the page.</p>
+
+<p>In the next section, we&#39;ll cover how you control these areas of the
+page. For now, let&#39;s look at how to structure your templates.</p>
+
+<p>When the user first enters the application, the application is on the
+screen, and it has an empty outlet that the router will control. In
+Ember, an <code>outlet</code> is an area of a template that has its child template
+determined at runtime based on user interaction.</p>
+
+<figure>
+  <img src="/images/outlet-guide/application-choice.png">
+</figure>
+
+<p>The template for the Application (<code>application.handlebars</code>) will look
+something like this:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>My Application<span class="tag">&lt;/h1&gt;</span>
+
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>By default, the router will initially enter the <em>list of posts</em> state,
+and fill in the outlet with <code>posts.handlebars</code>. We will see later how
+this works exactly.</p>
+
+<figure>
+  <img src="/images/outlet-guide/list-of-posts.png">
+</figure>
+
+<p>As expected, the <em>list of posts</em> template will render a list of posts.
+Clicking on the link for an individual post will replace the contents of
+the application&#39;s outlet with the template for an individual post.</p>
+
+<p>The template will look like this:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">post</span> <span class="attribute-name">in</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;h1&gt;</span><span class="tag">&lt;a</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">showPost</span> <span class="attribute-name">post</span> <span class="attribute-name">href</span>=<span class="attribute-value">true</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.intro</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>When clicking on a link for an individual post, the application will
+move into the <em>individual post</em> state, and replace <code>posts.handlebars</code> in
+the application&#39;s outlet with <code>post.handlebars</code>.</p>
+
+<figure>
+  <img src="/images/outlet-guide/individual-post.png">
+</figure>
+
+<p>In this case, the individual post also has an outlet. In this case, the
+outlet will allow the user to choose between viewing comments or
+trackbacks.</p>
+
+<p>The template for an individual post looks like this:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Again, the <code>{{outlet}}</code> simply specifies that the router will make the
+decision about what to put in that area of the template.</p>
+
+<p>Because <code>{{outlet}}</code> is a feature of all templates, as you go deeper
+into the route hierarchy, each route will naturally control a smaller
+part of the page.</p>
+<h2 class='anchorable-toc' id='toc_how-it-works'>How it Works</h2>
+<p>Now that you understand the basic theory, let&#39;s take a look at how the
+router controls your outlets (<em>for a more extensive treatment of the
+Router, please consult the &quot;Router Primer&quot; guide</em>).</p>
+<h3 class='anchorable-toc' id='toc_templates-controllers-and-views'>Templates, Controllers, and Views</h3>
+<p>First, for every high-level handlebars template, you will also have a
+view and a controller with the same name. For example:</p>
+
+<ul>
+<li><code>application.handlebars</code>: the template for the main application view</li>
+<li><code>App.ApplicationController</code>: the controller for the template. The
+initial variable context of <code>application.handlebars</code> is an instance of
+this controller.</li>
+<li><code>App.ApplicationView</code>: the view object for the template.</li>
+</ul>
+
+<p>In general, you will use view objects to handle events and controller
+objects to provide data to your templates.</p>
+
+<p>Ember provides two primary kinds of controllers, <code>ObjectController</code> and
+<code>ArrayController</code>. These controllers serve as proxies for model objects
+and lists of model objects.</p>
+
+<p>We start with controllers rather than exposing the model objects
+directly to your templates so that you have someplace to put
+view-related computed properties and don&#39;t end up polluting your models
+with view concerns.</p>
+
+<p>You also connect <code>{{outlet}}</code>s using the template&#39;s associated
+controller.</p>
+<h3 class='anchorable-toc' id='toc_the-router'>The Router</h3>
+<p>Your application&#39;s router is responsible for moving your application
+through its states in response to user action.</p>
+
+<p>Let&#39;s start with a simple router:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre>App.Router = Ember.Router.extend({
+  <span class="key">root</span>: Ember.Route.extend({
+    <span class="key">index</span>: Ember.Route.extend({
+      <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>,
+      <span class="key">redirectsTo</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>
+    }),
+
+    <span class="key">posts</span>: Ember.Route.extend({
+      <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts</span><span class="delimiter">'</span></span>
+    }),
+
+    <span class="key">post</span>: Ember.Route.extend({
+      <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span>
+    })
+  })
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>This router sets up three top-level states: an index state, a state that
+shows a list of posts, and a state that shows an individual post.</p>
+
+<p>In our case, we&#39;ll simply redirect the index route to the <code>posts</code> state.
+In other applications, you may want to have a dedicated home page.</p>
+
+<p>So far, we have a list of states, and our app will dutifully enter the
+<code>posts</code> state, but it doesn&#39;t do anything. When the application enters
+the <code>posts</code> state, we want it to connect the <code>{{outlet}}</code> in the
+application template. We accomplish this using the <code>connectOutlets</code>
+callback.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>App.Router = Ember.Router.extend({
+  <span class="key">root</span>: Ember.Route.extend({
+    <span class="key">index</span>: Ember.Route.extend({
+      <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>,
+      <span class="key">redirectsTo</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>
+    }),
+
+    <span class="key">posts</span>: Ember.Route.extend({
+      <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts</span><span class="delimiter">'</span></span>,
+
+      <span class="function">connectOutlets</span>: <span class="keyword">function</span>(router) {
+        router.get(<span class="string"><span class="delimiter">'</span><span class="content">applicationController</span><span class="delimiter">'</span></span>).connectOutlet(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, App.Post.find());
+      }
+    }),
+
+    <span class="key">post</span>: Ember.Route.extend({
+      <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span>
+    })
+  })
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>This connectOutlet call does a few things for us:</p>
+
+<ul>
+<li>It creates a new instance of <code>App.PostsView</code>, using the
+<code>posts.handlebars</code> template.</li>
+<li>It sets the <code>content</code> property of <code>postsController</code> to a list of all
+of the available posts (<code>App.Post.find()</code>) and makes <code>postsController</code>
+the controller for the new <code>App.PostsView</code>.</li>
+<li>It connects the new view to the outlet in <code>application.handlebars</code>.</li>
+</ul>
+
+<p>In general, you should just think of these objects as operating in
+tandem. You will always provide the content for a view&#39;s controller when
+you create a view.</p>
+<h2 class='anchorable-toc' id='toc_transitions-and-urls'>Transitions and URLs</h2>
+<p>Next, we will want to provide a way for an application in the <code>posts</code>
+state to move into the <code>post</code> state. We accomplish this by specifying a
+transition.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>posts: Ember.Route.extend({
+  <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts</span><span class="delimiter">'</span></span>,
+  <span class="key">showPost</span>: Ember.Route.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>),
+
+  <span class="function">connectOutlets</span>: <span class="keyword">function</span>(router) {
+    router.get(<span class="string"><span class="delimiter">'</span><span class="content">applicationController</span><span class="delimiter">'</span></span>).connectOutlet(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, App.Post.find());
+  }
+})
+</pre></td>
+</tr></table>
+</div></div>
+<p>You invoke this transition by using the <code>{{action}}</code> helper in the
+current template.</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">post</span> <span class="attribute-name">in</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;h1&gt;</span><span class="tag">&lt;a</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">showPost</span> <span class="attribute-name">post</span> <span class="attribute-name">href</span>=<span class="attribute-value">true</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/h1&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>When a user clicks on a link with an <code>{{action}}</code> helper, Ember will
+dispatch an event to the current state with the specified name. In this
+case, the event is a transition.</p>
+
+<p>Because we used a transition, Ember was also able to generate a URL for
+this link. Ember uses the <code>id</code> property of the context to fill in the
+<code>:post_id</code> dynamic segment of the <code>post</code> state.</p>
+
+<p>Next, we will need to implement <code>connectOutlets</code> on the <code>post</code> state.
+This time, the <code>connectOutlets</code> method will receive the post object
+specified as the context to the <code>{{action}}</code> helper.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>post: Ember.Route.extend({
+  <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span>,
+
+  <span class="function">connectOutlets</span>: <span class="keyword">function</span>(router, post) {
+    router.get(<span class="string"><span class="delimiter">'</span><span class="content">applicationController</span><span class="delimiter">'</span></span>).connectOutlet(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, post);
+  }
+})
+</pre></td>
+</tr></table>
+</div></div>
+<p>To recap, the <code>connectOutlet</code> call performs a number of steps:</p>
+
+<ul>
+<li>It creates a new instance of <code>App.PostView</code>, using the
+<code>post.handlebars</code> template.</li>
+<li>It sets the <code>content</code> property of <code>postController</code> to the post that
+the user clicked on.</li>
+<li>It connects the new view to the outlet in <code>application.handlebars</code>.</li>
+</ul>
+
+<p>You don&#39;t have to do anything else to get the link (<code>/posts/1</code>) to work
+if the user saves it as a bookmark and comes back to it later.</p>
+
+<p>If the user enters the page for the first time with the URL <code>/posts/1</code>,
+the router will perform a few steps:</p>
+
+<ul>
+<li>Figure out what state the URL corresponds with (in this case, <code>post</code>)</li>
+<li>Extract the dynamic segment (in this case <code>:post_id</code>) from the URL and
+call <code>App.Post.find(post_id)</code>. This works using a naming convention:
+the <code>:post_id</code> dynamic segment corresponds to <code>App.Post</code>.</li>
+<li>Call <code>connectOutlets</code> with the return value of <code>App.Post.find</code>.</li>
+</ul>
+
+<p>This means that regardless of whether the user enters the <code>post</code> state
+from another part of the page or through a URL, the router will invoke
+the <code>connectOutlets</code> method with the same object.</p>
+<h2 class='anchorable-toc' id='toc_nesting'>Nesting</h2>
+<p>Finally, let&#39;s implement the comments and trackbacks functionality.</p>
+
+<p>Because the <code>post</code> state uses the same pattern as the <code>root</code> state, it
+will look very similar.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+27
+28
+29
+<strong>30</strong>
+31
+32
+</pre></td>
+  <td class="code"><pre>post: Ember.Route.extend({
+  <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span>,
+
+  <span class="function">connectOutlets</span>: <span class="keyword">function</span>(router, post) {
+    router.get(<span class="string"><span class="delimiter">'</span><span class="content">applicationController</span><span class="delimiter">'</span></span>).connectOutlet(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, post);
+  },
+
+  <span class="key">index</span>: Ember.Route.extend({
+    <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>,
+    <span class="key">redirectsTo</span>: <span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>
+  }),
+
+  <span class="key">comments</span>: Ember.Route.extend({
+    <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/comments</span><span class="delimiter">'</span></span>,
+    <span class="key">showTrackbacks</span>: Ember.Route.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">trackbacks</span><span class="delimiter">'</span></span>),
+
+    <span class="function">connectOutlets</span>: <span class="keyword">function</span>(router) {
+      <span class="keyword">var</span> postController = router.get(<span class="string"><span class="delimiter">'</span><span class="content">postController</span><span class="delimiter">'</span></span>);
+      postController.connectOutlet(<span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>, postController.get(<span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>));
+    }
+  }),
+
+  <span class="key">trackbacks</span>: Ember.Route.extend({
+    <span class="key">route</span>: <span class="string"><span class="delimiter">'</span><span class="content">/trackbacks</span><span class="delimiter">'</span></span>,
+    <span class="key">showComments</span>: Ember.Route.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>),
+
+    <span class="function">connectOutlets</span>: <span class="keyword">function</span>(router) {
+      <span class="keyword">var</span> postController = router.get(<span class="string"><span class="delimiter">'</span><span class="content">postController</span><span class="delimiter">'</span></span>);
+      postController.connectOutlet(<span class="string"><span class="delimiter">'</span><span class="content">trackbacks</span><span class="delimiter">'</span></span>, postController.get(<span class="string"><span class="delimiter">'</span><span class="content">trackbacks</span><span class="delimiter">'</span></span>));
+    }
+  })
+})
+</pre></td>
+</tr></table>
+</div></div>
+<p>There are only a few changes here:</p>
+
+<ul>
+<li>We specify the <code>showTrackbacks</code> and <code>showComments</code> transitions only in
+the states where transitioning makes sense.</li>
+<li>Since we are setting the view for the outlet in <code>post.handlebars</code>, we
+call <code>connectOutlet</code> on <code>postController</code></li>
+<li>In this case, we get the content for the <code>commentsController</code> and
+<code>trackbacksController</code> from the current post. The <code>postController</code> is
+a proxy for the underlying Post, so we can retrieve the associations
+directly from the <code>postController</code>.</li>
+</ul>
+
+<p>Here&#39;s the template for an individual post.</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>
+  <span class="tag">&lt;a</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">showComments</span> <span class="attribute-name">href</span>=<span class="attribute-value">true</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Comments<span class="tag">&lt;/a&gt;</span> |
+  <span class="tag">&lt;a</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">showTrackbacks</span> <span class="attribute-name">href</span>=<span class="attribute-value">true</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Trackbacks<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>And finally, coming back from a bookmarked link will work fine with this
+nested setup. Let&#39;s take a look at what happens when the user enters the
+site at <code>/posts/1/trackbacks</code>.</p>
+
+<ul>
+<li>The router determines what state the URL corresponds with
+(<code>post.trackbacks</code>), and enters the state.</li>
+<li>For each state along the way, the router extracts any dynamic segments
+and calls <code>connectOutlets</code>. This mirrors the path a user would take as
+they move through the application. As before, the router will call the
+<code>connectOutlet</code> method on the post with <code>App.Post.find(1)</code>.</li>
+<li>When the router gets to the trackbacks state, it will invoke
+<code>connectOutlets</code>. Because the <code>connectOutlets</code> method for <code>post</code> has
+set the <code>content</code> of the <code>postController</code>, the trackbacks state will
+retrieve the association.</li>
+</ul>
+
+<p>Again, because of the way the <code>connectOutlets</code> callback works with
+dynamic URL segments, the URL generated by an <code>{{action}}</code> helper is
+guaranteed to work later.</p>
+<h2 class='anchorable-toc' id='toc_asynchrony'>Asynchrony</h2>
+<p>One final point: you might be asking yourself how this system can work
+if the app has not yet loaded Post 1 by the time <code>App.Post.find(1)</code> is
+called.</p>
+
+<p>The reason this works is that <code>ember-data</code> always returns an object
+immediately, even if it needs to kick off a query. That object starts
+off with an empty <code>data</code> hash. When the server returns the data,
+ember-data updates the object&#39;s <code>data</code>, which also triggers bindings on
+all defined attributes (properties defined using <code>DS.attr</code>).</p>
+
+<p>When you ask this object for its <code>trackbacks</code>, it will likewise return
+an empty <code>ManyArray</code>. When the server returns the associated content
+along with the post, ember-data will also automatically update the
+<code>trackbacks</code> array.</p>
+
+<p>In your <code>trackbacks.handlebars</code> template, you will have done something
+like:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">trackback</span> <span class="attribute-name">in</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">trackback.url</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">trackback.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>When ember-data updates the <code>trackbacks</code> array, the change will
+propagate through the <code>trackbacksController</code> and into the DOM.</p>
+
+<p>You may also want to avoid showing partial data that is not yet loaded.
+In that case, you could do something like:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">controller.isLoaded</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">trackback</span> <span class="attribute-name">in</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+    <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">trackback.url</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">trackback.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/spinner.gif</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> Loading trackbacks...<span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>When ember-data populates the <code>ManyArray</code> for the trackbacks from the
+server-provided data, it also sets the <code>isLoaded</code> property. Because all
+template constructs, including <code>#if</code> automatically update the DOM if the
+underlying property changes, this will &quot;just work&quot;.</p>
+
+    
+      <footer>
+         
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

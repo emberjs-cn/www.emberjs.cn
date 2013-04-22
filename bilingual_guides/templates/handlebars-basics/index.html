@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - 模板</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_templates bilingual_guides_templates_handlebars-basics bilingual_guides_templates_handlebars-basics_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/templates/handlebars-basics">模板</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">Enumerables</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>模板</h1>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/handlebars-basics/">http://emberjs.com/guides/templates/handlebars-basics/</a></p>
+<h2 class='anchorable-toc' id='toc_code-handlebars-code-handlebars-basics'><code>Handlebars</code>基础 (Handlebars Basics)</h2>
+<p>Ember.js uses the <a href="http://www.handlebarsjs.com">Handlebars templating library</a>
+to power your app&#39;s user interface. Handlebars templates are just like
+regular HTML, but also give you the ability to embed expressions that
+change what is displayed.</p>
+
+<p><code>Ember.js</code> 使用 <a href="http://www.handlebarsjs.com">Handlebars模板库</a>
+来增强你的应用程序的用户界面。<code>Handlebars</code>模板与普通的HTML类似，但是它还提供了嵌入
+改变显示内容的表达式的功能。</p>
+
+<p>We take Handlebars and extend it with many powerful features. It may
+help to think of your Handlebars templates as an HTML-like DSL for
+describing the user interface of your app. And, once you&#39;ve told
+Ember.js to render a given template on the screen, you don&#39;t need to
+write any additional code to make sure it keeps up-to-date.</p>
+
+<p>我们采用了<code>Handlebars</code>,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可以认为<code>Handlebars</code>模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用<code>Ember.js</code>在屏幕上渲染一个
+模板,开发人员就不需要编写额外的代码来确保其更新。</p>
+
+<p>If you&#39;d prefer an indentation-based alternative to Handlebars syntax, 
+try <a href="http://www.emblemjs.com">Emblem.js</a>, but make sure you&#39;re comfortable
+with Handlebars first!</p>
+
+<p>在熟悉了<code>Handlebars</code>之后，如果相对<code>Handlebars</code>语法而言，你更加习惯基于缩进的写法，那么可以试试使用<a href="http://www.emblemjs.com">Emblem.js</a>。</p>
+<h3 class='anchorable-toc' id='toc_defining-templates'>定义模板(Defining Templates)</h3>
+<p>If you&#39;re not using build tools, you can define your application&#39;s main
+template inside your HTML by putting it inside a <code>&lt;script&gt;</code> tag, like so:</p>
+
+<p>如果你没有在使用构建工具,你仍然可以在HTML文档中定义应用程序的主模板，只需要在HTML中加上<code>&lt;script&gt;</code>标签,如下所示：</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">      Hello, <span class="tag">&lt;strong&gt;</span>{{firstName}} {{lastName}}<span class="tag">&lt;/strong&gt;</span>!</span>
+    <span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>This template will automatically be compiled and become your
+<em>application template</em>, which will be displayed on the page by the
+router when your app loads.</p>
+
+<p>这个模板将会被自动编译成为你的应用程序的主模板,它将在应用程序加载时通过路由显示在页面上。</p>
+
+<p>You can also define templates by name that can be used later. For
+example, you may want to define a reusable control that is used in many
+different places in your user interface. To tell Ember.js to save the
+template for later, instead of displaying it immediately, you can add
+the <code>data-template-name</code> attribute:</p>
+
+<p>你也可以为模板定义一个名称,以便复用。例如,你可能想定义一个在多个不同的应用程序用户界面处都可以使用的可重用控件。
+如果只是希望<code>Ember.js</code>先保存模板留做复用，而不是即时显示，那么可以使用<code>data-template-name</code>属性：</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">say-hello</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">my-cool-control</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>{{name}}<span class="tag">&lt;/div&gt;</span></span>
+    <span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>If you are using build tools to manage your application&#39;s assets, most
+will know how to precompile Handlebars templates and make them available
+to Ember.js.</p>
+
+<p>如果你正在使用构建工具管理应用程序，那么大多数工具可以对<code>Handlebars</code>模板进行预编译并使它们可以用于<code>Ember.js</code></p>
+<h3 class='anchorable-toc' id='toc_handlerbars-handlebars-expressions'>Handlerbars表达式(Handlebars Expressions)</h3>
+<p>Each template has an associated <em>controller</em>: this is where the template 
+finds the properties that it displays.</p>
+
+<p>每一个模板都有其相关的控制器：模板从中获取要显示的属性。</p>
+
+<p>You can display a property from your controller by wrapping the property
+name in curly braces, like this:</p>
+
+<p>使用花括号将属性名称括起来，就可以显示控制器中所定义的属性,如下所示：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Hello, <span class="tag">&lt;strong&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">lastName</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/strong&gt;</span>!
+</pre></td>
+</tr></table>
+</div></div>
+<p>This would look up the <code>firstName</code> and <code>lastName</code> properties from the
+controller, insert them into the HTML described in the template, then
+put them into the DOM.</p>
+
+<p>上面的语句将会到控制器中查询<code>firstName</code>和<code>lastName</code>属性值,插入到模板所描述的HTML文档中,然后放到<code>DOM</code>中去。</p>
+
+<p>By default, your top-most application template is bound to your <code>ApplicationController</code>:</p>
+
+<p>默认情况下，最上层的应用程序模板与<code>ApplicationController</code>关联，即：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.ApplicationController = Ember.Controller.extend({
+  <span class="key">firstName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Trek</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">lastName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Glowacki</span><span class="delimiter">&quot;</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>The above template and controller would combine to display the following
+rendered HTML:</p>
+
+<p>上面的模板和控制器将协作呈现出被渲染的HTML,如下所示：</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Hello, <span class="tag">&lt;strong&gt;</span>Trek Glowacki<span class="tag">&lt;/strong&gt;</span>!
+</pre></td>
+</tr></table>
+</div></div>
+<p>These expressions (and the other Handlebars features you will learn
+about next) are <em>bindings aware</em>. That means that if the values used
+by your templates ever change, your HTML will be updated automatically.</p>
+
+<p>这些表达式 (以及接下来你将了解的其他<code>Handlerbars</code>功能)
+都有绑定机制。这意味着HTML文档将随着模板使用的属性值的改变而自动更新。</p>
+
+<p>As your application grows in size, it will have many templates, each
+bound to different controllers.</p>
+
+<p>随着一个应用程序规模的扩大，将会存在许多的模板，它们将与不同的控制器关联。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/application/the-application-template">
+             ← 应用: 应用模板
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/templates/conditionals">
+          条件表达式 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

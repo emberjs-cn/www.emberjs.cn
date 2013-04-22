@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js - Enumerables</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="guides guides_enumerables guides_enumerables_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/application/the-application-template">应用模板</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/handlebars-basics">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-rest-adapter">The REST Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">Built-in Views</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">Observers</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">Bindings</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/enumerables">Enumerables</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/guides/enumerables">Introduction</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">Configuring Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">The View Layer</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">Managing Asynchrony</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    <h1>Enumerables</h1>
+    <h2 class='anchorable-toc' id='toc_enumerables'>Enumerables</h2>
+<p>In Ember.js, an Enumerable is any object that contains a number of child
+objects, and which allows you to work with those children using the
+<code>Ember.Enumerable</code> API. The most common Enumerable in the majority of
+apps is the native JavaScript array, which Ember.js extends to conform
+to the Enumerable interface.</p>
+
+<p>By providing a standardized interface for dealing with enumerables,
+Ember.js allows you to completely change the way your underlying data is
+stored without having to modify the other parts of your application that
+access it.</p>
+
+<p>For example, you might display a list of items from fixture data during
+development. If you switch the underlying data from synchronous fixtures
+to an array that fetches data from the server lazily, your view,
+template and controller code do not change at all.</p>
+
+<p>The Enumerable API follows ECMAScript specifications as much as
+possible.  This minimizes incompatibility with other libraries, as well
+as allows Ember.js to use the native browser implementations in arrays
+where available.</p>
+
+<p>For instance, all Enumerables support the standard <code>forEach</code> method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>[<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>].forEach(<span class="keyword">function</span>(item) {
+  console.log(item);
+});
+
+<span class="comment">//=&gt; 1</span>
+<span class="comment">//=&gt; 2</span>
+<span class="comment">//=&gt; 3</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>In general, Enumerable methods, like <code>forEach</code>, take an optional second
+parameter, which will become the value of <code>this</code> in the callback
+function:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> array = [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>];
+
+array.forEach(<span class="keyword">function</span>(item) {
+  console.log(item, <span class="local-variable">this</span>.indexOf(item));
+}, array)
+
+<span class="comment">//=&gt; 1 0</span>
+<span class="comment">//=&gt; 2 1</span>
+<span class="comment">//=&gt; 3 2</span>
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_enumerables-in-ember-js'>Enumerables in Ember.js</h3>
+<p>Usually, objects that represent lists implement the Enumerable interface. Some examples:</p>
+
+<ul>
+<li><strong>Array</strong> - Ember extends the native JavaScript <code>Array</code> with the
+Enumerable interface (unless you <a href="/guides/configuring-ember/disabling-prototype-extensions/">disable prototype
+extensions.</a>)</li>
+<li><strong>Ember.ArrayController</strong> - A controller that wraps an underlying array and
+adds additional functionality for the view layer.</li>
+<li><strong>Ember.Set</strong> - A data structure that can efficiently answer whether it
+includes an object.</li>
+</ul>
+<h3 class='anchorable-toc' id='toc_api-overview'>API Overview</h3>
+<p>In this guide, we&#39;ll explore some of the most common Enumerable
+conveniences. For the full list, please see the <a href="/api/classes/Ember.Enumerable.html">Ember.Enumerable API
+reference documentation.</a></p>
+<h4 class='anchorable-toc' id='toc_iterating-over-an-enumerable'>Iterating Over an Enumerable</h4>
+<p>To enumerate all the values of an enumerable object, use the <code>forEach</code> method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> food = [<span class="string"><span class="delimiter">&quot;</span><span class="content">Poi</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Ono</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Adobo Chicken</span><span class="delimiter">&quot;</span></span>];
+
+food.forEach(<span class="keyword">function</span>(item, index) {
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Menu Item %@: %@</span><span class="delimiter">'</span></span>.fmt(index+<span class="integer">1</span>, item));
+});
+
+<span class="comment">// Menu Item 1: Poi</span>
+<span class="comment">// Menu Item 2: Ono</span>
+<span class="comment">// Menu Item 3: Adobo Chicken</span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_making-an-array-copy'>Making an Array Copy</h4>
+<p>You can make a native array copy of any object that implements
+<code>Ember.Enumerable</code> by calling the <code>toArray()</code> method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> states = Ember.Set.create();
+
+states.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hawaii</span><span class="delimiter">&quot;</span></span>);
+states.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">California</span><span class="delimiter">&quot;</span></span>)
+
+states.toArray()
+<span class="comment">//=&gt; [&quot;Hawaii&quot;, &quot;California&quot;]</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Note that in many enumerables, such as the <code>Ember.Set</code> used in this
+example, the order of the resulting array is not guaranteed.</p>
+<h4 class='anchorable-toc' id='toc_first-and-last-objects'>First and Last Objects</h4>
+<p>All Enumerables expose <code>firstObject</code> and <code>lastObject</code> properties
+that you can bind to.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> animals = [<span class="string"><span class="delimiter">&quot;</span><span class="content">rooster</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">pig</span><span class="delimiter">&quot;</span></span>];
+
+animals.get(<span class="string"><span class="delimiter">'</span><span class="content">lastObject</span><span class="delimiter">'</span></span>);
+<span class="comment">//=&gt; &quot;pig&quot;</span>
+
+animals.pushObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">peacock</span><span class="delimiter">&quot;</span></span>);
+
+animals.get(<span class="string"><span class="delimiter">'</span><span class="content">lastObject</span><span class="delimiter">'</span></span>);
+<span class="comment">//=&gt; &quot;peacock&quot;</span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_map'>Map</h4>
+<p>You can easily transform each item in an enumerable using the
+<code>map()</code> method, which creates a new array with results of calling a
+function on each item in the enumerable.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> words = [<span class="string"><span class="delimiter">&quot;</span><span class="content">goodbye</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cruel</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>];
+
+<span class="keyword">var</span> emphaticWords = words.map(<span class="keyword">function</span>(item) {
+  <span class="keyword">return</span> item + <span class="string"><span class="delimiter">&quot;</span><span class="content">!</span><span class="delimiter">&quot;</span></span>;
+});
+<span class="comment">// [&quot;goodbye!&quot;, &quot;cruel!&quot;, &quot;world!&quot;]</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>If your enumerable is composed of objects, there is a <code>mapProperty()</code>
+method that will extract the named property from each of those objects
+in turn and return a new array:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> hawaii = Ember.Object.create({
+  <span class="key">capital</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Honolulu</span><span class="delimiter">&quot;</span></span>
+});
+
+<span class="keyword">var</span> california = Ember.Object.create({
+  <span class="key">capital</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Sacramento</span><span class="delimiter">&quot;</span></span>
+});
+
+<span class="keyword">var</span> states = [hawaii, california];
+
+states.mapProperty(<span class="string"><span class="delimiter">'</span><span class="content">capital</span><span class="delimiter">'</span></span>);
+<span class="comment">//=&gt; [&quot;Honolulu&quot;, &quot;Sacramento&quot;]</span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_filtering'>Filtering</h4>
+<p>Another common task to perform on an Enumerable is to take the
+Enumerable as input, and return an Array after filtering it based on
+some criteria.</p>
+
+<p>For arbitrary filtering, use the <code>filter</code> method.  The filter method
+expects the callback to return <code>true</code> if Ember should include it in the
+final Array, and <code>false</code> or <code>undefined</code> if Ember should not.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> arr = [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>,<span class="integer">5</span>];
+
+arr.filter(<span class="keyword">function</span>(item, index, self) {
+  <span class="keyword">if</span> (item &lt; <span class="integer">4</span>) { <span class="keyword">return</span> <span class="predefined-constant">true</span>; }
+})
+
+<span class="comment">// returns [1,2,3]</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>When working with a collection of Ember objects, you will often want to filter a set of objects based upon the value of some property. The <code>filterProperty</code> method provides a shortcut.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>Todo = Ember.Object.extend({
+  <span class="key">title</span>: <span class="predefined-constant">null</span>,
+  <span class="key">isDone</span>: <span class="predefined-constant">false</span>
+});
+
+todos = [
+  Todo.create({ <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">Write code</span><span class="delimiter">'</span></span>, <span class="key">isDone</span>: <span class="predefined-constant">true</span> }),
+  Todo.create({ <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">Go to sleep</span><span class="delimiter">'</span></span> })
+];
+
+todos.filterProperty(<span class="string"><span class="delimiter">'</span><span class="content">isDone</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+
+<span class="comment">// returns an Array containing only items with `isDone == true`</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>If you want to return just the first matched value, rather than an Array containing all of the matched values, you can use <code>find</code> and <code>findProperty</code>, which work just like <code>filter</code> and <code>filterProperty</code>, but return only one item.</p>
+<h4 class='anchorable-toc' id='toc_aggregate-information-all-or-any'>Aggregate Information (All or Any)</h4>
+<p>If you want to find out whether every item in an Enumerable matches some condition, you can use the <code>every</code> method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre>Person = Ember.Object.extend({
+  <span class="key">name</span>: <span class="predefined-constant">null</span>,
+  <span class="key">isHappy</span>: <span class="predefined-constant">false</span>
+});
+
+<span class="keyword">var</span> people = [
+  Person.create({ <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Yehuda</span><span class="delimiter">'</span></span>, <span class="key">isHappy</span>: <span class="predefined-constant">true</span> }),
+  Person.create({ <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Majd</span><span class="delimiter">'</span></span>, <span class="key">isHappy</span>: <span class="predefined-constant">false</span> })
+];
+
+people.every(<span class="keyword">function</span>(person, index, self) {
+  <span class="keyword">if</span>(person.get(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>)) { <span class="keyword">return</span> <span class="predefined-constant">true</span>; }
+});
+
+<span class="comment">// returns false</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>If you want to find out whether at least one item in an Enumerable matches some conditions, you can use the <code>some</code> method:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>people.some(<span class="keyword">function</span>(person, index, self) {
+  <span class="keyword">if</span>(person.get(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>)) { <span class="keyword">return</span> <span class="predefined-constant">true</span>; }
+});
+
+<span class="comment">// returns true</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Just like the filtering methods, the <code>every</code> and <code>some</code> methods have analogous <code>everyProperty</code> and <code>someProperty</code> methods.</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>people.everyProperty(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>) <span class="comment">// false</span>
+people.someProperty(<span class="string"><span class="delimiter">'</span><span class="content">isHappy</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>)  <span class="comment">// true</span>
+</pre></td>
+</tr></table>
+</div></div>
+    
+      <footer>
+         
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+      </div>
+    </div>
+  </body>
+</html>

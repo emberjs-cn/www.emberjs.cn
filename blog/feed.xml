@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>EmberJS.CN Blog</title>
+  <subtitle>Ember JS相关新闻与资源</subtitle>
+  <id>http://emberjs.cn/blog</id>
+  <link href="http://emberjs.cn/blog"/>
+  <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
+  <updated>2013-04-18T00:00:00Z</updated>
+  <author>
+    <name>EmberJS.CN</name>
+  </author>
+  <entry>
+    <title>如何获取应用当前登录的用户信息</title>
+    <link rel="alternate" href="/blog/2013/04/18/how-to-load-the-current-user.html"/>
+    <id>/blog/2013/04/18/how-to-load-the-current-user.html</id>
+    <published>2013-04-18T00:00:00Z</published>
+    <updated>2013-04-18T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;a href="http://discuss.emberjs.cn/t/topic/19"&gt;论坛&lt;/a&gt;中发起了一个关于如何获取应用当前登录用户信息的最佳实践的讨论。在这里尝试采用讨论中给出的方案二来实现获取登录用户。其他的方案请查看http://discuss.emberjs.cn/t/topic/19。&lt;/p&gt;
+
+&lt;p&gt;在写应用的时候，几乎所有应用都有一个不变的需求，就是获取当前登录的用户的相关信息。比如用户的ID、用户名、头像、角色等等。那么在.js中应该如何解决这个需求呢？下面将尝试找出一个比较通用的方法，来获取应用当前登录的用户信息。&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://discuss.emberjs.cn/t/topic/19"&gt;论坛&lt;/a&gt;中发起了一个关于如何获取应用当前登录用户信息的最佳实践的讨论。在这里尝试采用讨论中给出的方案二来实现获取登录用户。其他的方案请查看http://discuss.emberjs.cn/t/topic/19。&lt;/p&gt;
+
+&lt;p&gt;在写应用的时候，几乎所有应用都有一个不变的需求，就是获取当前登录的用户的相关信息。比如用户的ID、用户名、头像、角色等等。那么在.js中应该如何解决这个需求呢？下面将尝试找出一个比较通用的方法，来获取应用当前登录的用户信息。&lt;/p&gt;
+
+&lt;p&gt;首先，假设我们需要获取的用户信息的数据结构如下所示：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;{
+  &lt;span class="key"&gt;id&lt;/span&gt;: ...,
+  &lt;span class="key"&gt;username&lt;/span&gt;: ...,
+  &lt;span class="key"&gt;avatar&lt;/span&gt;: ...,
+  &lt;span class="key"&gt;roles&lt;/span&gt;: ... 
+}
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;一般情况下，应用都会有一个拥有独立&lt;code&gt;layout&lt;/code&gt;的登录页面，用户在成功登录后进入应用主界面。那么我们就可以在服务器端渲染应用主界面时，将登录成功的用户信息通过服务器端脚本定义到页面中。&lt;/p&gt;
+&lt;div class="highlight erb "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="comment"&gt;&amp;lt;!-- 以Rails的erb模板为例 --&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/javascript&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;      window.CURRENT_USER = &lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;&amp;lt;%=&lt;/span&gt;raw current_user.to_json &lt;span class="inline-delimiter"&gt;%&amp;gt;&lt;/span&gt;&lt;/span&gt;;
+    &lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    ...
+  &lt;span class="tag"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;现在我们就可以在Ember.js应用初始化的时候，将当前登录的用户设置到应用的一个session对象中：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+12
+13
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;App.initializer({
+  &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;session&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
+  &lt;span class="function"&gt;initialize&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;(container, application) {
+    App.set(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;session&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, Ember.Object.create())
+
+    &lt;span class="comment"&gt;// 获取store实例&lt;/span&gt;
+    store = container.lookup(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;store:main&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;)
+    &lt;span class="comment"&gt;// 将当前用户加载到store中&lt;/span&gt;
+    store.adapterForType(App.User).load(store, App.User, window.CURRENT_USER)
+    &lt;span class="comment"&gt;// 设置当前用户到session中&lt;/span&gt;
+    App.set(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;session.currentUser&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, App.User.find(window.CURRENT_USER.id))
+  }
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;至此，我们在之后的应用中就可以通过&lt;code&gt;App.get(&amp;#39;session.currentUser&amp;#39;)&lt;/code&gt;来获取当前登录用户的信息了。&lt;/p&gt;
+
+&lt;p&gt;回过头来，我们看看为什么我们需要在&lt;code&gt;initializer&lt;/code&gt;中来加载当前用户到store中去。如果我们不先将当前用户实现加载到store中去的话，会出现什么情况呢？&lt;/p&gt;
+
+&lt;p&gt;ember-data会自动发送一个ajax请求到服务器端，去获取当前登录的用户信息。由于ajax是采用异步通信的，这时并没有真正获取到当前用户信息，返回的只是ember-data创建的一个本地对象，所有的属性还是空，并没有被赋值，直到ajax成功返回（这里是Ember.js一个非常优秀的特性）。&lt;/p&gt;
+
+&lt;p&gt;或许你会觉得这样没有什么问题，但是如果我们在用户信息还没有加载成功的时候就要去完成一些判断，这时候问题就出现了，因为我们的当前用户并没有完成初始化。所以为了避免信息同步的问题，我们事先将当前用户信息手动的加载到store中去。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Ember入门实践</title>
+    <link rel="alternate" href="/blog/2013/03/31/ember-baby-steps.html"/>
+    <id>/blog/2013/03/31/ember-baby-steps.html</id>
+    <published>2013-03-31T00:00:00Z</published>
+    <updated>2013-03-31T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;本文翻译自：&lt;a href="http://wekeroad.com/2013/03/20/ember-baby-steps"&gt;Ember: Baby Steps&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;首先让我们用&lt;code&gt;Ember&lt;/code&gt;&lt;a href="http://emberjs.com/"&gt;官方网站&lt;/a&gt;上的一句话来介绍&lt;code&gt;Ember&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight  "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;A framework for creating ambitious web applications
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;基本配置&lt;/h3&gt;
+&lt;p&gt;由于&lt;code&gt;Ember&lt;/code&gt;的官方指南主要关注概念性的东西，而没有太注重实用性，所以，要亲自动手配置&lt;code&gt;Ember&lt;/code&gt;可能不那么容易。在开始编写我们的代码之前，我们就先从头开始配置一下环境：(本文所有操作都基于linux)&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;本文翻译自：&lt;a href="http://wekeroad.com/2013/03/20/ember-baby-steps"&gt;Ember: Baby Steps&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;首先让我们用&lt;code&gt;Ember&lt;/code&gt;&lt;a href="http://emberjs.com/"&gt;官方网站&lt;/a&gt;上的一句话来介绍&lt;code&gt;Ember&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight  "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;A framework for creating ambitious web applications
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;基本配置&lt;/h3&gt;
+&lt;p&gt;由于&lt;code&gt;Ember&lt;/code&gt;的官方指南主要关注概念性的东西，而没有太注重实用性，所以，要亲自动手配置&lt;code&gt;Ember&lt;/code&gt;可能不那么容易。在开始编写我们的代码之前，我们就先从头开始配置一下环境：(本文所有操作都基于linux)&lt;/p&gt;
+
+&lt;p&gt;首先创建项目文件：&lt;/p&gt;
+&lt;div class="highlight shell "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;mkdir hello-ember
+cd hello-ember
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;接下来我们创建项目的文件结构，这里，我们需要一个文件夹以及一个HTML文档&lt;/p&gt;
+&lt;div class="highlight shell "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;mkdir js
+touch index.html
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;接下来，我们得在项目中加入&lt;code&gt;Ember&lt;/code&gt;必需的3个库：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jQuery&lt;/li&gt;
+&lt;li&gt;Handlerbars&lt;/li&gt;
+&lt;li&gt;Ember&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于&lt;code&gt;jQuery&lt;/code&gt;，我们可以使用Google提供的CDN jQuery库，而对于其他两项，分别可以在&lt;a href="https://raw.github.com/emberjs/ember.js/release-builds/ember-1.0.0-rc.1.js"&gt;Ember&lt;/a&gt;和&lt;a href="https://raw.github.com/wycats/handlebars.js/1.0.0-rc.3/dist/handlebars.js"&gt;Handlebars&lt;/a&gt;下载.&lt;/p&gt;
+
+&lt;p&gt;以上三者都应该放在上面创建的&lt;code&gt;js&lt;/code&gt;文件夹里。&lt;/p&gt;
+
+&lt;p&gt;上面准备好了之后，我们还需要创建一个入口程序：&lt;/p&gt;
+&lt;div class="highlight shell "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;touch js/app.js
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;然后，把下面的代码加入到&lt;code&gt;index.html&lt;/code&gt;文件中去(要注意你的&lt;code&gt;Handlebars&lt;/code&gt;及&lt;code&gt;Ember&lt;/code&gt;的命名是否与下面代码的链接名一致)：&lt;/p&gt;
+&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+12
+13
+14
+15
+16
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="doctype"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="attribute-name"&gt;lang&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;en&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Hello Ember&lt;span class="tag"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+      &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello Ember&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt;
+&lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/javascript&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;js/handlebars.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/javascript&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;js/ember.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/javascript&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;js/app.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;现在我们就可以来看一下执行效果了，利用&lt;code&gt;python&lt;/code&gt;架设简单的服务器：&lt;/p&gt;
+&lt;div class="highlight python "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;python -m SimpleHTTPServer
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;现在访问本机的&lt;a href="http://localhost:8000"&gt;8000端口&lt;/a&gt;即可看到效果。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_step-1'&gt;Step 1: 应用程序视图&lt;/h3&gt;
+&lt;p&gt;首先，我们得先创建一个&lt;code&gt;Ember&lt;/code&gt;应用，在&lt;code&gt;js/app.js&lt;/code&gt;中添加以下代码：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="keyword"&gt;var&lt;/span&gt; HelloEmber = Ember.Application.create();
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;接下来，对于一个完整正确的&lt;code&gt;Ember&lt;/code&gt;应用来说，我们还需要添加：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;视图&lt;/li&gt;
+&lt;li&gt;控制器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最简单的视图就是全局的应用程序视图，在&lt;code&gt;index.html&lt;/code&gt;中加入以下代码：&lt;/p&gt;
+&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;application&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;script&lt;/code&gt;标签指定了&lt;code&gt;Handlebars&lt;/code&gt;模板，用&lt;code&gt;data-template-name&lt;/code&gt;标识视图的名称。关于&lt;code&gt;Handlebars&lt;/code&gt;的知识可以参见&lt;a href="http://handlebarsjs.com/"&gt;http://handlebarsjs.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;视图创建完毕，接下来开始创建控制器：&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_step-2'&gt;Step 2: 控制器&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;Ember&lt;/code&gt;中，控制器的作用主要是：将数据传递给模板用于灵活显示。
+下面，我们创建一个控制器，在&lt;code&gt;app.js&lt;/code&gt;中添加如下代码：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="keyword"&gt;var&lt;/span&gt; HelloEmber = Ember.Application.create();
+HelloEmber.ApplicationController = Ember.Controller.extend({
+  &lt;span class="key"&gt;greeting&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;Good Morning Starshine!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+  &lt;span class="key"&gt;happyThought&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;The Earth Says Hello!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这里这样写可能有点不妥，但是仍然可以执行，我们不妨先这样写，后面再做修改。
+接下来，为了可以显示我们的数据，我们还需更新&lt;code&gt;index.html&lt;/code&gt;文件：&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;application&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;      &amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;greeting&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+      &lt;span class="tag"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;
+        &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;happyThought&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="tag"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;好了，现在可以刷新页面去见证奇迹了！&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_step-3'&gt;Step 3: 命名惯例&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;Ember&lt;/code&gt;中：命名即是一切。有关命名惯例的内容可以参加：&lt;a href="http://emberjs.com/guides/concepts/naming-conventions/"&gt;英文链接&lt;/a&gt; &lt;a href="http://emberjs.cn/guides/concepts/naming-conventions/"&gt;中文链接&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;下面，我们来看看&lt;code&gt;Ember&lt;/code&gt;中的命名，先来改进一下上面的&lt;code&gt;ApplicationController&lt;/code&gt;。我们删除&lt;code&gt;ApplicationController&lt;/code&gt;，创建一个新的&lt;code&gt;IndexController&lt;/code&gt;,现在&lt;code&gt;app.js&lt;/code&gt;中的内容如下所示：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="keyword"&gt;var&lt;/span&gt; HelloEmber = Ember.Application.create();
+HelloEmber.IndexController = Ember.Controller.extend({
+  &lt;span class="key"&gt;greeting&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;Good Morning Starshine!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+  &lt;span class="key"&gt;happyThought&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;The Earth Says Hello!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;再修改视图&lt;code&gt;index.html&lt;/code&gt;，如下所示：&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+12
+13
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;application&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;      &lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;outlet&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;index&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;      &amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;greeting&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+      &lt;span class="tag"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;
+        &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;happyThought&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="tag"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+    &lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;现在刷新页面，效果应该跟修改之前一样，但是，这与前面有什么不同呢？&lt;/p&gt;
+
+&lt;p&gt;再一次申明：命名惯例。虽然，我们的代码中没有显示定义&lt;code&gt;ApplicationController&lt;/code&gt;，但是&lt;code&gt;Ember&lt;/code&gt;会自动创建它。其实这类似与&lt;code&gt;C++&lt;/code&gt;的构造函数，在以前的例子中，我们只是&lt;code&gt;重载&lt;/code&gt;了构造函数(这里指&lt;code&gt;ApplicationController&lt;/code&gt;)罢了。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;IndexController&lt;/code&gt;也是一样的道理。你定义，或者不定义它，它都存在，不离，不弃。只是，在这个例子中，我们重载了它。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;模型和路由&lt;/h3&gt;
+&lt;p&gt;接下来，我们在讨论一下&lt;code&gt;Ember&lt;/code&gt;的其他部分.&lt;/p&gt;
+
+&lt;p&gt;在&lt;code&gt;app.js&lt;/code&gt;中，定义一个模型，如下所示：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;HelloEmber.Greeting = Ember.Object.extend({
+  &lt;span class="key"&gt;greeting&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;Good Morning Starshine!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+  &lt;span class="key"&gt;happyThought&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;The Earth Says Hello!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;然后，再定义一个路由，在&lt;code&gt;Ember&lt;/code&gt;中，路由的作用是使控制器可以找到某个模型，现在，&lt;code&gt;app.js&lt;/code&gt;的文件内容如下所示：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+12
+13
+14
+15
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="comment"&gt;//our app&lt;/span&gt;
+&lt;span class="keyword"&gt;var&lt;/span&gt; HelloEmber = Ember.Application.create({});
+
+&lt;span class="comment"&gt;//our model&lt;/span&gt;
+HelloEmber.Greeting = Ember.Object.extend({
+  &lt;span class="key"&gt;greeting&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;Good Morning Starshine!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+  &lt;span class="key"&gt;happyThought&lt;/span&gt; : &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;The Earth Says Hello!&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+});
+
+&lt;span class="comment"&gt;//our route&lt;/span&gt;
+HelloEmber.IndexRoute = Ember.Route.extend({
+  &lt;span class="function"&gt;model&lt;/span&gt; : &lt;span class="keyword"&gt;function&lt;/span&gt;(){
+    &lt;span class="keyword"&gt;return&lt;/span&gt; HelloEmber.Greeting.create();
+  }
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这些代码就够了，不信？刷新一下页面试试？&lt;/p&gt;
+
+&lt;p&gt;或许你会感觉到奇怪，我们甚至没有控制器啊！！？？仔细想想，对了：命名惯例。&lt;code&gt;Ember&lt;/code&gt;会为我们自动创建一个控制器&lt;code&gt;IndexController&lt;/code&gt;。只要我们按照命名惯例来编写代码，&lt;code&gt;IndexController&lt;/code&gt;就会自动与&lt;code&gt;IndexRoute&lt;/code&gt;关联。控制器会接收路由中所指定模型的数据，并将其提供给视图，以供显示。&lt;/p&gt;
+
+&lt;p&gt;这就是上面代码起作用的原因，最后一遍：都是命名惯例惹得祸。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;后记&lt;/h3&gt;
+&lt;p&gt;对于我来说，&lt;code&gt;Ember&lt;/code&gt;是全新的东西，甚至可以说整个&lt;code&gt;web&lt;/code&gt;领域对我一点都不熟悉。在过去的两三个周内，我开始编写一些简单的&lt;code&gt;web&lt;/code&gt;代码，同时学习&lt;code&gt;Ember&lt;/code&gt;。可以说，在昨天下午，我感觉自己对&lt;code&gt;Ember&lt;/code&gt;有点感觉了，特别是对&lt;code&gt;命名惯例&lt;/code&gt;有感觉了，其实，这种感觉源自我犯的一些错误，当把这些错误解决了，所有的东西好像一下子就清楚了。所以说，失败是成功之母，这话没有假。我想，对于所有东西，其实，前期的一些错误或失败可以让我们更快的达到我们的最终目标。&lt;/p&gt;
+
+&lt;p&gt;说了一些废话，这篇文章可能距离真正的在项目中使用&lt;code&gt;Ember&lt;/code&gt;还有一定差距，但是对于理解&lt;code&gt;Ember&lt;/code&gt;以及其中的&lt;code&gt;MVC&lt;/code&gt;架构应该是很有益的，如果英语好的话，建议直接阅读英文文章。&lt;/p&gt;
+
+&lt;p&gt;另外，希望大家能多关注 &lt;a href="http://emberjs.cn"&gt;Ember中文网站&lt;/a&gt;,并希望能有更多的人参与进来，共同建设一个积极向上的社区。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Ember.js 1.0.0-rc2发布</title>
+    <link rel="alternate" href="/blog/2013/03/29/ember-js-1-0-rc2-released.html"/>
+    <id>/blog/2013/03/29/ember-js-1-0-rc2-released.html</id>
+    <published>2013-03-29T00:00:00Z</published>
+    <updated>2013-03-29T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;今天&lt;code&gt;Ember.js&lt;/code&gt;
+1.0.0-rc2发布了，改版本主要完成了Bug的修订和文档的增强，另外也改进了一些内部的处理逻辑，使&lt;code&gt;Ember.js&lt;/code&gt;更加趋于稳定。&lt;/p&gt;
+
+&lt;p&gt;变更记录：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;改进了应用初始化过程，废弃了&lt;code&gt;Ember.Application#initialize&lt;/code&gt;，使用&lt;code&gt;deferReadiness&lt;/code&gt;和&lt;code&gt;advanceReadiness&lt;/code&gt;取代。&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;Ember.Application#then&lt;/code&gt;，其如同&lt;code&gt;isReady&lt;/code&gt;钩子一样触发。&lt;/li&gt;
+&lt;li&gt;添加更多&lt;code&gt;Ember.computed&lt;/code&gt;宏。&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+    <content type="html">&lt;p&gt;今天&lt;code&gt;Ember.js&lt;/code&gt;
+1.0.0-rc2发布了，改版本主要完成了Bug的修订和文档的增强，另外也改进了一些内部的处理逻辑，使&lt;code&gt;Ember.js&lt;/code&gt;更加趋于稳定。&lt;/p&gt;
+
+&lt;p&gt;变更记录：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;改进了应用初始化过程，废弃了&lt;code&gt;Ember.Application#initialize&lt;/code&gt;，使用&lt;code&gt;deferReadiness&lt;/code&gt;和&lt;code&gt;advanceReadiness&lt;/code&gt;取代。&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;Ember.Application#then&lt;/code&gt;，其如同&lt;code&gt;isReady&lt;/code&gt;钩子一样触发。&lt;/li&gt;
+&lt;li&gt;添加更多&lt;code&gt;Ember.computed&lt;/code&gt;宏。&lt;/li&gt;
+&lt;li&gt;为计算属性添加&lt;code&gt;readOnly&lt;/code&gt;标记。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Enumerable#compact&lt;/code&gt;将删除&lt;code&gt;undefined&lt;/code&gt;值。&lt;/li&gt;
+&lt;li&gt;修正在虚拟视图上注销操作的问题。&lt;/li&gt;
+&lt;li&gt;公开&lt;code&gt;Ember.LinkView&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;支持jQuery 2.0。&lt;/li&gt;
+&lt;li&gt;支持火狐10或更低版本不支持&lt;code&gt;domElement.outerHTML&lt;/code&gt;的浏览器。&lt;/li&gt;
+&lt;li&gt;更容易增大应用容器的解析器。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;{{view}}&lt;/code&gt;助手中添加&lt;code&gt;tagName&lt;/code&gt;的别名&lt;code&gt;tag&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将&lt;code&gt;name&lt;/code&gt;加入&lt;code&gt;Ember.TextField&lt;/code&gt;和&lt;code&gt;Ember.Select&lt;/code&gt;的&lt;code&gt;attributeBinding&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ember.merge&lt;/code&gt;返回被合并的对象。&lt;/li&gt;
+&lt;li&gt;废除在&lt;code&gt;Metamorphs&lt;/code&gt;上设置&lt;code&gt;tagNames&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;避免了父级隐藏的&lt;code&gt;index&lt;/code&gt;路由影响子级显示的&lt;code&gt;index&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;App#reset&lt;/code&gt;行为更接近&lt;code&gt;App#create&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Evented#on、#off、#one&lt;/code&gt;支持链式调用。&lt;/li&gt;
+&lt;li&gt;为&lt;code&gt;{{action}}&lt;/code&gt;助手添加一个基本的&lt;code&gt;allowedKeys&lt;/code&gt;的实现。&lt;/li&gt;
+&lt;li&gt;改进了&lt;code&gt;Ember.Array#slice&lt;/code&gt;的实现。&lt;/li&gt;
+&lt;li&gt;修正了&lt;code&gt;ArrayProxy&lt;/code&gt;的&lt;code&gt;arrangedObject&lt;/code&gt;处理，修正了#2121，#2138。&lt;/li&gt;
+&lt;li&gt;支持自定义默认生成的控制器和路由。&lt;/li&gt;
+&lt;li&gt;改进了&lt;code&gt;HistoryLocation&lt;/code&gt;的&lt;code&gt;popstate&lt;/code&gt;处理，修正了#2234。&lt;/li&gt;
+&lt;li&gt;修正了IE7的问题。&lt;/li&gt;
+&lt;li&gt;标准化了&lt;code&gt;Ember.run.later&lt;/code&gt;和&lt;code&gt;Ember.run.next&lt;/code&gt;的行为。&lt;/li&gt;
+&lt;li&gt;修正了&lt;code&gt;classNameBindings&lt;/code&gt;尝试更新已经删除的元素的问题。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ember.Array&lt;/code&gt;方法总是返回&lt;code&gt;Ember.Arrays&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RSVP&lt;/code&gt;可以通过&lt;code&gt;Ember.RSVP&lt;/code&gt;来调用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ObjectProxy&lt;/code&gt;不再尝试在创建的时候代理不可知的属性。&lt;/li&gt;
+&lt;li&gt;可以通过将&lt;code&gt;ENV.LOG_VERSION&lt;/code&gt;设置为&lt;code&gt;false&lt;/code&gt;来关闭日志中输出版本信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ember.ArrayController#lastObject&lt;/code&gt;不再抛出异常，即便是空的。&lt;/li&gt;
+&lt;li&gt;Fixes to {{render}} helper when used with model&lt;/li&gt;
+&lt;li&gt;修正了&lt;code&gt;{{render}}&lt;/code&gt;助手与模型一起使用的时候的问题。&lt;/li&gt;
+&lt;li&gt;增强了&lt;code&gt;{{linkTo}}&lt;/code&gt;控制器处理。&lt;/li&gt;
+&lt;li&gt;修正了目标属性在&lt;code&gt;{{#each prop in array}}&lt;/code&gt;时的&lt;code&gt;{{bindAttr}}&lt;/code&gt; - #1523。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;String#camelize&lt;/code&gt;将首字母小写。&lt;/li&gt;
+&lt;li&gt;另外还修正了许多其他的问题，并改进了文档。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>指南目录结构调整</title>
+    <link rel="alternate" href="/blog/2013/03/27/changed-the-directories-of-guides.html"/>
+    <id>/blog/2013/03/27/changed-the-directories-of-guides.html</id>
+    <published>2013-03-27T00:00:00Z</published>
+    <updated>2013-03-27T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;为了更好的为大家提供信息，我们对指南的目录结构进行了调整。原来的中英对照指南改为&lt;a href="http://emberjs.cn/guides"&gt;中文指南&lt;/a&gt;，并将原来的&lt;a href="http://emberjs.cn/bilingual_guides"&gt;中英双语对照指南&lt;/a&gt;独立开来。这样我们可以更加方便的保持中文指南与官方的指南同步。但这会影响到现在已经在进行的翻译工作，需要各位根据最新的目录结构进行调整，由此带来的不便，敬请原谅！&lt;/p&gt;
+
+&lt;p&gt;经过调整后，我们提供了独立的中英双语对照指南，这也就成为了我们翻译工作新的工作目录（&lt;code&gt;source/bilingual_guides&lt;/code&gt;）。由于目录结构发生了改变，我们翻译工作的流程也随之需要进行一些调整。调整后的翻译步骤为：&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;为了更好的为大家提供信息，我们对指南的目录结构进行了调整。原来的中英对照指南改为&lt;a href="http://emberjs.cn/guides"&gt;中文指南&lt;/a&gt;，并将原来的&lt;a href="http://emberjs.cn/bilingual_guides"&gt;中英双语对照指南&lt;/a&gt;独立开来。这样我们可以更加方便的保持中文指南与官方的指南同步。但这会影响到现在已经在进行的翻译工作，需要各位根据最新的目录结构进行调整，由此带来的不便，敬请原谅！&lt;/p&gt;
+
+&lt;p&gt;经过调整后，我们提供了独立的中英双语对照指南，这也就成为了我们翻译工作新的工作目录（&lt;code&gt;source/bilingual_guides&lt;/code&gt;）。由于目录结构发生了改变，我们翻译工作的流程也随之需要进行一些调整。调整后的翻译步骤为：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在&lt;code&gt;source/bilingual_guides&lt;/code&gt;翻译对应的指南；&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;source/guides&lt;/code&gt;中创建对应的中文指南；&lt;/li&gt;
+&lt;li&gt;将翻译的指南提交；&lt;/li&gt;
+&lt;li&gt;在收到PR后，我们会在二至三个工作日内，完成校对（您可能需要参考我们的意见进行适当的修改）；&lt;/li&gt;
+&lt;li&gt;完成修正后，合并PR。&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Ember.js准备发布RC2了</title>
+    <link rel="alternate" href="/blog/2013/03/11/ember-js-1-0-rc2.html"/>
+    <id>/blog/2013/03/11/ember-js-1-0-rc2.html</id>
+    <published>2013-03-11T00:00:00Z</published>
+    <updated>2013-03-11T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;大新闻，&lt;code&gt;Ember.js&lt;/code&gt;团队已经开始了发布RC2的相关工作。&lt;/p&gt;
+
+&lt;p&gt;今天看到@wycats在&lt;a href="https://github.com/emberjs/website"&gt;website&lt;/a&gt;上创建了一个rc2-release的分支，并且在一篇即将发布的文章中说已经开始了&lt;code&gt;Ember.js&lt;/code&gt; RC2发布的的相关工作。这说明了什么呢？这说明了我们离1.0正式版的发布又近了一步。这实在是一个不得不让人为之兴奋的消息。&lt;/p&gt;
+
+&lt;p&gt;如RC1发布时所声明的一样，之后发布的版本只会做一些问题修正和增强性改变，不会进行破坏性变更。那么我们看看RC2会给我们带来些什么呢？&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;大新闻，&lt;code&gt;Ember.js&lt;/code&gt;团队已经开始了发布RC2的相关工作。&lt;/p&gt;
+
+&lt;p&gt;今天看到@wycats在&lt;a href="https://github.com/emberjs/website"&gt;website&lt;/a&gt;上创建了一个rc2-release的分支，并且在一篇即将发布的文章中说已经开始了&lt;code&gt;Ember.js&lt;/code&gt; RC2发布的的相关工作。这说明了什么呢？这说明了我们离1.0正式版的发布又近了一步。这实在是一个不得不让人为之兴奋的消息。&lt;/p&gt;
+
+&lt;p&gt;如RC1发布时所声明的一样，之后发布的版本只会做一些问题修正和增强性改变，不会进行破坏性变更。那么我们看看RC2会给我们带来些什么呢？&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;按命名空间查找控制器&lt;/h3&gt;
+&lt;p&gt;在之前的版本中，我们只能从应用的主命名空间来查找控制器。在RC2中，我们可以从其他的命名空间来查找了。&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;render&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;posts&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;意味着使用&lt;code&gt;App.PostsController&lt;/code&gt;来渲染&lt;code&gt;posts&lt;/code&gt;模板。现在我们还可以使用其他命名空间下的控制器来进行渲染。例如：&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;render&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;blog&lt;/span&gt;&lt;span class="error"&gt;/&lt;/span&gt;&lt;span class="attribute-name"&gt;posts&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这里会使用&lt;code&gt;Blog.PostsController&lt;/code&gt;来渲染&lt;code&gt;blog/posts&lt;/code&gt;模板。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;用多模型进行渲染&lt;/h3&gt;
+&lt;p&gt;在RC1中，使用&lt;code&gt;{{render &amp;#39;posts&amp;#39;}}&lt;/code&gt;表示利用&lt;code&gt;App.PostsController&lt;/code&gt;的实例来渲染&lt;code&gt;posts&lt;/code&gt;模板。这种方法总是使用同一个单例的控制器来渲染模板。&lt;/p&gt;
+
+&lt;p&gt;而在RC2中，可以使用一个特定的模型来渲染模板，例如&lt;code&gt;{{render &amp;#39;post&amp;#39; post}}&lt;/code&gt;。如果我们使用&lt;code&gt;render&lt;/code&gt;渲染模板的时候指定了一个模型，那么&lt;code&gt;Ember.js&lt;/code&gt;会每次创建一个新的&lt;code&gt;App.PostController&lt;/code&gt;实例，而不是使用同一个。这样我们就可以在循环中使用&lt;code&gt;{{render}}&lt;/code&gt;。&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt; &lt;span class="attribute-name"&gt;post&lt;/span&gt; &lt;span class="attribute-name"&gt;in&lt;/span&gt; &lt;span class="attribute-name"&gt;posts&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;render&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;post&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt; &lt;span class="attribute-name"&gt;post&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_code-objectcontroller-code'&gt;打开&lt;code&gt;ObjectController&lt;/code&gt;的模型&lt;/h3&gt;
+&lt;p&gt;将一个&lt;code&gt;ObjectController&lt;/code&gt;作为参数传递给&lt;code&gt;action&lt;/code&gt;和&lt;code&gt;linkTo&lt;/code&gt;时，&lt;code&gt;Ember.js&lt;/code&gt;现在支持将控制器的模型取出并传递给&lt;code&gt;action&lt;/code&gt;和&lt;code&gt;linkTo&lt;/code&gt;。最为重要的是，这使得我们可以在不影响控制器和路由的操作处理函数的同时，为&lt;code&gt;{{#each}}&lt;/code&gt;添加一个&lt;code&gt;itemController&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果我们有一个这样的模板：&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="comment"&gt;&amp;lt;!-- posts.handlebars --&amp;gt;&lt;/span&gt;
+
+&lt;span class="tag"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt; &lt;span class="attribute-name"&gt;controller&lt;/span&gt; &lt;span class="attribute-name"&gt;itemController&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;postItem&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;action&lt;/span&gt; &lt;span class="attribute-name"&gt;selectPost&lt;/span&gt; &lt;span class="attribute-name"&gt;this&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;name&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;each&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="tag"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;那么我们的&lt;code&gt;App.PostsController&lt;/code&gt;应该是这样的：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;App.PostsController = Ember.ArrayController.extend({
+  &lt;span class="key"&gt;needs&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;currentPost&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
+
+  &lt;span class="function"&gt;selectPost&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;(post) {
+    &lt;span class="comment"&gt;// `post` here is an `App.Post`, not an&lt;/span&gt;
+    &lt;span class="comment"&gt;// `App.PostItemController`&lt;/span&gt;
+    &lt;span class="local-variable"&gt;this&lt;/span&gt;.set(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;controllers.currentPost.model&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, post);
+  }
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这使得使用&lt;code&gt;itemController&lt;/code&gt;减少了问题的出现。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Emberjs.cn域名正式启用</title>
+    <link rel="alternate" href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html"/>
+    <id>/blog/2013/03/06/domain-name-emberjs-cn-enabled.html</id>
+    <published>2013-03-06T00:00:00Z</published>
+    <updated>2013-03-06T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始&lt;a href="http://emberjs.cn"&gt;http://emberjs.cn&lt;/a&gt;域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。&lt;/p&gt;
+
+&lt;p&gt;另外，最近翻译团队加入了一位给力的成员&lt;a href="https://github.com/TiffanyZhou"&gt;TiffanyZhou&lt;/a&gt;，提供了很多高质量的翻译作品。随着队伍的不断壮大，我们一定能打造出一个高质量、精品的&lt;code&gt;Ember.js&lt;/code&gt;中文社区。&lt;/p&gt;
+
+&lt;p&gt;BTW，我们已经开始在实际的项目全面采用&lt;code&gt;Ember.js&lt;/code&gt;进行前端开发，在后续的日子里面，我们将会将我们在开发过程中遇到的问题，总结出来的经验拿出来，与大家一起分享。&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始&lt;a href="http://emberjs.cn"&gt;http://emberjs.cn&lt;/a&gt;域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。&lt;/p&gt;
+
+&lt;p&gt;另外，最近翻译团队加入了一位给力的成员&lt;a href="https://github.com/TiffanyZhou"&gt;TiffanyZhou&lt;/a&gt;，提供了很多高质量的翻译作品。随着队伍的不断壮大，我们一定能打造出一个高质量、精品的&lt;code&gt;Ember.js&lt;/code&gt;中文社区。&lt;/p&gt;
+
+&lt;p&gt;BTW，我们已经开始在实际的项目全面采用&lt;code&gt;Ember.js&lt;/code&gt;进行前端开发，在后续的日子里面，我们将会将我们在开发过程中遇到的问题，总结出来的经验拿出来，与大家一起分享。&lt;/p&gt;
+</content>
+  </entry>
+</feed>
