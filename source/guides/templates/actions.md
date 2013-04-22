@@ -1,9 +1,9 @@
 英文原文：[http://emberjs.com/guides/templates/actions/](http://emberjs.com/guides/templates/actions/)
 
-## 动作（{{action}}助手方法）
+## 操作（{{action}}助手方法）
 
-你可能想以触发高层的事件的方式来对简单的用户事件（如点击）进行回应。
-通常，这些时间会操作控制器的某些属性，控制器通过绑定的方式来改变当前模板。
+你可能希望通过触发一个高层的事件来响应一个简单的用户操作（比如一次点击）。
+通常，这些事件将修改控制器的某些属性，并且将通过绑定来改变当前的模板。
 比如，你有一个显示一条博文的模板，博文可以展开以显示更多的信息。
 
 ```handlebars
@@ -44,9 +44,9 @@ App.PostController = Ember.ObjectController.extend({
 <p><button {{action "select" post}}>✓</button> {{post.title}}</p>
 ```
 
-###指定事件的类型
+### 指定事件的类型
 
-默认情况下，`{{action}}`助手方法侦听事件，并且在用户点击到此元素时触发指定的动作。
+默认情况下，`{{action}}`助手方法侦听事件，并且在用户点击到此元素时触发指定的操作。
 你还可以通过`on`选项指定一个替代事件来侦听。
 
 ```javascript
@@ -56,13 +56,13 @@ App.PostController = Ember.ObjectController.extend({
 </p>
 ```
 
-你应该使用标准化之后的时间名称[视图指南已详细列出][1].
+你应该使用标准化之后的事件名称[视图指南已详细列出][1].
 通常，两个字的事件名（如`keypress`）,会变成（`keyPress`）。
 
 [1]: /guides/understanding-ember/the-view-layer/#toc_adding-new-events
 
 
-###指定在白名单中的辅助键
+### 指定在白名单中的辅助键
 
 默认情况下，`{{action}}`助手方法会忽略掉用户点击时同时按下的辅助键。你可以通过提供一个`allowed-keys`的选项来指定哪些键按下时不会被忽略掉。
 
@@ -74,11 +74,11 @@ App.PostController = Ember.ObjectController.extend({
 </script>
 ```
 
-这样，`{{action}}`助手方法会在用户点击且按下 alt 键的时候被触发。
+这样，{{action}}助手方法会在用户按下alt键后点击时被触发。
 
-###阻止事件传递（译注：即不让冒泡）
+### 阻止事件传递（译注：即不让冒泡）
 
-默认情况下，`{{action}}`助手方法允许它经手的时间冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。
+{{action}}助手方法允许将由它处理的事件冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。
 比如，你有一个链接包含一个**✗**按钮，你想保证这个按钮点击时，链接却不会被点击。
 
 ```javascript
@@ -88,15 +88,15 @@ App.PostController = Ember.ObjectController.extend({
 {{/linkTo}}
 ```
 
-没指定`bubbles=false`时，用户点击了按钮，Ember.js 就会触发动作，同时浏览器会将此点击事件传递到父级元素。
+没指定`bubbles=false`时，用户点击了按钮，Ember.js 就会触发操作，同时浏览器会将此点击事件传递到父级元素。
 
-指定`bubbles=false`时，Ember.js 就会组织浏览器将此点击事件传递到父级元素。
+指定`bubbles=false`时，Ember.js 就会阻止浏览器将此点击事件传递到父级元素。
 
 
-###向目标冒泡
+### 向目标冒泡
 
-如果在当前控制器没有找到指定的动作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
-在路由的`events`属性里定义动作。
+如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
+在路由的`events`属性里定义操作。
 
 ```javascript
 App.PostsIndexRoute = Ember.Route.extend({
