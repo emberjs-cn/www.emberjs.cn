@@ -17,28 +17,87 @@ author: Tiffany Zhou
 * 移除声明却未使用的变量。
 * 增添`run.scheduleOnce`文档，删除`run.onces`文档。Fixes #2132。
 * 修复针对`outerHTML`回退的失败的测试。
-* 不再依赖`EXTEND_PROTOTYPES == true`
-* 修复`Ember.EnumerableUtils`没有继承原型
-* 不对文档标记`.generateController`
+* 不再依赖`EXTEND_PROTOTYPES == true`。
+* 修复`Ember.EnumerableUtils`没有继承原型。
+* 不对文档标记`.generateController`。
 * 不为`.cachable`构建文档。Fixes #2329。
-* 清理`MutableEnumerable`文档
-* 新增`Ember.Application#removeTestHelpers`
-* 修复几个有争议的问题
-* 首次通过了`ember-testing`包的工作
-* 修复'Customizing Your Bindings'部分的文档错误
-* 修复方法注释bug
-* 修复重定向到子路由bug
-* 修复`MetamorphView`的`DOMManager` replace
-* 修复#870Lazy destruction以及`App#reset`问题
-* 清除无用变量
-* s
-* 修复#22388: 为`_resetSubControllers`添加`if`语句
-* ss
-* 修复发行版本构建的上载
-* 更新到最新的`ember-dev`以便发行任务可以正常工作
-* 配置`Travis`以便能自动部署到`AWS`
-* 新增漏掉的条目类型
-* 在测试时不产生`Ember.alias` deprecation警告
-* 对`ViewCollection`新增`invokeRecursively`
-* xxx
-* 
+* 清理`MutableEnumerable`文档。
+* 新增`Ember.Application#removeTestHelpers`。
+* 修复几个有争议的问题。
+* 首次通过了`ember-testing`包的工作。
+* 修复'Customizing Your Bindings'部分的文档错误。
+* 修复方法注释bug。
+* 修复重定向到子路由bug。
+* 修复`MetamorphView`的`DOMManager` replace。
+* 修复#870Lazy destruction以及`App#reset`问题。
+* 清除无用变量。
+* 使用最新的`Ember`构建更新`JSFiddle/JSBin`的入口点配置。最新的构建已经自动上传到`builds.emberjs.com`。
+* 修复#22388: 为`_resetSubControllers`添加`if`语句。
+* scope cached state transition hashes to the state manager class, so
+  extending and mixins work with StateMangers as expected
+* 修复发行版本构建的上载。
+* 更新到最新的`ember-dev`以便发行任务可以正常工作。
+* 配置`Travis`以便能自动部署到`AWS`。
+* 新增漏掉的条目类型。
+* 在测试时不产生`Ember.alias` deprecation警告。
+* 对`ViewCollection`新增`invokeRecursively`。
+* 失败的测试显示使用`mixins`获取状态的`StateManager`有未知行为。
+* 修复`HistoryLocation`的`rootURL`处理器及webkit方案。
+* 清除助手函数中的无用参数。
+* 使用`toArray`移除副本。
+* 允许了`option`视图以便可以重写`Ember.Select`。
+* 真正的使`Ember.alias()`输出弃用警告。
+* 使用```Ember.String.fmt```代替`String`扩展。
+* 自动上载所有通过的构建到s3。
+* [Fix #2424]App#reset。
+* s/nexts/these（nexts不是单词)。
+* 针对`linkTo`路由提供更多更详细的错误信息。
+* `viewName`成为属性。
+* 清除不需要的闭包。
+* `JSDoc`应该对混合类型使用{*}而不是{anything}或者{ang}。
+* 给`invokeRecursively`增加一个`includeSelf`参数。
+* 修复ArrayController#length在其content没有显示设置的问题。
+* 关闭#2043 - 修复在集合中删除最后元素的问题。
+* 阻止应用程序模板复制时被二次渲染。
+* 在`mixins`被传递给`Object.create`时提供断言。
+* 增强`Ember.TargetActionSupport`并引入`Ember.ViewTargetActionSupport`。
+* 修复{{textarea}}断言信息。
+* 测试unwatch方法的`length`属性。
+* 测试watch方法的`length`属性。
+* 测试iswatching方法的`length`属性。
+* 将`Ember.typeof`移动到metal。
+* 修复数组watching问题。由于`typeof`和`isArray`的差异，曾经不止影响普通数组。
+* 移除提到的将`mixins`传递给create。
+* 还原`Fix Application#reset destroy`问题。
+* 修复视图助手文档和例子以便反映上下文。
+* 在命名空间查找阶段忽略`webkitStorageInfo`以消除警告。
+* 修复`Fix Application#reset destroy`问题。
+* 使Chrome的初始栈状态环境指导`rootURL`。
+* 在`RenderBuffer`中，使用字符串代替数组。
+* 将循环中的for语句转化为一个简单的for循环。
+* 改善视图容器的查找性能。
+* 清除`Ember.Deferred`测试中的无用的异步性代码。
+* 清除路由测试中的无用的异步性代码。
+* 增加{{text area}}。
+* 为`enter`提供默认的`text` `input` `action`。
+* 增加{{input action="foo" on="keyPress"}}。
+* 清除更多metal。
+* 更好的组织`ember-metal`和缓存函数查找表。
+* 移除从渲染到缓存的同步性。
+* 使测试不依赖于同步改变的事件。
+* 修复测试以便不期待同步的观察者。
+* 在原型中定义`Minix`属性。
+* 更新`ember-dev`gem到最新版本。
+* 在`Ember.View`原型中共享空数组。根据操作来区分。
+* 根据DOM中的insertion来添加views到`Ember.View.views`,而不依赖初始化。Fixs #1553。
+* 使对象的异步析构以便在处理相互联系的对象时减少扰动。
+* 定义Ember.CoreObject#willDestroy. Fixes #1438。
+* 清除不需要的volatile()。
+* 匹配transitionTo APIs。
+* 避免递归调用transitionTo。
+* 改善视图通知及转换性能。
+* 提取一个私有的`ViewCollection`辅助类来使同时处理多个视图成为可能。
+* 为{{input type="checkbox"}}增加支持。
+* 增加`Ember.Handlebars.helper`。
+* 增加{{input type="text"}}。
+* 批量插入相关联的子视图而不是一个一个的添加。
