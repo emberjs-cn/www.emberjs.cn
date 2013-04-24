@@ -17,11 +17,11 @@ Ember应用初始化程序提供了一个入口，帮助我们在Ember应用初�
 
 #### [Getting Into Ember.js: Part 3](http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-js-part-3/)
 
-TODO
+本文作为Ember.js入门文章的第三部分，重点介绍了如何实现Model层，为Ember.js应用提供数据。
 
-#### [Ember.js 1.0.0-RC.3 Released]()
+#### [Ember.js 1.0.0-RC.3 Released](http://emberjs.cn/blog/2013/04/23/ember-js-1-0-0-rc3.html)
 
-TODO
+Ember.js 1.0.0-RC.3发布，本次发布大大改进了Ember.js的性能，另外也修复了一些Bugs和文档，变得更加稳定。
 
 ### 视频
 
