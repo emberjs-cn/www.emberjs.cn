@@ -1,6 +1,6 @@
 ---
 title: Ember.js 1.0.0-rc2发布
-tags: 最近文章
+tags: Recent Posts, Releases
 author: Tower He
 ---
 

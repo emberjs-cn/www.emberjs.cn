@@ -1,6 +1,6 @@
 ---
 title: 如何获取应用当前登录的用户信息
-tags: 最近文章
+tags: Recent Posts
 author: TowerHe
 ---
 

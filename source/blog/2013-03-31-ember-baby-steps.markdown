@@ -1,6 +1,6 @@
 ---
 title: Ember入门实践
-tags: 最近文章
+tags: Recent Posts
 author: TiffanyZhou
 ---
 

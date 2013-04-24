@@ -1,6 +1,6 @@
 ---
 title: EmberJS.CN之诞生
-tags: 最近文章
+tags: Recent Posts
 author: Tower He
 ---
 

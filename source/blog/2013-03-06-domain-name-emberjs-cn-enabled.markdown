@@ -1,6 +1,6 @@
 ---
 title: Emberjs.cn域名正式启用
-tags: 最近文章,杂谈
+tags: Recent Posts, Misc
 author: Tower He
 ---
 

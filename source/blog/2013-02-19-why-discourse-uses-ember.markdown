@@ -1,6 +1,6 @@
 ---
 title: 为什么Discourse选择Ember.JS
-tags: 最近文章
+tags: Recent Posts
 author: Tower He
 ---
 

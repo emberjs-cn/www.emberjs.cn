@@ -1,6 +1,6 @@
 ---
 title: 指南目录结构调整
-tags: 最近文章
+tags: Recent Posts, Releases
 author: Tower He
 ---
 
