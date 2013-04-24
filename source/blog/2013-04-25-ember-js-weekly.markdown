@@ -1,7 +1,9 @@
 ---
 title: 第一期周报
-tags: draft
+tags: Ember.js周报
 ---
+
+各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢，也欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：[http://discuss.emberjs.cn/category/4-category](http://discuss.emberjs.cn/category/4-category)。谢谢！
 
 本周Ember.js热点：
 
