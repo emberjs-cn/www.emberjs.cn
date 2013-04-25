@@ -1,6 +1,6 @@
 ---
 title: 两种方式实现用户管理(二)
-tags: 最近文章
+tags: Recent Posts
 author: pudgecon
 ---
 
