@@ -1,6 +1,6 @@
 英文原文： [http://emberjs.com/guides/templates/writing-helpers/](http://emberjs.com/guides/templates/writing-helpers/)
 
-## 编写自定义助手方法
+## 编写助手方法
 
 有时，你想在程序里多次使用同一段 HTML 代码。这种情况下，你就可以自定义一个任何 Handlebars 模板都能调用的助手方法。
 
