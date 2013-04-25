@@ -39,11 +39,11 @@
     url: "templates/links"
   - title: "操作"
     url: "templates/actions"
-  - title: "Rendering with Helpers"
+  - title: "用助手来渲染"
     url: "templates/rendering-with-helpers"
   #- title: "Keywords"
     #url: "templates/keywords"
-  - title: "Writing Helpers"
+  - title: "编写助手方法"
     url: "templates/writing-helpers"
 
 路由:
@@ -95,7 +95,7 @@
     url: "models/modifying-attributes"
   #- title: "Modifying Relationships"
     #url: "models/modifying-relationships"
-  - title: "Model Lifecycle"
+  - title: "模型生命周期"
     url: "models/model-lifecycle"
   - title: "The REST Adapter"
     url: "models/the-rest-adapter"
@@ -142,7 +142,7 @@ Enumerables:
   - title: "Introduction"
     url: "enumerables"
 Configuring Ember.js:
-  - title: "Disabling Prototype Extensions"
+  - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
 
 Understanding Ember.js:
