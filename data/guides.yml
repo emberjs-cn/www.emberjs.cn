@@ -141,7 +141,7 @@
 Enumerables:
   - title: "Introduction"
     url: "enumerables"
-Configuring Ember.js:
+配置Ember.js:
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
 
