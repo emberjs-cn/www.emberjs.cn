@@ -21,7 +21,7 @@ objects in the following ways:
 
 * `Array`被扩展用来实现`Ember.Enumerable`, `Ember.MutableEnumerable`, `Ember.MutableArray` 和 `Ember.Array`接口。此举填补了本来不支持 ECMAScript 5 数组方法的浏览器的空白，为数组增加了便捷方法和属性，同时使数据的变化可观察。
 * `String`被扩展了诸如`camelize()`和`fmt()`的便捷方法。
-* `Function`通过`property()`扩展了将方程注解为计算属性的方法，还扩展了将方程注解为观察者的方法，这些方法为`observes()`或`observesBefore()`。
+* `Function`通过`property()`扩展了将函数注解为计算属性的方法，还扩展了将方程注解为观察者的方法，这些方法为`observes()`或`observesBefore()`。
 
 
 This is the extent to which Ember.js enhances native prototypes. We have

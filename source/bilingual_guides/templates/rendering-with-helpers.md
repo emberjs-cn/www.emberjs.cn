@@ -1,18 +1,18 @@
 ## Rendering with Helpers
 
-## 用助手方法来渲染
+## 用助手来渲染
 
 Ember provides several helpers that allow you to render other views and templates in different ways.
 
-Ember 提供了数个助手方法来协助你以不同的方式来渲染其他视图或模板
+Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板
 
 ### The `{{partial}}` Helper
 
-### `{{partial}}` 助手方法
+### `{{partial}}` 助手
 
 `{{partial}}` takes the template to be rendered as an argument, and renders that template in place.
 
-`{{partial}}`需要一个待渲染的模板作为参数并立即渲染此模板。
+`{{partial}}`接收一个模板作为其参数，然后恰当地渲染这个模板
 
 `{{partial}}` does not change context or scope.  It simply drops the given template into place with the current scope.  
 
@@ -40,15 +40,15 @@ Ember 提供了数个助手方法来协助你以不同的方式来渲染其他�
 
 Note: in cases where you may have used `{{template}}` in the past, you should likely use `{{partial}}` instead.
 
-注意：如果你之前用过 `{{template}}` 助手方法，很有可能你就应该用 `{{partial}}` 来代替它了。
+注意：如果你之前用过 `{{template}}` 助手，那么，现在你应该使用 {{partial}}助手来代替它了。
 
 ### The `{{view}}` Helper
 
-### `{{view}}` 助手方法
+### `{{view}}` 助手
 
 This helper works like the partial helper, except instead of providing a template to be rendered within the current template, you provide a view class.  The view controls what template is rendered.
 
-此助手方法和 partial 类似，不同的是你需要提供一个视图类，而不是在当前模板内提供一个待渲染的模板。
+此助手和 partial 类似，不同的是你需要提供一个视图类，而不是在当前模板内提供一个待渲染的模板。这个视图类控制哪个模板将被渲染，如下所示：
 
 ```javascript
 App.AuthorView = Ember.View.extend({
@@ -108,7 +108,7 @@ For more information, see [Inserting Views in Templates](/guides/views/inserting
 
 ### The `{{render}}` Helper
 
-### `{{render}}` 助手方法
+### `{{render}}` 助手
 
 `{{render}}` takes two parameters:
 
@@ -118,7 +118,7 @@ For more information, see [Inserting Views in Templates](/guides/views/inserting
 `{{render}}` 需要两个参数：
 
 * 第一个参数描述需要建立的上下文
-* 可选的第二个参数是模型，如果提供了此参数，则它会被传递给控制器
+* 第二个参数是可选参数，它接收一个模型，如果提供了这个参数，就会被传递给控制器。
 
 `{{render}}` does several things:
 
@@ -126,7 +126,7 @@ For more information, see [Inserting Views in Templates](/guides/views/inserting
 * Renders the named template using this controller
 * Sets the model of the corresponding controller 
 
-`{{render}}` 做一些事情：
+`{{render}}` 可以完成以下几个功能：
 
 * 获取相应控制器的单体实例
 * 用此控制器渲染命名模板
@@ -165,13 +165,13 @@ In this example, render will:
 * Set the AuthorController's model to the 2nd argument passed to render, here the author field on the post
 * Render the template in place, with the context created in the previous steps.
 
-在此例中，render 助手方法会：
+在此例中，render 助手会：
 
 * 如果 App.AuthorView 存在，获取它的一个实例，否则就使用默认生成的视图
 * 使用相应的模板（此处为默认的 "author"）
 * 获取（或生成）AuthorController 的单体实例
-* 设置 AuthorController 的模型为第二个传递过来的参数，此处为 post 里的 author 字段
-* 在上一步创建的上下文中立即渲染模板
+* 设置 AuthorController的模型为{{render}}助手的第二个参数，此处为 post 里的 author 字段
+* 根据前几步创建的上下文，恰当地渲染模板
 
 `{{render}}` does not require the presence of a matching route.  
 
@@ -182,9 +182,9 @@ In this example, render will:
 
 `{{render}}` 不需要匹配路由。
 
-`{{render}}` 与 `{{outlet}}` 类似。两者均责成 Ember 将此部分的页面交给某物。
+`{{render}}` 与 `{{outlet}}` 类似。两者均负责通知`Ember`将这一部分页面用来渲染其他模板。
 
-`{{outlet}}`: 路由器绝对路由，并且创建合适的控制器/视图/模型
+`{{outlet}}`: 路由器决定路由，并且创建合适的控制器/视图/模型
 `{{render}}`: 你（直接或间接地）指定合适的控制器/视图/模型
 
 
@@ -192,12 +192,12 @@ In this example, render will:
 
 Note: `{{render}}` cannot be called multiple times for the same route.  For that you'll need `{{control}}`.
 
-注意： `{{render}}` 不能在同一个路由中多次调用。不然就得用 `{{control}}`。
+注意： 如果需要多次调用，就得使用下面的`{{control}}`助手。
 
 
 ### The `{{control}}` Helper
 
-### `{{control}}` 助手方法
+### `{{control}}` 助手
 
 `{{control}}` works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.
 
@@ -205,7 +205,7 @@ This helper is currently under heavy development, and will likely change soon.
 
 `{{control}}` 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。
 
-此助手方法目前仍在开发中，以后极有可能变化很大。
+此助手目前仍在开发中，以后极有可能变化很大。
 
 
 ### Comparison Table
@@ -214,7 +214,7 @@ This helper is currently under heavy development, and will likely change soon.
 
 #### General
 
-#### 笼统比较
+#### 整体概念性比较
 
 <table>
   <thead>
@@ -288,7 +288,7 @@ This helper is currently under heavy development, and will likely change soon.
 
 #### Specific
 
-#### 细致比较
+#### 基于特定实例的比较
 
 <table>
   <thead>

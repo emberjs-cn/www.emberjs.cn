@@ -53,7 +53,7 @@ Imagine you want to render the full name of an `App.Person`. In this
 case, you will want to update the output if the person itself changes,
 or if the `firstName` or `lastName` properties change.
 
-想象一下，如果你想渲染`App.Person`的全名。这种情况下，如果 person 本身变化了或`firstName`, `lastName`属性变化了，你都会想要更新输出。
+想象另一种情况，如果要渲染`App.Person`的全名，而希望在person本身变化或者其`firstName`和`lastName`属性值发生变化时，都能自动更新输出，那么，我们可以像下面这样做：
 
 ```js
 Ember.Handlebars.registerBoundHelper('fullName', function(person) {
@@ -77,5 +77,4 @@ _dependent keys_ change, the output will automatically update.
 Both the path passed to the `fullName` helper and its dependent keys may
 be full _property paths_ (e.g. `person.address.country`).
 
-传递给 `fullName` 助手方法的 path 以及它的依赖键值都可以是完整的 _property paths_ （如`person.address.country`）
-（译注：此处的path及property paths不知如何翻译）
+传递给 `fullName` 助手方法的路径以及它的依赖键值都可以是完整的 _属性路径_ （如`person.address.country`）
