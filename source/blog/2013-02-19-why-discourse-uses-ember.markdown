@@ -4,7 +4,7 @@ tags: Recent Posts
 author: Tower He
 ---
 
-Discourse的推出在整个社区赚足了眼球，由于Discourse选择使用Ember.JS作为前端MVC框架，这促使Ember.JS也成为了热议的话题。一年多以前SproutCore2正式改名为Ember.JS后，本人持续的关注了Ember.JS的开发过程，见证这Ember.JS的成长。Ember.JS的API在整个社区共同协作的基础上日趋稳定，Ember.JS 1.0.rc1的推出，更是标着其API已经成熟。我相信越来越多基于Ember.JS实现的优秀的应用，将会像雨后春笋般涌现出来。
+Discourse的推出在整个社区赚足了眼球，由于Discourse选择使用Ember.JS作为前端MVC框架，这促使Ember.JS也成为了热议的话题。一年多以前SproutCore2正式改名为Ember.JS后，本人持续的关注了Ember.JS的开发过程，见证着Ember.JS的成长。Ember.JS的API在整个社区共同协作的基础上日趋稳定，Ember.JS 1.0.rc1的推出，更是标着其API已经成熟。我相信越来越多基于Ember.JS实现的优秀的应用，将会像雨后春笋般涌现出来。
 
 [Robin
 Ward](http://eviltrout.com/)（Discourse的发起者之一）在2013年2月10日撰写了一片博文[Why Discourse Uses Ember.JS](http://eviltrout.com/2013/02/10/why-discourse-uses-emberjs.html)，从他个人的角度阐述了为什么Discourse选择Ember.JS作为前端MVC框架。一下为Robin Ward的几个核心观点：
