@@ -79,7 +79,7 @@ as expected out of the box.
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
-Note: A route with a dynamic segment will only have it's `model` hook called
+Note: A route with a dynamic segment will only have its `model` hook called
 when it is entered via the URL. If the route is entered through a transition
 (e.g. when using the [linkTo][2] Handlebars helper), then a model context is
 already provided and the hook is not executed. Routes without dynamic segments
