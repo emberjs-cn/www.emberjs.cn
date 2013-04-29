@@ -138,8 +138,8 @@
   - title: "Bindings, Observers, Computed Properties: What Do I Use When?"
     url: "object-model/what-do-i-use-when"
 
-Enumerables:
-  - title: "Introduction"
+枚举:
+  - title: "介绍"
     url: "enumerables"
 配置Ember.js:
   - title: "禁用基本类型扩展"
