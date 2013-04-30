@@ -97,7 +97,7 @@
     #url: "models/modifying-relationships"
   - title: "模型生命周期"
     url: "models/model-lifecycle"
-  - title: "The REST Adapter"
+  - title: "REST适配器"
     url: "models/the-rest-adapter"
   #- title: "The Basic Adapter"
     #url: "modells/the-basic-adapter"
