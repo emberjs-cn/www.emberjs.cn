@@ -113,7 +113,7 @@
     url: "views/inserting-views-in-templates"
   - title: "为视图添加布局"
     url: "views/adding-layouts-to-views"
-  - title: "Customizing a View's Element"
+  - title: "自定义视图元素"
     url: "views/customizing-a-views-element"
   - title: "Built-in Views"
     url: "views/built-in-views"
