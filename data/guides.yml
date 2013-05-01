@@ -115,7 +115,7 @@
     url: "views/adding-layouts-to-views"
   - title: "自定义视图元素"
     url: "views/customizing-a-views-element"
-  - title: "Built-in Views"
+  - title: "内置视图"
     url: "views/built-in-views"
   - title: "Manually Managing View Hierarchy"
     url: "views/manually-managing-view-hierarchy"
