@@ -117,7 +117,7 @@
     url: "views/customizing-a-views-element"
   - title: "内置视图"
     url: "views/built-in-views"
-  - title: "Manually Managing View Hierarchy"
+  - title: "手动管理视图层级"
     url: "views/manually-managing-view-hierarchy"
   #- title: "Building Reusable Views"
     #url: "views/building-reusable-views"
