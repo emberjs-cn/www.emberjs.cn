@@ -111,7 +111,7 @@
     url: "views/handling-events"
   - title: "在模板中插入视图"
     url: "views/inserting-views-in-templates"
-  - title: "Adding Layouts to Views"
+  - title: "为视图添加布局"
     url: "views/adding-layouts-to-views"
   - title: "Customizing a View's Element"
     url: "views/customizing-a-views-element"
