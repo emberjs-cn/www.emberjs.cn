@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/models/the-rest-adapter/](http://emberjs.com/guides/models/the-rest-adapter/)
+
 ## REST适配器
 
 默认情况下，`store`使用`DS.RESTAdapter`来加载和保存记录。REST适配器假定URLs和每个对象对应的JSON都符合惯例。也就是说，只要遵从规则，就可以在不对适配器进行任何配置和编写任何代码的情况下使用适配器。

@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/enumerables/](http://emberjs.com/guides/enumerables/)
+
 ## 枚举
 
 在Ember.js中，任何包含子对象集合的，并允许使用`Ember.Enumerable`接口来访问这些子对象的对象称为枚举。在大部分应用中最为常见的枚举是Ember.js为了确保枚举接口的一致性，而进行过扩展的Javascript的原生数组。
