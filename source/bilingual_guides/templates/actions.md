@@ -75,7 +75,7 @@ You can specify an alternative event by using the `on` option.
 
 你还可以通过`on`选项指定一个替代事件来侦听。
 
-```javascript
+```handlebars
 <p>
   <button {{action "select" post on="mouseUp"}}>✓</button>
   {{post.title}}
@@ -129,7 +129,7 @@ clicked.
 
 比如，你有一个链接包含一个**✗**按钮，你想保证这个按钮点击时，链接却不会被点击。
 
-```javascript
+```handlebars
 {{#linkTo 'post'}}
   Post
   <button {{action close bubbles=false}}>✗</button>

@@ -15,7 +15,7 @@
 
 `blog_post`模板可能会绑定这些属性到模板中去。
 
-```javascript
+```handlebars
 <h1>{{title}}</h1>
 <h2>by {{author}}</h2>
 
@@ -32,7 +32,7 @@
 
 假设现在要添加一个允许用户打开或关闭`body`部分的新功能。为了实现这个功能，首先需要编辑模板使其在`isExpanded`属性为`true`的时候才显示`body`。
 
-```javascript
+```handlebars
 <h1>{{title}}</h1>
 <h2>by {{author}}</h2>
 

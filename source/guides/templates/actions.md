@@ -49,7 +49,7 @@ App.PostController = Ember.ObjectController.extend({
 默认情况下，`{{action}}`助手方法侦听事件，并且在用户点击到此元素时触发指定的操作。
 你还可以通过`on`选项指定一个替代事件来侦听。
 
-```javascript
+```handlebars
 <p>
   <button {{action "select" post on="mouseUp"}}>✓</button>
   {{post.title}}
@@ -81,7 +81,7 @@ App.PostController = Ember.ObjectController.extend({
 {{action}}助手方法允许将由它处理的事件冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。
 比如，你有一个链接包含一个**✗**按钮，你想保证这个按钮点击时，链接却不会被点击。
 
-```javascript
+```handlebars
 {{#linkTo 'post'}}
   Post
   <button {{action close bubbles=false}}>✗</button>
