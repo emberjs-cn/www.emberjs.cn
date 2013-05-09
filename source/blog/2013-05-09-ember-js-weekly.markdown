@@ -35,4 +35,4 @@ APIs的两种不同风格（ID风格和URL风格）。ID风格简单易用，也
 
 #### [ember-dev](https://github.com/emberjs/ember-dev)
 
-ember-dev是一个用于开发Ember.js扩展的一个辅助工具，[ember-data](https://github.com/emberjs/data)便是基于ember-dev来构建的](https://github.com/emberjs/data)便是基于ember-dev来构建的。如果准备开发一个Ember.js的扩展，这将是你的不二之选。
+ember-dev是一个用于开发Ember.js扩展的一个辅助工具，[ember-data](https://github.com/emberjs/data)便是基于ember-dev来构建的。如果准备开发一个Ember.js的扩展，这将是你的不二之选。
