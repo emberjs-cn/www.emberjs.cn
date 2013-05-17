@@ -40,7 +40,7 @@ AViewWithLayout = Ember.View.extend({
 
 ```html
 <div class="content-wrapper">
-  Hello, Teddy!
+  Hello, <b>Teddy</b>!
 </div>
 ```
 
