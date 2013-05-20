@@ -138,7 +138,7 @@
     url: "object-model/computed-properties"
   - title: "Computed Properties and Aggregate Data with @each"
     url: "object-model/computed-properties-and-aggregate-data"
-  - title: "Observers"
+  - title: "观察器"
     url: "object-model/observers"
   - title: "Bindings"
     url: "object-model/bindings"
