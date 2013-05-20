@@ -3,10 +3,10 @@
 ## 代表多模型（Representing Multiple Models）
 
 You can use `Ember.ArrayController` to represent an array of models. To tell an
-`ArrayController` which model to represent, set its `content` property
+`ArrayController` which model to represent, set its `model` property
 in your route's `setupController` method.
 
-`Ember.ArrayController`用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`content`属性，来指定其代表的模型。
+`Ember.ArrayController`用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`model`属性，来指定其代表的模型。
 
 You can treat an `ArrayController` just like its underlying array. For
 example, imagine we want to display the current playlist. In our router,
@@ -17,7 +17,7 @@ we setup our `SongsController` to represent the songs in the playlist:
 ```javascript
 App.SongsRoute = Ember.Route.extend({
   setupController: function(controller, playlist) {
-    controller.set('content', playlist.get('songs'));
+    controller.set('model', playlist.get('songs'));
   }
 });
 ```

@@ -9,7 +9,7 @@ URL的改变同时也可能改变显示的模板。而模板只有当其搭载�
 
 内置的两个控制器`Ember.ObjectController`和`Ember.ArrayController`，使控制器可以非常方便的呈现模型的属性和其他一些附加的用于显示的属性到模板中去。
 
-通过在路由处理器的`setupController`钩子中设置控制器的`content`属性，来设置控制器所要呈现的模型。
+通过在路由处理器的`setupController`钩子中设置控制器的`model`属性，来设置控制器所要呈现的模型。
 
 ```js
 App.Router.map(function() {
@@ -18,7 +18,7 @@ App.Router.map(function() {
 
 App.PostRoute = Ember.Route.extend({
   setupController: function(controller, model) {
-    controller.set('content', model);
+    controller.set('model', model);
   }
 });
 ```
@@ -36,7 +36,7 @@ App.PostRoute = Ember.Route.extend({
 ```js
 App.PostRoute = Ember.Route.extend({
   setupController: function(controller, model) {
-    this.controllerFor('topPost').set('content', model);
+    this.controllerFor('topPost').set('model', model);
   }
 });
 ```

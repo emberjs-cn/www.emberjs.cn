@@ -89,11 +89,11 @@ not update as the underlying array changes.
 原生数组不再继续实现监控自身变化所需的功能。如果你关闭了基于原型的扩展并且试图在模板的`{{#each}}`等助手方法中使用原生数组的话，Ember.js就没办法检测到数组的内容变化，模板也不会随着数组的变化而自动更新。
 
 
-Additionally, if you try to set the content of an
+Additionally, if you try to set the model of an
 `Ember.ArrayController` to a plain native array, it will raise an
 exception since it no longer implements the `Ember.Array` interface.
 
-另外，你试图将`Ember.ArrayController`的内容设置为普通的原生数组时，Ember.js会报一个异常，因为原生数组已然不再继续实现`Ember.Array`接口了。
+另外，你试图将`Ember.ArrayController`的模型设置为普通的原生数组时，Ember.js会报一个异常，因为原生数组已然不再继续实现`Ember.Array`接口了。
 
 You can manually coerce a native array into an array that implements the
 required interfaces using the convenience method `Ember.A`:

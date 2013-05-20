@@ -21,7 +21,7 @@
 {{/if}}
 ```
 
-这种情况下，`post`控制器就是`Ember.ObjectController`，它的`content` 是`App.Post`的一个实例。
+这种情况下，`post`控制器就是`Ember.ObjectController`，它的`model` 是`App.Post`的一个实例。
 
 ```js
 App.PostController = Ember.ObjectController.extend({

@@ -33,9 +33,9 @@ and supports expanding the post with additional information.
 ```
 
 In this case, the `post` controller would be an `Ember.ObjectController`
-whose `content` is an instance of `App.Post`.
+whose `model` is an instance of `App.Post`.
 
-这种情况下，`post`控制器就是`Ember.ObjectController`，它的`content` 是`App.Post`的一个实例。
+这种情况下，`post`控制器就是`Ember.ObjectController`，它的`model` 是`App.Post`的一个实例。
 
 ```js
 App.PostController = Ember.ObjectController.extend({

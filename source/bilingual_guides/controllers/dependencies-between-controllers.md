@@ -17,11 +17,11 @@ App.Router.map(function() {
 ```
 
 If we visit a `/posts/1/comments` URL, our `Post` model will get
-loaded into a `PostController`'s content, which means it is not directly
+loaded into a `PostController`'s model, which means it is not directly
 accessible in the `CommentsController`. We might however want to display
 some information about it in the `comments` template.
 
-如果访问`/posts/1/comments`这个URL，`Post`模型会被设置为`PostController`的`content`属性，其不可以在`CommentsController`中直接引用。然而又需要在`comments`模板中显示一些与其相关的信息。
+如果访问`/posts/1/comments`这个URL，`Post`模型会被设置为`PostController`的模型，其不可以在`CommentsController`中直接引用。然而又需要在`comments`模板中显示一些与其相关的信息。
 
 To be able to do this we define our `CommentsController` to `need` the
 `PostController`

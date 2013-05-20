@@ -2,14 +2,14 @@
 
 ## 代表多模型
 
-`Ember.ArrayController`用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`content`属性，来指定其代表的模型。
+`Ember.ArrayController`用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`model`属性，来指定其代表的模型。
 
 可以将`ArrayController`作为一个数组来对待。例如，音乐播放器希望显示当前播放列表。在路由中，通过设置`SongsController`来代表播放列表中的歌曲。
 
 ```javascript
 App.SongsRoute = Ember.Route.extend({
   setupController: function(controller, playlist) {
-    controller.set('content', playlist.get('songs'));
+    controller.set('model', playlist.get('songs'));
   }
 });
 ```

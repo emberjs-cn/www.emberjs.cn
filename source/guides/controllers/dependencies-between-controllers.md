@@ -12,7 +12,7 @@ App.Router.map(function() {
 });
 ```
 
-如果访问`/posts/1/comments`这个URL，`Post`模型会被设置为`PostController`的`content`属性，其不可以在`CommentsController`中直接引用。然而又需要在`comments`模板中显示一些与其相关的信息。
+如果访问`/posts/1/comments`这个URL，`Post`模型会被设置为`PostController`的模型，其不可以在`CommentsController`中直接引用。然而又需要在`comments`模板中显示一些与其相关的信息。
 
 为了实现这个功能，可以在`CommentsController`中声明其需要一个代表`Post`模型的`PostController`。
 

@@ -2,7 +2,7 @@
 
 ## 代表单一模型
 
-`Ember.ObjectController`用于代表单一模型。通过在路由的`setupController`方法中设置`ObjectController`的`content`属性，来指定其代表的模型。
+`Ember.ObjectController`用于代表单一模型。通过在路由的`setupController`方法中设置`ObjectController`的`model`属性，来指定其代表的模型。
 
 当模板向`ObjectController`请求属性时，控制器将首先检查是否定义有该属性，如果有，则返回其当前值。
 
@@ -16,12 +16,12 @@ App.SongController = Ember.ObjectController.extend({
 });
 ```
 
-在路由中，设置控制器的`content`属性为当前播放的歌曲。
+在路由中，设置控制器的`model`属性为当前播放的歌曲。
 
 ```javascript
 App.SongRoute = Ember.Route.extend({
   setupController: function(controller, song) {
-    controller.set('content', song);
+    controller.set('model', song);
   }
 });
 ```
@@ -72,12 +72,12 @@ App.SongRoute = Ember.Route.extend({
 ```javascript
 App.SongController = Ember.ObjectController.extend({
   duration: function() {
-    var duration = this.get('content.duration'),
+    var duration = this.get('model.duration'),
          minutes = Math.floor(duration / 60),
          seconds = duration % 60;
 
     return [minutes, seconds].join(':');
-  }.property('content.duration')
+  }.property('model.duration')
 });
 ```
 
