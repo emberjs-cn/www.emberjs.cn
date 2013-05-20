@@ -134,7 +134,7 @@
 对象模型:
   - title: "类与实例"
     url: "object-model/classes-and-instances"
-  - title: "Computed Properties"
+  - title: "计算属性"
     url: "object-model/computed-properties"
   - title: "Computed Properties and Aggregate Data with @each"
     url: "object-model/computed-properties-and-aggregate-data"
