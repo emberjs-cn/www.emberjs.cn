@@ -73,3 +73,32 @@ App.Tag = DS.Model.extend({
   posts: DS.hasMany('App.Post')
 });
 ```
+
+#### 显式反转
+
+自[本周Ember.js，2012-11-2](http://emberjs.com/blog/2012/11/02/this-week-in-ember-js.html)起，
+
+Ember Data知道当设定一个`belongsTo`的关联关系时，子应该要被添加到对应的父的`hasMany`关联关系中去。
+
+但是不幸的是，它并不知道哪一个`hasMany`关联关系应该得到更新。因此，Ember
+Data选择其找到的第一个拥有相同类型的子关联来进行更新。
+
+因为可能存在许多具有相同类型的`belongsTo`/`hasMany`，这是可以显式的指定对应的反转对象：
+
+```javascript
+App.Comment = DS.Model.extend({
+  onePost: DS.belongsTo("App.Post"),
+  twoPost: DS.belongsTo("App.Post"),
+  redPost: DS.belongsTo("App.Post"),
+  bluePost: DS.belongsTo("App.Post")
+});
+
+
+App.Post = DS.Model.extend({
+  comments: DS.hasMany('App.Comment', {
+    inverse: 'redPost'
+  })
+});
+```
+
+当然也可以在`belongsTo`一侧指定，它将按照预期那样工作。

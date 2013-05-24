@@ -8,6 +8,7 @@ will guide you through building a full-featured Ember.js application:
 为了帮助你们更加快速的入门，Ember.js精心制作了一个30分钟的视频，这个视频将指导你构建一个完整的Ember.js应用。
 
 <iframe width="640" height="360" src="http://www.youtube.com/embed/Ga99hMi7wfY?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+Source code for the video <a href="https://github.com/tildeio/bloggr-client">https://github.com/tildeio/bloggr-client</a>
 
 这里大部分的指南都按如何帮助你快速使用Ember.js来构建一个应用来进行设计。
 

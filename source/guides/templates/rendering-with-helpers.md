@@ -15,7 +15,7 @@ Ember 提供了数个助手来协助你以不同的方式来渲染其他视图�
 `{{partial}}`不改变上下文或作用域。它只是简单地在当前作用域下将指定的模板渲染出来。
 
 ```handlebars
-<script type="text/x-handlebars" data-template-name='author'>
+<script type="text/x-handlebars" data-template-name='_author'>
   Written by {{author.firstName}} {{author.lastName}}
 </script>
 
@@ -33,6 +33,8 @@ Ember 提供了数个助手来协助你以不同的方式来渲染其他视图�
   Written by Yehuda Katz
 </div>
 ```
+
+Partial的`data-template-name`必须以下划线开头（例如：`data-template-name='_author'`或者`data-template-name='foo/_bar'`）
 
 注意：如果你之前用过 {{template}} 助手，那么，现在你应该使用 {{partial}}助手来代替它了。
 
