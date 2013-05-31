@@ -102,7 +102,8 @@ App.AuthorView = Ember.View.extend({
 
 `{{render}}` 可以完成以下几个功能：
 
-* 获取相应控制器的单体实例
+* 如果没有提供model，那么将使用对应controller的单例实例
+* 如果提供了model，那么将使用对应controller的一个独立实例
 * 用此控制器渲染命名模板
 * 设置相应控制器的模型
 
@@ -146,18 +147,15 @@ App.AuthorController = Ember.ObjectController.extend({
 `{{outlet}}`: 路由器决定路由，并且创建合适的控制器/视图/模型
 `{{render}}`: 你（直接或间接地）指定合适的控制器/视图/模型
 
-
-注意： 如果需要多次调用，就得使用下面的`{{control}}`助手。
-
+注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的`{{control}}`助手。
 
 ### `{{control}}` 助手
-
 
 `{{control}}` 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。
 
 此助手目前仍在开发中，以后极有可能变化很大。
 
-
+注意：`{{control}}`助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：`ENV.EXPERIMENTAL_CONTROL_HELPER = true`。
 
 ### 比较表
 
