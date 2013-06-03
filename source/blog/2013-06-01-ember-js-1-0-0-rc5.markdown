@@ -1,0 +1,27 @@
+---
+title: Ember.js 1.0.0-rc5发布
+tags: Recent Posts, Releases
+author: Tower He
+---
+
+今天是快乐的六一儿童节，Ember.js 1.0 RC5也在这一天发布了。本次发布预示着我们等待已久的Ember.js 1.0正式版马上就要横空出世了。
+
+RC5中主要修复了在RC4中发现的回归问题和缺陷。主要包括：
+
+* 修复了因为改动了运行循环计划而导致的性能问题。
+* 修复了如果路由的模型钩子返回承诺（Promise）页面刷新时会挂起的问题。
+* 包含辅助测试方法的ember-testing不在包含在生产构建中。这意味着介绍了用户需要从网络加载的Javascript代码。
+
+详细的修订记录：
+
+* 为不正确的容器搜索名称添加断言
+* 增加了`Ember.beforeObserver`的文档
+* 从生产构建中移除了ember-testing
+* 修复了承诺（Promise）在启动时的缺陷。修复 #2756
+* 同步router.js修复`App#reset`在ember-testing中的问题
+* 声明`replaceWith`只工作在'history'模式下
+* 修正了IE7下测试不通过的问题
+* 更新backburner，修复IE8下测试失败的问题
+* 更新Backburner.js修复RC4中的性能问题
+* 维护gem包的ruby版本
+* 移除starter_kit上传任务
