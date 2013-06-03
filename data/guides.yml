@@ -2,8 +2,8 @@
   - title: 'Ember.js 指南'
     url: 'index.html'
     skip_sidebar: true
-"Getting Started":
-  - title: "Getting Started"
+"入门指南":
+  - title: "介绍"
     url: "getting-started"
   - title: "Planning The Application"
     url: "getting-started/planning-the-application"
