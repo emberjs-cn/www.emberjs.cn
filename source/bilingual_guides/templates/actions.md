@@ -178,3 +178,21 @@ the `/posts` route, and another thing if you are inside of the `/about`
 route.
 
 上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 `/posts`路由中，你想在侧边栏创建一个按钮来完成某种操作，而在`/about`路由中时，此按钮却是做另外一件不同的事。
+
+### View Action Handling (Target)
+
+### 视图操作处理（目标）
+
+In some cases (when creating custom components) it may be necessary to
+handle actions in your view class. This can be done by specifying the
+target of your action.
+
+视图类有时候需要处理一些操作（比如当创建新的自定义组件时），那么可以通过指定操作的目标来实现。
+
+```handlebars
+<button {{action expand target="view"}}>Show More...</button>
+```
+
+Now the view will be checked to see if it can handle this action.
+
+如上，视图将被检测看是否能处理该操作。
