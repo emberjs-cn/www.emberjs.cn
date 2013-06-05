@@ -5,7 +5,7 @@
 "入门指南":
   - title: "介绍"
     url: "getting-started"
-  - title: "Planning The Application"
+  - title: "应用规划"
     url: "getting-started/planning-the-application"
   - title: "Creating a Static Mockup"
     url: "getting-started/creating-a-static-mockup"
