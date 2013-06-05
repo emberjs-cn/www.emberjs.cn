@@ -7,7 +7,7 @@
     url: "getting-started"
   - title: "应用规划"
     url: "getting-started/planning-the-application"
-  - title: "Creating a Static Mockup"
+  - title: "创建静态页面"
     url: "getting-started/creating-a-static-mockup"
   - title: "Obtaining Ember.js and Dependencies"
     url: "getting-started/obtaining-emberjs-and-dependencies"
