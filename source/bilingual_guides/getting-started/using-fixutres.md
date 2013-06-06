@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.cn/guides/getting-started/using-fixutres/](http://emberjs.cn/guides/getting-started/using-fixutres/)
+英文原文：[http://emberjs.com/guides/getting-started/using-fixutres/](http://emberjs.com/guides/getting-started/using-fixutres/)
 
 ## Using Fixtures
 
