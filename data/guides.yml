@@ -9,7 +9,7 @@
     url: "getting-started/planning-the-application"
   - title: "创建静态页面"
     url: "getting-started/creating-a-static-mockup"
-  - title: "获取Ember.js和相应信赖"
+  - title: "获取Ember.js和相应依赖"
     url: "getting-started/obtaining-emberjs-and-dependencies"
   - title: "添加第一个路由与模板"
     url: "getting-started/adding-a-route-and-template"
