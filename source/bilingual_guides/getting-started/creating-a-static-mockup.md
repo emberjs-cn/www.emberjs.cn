@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/getting-started/creating-a-static-mockup](http://emberjs.com/guides/getting-started/creating-a-static-mockup)
+
 ## Creating a Static Mockup
 
 ## 创建静态页面

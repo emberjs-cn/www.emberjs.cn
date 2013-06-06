@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/getting-started/obtaining-emberjs-and-dependencies](http://emberjs.com/guides/getting-started/obtaining-emberjs-and-dependencies)
+
 ## Obtaining Ember.js and Dependencies
 
 ## 获取EMBER.JS和相应信赖

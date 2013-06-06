@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/getting-started/creating-a-static-mockup](http://emberjs.com/guides/getting-started/creating-a-static-mockup)
+
 ## 创建静态页面
 
 在开始编码之前，我们可以粗略地作出我们应用的布局。打开任意你喜欢的文本编辑器，新建一个文件，并命名为`index.html`。这个文件将会包含我们整个应用的HTML模板并请求图片、样式表和Javascript资源。

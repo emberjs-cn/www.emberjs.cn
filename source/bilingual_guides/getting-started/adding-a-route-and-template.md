@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/getting-started/adding-a-route-and-template](http://emberjs.com/guides/getting-started/adding-a-route-and-template)
+
 ## Adding the First Route and Template
 
 ## 添加第一个路由与模板

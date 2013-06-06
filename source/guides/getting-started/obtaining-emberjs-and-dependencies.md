@@ -1,3 +1,5 @@
+英文原文：[http://emberjs.com/guides/getting-started/obtaining-emberjs-and-dependencies](http://emberjs.com/guides/getting-started/obtaining-emberjs-and-dependencies)
+
 ## 获取EMBER.JS和相应信赖
 
 最新的Ember.js RC3 可以直接从[Ember.js官方网站](http://emberjs.com/)下载。Ember.js需要两个信赖库：jQuery和Handlebars。jQuery可以从[http://jquery.com/](http://jquery.com/)下载，Handlebars可以从[http://handlebarsjs.com/](http://handlebarsjs.com/)下载。本指南使用`ember-data`来进行数据模型映射（managing model data）。最新的Ember data开发版本可以从[http://builds.emberjs.com/](http://builds.emberjs.com/)下载。与[RC3兼容的版本](http://builds.emberjs.com.s3.amazonaws.com/ember-data-e324f0e582fe180bb577f648b1b7247958db21d9.js)SHA值为`e324f0e`。
