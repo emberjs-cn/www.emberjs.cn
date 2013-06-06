@@ -13,7 +13,7 @@
     url: "getting-started/obtaining-emberjs-and-dependencies"
   - title: "添加第一个路由与模板"
     url: "getting-started/adding-a-route-and-template"
-  - title: "Modeling Data"
+  - title: "建立模型"
     url: "getting-started/modeling-data"
     warning: "ember-data"
   - title: "Using Fixtures"
