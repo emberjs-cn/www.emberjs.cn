@@ -10,7 +10,7 @@ Next we will create a model class to describe todo items and a data store to tra
 
 Create a file at `js/models/todo.js` and put the following code inside:
 
-新建一个名为`js/models/todo.js`的文件，加入以下代码：
+新建一个名为 `js/models/todo.js` 的文件，加入以下代码：
 
 ```javascript
 Todos.Todo = DS.Model.extend({
@@ -21,11 +21,11 @@ Todos.Todo = DS.Model.extend({
 
 This code creates a new class `Todo` and places it within your application's namespace. Each todo will have two attributes: `title` and `isCompleted`.
 
-这段代码创建了一个新的`Todo`类，并将它置于你应用的命名空间下。每一个todo有两个属性： `title` 和 `isCompleted`。
+这段代码创建了一个新的 `Todo` 类，并将它置于你应用的命名空间下。每一个todo有两个属性： `title` 和 `isCompleted`。
 
 Create a file at `js/models/store.js` and put the following code inside:
 
-新建一个名为`js/models/store.js`的文件，加入以下代码：
+新建一个名为 `js/models/store.js` 的文件，加入以下代码：
 
 ```javascript
 Todos.Store = DS.Store.extend({
@@ -36,7 +36,7 @@ Todos.Store = DS.Store.extend({
 
 This code creates a new class `Store` and places it within your application's namespace. The store will track local instances of `Todos.Todo`. It will persist these instances using the built-in `DS.FixtureAdapter`, an adapter for using fixture data in the early stages of development before long-term persistence is required.
 
-这段代码创建了一个新的`Store`类，并将它置于你应用的命名空间下。这个Store会追踪本地 `Todos.Todo` 的所有实例，它会使用内置的`DS.FixtureAdapter`来持久化这些实例。在开发初期，我们还不需要对数据进行永久保存时，我们可以使用`DS.FixtureAdapter`，它是一个用于静态数据（fixture data）的适配器。
+这段代码创建了一个新的 `Store` 类，并将它置于你应用的命名空间下。这个Store会追踪本地 `Todos.Todo` 的所有实例，它会使用内置的 `DS.FixtureAdapter` 来持久化这些实例。在开发初期，我们还不需要对数据进行永久保存时，我们可以使用 `DS.FixtureAdapter` ，它是一个用于静态数据（fixture data）的适配器。
 
 You may place these files anywhere you like (even just putting all code into the same file), but this guide will assume you have separated them into their own files and named them as indicated.
 
@@ -44,7 +44,7 @@ You may place these files anywhere you like (even just putting all code into the
 
 Finally, update your `index.html` to include references to these new files:
 
-最后，更新`index.html`，将下列引用添加到其中：
+最后，更新 `index.html` ，将下列引用添加到其中：
 
 ```html
 <!-- ... additional lines truncated for brevity ... -->

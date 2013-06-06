@@ -10,9 +10,9 @@ TodoMVC包含了以下几个主要功能：
 
   1. 为用户提供一个todos的列表，并且会随着用户添加或移除todos进行增长与缩减。
 
-  1. 从一个`<input>`框接收文本作为新建todos的入口，当点击`<return>`时，创建一项，并在列表下方显示。
+  1. 从一个 `<input>` 框接收文本作为新建todos的入口，当点击 `<return>` 时，创建一项，并在列表下方显示。
 
-  1. 为每一个todo提供一个`checkbox`用于切换完成与未完成状态。新建的todo默认为未完成状态。
+  1. 为每一个todo提供一个 `checkbox` 用于切换完成与未完成状态。新建的todo默认为未完成状态。
 
   1. 显示所有未完成的todos的数量，并在添加新todos和现有todos完成时，动态改变显示的值。
 
@@ -22,10 +22,10 @@ TodoMVC包含了以下几个主要功能：
 
   1. 为每一个todo提供一个删除按钮，这个按钮显示为一个红色的X，并只在用户鼠标移动到这个todo上时显示。
 
-  1. 提供一个`checkbox`用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。
+  1. 提供一个 `checkbox` 用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。
 
-  1. 允许用户双击某一个todo，显示一个`textfield`用于修改这个todo。点击`<enter>`或者当鼠标焦点从这个`textfield`移除时，持久化更改的内容。
+  1. 允许用户双击某一个todo，显示一个 `textfield` 用于修改这个todo。点击 `<enter>` 或者当鼠标焦点从这个 `textfield` 移除时，持久化更改的内容。
 
-  1. 使用`本地存储(localstorage)`机制保存用户的todos列表，在应用程序启动时重新加载。
+  1. 使用 `本地存储(localstorage)` 机制保存用户的todos列表，在应用程序启动时重新加载。
 
 你可以通过访问[the TodoMVC site](http://addyosmani.github.com/todomvc/)来体验一下完整的版本。

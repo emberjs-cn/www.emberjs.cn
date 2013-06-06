@@ -4,17 +4,17 @@
 
 接下来，我们将会创建一个Ember.js应用、一个路由（'`/`'），并且将我们的静态页面转换为Handlebars模板。
 
-在`js`目录下，为应用添加一个`js/application.js`文件，为路由添加一个`js/router.js`文件。你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。
+在 `js` 目录下，为应用添加一个 `js/application.js` 文件，为路由添加一个 `js/router.js` 文件。你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。
 
-在`js/application.js`文件中添加如下代码：
+在 `js/application.js` 文件中添加如下代码：
 
 ```javascript
 window.Todos = Ember.Application.create();
 ```
 
-这会创建一个`Ember.Application`的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
+这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
 
-在`js/router.js`文件中添加如下代码：
+在 `js/router.js` 文件中添加如下代码：
 
 ```javascript
 Todos.Router.map(function () {
@@ -22,9 +22,9 @@ Todos.Router.map(function () {
 });
 ```
 
-这会告诉Ember.js，当应用的URL与`'/'`匹配时，渲染（render）`todos`模板。
+这会告诉Ember.js，当应用的URL与 `'/'` 匹配时，渲染（render） `todos` 模板。
 
-接着，更新`index.html`里的代码，将`<body>`里的内容包在一个Handlebars的`<script>`标签中，并引用`js/application.js`和`js/router.js`
+接着，更新 `index.html` 里的代码，将 `<body>` 里的内容包在一个Handlebars的 `<script>` 标签中，并引用 `js/application.js` 和 `js/router.js`：
 
 ```html
 <!-- ... 为确保简洁，略去头尾代码 ... -->

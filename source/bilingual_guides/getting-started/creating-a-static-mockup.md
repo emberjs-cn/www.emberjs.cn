@@ -6,11 +6,11 @@
 
 Before adding any code, we can roughly sketch out the layout of our application. In your text editor, create a new file and name it `index.html`. This file will contain the HTML templates of our completed application and trigger requests for the additional image, stylesheet, and JavaScript resources.
 
-在开始编码之前，我们可以粗略地作出我们应用的布局。打开任意你喜欢的文本编辑器，新建一个文件，并命名为`index.html`。这个文件将会包含我们整个应用的HTML模板并请求图片、样式表和Javascript资源。
+在开始编码之前，我们可以粗略地作出我们应用的布局。打开任意你喜欢的文本编辑器，新建一个文件，并命名为 `index.html` 。这个文件将会包含我们整个应用的HTML模板并请求图片、样式表和Javascript资源。
 
 To start, add the following text to `index.html`:
 
-开始了，将下列文字加到`index.html`里：
+开始了，将下列文字加到 `index.html` 里：
 
 ```html
 <!doctype html>
@@ -77,11 +77,11 @@ To start, add the following text to `index.html`:
 
 The associated [stylesheet](http://emberjs.com.s3.amazonaws.com/getting-started/style.css) and [background image](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png) for this project should be downloaded and placed in the same directory as `index.html`
 
-和这个页面相关的[stylesheet](http://emberjs.com.s3.amazonaws.com/getting-started/style.css)和[background image](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png)要放在与`index.html`相同的目录下。
+和这个页面相关的[stylesheet](http://emberjs.com.s3.amazonaws.com/getting-started/style.css)和[background image](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png)要放在与 `index.html` 相同的目录下。
 
 Open `index.html` in your web browser to ensure that all assets are loading correctly. You should see the TodoMVC application with three hard-coded `<li>` elements where the text of each todo will appear.
 
-在浏览器中打开`index.html`以确保所有的`assets`正确加载。这时你应该能够看见TodoMVC应用已经有三条我们采用硬编码（`hard-coded`）方式写上去的`<li>`，每个`<li>`显示的就是这条todo的要显示的内容了。
+在浏览器中打开 `index.html` 以确保所有的 `assets` 正确加载。这时你应该能够看见TodoMVC应用已经有三条我们采用硬编码（`hard-coded`）方式写上去的 `<li>` ，每个 `<li>` 显示的就是这条todo的要显示的内容了。
 
 ### Live Preview
 ### 在线演示

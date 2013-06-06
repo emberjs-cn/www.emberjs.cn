@@ -10,11 +10,11 @@ Next, we will create an Ember.js application, a route ('`/`'), and convert our s
 
 Inside your `js` directory, add a file for the application at `js/application.js` and a file for the router at `js/router.js`. You may place these files anywhere you like (even just putting all code into the same file), but this guide will assume you have separated them into their own files and named them as indicated.
 
-在`js`目录下，为应用添加一个`js/application.js`文件，为路由添加一个`js/router.js`文件。你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。
+在 `js` 目录下，为应用添加一个 `js/application.js` 文件，为路由添加一个 `js/router.js` 文件。你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。
 
 Inside `js/application.js` add the following code:
 
-在`js/application.js`文件中添加如下代码：
+在 `js/application.js` 文件中添加如下代码：
 
 ```javascript
 window.Todos = Ember.Application.create();
@@ -22,11 +22,11 @@ window.Todos = Ember.Application.create();
 
 This will create a new instance of `Ember.Application` and make it available as a variable within your browser's JavaScript environment.
 
-这会创建一个`Ember.Application`的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
+这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
 
 Inside `js/router.js` add the following code:
 
-在`js/router.js`文件中添加如下代码：
+在 `js/router.js` 文件中添加如下代码：
 
 ```javascript
 Todos.Router.map(function () {
@@ -36,11 +36,11 @@ Todos.Router.map(function () {
 
 This will tell Ember.js to detect when the application's URL matches `'/'` and to render the `todos` template.
 
-这会告诉Ember.js，当应用的URL与`'/'`匹配时，渲染（render）`todos`模板。
+这会告诉Ember.js，当应用的URL与 `'/'` 匹配时，渲染（render） `todos` 模板。
 
 Next, update your `index.html` to wrap the inner contents of `<body>` in a Handlebars script tag and include `js/application.js` and `js/router.js`:
 
-接着，更新`index.html`里的代码，将`<body>`里的内容包在一个Handlebars的`<script>`标签中，并引用`js/application.js`和`js/router.js`
+接着，更新 `index.html` 里的代码，将 `<body>` 里的内容包在一个Handlebars的 `<script>` 标签中，并引用 `js/application.js` 和 `js/router.js`：
 
 ```html
 <!-- ... additional lines truncated for brevity ... -->

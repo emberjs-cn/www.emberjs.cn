@@ -20,11 +20,11 @@ TodoMVC包含了以下几个主要功能：
 
   1. It accepts text in an `<input>` for entry of new todos. Hitting `<return>` creates the new item and displays it in the list below.
 
-  1. 从一个`<input>`框接收文本作为新建todos的入口，当点击`<return>`时，创建一项，并在列表下方显示。
+  1. 从一个 `<input>` 框接收文本作为新建todos的入口，当点击 `<return>` 时，创建一项，并在列表下方显示。
 
   1. It provides a checkbox to toggle between complete and incomplete states for each todo. New todos start as incomplete.
 
-  1. 为每一个todo提供一个`checkbox`用于切换完成与未完成状态。新建的todo默认为未完成状态。
+  1. 为每一个todo提供一个 `checkbox` 用于切换完成与未完成状态。新建的todo默认为未完成状态。
 
   1. It display the number of incomplete todos and keeps this count updated as new todos are added and existing todos are completed.
 
@@ -44,15 +44,15 @@ TodoMVC包含了以下几个主要功能：
 
   1. It provide a checkbox to toggle all existing todos between complete and incomplete states. Further, when all todos are completed this checkbox becomes checked without user interaction.
 
-  1. 提供一个`checkbox`用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。
+  1. 提供一个 `checkbox` 用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。
 
   1. It allows a user to double click to show a textfield for editing a single todo. Hitting `<enter>` or moving focus outside of this textfield will persist the changed text.
 
-  1. 允许用户双击某一个todo，显示一个`textfield`用于修改这个todo。点击`<enter>`或者当鼠标焦点从这个`textfield`移除时，持久化更改的内容。
+  1. 允许用户双击某一个todo，显示一个 `textfield` 用于修改这个todo。点击 `<enter>` 或者当鼠标焦点从这个 `textfield` 移除时，持久化更改的内容。
 
   1. It retains a user's todos between application loads by using the browser's `localstorage` mechanism.
 
-  1. 使用`本地存储(localstorage)`机制保存用户的todos列表，在应用程序启动时重新加载。
+  1. 使用 `本地存储(localstorage)` 机制保存用户的todos列表，在应用程序启动时重新加载。
 
 You can interact with a completed version of the application by visiting the [the TodoMVC site](http://addyosmani.github.com/todomvc/).
 
