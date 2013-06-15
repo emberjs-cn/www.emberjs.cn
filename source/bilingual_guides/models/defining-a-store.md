@@ -18,7 +18,7 @@ your models. To do so, simply define a subclass of `DS.Store` on your
 
 ```js
 App.Store = DS.Store.extend({
-  revision: 12
+  revision: 13
 });
 ```
 
@@ -40,7 +40,7 @@ default `DS.RESTAdapter`, you would do so like this:
 
 ```js
 App.Store = DS.Store.extend({
-  revision: 12,
+  revision: 13,
   adapter: 'App.MyCustomAdapter'
 });
 ```

@@ -36,12 +36,11 @@ App.Router.map(function() {
 
 `{{linkTo}}`助手可以接收以下三个参数：
 
-* 路由名称。在上面例子中，可以是`index`, `photos`或者 `edit`。
-* 如果某个路由含有
-  [动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments),且有一个模型表示这个段。那么，默认情况下，`Ember.js`将会使用对象的`id`属性的值替换这个动态段。
+* 路由名称。在上面例子中，可以是`index`, `photos`或者 `photos.edit`。
+* 每个[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)最多对应一个模型。默认情况下，Ember.js将使用对应对象的`id`属性来替换动态段。
 * 此外，我们也可以提供一个链接名称绑定到`a`标签的`title`属性。
 
-### 多个上下文
+### 多动态段示例
 
 如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型，如下所示：
 
@@ -56,9 +55,9 @@ App.Router.map(function() {
 });
 ```
 
-`photoIndex`模板中的内容如下：
-
 ```handlebars
+<!-- photoIndex.handlebars -->
+
 <div class="photo">
   {{body}}
 </div>
@@ -66,7 +65,7 @@ App.Router.map(function() {
 <p>{{#linkTo photo.comment primaryComment}}Main Comment{{/linkTo}}</p>
 ```
 
-因为我们只提供了一个模型，所以链接将会使用当前照片的id作为动态段`:photo_id`的值。而`primaryComment`将成为`comment`路由处理器的新模型。
+如果只指定了一个模型，其将用于代表最内层的动态段`:comment_id`，而`:photo_id`将使用当前的`photo`对象。
 
 此外，你还可以同时给`{{linkTo}}`助手指定一张照片和一条评论，如下所示：
 
@@ -78,9 +77,4 @@ App.Router.map(function() {
 </p>
 ```
 
-在这个例子中，指定的模型将同时提供`:photo_id`和`:comment_id`。指定的`nextPhoto`将称为`photo`路由处理器的新模型，同时，`primaryComment`将成为`comment`路由处理器的新模型。
-
-如果要链接到一个新的URL地址，在下面两种情况下，路由将只执行它的处理器：
-
-* 处理器最近被激活，或者
-* 路由处理器的模型发生了变化
+在上述情况下，指定的模型将用来表示`:photo_id`和`:comment_id`。

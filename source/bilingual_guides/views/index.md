@@ -41,11 +41,11 @@ a button to delete that item:
 ![Todo List](/guides/views/images/todo-list.png)
 
 The view is responsible for turning a _primitive event_ (a click) into a
-_semantic event_: delete this todo! These semantic events are sent to
-your application's router, which is responsible for reacting to the
-event based on the current state of the application.
+_semantic event_: delete this todo! These semantic events are first
+sent up to the controller, or if no method is defined there, your application's 
+router, which is responsible for reacting to the event based on the 
+current state of the application.
 
-视图负责将一个 _原始事件_ (点击) 转换成一个 _语义化事件_：删除此`todo`！这些语义化事件会发送到你应用的路由，路由负责根据当前应用的状态响应该事件。
-
+视图负责将一个 _原始事件_ (点击) 转换成一个 _语义化事件_：删除此`todo`！这些语义化事件首先会发送给控制器，如果控制器没有定义相关的处理方法，那么会发送到应用的路由，路由负责根据当前应用的状态响应该事件。
 
 ![Todo List](/guides/views/images/primitive-to-semantic-event.png)

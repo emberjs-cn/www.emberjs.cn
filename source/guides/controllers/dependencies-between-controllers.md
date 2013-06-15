@@ -38,6 +38,7 @@ App.CommentsController = Ember.ArrayController.extend({
 
 ```javascript
 App.CommentsController = Ember.ArrayController.extend({
+  post: null,
   needs: "post",
   postBinding: "controllers.post"
 });

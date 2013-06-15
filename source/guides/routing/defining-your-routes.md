@@ -225,6 +225,27 @@ App.PostRoute = Ember.Route.extend({
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
+如果模型没有在url中使用`id`属性，那么应该在路由中定义一个序列化方法：
+
+```javascript
+App.Router.map(function() {
+  this.resource('post', {path: '/posts/:post_slug'});
+});
+
+App.PostRoute = Ember.Route.extend({
+  model: function(params) {
+    // the server returns `{ slug: 'foo-post' }`
+    return jQuery.getJSON("/posts/" + params.post_slug);
+  },
+
+  serialize: function(model) {
+    // this will make the URL `/posts/foo-post`
+    return { post_slug: model.slug };
+  }
+});
+```
+
+缺省的`serialize`方法将模型的`id`插入到路由的动态段中（上述的`:post_id`)。
 
 ### 嵌套资源
 

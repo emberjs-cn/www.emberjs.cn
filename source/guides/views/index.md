@@ -19,6 +19,6 @@
 
 ![Todo List](/guides/views/images/todo-list.png)
 
-视图负责将一个 _原始事件_ (点击) 转换成一个 _语义化事件_：删除此`todo`！这些语义化事件会发送到你应用的路由，路由负责根据当前应用的状态响应该事件。
+视图负责将一个 _原始事件_ (点击) 转换成一个 _语义化事件_：删除此`todo`！这些语义化事件首先会发送给控制器，如果控制器没有定义相关的处理方法，那么会发送到应用的路由，路由负责根据当前应用的状态响应该事件。
 
 ![Todo List](/guides/views/images/primitive-to-semantic-event.png)

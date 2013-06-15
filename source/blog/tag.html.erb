@@ -9,7 +9,12 @@ per_page: 12
 <% page_articles.each_with_index do |article, i| %>
   <article class="blog-post-summary">
     <h2><%= link_to article.title, article %> &ndash; <time><%= article.date.strftime('%b %d, %Y') %></time></span></h2>
+    <% if article.data.author %>
+      <h5 class="blog-post-summary-author">
+        撰写人： <%= article.data.author %>
+      </h5>
+    <% end%>
     <%= article.summary %>
-    <%= link_to "Read more...", article %>
+    <%= link_to "更多内容...", article %>
   </article>
 <% end %>
