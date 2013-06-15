@@ -209,12 +209,12 @@
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
 
-Understanding Ember.js:
+理解Ember.js:
   - title: "The View Layer"
     url: "understanding-ember/the-view-layer"
   - title: "Managing Asynchrony"
     url: "understanding-ember/managing-asynchrony"
-  - title: "Keeping Templates Up-to-Date"
+  - title: "模板自动更新"
     url: "understanding-ember/keeping-templates-up-to-date"
 
 #Understanding Ember Data:
