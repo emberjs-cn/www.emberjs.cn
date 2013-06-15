@@ -1,7 +1,13 @@
+英文原文：[http://emberjs.com/guides/object-model/what-do-i-use-when/](http://emberjs.com/guides/object-model/what-do-i-use-when/)
+
 ## What Do I Use When?
+
+## 如何选择？
 
 Sometimes new users are confused about when to use computed properties,
 bindings and observers. Here are some guidelines to help:
+
+刚刚接触Ember.js的用户常常为什么时候使用计算属性、绑定和观察器感到困惑。下面给出几条建议：
 
 1. Use *computed properties* to build a new property by synthesizing other
 properties. Computed properties should not contain application behavior, and
@@ -16,3 +22,9 @@ behavior after a binding has finished synchronizing.
 3. *Bindings* are most often used to ensure objects in two different layers
 are always in sync. For example, you bind your views to your controller using
 Handlebars.
+
+1. *计算属性*通常通过整合其他属性来构建新的属性。计算属性不应该包含任何应用行为，而且不应该在调用的时候产生任何副作用。除了在极少数的情况下，重复调用计算属性应该返回相同的结果（除非其依赖的属性发生了变化）。
+
+2. *观察器*应该包含能够针对其他属性的改变做出反应的行为。观察器最适合在一个绑定被同步后需要执行一些操作情况。
+
+3. *绑定*常用于确保两个不同层的对象之间的属性是否同步。例如，使用Handlebars绑定视图与控制器。
