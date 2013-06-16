@@ -210,9 +210,9 @@
     url: "configuring-ember/disabling-prototype-extensions"
 
 理解Ember.js:
-  - title: "The View Layer"
+  - title: "视图层"
     url: "understanding-ember/the-view-layer"
-  - title: "Managing Asynchrony"
+  - title: "管理异步"
     url: "understanding-ember/managing-asynchrony"
   - title: "模板自动更新"
     url: "understanding-ember/keeping-templates-up-to-date"
