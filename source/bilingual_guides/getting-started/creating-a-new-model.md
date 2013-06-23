@@ -99,6 +99,6 @@ Reload your web browser to ensure that all files have been referenced correctly 
   * [Naming Conventions Guide](/guides/concepts/naming-conventions)
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/39443bce54a8a7465221ae443b83d3c4a1e3980f)
-  * [Ember.TextField API文档](/guides/templates/handlebars-basics)
+  * [Ember.TextField API文档](http://emberjs.com/guides/templates/handlebars-basics)
   * [控制器指南](/guides/controllers)
   * [命名惯例指南](/guides/concepts/naming-conventions)
