@@ -74,10 +74,10 @@
 应用:
   - title: "介绍"
     url: "application"
-  - title: "应用模板"
-    url: "application/the-application-template"
 
 模板:
+  - title: "应用模板"
+    url: "templates/the-application-template"
   - title: "Handlebars基础"
     url: "templates/handlebars-basics"
   - title: "条件表达式"
@@ -208,6 +208,8 @@
 配置Ember.js:
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
+  - title: "Embedding Applications"
+    url: "configuring-ember/embedding-applications"
 
 理解Ember.js:
   - title: "视图层"

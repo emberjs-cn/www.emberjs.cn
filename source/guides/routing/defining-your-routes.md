@@ -29,11 +29,11 @@ App.Router.map(function() {
 （对于'/'来说，名字就是index）。
 
 ```handlebars
-{{#linkTo "index"}}<img class="logo">{{/linkTo}}
+{{#linkTo 'index'}}<img class="logo">{{/linkTo}}
 
 <nav>
-  {{#linkTo "about"}}About{{/linkTo}}
-  {{#linkTo "favorites"}}Favorites{{/linkTo}}
+  {{#linkTo 'about'}}About{{/linkTo}}
+  {{#linkTo 'favorites'}}Favorites{{/linkTo}}
 </nav>
 ```
 

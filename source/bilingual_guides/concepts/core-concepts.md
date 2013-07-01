@@ -1,6 +1,5 @@
 英文原文：[http://emberjs.com/guides/concepts/core-concepts/](http://emberjs.com/guides/concepts/core-concepts)
 
-
 ## 核心概念(Core Concepts)
 
 To get started with Ember.js, there are a few core concepts you
@@ -8,92 +7,67 @@ should understand.
 
 要开始学习Ember.js,首先要了解一些核心概念。
 
-We want developers to be able to build ambitiously large web
-applications that are competitive with native apps. To do that, they
-need both sophisticated tools *and* the right vocabulary of concepts to
-help them communicate and collaborate.
+Ember.js is designed to help developers build ambitiously large web
+applications that are competitive with native apps. Doing so requires
+both new tools and a new vocabulary of concepts. We've spent a lot of
+time borrowing ideas pioneered by native application frameworks like
+Cocoa and Smalltalk.
 
-我们希望开发者能够创建能与本地应用媲美的优秀的大型的web应用。要达到这种效果,
-他们需要强大的工具*和*准确的词汇概念以帮助他们沟通与合作。
+Ember.js的设计目标是能帮助广大开发者构建能与本地应用相颦美的大型Web应用。要实现这个目标需要新的工具和新的概念。我们花了很大的功夫从Cocoa、Smalltalk等本地应用框架引入了其优秀的理念。
 
-We've spent a lot of time borrowing liberally from ideas introduced
-by native application frameworks, like Cocoa. When we felt those
-concepts were more hindrance than help-–or didn't fit within the unique
-constraints of the web-–we turned to other popular open source projects
-like Ruby on Rails and Backbone.js for inspiration.
+However, it's important to remember what makes the web special. Many
+people think that something is a web application because it uses
+technologies like HTML, CSS and JavaScript. In reality, these are just
+implementation details.
 
-我们曾经花费了大量的时间借鉴一些本地应用开发框架的思想，例如Cocoa。但是当
-我们发现那些概念的羁绊多于约束，或者不适用于web开发的唯一性约束后，我们
-把目光转向了其他流行的开源项目，例如，Ruby on Rails以及Backbone.js。
+然而，记住Web的特殊性非常重要。很多人认为一个应用是Web应用是因为其使用了像HTML、CSS和Javascript这些技术。实际上，这只是实现的细节问题。
 
-Ember.js, therefore, is a synthesis of the powerful tools of our native
-forebears with the lightweight sensibilities of the modern web. 
+Instead, **the web derives its power from the ability to bookmark and
+share URLs.** URLs are the key feature that give web applications
+superior shareability and collaboration. Today, most JavaScript
+frameworks treat the URL as an afterthought, instead of the primary
+reason for the web's success.
 
-因此,Ember.js是结合了本地应用与现代web的轻量特性的一个强有力的工具。 
+相反，**Web应用是通过能收藏和分析链接来凸显它的作用的**。URL是Web应用的一个最核心的特性，正是URL使得Web应用有了卓越的可共享性和可协作性。现今，很多Javascript框架都是时候才考虑URL，没有考虑这个让Web成功的主要因素。
+
+Ember.js, therefore, marries the tools and concepts of native
+GUI frameworks with support for the feature that makes the web so
+powerful: the URL.
+
+Ember.js将本地GUI框架中的工具和概念与使得Web应用如此强大的URL嫁接在一起。
 
 ### 概念（Concepts）
 
 #### 模板（Templates)
 
 A **template**, written in the Handlebars templating language, describes
-the user interface of your application. In addition to plain HTML,
-templates can contain the following:
+the user interface of your application. Each template is backed by a
+model, and the template automatically updates itself if the model
+changes.
 
-**模板**， 是由Handlebars模板语言写成，它描述了一个应用程序的用户接口。
+In addition to plain HTML, templates can contain:
+
+**模板**，用Handlebars模板语言来编写，它描述了一个应用程序的用户接口。每个模板背后都有一个模型，当模型发生改变时，模板将自动进行更新。
+
 此外，相对于纯HTML，模板还提供了：
 
-* **Expressions**, like `{{firstName}}`, which take information from
-  controllers and models, place them into HTML, and automatically keep them
-  updated.
-* **表达式**, 例如 `{{firstName}}` , 它从控制器和模型接收数据，然后放
-  到HTML文件中，并且保持他们自动更新。
-* **Outlets**, which are placeholders for other templates. As your user
-  moves around your app, different templates can be plugged into the
+* **Expressions**, like `{{firstName}}`, which take information from the template's model and puts it into HTML.
+
+* **表达式**, 例如 `{{firstName}}` ,
+  它从模板对应的模型获取信息并将信息添加到HTML中。
+
+* **Outlets**, which are placeholders for other templates. As users
+  move around your app, different templates can be plugged into the
   outlet by the router. You can put outlets into your template using the
   `{{outlet}}` helper.
-* **出口**, 它是其他模板的占位符。当用户使用你的应用时，不
+
+* **出口（Outlets）**, 它是其他模板的占位符。当用户使用应用时，不
   同的模板会通过路由插入到出口中。你可以使用 `{{outlet}}` 助手将出口放到
   模板中去。
-* **Views**, which are responsible for handling user events. You can put
-  views into your templates using the `{{view}}` helper.
-* **视图**, 它负责处理用户事件。你可以使用`{{view}}`助手将视图放到模板中。
 
-#### 视图(Views)
+* **Components**, custom HTML elements that you can use to clean up repetitive templates or create reusable controls.
 
-A **view** is embedded inside a template and is responsible for
-translating _primitive events_ (like clicks, taps, and swipes) into
-_semantic events_ that have meaning to your application and are sent to
-the controller.
-
-一个**视图**被嵌入在一个模板中,它负责把 _原始事件_ (如点击,触摸,滑动)翻译
-成对你的应用程序有意义的 _语义事件_ ,然后将他们传输到控制器。
-
-For example, a view might translate a `click` event into the more
-meaningful `deleteItem` event, which would be sent to the controller.
-If the controller does not implement the `deleteItem` event, the event
-will be sent to the current route.
-
-例如，一个视图可能将一个`click`事件翻译成更有意义的`deleteItem`事件，
-然后将其发送给控制器。如果控制器没有实现`deleteItem`事件,事件将被发送给
-当前的路由。
-
-#### 控制器(Controllers)
-
-A **controller** is an object that stores _application state_. Templates
-are connected to controllers and translate the current state of the
-controller into HTML.
-
-**控制器**是存放 _应用程序状态_ 的对象。模板会与控制器进行连接并将控制器
-的状态转变为HTML。
-
-Controllers often act as representations of **models** for templates. In
-these cases, the controller passes the properties of the model to the
-template, and can transform or augment the model to present it in a way
-the template is expecting.
-
-控制器往往扮演为模板呈现**模型**的表现的角色。在这些情况下，控制器将模型的属性
-传递给模板，并且可以改变或增加模型来以一种模板期待的方式来表现模型。
-
+* **组件**，自定义的HTML元素，可以用来清理重复的模板或创建可重用的控件。
 
 #### 模型（Models）
 
@@ -102,56 +76,50 @@ data that your application operates on and what gives it value to your
 users.  These objects are usually loaded from your server, then saved
 back when changes are made on the client.
 
-**模型**是一个存储 _持久化状态_ 的对象。它是你的应用程序操作的数据，也是
-你返回给用户的值。这些对象通常从你的服务器进行加载，然后当它们在客户端被
-改变后会保存回服务器中。
+**模型**是一个存储 _持久化状态_
+的对象。它是应用将操作的数据，也是用来返回值给用户的数据。这些对象通常从服务器端加载，并当其在客户端发生改变后又保存到服务器端。
 
-Usually, you'll use Ember Data to translate the _raw JSON payloads_
-delivered by your API server into full-blown Ember.js objects with
-associations, computed properties, and more.
+#### 路由器（Router）
 
-通常情况下，你应该使用`Ember Data`去将你的API服务器传递的
-_原始JSON负载文件_ 转换成
-更为全面的`Ember.js`对象，它们有更好的关联性，计算属性及其他优点。
+The **router** translates a URL into a series of nested templates, each
+backed by a model. As the templates or models being shown to the user
+change, Ember automatically keeps the URL in the browser's address bar
+up-to-date.
 
-#### 路由(Router)
+**路由器**将URL转换为一系列内嵌的有模型数据支撑的模板。当显示给用户的模板和模型发生改变时，Ember自动更新浏览器地址栏中的URL。
 
-The **router** is the object responsible for _managing application state_.
+This means that, at any point, users are able to share the URL of your
+app. When someone clicks the link, they reliably see the same content
+as the original user.
+
+这意味着用户可以在任意点分享应用的URL。当某个用户点击了这个链接时，将看到与分享链接的用户看到的相同内容。
+
+#### 路由(Route)
+
+The **route** is the object responsible for _managing application state_.
 
 **路由**是 _负责管理应用程序状态_ 的对象。
 
-When your user starts your application, it will look at the URL and make
-sure that the right set of templates is displayed, as well as pairing
-those templates with the right model objects.
+#### 控制器(Controllers)
 
-当用户启动你的应用程序时，路由将查看URL并且确保显示正确的模板集，以及将
-那些模板与正确的模型对象配对。
+**controller** is an object that stores _application state_. A
+template can optionally have a controller in addition to a model, and
+can retrieve properties from both.
 
-As you move around the different states of your application, the
-router automatically keeps the URL up-to-date. Users can save the URL
-and re-enter the application at this state later, or share the app in
-its current state with others.
-
-当你在在应用程序中切换到不同的状态时，路由会自动更新URL。用户可以保存URL
-并且可以以后重新进入这个状态，或者与他人分享应用程序的当前状态。
+**控制器**是存放_应用状态_的对象。模板除模型之外还可以有一个控制器与之对应，使其可以从这两者获取属性。
 
 ---
 
 These are the core concepts you'll need to understand as you develop
-your Ember.js app. If you stick to these basics, we've designed the
-system to scale up in complexity, so that adding new functionality
-doesn't require you to go back and change the entire system.
+your Ember.js app. They are designed to scale up in complexity, so that
+adding new functionality doesn't force you to go back and refactor
+major parts of your app.
 
-以上这些是你在开发`Ember.js`应用时需要了解的核心概念。如果你信守这些概念，我们
-已经设计了能成比例增加复杂性的系统，以至于当你要增加新功能时就不需要重新改变
-整个系统
+以上这些是在开发`Ember.js`应用时需要了解的核心概念。Ember.js设计为可以弹性的处理复杂的问题，因此需要为应用增加新功能、新特性时只需要改变很小的部分。
 
-We think it's important that multiple developers can look at a problem
-and, using the patterns of the framework, arrive at the same solution.
 Now that you understand the roles of these objects, you're equipped to
 dive deep into Ember.js and learn the details of how each of these
 individual pieces work.
 
-在我们看来一个很重要的方面是，当大多数开发人员遇到问题时,可以根据这个框架
-的某些模式解决问题。既然你已经理解了这些对象各自的角色，现在就已经可以深入到Ember.js
+现在你已经理解了这些对象各自的角色，可以开始深入到Ember.js
 的世界中，进一步了解这些部分如何工作的细节。

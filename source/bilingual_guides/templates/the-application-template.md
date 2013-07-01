@@ -10,9 +10,9 @@ your application starts.
 You should put your header, footer, and any other decorative content
 here. Additionally, you should have at least one `{{outlet}}`:
 a placeholder that the router will fill in with the appropriate
-template, based on the current state of the application.
+template, based on the current URL.
 
-你应该把你的header、footer和其他装饰性的内容放在应用模板里面。另外，应用模版中至少需要一个`{{outlet}}`占位符，以便路由能根据应用当前的状态将适当的模版渲染进来。
+你应该把你的header、footer和其他装饰性的内容放在应用模板里面。另外，应用模版中至少需要一个`{{outlet}}`占位符，以便路由能根据当前URL将适当的模版渲染进来。
 
 Here's an example template:
 

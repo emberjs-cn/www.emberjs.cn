@@ -1,21 +1,22 @@
+英文原文：[http://emberjs.com/guides/templates/actions/](http://emberjs.com/guides/templates/actions/)
+中英对照：[http://emberjs.c/bilingual_guides/templates/actions/](http://emberjs.cn/bilingual_guides/templates/actions/)
+
 ## Actions (The `{{action}}` Helper)
 
 ## 操作（{{action}}助手方法）
 
-You may want to trigger high level events in response to a simple user
-event (like a click).
+Your app will often need a way to let users interact with controls that
+change application state. For example, imagine that you have a template
+that shows a blog post, and supports expanding the post with additional
+information.
 
-你可能希望通过触发一个高层的事件来响应一个简单的用户操作（比如一次点击）。
+应用常常需要一种让用户通过控件进行交互来修改应用状态的方式。例如，有一个用来显示一篇博客的模板，并且支持展开查看博客更多的信息。
 
-In general, these events will manipulate some property on the
-controller, which will change the current template via bindings.
+You can use the `{{action}}` helper to make an HTML element clickable.
+When a user clicks the element, the named event will be sent to your
+application.
 
-通常，这些事件将修改控制器的某些属性，并且将通过绑定来改变当前的模板。
-
-For example, imagine that you have a template that shows a blog post,
-and supports expanding the post with additional information.
-
-比如，你有一个显示一条博文的模板，博文可以展开以显示更多的信息。
+那么可以使用`{{action}}`助手来使得一个HTML元素可以被点击。当用户点击这个元素时，一个命名事件将会被发送给应用。
 
 ```handlebars
 <!-- post.handlebars -->
@@ -26,16 +27,11 @@ and supports expanding the post with additional information.
 
 {{#if isExpanded}}
   <div class='body'>{{body}}</div>
-  <button {{action contract}}>Contract</button>
+  <button {{action 'contract'}}>Contract</button>
 {{else}}
-  <button {{action expand}}>Show More...</button>
+  <button {{action 'expand'}}>Show More...</button>
 {{/if}}
 ```
-
-In this case, the `post` controller would be an `Ember.ObjectController`
-whose `model` is an instance of `App.Post`.
-
-这种情况下，`post`控制器就是`Ember.ObjectController`，它的`model` 是`App.Post`的一个实例。
 
 ```js
 App.PostController = Ember.ObjectController.extend({
@@ -52,14 +48,85 @@ App.PostController = Ember.ObjectController.extend({
 });
 ```
 
-By default, the `{{action}}` helper triggers a method on the current
-controller. You can also pass parameter paths to the method. The following
-will call `controller.select( context.post )` when clicked:
+### Event Bubbling
 
-默认情况下， `{{action}}`助手方法在当前的控制器上触发一个方法。你还可以传递参数路径到这个方法。下面代码中的按钮在被点击时会调用`controller.select( context.post )`。
+By default, the `{{action}}` helper triggers a method on the template's
+controller, as illustrated above.
 
-```handlebars
-<p><button {{action "select" post}}>✓</button> {{post.title}}</p>
+缺省情况下，`{{action}}`助手触发模板控制器的一个方法（如上所述）。
+
+If the controller does not implement a method with the same name as the
+event, the event will be sent to the template's route.
+
+如果控制器没有实现一个与事件的同名方法，那么这个事件将被发送至模板对应的路由。
+
+Note that routes that handle events **must place event handlers inside
+an `events` hash**. Even if a route has a method with the same name as
+the event, it will not be triggered unless it is inside an `events`
+hash.
+
+注意路由处理事件**必须将事件处理器放置在`events`哈希中。尽管路由具有与事件相同名称的方法，这个方法也不会被触发。
+
+```js
+App.PostRoute = Ember.Route.extend({
+  events: {
+    expand: function() {
+      this.controllerFor('post').set('isExpanded', true);
+    },
+
+    contract: function() {
+      this.controllerFor('post').set('isExpanded', false);
+    }
+  }
+});
+```
+
+If neither the template's controller nor its associated route implement
+a handler, the event will continue to bubble to any parent routes.
+Finally, if an `ApplicationRoute` is defined, it will have an
+opportunity to handle the event.
+
+如果模板对应的控制器和关联的路由都没有实现事件处理器，这个事件将被冒泡到其父级的路由。如果应用定义了`ApplicationRoute`，这里是能处理该事件的最后地方。
+
+If a handler for the event is not implemented in the controller, the
+route, any parent routes, or the `ApplicationRoute`, an exception will
+be thrown.
+
+如果一个事件处理器在控制器、路由、任何父路由和`ApplicationRoute`中实现，那么应用会抛出一个异常。
+
+![事件冒泡（Event Bubbling）](/images/template-guide/event-bubbling.png)
+
+### Event Parameters
+
+### 事件参数
+
+You can optionally pass arguments to the event handler. Any values
+passed to the `{{action}}` helper after the event name will be passed
+to the handler as arguments.
+
+Ember.js支持传递参数给事件处理器。任何在事件名称之后传递给`{{action}}`助手的值，都会作为参数传递给事件处理器。
+
+For example, if the `post` argument was passed:
+
+例如，如果需要将`post`作为参数：
+ 
+ ```handlebars
+ <p><button {{action "select" post}}>✓</button> {{post.title}}</p>
+ ```
+ 
+The route's `select` event handler would be called with a single
+argument containing the post model:
+
+路由的`select`事件处理器被调用，并且将博客模型作为参数：
+
+```js
+App.PostController = Ember.ObjectController.extend({
+  events: {
+    select: function(post) {
+      console.log(post.get('title'));
+    }
+  }
+});
 ```
 
 ### Specifying the Type of Event
@@ -178,21 +245,3 @@ the `/posts` route, and another thing if you are inside of the `/about`
 route.
 
 上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 `/posts`路由中，你想在侧边栏创建一个按钮来完成某种操作，而在`/about`路由中时，此按钮却是做另外一件不同的事。
-
-### View Action Handling (Target)
-
-### 视图操作处理（目标）
-
-In some cases (when creating custom components) it may be necessary to
-handle actions in your view class. This can be done by specifying the
-target of your action.
-
-视图类有时候需要处理一些操作（比如当创建新的自定义组件时），那么可以通过指定操作的目标来实现。
-
-```handlebars
-<button {{action expand target="view"}}>Show More...</button>
-```
-
-Now the view will be checked to see if it can handle this action.
-
-如上，视图将被检测看是否能处理该操作。

@@ -17,7 +17,7 @@ App.Router.map(function() {
 
 <ul>
 {{#each photo in photos}}
-  <li>{{#linkTo photos.photo photo}}{{photo.title}}{{/linkTo}}</li>
+  <li>{{#linkTo 'photos.photo' photo}}{{photo.title}}{{/linkTo}}</li>
 {{/each}}
 </ul>
 ```
@@ -62,7 +62,7 @@ App.Router.map(function() {
   {{body}}
 </div>
 
-<p>{{#linkTo photo.comment primaryComment}}Main Comment{{/linkTo}}</p>
+<p>{{#linkTo 'photo.comment' primaryComment}}Main Comment{{/linkTo}}</p>
 ```
 
 如果只指定了一个模型，其将用于代表最内层的动态段`:comment_id`，而`:photo_id`将使用当前的`photo`对象。
@@ -71,7 +71,7 @@ App.Router.map(function() {
 
 ```handlebars
 <p>
-  {{#linkTo photo.comment nextPhoto primaryComment}}
+  {{#linkTo 'photo.comment' nextPhoto primaryComment}}
     Main Comment for the Next Photo
   {{/linkTo}}
 </p>
