@@ -208,7 +208,7 @@
 配置Ember.js:
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
-  - title: "Embedding Applications"
+  - title: "嵌入式应用"
     url: "configuring-ember/embedding-applications"
 
 理解Ember.js:
