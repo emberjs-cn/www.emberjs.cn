@@ -1,0 +1,41 @@
+---
+title: Ember.js 1.0.0-rc6发布
+tags: Recent Posts, Releases
+author: Tower He
+---
+
+Ember.js 1.0 RC6 发布，可以在官方网站[builds.emberjs.com](http://builds.emberjs.com)下载。本次发布主要有个大的更新：
+
+* 路由器更新
+* Ember组件
+
+***路由更新***
+
+最大的修改就是路由器更新（或“路由整容”），围绕两个方面的主要问题：第一是基于URL的转换与`transitionTo`的语义不一致。第二是异步支持不够好，使得很难在路由入口的地方实现一些禁止和延时的操作，比如身份验证和异步代码加载。
+
+Ember现在统一了URL改变和`transitionTo`的语义，并且采用了Promise来增强异步行为。
+
+此外，路由的转换被提升到最高级别，并且为其添加了新的钩子，可以实现禁止或者修饰转换：
+
+`willTransition`：无论什么时候一个转换将发生时将触发该钩子。
+`beforeModel`/`model`/`afterModel`：这些钩子在异步验证期间被触发。
+
+最后，还有一个`error`事件，当无论什么时候，如果出现拒绝的承诺或者在`beforeModel`/`model`/`afterModel`中有错误被抛出都会出发该事件。
+
+更多的关于路由新特性的介绍，请参看：
+
+* [新路由概述（Alex Matchneer六月在Ember
+  NYC见面会上）](https://machty.s3.amazonaws.com/ember-facelift-presentation/index.html#/1)
+* [使用实例](https://gist.github.com/machty/5647589)
+* [客户端身份验证（二）](http://www.embercasts.com/episodes/client-side-authentication-part-2)
+
+***Ember组件***
+
+另外一个重要的改变就是Ember组件，其采用了Web组件的推动创建高层次的可重用的页面元素目标。
+
+Ember组件由一个`模板`和一个`视图`构成，其封装了`模板`的属性的访问和操作。所有外部构建的引用通过传递给`视图`的上下文信息来处理。组件可以通过自定义子类来实现。
+
+Ember组件命名惯例：
+
+1）`模板`名以'components/'开头；
+2）组件名称必须包含'-'（这与Web组件标准保持一致，可以避免与包裹HTML元素的内置控件发生冲突）。例如，一个组件可能被命名为`'radio-button'`。它的`模板`就是`'components/radio-button'`，在其他的`模板`中用`{{radio-button}}`调用。
