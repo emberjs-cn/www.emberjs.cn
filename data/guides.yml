@@ -160,8 +160,8 @@
     url: "models/model-lifecycle"
     warning: "ember-data"
   - title: "The Fixture Adapter"
-      url: "models/the-fixture-adapter"
-      warning: "ember-data"
+    url: "models/the-fixture-adapter"
+    warning: "ember-data"
   - title: "REST适配器"
     url: "models/the-rest-adapter"
     warning: "ember-data"
@@ -224,7 +224,7 @@ Testing:
     url: "understanding-ember/managing-asynchrony"
   - title: "模板自动更新"
     url: "understanding-ember/keeping-templates-up-to-date"
-  - title: "Debugging"
+  - title: "调试"
     url: "understanding-ember/debugging"
 
 #Understanding Ember Data:
