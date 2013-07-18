@@ -5,7 +5,7 @@ def git_initialize(repository)
   unless File.exist?(".git")
     system "git init"
     system "git remote add origin https://github.com/emberjs-cn/#{repository}.git"
-    system "git remote add menglifang git@gitlab.menglifang.org:opensource/emberjs-cn.git"
+    system "git remote add menglifang http://gitlab.menglifang.org/opensource/emberjs-cn.git"
   end
 end
 
