@@ -1,4 +1,5 @@
 英文原文：[http://emberjs.com/guides/understanding-ember/debugging/](http://emberjs.com/guides/understanding-ember/debugging/)
+
 中英对照：[http://emberjs.cn/bilingual_guides/understanding-ember/debugging/](http://emberjs.cn/bilingual_guides/understanding-ember/debugging/)
 
 ### 调试Ember和Ember Data
