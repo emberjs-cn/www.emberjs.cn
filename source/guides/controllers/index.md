@@ -94,7 +94,7 @@ controller}}`来直接遍历控制器。这样模板不需要知道控制器是�
 ```handlebars
 <!-- application.handlebars -->
 <header>
-  {{view Ember.TextField valueBinding="search" action="query"}}
+  {{input type="text" value=search action="query"}}
 </header>
 
 {{outlet}}

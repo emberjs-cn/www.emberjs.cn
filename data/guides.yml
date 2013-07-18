@@ -159,6 +159,9 @@
   - title: "模型生命周期"
     url: "models/model-lifecycle"
     warning: "ember-data"
+  - title: "The Fixture Adapter"
+      url: "models/the-fixture-adapter"
+      warning: "ember-data"
   - title: "REST适配器"
     url: "models/the-rest-adapter"
     warning: "ember-data"
@@ -205,6 +208,9 @@
 枚举:
   - title: "介绍"
     url: "enumerables"
+Testing:
+  - title: "Integration Testing"
+    url: "testing/integration"
 配置Ember.js:
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
@@ -218,6 +224,8 @@
     url: "understanding-ember/managing-asynchrony"
   - title: "模板自动更新"
     url: "understanding-ember/keeping-templates-up-to-date"
+  - title: "Debugging"
+    url: "understanding-ember/debugging"
 
 #Understanding Ember Data:
   #- title: "Record Lifecycle"

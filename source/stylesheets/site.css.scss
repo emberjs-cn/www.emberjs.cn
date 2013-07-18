@@ -1172,6 +1172,9 @@ body.community #content {
     table {
       margin: 2em auto;
     }
+    .inline_list a:first-child {
+      margin-left: 20px;
+    }
   }
 }
 

@@ -41,27 +41,29 @@ App.PostController = Ember.ObjectController.extend({
 
 缺省情况下，`{{action}}`助手触发模板控制器的一个方法（如上所述）。
 
-如果控制器没有实现一个与事件的同名方法，那么这个事件将被发送至模板对应的路由。
+如果控制器没有实现一个与事件的同名方法，那么这个事件将被发送至路由，这样当前处于激活状态的叶节点路由可以处理该事件。
 
-注意路由处理事件**必须将事件处理器放置在`events`哈希中。尽管路由具有与事件相同名称的方法，这个方法也不会被触发。
+路由处理事件**必须将事件处理器放置在`events`哈希中。尽管路由具有与事件相同名称的方法，这个方法也不会被触发。
 
 ```js
 App.PostRoute = Ember.Route.extend({
   events: {
     expand: function() {
-      this.controllerFor('post').set('isExpanded', true);
+      this.controller.set('isExpanded', true);
     },
 
     contract: function() {
-      this.controllerFor('post').set('isExpanded', false);
+      this.controller.set('isExpanded', false);
     }
   }
 });
 ```
 
+正如在上例中所示，事件处理器在执行的时候被调用，`this`是路由的实例，而非`events`这个哈希。
+
 如果模板对应的控制器和关联的路由都没有实现事件处理器，这个事件将被冒泡到其父级的路由。如果应用定义了`ApplicationRoute`，这里是能处理该事件的最后地方。
 
-如果一个事件处理器在控制器、路由、任何父路由和`ApplicationRoute`中实现，那么应用会抛出一个异常。
+当一个操作被触发时，如果在控制器中没有实现对应的事件处理器，当前路由或当前路由的任意一个父节点也没有实现时，将抛出一个错误。
 
 ![事件冒泡](/images/template-guide/event-bubbling.png)
 
@@ -79,10 +81,8 @@ Ember.js支持传递参数给事件处理器。任何在事件名称之后传递
 
 ```js
 App.PostController = Ember.ObjectController.extend({
-  events: {
-    select: function(post) {
-      console.log(post.get('title'));
-    }
+  select: function(post) {
+    console.log(post.get('title'));
   }
 });
 ```
@@ -107,11 +107,11 @@ App.PostController = Ember.ObjectController.extend({
 
 ### 指定在白名单中的辅助键
 
-默认情况下，`{{action}}`助手方法会忽略掉用户点击时同时按下的辅助键。你可以通过提供一个`allowed-keys`的选项来指定哪些键按下时不会被忽略掉。
+默认情况下，`{{action}}`助手方法会忽略掉用户点击时同时按下的辅助键。你可以通过提供一个`allowedKeys`的选项来指定哪些键按下时不会被忽略掉。
 
 ```handlebars
 <script type="text/x-handlebars" data-template-name='a-template'>
-  <div {{action anActionName allowed-keys="alt"}}>
+  <div {{action anActionName allowedKeys="alt"}}>
     click me
   </div>
 </script>
