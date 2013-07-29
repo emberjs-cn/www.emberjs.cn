@@ -36,7 +36,7 @@ App.ClickableView = Ember.View.extend({
 });
 ```
 
-如果控制器有一个叫`turnInUp`的方法，它将会被调用：
+如果控制器有一个叫`turnItUp`的方法，它将会被调用：
 
 
 ```javascript
