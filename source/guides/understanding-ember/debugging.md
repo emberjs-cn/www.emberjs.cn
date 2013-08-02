@@ -10,7 +10,22 @@
 
 ```javascript
 window.App = Ember.Application.create({
-  LOG_TRANSITIONS: true,
+  LOG_TRANSITIONS: true
+});
+```
+#### 在日志中输入视图查询
+
+```javascript
+window.App = Ember.Application.create({
+  LOG_VIEW_LOOKUPS: true
+});
+```
+
+#### 在日志中记录自动生成的控制器
+
+```javascript
+window.App = Ember.Application.create({
+  LOG_ACTIVE_GENERATION: true
 });
 ```
 

@@ -69,16 +69,6 @@ In addition to plain HTML, templates can contain:
 
 * **组件**，自定义的HTML元素，可以用来清理重复的模板或创建可重用的控件。
 
-#### 模型（Models）
-
-A **model** is an object that stores _persistent state_. This is the
-data that your application operates on and what gives it value to your
-users.  These objects are usually loaded from your server, then saved
-back when changes are made on the client.
-
-**模型**是一个存储 _持久化状态_
-的对象。它是应用将操作的数据，也是用来返回值给用户的数据。这些对象通常从服务器端加载，并当其在客户端发生改变后又保存到服务器端。
-
 #### 路由器（Router）
 
 The **router** translates a URL into a series of nested templates, each
@@ -93,6 +83,25 @@ app. When someone clicks the link, they reliably see the same content
 as the original user.
 
 这意味着用户可以在任意点分享应用的URL。当某个用户点击了这个链接时，将看到与分享链接的用户看到的相同内容。
+
+#### 组件（Components）
+
+A **component** is a custom HTML tag whose behavior you implement using
+JavaScript and whose appearance you describe using Handlebars templates.
+They allow you to create reusable controls that can simplify your
+application's templates.
+
+**组件**是一个自定义的HTML标签，其行为用Javascript来实现，而显示使用Handlebars模板来描述。组件可以用来定义可重用的控件来简化应用的模板。
+
+#### 模型（Models）
+
+A **model** is an object that stores _persistent state_. This is the
+data that your application operates on and what gives it value to your
+users.  These objects are usually loaded from your server, then saved
+back when changes are made on the client.
+
+**模型**是一个存储 _持久化状态_
+的对象。它是应用将操作的数据，也是用来返回值给用户的数据。这些对象通常从服务器端加载，并当其在客户端发生改变后又保存到服务器端。
 
 #### 路由(Route)
 

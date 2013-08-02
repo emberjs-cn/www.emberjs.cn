@@ -189,7 +189,7 @@ App.Router.map(function() {
 ```js
 App.BlogPostsRoute = Ember.Route.extend({
   model: function() {
-    return App.BlogPost.all();
+    return App.BlogPost.find();
   }
 });
 ```

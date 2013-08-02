@@ -1,5 +1,7 @@
 英文原文：[http://emberjs.com/guides/understanding-ember/debugging/](http://emberjs.com/guides/understanding-ember/debugging/)
 
+中英对照：[http://emberjs.cn/bilingual_guides/understanding-ember/debugging/](http://emberjs.cn/bilingual_guides/understanding-ember/debugging/)
+
 ### Debugging Ember and Ember Data
 
 ### 调试Ember和Ember Data
@@ -14,7 +16,27 @@ Here are some tips you can use to help debug your Ember application.
 
 ```javascript
 window.App = Ember.Application.create({
-  LOG_TRANSITIONS: true,
+  LOG_TRANSITIONS: true
+});
+```
+
+#### Log view lookups
+
+#### 在日志中输入视图查询
+
+```javascript
+window.App = Ember.Application.create({
+  LOG_VIEW_LOOKUPS: true
+});
+```
+
+#### LOG generated controller 
+
+#### 在日志中记录自动生成的控制器
+
+```javascript
+window.App = Ember.Application.create({
+  LOG_ACTIVE_GENERATION: true
 });
 ```
 
