@@ -127,18 +127,18 @@
   #- title: "Nested Routes"
     #url: "routing/nested-routes"
 
-Components:
-  - title: "Introduction"
+组件:
+  - title: "介绍"
     url: "components"
-  - title: "Defining a Component"
+  - title: "定义组件"
     url: "components/defining-a-component"
-  - title: "Passing Properties to a Component"
+  - title: "传递属性"
     url: "components/passing-properties-to-a-component"
-  - title: "Wrapping Content in a Component"
+  - title: "包裹内容"
     url: "components/wrapping-content-in-a-component"
-  - title: "Customizing a Component's Element"
+  - title: "自定义组件元素"
     url: "components/customizing-a-components-element"
-  - title: "Handling User Interaction with Actions"
+  - title: "使用Action处理用户交互"
     url: "components/handling-user-interaction-with-actions"
 
 控制器:
