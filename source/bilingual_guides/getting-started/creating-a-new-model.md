@@ -26,7 +26,7 @@ Additionally, we connect user interaction (pressing the `<enter>` key) to a meth
 
 另外，我们还将使用模板控制器的`createTodo`方法来处理用户交互（按下`<enter>`键）。
 
-Because we have not needed custom controller behavior until this point, Ember.js provided a default controller object for this template. To handle our new behavior, we can implement the controller class Ember.js expects to find [according to its naming conventions](/guides/concepts/naming-conventions) and add our custom behavior. This new controller class will automatically be associated with this template for us.
+Because we have not needed a custom controller behavior until this point, Ember.js provided a default controller object for this template. To handle our new behavior, we can implement the controller class Ember.js expects to find [according to its naming conventions](/guides/concepts/naming-conventions) and add our custom behavior. This new controller class will automatically be associated with this template for us.
 
 因此目前我们并不需要自定义控制器行为，Ember.js为模板提供了一个缺省的控制器。为了处理新的行为，我们可以实现一个Ember可以根据[命名惯例](/guides/concepts/naming-conventions)找到，并能添加自定义行为的控制器。这个新控制器类将自动的关联到该模板。
 

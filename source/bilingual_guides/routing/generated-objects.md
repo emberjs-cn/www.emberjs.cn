@@ -86,7 +86,7 @@ a view will be generated for you.
 
 A generated template is empty.
 If it's a resource template, the template will simply act
-as an `outlet` so that nested routes can be seemlessly inserted.  It is equivalent to:
+as an `outlet` so that nested routes can be seamlessly inserted.  It is equivalent to:
 
 一个生成的模板是空的。
 如果它是个资源模板，基本上它像一个出口（`outlet`）一样，以便嵌套的路由可以无缝的插入。

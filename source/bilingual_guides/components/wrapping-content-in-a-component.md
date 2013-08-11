@@ -30,9 +30,9 @@ in another template:
 
 <a class="jsbin-embed" href="http://jsbin.com/obogub/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
-(See [Passing Properties to a Component](/guides/components/passing-proprties-to-a-component/) for more.)
+(See [Passing Properties to a Component](/guides/components/passing-properties-to-a-component/) for more.)
 
-（关于如何传递属性给组件，请参看[Passing Properties to a Component](/guides/components/passing-proprties-to-a-component/)）
+（关于如何传递属性给组件，请参看[Passing Properties to a Component](/guides/components/passing-properties-to-a-component/)）
 
 In this case, the content we wanted to display came from the model. But
 what if we want the developer using our component to be able to provide custom

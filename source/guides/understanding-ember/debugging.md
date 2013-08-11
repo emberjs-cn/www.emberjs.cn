@@ -32,7 +32,7 @@ window.App = Ember.Application.create({
 #### 在日志中输出对象绑定
 
 ```javascript
-Ember.LOG_BINDING = true
+Ember.LOG_BINDINGS = true
 ```
 
 #### 查看所有注册的路由
@@ -114,4 +114,18 @@ Ember.onerror = function(error) {
     otherInformation: 'exception message'
   });
 }
+```
+
+#### 引入控制台
+
+如果使用imports，需要引入控制台：
+
+```javascript
+Ember = {
+  imports: {
+    Handlebars: Handlebars,
+    jQuery: $,
+    console: window.console
+  }
+};
 ```

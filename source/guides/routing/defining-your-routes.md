@@ -332,3 +332,59 @@ App.Router.map(function() {
 
 `comments`模板会被渲染进`post`的出口。
 所有在`comments`下的模板（`comments/index` 和 `comments/new`）都会被渲染进`comments`出口。
+
+为了保护路由的命名空间，可以添加深层嵌套的资源：
+
+```javascript
+App.Router.map(function() {
+  this.resource('foo', function() {
+    this.resource('foo.bar', { path: '/bar' }, function() {
+      this.route('baz'); // This will be foo.bar.baz
+    });
+  });
+});
+```
+
+上面定义的路由器会创建如下路由：
+
+<div style="overflow: auto">
+  <table>
+    <thead>
+    <tr>
+      <th>URL</th>
+      <th>路由名称</th>
+      <th>控制器</th>
+      <th>路由</th>
+      <th>模板</th>
+    </tr>
+    </thead>
+    <tr>
+      <td><code>/</code></td>
+      <td><code>index</code></td>
+      <td><code>App.IndexController</code></td>
+      <td><code>App.IndexRoute</code></td>
+      <td><code>index</code></td>
+    </tr>
+    <tr>
+      <td><code>/foo</code></td>
+      <td><code>foo.index</code></td>
+      <td><code>App.FooIndexController</code></td>
+      <td><code>App.FooIndexRoute</code></td>
+      <td><code>foo/index</code></td>
+    </tr>
+    <tr>
+      <td><code>/foo/bar</code></td>
+      <td><code>foo.bar.index</code></td>
+      <td><code>App.FooBarIndexController</code></td>
+      <td><code>App.FooBarIndexRoute</code></td>
+      <td><code>foo/bar/index</code></td>
+    </tr>
+    <tr>
+      <td><code>/foo/bar/baz</code></td>
+      <td><code>foo.bar.baz</code></td>
+      <td><code>App.FooBarBazController</code></td>
+      <td><code>App.FooBarBazRoute</code></td>
+      <td><code>foo/bar/baz</code></td>
+    </tr>
+  </table>
+</div>

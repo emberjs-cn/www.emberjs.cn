@@ -50,3 +50,14 @@ App.SongsController = Ember.ArrayController.extend({
 
 {{longSongCount}} songs over 30 seconds.
 ```
+
+### 排序
+
+`Ember.ArrayController`使用`Ember.SortableMixin`来支持排序。为了支持排序，需要设置两个属性：
+
+```javascript
+App.SongsController = Ember.ArrayController.extend({
+  sortProperties: ['name', 'artist'],
+  sortAscending: true // false for descending
+});
+```

@@ -43,10 +43,6 @@ The partial's `data-template-name` must start with an underscore (e.g.
 
 Partial的`data-template-name`必须以下划线开头（例如：`data-template-name='_author'`或者`data-template-name='foo/_bar'`）
 
-Note: in cases where you may have used `{{template}}` in the past, you should likely use `{{partial}}` instead.
-
-注意：如果你之前用过 `{{template}}` 助手，那么，现在你应该使用 {{partial}}助手来代替它了。
-
 ### The `{{view}}` Helper
 
 ### `{{view}}` 助手

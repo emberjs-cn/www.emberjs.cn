@@ -21,7 +21,7 @@
 
 <a class="jsbin-embed" href="http://jsbin.com/obogub/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
-（关于如何传递属性给组件，请参看[Passing Properties to a Component](/guides/components/passing-proprties-to-a-component/)）
+（关于如何传递属性给组件，请参看[Passing Properties to a Component](/guides/components/passing-properties-to-a-component/)）
 
 在本例中，用于显示的内容来源于模型。那么如果开发者想使用该组件来提供自定义的HTML内容该怎么做呢？
 

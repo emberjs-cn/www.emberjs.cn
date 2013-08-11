@@ -68,3 +68,20 @@ Now we can use this property in our template:
 
 {{longSongCount}} songs over 30 seconds.
 ```
+
+### Sorting
+
+### 排序
+
+The `Ember.ArrayController` uses the `Ember.SortableMixin` to allow
+sorting of content. There are two properties that can be set in order to set up
+sorting:
+
+`Ember.ArrayController`使用`Ember.SortableMixin`来支持排序。为了支持排序，需要设置两个属性：
+
+```javascript
+App.SongsController = Ember.ArrayController.extend({
+  sortProperties: ['name', 'artist'],
+  sortAscending: true // false for descending
+});
+```
