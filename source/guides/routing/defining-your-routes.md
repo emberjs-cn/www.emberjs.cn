@@ -12,8 +12,11 @@ App.Router.map(function() {
 });
 ```
 
-当用户访问'/'时，Ember.js就会渲染`index`的模板。访问'/about'渲染`about`的模板，
-访问'/favs'渲染`favorites`的模板。
+现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
+
+<aside>
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）和`LoadingRoute`（用于Ajax请求）。详细的内容[如下所示](#toc_initial-routes)
+</aside>
 
 提示：如果路径（path）的名字跟路由（route）的名字是一样的话，你可以不用写上路径。
 所以下面的示例跟上面的是相同的。
@@ -388,3 +391,27 @@ App.Router.map(function() {
     </tr>
   </table>
 </div>
+
+### 初始路由
+
+一些路由在应用创建后便存在：
+
+  - 应用启动时，首先进入`App.ApplicationRoute`，它将渲染`application`模板。
+
+  - `App.IndexRoute`是默认路由，当用户访问`/`时，将渲染`index`模板（除非`/`被自定义的路由覆盖）。
+    
+  - 每次应用从一个路由切换到另一个路由，并包含一个承诺时，`App.LoadingRoute`渲染`loading`模板。例如：发起了一个AJAX请求。为了启用这个路由，需要在应用中重新定义一次：
+
+    ```js
+    // app.js
+    App.LoadingRoute = Ember.Route.extend({});
+
+    // index.html
+    <script type="text/x-handlebars" data-template-name="loading">
+      <h1>Loading...</h1>
+    </script>
+    ```
+
+    默认情况下，路由将模板追加到DOM`<body>`元素下。如果需要其他的行为，例如[渲染模板到一个命名outlet](http://emberjs.cn/guides/routing/rendering-a-template/)，重写`LoadingRoute`的`renderTemplate`方法。
+
+请记住，这些路由是每个应用的一部分，因此不需要在`App.Router.map`中指定。

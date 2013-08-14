@@ -17,12 +17,18 @@ App.Router.map(function() {
 });
 ```
 
-When the user visits `/`, Ember.js will render the `index` template.
-Visiting `/about` renders the `about` template, and `/favs` renders the
-`favorites` template.
+Now, when the user visits `/about`, Ember.js will render the `about` 
+template. Visiting `/favs` will render the `favorites` template.
 
-当用户访问'/'时，Ember.js就会渲染`index`的模板。访问'/about'渲染`about`的模板，
-访问'/favs'渲染`favorites`的模板。
+现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
+
+<aside>
+**Heads up!** You get a few routes for free: the `ApplicationRoute`,
+the `IndexRoute` (corresponding to the `/` path), and the `LoadingRoute` (useful for 
+AJAX requests). [See below](#toc_initial-routes) for more details.
+
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）和`LoadingRoute`（用于Ajax请求）。详细的内容[如下所示](#toc_initial-routes)
+</aside>
 
 Note that you can leave off the path if it is the same as the route
 name. In this case, the following is equivalent to the above example:
@@ -506,3 +512,47 @@ This router creates following routes:
     </tr>
   </table>
 </div>
+
+### Initial routes
+
+### 初始路由
+
+A few routes are immediately available within your application:  
+
+一些路由在应用创建后便存在：
+
+  - `App.ApplicationRoute` is entered when your app first boots up. It
+  renders the `application` template.  
+
+  - 应用启动时，首先进入`App.ApplicationRoute`，它将渲染`application`模板。
+
+  - `App.IndexRoute` is the default route, and will render the `index`
+  template when the user visits `/` (unless `/` has been overridden by your own custom route).  
+
+  - `App.IndexRoute`是默认路由，当用户访问`/`时，将渲染`index`模板（除非`/`被自定义的路由覆盖）。
+    
+  - `App.LoadingRoute` will render the `loading` template each time
+  your app transitions from one route to another that involves a promise - for example, during an AJAX request. To enable this route, redefine it within your app:
+
+  - 每次应用从一个路由切换到另一个路由，并包含一个承诺时，`App.LoadingRoute`渲染`loading`模板。例如：发起了一个AJAX请求。为了启用这个路由，需要在应用中重新定义一次：
+
+    ```js
+    // app.js
+    App.LoadingRoute = Ember.Route.extend({});
+
+    // index.html
+    <script type="text/x-handlebars" data-template-name="loading">
+      <h1>Loading...</h1>
+    </script>
+    ```
+
+    By default, the route will append the template to the `<body>`
+    element of the DOM. For different behavior, like [rendering the template to a named outlet](http://emberjs.com/guides/routing/rendering-a-template/),
+    override the `renderTemplate` method of the `LoadingRoute`.
+
+    默认情况下，路由将模板追加到DOM`<body>`元素下。如果需要其他的行为，例如[渲染模板到一个命名outlet](http://emberjs.cn/guides/routing/rendering-a-template/)，重写`LoadingRoute`的`renderTemplate`方法。
+
+Remember, these routes are part of every application, so you don't need
+to specify them in `App.Router.map`.
+
+请记住，这些路由是每个应用的一部分，因此不需要在`App.Router.map`中指定。

@@ -15,13 +15,16 @@ App.Router.map(function() {
 });
 ```
 
-如果你想`/posts/new` 这样的地址起作用，你可以用浏览器的[history](http://caniuse.com/history) API来知会路由器：
+如果你想`/posts/new` 这样的地址起作用，你可以用浏览器的[history](http://caniuse.com/history) API来知会路由器。
+
+需要注意服务器必须能接收Ember应用定义的所有路由。
 
 ```js
 App.Router.reopen({
   location: 'history'
 });
 ```
+
 最终，如果你一点儿都不想浏览器的URL地址与你的应用程序交互，你可以彻底地禁用掉地址API。这在测试环境里很适用，或者你想用路由来管理状态，但是暂时又不想路由把URL搞乱掉（比如你将你的程序嵌入到一个大的网页里的时候）。
 
 ```js
