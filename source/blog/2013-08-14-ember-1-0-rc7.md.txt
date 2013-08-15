@@ -1,0 +1,43 @@
+---
+title: Ember.js 1.0 RC7发布
+tags: Recent Posts, Releases
+author: Tower He
+---
+
+今天Ember.js 1.0 RC7发布了！如果一切顺利，这将是Ember 1.0的倒数第二个RC版本。RC7中修复了许多Bug，同时也包括了一些小的改进。另外还有一些Bug还在修正中，由于RC7已经逾期了，因此不等修正所有的Bug。下周将发布RC8，下面内容包含了本次发布做的一些修改。
+
+### 重要改变
+
+#### `Route#controllerFor`不再自动生成控制器
+
+有的时候，人们依赖`controllerFor`来访问没有进入过的路由的控制器，依赖其自动生成的功能。然而不幸地是这样经常会导致一些小问题。当进入一个路由时，Ember查找一个与其名字对应的控制器。如果控制器没有找到，Ember会根据路由的模型的类型为其生成一个。如果模型是一个数组，那么将生成一个`ArrayController`；如果是一个对象，那么则生成一个`ObjectController`；如果两者都不是，则生成一个标准`Controller`。在大多数情况下，当在路由之外使用`controllerFor`时，并没有提供一个模型，那么Ember会创建一个基础的`Controller`。如果之后进入到该路由，这个控制器不会被重新创建，那么控制器的类型就可能与提供的model不匹配。
+
+
+鉴于此，取消了`controllerFor`自动生成控制器的功能。在大多数应用中，这不会导致任何问题，但是如果之前依赖于这个行为，那么就需要更新应用。如果有一个控制器没有与一个路由关联，那么应该显示定义控制器的类，而不再依赖自动生成。
+
+#### 删除`old-router`
+
+Ember旧有的路由在第一个RC版本的时候就已经废除，并且不在被包含在标准RC中，但一些用户依然使用旧的路由。尽管这样，也是时候剪断这个联系了。越来越多新功能的增加，特别是容器，已经与旧的路由不兼容。因此，从Ember代码库中把旧路由的代码删除，不再支持自定义的Ember构建包含旧路由。强烈建议还在使用旧路由的用户升级到新的路由。不过如果有人对维护一个不依赖于Ember主库的旧路由库，可以告诉Ember开发团队。
+
+### 其他改变
+
+* **升级Handlebars版本至1.0.0** - Handlebars
+  1.0.0几乎与RC6同时发布。但是不幸的是之前并没有更新至1.0.0版本。
+
+* `mergedProperties` -
+  与`concatenatedProperties`类似但是是提供给对象的。其将两个基本对象的属性合并为一个对象。
+
+* **废除`template`，倾向`partial`** -
+  这两个方法存在重叠。最终定为`partial`并且不在需要一个基于下划线开头的名称。
+
+* **更新Backburner.js（Ember的RunLoop）-
+  修正了`debounce`添加`throttle`** -
+之前`Ember.run.debounce`实际上提供节流作用。`debounce`现在执行防抖，而节流行为被移至`Ember.run.throttle`。
+
+* 路由可以通过`controllerName`指定其控制器的类名。
+
+* 添加`Ember.Route#disconnectOutlet`，允许清楚之前渲染的outlet。
+
+* 为Router.map添加功能，允许其可以多次调用，不再覆盖之前的映射。允许在运行期添加路由。
+
+_更新：_之前建议在控制器没有关联到一个路由时，使用`Route#generateController`。现在建议显示的声明控制器的类来取代依赖生成。
