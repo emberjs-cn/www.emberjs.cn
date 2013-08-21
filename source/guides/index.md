@@ -1,5 +1,5 @@
 英文原文：[http://emberjs.com/guides/](http://emberjs.com/guides/)
-中英对照：[http://emberjs.com/guides/](http://emberjs.com/guides/)
+中英对照：[http://emberjs.cn/guides/](http://emberjs.cn/guides/)
 
 欢迎来到Ember.js指南！本指南将引领你从Ember.js的初学者变成Ember.js专家。本指南将从Ember.js基础开始，逐渐深入到更为复杂的概念，直至让你掌握了使用Ember.js来构建一个非凡的Web应用的所有技术。
 
