@@ -45,37 +45,38 @@ your application, simply send an event to the view's controller:
 
 为了让产生自`App.ClickableView`的事件对你的应用起到作用，很简单，向视图的控制器发送一个事件：
 
-````javascript
+```javascript
 App.ClickableView = Ember.View.extend({
   click: function(evt) {
     this.get('controller').send('turnItUp', 11); 
   }
 });
-````
+```
 
-If the controller has a method called `turnItUp`, it will be called:
+If the controller has an action handler called `turnItUp`, it will be called:
 
-如果控制器有一个叫`turnInUp`的方法，它将会被调用：
+如果控制器有一个叫`turnInUp`的操作处理器，它将会被调用：
 
-
-````javascript
+```javascript
 App.PlaybackController = Ember.ObjectController.extend({
-  turnItUp: function(level){
-    //Do your thing
+  actions: {
+    turnItUp: function(level){
+      //Do your thing
+    }
   }
 });
-````
+```
 
 If it doesn't, the message will be passed to the current route:
 
 如果没有，这条信息将会传到当前路由：
 
-````javascript
+```javascript
 App.PlaybackRoute = Ember.Route.extend({
-  events: {
+  actions: {
     turnItUp: function(level){
       //This won't be called if it's defined on App.PlaybackController
     }
   }
 });
-````
+```

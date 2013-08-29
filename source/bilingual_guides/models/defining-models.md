@@ -144,3 +144,30 @@ You can also specify an inverse on a `belongsTo`, which works how you'd
 expect.
 
 当然也可以在`belongsTo`一侧指定，它将按照预期那样工作。
+
+#### Embedded Objects
+
+#### 嵌套对象
+
+When you have a data structure where the embedded data doesn't use or
+need ids, you have to specify that the `belongsTo` relationship is
+contained by the `hasMany` relationship.
+
+当有数据结构的嵌套数据不使用或者需要IDS，必须指定`hasMany`包含的`belongsTo`。
+
+To do this, you need to extend the adapter that your app is using to
+load the data with the embedded structure.
+
+为了这样，需要扩展应用使用的适配器来加载包含嵌套结构的数据。
+
+```javascript
+App.Comment = DS.Model.extend({});
+
+App.Post = DS.Model.extend({
+  comments: DS.hasMany('App.Comment')
+});
+
+App.Adapter.map('App.Post', {
+  comments: { embedded: 'always' }
+});
+```

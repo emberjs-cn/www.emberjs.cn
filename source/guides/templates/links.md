@@ -1,6 +1,6 @@
 英文原文： [http://emberjs.com/guides/templates/links/](http://emberjs.com/guides/templates/links/)
 
-## 链接 (`{{linkTo}}`助手)
+## 链接 (`{{link-to}}`助手)
 
 你可以使用如下的方式创建一个指向一个路由的链接：
 
@@ -17,7 +17,7 @@ App.Router.map(function() {
 
 <ul>
 {{#each photo in photos}}
-  <li>{{#linkTo 'photos.photo' photo}}{{photo.title}}{{/linkTo}}</li>
+  <li>{{#link-to 'photos.photo' photo}}{{photo.title}}{{/link-to}}</li>
 {{/each}}
 </ul>
 ```
@@ -32,9 +32,9 @@ App.Router.map(function() {
 </ul>
 ```
 
-当被渲染的链接与当前路由匹配时，并且传入{{linkTo}}助手的是相同的对象实例，那么链接的class被设置为active。
+当被渲染的链接与当前路由匹配时，并且传入{{link-to}}助手的是相同的对象实例，那么链接的class被设置为active。
 
-`{{linkTo}}`助手可以接收以下三个参数：
+`{{link-to}}`助手可以接收以下三个参数：
 
 * 路由名称。在上面例子中，可以是`index`, `photos`或者 `photos.edit`。
 * 每个[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)最多对应一个模型。默认情况下，Ember.js将使用对应对象的`id`属性来替换动态段。
@@ -62,18 +62,18 @@ App.Router.map(function() {
   {{body}}
 </div>
 
-<p>{{#linkTo 'photo.comment' primaryComment}}Main Comment{{/linkTo}}</p>
+<p>{{#link-to 'photo.comment' primaryComment}}Main Comment{{/link-to}}</p>
 ```
 
 如果只指定了一个模型，其将用于代表最内层的动态段`:comment_id`，而`:photo_id`将使用当前的`photo`对象。
 
-此外，你还可以同时给`{{linkTo}}`助手指定一张照片和一条评论，如下所示：
+此外，你还可以同时给`{{link-to}}`助手指定一张照片和一条评论，如下所示：
 
 ```handlebars
 <p>
-  {{#linkTo 'photo.comment' nextPhoto primaryComment}}
+  {{#link-to 'photo.comment' nextPhoto primaryComment}}
     Main Comment for the Next Photo
-  {{/linkTo}}
+  {{/link-to}}
 </p>
 ```
 

@@ -57,7 +57,8 @@ API:
 
 ```js
 DS.RESTAdapter.configure("plurals", {
-  person: "people"
+  person: "people",
+  owner_reply: "owner_replies"
 });
 ```
 

@@ -81,10 +81,10 @@ as expected out of the box.
 
 Note: A route with a dynamic segment will only have its `model` hook called
 when it is entered via the URL. If the route is entered through a transition
-(e.g. when using the [linkTo][2] Handlebars helper), then a model context is
+(e.g. when using the [link-to][2] Handlebars helper), then a model context is
 already provided and the hook is not executed. Routes without dynamic segments
 will always execute the model hook.
 
-注意：一个具有动态段的路由只有在通过URL访问的时候，`model`钩子才会被调用。如果路由是从一个跳转进入的（例如：使用Handlebars的[linkTo][2]助手时），模型上下文已经准备好了，因此`model`钩子这时不会被执行。没有动态段的路由其`model`钩子每次都会被执行。
+注意：一个具有动态段的路由只有在通过URL访问的时候，`model`钩子才会被调用。如果路由是从一个跳转进入的（例如：使用Handlebars的[link-to][2]助手时），模型上下文已经准备好了，因此`model`钩子这时不会被执行。没有动态段的路由其`model`钩子每次都会被执行。
 
 [2]: /guides/templates/links

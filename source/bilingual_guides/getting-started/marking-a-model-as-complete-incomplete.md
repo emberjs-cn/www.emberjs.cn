@@ -12,17 +12,17 @@ In `index.html` update your template to wrap each todo in its own controller by 
 
 在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`Ember.Checkbox`：
 
-```javascript
-... additional lines truncated for brevity ...
-... 为保持代码简洁，在此省略了其他代码 ...
+```handlebars
+<!--- ... additional lines truncated for brevity ... --->
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... --->
 {{#each controller itemController="todo"}}
-  <li {{bindAttr class="isCompleted:completed"}}>
+  <li {{bind-attr class="isCompleted:completed"}}>
     {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
     <label>{{title}}</label><button class="destroy"></button>
   </li>
 {{/each}}
-... additional lines truncated for brevity ...
-... 为保持代码简洁，在此省略了其他代码 ...
+<!--- ... additional lines truncated for brevity ... --->
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... --->
 ```
 
 When this `Ember.Checkbox` is rendered it will ask for the current value of the controller's `isCompleted` property. When a user clicks this input, it will call the controller's `isCompleted` property with an argument of either `true` or `false` depending on the new checked value of the input.

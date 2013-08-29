@@ -35,7 +35,8 @@ REST适配器会自动发送一个`GET`请求到`/posts/1`。
 
 ```js
 DS.RESTAdapter.configure("plurals", {
-  person: "people"
+  person: "people",
+  owner_reply: "owner_replies"
 });
 ```
 

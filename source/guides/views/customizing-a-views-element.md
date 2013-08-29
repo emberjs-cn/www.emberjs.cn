@@ -154,7 +154,7 @@ App.MyView = Ember.View.extend({
 {{view App.InfoView class="info urgent"}}
 ```
 
-采用`classBinding`而不是`class`可以将样式名绑定到视图的一个属性。这与`bindAttr`的行为一致：
+采用`classBinding`而不是`class`可以将样式名绑定到视图的一个属性。这与`bind-attr`的行为一致：
 
 ```javascript
 App.AlertView = Ember.View.extend({

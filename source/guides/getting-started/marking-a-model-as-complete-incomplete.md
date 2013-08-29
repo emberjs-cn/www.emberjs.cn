@@ -6,15 +6,15 @@
 
 在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`Ember.Checkbox`：
 
-```javascript
-... 为保持代码简洁，在此省略了其他代码 ...
+```handlebars
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... --->
 {{#each controller itemController="todo"}}
-  <li {{bindAttr class="isCompleted:completed"}}>
+  <li {{bind-attr class="isCompleted:completed"}}>
     {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
     <label>{{title}}</label><button class="destroy"></button>
   </li>
 {{/each}}
-... 为保持代码简洁，在此省略了其他代码 ...
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... --->
 ```
 
 当`Ember.Checkbox`被渲染时，将询问控制器属性`isCompleted`属性的当前值是什么。当有用户点击了这个输入时，将调用控制器的`isCompleted`属性，参数是真或假依赖于输入的选中属性的值。

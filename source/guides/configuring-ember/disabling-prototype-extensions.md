@@ -20,8 +20,8 @@
 只要将`EXTEND_PROTOTYPES`标志为设为`false`即可。
 
 ```javascript
-window.Ember = {};
-Ember.EXTEND_PROTOTYPES = false;
+window.ENV = {};
+ENV.EXTEND_PROTOTYPES = false;
 ```
 
 需要注意的是，上面的代码必须在Ember.js加载 **之前** 运行。如果你在Ember.js运行了之后再设置此标志位，那么原生的原型就已经被修改过了。

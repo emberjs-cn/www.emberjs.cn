@@ -6,20 +6,63 @@
 
 下面是一些调试Ember应用的小技巧。
 
+另外，检出[ember-extension](https://github.com/tildeio/ember-extension)项目，ember-extension是一个Chrome开发工具，可以用来查看应用中的Ember对象。
+
+## 路由
+
 #### 在日志中输出路由转换信息
 
 ```javascript
 window.App = Ember.Application.create({
-  LOG_TRANSITIONS: true
+  // 基础日志，例如：'Transitioned into 'post'"
+  LOG_TRANSITIONS: true, 
+
+  // 更为详尽的日志，记录切换到一个路由时所有的内部步骤，包括：
+  // `beforeModel`，`model`和`afterModel`钩子，以及跳转和取消的切换的信息
+  LOG_TRANSITIONS_INTERNAL: true
 });
 ```
-#### 在日志中输入视图查询
+
+#### 查看所有注册的路由
+
+```javascript
+Ember.keys(App.Router.router.recognizer.names)
+```
+
+#### 获取当前路由名/路径
+
+Ember在`ApplicationController`中以`currentRouteName`和`currentPath`属性来记录当前路由和路径。`currentRouteName`的值（例如："comments.edit"）可以用来作为`transitionTo`和`{{linkTo}}`Handlebars助手的目标参数，`currentPath`完整表述了路由进入的整个路径（如：`"admin.posts.show.comments.edit"`）。
+
+## 视图/模板
+
+#### 在日志中输出视图查询
 
 ```javascript
 window.App = Ember.Application.create({
   LOG_VIEW_LOOKUPS: true
 });
 ```
+
+#### 通过DOM元素ID获取视图对象
+ 
+```javascript
+Ember.View.views['ember605']
+```
+
+#### 查看所有注册模板
+
+```javascript
+Ember.keys(Ember.TEMPLATES)
+```
+
+#### Handlebars调试助手
+
+```handlebars
+{{debugger}}
+{{log record}}
+```
+
+## 控制器
 
 #### 在日志中记录自动生成的控制器
 
@@ -29,23 +72,7 @@ window.App = Ember.Application.create({
 });
 ```
 
-#### 在日志中输出对象绑定
-
-```javascript
-Ember.LOG_BINDINGS = true
-```
-
-#### 查看所有注册的路由
-
-```javascript
- Ember.keys(App.Router.router.recognizer.names)
- ```
-
-#### 查看所有注册的模板
-
- ```javascript
-Ember.keys(Ember.TEMPLATES)
- ```
+## Ember Data
 
 #### 获取Ember Data记录的状态历史
 
@@ -53,23 +80,10 @@ Ember.keys(Ember.TEMPLATES)
 record.stateManager.get('currentPath')
 ```
 
-#### 通过生成的`div`的ID视图来获取视图对象
-
-```javascript
-Ember.View.views['ember605']
-```
-
 #### 在日志中输出状态转换
 
 ```javascript
 record.set("stateManager.enableLogging", true)
-```
-
-#### 查看容器中的实例
-
-```javascript
-App.__container__.lookup("controller:posts")
-App.__container__.lookup("route:application")
 ```
 
 #### 查看ember-data的标示符映射
@@ -85,10 +99,27 @@ App.__container__.lookup('store:main').recordCache[2].get('data.attributes')
 App.__container__.lookup('store:main').recordCache[2].get('comments')
 ```
 
+## 观察器/绑定
+
 #### 查看一个对象、键值的所有观察器
 
 ```javascript
 Ember.observersFor(comments, keyName);
+```
+
+#### 在日志中记录对象绑定
+
+```javascript
+Ember.LOG_BINDINGS = true
+```
+
+## 其他
+
+#### 查看容器中的实例
+
+```javascript
+App.__container__.lookup("controller:posts")
+App.__container__.lookup("route:application")
 ```
 
 #### 处理废弃信息
@@ -96,13 +127,6 @@ Ember.observersFor(comments, keyName);
 ```javascript
 Ember.ENV.RAISE_ON_DEPRECATION = true
 Ember.LOG_STACKTRACE_ON_DEPRECATION = true
-```
-
-#### Handlebars
-
-```handlebars
-{{debugger}}
-{{log record}}
 ```
 
 #### 实现一个`Ember.oneerror`钩子来记录生产环境下的所有错误

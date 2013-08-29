@@ -1,10 +1,10 @@
 英文原文： [http://emberjs.com/guides/templates/links/](http://emberjs.com/guides/templates/links/)
 
-## Links (The `{{linkTo}}` Helper)
+## Links (The `{{link-to}}` Helper)
 
-## 链接 (`{{linkTo}}`助手)
+## 链接 (`{{link-to}}`助手)
 
-You create a link to a route using the `{{linkTo}}` helper.
+You create a link to a route using the `{{link-to}}` helper.
 
 你可以使用如下的方式创建一个指向一个路由的链接：
 
@@ -21,7 +21,7 @@ App.Router.map(function() {
 
 <ul>
 {{#each photo in photos}}
-  <li>{{#linkTo 'photos.photo' photo}}{{photo.title}}{{/linkTo}}</li>
+  <li>{{#link-to 'photos.photo' photo}}{{photo.title}}{{/link-to}}</li>
 {{/each}}
 </ul>
 ```
@@ -41,9 +41,9 @@ rendered HTML would look something like this:
 
 When the rendered link matches the current route, and the same object instance is passed into the helper, then the link is given `class="active"`.
 
-当被渲染的链接与当前路由匹配时，并且传入{{linkTo}}助手的是相同的对象实例，那么链接的class被设置为active。
+当被渲染的链接与当前路由匹配时，并且传入{{link-to}}助手的是相同的对象实例，那么链接的class被设置为active。
 
-The `{{linkTo}}` helper takes:
+The `{{link-to}}` helper takes:
 
 * The name of a route. In this example, it would be `index`, `photos`, or
   `photos.edit`.
@@ -53,7 +53,7 @@ The `{{linkTo}}` helper takes:
   value of the corresponding object's `id` property.
 * An optional title which will be bound to the `a` title attribute
 
-`{{linkTo}}`助手可以接收以下三个参数：
+`{{link-to}}`助手可以接收以下三个参数：
 
 * 路由名称。在上面例子中，可以是`index`, `photos`或者 `photos.edit`。
 * 每个[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)最多对应一个模型。默认情况下，Ember.js将使用对应对象的`id`属性来替换动态段。
@@ -86,7 +86,7 @@ App.Router.map(function() {
   {{body}}
 </div>
 
-<p>{{#linkTo 'photo.comment' primaryComment}}Main Comment{{/linkTo}}</p>
+<p>{{#link-to 'photo.comment' primaryComment}}Main Comment{{/link-to}}</p>
 ```
 
 If you specify only one model, it will represent the innermost dynamic
@@ -96,13 +96,13 @@ segment `:comment_id`. The `:photo_id` segment will use the current photo.
 
 Alternatively, you could pass both a photo and a comment to the helper:
 
-此外，你还可以同时给`{{linkTo}}`助手指定一张照片和一条评论，如下所示：
+此外，你还可以同时给`{{link-to}}`助手指定一张照片和一条评论，如下所示：
 
 ```handlebars
 <p>
-  {{#linkTo 'photo.comment' nextPhoto primaryComment}}
+  {{#link-to 'photo.comment' nextPhoto primaryComment}}
     Main Comment for the Next Photo
-  {{/linkTo}}
+  {{/link-to}}
 </p>
 ```
 

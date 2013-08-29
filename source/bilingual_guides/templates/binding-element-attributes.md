@@ -15,7 +15,7 @@ to an image:
 
 ```handlebars
 <div id="logo">
-  <img {{bindAttr src="logoUrl"}} alt="Logo">
+  <img {{bind-attr src=logoUrl}} alt="Logo">
 </div>
 ```
 
@@ -29,28 +29,28 @@ This generates the following HTML:
 </div>
 ```
 
-If you use `{{bindAttr}}` with a Boolean value, it will add or remove
+If you use `{{bind-attr}}` with a Boolean value, it will add or remove
 the specified attribute. For example, given this template:
 
-如果你使用`{{bindAttr}}`绑定一个布尔类型的属性,
+如果你使用`{{bind-attr}}`绑定一个布尔类型的属性,
 它将增加或移除指定属性。例如下面的模板：
 
 ```handlebars
-<input type="checkbox" {{bindAttr disabled="isAdministrator"}}>
+<input type="checkbox" {{bind-attr disabled=isAdministrator}}>
 ```
 
-If `isAdministrator` is `true`, Handlebars will produce the following
+If `isAdministrator` is `false`, Handlebars will produce the following
 HTML element:
 
-如果`isAdministrator`的值是`true`，`Handlebars`将生成如下所示的HTML元素：
+如果`isAdministrator`的值是`false`，`Handlebars`将生成如下所示的HTML元素：
 
 ```html
 <input type="checkbox" disabled>
 ```
 
-If `isAdministrator` is `false`, Handlebars will produce the following:
+If `isAdministrator` is `true`, Handlebars will produce the following:
 
-否则，如果`isAdministrator`是`false`，生成的HTML元素如下：
+否则，如果`isAdministrator`是`true`，生成的HTML元素如下：
 
 ```html
 <input type="checkbox">

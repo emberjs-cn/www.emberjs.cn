@@ -21,10 +21,10 @@ existing page, or run alongside other JavaScript frameworks?
 ### 改变根元素
 
 By default, your application will render the [application
-template](/guides/application/the-application-template) and attach it to
+template](/guides/templates/the-application-template) and attach it to
 the document's `body` element.
 
-缺省情况下，应用将渲染[应用模板](/guides/application/the-appliation-template)到网页的`body`元素中。
+缺省情况下，应用将渲染[应用模板](/guides/templates/the-appliation-template)到网页的`body`元素中。
 
 You can tell the application to append the application template to a
 different element by specifying its `rootElement` property:

@@ -50,6 +50,6 @@ App.PostRoute = Ember.Route.extend({
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
-注意：一个具有动态段的路由只有在通过URL访问的时候，`model`钩子才会被调用。如果路由是从一个跳转进入的（例如：使用Handlebars的[linkTo][2]助手时），模型上下文已经准备好了，因此`model`钩子这时不会被执行。没有动态段的路由其`model`钩子每次都会被执行。
+注意：一个具有动态段的路由只有在通过URL访问的时候，`model`钩子才会被调用。如果路由是从一个跳转进入的（例如：使用Handlebars的[link-to][2]助手时），模型上下文已经准备好了，因此`model`钩子这时不会被执行。没有动态段的路由其`model`钩子每次都会被执行。
 
 [2]: /guides/templates/links

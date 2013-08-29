@@ -28,19 +28,19 @@ App.Router.map(function() {
 });
 ```
 
-在模板里面，你可以用{{linkTo}}来导向路由，这需要用到你在route方法中定义的名字
+在模板里面，你可以用{{link-to}}来导向路由，这需要用到你在route方法中定义的名字
 （对于'/'来说，名字就是index）。
 
 ```handlebars
-{{#linkTo 'index'}}<img class="logo">{{/linkTo}}
+{{#link-to 'index'}}<img class="logo">{{/link-to}}
 
 <nav>
-  {{#linkTo 'about'}}About{{/linkTo}}
-  {{#linkTo 'favorites'}}Favorites{{/linkTo}}
+  {{#link-to 'about'}}About{{/link-to}}
+  {{#link-to 'favorites'}}Favorites{{/link-to}}
 </nav>
 ```
 
-{{linkTo}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。
+{{link-to}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。
 
 你也可以通过创建一个`Ember.Route`的子类来对路由的行为进行自定义。例如，创建
 `App.IndexRoute`类来定义当用户访问'/'时会发生什么。
@@ -171,7 +171,7 @@ App.Router.map(function() {
 `ResourceRoute`，`RescourceController`和`resource`模板。
 
 一个资源下的嵌套路由的名字会是资源名加上路由名。如果你想跳转到一个路由（用`transitionTo`或
-`{{#linkTo}}`），请确保使用了完整的路由名（如：`post.new`，而不是`new`）。
+`{{#link-to}}`），请确保使用了完整的路由名（如：`post.new`，而不是`new`）。
 
 正如你期望的一样，访问`/`会渲染`index`模板。
 
@@ -243,7 +243,7 @@ App.PostRoute = Ember.Route.extend({
 
   serialize: function(model) {
     // this will make the URL `/posts/foo-post`
-    return { post_slug: model.slug };
+    return { post_slug: model.get('slug') };
   }
 });
 ```

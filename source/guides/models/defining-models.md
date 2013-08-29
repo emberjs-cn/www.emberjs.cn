@@ -102,3 +102,22 @@ App.Post = DS.Model.extend({
 ```
 
 当然也可以在`belongsTo`一侧指定，它将按照预期那样工作。
+
+
+#### 嵌套对象
+
+当有数据结构的嵌套数据不使用或者需要IDS，必须指定`hasMany`包含的`belongsTo`。
+
+为了这样，需要扩展应用使用的适配器来加载包含嵌套结构的数据。
+
+```javascript
+App.Comment = DS.Model.extend({});
+
+App.Post = DS.Model.extend({
+  comments: DS.hasMany('App.Comment')
+});
+
+App.Adapter.map('App.Post', {
+  comments: { embedded: 'always' }
+});
+```

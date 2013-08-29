@@ -26,7 +26,7 @@ Now that we need custom behavior (returning a specific set of models), we implem
 
 现在我们需要自定义的行为（返回一个指定的对象集合），因此我们实现了这个类，并为其添加了期望的行为。
 
-Update `index.html` to remove the static `<li>` elements with a Handlebars `{{each}}` helper and a dynamic `{{title}}` for each item.
+Update `index.html` to replace the static `<li>` elements with a Handlebars `{{each}}` helper and a dynamic `{{title}}` for each item.
 
 通过删除`index.html`中的静态元素`<li>`，用Handlebars的`{{each}}`助手和每项元素的动态`{{title}}`来替代。
 

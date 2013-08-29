@@ -23,12 +23,14 @@
 
 ```js
 App.PostSummaryComponent = Ember.Component.extend({
-  toggleBody: function() {
-    this.toggleProperty('isShowingBody');
+  actions: {
+    toggleBody: function() {
+      this.toggleProperty('isShowingBody');
+    }
   }
 });
 ```
-<a class="jsbin-embed" href="http://jsbin.com/uyibis/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/EWEQeKO/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 `{{action}}`助手可以接收参数，监听不同的事件类型，控制操作冒泡等等。
 

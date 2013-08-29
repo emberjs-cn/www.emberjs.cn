@@ -25,8 +25,8 @@ App.NavigationBarComponent = Ember.Component.extend({
 ```handlebars
 {{! templates/components/navigation-bar }}
 <ul>
-  <li>{{#linkTo 'home'}}Home{{/linkTo}}</li>
-  <li>{{#linkTo 'about'}}About{{/linkTo}}</li>
+  <li>{{#link-to 'home'}}Home{{/link-to}}</li>
+  <li>{{#link-to 'about'}}About{{/link-to}}</li>
 </ul>
 ```
 

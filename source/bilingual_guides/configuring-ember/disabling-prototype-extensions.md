@@ -52,8 +52,8 @@ To do so, simply set the `EXTEND_PROTOTYPES` flag to `false`:
 只要将`EXTEND_PROTOTYPES`标志为设为`false`即可。
 
 ```javascript
-window.Ember = {};
-Ember.EXTEND_PROTOTYPES = false;
+window.ENV = {};
+ENV.EXTEND_PROTOTYPES = false;
 ```
 
 Note that the above code must be evaluated **before** Ember.js loads. If

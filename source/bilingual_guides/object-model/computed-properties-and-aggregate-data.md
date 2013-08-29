@@ -15,7 +15,7 @@ Here's what that computed property might look like:
 下面是一个计算属性的示例：
 
 ```javascript
-App.TodosController = Ember.Object.extend({
+App.TodosController = Ember.Controller.extend({
   todos: [
     Ember.Object.create({ isDone: false })
   ],
@@ -72,3 +72,8 @@ todos.pushObject(todo);
 App.todosController.get('remaining');
 // 1
 ```
+
+Note that `@each` only works one level deep. You cannot use nested forms
+like `todos.@each.owner.name` or `todos.@each.owner.@each.name`.
+
+注意`@each`只工作在第一级。不能嵌套使用，如：`todos.@ech.owner.name`或者`todos.@each.owner.@each.name`

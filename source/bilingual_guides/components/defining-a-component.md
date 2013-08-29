@@ -60,7 +60,7 @@ created.
 通常情况下，组件只封装一些会被不停的重复使用的Handlebars模板片段。在这些情况下，不需要编写任何Javascript代码，只需要像之前所述，定义好Handlebars模板，就能使用组件了。
 
 If you need to customize the behavior of the component, however, you'll
-need to define a subclass of `Ember.Component. For example, you would
+need to define a subclass of `Ember.Component`. For example, you would
 need a custom subclass if you wanted to change a component's element,
 respond to actions from the component's template, or manually make
 changes to the component's element using JavaScript.

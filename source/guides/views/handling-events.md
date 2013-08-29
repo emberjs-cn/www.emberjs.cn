@@ -36,13 +36,15 @@ App.ClickableView = Ember.View.extend({
 });
 ```
 
-如果控制器有一个叫`turnItUp`的方法，它将会被调用：
+如果控制器有一个叫`turnItUp`的操作处理器，它将会被调用：
 
 
 ```javascript
 App.PlaybackController = Ember.ObjectController.extend({
-  turnItUp: function(level){
-    //Do your thing
+  actions: {
+    turnItUp: function(level){
+      //Do your thing
+    }
   }
 });
 ```
@@ -51,7 +53,7 @@ App.PlaybackController = Ember.ObjectController.extend({
 
 ```javascript
 App.PlaybackRoute = Ember.Route.extend({
-  events: {
+  actions: {
     turnItUp: function(level){
       //This won't be called if it's defined on App.PlaybackController
     }

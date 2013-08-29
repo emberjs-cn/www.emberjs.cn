@@ -18,9 +18,9 @@ TodoMVC包含了以下几个主要功能：
 
   1. 为用户提供一个todos的列表，并且会随着用户添加或移除todos进行增长与缩减。
 
-  1. It accepts text in an `<input>` for entry of new todos. Hitting `<return>` creates the new item and displays it in the list below.
+  1. It accepts text in an `<input>` for entry of new todos. Hitting the `<enter>` creates the new item and displays it in the list below.
 
-  1. 从一个 `<input>` 框接收文本作为新建todos的入口，当点击 `<return>` 时，创建一项，并在列表下方显示。
+  1. 从一个 `<input>` 框接收文本作为新建todos的入口，当点击 `<enter>` 时，创建一项，并在列表下方显示。
 
   1. It provides a checkbox to toggle between complete and incomplete states for each todo. New todos start as incomplete.
 
@@ -46,7 +46,7 @@ TodoMVC包含了以下几个主要功能：
 
   1. 提供一个 `checkbox` 用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。
 
-  1. It allows a user to double click to show a textfield for editing a single todo. Hitting `<enter>` or moving focus outside of this textfield will persist the changed text.
+  1. It allows a user to double click to show a textfield for editing a single todo. Hitting the `<enter>` or moving focus outside of this textfield will persist the changed text.
 
   1. 允许用户双击某一个todo，显示一个 `textfield` 用于修改这个todo。点击 `<enter>` 或者当鼠标焦点从这个 `textfield` 移除时，持久化更改的内容。
 

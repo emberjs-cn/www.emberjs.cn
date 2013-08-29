@@ -18,6 +18,7 @@ Ember Data 被设计成可配置的，无论你想要怎么样的持久层它都
 * [Development][development-build]
 * [Minified][minified-build]
  
+[emberdata]: https://github.com/emberjs/data
 [builds]: http://builds.emberjs.com
-[development-build]: http://builds.emberjs.com.s3.amazonaws.com/ember-data-latest.js
-[minified-build]: http://builds.emberjs.com.s3.amazonaws.com/ember-data-latest.min.js
+[development-build]: http://builds.emberjs.com/latest/ember-data.js
+[minified-build]: http://builds.emberjs.com/latest/ember-data.min.js

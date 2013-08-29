@@ -43,26 +43,26 @@ App.Router.map(function() {
 });
 ```
 
-Inside your templates, you can use `{{linkTo}}` to navigate between
+Inside your templates, you can use `{{link-to}}` to navigate between
 routes, using the name that you provided to the `route` method (or, in
 the case of `/`, the name `index`).
 
-在模板里面，你可以用{{linkTo}}来导向路由，这需要用到你在route方法中定义的名字
+在模板里面，你可以用{{link-to}}来导向路由，这需要用到你在route方法中定义的名字
 （对于'/'来说，名字就是index）。
 
 ```handlebars
-{{#linkTo 'index'}}<img class="logo">{{/linkTo}}
+{{#link-to 'index'}}<img class="logo">{{/link-to}}
 
 <nav>
-  {{#linkTo 'about'}}About{{/linkTo}}
-  {{#linkTo 'favorites'}}Favorites{{/linkTo}}
+  {{#link-to 'about'}}About{{/link-to}}
+  {{#link-to 'favorites'}}Favorites{{/link-to}}
 </nav>
 ```
 
-The `{{linkTo}}` helper will also add an `active` class to the link that
+The `{{link-to}}` helper will also add an `active` class to the link that
 points to the currently active route.
 
-{{linkTo}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。
+{{link-to}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。
 
 You can customize the behavior of a route by creating an `Ember.Route`
 subclass. For example, to customize what happens when your user visits
@@ -223,11 +223,11 @@ and `resource` template.
 
 Routes nested under a resource take the name of the resource plus their
 name as their route name. If you want to transition to a route (either
-via `transitionTo` or `{{#linkTo}}`, make sure to use the full route
+via `transitionTo` or `{{#link-to}}`, make sure to use the full route
 name (`posts.new`, not `new`).
 
 一个资源下的嵌套路由的名字会是资源名加上路由名。如果你想跳转到一个路由（用`transitionTo`或
-`{{#linkTo}}`），请确保使用了完整的路由名（如：`post.new`，而不是`new`）。
+`{{#link-to}}`），请确保使用了完整的路由名（如：`post.new`，而不是`new`）。
 
 Visiting `/` renders the `index` template, as you would expect.
 
@@ -346,7 +346,7 @@ App.PostRoute = Ember.Route.extend({
 
   serialize: function(model) {
     // this will make the URL `/posts/foo-post`
-    return { post_slug: model.slug };
+    return { post_slug: model.get('slug') };
   }
 });
 ```
@@ -441,7 +441,7 @@ This router creates five routes:
 </div>
 
 
-<small><sup>2</sup> :post_id is the post's id.  For a post with id = 1, the route will be:
+<small><sup>2</sup> `:post_id` is the post's id.  For a post with id = 1, the route will be:
 `/post/1`</small>
 
 <small><sup>2</sup> `:post_id`就是post的id。例如一个post的id是1，那么路由就是`/post/1`</small>

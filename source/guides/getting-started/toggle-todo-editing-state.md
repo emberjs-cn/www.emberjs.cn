@@ -9,7 +9,7 @@ TodoMVC支持用户通过双击每个待办事项来显示一个`<input>`文本�
 ```handlebars
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 {{#each controller itemController="todo"}}
-  <li {{bindAttr class="isCompleted:completed isEditing:editing"}}>
+  <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
     {{#if isEditing}}
       <input class='edit'>
     {{else}}
@@ -51,6 +51,6 @@ editTodo: function () {
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/7eb87f8f987714385e8381197ec7c77215df8cf9)
   * [Handlebars条件表达式指南](/guides/templates/conditionals)
-  * [bindAttr API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bindAttr)
+  * [bind-attr API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
   * [action API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)
-  * [Peter Wagenet编写的bind和bindAttr文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
+  * [Peter Wagenet编写的bind和bind-attr文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)

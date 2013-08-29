@@ -186,9 +186,9 @@ Here is a simple example:
   <img src="/images/view-guide/render-buffer.png">
 </figure>
 
-In addition to children (Strings and other `RenderBuffer`s), a `RenderBuffer` also encapsulates the element's tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using `bindAttr`), this makes the process robust and transparent.
+In addition to children (Strings and other `RenderBuffer`s), a `RenderBuffer` also encapsulates the element's tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using `bind-attr`), this makes the process robust and transparent.
 
-除了子视图之外（字符串或其他`RenderBuffer`），一个`RenderBuffer`还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用`bindAttr`），因此整个过程非常稳定且透明。
+除了子视图之外（字符串或其他`RenderBuffer`），一个`RenderBuffer`还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用`bind-attr`），因此整个过程非常稳定且透明。
 
 ##### 3. Element Creation and Insertion
 

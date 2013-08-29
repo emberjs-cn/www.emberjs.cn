@@ -10,7 +10,7 @@
 
 ### 改变根元素
 
-缺省情况下，应用将渲染[应用模板](/guides/application/the-appliation-template)到网页的`body`元素中。
+缺省情况下，应用将渲染[应用模板](/guides/templates/the-appliation-template)到网页的`body`元素中。
 
 通过指定`rootElement`属性可以将应用模板渲染到其他的元素中：
 

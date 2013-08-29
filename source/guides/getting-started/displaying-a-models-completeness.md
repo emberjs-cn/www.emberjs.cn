@@ -4,7 +4,7 @@ TodoMVC通过在`<li>`元素上应用了一个名为`completed`的CSS类来标�
 
 ```handlebars
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-<li {{bindAttr class="isCompleted:completed"}}>
+<li {{bind-attr class="isCompleted:completed"}}>
   <input type="checkbox" class="toggle">
   <label>{{title}}</label><button class="destroy"></button>
 </li>
@@ -21,5 +21,5 @@ TodoMVC通过在`<li>`元素上应用了一个名为`completed`的CSS类来标�
 ### 附加资源
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/72b1ccde5e157b20fcfe5da9bd52496e73533d47)
-  * [bindAttr API文档](/api/classes/Ember.Handlebars.helpers.html#method_bindAttr)
-  * [Peter Wagenet写的关于bind和bindAttr的文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
+  * [bind-attr API文档](/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
+  * [Peter Wagenet写的关于bind和bind-attr的文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)

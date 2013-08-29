@@ -1,4 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/actions/](http://emberjs.com/guides/templates/actions/)
+
 中英对照：[http://emberjs.c/bilingual_guides/templates/actions/](http://emberjs.cn/bilingual_guides/templates/actions/)
 
 ## 操作（{{action}}助手方法）
@@ -27,27 +28,29 @@ App.PostController = Ember.ObjectController.extend({
   // initial value
   isExpanded: false,
 
-  expand: function() {
-    this.set('isExpanded', true);
-  },
+  actions: {
+    expand: function() {
+      this.set('isExpanded', true);
+    },
 
-  contract: function() {
-    this.set('isExpanded', false);
+    contract: function() {
+      this.set('isExpanded', false);
+    }
   }
 });
 ```
 
-### 事件冒泡
+### 操作冒泡
 
 缺省情况下，`{{action}}`助手触发模板控制器的一个方法（如上所述）。
 
-如果控制器没有实现一个与事件的同名方法，那么这个事件将被发送至路由，这样当前处于激活状态的叶节点路由可以处理该事件。
+如果控制器没有实现一个与操作的同名方法，那么这个操作将被发送至路由，这样当前处于激活状态的叶节点路由可以处理该操作。
 
-路由处理事件**必须将事件处理器放置在`events`哈希中。尽管路由具有与事件相同名称的方法，这个方法也不会被触发。
+路由和控制器处理操作**必须将操作处理函数定义在`actions`哈希中**。即便一个路由有一个与操作同名的的方法，如果不定义在`ations`哈希中也不会被触发。对于一个控制器，强烈推荐将操作处理函数定义在`actions`哈希中来保证向前兼容。
 
 ```js
 App.PostRoute = Ember.Route.extend({
-  events: {
+  actions: {
     expand: function() {
       this.controller.set('isExpanded', true);
     },
@@ -59,17 +62,17 @@ App.PostRoute = Ember.Route.extend({
 });
 ```
 
-正如在上例中所示，事件处理器在执行的时候被调用，`this`是路由的实例，而非`events`这个哈希。
+正如在上例中所示，操作处理器在执行的时候被调用，`this`是路由的实例，而非`actions`这个哈希。
 
-如果模板对应的控制器和关联的路由都没有实现事件处理器，这个事件将被冒泡到其父级的路由。如果应用定义了`ApplicationRoute`，这里是能处理该事件的最后地方。
+如果模板对应的控制器和关联的路由都没有实现操作处理器，这个操作将被冒泡到其父级的路由。如果应用定义了`ApplicationRoute`，这里是能处理该操作的最后地方。
 
-当一个操作被触发时，如果在控制器中没有实现对应的事件处理器，当前路由或当前路由的任意一个父节点也没有实现时，将抛出一个错误。
+当一个操作被触发时，如果在控制器中没有实现对应的操作处理器，当前路由或当前路由的任意一个父节点也没有实现时，将抛出一个错误。
 
-![事件冒泡](/images/template-guide/event-bubbling.png)
+![操作冒泡（Action Bubbling）](/images/template-guide/action-bubbling.png)
 
-### 事件参数
+### 操作参数
 
-Ember.js支持传递参数给事件处理器。任何在事件名称之后传递给`{{action}}`助手的值，都会作为参数传递给事件处理器。
+Ember.js支持传递参数给操作处理器。任何在操作名称之后传递给`{{action}}`助手的值，都会作为参数传递给操作处理器。
 
 例如，如果需要将`post`作为参数：
  
@@ -77,12 +80,14 @@ Ember.js支持传递参数给事件处理器。任何在事件名称之后传递
  <p><button {{action "select" post}}>✓</button> {{post.title}}</p>
  ```
  
-路由的`select`事件处理器被调用，并且将博客模型作为参数：
+路由的`select`操作处理器被调用，并且将博客模型作为参数：
 
 ```js
 App.PostController = Ember.ObjectController.extend({
-  select: function(post) {
-    console.log(post.get('title'));
+  actions: {
+    select: function(post) {
+      console.log(post.get('title'));
+    }
   }
 });
 ```
@@ -126,10 +131,10 @@ App.PostController = Ember.ObjectController.extend({
 比如，你有一个链接包含一个**✗**按钮，你想保证这个按钮点击时，链接却不会被点击。
 
 ```handlebars
-{{#linkTo 'post'}}
+{{#link-to 'post'}}
   Post
   <button {{action close bubbles=false}}>✗</button>
-{{/linkTo}}
+{{/link-to}}
 ```
 
 没指定`bubbles=false`时，用户点击了按钮，Ember.js 就会触发操作，同时浏览器会将此点击事件传递到父级元素。
@@ -140,11 +145,11 @@ App.PostController = Ember.ObjectController.extend({
 
 如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
 
-在路由的`events`属性里定义操作。
+在路由的`actions`属性里定义操作。
 
 ```javascript
 App.PostsIndexRoute = Ember.Route.extend({
-  events: {
+  actions: {
     myCoolAction: function() {
       // do your business.
     }
@@ -153,3 +158,28 @@ App.PostsIndexRoute = Ember.Route.extend({
 ```
 
 上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 `/posts`路由中，你想在侧边栏创建一个按钮来完成某种操作，而在`/about`路由中时，此按钮却是做另外一件不同的事。
+
+### 指定目标
+
+在默认情况下，`{{action}}`助手将操作发送到视图的目标，通常是视图的控制器。（注意：Ember.Component默认的目标是组件自身。）
+
+使用`target`选项可以指定其他的目标。经常使用这个选项将目标指向视图而非控制器。
+
+```handlebars
+<p>
+  <button {{action "select" post target="view"}}>✓</button>
+  {{post.title}}
+</p>
+```
+
+这样应该在视图的`actions`哈希中处理。
+
+```javascript
+App.PostsIndexView = Ember.View.extend({
+  actions: {
+    select: function(post) {
+      // do your business.
+    }
+  }
+});
+```
