@@ -1,5 +1,5 @@
-# -*- encoding: utf-8 -*-
 require 'redcarpet'
+# -*- encoding: utf-8 -*-
 
 module TOC
   class << self
@@ -43,6 +43,8 @@ module TOC
         }
 
         entries.each do |entry|
+          next if entry[:skip_sidebar_item]
+
           current_segment = entry.url.split("/")[1]
 
           sub_current = if current_segment and current_segment == sub_url

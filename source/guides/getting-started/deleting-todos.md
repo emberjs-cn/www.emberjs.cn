@@ -16,11 +16,13 @@
 
 ```javascript
 // ... 为保持代码简洁，在此省略了其他代码 ...
-removeTodo: function () {
-  var todo = this.get('model');
-  todo.deleteRecord();
-  todo.save();
-},
+actions: {
+	removeTodo: function () {
+	  var todo = this.get('model');
+	  todo.deleteRecord();
+	  todo.save();
+	},
+}
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
 
@@ -32,9 +34,9 @@ removeTodo: function () {
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/asokal/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/eREkanA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 
-  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/dfffa6edfa98d8948715a755e04cd03890336969)
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/14e1f129f76bae8f8ea6a73de1e24d810678a8fe)
   * [action API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)

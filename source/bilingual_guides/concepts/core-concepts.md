@@ -51,7 +51,7 @@ In addition to plain HTML, templates can contain:
 
 此外，相对于纯HTML，模板还提供了：
 
-* **Expressions**, like `{{firstName}}`, which take information from the template's model and puts it into HTML.
+* **Expressions**, like `{{firstName}}`, which take information from the template's model and put it into HTML.
 
 * **表达式**, 例如 `{{firstName}}` ,
   它从模板对应的模型获取信息并将信息添加到HTML中。

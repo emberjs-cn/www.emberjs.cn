@@ -8,12 +8,12 @@ TodoMVC支持用户通过双击每个待办事项来显示一个`<input>`文本�
 
 ```handlebars
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#each controller itemController="todo"}}
+{{#each itemController="todo"}}
   <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
     {{#if isEditing}}
       <input class='edit'>
     {{else}}
-      {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
+      {{input type="checkbox" checked=isCompleted class="toggle"}}
       <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
     {{/if}}
   </li>
@@ -31,11 +31,12 @@ TodoMVC支持用户通过双击每个待办事项来显示一个`<input>`文本�
 
 ```javascript
 // ... 为保持代码简洁，在此省略了其他代码 ...
-isEditing: false,
-
-editTodo: function () {
-  this.set('isEditing', true);
+actions: {
+  editTodo: function () {
+    this.set('isEditing', true);
+  }
 },
+isEditing: false,
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
 
@@ -45,11 +46,11 @@ editTodo: function () {
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/ururuc/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/usiXemu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
   
 ### 附加资源
 
-  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/7eb87f8f987714385e8381197ec7c77215df8cf9)
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/616bc4f22900bbaa2bf9bdb8de53ba41209d8cc0)
   * [Handlebars条件表达式指南](/guides/templates/conditionals)
   * [bind-attr API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
   * [action API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)

@@ -22,6 +22,15 @@ activate :i18n, mount_as_root: 'zh-CN'
   #repo_url: 'https://github.com/emberjs/ember.js'
 
 ###
+# Build
+###
+
+configure :build do
+  activate :minify_css
+  activate :minify_javascript, ignore: /.*examples.*js/
+end
+
+###
 # Blog
 ###
 

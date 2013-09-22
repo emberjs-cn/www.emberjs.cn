@@ -20,7 +20,7 @@ App.SongsRoute = Ember.Route.extend({
 <h1>Playlist</h1>
 
 <ul>
-  {{#each controller}}
+  {{#each}}
     <li>{{name}} by {{artist}}</li>
   {{/each}}
 </ul>
@@ -43,7 +43,7 @@ App.SongsController = Ember.ArrayController.extend({
 
 ```handlebars
 <ul>
-  {{#each controller}}
+  {{#each}}
     <li>{{name}} by {{artist}}</li>
   {{/each}}
 </ul>

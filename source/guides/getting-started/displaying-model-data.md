@@ -7,7 +7,7 @@
 ```javascript
 Todos.TodosRoute = Ember.Route.extend({
   model: function () {
-    return Todos.Todo.find();
+    return this.store.find('todo');
   }
 });
 ```
@@ -21,7 +21,7 @@ Todos.TodosRoute = Ember.Route.extend({
 ```handlebars
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 <ul id="todo-list">
-  {{#each controller}}
+  {{#each}}
     <li>
       <input type="checkbox" class="toggle">
       <label>{{title}}</label><button class="destroy"></button>
@@ -36,11 +36,11 @@ Todos.TodosRoute = Ember.Route.extend({
 重新载入你的Web浏览器，以确保所有文件均被正确引用，且没有发生任何错误。
 
 ### 在线演示
-<a class="jsbin-embed" href="http://jsbin.com/ihugoj/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/EJISAne/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
   
 ### 附加资源
 
-  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/72b1ccde5e157b20fcfe5da9bd52496e73533d47)
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/87bd57700110d9dd0b351c4d4855edf90baac3a8)
   * [模板指南](/guides/templates/handlebars-basics)
   * [控制器指南](/guides/controllers)
   * [命名惯例指南](/guides/concepts/naming-conventions)

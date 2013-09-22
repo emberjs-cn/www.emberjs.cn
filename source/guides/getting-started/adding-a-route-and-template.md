@@ -54,7 +54,7 @@ Todos.Router.map(function () {
 重新加载浏览器页面，确保所有的文件被正确引用，且没有错误产生。
 
 ### 在线演示
-<a class="jsbin-embed" href="http://jsbin.com/uzeqih/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/OKEMIJi/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

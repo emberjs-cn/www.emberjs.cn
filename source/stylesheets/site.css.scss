@@ -2,6 +2,13 @@
 @import 'compass/reset';
 @import 'compass/typography/text/ellipsis';
 @import 'fonts';
+@import 'colors';
+@import 'examples';
+@import 'about';
+@import 'guides';
+@import 'blog';
+@import 'builds';
+@import 'shared';
 
 /* Calculated page dimensions. */
 $page-width: 940px;
@@ -10,16 +17,17 @@ $col-spacing: 20px;
 $sidebar-width: $col-width * 4 + $col-spacing * 3;
 $content-width: $page-width - $sidebar-width - $col-spacing * 2;
 
-$orange-color: #e1563f;
-$blue-color: #1f58ce;
-$black-color: #252525;
 
 @mixin width-for-columns($cols) {
   width: $cols * $col-width + ($cols - 1) * $col-spacing;
 }
 
+* {
+  @include box-sizing(border-box);
+}
+
 body {
-  background: url('/images/background-shades.png') no-repeat top center #faf4f1;
+  background-color: #faf4f1;
   margin: 60px 0 0 0;
   padding: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, Sans-Serif;
@@ -28,17 +36,6 @@ body {
   color: #444444;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
-}
-
-sup {
-  vertical-align: super;
-  font-weight: 100;
-  color: gray;
-  font-size: 11px
-}
-
-* {
-  @include box-sizing(border-box);
 }
 
 /* Typography */
@@ -52,21 +49,12 @@ a:hover {
   border-bottom: 1px dotted #f23818;
 }
 
-p {
-  margin: 1.5em 0;
-}
-
 em {
   font-style: italic;
 }
 
-code {
-  font-family: Menlo, Courier, monospace;
-  font-size: 90%;
-  color: #666;
-  background-color: rgba(0, 0, 0, 0.04);
-  padding: 3px;
-  @include border-radius(5px);
+strong {
+  font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -76,16 +64,6 @@ h1, h2, h3, h4, h5, h6 {
 
   code {
     text-transform: none;
-  }
-}
-
-h1 {
-  font-size: 22px;
-  color: $orange-color;
-  padding: 0px 0px 1em 2em;
-  background: no-repeat url('/images/chapter-mark.png') top left;
-  &.api-header {
-    padding-bottom: 0.5em;
   }
 }
 
@@ -111,31 +89,20 @@ h4 {
   margin: 24px 0 12px 0;
 }
 
-strong {
-  font-weight: bold;
-}
-
-hr {
-  height: 1px;
-  border: none;
-  margin: 40px 0;
-  background-color: #dfd7d4;
-
-  &:first-of-type {
-    margin: 8px 0;
-  }
-}
 
 ul {
+  list-style-type: disc;
+}
+
+#slider {
   list-style-type: none;
 }
 
 ol {
   list-style-type: decimal;
 }
-
-.hidden {
-  display: none;
+p {
+  margin: 1em 0;
 }
 
 /* Structure */
@@ -146,66 +113,6 @@ ol {
 }
 
 /* Components */
-
-/**
-  Tabs
-**/
-
-.tabs {
-  margin-top: 1em;
-  border: 1px solid #e0e0e0;
-          border-radius: 5px;
-       -o-border-radius: 5px;
-      -ms-border-radius: 5px;
-     -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-
-  > ul {
-    list-style: none;
-    overflow: hidden; /* Clearfix */
-    display: table;
-    width: 100%;
-
-    li {
-      display: table-cell;
-      a {
-        display: block;
-        border-top: solid 1px rgb(250, 250, 250);
-        border-right: solid 1px #e6e4e3;
-        background-color: #f3f3f3;
-        background-image:         linear-gradient( #f3f3f3, #ebebeb);
-        background-image:      -o-linear-gradient( #f3f3f3, #ebebeb);
-        background-image:    -moz-linear-gradient( #f3f3f3, #ebebeb);
-        background-image:     -ms-linear-gradient( #f3f3f3, #ebebeb);
-        background-image: -webkit-linear-gradient( #f3f3f3, #ebebeb);
-        padding: 0.5em 1em;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: normal;
-        color: #443331;
-        font-family: 'Helvetica Neue';
-
-        &:hover {
-          background-color: #ebebeb;
-          background-image:         linear-gradient( #ebebeb, #f3f3f3);
-          background-image:      -o-linear-gradient( #ebebeb, #f3f3f3);
-          background-image:    -moz-linear-gradient( #ebebeb, #f3f3f3);
-          background-image:     -ms-linear-gradient( #ebebeb, #f3f3f3);
-          background-image: -webkit-linear-gradient( #ebebeb, #f3f3f3);
-          color: black;
-          border-bottom: none;
-        }
-
-      }
-    }
-
-    border-bottom: solid 1px #e6e4e3;
-    margin-bottom: 20px;
-  }
-  .pane {
-    margin: 1em 1.5em 2em 1.5em;
-  }
-}
 
 /**
   Sidebar
@@ -304,10 +211,14 @@ ol {
         > a {
           display: block;
           color: #443331;
-          outline: 1px solid #d5ccc8;
+          border-top: 1px solid #d5ccc8;
+          border-bottom: 1px solid #d5ccc8;
           padding: 12px 12px 10px 12px;
-          margin-top: 1px;
           background-color: rgb(244, 236, 233);
+        }
+
+        & + .level-1 > a {
+          margin-top: -1px;
         }
 
         &.selected > a {
@@ -317,7 +228,8 @@ ol {
           background-image:    -moz-linear-gradient(-90deg, #f67862, #e7624b);
           background-image:     -ms-linear-gradient(-90deg, #f67862, #e7624b);
           background-image: -webkit-linear-gradient(-90deg, #f67862, #e7624b);
-          outline: 1px solid #b23e2a;
+          margin-left: -1px;
+          margin-right: -1px;
           color: white;
           border-top: 1px solid rgba(255, 255, 255, 0.4);
         }
@@ -430,6 +342,8 @@ ol {
     position: relative;
   }
 
+  #search form { display: inline-block }
+
   #logo {
     position: absolute;
     left: 7px;
@@ -446,7 +360,7 @@ ol {
   }
 
   #nav {
-    width: 500px;
+    width: 700px;
     height: 65px;
     margin: 0 auto;
 
@@ -493,6 +407,17 @@ ol {
         }
       }
 
+    }
+  }
+
+  #search{
+    form input.st-search-input{
+      margin-left: 12px;
+      font-size: 100%;
+      padding: 2px 9px 2px 27px;
+      height: 26px;
+      background-position: 7px 6px;
+      width: 150px;
     }
   }
 
@@ -558,74 +483,13 @@ ol {
     float: left;
   }
 
-  ol, ul{
-    margin: 1em 1.5em;
-  }
-
   ol + h2, ul + h2, p + h2,
-  ol + h3, ul + h3, p + h3 {
+  ol + h3, ul + h3, p + h3,
+  div + h3 {
     margin-top: 1.5em;
   }
 
   .tabs > ul{
-    margin: 0 0;
-    a {
-      border-right: 1px solid transparent;
-      border-left: 1px solid transparent;
-    }
-    padding: 0 0;
-
-    li:first-child {
-      border-top-left-radius: 4px;
-      a {
-        border-top-left-radius: 2px;
-      }
-    }
-
-    li:last-child {
-      border-top-right-radius: 4px;
-      a {
-        border-top-right-radius: 2px;
-      }
-    }
-
-    li.active, li:hover {
-      border-top: 1px solid #b23e2a;
-    }
-
-    li:first-child {
-      border-left: 1px solid transparent;
-      &:hover, &.active{
-        border-left: 1px solid #b23e2a;
-      }
-    }
-
-    li:last-child {
-      border-right: 1px solid transparent;
-      &:hover, &.active {
-        border-right: 1px solid #b23e2a;
-      }
-    }
-
-    li.active , li {
-      &:last-child a{
-        border-right: 1px solid transparent;
-      }
-    }
-
-    li.active a, li a:hover{
-      background-color:  #f67862;
-      background-image:         linear-gradient(-90deg, #f67862, #e7624b);
-      background-image:      -o-linear-gradient(-90deg, #f67862, #e7624b);
-      background-image:    -moz-linear-gradient(-90deg, #f67862, #e7624b);
-      background-image:     -ms-linear-gradient(-90deg, #f67862, #e7624b);
-      background-image: -webkit-linear-gradient(-90deg, #f67862, #e7624b);
-      border-right: 1px solid #b23e2a;
-
-      color: white;
-      border-top: 1px solid rgba(255, 255, 255, 0.4);
-      border-left: 1px solid transparent;
-    }
   }
 
   figure {
@@ -661,7 +525,6 @@ ol {
   position: relative;
 
   #download-ember, #download-starter-kit {
-    width: 220px;
     text-align: center;
     margin: 4em auto 0 auto;
   }
@@ -670,6 +533,7 @@ ol {
     left: 0;
 
     .button {
+      margin: 0 auto;
       font-size: 13px; /* Due to long version name */
     }
   }
@@ -682,16 +546,40 @@ ol {
     margin-top: 4px;
     color: #888888;
   }
+
+  .social {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    height: 20px;
+
+
+    > li {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 10px;
+      font-size: 11px;
+    }
+
+    a:hover {
+      border: none;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+  }
 }
 
 .section {
-  margin-top: 60px;
   overflow: hidden;
 
   h2 {
     width: 100%;
     text-align: center;
-    margin-bottom: 28px;
+    margin: 40px 0;
   }
 
   table.columns {
@@ -700,24 +588,6 @@ ol {
     td {
       vertical-align: top;
       padding-right: 50px;
-    }
-  }
-}
-
-#content{
-  .getting-started.section {
-    .highlight, p {
-      float: left;
-      width: $col-width * 8 + $col-spacing * 6;
-
-      &.right {
-        margin-left: $col-width * 1 + $col-spacing * 1;
-      }
-    }
-
-    p {
-      text-align: center;
-      color: #222222;
     }
   }
 }
@@ -957,6 +827,30 @@ ol {
   margin-top: 10px;
 }
 
+.anchorable-toc {
+  position: relative;
+
+  &:hover a.toc-anchor {
+    display: block;
+  }
+}
+
+a.toc-anchor {
+  display: none;
+  position: absolute;
+  text-decoration: none;
+  border: none;
+  left: -1em;
+  width: 30px;
+  height: 13px;
+  background: url('/images/link.png') no-repeat;
+  background-size: 18px 9px;
+  left: -22px;
+  opacity: 0.5;
+  top: 50%;
+  margin-top: -5px;
+}
+
 /**
   Guides Page
 **/
@@ -985,30 +879,6 @@ ol {
     }
   }
 
-  .anchorable-toc {
-    position: relative;
-
-    &:hover a.toc-anchor {
-      display: block;
-    }
-  }
-
-  a.toc-anchor {
-    display: none;
-    position: absolute;
-    text-decoration: none;
-    border: none;
-    left: -1em;
-    width: 30px;
-    height: 13px;
-    background: url('/images/link.png') no-repeat;
-    background-size: 18px 9px;
-    left: -22px;
-    opacity: 0.5;
-    top: 50%;
-    margin-top: -5px;
-  }
-
   table {
     width: 100%;
 
@@ -1029,7 +899,14 @@ ol {
     th, td {
       padding: 5px 10px;
     }
+  }
 
+  .note {
+    background: rgba(0,0,0, 0.2);
+
+    &::before {
+      content: "Note"
+    }
   }
 }
 
@@ -1191,6 +1068,22 @@ body.community #content {
 }
 
 /**
+  Security Page
+**/
+
+body.security #content {
+  margin: 3em auto 0 auto;
+  width: 54em;
+
+  h1, h1:first-child {
+    margin-top: 0;
+    color: $orange-color;
+    border-bottom: solid 1px #d0d0d0;
+    padding-bottom: 20px;
+  }
+}
+
+/**
   Ember Users Page
 **/
 
@@ -1311,7 +1204,8 @@ body.community #content {
     margin-top: 0px;
 
     .headshots {
-      width: 756px;
+      width: 590px;
+      margin: 0 auto;
 
       a:hover {
         border-bottom: none;
@@ -1338,6 +1232,38 @@ body.community #content {
     width: 54em;
   }
 }
+
+/**
+  Meetup Assets Page
+**/
+
+#content .meetups {
+  ul {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    margin-left: 2.5em;
+  }
+
+  li {
+    width: 220px;
+    float: left;
+    margin-bottom: 20px;
+    img, a {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.second {
+  margin-top: 50px;
+}
+
 
 /**
   Footer
@@ -1595,6 +1521,7 @@ a.edit-page {
     p {
       font-family: 'Helvetica Neue';
       font-weight: 200;
+      margin: 1.5em 0;
     }
   }
 
@@ -1656,9 +1583,9 @@ body.not-found #content {
   -webkit-border-radius: 8px;
 }
 
-.under_construction_warning h1 {
+.under_construction_warning h3 {
   height: 64px;
-  font-size: 14px;
+  font-size: 14px !important;
   border: 1px solid #dfd7d4;
   border-radius: 8px;
   -moz-border-radius: 8px;
@@ -1666,14 +1593,54 @@ body.not-found #content {
   color: #e1563f;
   padding: 0px 0px 1em 2em;
   margin-bottom: 1.5em;
-  background: no-repeat url("/images/ember-construction-57.png") top left;
-}
+  background: no-repeat url("/images/ember-construction-57.png") top left; }
 
-.under_construction_warning h1 .msg {
+.under_construction_warning h3 .msg {
   margin-top: 12px;
   margin-left: 40px;
 }
 
 .more_caution {
   color: black;
+}
+
+
+/* Swiftype Search CSS overrides - https://swiftype.com/documentation/tutorials/custom_styles
+   =========================================================================================== */
+
+/* Change color of search dropdown text */
+.swiftype-widget .autocomplete ul li {
+  p.title {
+    color: $orange-color;
+  }
+
+  &.active {
+    background: none;
+    background-color: $orange-color;
+    border-top: 1px solid darken($orange-color, 20%);
+    border-bottom: 1px solid darken($orange-color, 20%);
+    -webkit-box-shadow: 0 1px 0 #C0242D inset;
+
+    .sections {
+      color: white;
+
+      em {
+        color: $black-color;
+        text-shadow: lighten($orange-color, 10%) 0px -1px 0px;
+      }
+    }
+  }
+}
+
+/* Changing the search result link colors */
+.st-result-listing a {
+  color: $orange-color;
+
+  &:visited {
+    color: darken($orange-color, 20%);
+  }
+
+  &:hover {
+    color: lighten($orange-color, 20%);
+  }
 }

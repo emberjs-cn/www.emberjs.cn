@@ -252,3 +252,8 @@ App.PostView = Ember.View.extend({
 如果观察器是在`init`方法中添加的，那么就要在`willDestroy`回调中移除。
 
 一般情况下，几乎不需要像这样手动的注册观察器。由于为了确保有效的内存管理，如果可能的话，尽量采用对象定义的方法来定义观察器。
+
+
+### 路由
+
+[异步路由](/guides/routing/asynchronous-routing)讲解了如何使用Ember路由来管理异步。

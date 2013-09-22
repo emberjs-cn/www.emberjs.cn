@@ -1,0 +1,172 @@
+@import "compass";
+
+#builds-application {
+  #sidebar {
+    $sidebar-width: 140px;
+
+    width: $sidebar-width;
+
+    &:after {
+      width: $sidebar-width;
+    }
+  }
+
+  .features {
+    margin-top: 15%;
+  }
+
+  .feature {
+    margin-left: 20px;
+  }
+
+  .extra-margin {
+    margin-top: 5em;
+  }
+
+  .project-pills {
+    margin: 1em 0 3em 0;
+    padding: 0;
+
+    li {
+      float: left;
+      margin-right: 10px;
+      border-radius: 3px;
+      padding: 5px;
+      width: 111px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+
+      &:hover {
+        background-color: #f6d5cd;
+      }
+
+      &.active {
+        background-color: #f23818;
+        background-image: linear-gradient(0deg, #e7624b, #f67862);
+        color: white;
+        border: 1px solid transparent;
+
+        &:hover {
+          border: 1px solid transparent;
+        }
+      }
+    }
+  }
+
+  .project-name {
+    margin-top: 1.5em;
+    float: left;
+  }
+
+  .description {
+    border-top: 1px dotted #E5DBD6;
+    padding-top: 10px;
+    clear: both;
+  }
+
+  .table {
+    margin-top: 2em;
+    width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    thead {
+      th {
+        vertical-align: bottom;
+      }
+    }
+
+    th, td {
+      padding: 8px;
+      line-height: 20px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    td {
+      vertical-align: middle;
+      border-top: 1px solid #dddddd;
+    }
+  }
+
+  .tabs {
+    ul {
+      border-bottom: none;
+
+      li.active {
+        border-right: 1px solid #f67862;
+      }
+    }
+    a.active {
+      background-color: #f67862;
+      @include background-image(linear-gradient(0deg, #e7624b, #f67862));
+      border-right: 1px solid #f67862;
+      border-top: none;
+      color: white;
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  button {
+    position:relative;
+    border:0;
+    margin:0;
+    padding:0;
+    width: 70px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:normal;
+    color:rgba(0,0,0,0);
+    background:transparent;
+    border-radius:.25rem;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+  }
+
+  button,
+  button:after,
+  button:before {
+    padding: 7px 3px;
+    @include transition(0.75s,background-color .125s);
+    @include transform-style(preserve-3d);
+  }
+
+  button:after,
+  button:before {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    border-radius:.25rem;
+    @include backface-visibility( hidden);
+  }
+
+  button:before {
+    z-index:2;
+    color:#fff;
+    background-color:#f67862;
+    content:attr(data-label);
+  }
+
+  button:after {
+    z-index:1;
+    background-color:#999;
+    color: #fff;
+    @include rotateX(180deg);
+    content:'Copied';
+  }
+
+  button.loading {
+    @include rotateX(180deg);
+  }
+
+  .loading-spinner {
+    text-align: center;
+  }
+}

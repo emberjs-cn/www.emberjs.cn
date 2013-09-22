@@ -24,6 +24,8 @@
 
 其中header和footer会一直显示在屏幕上，不过`<div>`里面的内容会根据用户所在位置而改变（`/posts`或`/posts/15`之类）。
 
+更多关于入口是如何被路由填写，请参看[Routing](/guides/routing)。
+
 如果你希望将应用模板放置在HTML文档中，你可以创建一个不带模板名字的`<script>`标签，它会自动被编译和加载到页面。
 
 ```html
@@ -35,5 +37,3 @@
 ```
 
 如果你使用编译工具来加载你的应用模板，请确定把模板名字命名为`application`。
-
-详细的内容可查看[模板](/guides/templates/handlebars-basics) 和 [路由](/guides/routing/)。

@@ -6,14 +6,14 @@
 
 Next we'll update our static HTML `<input>` to an Ember view that can expose more complex behaviors.  Update `index.html` to replace the new todo `<input>` with an `Ember.TextField`:
 
-接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`Ember.TextField`：
+接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`{{input}}`：
 
 ```handlebars
 <!--- ... additional lines truncated for brevity ... -->
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 <h1>todos</h1>
-{{view Ember.TextField id="new-todo" placeholder="What needs to be done?"
-       valueBinding="newTitle" action="createTodo"}}
+{{input type="text" id="new-todo" placeholder="What needs to be done?" 
+              value=newTitle action="createTodo"}}
 <!--- ... additional lines truncated for brevity ... -->
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
@@ -40,30 +40,31 @@ Inside `js/controllers/todos_controller.js` implement the controller Ember.js ex
 
 ```javascript
 Todos.TodosController = Ember.ArrayController.extend({
-  newTitle: '',
-  createTodo: function () {
-    // Get the todo title set by the "New Todo" text field
-    var title = this.get('newTitle');
-    if (!title.trim()) { return; }
+  actions: {
+    createTodo: function () {
+      // Get the todo title set by the "New Todo" text field
+      var title = this.get('newTitle');
+      if (!title.trim()) { return; }
 
-    // Create the new Todo model
-    var todo = Todos.Todo.createRecord({
-      title: title,
-      isCompleted: false
-    });
+      // Create the new Todo model
+      var todo = Todos.Todo.createRecord({
+        title: title,
+        isCompleted: false
+      });
 
-    // Clear the "New Todo" text field
-    this.set('newTitle', '');
+      // Clear the "New Todo" text field
+      this.set('newTitle', '');
 
-    // Save the new model
-    todo.save();
+      // Save the new model
+      todo.save();
+    }
   }
 });
 ```
 
-This controller will now respond to user interaction by using its `newTitle` property as the title of a new todo whose `isCompleted` property is false.  Then it will clear its `newTitle` property which will synchronize to the template and reset the textfield. Finally, it persists any unsaved changes on the todo.
+This controller will now respond to user action by using its `newTitle` property as the title of a new todo whose `isCompleted` property is false.  Then it will clear its `newTitle` property which will synchronize to the template and reset the textfield. Finally, it persists any unsaved changes on the todo.
 
-上述控制器现在负责使用`newTitle`属性作为一个`isCompleted`属性为假的新待办事项的标题的用户交互。接着将清除这个将用于同步模板和重置文本框的`newTitle`属性。最后将待办事项所有未保存的修改持久化。
+上述控制器现在负责使用`newTitle`属性作为一个`isCompleted`属性为假的新待办事项的标题的用户操作。接着将清除这个将用于同步模板和重置文本框的`newTitle`属性。最后将待办事项所有未保存的修改持久化。
 
 In `index.html` include `js/controllers/todos_controller.js` as a dependency:
 
@@ -88,18 +89,18 @@ Reload your web browser to ensure that all files have been referenced correctly 
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/irutag/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/ImukUZO/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
 
 ### Additional Resources
 
 ### 附加资源
 
-  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/39443bce54a8a7465221ae443b83d3c4a1e3980f)
+  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/60feb5f369c8eecd9df3f561fbd01595353ce803)
   * [Ember.TextField API documention](/api/classes/Ember.TextField.html)
   * [Ember Controller Guide](/guides/controllers)
   * [Naming Conventions Guide](/guides/concepts/naming-conventions)
 
-  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/39443bce54a8a7465221ae443b83d3c4a1e3980f)
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/60feb5f369c8eecd9df3f561fbd01595353ce803)
   * [Ember.TextField API文档](http://emberjs.com/guides/templates/handlebars-basics)
   * [控制器指南](/guides/controllers)
   * [命名惯例指南](/guides/concepts/naming-conventions)

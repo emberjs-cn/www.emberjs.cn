@@ -8,26 +8,26 @@ In this step we'll update our application to allow a user to mark a todo as comp
 
 接下来我们将更新我们的应用，允许用户将一个待办事项标记为完成或者为完成，并将更新信息持久化。
 
-In `index.html` update your template to wrap each todo in its own controller by adding an `itemController` argument to the `{{each}}` Handlebars helper. Then convert our static `<input type="checkbox">` into an `Ember.Checkbox`:
+In `index.html` update your template to wrap each todo in its own controller by adding an `itemController` argument to the `{{each}}` Handlebars helper. Then convert our static `<input type="checkbox">` into an `{{input}}`:
 
-在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`Ember.Checkbox`：
+在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`{{input}}`：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... --->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... --->
-{{#each controller itemController="todo"}}
+<!-- ... additional lines truncated for brevity ... -->
+<!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{#each itemController="todo"}}
   <li {{bind-attr class="isCompleted:completed"}}>
-    {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
+    {{input type="checkbox" checked=isCompleted class="toggle"}}
     <label>{{title}}</label><button class="destroy"></button>
   </li>
 {{/each}}
-<!--- ... additional lines truncated for brevity ... --->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... --->
+<!-- ... additional lines truncated for brevity ... -->
+<!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
-When this `Ember.Checkbox` is rendered it will ask for the current value of the controller's `isCompleted` property. When a user clicks this input, it will call the controller's `isCompleted` property with an argument of either `true` or `false` depending on the new checked value of the input.
+When this `{{input}}` is rendered it will ask for the current value of the controller's `isCompleted` property. When a user clicks this input, it will call the controller's `isCompleted` property with an argument of either `true` or `false` depending on the new checked value of the input.
 
-当`Ember.Checkbox`被渲染时，将询问控制器属性`isCompleted`属性的当前值是什么。当有用户点击了这个输入时，将调用控制器的`isCompleted`属性，参数是真或假依赖于输入的选中属性的值。
+当`{{input}}`被渲染时，将询问控制器属性`isCompleted`属性的当前值是什么。当有用户点击了这个输入时，将调用控制器的`isCompleted`属性，参数是真或假依赖于输入的选中属性的值。
 
 Implement the controller for each todo by matching the name used as the `itemController` value to a class in your application `Todos.TodoController`. Create a new file at `js/controllers/todo_controller.js` for this code. You may place this file anywhere you like (even just putting all code into the same file), but this guide will assume you have created the file and named it as indicated.
 
@@ -43,10 +43,10 @@ Todos.TodoController = Ember.ObjectController.extend({
     var model = this.get('model');
 
     if (value === undefined) {
-      // property being used as a getter
+      // property being used as getter
       return model.get('isCompleted');
     } else {
-      // property being used as a setter
+      // property being used as setter
       model.set('isCompleted', value);
       model.save();
       return value;
@@ -55,7 +55,7 @@ Todos.TodoController = Ember.ObjectController.extend({
 });
 ```
 
-When called from the template to display the current `isCompleted` state of the todo, this property will proxy that question to its underlying `model`. When called with a value because a user has toggled the checkbox in the template, this property will set the `isCompleted` property of its `model` to the passed value (`true` or `false`), persist the model update, and return the passed value so the checkbox will display correct.
+When called from the template to display the current `isCompleted` state of the todo, this property will proxy that question to its underlying `model`. When called with a value because a user has toggled the checkbox in the template, this property will set the `isCompleted` property of its `model` to the passed value (`true` or `false`), persist the model update, and return the passed value so the checkbox will display correctly.
 
 当模板中需要显示待办事项的当前`isCompleted`状态，这个属性将这个问题委派给其底层的`model`。当被调用时因为用户触发了模板中的复选框而带有一个参数，那么这个属性将设置`model`的`isCompleted`属性为传入的参数值（`true`或者`false`），并将模型的变更持久化，返回传入的值以便复选框显示正确。
 
@@ -82,19 +82,19 @@ In `index.html` include `js/controllers/todo_controller.js` as a dependency:
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/asayac/3/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/UDoPajA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 
 ### 附加资源
 
-  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/44e76869476691787957c0ef919b35cbd3f7d0f4)
+  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/8d469c04c237f39a58903a3856409a2592cc18a9)
   * [Ember.Checkbox API documentation](/api/classes/Ember.Checkbox.html)
   * [Ember Controller Guide](/guides/controllers)
   * [Computed Properties Guide](/guides/object-model/computed-properties/)
   * [Naming Conventions Guide](/guides/concepts/naming-conventions)
 
-  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/44e76869476691787957c0ef919b35cbd3f7d0f4)
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/8d469c04c237f39a58903a3856409a2592cc18a9)
   * [Ember.Checkbox API文档](http://emberjs.com/guides/templates/handlebars-basics)
   * [控制器指南](/guides/controllers)
   * [计算属性指南](/guides/object-model/computed-properties/)

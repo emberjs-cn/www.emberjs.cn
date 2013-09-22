@@ -447,3 +447,12 @@ recommend that you define your observers as part of the object
 definition if possible.
 
 一般情况下，几乎不需要像这样手动的注册观察器。由于为了确保有效的内存管理，如果可能的话，尽量采用对象定义的方法来定义观察器。
+
+### Routing
+
+### 路由
+
+There's an entire page dedicated to managing async within the Ember
+Router: [Asynchronous Routing](/guides/routing/asynchronous-routing)
+
+[异步路由](/guides/routing/asynchronous-routing)讲解了如何使用Ember路由来管理异步。

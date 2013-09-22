@@ -20,3 +20,13 @@ Welcome back, <b>{{person.firstName}} {{person.lastName}}</b>!
 
 `{{#with}}`切换了区块内的属性的 _上下文_。默认情况下，一个模板的上下文是其对应的控制器。
 通过使用`{{#with}}`助手，你可以切换在这个区块内的所有`Handlebars`表达式的上下文。
+
+注意：可以使用"as"关键字，将上下文保存至一个变量供嵌套使用：
+
+```handlebars
+{{#with person as user}}
+  {{#each book in books}}
+    {{user.firstName}} has read {{book.name}}!
+  {{/each}}
+{{/with}}
+```

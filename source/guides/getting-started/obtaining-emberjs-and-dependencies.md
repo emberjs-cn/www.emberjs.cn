@@ -2,8 +2,13 @@
 
 ## 获取EMBER.JS和相应依赖
 
-本指南中使用的Ember.js版本为(RC 3.1)可以直接从[Ember.js官方网站](http://builds.emberjs.com.s3.amazonaws.com/ember-1.0.0-rc.3.1.js)下载。Ember.js需要两个依赖库：jQuery和Handlebars。jQuery可以从[http://jquery.com/](http://jquery.com/)下载，Handlebars可以从[http://handlebarsjs.com/](http://handlebarsjs.com/)下载。本指南使用 `ember-data` 来进行数据模型映射。最新的Ember data开发版本可以从[http://builds.emberjs.com/](http://builds.emberjs.com/)下载。与[RC3兼容的版本](http://builds.emberjs.com.s3.amazonaws.com/ember-data-e324f0e582fe180bb577f648b1b7247958db21d9.js)SHA值为 `e324f0e` 。
-
+TodoMVC的依赖：
+  
+* [jQuery](http://code.jquery.com/jquery-1.10.2.min.js)
+* [Handlebars](http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-1.0.0.js)
+* [Ember.js 1.0](http://builds.emberjs.com/tags/v1.0.0/ember.js)
+* [Ember Data 1.0 alpha](http://emberjs.com.s3.amazonaws.com/getting-started/ember-data.js)
+  
 本示例中，所有的这些资源要放在与 `index.html` 相同目录的 `js/libs` 文件夹下。更新 `index.html` 代码，在 `</body>` 标签之前加入如下几个 `<script>` 标签，加载这些资源文件。
 
 ```html

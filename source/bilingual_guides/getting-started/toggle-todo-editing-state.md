@@ -15,12 +15,12 @@ We'll update the application to allow users to toggle into this editing state fo
 ```handlebars
  <!--- ... additional lines truncated for brevity ... -->
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#each controller itemController="todo"}}
+{{#each itemController="todo"}}
   <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
     {{#if isEditing}}
       <input class='edit'>
     {{else}}
-      {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
+      {{input type="checkbox" checked=isCompleted class="toggle"}}
       <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
     {{/if}}
   </li>
@@ -45,11 +45,12 @@ Inside `js/controllers/todo_controller.js` we'll implement the matching logic fo
 ```javascript
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
-isEditing: false,
-
-editTodo: function () {
-  this.set('isEditing', true);
+actions: {
+  editTodo: function () {
+    this.set('isEditing', true);
+  }
 },
+isEditing: false,
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
@@ -66,19 +67,19 @@ Reload your web browser to ensure that no errors occur. You can now double-click
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/ururuc/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/usiXemu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
   
 ### Additional Resources
 
 ### 附加资源
 
-  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/7eb87f8f987714385e8381197ec7c77215df8cf9)
+  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/616bc4f22900bbaa2bf9bdb8de53ba41209d8cc0)
   * [Handlebars Conditionals Guide](/guides/templates/conditionals)
   * [bind-attr API documentation](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
   * [action API documentation](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)
   * [bind and bind-attr article by Peter Wagenet](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
 
-  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/7eb87f8f987714385e8381197ec7c77215df8cf9)
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/616bc4f22900bbaa2bf9bdb8de53ba41209d8cc0)
   * [Handlebars条件表达式指南](/guides/templates/conditionals)
   * [bind-attr API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
   * [action API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)

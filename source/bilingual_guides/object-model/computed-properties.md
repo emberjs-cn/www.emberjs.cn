@@ -1,91 +1,106 @@
-## Computed Properties
+## What are Computed Properties?
 
-## 计算属性
+In a nutshell, computed properties let you declare functions as properties. You create one by defining a computed property as a function, which Ember will automatically call when you ask for the property. You can then use it the same way you would any normal, static property.
 
-Often, you will want a property that is computed based on other
-properties. Ember's object model allows you to define computed
-properties easily in a normal class definition.
+It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. 
 
-在一些情况下，我们可能希望一个属性可以基于其他属性计算得到。`Ember`对象模型允许我们在普通的类中定义计算属性，如下所示：
+### Computed properties in action
+
+We'll start with a simple example:
 
 ```javascript
-Person = Ember.Object.extend({
-  // these will be supplied by `create`
+App.Person = Ember.Object.extend({
   firstName: null,
   lastName: null,
 
   fullName: function() {
-    var firstName = this.get('firstName');
-    var lastName = this.get('lastName');
-
-   return firstName + ' ' + lastName;
+    return this.get('firstName') + ' ' + this.get('lastName');
   }.property('firstName', 'lastName')
 });
 
-var tom = Person.create({
-  firstName: "Tom",
-  lastName: "Dale"
+var ironMan = Person.create({
+  firstName: "Tony",
+  lastName:  "Stark"
 });
 
-tom.get('fullName') // "Tom Dale"
+ironMan.get('fullName') // "Tony Stark"
 ```
+Notice that the `fullName` function calls `property`. This declares the function to be a computed property, and the arguments tell Ember that it depends on the `firstName` and `lastName` attributes.
 
-The `property` method defines the function as a computed property, and
-defines its dependencies. Those dependencies will come into play
-later when we discuss bindings and observers.
+Whenever you access the `fullName` property, this function gets called, and it returns the value of the function, which simply calls `firstName` + `lastName`.
 
-`property`方法会将函数(在这里是fullName)视为一个计算属性，同时也定义了计算属性的依赖。那些依赖会在后面讨论绑定与观察者的时候详述。
+### Chaining computed properties
 
-When subclassing a class, you can override any computed properties.
-
-在继承类的时候，你可以重载父类的计算属性。
-
-### Setting Computed Properties
-
-### 设置计算属性
-
-You can also define what Ember should do when setting a computed
-property. If you try to set a computed property, it will be invoked
-with the key and value you want to set it to.
-
-你也可以在设置计算属性的时候定义`Ember`将要执行的操作。如果你需要设置计算属性，那么你需要把key和value参数传递给它。
-
+You can use computed properties as values to create new computed properties. Let's add a `description` computed property to the previous example, and use the existing `fullName` property and add in some other properties:
 
 ```javascript
 Person = Ember.Object.extend({
+  firstName: null,
+  lastName: null,
+  age: null,
+  country: null,
+
+  fullName: function() {
+    return this.get('firstName') + ' ' + this.get('lastName');
+  }.property('firstName', 'lastName'),
+
+  description: function() {
+    return this.get('fullName') + '; Age: ' + this.get('age') + '; Country: ' + this.get('country');
+  }.property('fullName', 'age', 'country')
+});
+
+var captainAmerica = Person.create({
+  firstName: 'Steve',
+  lastName: 'Rogers',
+  age: 80,
+  country: 'USA'
+});
+
+captainAmerica.get('description'); // "Steve Rogers; Age: 80; Country: USA"
+```
+
+### Dynamic updating
+
+Computed properties, by default, observe any changes made to the properties they depend on and are dynamically updated when they're called. Let's use computed properties to dynamically update . 
+
+```javascript
+captainAmerica.set('firstName', 'William')
+
+captainAmerica.get('description'); // "William Rogers; Age: 80; Country: USA"
+```
+
+So this change to `firstName` was observed by `fullName` computed property, which was itself observed by the `description` property.
+
+Setting any dependent property will propagate changes through any computed properties that depend on them, all the way down the chain of computed properties you've created.
+
+### Setting Computed Properties
+
+You can also define what Ember should do when setting a computed property. If you try to set a computed property, it will be invoked with the key (property name), the value you want to set it to, and the previous value.
+
+```javascript
+App.Person = Ember.Object.extend({
   // these will be supplied by `create`
   firstName: null,
   lastName: null,
 
-  fullName: function(key, value) {
-    // getter
-    if (arguments.length === 1) {
-      var firstName = this.get('firstName');
-      var lastName = this.get('lastName');
-
-      return firstName + ' ' + lastName;
-
+  fullName: function(key, value, oldValue) {
     // setter
-    } else {
-      var name = value.split(" ");
-
-      this.set('firstName', name[0]);
-      this.set('lastName', name[1]);
-
-      return value;
+    if (arguments.length > 1) {
+      var nameParts = fullNameString.split(/\s+/);
+      this.set('firstName', nameParts[0]);
+      this.set('lastName',  nameParts[1]);
     }
+
+    // getter
+    return this.get('firstName') + ' ' + this.get('lastName');
   }.property('firstName', 'lastName')
 });
 
-var person = Person.create();
-person.set('fullName', "Peter Wagenet");
-person.get('firstName') // Peter
-person.get('lastName') // Wagenet
+
+var captainAmerica = Person.create();
+captainAmerica.set('fullName', "William Burnside");
+captainAmerica.get('firstName') // William
+captainAmerica.get('lastName') // Burnside
 ```
 
-Ember will call the computed property for both setters and getters, and
-you can check the number of arguments to determine whether it is being called
-as a getter or a setter.
-
-无论是getters还是setters，Ember都会调用计算属性。因此，可以通过根据传给计算属性的参数个数来判断是调用了getter还是setter。
-
+Ember will call the computed property for both setters and getters, so if you want to call use a computed property as a setter, you'll need to check the number of arguments to determine whether it is being called as a getter or a setter.

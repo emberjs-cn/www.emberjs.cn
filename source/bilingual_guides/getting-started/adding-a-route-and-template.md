@@ -75,7 +75,7 @@ Reload your web browser to ensure that all files have been referenced correctly 
 
 ### Live Preview
 ### 在线演示
-<a class="jsbin-embed" href="http://jsbin.com/uzeqih/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/OKEMIJi/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 

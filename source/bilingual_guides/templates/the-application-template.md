@@ -38,6 +38,11 @@ currently at `/posts` or `/posts/15`, for example.
 
 其中header和footer会一直显示在屏幕上，不过`<div>`里面的内容会根据用户所在位置而改变（`/posts`或`/posts/15`之类）。
 
+For more information about how outlets are filled in by the router, see
+[Routing](/guides/routing).
+
+更多关于入口是如何被路由填写，请参看[Routing](/guides/routing)。
+
 If you are keeping your templates in HTML, create a `<script>` tag
 without a template name. It will automatically be compiled and appended
 to the screen.
@@ -56,7 +61,3 @@ If you're using build tools to load your templates, make sure you name
 the template `application`.
 
 如果你使用编译工具来加载你的应用模板，请确定把模板名字命名为`application`。
-
-For more information, see [Templates](/guides/templates/handlebars-basics) and [Routing](/guides/routing/).
-
-详细的内容可查看[模板](/guides/templates/handlebars-basics) 和 [路由](/guides/routing/)。
