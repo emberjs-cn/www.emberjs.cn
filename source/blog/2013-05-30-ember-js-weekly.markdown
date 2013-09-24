@@ -14,7 +14,7 @@ Charcoal是一个Yeoman的生成器，用于创建Ember项目的基本目录结�
 
 #### [如何进行Ember开发](http://blog.embed.ly/post/46586649344/introduction-to-ember-development)
 
-Embedly在其产品中使用了Ember进行开发，在开发过程终于到了许多问题。本文主要介绍了如何构建一个开发Ember应用基础环境。
+Embedly在其产品中使用了Ember进行开发，在开发过程中遇到了许多问题。本文主要介绍了如何构建一个开发Ember应用基础环境。
 
 ### 库、代码和工具
 
