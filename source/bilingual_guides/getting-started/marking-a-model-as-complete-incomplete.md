@@ -43,10 +43,10 @@ Todos.TodoController = Ember.ObjectController.extend({
     var model = this.get('model');
 
     if (value === undefined) {
-      // property being used as getter
+      // property being used as a getter
       return model.get('isCompleted');
     } else {
-      // property being used as setter
+      // property being used as a setter
       model.set('isCompleted', value);
       model.save();
       return value;
@@ -55,9 +55,13 @@ Todos.TodoController = Ember.ObjectController.extend({
 });
 ```
 
-When called from the template to display the current `isCompleted` state of the todo, this property will proxy that question to its underlying `model`. When called with a value because a user has toggled the checkbox in the template, this property will set the `isCompleted` property of its `model` to the passed value (`true` or `false`), persist the model update, and return the passed value so the checkbox will display correctly.
+When called from the template to display the current `isCompleted` state of the todo, this property will proxy that question to its underlying `model`. When called with a value because a user has toggled the checkbox in the template, this property will set the `isCompleted` property of its `model` to the passed value (`true` or `false`), persist the model update, and return the passed value so the checkbox will display correctly. 
+
+The `isCompleted` function is marked a [computed property](/guides/object-model/computed-properties/) whose value is dependent on the value of `model.isCompleted`.
 
 当模板中需要显示待办事项的当前`isCompleted`状态，这个属性将这个问题委派给其底层的`model`。当被调用时因为用户触发了模板中的复选框而带有一个参数，那么这个属性将设置`model`的`isCompleted`属性为传入的参数值（`true`或者`false`），并将模型的变更持久化，返回传入的值以便复选框显示正确。
+
+`isCompleted`函数被声明为一个[计算属性](/guides/object-model/computed-properties/)，其值依赖于`model.isCompleted`。
 
 In `index.html` include `js/controllers/todo_controller.js` as a dependency:
 

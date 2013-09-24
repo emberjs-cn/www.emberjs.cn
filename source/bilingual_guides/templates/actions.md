@@ -109,6 +109,14 @@ current route's ancestors, an error will be thrown.
 
 ![操作冒泡（Action Bubbling）](/images/template-guide/action-bubbling.png)
 
+This allows you to create a button that has different behavior based on
+where you are in the application. For example, you might want to have a
+button in a sidebar that does one thing if you are somewhere inside of
+the `/posts` route, and another thing if you are inside of the `/about`
+route.
+
+这样可以创建一个按钮，且该按钮根据当前应用所在位置有不同的行为。例如，有一个在侧栏中的按钮，当在`/posts`路由和`/about`路由时，分别有不同的行为。
+
 ### Action Parameters
 
 ### 操作参数
@@ -227,38 +235,6 @@ the event.
 
 指定`bubbles=false`时，Ember.js 就会阻止浏览器将此点击事件传递到父级元素。
 
-### Target Bubbling
-
-### 向目标冒泡
-
-If the action is not found on the current controller, it will bubble up
-to the current route handler. From there, it will bubble up to parent
-route handlers until it reaches the application route.
-
-如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
-
-Define actions on the route's `actions` property.
-
-在路由的`actions`属性里定义操作。
-
-```javascript
-App.PostsIndexRoute = Ember.Route.extend({
-  actions: {
-    myCoolAction: function() {
-      // do your business.
-    }
-  }
-});
-```
-
-This allows you to create a button that has different behavior based on
-where you are in the application. For example, you might want to have a
-button in a sidebar that does one thing if you are somewhere inside of
-the `/posts` route, and another thing if you are inside of the `/about`
-route.
-
-上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 `/posts`路由中，你想在侧边栏创建一个按钮来完成某种操作，而在`/about`路由中时，此按钮却是做另外一件不同的事。
-
 ### Specifying a Target
 
 ### 指定目标
@@ -282,7 +258,7 @@ controller.
 </p>
 ```
 
-You would handle it this in an `actions` hash on your view.
+You would handle this in an `actions` hash on your view.
 
 这样应该在视图的`actions`哈希中处理。
 

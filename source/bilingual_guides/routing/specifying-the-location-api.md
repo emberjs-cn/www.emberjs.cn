@@ -22,7 +22,7 @@ App.Router.map(function() {
 });
 ```
 
-If you want `/posts/new` to work instead, you can tell the Router use the browser's
+If you want `/posts/new` to work instead, you can tell the Router to use the browser's
 [history](http://caniuse.com/history) API.
 
 Keep in mind that your server must serve the Ember app at all the routes

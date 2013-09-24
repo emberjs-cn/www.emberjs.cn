@@ -8,7 +8,7 @@ In the previous step we updated TodoMVC to allow a user to toggle the display of
 
 在上一步中我们修改了TodoMVC使其可以支持用户能够切换到一个文本输入框`<input>`来编辑一个待办事项的标题。接下来，我们将实现在`<input>`显示时立即当前焦点移至其上，开始接收用户的输入，并在用户按下`<enter>`键时或把焦点从编辑的`<input>`元素中移出时，将用户的修改持久化，并显示待办事项修改后的标题。
 
-To accomplish this, we'll create a new custom component and register it with Handelbars to make it available to our templates.
+To accomplish this, we'll create a new custom component and register it with Handlebars to make it available to our templates.
 
 为了实现这一步，可以创建一个自定义的组件并且通过Handlebars来注册它，使得其在模板中可用。
 
@@ -59,7 +59,7 @@ In `index.html` replace the static `<input>` element with our custom `{{edit-tod
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
-Pressing the `<enter>` key  will trigger the `acceptChanges` event on the instance of `TodoController`. Moving focus away from from the `<input>` will trigger the `focus-out` event, calling a method `acceptChanges` on this view's instance of `TodoController`.
+Pressing the `<enter>` key  will trigger the `acceptChanges` event on the instance of `TodoController`. Moving focus away from the `<input>` will trigger the `focus-out` event, calling a method `acceptChanges` on this view's instance of `TodoController`.
 
 点击`<enter>`键会触发`TodoController`实例的`acceptChanges`事件。焦点离开`<input>`时会出发`focus-out`事件，并调用视图的`TodoController`实例的`acceptChanges`方法。
 

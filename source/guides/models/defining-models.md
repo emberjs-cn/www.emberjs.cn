@@ -1,22 +1,73 @@
 英文原文：[http://emberjs.com/guides/models/defining-models/](http://emberjs.com/guides/models/defining-models/)
 
-## 定义模型
+A model is a class that defines the properties and behavior of the
+data that you present to the user. Anything that the user expects to see
+if they leave your app and come back later (or if they refresh the page)
+should be represented by a model.
 
-你可以通过创建`DS.Model`的子类来表示每一种类型的模型：
+For every model in your application, create a subclass of `DS.Model`:
 
 ```javascript
 App.Person = DS.Model.extend();
 ```
 
-### 属性标志
+After you have defined a model class, you can start finding and creating
+records of that type. When interacting with the store, you will need to
+specify a record's type using the model name. For example, the store's
+`find()` method expects a string as the first argument to tell it what
+type of record to find:
 
-你可以通过`DS.attr`指定模型具有哪些属性。你可以像其他属性一样使用属性标志，包括作为计算属性的一部分。
+```js
+store.find('person', 1);
+```
+
+The table below shows how model names map to model classes.
+
+<table>
+  <thead>
+  <tr>
+    <th>Model Name</th>
+    <th>Model Class</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><code>photo</code></td>
+    <td><code>App.Photo</code></td>
+  </tr>
+  <tr>
+    <td><code>admin-user-profile</code></td>
+    <td><code>App.AdminUserProfile</code></td>
+  </tr>
+</table>
+
+### Defining Attributes
+
+You can specify which attributes a model has by using `DS.attr`.
 
 ```javascript
+var attr = DS.attr;
+
 App.Person = DS.Model.extend({
-  firstName: DS.attr('string'),
-  lastName: DS.attr('string'),
-  birthday: DS.attr('date'),
+  firstName: attr(),
+  lastName: attr(),
+  birthday: attr()
+});
+```
+
+Attributes are used when turning the JSON payload returned from your
+server into a record, and when serializing a record to save back to the
+server after it has been modified.
+
+You can use attributes just like any other property, including as part of a
+computed property. Frequently, you will want to define computed
+properties that combine or transform primitive attributes.
+
+```javascript
+var attr = DS.attr;
+
+App.Person = DS.Model.extend({
+  firstName: attr(),
+  lastName: attr(),
 
   fullName: function() {
     return this.get('firstName') + ' ' + this.get('lastName');
@@ -24,11 +75,23 @@ App.Person = DS.Model.extend({
 });
 ```
 
+For more about adding computed properties to your classes, see [Computed Properties](/guides/object-model/computed-properties).
+
+If you don't specify the type of the attribute, it will be whatever was
+provided by the server. You can make sure that an attribute is always
+coerced into a particular type by passing a `type` option to `attr`:
+
+```js
+App.Person = DS.Model.extend({
+  birthday: DS.attr('date')
+});
+```
+
 默认情况下，REST 适配器支持的属性类型有`string`, `number`, `boolean`和`date`。
 传统的适配器会提供额外的属性类型，并支持你注册自定义的属性类型。
 详情请查看[documentation section on the REST Adapter](/guides/models/the-rest-adapter)。
 
-### 关联模型
+### 定义关联模型
 
 Ember Data 包括了几个内置的关联类型，以帮助你确定你的模型如何相互关联的。
 
@@ -38,11 +101,11 @@ Ember Data 包括了几个内置的关联类型，以帮助你确定你的模型
 
 ```js
 App.User = DS.Model.extend({
-  profile: DS.belongsTo('App.Profile')
+  profile: DS.belongsTo('profile')
 });
 
 App.Profile = DS.Model.extend({
-  user: DS.belongsTo('App.User')
+  user: DS.belongsTo('user')
 });
 ```
 
@@ -52,11 +115,11 @@ App.Profile = DS.Model.extend({
 
 ```js
 App.Post = DS.Model.extend({
-  comments: DS.hasMany('App.Comment')
+  comments: DS.hasMany('comment')
 });
 
 App.Comment = DS.Model.extend({
-  post: DS.belongsTo('App.Post')
+  post: DS.belongsTo('post')
 });
 ```
 
@@ -66,43 +129,46 @@ App.Comment = DS.Model.extend({
 
 ```js
 App.Post = DS.Model.extend({
-  tags: DS.hasMany('App.Tag')
+  tags: DS.hasMany('tag')
 });
 
 App.Tag = DS.Model.extend({
-  posts: DS.hasMany('App.Post')
+  posts: DS.hasMany('post')
 });
 ```
 
 #### 显式反转
 
-自[本周Ember.js，2012-11-2](http://emberjs.com/blog/2012/11/02/this-week-in-ember-js.html)起，
+Ember Data will do its best to discover which relationships map to one
+another. In the one-to-many code above, for example, Ember Data can figure out that
+changing the `comments` relationship should update the `post`
+relationship on the inverse because `post` is the only relationship to
+that model.
 
-Ember Data知道当设定一个`belongsTo`的关联关系时，子应该要被添加到对应的父的`hasMany`关联关系中去。
-
-但是不幸的是，它并不知道哪一个`hasMany`关联关系应该得到更新。因此，Ember
-Data选择其找到的第一个拥有相同类型的子关联来进行更新。
-
-因为可能存在许多具有相同类型的`belongsTo`/`hasMany`，这是可以显式的指定对应的反转对象：
+However, sometimes you may have multiple `belongsTo`/`hasMany`s for the
+same type. You can specify which property on the related model is the
+inverse using `DS.attr`'s `inverse` option:
 
 ```javascript
+var belongsTo = DS.belongsTo,
+    hasMany = DS.hasMany;
+
 App.Comment = DS.Model.extend({
-  onePost: DS.belongsTo("App.Post"),
-  twoPost: DS.belongsTo("App.Post"),
-  redPost: DS.belongsTo("App.Post"),
-  bluePost: DS.belongsTo("App.Post")
+  onePost: belongsTo("post"),
+  twoPost: belongsTo("post"),
+  redPost: belongsTo("post"),
+  bluePost: belongsTo("post")
 });
 
 
 App.Post = DS.Model.extend({
-  comments: DS.hasMany('App.Comment', {
+  comments: hasMany('comment', {
     inverse: 'redPost'
   })
 });
 ```
 
 当然也可以在`belongsTo`一侧指定，它将按照预期那样工作。
-
 
 #### 嵌套对象
 
@@ -114,7 +180,7 @@ App.Post = DS.Model.extend({
 App.Comment = DS.Model.extend({});
 
 App.Post = DS.Model.extend({
-  comments: DS.hasMany('App.Comment')
+  comments: DS.hasMany('comment')
 });
 
 App.Adapter.map('App.Post', {

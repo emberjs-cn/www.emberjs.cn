@@ -36,7 +36,7 @@ methods and properties to a particular instance of a class as in vanilla JavaScr
 
 `reopen`用来添加被所有类的实例共享的实例方法和属性。它不能像Vanilla Javascript那样，用来为某一特定的实例来添加方法和属性（不使用prototype）。
 
-But when you need to create class method or add the properties to the class itself you can use `reopenClass`.
+But when you need to create class method or add properties to the class itself you can use `reopenClass`.
 
 但是如果需要为类添加方法和属性，则可以使用`reopenClass`方法。
 

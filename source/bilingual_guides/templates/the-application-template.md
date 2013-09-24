@@ -2,7 +2,7 @@
 
 ## 应用模板（The Application Template）
 
-The application template is the default template that is rendered when
+The `application` template is the default template that is rendered when
 your application starts. 
 
 应用模板是应用启动的时候默认渲染的模板。

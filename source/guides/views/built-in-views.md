@@ -19,7 +19,7 @@ Ember中定义了一套用于构建一些非常基础的控件的视图，比如
 
 ```javascript
 App.MyText = Ember.TextField.extend({
-  formBlurredBinding: 'App.adminController.formBlurred',
+  formBlurred: null, // passed to the view helper as formBlurred=controllerPropertyName
   change: function(evt) {
     this.set('formBlurred', true);
   }
@@ -30,11 +30,11 @@ App.MyText = Ember.TextField.extend({
 
 ```handlebars
 {{view Ember.Select viewName="select"
-                    contentBinding="App.peopleController"
+                    contentBinding="people"
                     optionLabelPath="model.fullName"
                     optionValuePath="model.id"
                     prompt="Pick a person:"
-                    selectionBinding="App.selectedPersonController.person"}}
+                    selectionBinding="selectedPerson"}}
 ```
 
 #### Ember.TextArea

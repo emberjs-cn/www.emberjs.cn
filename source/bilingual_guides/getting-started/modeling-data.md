@@ -51,11 +51,11 @@ Reload your web browser to ensure that all files have been referenced correctly 
 ### Additional Resources
 
   * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1)
-  * [Defining A Store Guide](/guides/models/defining-a-store)
+  * [Using the Store Guide](/guides/models/using-the-store)
   * [Defining Models Guide](/guides/models/defining-models)
 
 ### 附加资源
 
   * [采用`diff`格式显示这步骤所作的修改](https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1)
-  * [创建一个存储器指南](/guides/models/defining-a-store)
+  * [Store使用指南](/guides/models/using-the-store)
   * [定义模型指南](/guides/models/defining-models)

@@ -31,6 +31,10 @@ def ember_path
   File.expand_path(ENV['EMBER_PATH'] || File.expand_path("../../ember.js", __FILE__))
 end
 
+def ember_data_path
+  File.expand_path(ENV['EMBER_DATA_PATH'] || File.expand_path("../../ember-data", __FILE__))
+end
+
 def generate_docs
   print "Generating docs data from #{ember_path}... "
 

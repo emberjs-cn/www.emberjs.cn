@@ -39,18 +39,18 @@ the specified attribute. For example, given this template:
 <input type="checkbox" {{bind-attr disabled=isAdministrator}}>
 ```
 
-If `isAdministrator` is `false`, Handlebars will produce the following
+If `isAdministrator` is `true`, Handlebars will produce the following
 HTML element:
 
-如果`isAdministrator`的值是`false`，`Handlebars`将生成如下所示的HTML元素：
+如果`isAdministrator`的值是`true`，`Handlebars`将生成如下所示的HTML元素：
 
 ```html
 <input type="checkbox" disabled>
 ```
 
-If `isAdministrator` is `true`, Handlebars will produce the following:
+If `isAdministrator` is `false`, Handlebars will produce the following:
 
-否则，如果`isAdministrator`是`true`，生成的HTML元素如下：
+否则，如果`isAdministrator`是`false`，生成的HTML元素如下：
 
 ```html
 <input type="checkbox">

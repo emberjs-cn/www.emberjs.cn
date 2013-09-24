@@ -15,6 +15,8 @@
 在模板的控制器`Todos.TodosController`中实现以上的属性：
 
 ```javascript
+// 提示：下面的代码不能放入'actions'
+
 // ... 为保持代码简洁，在此省略了其他代码 ...
 remaining: function () {
   return this.filterProperty('isCompleted', false).get('length');

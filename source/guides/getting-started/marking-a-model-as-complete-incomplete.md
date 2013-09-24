@@ -29,10 +29,10 @@ Todos.TodoController = Ember.ObjectController.extend({
     var model = this.get('model');
 
     if (value === undefined) {
-      // property being used as getter
+      // property being used as a getter
       return model.get('isCompleted');
     } else {
-      // property being used as setter
+      // property being used as a setter
       model.set('isCompleted', value);
       model.save();
       return value;
@@ -42,6 +42,8 @@ Todos.TodoController = Ember.ObjectController.extend({
 ```
 
 当模板中需要显示待办事项的当前`isCompleted`状态，这个属性将这个问题委派给其底层的`model`。当被调用时因为用户触发了模板中的复选框而带有一个参数，那么这个属性将设置`model`的`isCompleted`属性为传入的参数值（`true`或者`false`），并将模型的变更持久化，返回传入的值以便复选框显示正确。
+
+`isCompleted`函数被声明为一个[计算属性](/guides/object-model/computed-properties/)，其值依赖于`model.isCompleted`。
 
 在`index.html`中包含`js/controllers/todo_controller.js`依赖：
 

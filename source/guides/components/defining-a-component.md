@@ -4,6 +4,10 @@
 
 为了定义一个组件，需要先创建一个名字以`components/`开始的模板。例如：如果需要定义一个新组建`{{blog-post}}`，需要创建`components/blog-post`模板。
 
+<aside>
+  **注意：** 组件名必须包含'-'。因此`blog-post`是一个合法的命名，而`post`则不是。这样避免了与当前或者今后的HTML元素的冲突，并确保Ember能自动加载组件。
+</aside>
+
 如果在HTML文件中使用`<script>`标签来定义Handlebars模板，模板定义方法如下：
 
 ```handlebars

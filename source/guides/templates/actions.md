@@ -70,6 +70,8 @@ App.PostRoute = Ember.Route.extend({
 
 ![操作冒泡（Action Bubbling）](/images/template-guide/action-bubbling.png)
 
+这样可以创建一个按钮，且该按钮根据当前应用所在位置有不同的行为。例如，有一个在侧栏中的按钮，当在`/posts`路由和`/about`路由时，分别有不同的行为。
+
 ### 操作参数
 
 Ember.js支持传递参数给操作处理器。任何在操作名称之后传递给`{{action}}`助手的值，都会作为参数传递给操作处理器。
@@ -140,24 +142,6 @@ App.PostController = Ember.ObjectController.extend({
 没指定`bubbles=false`时，用户点击了按钮，Ember.js 就会触发操作，同时浏览器会将此点击事件传递到父级元素。
 
 指定`bubbles=false`时，Ember.js 就会阻止浏览器将此点击事件传递到父级元素。
-
-### 向目标冒泡
-
-如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
-
-在路由的`actions`属性里定义操作。
-
-```javascript
-App.PostsIndexRoute = Ember.Route.extend({
-  actions: {
-    myCoolAction: function() {
-      // do your business.
-    }
-  }
-});
-```
-
-上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 `/posts`路由中，你想在侧边栏创建一个按钮来完成某种操作，而在`/about`路由中时，此按钮却是做另外一件不同的事。
 
 ### 指定目标
 

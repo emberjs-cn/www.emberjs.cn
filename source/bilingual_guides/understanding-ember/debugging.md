@@ -119,22 +119,6 @@ window.App = Ember.Application.create({
 
 ## Ember Data
 
-#### Get the state history of an ember-data record
-
-#### 获取Ember Data记录的状态历史
-
-```javascript
-record.stateManager.get('currentPath')
-```
-
-#### Log state transitions
-
-#### 在日志中输出状态转换
-
-```javascript
-record.set("stateManager.enableLogging", true)
-```
-
 #### View ember-data's identity map
 
 #### 查看ember-data的标示符映射

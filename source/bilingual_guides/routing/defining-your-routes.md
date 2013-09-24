@@ -267,7 +267,7 @@ route handler might look like this:
 ```js
 App.BlogPostsRoute = Ember.Route.extend({
   model: function() {
-    return App.BlogPost.find();
+    return this.get('store').find('blogPost');
   }
 });
 ```
@@ -303,7 +303,7 @@ App.Router.map(function() {
 
 App.PostRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Post.find(params.post_id);
+    return this.get('store').find('post', params.post_id);
   }
 });
 ```
@@ -467,7 +467,7 @@ App.Router.map(function() {
 });
 ```
 
-This router creates following routes:
+This router creates the following routes:
 
 上面定义的路由器会创建如下路由：
 

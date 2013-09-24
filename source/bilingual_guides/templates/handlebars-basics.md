@@ -44,9 +44,9 @@ template inside your HTML by putting it inside a `<script>` tag, like so:
 </html>
 ```
 
-This template will automatically be compiled and become your
-_application template_, which will be displayed on the page by the
-router when your app loads.
+This template will be compiled automatically and become your
+[application template](/guides/templates/the-application-template),
+which will be displayed on the page when your app loads.
 
 这个模板将会被自动编译成为你的应用程序的主模板,它将在应用程序加载时通过路由显示在页面上。
 

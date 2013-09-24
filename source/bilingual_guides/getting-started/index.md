@@ -4,4 +4,4 @@ Welcome to Ember.js! This guide will take you through creating a simple applicat
 
 In this guide we will walk through the steps of building the popular [TodoMVC demo application](http://addyosmani.github.com/todomvc/).
 
-本入门指南采用非常流行的[TodoMVC示例](http://addyosmani.github.com/todomvc/) 应用作为例子，介绍如何使用Ember.js来开发TodoMVC。
+本入门指南采用非常流行的[TodoMVC示例](http://todomvc.com) 应用作为例子，介绍如何使用Ember.js来开发TodoMVC。

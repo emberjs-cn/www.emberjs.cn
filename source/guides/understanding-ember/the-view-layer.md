@@ -360,13 +360,6 @@ Ember内置支持下列本地的浏览器事件：
     <tr><td>click</td><td>click</td></tr>
     <tr><td>dblclick</td><td>doubleClick</td></tr>
     <tr><td>mousemove</td><td>mouseMove</td></tr>
-  </tbody>
-</table>
-<table class="figure">
-  <thead>
-    <tr><th>事件名</th><th>方法名</th></tr>
-  </thead>
-  <tbody>
     <tr><td>focusin</td><td>focusIn</td></tr>
     <tr><td>focusout</td><td>focusOut</td></tr>
     <tr><td>mouseenter</td><td>mouseEnter</td></tr>

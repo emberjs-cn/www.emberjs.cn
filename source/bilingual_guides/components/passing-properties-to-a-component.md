@@ -2,7 +2,7 @@
 
 中英对照：[http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/](http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/)
 
-By default, a component does not have access to properties in the
+By default a component does not have access to properties in the
 template scope in which it is used.
 
 默认情况下，组件不能访问模板作用域下的属性。

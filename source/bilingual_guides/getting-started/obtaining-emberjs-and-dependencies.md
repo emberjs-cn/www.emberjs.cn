@@ -4,7 +4,7 @@
 
 ## 获取EMBER.JS和相应依赖
 
-TodoMVC has a few dependecnies:
+TodoMVC has a few dependencies:
 
 TodoMVC的依赖：
   
@@ -19,9 +19,9 @@ For this example, all of these resources should be stored in the folder `js/libs
 
 ```html
 <!-- ... additional lines truncated for brevity ... -->
-<!-- ... 为确保简洁，略去头尾代码 ... -->
-  <script src="js/libs/jquery.min.js"></script>
-  <script src="js/libs/handlebars.js"></script>
+<!-- ... 为确保简洁，略去头尾代码 ... -->                                                                                                            
+  <script src="js/libs/jquery-1.10.2.min.js"></script>
+  <script src="js/libs/handlebars-1.0.0.js"></script> 
   <script src="js/libs/ember.js"></script>
   <script src="js/libs/ember-data.js"></script>
 </body>

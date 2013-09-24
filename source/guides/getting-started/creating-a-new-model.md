@@ -52,7 +52,6 @@ Todos.TodosController = Ember.ArrayController.extend({
 
 ```html
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-   <script src="js/models/store.js"></script>
    <script src="js/models/todo.js"></script>
    <script src="js/controllers/todos_controller.js"></script>
  </body>

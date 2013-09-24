@@ -31,7 +31,7 @@ App.reset();
 
 ### `Ember`构建
 
-每一个成功的[CI](https://travis-ci.org/emberjs/ember.js)都会把结果发布到[http://builds.emberjs.com/](http://builds.emberjs.com/)。这会使引用及使用[最新的`Ember`构建](http://builds.emberjs.com/latest.js)更简单。
+每一个成功的[CI](https://travis-ci.org/emberjs/ember.js)都会把结果发布到[http://emberjs.com/builds](http://emberjs.com/builds)。这会使引用及使用[最新的`Ember`构建](http://builds.emberjs.com/canary/ember.js)更简单。
 
 ### 新的`{{input}}`和`{{textarea}}`助手
 

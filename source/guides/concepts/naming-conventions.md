@@ -80,7 +80,7 @@ App.Router.map(function() {
 App.FavoritesRoute = Ember.Route.extend({
   model: function() {
     // the model is an Array of all of the posts
-    return App.Post.find();
+    return this.get('store').find('post');
   }
 });
 ```
@@ -126,7 +126,7 @@ App.Router.map(function() {
 ```javascript
 App.PostRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Post.find(params.post_id);
+    return this.get('store').find('post', params.post_id);
   },
 
   serialize: function(post) {

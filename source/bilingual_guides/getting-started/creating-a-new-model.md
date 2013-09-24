@@ -73,7 +73,6 @@ In `index.html` include `js/controllers/todos_controller.js` as a dependency:
 ```html
 <!--- ... additional lines truncated for brevity ... -->
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-   <script src="js/models/store.js"></script>
    <script src="js/models/todo.js"></script>
    <script src="js/controllers/todos_controller.js"></script>
  </body>

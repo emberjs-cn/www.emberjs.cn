@@ -110,27 +110,3 @@ App.PostRoute = App.Route.extend({
   }
 });
 ```
-
-## Rendering Warning
-
-## 渲染警告
-
-When a template tries to render, and the parent route did not render a
-template, then you will see this warning:
-
-"The immediate parent route did not render into the main outlet ..."
-
-当渲染一个模板时，如果父级路由并没有渲染模版，那么你会看到一条警告：
-“直接父级路由没有渲染进主插座……”
-
-This means that the current route tried to render into the parent
-route's template, but the parent route didn't render a template, or, if
-it did, that the template which the parent route provided did not render
-into the main template (i.e., a default `{{outlet}}`).
-
-Ember provides this warning because it expects that you will want to
-render into the main template.
-
-什么意思呢？当前路由试图渲染进父级路由的模板，但父级路由没有渲染模板，或者假使父级路由渲染了模板，但是父级路由提供的模板却没有渲染进主插座（也就是说，一个默认的`{{outlet}}`插座）
-
-Ember提供这条警告是希望你将模板渲染到主模板中去。

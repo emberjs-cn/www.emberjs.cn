@@ -26,15 +26,19 @@ App.InfoView = Ember.View.extend({
 });
 ```
 
-```handlebars
-User: {{view.firstName}} {{view.lastName}}
-{{view App.InfoView}}
+```html
+<script type="text/x-handlebars" data-template-name="user">
+  User: {{view.firstName}} {{view.lastName}}
+  {{view App.InfoView}}
+</script>
 ```
 
-```handlebars
-<b>Posts:</b> {{view.posts}}
-<br>
-<b>Hobbies:</b> {{view.hobbies}}
+```html
+<script type="text/x-handlebars" data-template-name="info">
+  <b>Posts:</b> {{view.posts}}
+  <br>
+  <b>Hobbies:</b> {{view.hobbies}}
+</script>
 ```
 
 如果我们想要创建一个`App.UserView`的实例并渲染它，我们就会得到如下的`DOM`:
