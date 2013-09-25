@@ -31,16 +31,14 @@ REST适配器会自动发送一个`GET`请求到`/posts/1`。
 
 #### 自定义复数形态
 
-不规则复数形态可以通过适配器的`configure`API来进行制定：
+不规则或不可数名词复数可以通过`Ember.Inflector.inflector`来指定：
 
 ```js
-DS.RESTAdapter.configure("plurals", {
-  person: "people",
-  owner_reply: "owner_replies"
-});
+Ember.Inflector.inflector.irregular('formula', 'formulae');
+Ember.Inflector.inflector.uncountable('advice');
 ```
 
-如上的配置下，REST适配器会采用`/people/1`来获取`App.Person`，而不是使用`/persons/1`。
+如上的配置下，REST适配器会采用`/formulae/1`来获取`App.Formula`，而不是使用`/formulae/1`。
 
 #### 自定义端点路径
 

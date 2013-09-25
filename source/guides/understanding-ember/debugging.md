@@ -141,3 +141,15 @@ Ember = {
   }
 };
 ```
+
+#### `RSVP.Promise`中的错误
+
+有时候，在处理承诺时，错误信息并没有被正确的抛出，就好像被吞下了一样。这使得跟踪问题出在什么地方变得十分困难。不过要感谢`RSVP`，它内置了一种专用于处理这种情况的方法。
+
+只需要提供一个`onerror`函数，供在承诺发生错误的时候被调用，来查看错误的详细信息。这个函数根据需要来设计，不过通常的方法是在其中调用`console.assert`在控制台里面输出错误信息。
+
+```javascript
+Ember.RSVP.configure('onerror', function(error) {
+  Ember.Logger.assert(false, error);
+});
+```

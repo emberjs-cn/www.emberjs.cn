@@ -50,22 +50,19 @@ REST adapter:
 
 #### 自定义复数形态
 
-Irregular pluralizations can be specified via the adapter's `configure`
-API:
+Irregular or uncountable pluralizations can be specified via `Ember.Inflector.inflector`:
 
-不规则复数形态可以通过适配器的`configure`API来进行制定：
+不规则或不可数名词复数可以通过`Ember.Inflector.inflector`来指定：
 
 ```js
-DS.RESTAdapter.configure("plurals", {
-  person: "people",
-  owner_reply: "owner_replies"
-});
+Ember.Inflector.inflector.irregular('formula', 'formulae');
+Ember.Inflector.inflector.uncountable('advice');
 ```
 
-This will tell the REST adapter that requests for `App.Person` requests
-should go to `/people/1` instead of `/persons/1`.
+This will tell the REST adapter that requests for `App.Formula` requests
+should go to `/formulae/1` instead of `/formulae/1`.
 
-如上的配置下，REST适配器会采用`/people/1`来获取`App.Person`，而不是使用`/persons/1`。
+如上的配置下，REST适配器会采用`/formulae/1`来获取`App.Formula`，而不是使用`/formulae/1`。
 
 #### Endpoint Path Customization
 
