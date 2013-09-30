@@ -182,7 +182,7 @@ In general, two-word event names (like `keypress`) become `keyPress`.
 
 ### 指定在白名单中的辅助键
 
-By default the `{{action}}` helper will ignore click event with
+By default the `{{action}}` helper will ignore click events with
 pressed modifier keys. You can supply an `allowedKeys` option
 to specify which keys should not be ignored.
 
