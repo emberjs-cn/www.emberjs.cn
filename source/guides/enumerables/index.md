@@ -109,7 +109,7 @@ var emphaticWords = words.map(function(item) {
 // ["goodbye!", "cruel!", "world!"]
 ```
 
-如果枚举由对象构成，那么通过`mapProperty()`方法可以抽取对象指定的属性，来形成一个新的数组：
+如果枚举由对象构成，那么通过`mapBy()`方法可以抽取对象指定的属性，来形成一个新的数组：
 
 ```javascript
 var hawaii = Ember.Object.create({
@@ -122,7 +122,7 @@ var california = Ember.Object.create({
 
 var states = [hawaii, california];
 
-states.mapProperty('capital');
+states.mapBy('capital');
 //=> ["Honolulu", "Sacramento"]
 ```
 
@@ -142,7 +142,7 @@ arr.filter(function(item, index, self) {
 // returns [1,2,3]
 ```
 
-当处理一个Ember对象的集合时，经常需要基于对象的某些属性值来过滤。`filterProperty`方法可以快速的实现此过滤。
+当处理一个Ember对象的集合时，经常需要基于对象的某些属性值来过滤。`filterBy`方法可以快速的实现此过滤。
 
 ```javascript
 Todo = Ember.Object.extend({
@@ -155,12 +155,12 @@ todos = [
   Todo.create({ title: 'Go to sleep' })
 ];
 
-todos.filterProperty('isDone', true);
+todos.filterBy('isDone', true);
 
 // returns an Array containing only items with `isDone == true`
 ```
 
-如果只想返回第一个匹配的值，而不是一个包含所有匹配值的数组，可以使用`find`和`findProperty`方法，其工作原理与`filter`和`filterProperty`一样，不同的是只返回一个元素。
+如果只想返回第一个匹配的值，而不是一个包含所有匹配值的数组，可以使用`find`和`findBy`方法，其工作原理与`filter`和`filterBy`一样，不同的是只返回一个元素。
 
 #### 聚合信息（全部或者部分）
 
@@ -194,9 +194,9 @@ people.some(function(person, index, self) {
 // returns true
 ```
 
-如同过滤方法一样，`every`和`some`也有`everyProperty`和`someProperty`方法。
+如同过滤方法一样，`every`和`some`也有`everyBy`和`anyBy`方法。
 
 ```javascript
-people.everyProperty('isHappy', true) // false
-people.someProperty('isHappy', true)  // true
+people.everyBy('isHappy', true) // false
+people.anyBy('isHappy', true)  // true
 ```

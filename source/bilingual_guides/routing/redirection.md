@@ -1,11 +1,8 @@
-## Redirecting to a Different URL
 
-## 重定向到不同的URL
+### Before the model is known
 
-If you want to redirect from one route to another, simply implement the
-`redirect` hook in your route handler.
-
-如果你想从一个路由重定向到另外一个路由，只要在路由处理方法中实现一个`redirect`钩子即可。
+If you want to redirect from one route to another, you can do the transition in
+the `beforeModel` hook of your route handler.
 
 ```javascript
 App.Router.map(function() {
@@ -13,15 +10,42 @@ App.Router.map(function() {
 });
 
 App.IndexRoute = Ember.Route.extend({
-  redirect: function() {
+  beforeModel: function() {
     this.transitionTo('posts');
   }
 });
 ```
 
-You can conditionally transition based on some other application state.
+### After the model is known
 
-你可以基于其他的应用状态，来进行有条件的切换。
+If you need some information about the current model in order to decide about
+the redirection, you should either use the `afterModel` or the `redirect` hook. They
+receive the resolved model as the first parameter and the transition as the second one,
+and thus function as aliases. (In fact, the default implementation of `afterModel` just calls `redirect`.)
+
+```javascript
+
+App.Router.map(function() {
+  this.resource('posts');
+  this.resource('post', { path: '/post/:post_id' });
+});
+
+App.PostsRoute = Ember.Route.extend({
+  afterModel: function(posts, transition) {
+    if (posts.length === 1) {
+      this.transitionTo('post', posts[0]);
+    }
+  }
+});
+```
+
+When transitioning to the `PostsRoute` it turns out that there is only one post,
+the current transition is aborted in favor of redirecting to the `PostRoute`
+with the single post object being its model.
+
+### Based on other application state
+
+You can conditionally transition based on some other application state.
 
 ```javascript
 App.Router.map(function() {
@@ -35,7 +59,7 @@ App.Router.map(function() {
 });
 
 App.TopChartsChooseRoute = Ember.Route.extend({
-  redirect: function() {
+  beforeModel: function() {
     var lastFilter = this.controllerFor('application').get('lastFilter');
     this.transitionTo('topCharts.' + lastFilter || 'songs');
   }
@@ -59,11 +83,11 @@ In this example, navigating to the `/` URL immediately transitions into
 the last filter URL that the user was at. The first time, it transitions
 to the `/songs` URL.
 
-Your route can also choose to transition only in some cases. If the
-`redirect` hook does not transition to a new route, the remaining hooks
-(`model`, `setupController`, `renderTemplate`) will execute as usual.
-
-
 在上面这个例子中，用户浏览到`/`网址的时候会被立即跳转到用户曾经访问过的最后过滤网址。第一次访问`/`的时候，会被跳转到`songs`网址。
 
-你的路由还可以选择在特定的情况下才跳转。如果`redirect`钩子没有跳转到新的路由，剩下的钩子们(`model`, `setupController`, `renderTemplate`)还会照常执行。
+Your route can also choose to transition only in some cases. If the
+`beforeModel` hook does not abort or transition to a new route, the remaining
+hooks (`model`, `afterModel`, `setupController`, `renderTemplate`) will execute
+as usual.
+
+你的路由还可以选择在特定的情况下才跳转。如果`beforeModel`钩子没有跳转到新的路由，剩下的钩子们(`model`, `afterModel`,`setupController`, `renderTemplate`)还会照常执行。

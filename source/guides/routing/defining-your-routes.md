@@ -223,7 +223,7 @@ App.PostRoute = Ember.Route.extend({
 由于这种模式很常用，所以上面的模型（`model`）钩子函数就是默认的行为。
 
 例如，如果动态段是`:post_id`，`ember.js`会智能地使用`App.post`（加上`URL`提供的`ID`)。
-特别地，如果你没有重写了模型（`model`），路由将会自动地返回`App.Post.find(params.post_id)`。
+特别地，如果你没有重写了模型（`model`），路由将会自动地返回`this.get('store').find('post', params.post_id)`。
 
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
@@ -399,19 +399,5 @@ App.Router.map(function() {
   - 应用启动时，首先进入`App.ApplicationRoute`，它将渲染`application`模板。
 
   - `App.IndexRoute`是默认路由，当用户访问`/`时，将渲染`index`模板（除非`/`被自定义的路由覆盖）。
-    
-  - 每次应用从一个路由切换到另一个路由，并包含一个承诺时，`App.LoadingRoute`渲染`loading`模板。例如：发起了一个AJAX请求。为了启用这个路由，需要在应用中重新定义一次：
 
-    ```js
-    // app.js
-    App.LoadingRoute = Ember.Route.extend({});
-
-    // index.html
-    <script type="text/x-handlebars" data-template-name="loading">
-      <h1>Loading...</h1>
-    </script>
-    ```
-
-    默认情况下，路由将模板追加到DOM`<body>`元素下。如果需要其他的行为，例如[渲染模板到一个命名outlet](http://emberjs.cn/guides/routing/rendering-a-template/)，重写`LoadingRoute`的`renderTemplate`方法。
-
-请记住，这些路由是每个应用的一部分，因此不需要在`App.Router.map`中指定。
+   请记住，这些路由是每个应用的一部分，因此不需要在`App.Router.map`中指定。

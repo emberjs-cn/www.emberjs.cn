@@ -10,6 +10,7 @@ We'll start with a simple example:
 
 ```javascript
 App.Person = Ember.Object.extend({
+  // these will be supplied by `create`
   firstName: null,
   lastName: null,
 
@@ -35,7 +36,6 @@ You can use computed properties as values to create new computed properties. Let
 
 ```javascript
 App.Person = Ember.Object.extend({
-  // these will be supplied by `create`
   firstName: null,
   lastName: null,
   age: null,
@@ -102,3 +102,5 @@ captainAmerica.set('fullName', "William Burnside");
 captainAmerica.get('firstName'); // William
 captainAmerica.get('lastName'); // Burnside
 ```
+
+Ember will call the computed property for both setters and getters, so if you want to use a computed property as a setter, you'll need to check the number of arguments to determine whether it is being called as a getter or a setter.

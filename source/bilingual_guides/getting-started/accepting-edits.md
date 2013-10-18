@@ -79,13 +79,18 @@ In `js/controllers/todo_controller.js`, add the method `acceptChanges` that we c
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 actions: {
-   editTodo: function () {
-     this.set('isEditing', true);
-   },
-   acceptChanges: function () {
-     this.set('isEditing', false);
-     this.get('model').save();
-   }
+  editTodo: function () {
+    this.set('isEditing', true);
+  },
+  acceptChanges: function () {
+    this.set('isEditing', false);
+    if (Ember.isEmpty(this.get('model.title'))) {
+      this.send('removeTodo');
+    } else {
+      this.get('model')save();
+    }       
+  }
+}
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```

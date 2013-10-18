@@ -316,10 +316,10 @@ default behavior.
 For example, if the dynamic segment is `:post_id`, Ember.js is smart
 enough to know that it should use the model `App.Post` (with the ID
 provided in the URL). Specifically, unless you override `model`, the route will
-return `App.Post.find(params.post_id)` automatically.
+return `this.get('store').find('post', params.post_id)` automatically.
 
 例如，如果动态段是`:post_id`，`ember.js`会智能地使用`App.post`（加上`URL`提供的`ID`)。
-特别地，如果你没有重写了模型（`model`），路由将会自动地返回`App.Post.find(params.post_id)`。
+特别地，如果你没有重写了模型（`model`），路由将会自动地返回`this.get('store').find('post', params.post_id)`。
 
 Not coincidentally, this is exactly what Ember Data expects. So if you
 use the Ember router with Ember Data, your dynamic segments will work
@@ -530,27 +530,6 @@ A few routes are immediately available within your application:
   template when the user visits `/` (unless `/` has been overridden by your own custom route).  
 
   - `App.IndexRoute`是默认路由，当用户访问`/`时，将渲染`index`模板（除非`/`被自定义的路由覆盖）。
-    
-  - `App.LoadingRoute` will render the `loading` template each time
-  your app transitions from one route to another that involves a promise - for example, during an AJAX request. To enable this route, redefine it within your app:
-
-  - 每次应用从一个路由切换到另一个路由，并包含一个承诺时，`App.LoadingRoute`渲染`loading`模板。例如：发起了一个AJAX请求。为了启用这个路由，需要在应用中重新定义一次：
-
-    ```js
-    // app.js
-    App.LoadingRoute = Ember.Route.extend({});
-
-    // index.html
-    <script type="text/x-handlebars" data-template-name="loading">
-      <h1>Loading...</h1>
-    </script>
-    ```
-
-    By default, the route will append the template to the `<body>`
-    element of the DOM. For different behavior, like [rendering the template to a named outlet](http://emberjs.com/guides/routing/rendering-a-template/),
-    override the `renderTemplate` method of the `LoadingRoute`.
-
-    默认情况下，路由将模板追加到DOM`<body>`元素下。如果需要其他的行为，例如[渲染模板到一个命名outlet](http://emberjs.cn/guides/routing/rendering-a-template/)，重写`LoadingRoute`的`renderTemplate`方法。
 
 Remember, these routes are part of every application, so you don't need
 to specify them in `App.Router.map`.

@@ -87,13 +87,13 @@ Requests for `App.Person` would now target `/api/1/people/1`.
 
 #### 自定义宿主
 
-An adapter can target other hosts by setting the `url` property.
+An adapter can target other hosts by setting the `host` property.
 
-适配器可以通过设置`url`属性来指向其他的宿主。
+适配器可以通过设置`host`属性来指向其他的宿主。
 
 ```js
 DS.RESTAdapter.reopen({
-  url: 'https://api.example.com'
+  host: 'https://api.example.com'
 });
 ```
 
@@ -283,7 +283,7 @@ registered for use as attributes:
 `RESTAdapter`可以注册像属性一样使用的新的转换，就如同其他Ember适配器。
 
 ```js
-DS.RESTAdapter.registerTransform('coordinatePoint', {
+App.CoordinatePointTransform = DS.Transform.extend({
   serialize: function(value) {
     return [value.get('x'), value.get('y')];
   },

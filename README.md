@@ -16,7 +16,7 @@ www.emberjs.cn
 
 #### 搭建开发环境
 
-```
+```sh
 git clone git://github.com/emberjs-cn/www.emberjs.cn.git
 cd www.emberjs.cn
 

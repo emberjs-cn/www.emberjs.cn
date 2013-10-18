@@ -13,7 +13,7 @@ App.Router.map(function() {
 ```
 
 ```handlebars
-<!-- photos.handlebars -->
+{{! photos.handlebars }}
 
 <ul>
 {{#each photo in photos}}
@@ -40,6 +40,16 @@ App.Router.map(function() {
 * 每个[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)最多对应一个模型。默认情况下，Ember.js将使用对应对象的`id`属性来替换动态段。
 * 此外，我们也可以提供一个链接名称绑定到`a`标签的`title`属性。
 
+如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)，并确保`model`钩子被触发。
+
+```handlebars
+{{! photos.handlebars }}
+
+{{#link-to 'photo.edit' 1}}
+  First Photo Ever
+{{/link-to}}
+```
+
 ### 多动态段示例
 
 如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型，如下所示：
@@ -56,7 +66,7 @@ App.Router.map(function() {
 ```
 
 ```handlebars
-<!-- photoIndex.handlebars -->
+{{! photoIndex.handlebars }}
 
 <div class="photo">
   {{body}}

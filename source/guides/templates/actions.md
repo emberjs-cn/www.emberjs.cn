@@ -9,7 +9,7 @@
 那么可以使用`{{action}}`助手来使得一个HTML元素可以被点击。当用户点击这个元素时，一个命名事件将会被发送给应用。
 
 ```handlebars
-<!-- post.handlebars -->
+{{! post.handlebars }}
 
 <div class='intro'>
   {{intro}}

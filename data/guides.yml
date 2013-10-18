@@ -63,6 +63,22 @@
   #- title: "Understanding Web Apps"
     #url: "getting-started/understanding-web-apps"
 
+对象模型:
+  - title: "类与实例"
+    url: "object-model/classes-and-instances"
+  - title: "计算属性"
+    url: "object-model/computed-properties"
+  - title: "计算属性和带@each的集合数据"
+    url: "object-model/computed-properties-and-aggregate-data"
+  - title: "观察器"
+    url: "object-model/observers"
+  - title: "绑定"
+    url: "object-model/bindings"
+  - title: "重新打开类和实例"
+    url: "object-model/reopening-classes-and-instances"
+  - title: "绑定，观察器，计算属性：如何选择？"
+    url: "object-model/what-do-i-use-when"
+
 应用:
   - title: "介绍"
     url: "application"
@@ -170,6 +186,8 @@
     url: "models/working-with-records"
   - title: "Connecting to an HTTP Server"
     url: "models/connecting-to-an-http-server"
+  - title: "Handling Metadata"
+    url: "models/handling-metadata"
   - title: "Frequently Asked Questions"
     url: "models/frequently-asked-questions"
 
@@ -192,22 +210,6 @@
     url: "views/manually-managing-view-hierarchy"
   #- title: "Building Reusable Views"
     #url: "views/building-reusable-views"
-
-对象模型:
-  - title: "类与实例"
-    url: "object-model/classes-and-instances"
-  - title: "计算属性"
-    url: "object-model/computed-properties"
-  - title: "计算属性和带@each的集合数据"
-    url: "object-model/computed-properties-and-aggregate-data"
-  - title: "观察器"
-    url: "object-model/observers"
-  - title: "绑定"
-    url: "object-model/bindings"
-  - title: "重新打开类和实例"
-    url: "object-model/reopening-classes-and-instances"
-  - title: "绑定，观察器，计算属性：如何选择？"
-    url: "object-model/what-do-i-use-when"
 
 枚举:
   - title: "介绍"
@@ -258,6 +260,9 @@ Cookbook:
     skip_sidebar_item: true
   - title: "Specifying Data-Driven Areas of Templates That Do Not Need To Update"
     url: "cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update"
+    skip_sidebar_item: true
+  - title: "Using Modal Dialogs"
+    url: "cookbook/user_interface_and_interaction/using_modal_dialogs"
     skip_sidebar_item: true
   # - title: "Converting Strings to Currency With Accounting.js"
   #   url: "cookbook/user_interface_and_interaction/converting_strings_to_currency_with_accounting_js"

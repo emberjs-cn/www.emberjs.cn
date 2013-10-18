@@ -44,10 +44,11 @@ For more information about how outlets are filled in by the router, see
 更多关于入口是如何被路由填写，请参看[Routing](/guides/routing)。
 
 If you are keeping your templates in HTML, create a `<script>` tag
-without a template name. It will automatically be compiled and appended
-to the screen.
+without a template name. Ember will use the template without a name as
+the application template and it will automatically be compiled and
+appended to the screen.
 
-如果你希望将应用模板放置在HTML文档中，你可以创建一个不带模板名字的`<script>`标签，它会自动被编译和加载到页面。
+如果你希望将应用模板放置在HTML文档中，你可以创建一个不带模板名字的`<script>`标签。Ember将使用这个没有命名的模板作为应用的模板，会将其编译和加载到页面。
 
 ```html
 <script type="text/x-handlebars">

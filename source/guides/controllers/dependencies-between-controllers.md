@@ -34,7 +34,7 @@ App.CommentsController = Ember.ArrayController.extend({
 </ul>
 ```
 
-通过创建一个绑定，可以提供一种更为简便的方式来访问`PostController`（因为`PostController`是一个`ObjectController`，这里并不直接需要一个`Post`实例）。
+通过创建一个别名属性，可以提供一种更为简便的方式来访问`PostController`（因为`PostController`是一个`ObjectController`，这里并不直接需要一个`Post`实例）。
 
 ```javascript
 App.CommentsController = Ember.ArrayController.extend({
@@ -43,4 +43,4 @@ App.CommentsController = Ember.ArrayController.extend({
 });
 ```
 
-更多关于绑定的信息，请查看API中的`Ember.Binding`。
+更多关于别名属性的信息，请查看[aliased properties](http://emberjs.com/api/#method_computed_alias) API。

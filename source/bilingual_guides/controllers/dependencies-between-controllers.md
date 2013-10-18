@@ -51,11 +51,11 @@ its parent `PostController`, which can be done via `controllers.post`
 </ul>
 ```
 
-We can also create a binding to give ourselves a shorter way to access
+We can also create an aliased property to give ourselves a shorter way to access
 the `PostController` (since it is an `ObjectController`, we don't need or
 want the `Post` instance directly).
 
-通过创建一个绑定，可以提供一种更为简便的方式来访问`PostController`（因为`PostController`是一个`ObjectController`，这里并不直接需要一个`Post`实例）。
+通过创建一个别名属性，可以提供一种更为简便的方式来访问`PostController`（因为`PostController`是一个`ObjectController`，这里并不直接需要一个`Post`实例）。
 
 ```javascript
 App.CommentsController = Ember.ArrayController.extend({
@@ -64,7 +64,7 @@ App.CommentsController = Ember.ArrayController.extend({
 });
 ```
 
-For more information about bindings, see the API docs for
-+`Ember.Binding`.
+For more information about aliased property, see the API docs for
+[aliased properties](http://emberjs.com/api/#method_computed_alias).
 
-更多关于绑定的信息，请查看API中的`Ember.Binding`。
+更多关于别名属性的信息，请查看[aliased properties](http://emberjs.com/api/#method_computed_alias) API。

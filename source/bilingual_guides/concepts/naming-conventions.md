@@ -4,14 +4,14 @@
 ## 命名惯例(Naming Conventions)
 
 Ember.js uses naming conventions to wire up your objects without a 
-lot  of boilerplate. You will want to  use the conventional names 
+lot of boilerplate. You will want to use these conventional names 
 for your routes, controllers and templates.
 
 `Ember.js`使用命名惯例来连接各个对象，而不是通过大量的引用。对于路由，控制器以及模板，你都应该使用此命名惯例。
 
-You can usually guess the names, but this guide outlines, in one place, all of the naming conventions.
+You can usually guess the names, but this guide outlines, in one place, all of the naming conventions. In the following examples 'App' is a name that we chose to namespace or represent our Ember application when it was created, but you can theoretically choose any name you want for your application. We will show you later how to create an Ember application, but for now we will focus on conventions.
 
-有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名惯例。
+有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名惯例。在下面的例子中'App'是被选来作为命名空间的名字，或者说用来代表Ember应用，当然理论上可以选择任何你喜欢的名字。后面我们将具体介绍如何创建一个Ember应用，不过现在我们将关注惯例。
 
 ## 应用程序(The Application)
 

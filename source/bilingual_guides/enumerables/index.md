@@ -177,11 +177,11 @@ var emphaticWords = words.map(function(item) {
 // ["goodbye!", "cruel!", "world!"]
 ```
 
-If your enumerable is composed of objects, there is a `mapProperty()`
+If your enumerable is composed of objects, there is a `mapBy()`
 method that will extract the named property from each of those objects
 in turn and return a new array:
 
-如果枚举由对象构成，那么通过`mapProperty()`方法可以抽取对象指定的属性，来形成一个新的数组：
+如果枚举由对象构成，那么通过`mapBy()`方法可以抽取对象指定的属性，来形成一个新的数组：
 
 ```javascript
 var hawaii = Ember.Object.create({
@@ -194,7 +194,7 @@ var california = Ember.Object.create({
 
 var states = [hawaii, california];
 
-states.mapProperty('capital');
+states.mapBy('capital');
 //=> ["Honolulu", "Sacramento"]
 ```
 
@@ -224,9 +224,9 @@ arr.filter(function(item, index, self) {
 // returns [1,2,3]
 ```
 
-When working with a collection of Ember objects, you will often want to filter a set of objects based upon the value of some property. The `filterProperty` method provides a shortcut.
+When working with a collection of Ember objects, you will often want to filter a set of objects based upon the value of some property. The `filterBy` method provides a shortcut.
 
-当处理一个Ember对象的集合时，经常需要基于对象的某些属性值来过滤。`filterProperty`方法可以快速的实现此过滤。
+当处理一个Ember对象的集合时，经常需要基于对象的某些属性值来过滤。`filterBy`方法可以快速的实现此过滤。
 
 ```javascript
 Todo = Ember.Object.extend({
@@ -239,14 +239,14 @@ todos = [
   Todo.create({ title: 'Go to sleep' })
 ];
 
-todos.filterProperty('isDone', true);
+todos.filterBy('isDone', true);
 
 // returns an Array containing only items with `isDone == true`
 ```
 
-If you want to return just the first matched value, rather than an Array containing all of the matched values, you can use `find` and `findProperty`, which work just like `filter` and `filterProperty`, but return only one item.
+If you want to return just the first matched value, rather than an Array containing all of the matched values, you can use `find` and `findBy`, which work just like `filter` and `filterBy`, but return only one item.
 
-如果只想返回第一个匹配的值，而不是一个包含所有匹配值的数组，可以使用`find`和`findProperty`方法，其工作原理与`filter`和`filterProperty`一样，不同的是只返回一个元素。
+如果只想返回第一个匹配的值，而不是一个包含所有匹配值的数组，可以使用`find`和`findBy`方法，其工作原理与`filter`和`filterBy`一样，不同的是只返回一个元素。
 
 #### Aggregate Information (All or Any)
 
@@ -286,12 +286,12 @@ people.some(function(person, index, self) {
 // returns true
 ```
 
-Just like the filtering methods, the `every` and `some` methods have analogous `everyProperty` and `someProperty` methods.
+Just like the filtering methods, the `every` and `some` methods have analogous `everyBy` and `anyBy` methods.
 
-如同过滤方法一样，`every`和`some`也有`everyProperty`和`someProperty`方法。
+如同过滤方法一样，`every`和`some`也有`everyBy`和`anyBy`方法。
 
 ```javascript
-people.everyProperty('isHappy', true) // false
-people.someProperty('isHappy', true)  // true
+people.everyBy('isHappy', true) // false
+people.anyBy('isHappy', true)  // true
 ```
 

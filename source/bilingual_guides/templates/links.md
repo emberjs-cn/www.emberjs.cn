@@ -17,7 +17,7 @@ App.Router.map(function() {
 ```
 
 ```handlebars
-<!-- photos.handlebars -->
+{{! photos.handlebars }}
 
 <ul>
 {{#each photo in photos}}
@@ -59,6 +59,20 @@ The `{{link-to}}` helper takes:
 * 每个[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)最多对应一个模型。默认情况下，Ember.js将使用对应对象的`id`属性来替换动态段。
 * 此外，我们也可以提供一个链接名称绑定到`a`标签的`title`属性。
 
+If there is no model to pass to the helper, you can provide an explicit identifier value instead.
+The value will be filled into the [dynamic segment](/guides/routing/defining-your-routes/#toc_dynamic-segments)
+of the route, and will make sure that the `model` hook is triggered.
+
+如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)，并确保`model`钩子被触发。
+
+```handlebars
+{{! photos.handlebars }}
+
+{{#link-to 'photo.edit' 1}}
+First Photo Ever
+{{/link-to}}
+```
+
 ### Example for Multiple Segments
 
 ### 多动态段示例
@@ -70,17 +84,17 @@ segment.
 
 ```js
 App.Router.map(function() {
-  this.resource("photos", function(){
-    this.resource("photo", { path: "/:photo_id" }, function(){
-      this.route("comments");
-      this.route("comment", { path: "/comments/:comment_id" });
-    });
+this.resource("photos", function(){
+  this.resource("photo", { path: "/:photo_id" }, function(){
+    this.route("comments");
+    this.route("comment", { path: "/comments/:comment_id" });
   });
+});
 });
 ```
 
 ```handlebars
-<!-- photoIndex.handlebars -->
+{{! photoIndex.handlebars }}
 
 <div class="photo">
   {{body}}

@@ -331,7 +331,7 @@ p {
   min-width: $page-width;
   top: 0;
   height: 60px;
-  background: url('/images/navigation_background.png') top center;
+  background: $orange-color url('/images/navigation_background.png') top center;
   border-bottom: 1px solid #aa412f;
   z-index: 10; /* The header is on top to have proper drop-shadow. */
   @include box-shadow(rgba(0, 0, 0, 0.3) 0 0 3px);
@@ -1604,6 +1604,7 @@ body.not-found #content {
   background: no-repeat url("/images/ember-construction-57.png") top left; }
 
 .under_construction_warning h3 .msg {
+  text-transform: none;
   margin-top: 12px;
   margin-left: 40px;
 }

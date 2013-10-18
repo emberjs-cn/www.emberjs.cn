@@ -19,7 +19,7 @@
 
 // ... 为保持代码简洁，在此省略了其他代码 ...
 remaining: function () {
-  return this.filterProperty('isCompleted', false).get('length');
+  return this.filterBy('isCompleted', false).get('length');
 }.property('@each.isCompleted'),
 
 inflection: function () {
