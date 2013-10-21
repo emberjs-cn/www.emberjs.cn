@@ -1,4 +1,5 @@
 英文原文：[http://emberjs.com/guides/application/](http://emberjs.com/guides/application/)
+
 中英对照：[http://emberjs.cn/bilingual_guides/application/](http://emberjs.cn/bilingual_guides/application/)
 
 ## 创建一个应用

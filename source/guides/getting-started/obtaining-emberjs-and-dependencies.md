@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/obtaining-emberjs-and-dependencies](http://emberjs.com/guides/getting-started/obtaining-emberjs-and-dependencies)
 
-## 获取EMBER.JS和相应依赖
-
 TodoMVC的依赖：
   
 * [jQuery](http://code.jquery.com/jquery-1.10.2.min.js)

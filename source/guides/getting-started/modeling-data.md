@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/modeling-data](http://emberjs.com/guides/getting-started/modeling-data)
 
-## 为数据建立模型
-
 接下来我们建立一个模型用来描述todo项。
 
 新建一个名为 `js/models/todo.js` 的文件，加入以下代码：

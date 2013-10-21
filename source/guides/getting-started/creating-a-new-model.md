@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/creating-a-new-model/](http://emberjs.com/guides/getting-started/creating-a-new-model/)
 
-## 创建新的模型实例
-
 接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`{{input}}`：
 
 ```handlebars

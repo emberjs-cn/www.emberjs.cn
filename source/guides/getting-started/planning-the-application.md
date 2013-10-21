@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/planning-the-application](http://emberjs.com/guides/getting-started/planning-the-application)
 
-## 应用规划
-
 尽管TodoMVC是一个小应用，但是它涵盖了现今典型单页面应用（single page applications）几乎所有的行为。在继续之前，先从用户视角了解一下TodoMVC是怎样工作的。
 
 TodoMVC包含了以下几个主要功能：

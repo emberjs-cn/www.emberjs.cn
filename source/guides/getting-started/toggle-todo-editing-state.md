@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/toggle-todo-editing-state/](http://emberjs.com/guides/getting-started/toggle-todo-editing-state/)
 
-## 切换显示和编辑状态
-
 TodoMVC支持用户通过双击每个待办事项来显示一个`<input>`文本编辑框，这样用户可以通过它修改待办事项的标题。每个待办事项的`<li>`元素通过`editing`这个CSS类来获得样式及位置信息。
 
 接下来我们将更新我们的应用，使其支持用户切换到待办事项的编辑状态。我们在`index.html`中更新Handlebars的`{{each}}`助手的内容为：

@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/adding-child-routes/](http://emberjs.com/guides/getting-started/adding-child-routes/)
 
-## 添加子路由
-
 接下来我们将模板切分为一系列嵌套的模板，这样我们可以在不同的待办事项列表间转换来响应用户的交互。
 
 在`index.html`中，添加一个新的Handlebars模板标签`<script>`到文档的`<body>`中，并命名为`todos/index`，然后将整个`<ul>`移入到其中：

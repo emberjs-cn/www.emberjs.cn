@@ -1,4 +1,4 @@
-## 显示模型的完成状态
+英文原文：[http://emberjs.com/guides/getting-started/displaying-a-models-completeness/](http://emberjs.com/guides/getting-started/displaying-a-models-completeness/) 
 
 TodoMVC通过在`<li>`元素上应用了一个名为`completed`的CSS类来标识已完成的待办事项。因此需要在一个待办事项的`isCompleted`属性为真的时候，更新`index.html`，为这个待办事项的元素添加一个CSS类：
 

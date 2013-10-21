@@ -1,4 +1,4 @@
-## 显示模型数据
+英文原文：[http://emberjs.com/guides/getting-started/displaying-model-data/](http://emberjs.com/guides/getting-started/displaying-model-data/) 
 
 接下来，我们将更新我们的应用，使其可以显示动态的待办事项，而不再是显示我们在`todos`模板中硬编码的内容。
 

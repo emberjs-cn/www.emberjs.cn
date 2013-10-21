@@ -1,5 +1,3 @@
-英文原文：[http://emberjs.com/guides/application/](http://emberjs.com/guides/application/)
-
 ## 创建一个应用（Creating an Application）
 
 The first step in creating an Ember.js application is to make an

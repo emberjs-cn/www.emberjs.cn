@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/marking-a-model-as-complete-incomplete/](http://emberjs.com/guides/getting-started/marking-a-model-as-complete-incomplete/)
 
-## 标记模型为完成或未完成
-
 接下来我们将更新我们的应用，允许用户将一个待办事项标记为完成或者为完成，并将更新信息持久化。
 
 在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`{{input}}`：

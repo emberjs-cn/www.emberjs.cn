@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/accepting-edits/](http://emberjs.com/guides/getting-started/accepting-edits/)
 
-## 接受修改
-
 在上一步中我们修改了TodoMVC使其可以支持用户能够切换到一个文本输入框`<input>`来编辑一个待办事项的标题。接下来，我们将实现在`<input>`显示时立即当前焦点移至其上，开始接收用户的输入，并在用户按下`<enter>`键时或把焦点从编辑的`<input>`元素中移出时，将用户的修改持久化，并显示待办事项修改后的标题。
 
 为了实现这一步，可以创建一个自定义的组件并且通过Handlebars来注册它，使得其在模板中可用。

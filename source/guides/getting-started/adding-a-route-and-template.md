@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/adding-a-route-and-template](http://emberjs.com/guides/getting-started/adding-a-route-and-template)
 
-## 添加第一个路由与模板
-
 接下来，我们将会创建一个Ember.js应用、一个路由（'`/`'），并且将我们的静态页面转换为Handlebars模板。
 
 在 `js` 目录下，为应用添加一个 `js/application.js` 文件，为路由添加一个 `js/router.js` 文件。你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。

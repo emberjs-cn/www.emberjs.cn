@@ -79,7 +79,7 @@ To start, add the following text to `index.html`:
 
 The associated [stylesheet](http://emberjs.com.s3.amazonaws.com/getting-started/style.css) and [background image](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png) for this project should be downloaded and placed in the same directory as `index.html`
 
-和这个页面相关的[stylesheet](http://emberjs.com.s3.amazonaws.com/getting-started/style.css)和[background image](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png)要放在与 `index.html` 相同的目录下。
+和这个页面相关的[样式](http://emberjs.com.s3.amazonaws.com/getting-started/style.css)和[背景图片](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png)要放在与 `index.html` 相同的目录下。
 
 Open `index.html` in your web browser to ensure that all assets are loading correctly. You should see the TodoMVC application with three hard-coded `<li>` elements where the text of each todo will appear.
 
@@ -99,5 +99,5 @@ Open `index.html` in your web browser to ensure that all assets are loading corr
 ### 附加资源
 
   * [采用`diff`格式显示这步骤所作的修改](https://github.com/emberjs/quickstart-code-sample/commit/4d91f9fa1f6be4f4675b54babd3074550095c930)
-  * [TodoMVC 样式表（stylesheet）](http://emberjs.com.s3.amazonaws.com/getting-started/style.css)
-  * [TodoMVC 背景图片（background image）](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png)
+  * [TodoMVC 样式表](http://emberjs.com.s3.amazonaws.com/getting-started/style.css)
+  * [TodoMVC 背景图片](http://emberjs.com.s3.amazonaws.com/getting-started/bg.png)

@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/displaying-the-number-of-incomplete-todos/](http://emberjs.com/guides/getting-started/displaying-the-number-of-incomplete-todos/)
 
-## 显示未完成待办事项的数量
-
 接下来，我们将修改我们的应用，使其能反映实际完成的待办事项数量，取缔我们之前的硬编码。我们使用下面两个属相来更新`index.html`：
 
 ```handlebars

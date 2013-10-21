@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/getting-started/deleting-todos/](http://emberjs.com/guides/getting-started/deleting-todos/)
 
-## 删除模型
-
 当光标悬浮在待办事项的`<li>`标签之上时，TodoMVC会在其上显示一个删除待办事项的按钮。点击该按钮，将删除对应的待办事项，并更新显示的完成和未完成待办事项的相关信息。
 
 在`index.html`中，在静态的`<button>`元素上增加一个`{{action}}`Handlebar助手：
