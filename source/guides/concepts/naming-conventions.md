@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/concepts/naming-conventions/](http://emberjs.com/guides/concepts/naming-conventions/)
 
-## 命名惯例
-
 `Ember.js`使用命名惯例来连接各个对象，而不是通过大量的引用。对于路由，控制器以及模板，你都应该使用此命名惯例。
 
 有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名惯例。在下面的例子中'App'是被选来作为命名空间的名字，或者说用来代表Ember应用，当然理论上可以选择任何你喜欢的名字。后面我们将具体介绍如何创建一个Ember应用，不过现在我们将关注惯例。
@@ -174,10 +172,10 @@ App.Router.map(function() {
 <table>
   <thead>
   <tr>
-    <th>Route Name</th>
-    <th>Controller</th>
-    <th>Route</th>
-    <th>Template</th>
+    <th>路由名</th>
+    <th>控制器</th>
+    <th>路由</th>
+    <th>模板</th>
   </tr>
   </thead>
   <tr>

@@ -1,7 +1,4 @@
 英文原文：[http://emberjs.com/guides/concepts/core-concepts/](http://emberjs.com/guides/concepts/core-concepts)
-中英对照：[http://emberjs.cn/bilingual_guides/concepts/core-concepts/](http://emberjs.cn/bilingual_guides/concepts/core-concepts)
-
-## 核心概念
 
 要开始学习Ember.js,首先要了解一些核心概念。
 
