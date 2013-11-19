@@ -9,3 +9,4 @@ build/
 /b
 *.swp
 .rvmrc
+vendor/bundle
