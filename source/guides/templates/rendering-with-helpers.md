@@ -212,7 +212,7 @@ App.AuthorController = Ember.ObjectController.extend({
   </thead>
   <tbody>
   <tr>
-    <td><code>{{partial author}}</code></td>
+    <td><code>{{partial "author"}}</code></td>
     <td><code>author.hbs</code></td>
     <td>Post</td>
     <td><code>App.PostView</code></td>
@@ -226,7 +226,7 @@ App.AuthorController = Ember.ObjectController.extend({
     <td><code>App.PostController</code></td>
   </tr>
   <tr>
-    <td><code>{{render author author}}</code></td>
+    <td><code>{{render "author" author}}</code></td>
     <td><code>author.hbs</code></td>
     <td>Author</td>
     <td><code>App.AuthorView</code></td>

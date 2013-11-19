@@ -126,6 +126,9 @@
     url: "routing/redirection"
   - title: "指定地址API"
     url: "routing/specifying-the-location-api"
+  - title: "Query Parameters"
+    url: "routing/query-params"
+    warning: "query-params-warning"
   - title: "Asynchronous Routing"
     url: "routing/asynchronous-routing"
   - title: "Preventing and Retrying Transitions"
@@ -222,6 +225,8 @@ Testing:
     url: "configuring-ember/disabling-prototype-extensions"
   - title: "嵌入式应用"
     url: "configuring-ember/embedding-applications"
+  - title: "Feature Flags"
+    url: "configuring-ember/feature-flags"
 Cookbook:
   - title: "Introduction"
     url: "cookbook"

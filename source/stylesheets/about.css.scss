@@ -1,8 +1,33 @@
+@import "mixins/hidpi";
+
 body.index, body.about {
-  background: url('/images/background-shades.png') no-repeat top center #faf4f1;
+  background: no-repeat top center #faf4f1;
+  background-image: url('/images/background-shades.png');
+  background-image: url('/images/background-shades.svg'), none; // See: http://css-tricks.com/svg-fallbacks/
 
   .feature p {
     margin-top: 1.5em;
+  }
+
+  .feature .handlebars {
+    @include hidpi('about/ember-handlebars-sm', 'png');
+    background-size: 221px 210px !important;
+    width: 221px;
+    height: 210px;
+  }
+
+  .feature .structure {
+    @include hidpi('about/ember-structure-sm', 'png');
+    background-size: 221px 210px !important;
+    width: 221px;
+    height: 210px;
+  }
+
+  .feature .productivity {
+    @include hidpi('about/ember-productivity-sm', 'png');
+    background-size: 221px 220px !important;
+    width: 221px;
+    height: 210px;
   }
 
   .getting-started {

@@ -26,7 +26,7 @@ In `js/controllers/todos_controller.js` implement the matching properties and a 
 // ... additional lines truncated for brevity ...
 actions: {
   clearCompleted: function () {
-    var completed = this.filterProperty('isCompleted', true);
+    var completed = this.filterBy('isCompleted', true);
     completed.invoke('deleteRecord');
 
     this.get('store').commit();
@@ -37,7 +37,7 @@ hasCompleted: function () {
 }.property('completed'),
 
 completed: function () {
-  return this.filterProperty('isCompleted', true).get('length');
+  return this.filterBy('isCompleted', true).get('length');
 }.property('@each.isCompleted')
 // ... additional lines truncated for brevity ...
 ```

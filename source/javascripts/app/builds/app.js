@@ -174,28 +174,33 @@ App.Project.reopenClass({
     [ {
       projectName: 'Ember',
       projectFilter: 'ember',
+      projectRepo: 'emberjs/ember.js',
       channel: "tagged"
     }, {
       projectName: 'Ember Data',
       projectFilter: 'ember-data',
+      projectRepo: 'emberjs/data',
       channel: "tagged"
     }, {
       projectName: "Ember",
       projectFilter: "ember",
-      lastRelease: "1.0.0",
-      futureVersion: "1.0.1",
+      projectRepo: 'emberjs/ember.js',
+      lastRelease: "1.1.2",
+      futureVersion: "1.1.3",
       channel: "release",
-      date: "2013-08-31"
+      date: "2013-10-25"
     }, {
       projectName: "Ember",
       projectFilter: "ember",
-      lastRelease: "1.1.0-beta.4",
-      futureVersion: "1.1.0",
+      projectRepo: 'emberjs/ember.js',
+      lastRelease: "1.2.0-beta.4",
+      futureVersion: "1.2.0-beta.5",
       channel: "beta",
-      date: "2013-10-11"
+      date: "2013-11-15"
     }, {
       projectName: "Ember Data",
       projectFilter: "ember-data",
+      projectRepo: 'emberjs/data',
       lastRelease: "1.0.0-beta.3",
       futureVersion: "1.0.0-beta.4",
       channel: "beta",
@@ -203,10 +208,12 @@ App.Project.reopenClass({
     }, {
       projectName: "Ember",
       projectFilter: "ember",
+      projectRepo: 'emberjs/ember.js',
       channel: "canary",
     }, {
       projectName: "Ember Data",
       projectFilter: "ember-data",
+      projectRepo: 'emberjs/data',
       channel: "canary",
     }],
 
@@ -307,6 +314,8 @@ App.ProjectsMixin = Ember.Mixin.create({
 
       if (project.channel === 'canary')
         project.lastRelease = 'latest';
+      else if (project.changelog !== 'false')
+        project.lastReleaseChangelogUrl   = 'https://github.com/' + project.projectRepo + '/blob/v' + project.lastRelease + '/CHANGELOG';
     });
 
     return projects;
@@ -428,3 +437,6 @@ Ember.Handlebars.helper('format-date-time', function(date) {
   return moment(date).fromNow();
 });
 
+Ember.Handlebars.helper('isHiDPIScreen', function() {
+  return window.getDevicePixelRatio() > 1;
+});

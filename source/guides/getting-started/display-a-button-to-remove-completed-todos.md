@@ -20,7 +20,7 @@ TodoMVC允许用户通过点击一个按钮来删除所有已完成的待办事�
 // ... additional lines truncated for brevity ...
 actions: {
   clearCompleted: function () {
-    var completed = this.filterProperty('isCompleted', true);
+    var completed = this.filterBy('isCompleted', true);
     completed.invoke('deleteRecord');
 
     this.get('store').commit();
@@ -31,7 +31,7 @@ hasCompleted: function () {
 }.property('completed'),
 
 completed: function () {
-  return this.filterProperty('isCompleted', true).get('length');
+  return this.filterBy('isCompleted', true).get('length');
 }.property('@each.isCompleted')
 // ... additional lines truncated for brevity ...
 ```

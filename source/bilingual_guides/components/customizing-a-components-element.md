@@ -123,7 +123,7 @@ This would render this HTML:
 <div class="ember-view disabled">
 ```
 
-You can also specify a class should only be added when the property is
+You can also specify a class which should only be added when the property is
 `false` by declaring `classNameBindings` like this:
 
 另外，还可以通过定义`classNameBindings`，实现只在属性为`false`的时候添加类名：

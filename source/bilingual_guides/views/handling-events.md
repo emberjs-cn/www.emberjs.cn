@@ -80,3 +80,8 @@ App.PlaybackRoute = Ember.Route.extend({
   }
 });
 ```
+
+To see a full listing of the `Ember.View` built-in events, see the
+documentation section on [Event Names](/api/classes/Ember.View.html#toc_event-names).
+
+查看Ember文档中[事件名称](/api/classes/Ember.View.html#toc_event-names)部分，来了解所有`Ember.View`的内置事件。

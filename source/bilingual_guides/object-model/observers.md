@@ -25,7 +25,7 @@ Person = Ember.Object.extend({
   
   fullNameChanged: function() {
     // 处理改变
-  }.observes('fullName')
+  }.observes('fullName').on('init')
 });
 
 var person = Person.create({

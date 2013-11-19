@@ -8,7 +8,7 @@ TodoMVC允许用户在已完成和未完成状态之间切换所有待办事项�
 // ... additional lines truncated for brevity ...
 allAreDone: function (key, value) {
   if (value === undefined) {
-    return !!this.get('length') && this.everyProperty('isCompleted', true);
+    return !!this.get('length') && this.everyBy('isCompleted', true);
   } else {
     this.setEach('isCompleted', value);
     this.invoke('save');
