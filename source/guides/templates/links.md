@@ -17,7 +17,7 @@ App.Router.map(function() {
 
 <ul>
 {{#each photo in photos}}
-  <li>{{#link-to 'photos.photo' photo}}{{photo.title}}{{/link-to}}</li>
+  <li>{{#link-to 'photos.edit' photo}}{{photo.title}}{{/link-to}}</li>
 {{/each}}
 </ul>
 ```
