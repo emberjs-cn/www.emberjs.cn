@@ -217,8 +217,8 @@
 枚举:
   - title: "介绍"
     url: "enumerables"
-Testing:
-  - title: "Integration Testing"
+测试:
+  - title: "集成测试"
     url: "testing/integration"
 配置Ember.js:
   - title: "禁用基本类型扩展"
