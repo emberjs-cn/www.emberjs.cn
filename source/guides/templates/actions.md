@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/actions/](http://emberjs.com/guides/templates/actions/)
 
-中英对照：[http://emberjs.c/bilingual_guides/templates/actions/](http://emberjs.cn/bilingual_guides/templates/actions/)
-
 ## 操作（{{action}}助手方法）
 
 应用常常需要一种让用户通过控件进行交互来修改应用状态的方式。例如，有一个用来显示一篇博客的模板，并且支持展开查看博客更多的信息。
