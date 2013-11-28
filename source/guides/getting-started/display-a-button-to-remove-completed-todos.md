@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/getting-started/displaying-a-button-to-remove-completed-todos/](http://emberjs.com/guides/getting-started/displaying-a-button-to-remove-completed-todos/)
+英文原文：[http://emberjs.com/guides/getting-started/display-a-button-to-remove-completed-todos/](http://emberjs.com/guides/getting-started/display-a-button-to-remove-completed-todos/)
 
 TodoMVC允许用户通过点击一个按钮来删除所有已完成的待办事项。这个按钮只在存在已完成的待办事项的时候才显示，并显示已完成的数量。当点击该按钮时，所有已完成的待办事项将被删除。
 
@@ -23,7 +23,7 @@ actions: {
     var completed = this.filterBy('isCompleted', true);
     completed.invoke('deleteRecord');
 
-    this.get('store').commit();
+    completed.invoke('save');
   }
 },
 hasCompleted: function () {
