@@ -159,7 +159,7 @@
     url: "components/customizing-a-components-element"
   - title: "使用Action处理用户交互"
     url: "components/handling-user-interaction-with-actions"
-  - title: "Sending Actions from Components to Your Application"
+  - title: "从组件发送操作给应用"
     url: "components/sending-actions-from-components-to-your-application"
 
 控制器:
