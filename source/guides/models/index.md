@@ -38,7 +38,20 @@ Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSocke
 
 #### 仓库
 
-**仓库**是应用用于存放记录的中心仓库。应用的控制器和路由都可以访问这个共享的仓库；当它们需要显示或者修改一个记录时，首先就需要访问仓库。
+**仓库**是应用用于存放记录的中心仓库。可以认为仓库是应用的所有数据的一个缓存。应用的控制器和路由都可以访问这个共享的仓库；当它们需要显示或者修改一个记录时，首先就需要访问仓库。
+
+`DS.Store`的实例会被自动创建，并且该实例被应用中所有的对象所共享。
+
+可以使用该实例来获取记录，创建新的记录等。例如，需要在路由的`model`钩子中查找一个类型为`App.Person`，ID为`1`的记录：
+
+```js
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    var store = this.get('store');
+    return store.find('person', 1)
+  }
+});
+```
 
 #### 模型
 
@@ -46,9 +59,32 @@ Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSocke
 
 例如，如果正在编写一个可以给饭店下单的Web应用，那么这个应用中应该包含`Order`、`LineItem`和`MenuItem`这样的模型。
 
+获取订单就变得非常的容易：
+
+```js
+this.store.find('order');
+```
+
 模型定义了服务器提供的数据的类型。例如`Person`模型可能包含一个名为`firstName`的字符串类型的属性，还有一个名为`birthday`的日期类型的属性。
 
+```js
+App.Person = DS.Model.extend({
+  firstName: DS.attr('string'),
+  birthday:  DS.attr('date')
+});
+```
+
 模型也声明了其与其他对象的关系。例如，一个`Order`可以有许多`LineItems`，一个`LineItem`可以属于一个特定的`Order`。
+
+```js
+App.LineItem = DS.Model.extend({
+       orders: DS.hasMany('order')
+});
+
+App.Order = DS.Model.extend({
+  lineItems: DS.belongsTo('lineItem')
+});
+```
 
 模型本身没有任何数据；模型只定义了其实例所具有的属性和行为，而这些实例被称为_记录_。
 
@@ -62,6 +98,10 @@ Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSocke
 2. 一个全局唯一的ID
 
 例如，如果正在编写一个联系人管理的应用，有一个模型名为`Person`。那么在应用中，可能存在一个类型为`Person`，ID为`1`或者`steve-buscemi`的记录。
+
+```js
+this.store.find('person', 1); // => { id: 1, name: 'steve-buscemi' }
+```
 
 ID通常是在服务器端第一次创建记录的时候设定的，当然也可以在客户端生成ID。
 

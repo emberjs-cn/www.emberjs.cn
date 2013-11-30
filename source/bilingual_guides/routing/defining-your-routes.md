@@ -218,7 +218,7 @@ and `resource` template.
 
 
 注意：如果你通过`this.resource`定义了一个资源，但是*没有*提供一个函数作为参数，
-那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/reosurce`只会用到
+那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/resource`只会用到
 `ResourceRoute`，`RescourceController`和`resource`模板。
 
 Routes nested under a resource take the name of the resource plus their
@@ -258,10 +258,10 @@ into a model.
 
 在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（`model`）中。
 
-For example, if we have the resource `this.resource('/blog_posts');`, our
+For example, if we have the resource `this.resource('/blog_posts')`, our
 route handler might look like this:
 
-例如，如果我们有一个资源`this.resource('/blog_posts');`，那么我们的路由处理器看起来
+例如，如果我们有一个资源`this.resource('/blog_posts')`，那么我们的路由处理器看起来
 可能像这样：
 
 ```js
@@ -328,10 +328,10 @@ as expected out of the box.
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
-If your model does not use the `id` property in the url, you should
+If your model does not use the `id` property in the URL, you should
 define a serialize method on your route:
 
-如果模型没有在url中使用`id`属性，那么应该在路由中定义一个序列化方法：
+如果模型没有在URL中使用`id`属性，那么应该在路由中定义一个序列化方法：
 
 ```javascript
 App.Router.map(function() {

@@ -3,7 +3,7 @@
 ## 用助手来渲染
 
 
-Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板
+Ember.js提供了数个助手来协助你以不同的方式来渲染其他视图或模板
 
 
 ### `{{partial}}` 助手
@@ -62,7 +62,7 @@ App.AuthorView = Ember.View.extend({
 <script type="text/x-handlebars" data-template-name='post'>
   <h1>{{title}}</h1>
   <div>{{body}}</div>
-  {{view App.AuthorView authorBinding=author}}
+  {{view App.AuthorView}}
 </script>
 ```
 
@@ -140,20 +140,12 @@ App.AuthorController = Ember.ObjectController.extend({
 
 `{{render}}` 不需要匹配路由。
 
-`{{render}}` 与 `{{outlet}}` 类似。两者均负责通知`Ember`将这一部分页面用来渲染其他模板。
+`{{render}}` 与 `{{outlet}}` 类似。两者均负责通知`Ember.js`将这一部分页面用来渲染其他模板。
 
 `{{outlet}}`: 路由器决定路由，并且创建合适的控制器/视图/模型
 `{{render}}`: 你（直接或间接地）指定合适的控制器/视图/模型
 
-注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的`{{control}}`助手。
-
-### `{{control}}` 助手
-
-`{{control}}` 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。
-
-此助手目前仍在开发中，以后极有可能变化很大。
-
-注意：`{{control}}`助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：`ENV.EXPERIMENTAL_CONTROL_HELPER = true`。
+注意：当没有指定模型时，同一个路由不能重复的调用`{{render}}`。
 
 ### 比较表
 

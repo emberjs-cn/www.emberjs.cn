@@ -2,9 +2,9 @@
 
 ## 用助手来渲染
 
-Ember provides several helpers that allow you to render other views and templates in different ways.
+Ember.js provides several helpers that allow you to render other views and templates in different ways.
 
-Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板
+Ember.js提供了数个助手来协助你以不同的方式来渲染其他视图或模板
 
 ### The `{{partial}}` Helper
 
@@ -72,7 +72,7 @@ App.AuthorView = Ember.View.extend({
 <script type="text/x-handlebars" data-template-name='post'>
   <h1>{{title}}</h1>
   <div>{{body}}</div>
-  {{view App.AuthorView authorBinding=author}}
+  {{view App.AuthorView}}
 </script>
 ```
 
@@ -178,41 +178,21 @@ In this example, render will:
 
 `{{render}}` does not require the presence of a matching route.  
 
-`{{render}}` is similar to `{{outlet}}`. Both tell Ember to devote this portion of the page to something.
+`{{render}}` is similar to `{{outlet}}`. Both tell Ember.js to devote this portion of the page to something.
 
 `{{outlet}}`: The router determines the route and sets up the appropriate controllers/views/models.
 `{{render}}`: You specify (directly and indirectly) the appropriate controllers/views/models.
 
 `{{render}}` 不需要匹配路由。
 
-`{{render}}` 与 `{{outlet}}` 类似。两者均负责通知`Ember`将这一部分页面用来渲染其他模板。
+`{{render}}` 与 `{{outlet}}` 类似。两者均负责通知`Ember.js`将这一部分页面用来渲染其他模板。
 
 `{{outlet}}`: 路由器决定路由，并且创建合适的控制器/视图/模型
 `{{render}}`: 你（直接或间接地）指定合适的控制器/视图/模型
 
+Note: `{{render}}` cannot be called multiple times for the same route when not specifying a model.
 
-
-
-Note: `{{render}}` cannot be called multiple times for the same route when not specifying a model.  For that you'll need `{{control}}`.
-
-注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的`{{control}}`助手。
-
-
-### The `{{control}}` Helper
-
-### `{{control}}` 助手
-
-`{{control}}` works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.
-
-This helper is currently under heavy development, and will likely change soon.
-
-`{{control}}` 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。
-
-此助手目前仍在开发中，以后极有可能变化很大。
-
-Note: The `{{control}}` helper is currently disabled by default. To enable it set `ENV.EXPERIMENTAL_CONTROL_HELPER = true` before requiring Ember.
-
-注意：`{{control}}`助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：`ENV.EXPERIMENTAL_CONTROL_HELPER = true`。
+注意：当没有指定模型时，同一个路由不能重复的调用`{{render}}`。
 
 ### Comparison Table
 

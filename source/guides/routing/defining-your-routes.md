@@ -167,7 +167,7 @@ App.Router.map(function() {
 到`posts.index`或链接到`posts.index`。</small>
 
 注意：如果你通过`this.resource`定义了一个资源，但是*没有*提供一个函数作为参数，
-那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/reosurce`只会用到
+那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/resource`只会用到
 `ResourceRoute`，`RescourceController`和`resource`模板。
 
 一个资源下的嵌套路由的名字会是资源名加上路由名。如果你想跳转到一个路由（用`transitionTo`或
@@ -186,7 +186,7 @@ App.Router.map(function() {
 
 在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（`model`）中。
 
-例如，如果我们有一个资源`this.resource('/blog_posts');`，那么我们的路由处理器看起来
+例如，如果我们有一个资源`this.resource('/blog_posts')`，那么我们的路由处理器看起来
 可能像这样：
 
 ```js
@@ -228,7 +228,7 @@ App.PostRoute = Ember.Route.extend({
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
-如果模型没有在url中使用`id`属性，那么应该在路由中定义一个序列化方法：
+如果模型没有在URL中使用`id`属性，那么应该在路由中定义一个序列化方法：
 
 ```javascript
 App.Router.map(function() {

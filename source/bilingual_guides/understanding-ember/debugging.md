@@ -226,3 +226,22 @@ Ember.RSVP.configure('onerror', function(error) {
   Ember.Logger.assert(false, error);
 });
 ```
+
+#### Errors within `Ember.run.later`([Backburner.js](https://github.com/ebryn/backburner.js))
+
+#### `Ember.run.later`([Backburner.js](https://github.com/ebryn/backburner.js))中的错误
+
+Backburner has support for stitching the stacktraces together so that you can
+track down where an erroring `Ember.run.later` is being initiated from. Unfortunately,
+this is quite slow and is not appropriate for production or even normal
+development.
+
+Backburner支持将堆栈记录汇合在一起，以便跟踪`Ember.run.later`中的错误实在什么地方发生的。不幸的是，这非常的缓慢，并不适用与生产环境，甚至是开发环境。
+
+To enable this mode you can set:
+
+启用该模式需要设置：
+
+```javascript
+Ember.run.backburner.DEBUG = true;
+```

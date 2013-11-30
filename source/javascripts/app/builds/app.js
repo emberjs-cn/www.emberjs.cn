@@ -185,18 +185,18 @@ App.Project.reopenClass({
       projectName: "Ember",
       projectFilter: "ember",
       projectRepo: 'emberjs/ember.js',
-      lastRelease: "1.1.2",
-      futureVersion: "1.1.3",
+      lastRelease: "1.2.0",
+      futureVersion: "1.2.1",
       channel: "release",
-      date: "2013-10-25"
+      date: "2013-11-23"
     }, {
       projectName: "Ember",
       projectFilter: "ember",
       projectRepo: 'emberjs/ember.js',
-      lastRelease: "1.2.0-beta.4",
-      futureVersion: "1.2.0-beta.5",
+      lastRelease: "1.3.0-beta.1",
+      futureVersion: "1.3.0-beta.2",
       channel: "beta",
-      date: "2013-11-15"
+      date: "2013-11-25"
     }, {
       projectName: "Ember Data",
       projectFilter: "ember-data",
@@ -315,7 +315,7 @@ App.ProjectsMixin = Ember.Mixin.create({
       if (project.channel === 'canary')
         project.lastRelease = 'latest';
       else if (project.changelog !== 'false')
-        project.lastReleaseChangelogUrl   = 'https://github.com/' + project.projectRepo + '/blob/v' + project.lastRelease + '/CHANGELOG';
+        project.lastReleaseChangelogUrl   = 'https://github.com/' + project.projectRepo + '/blob/v' + project.lastRelease + '/CHANGELOG.md';
     });
 
     return projects;

@@ -82,11 +82,32 @@ concepts that underpin its design.
 #### 仓库
 
 The **store** is the central repository of records in your application.
-Both your application's controllers and routes have access to this
+You can think of the store as a cache of all of the records available in
+your app. Both your application's controllers and routes have access to this
 shared store; when they need to display or modify a record, they will
 first ask the store for it.
 
-**仓库**是应用用于存放记录的中心仓库。应用的控制器和路由都可以访问这个共享的仓库；当它们需要显示或者修改一个记录时，首先就需要访问仓库。
+**仓库**是应用用于存放记录的中心仓库。可以认为仓库是应用的所有数据的一个缓存。应用的控制器和路由都可以访问这个共享的仓库；当它们需要显示或者修改一个记录时，首先就需要访问仓库。
+
+This instance of `DS.Store` is created for you automatically and is shared
+among all of the objects in your application.
+
+`DS.Store`的实例会被自动创建，并且该实例被应用中所有的对象所共享。
+
+You will use the store to retrieve records, as well to create new ones.
+For example, we might want to find an `App.Person` model with the ID of
+`1` from our route's `model` hook:
+
+可以使用该实例来获取记录，创建新的记录等。例如，需要在路由的`model`钩子中查找一个类型为`App.Person`，ID为`1`的记录：
+
+```js
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    var store = this.get('store');
+    return store.find('person', 1)
+  }
+});
+```
 
 #### Models
 
@@ -105,17 +126,42 @@ a restaurant, you might have models like `Order`, `LineItem`, and
 
 例如，如果正在编写一个可以给饭店下单的Web应用，那么这个应用中应该包含`Order`、`LineItem`和`MenuItem`这样的模型。
 
+Fetching orders becomes very easy:
+
+获取订单就变得非常的容易：
+
+```js
+this.store.find('order');
+```
+
 Models define the type of data that will be provided by your server. For
 example, a `Person` model might have a `firstName` attribute that is a
-string, and a `birthday` attribute that is a date.
+string, and a `birthday` attribute that is a date:
 
 模型定义了服务器提供的数据的类型。例如`Person`模型可能包含一个名为`firstName`的字符串类型的属性，还有一个名为`birthday`的日期类型的属性。
+
+```js
+App.Person = DS.Model.extend({
+  firstName: DS.attr('string'),
+  birthday:  DS.attr('date')
+});
+```
 
 A model also describes its relationships with other objects. For
 example, an `Order` may have many `LineItems`, and a `LineItem` may
 belong to a particular `Order`.
 
 模型也声明了其与其他对象的关系。例如，一个`Order`可以有许多`LineItems`，一个`LineItem`可以属于一个特定的`Order`。
+
+```js
+App.LineItem = DS.Model.extend({
+       orders: DS.hasMany('order')
+});
+
+App.Order = DS.Model.extend({
+  lineItems: DS.belongsTo('lineItem')
+});
+```
 
 Models don't have any data themselves; they just define the properties and
 behavior of specific instances, which are called _records_.
@@ -147,6 +193,10 @@ have a model called `Person`. An individual record in your app might
 have a type of `Person` and an ID of `1` or `steve-buscemi`.
 
 例如，如果正在编写一个联系人管理的应用，有一个模型名为`Person`。那么在应用中，可能存在一个类型为`Person`，ID为`1`或者`steve-buscemi`的记录。
+
+```js
+this.store.find('person', 1); // => { id: 1, name: 'steve-buscemi' }
+```
 
 IDs are usually assigned by the server when you save them for the first
 time, but you can also generate IDs client-side.

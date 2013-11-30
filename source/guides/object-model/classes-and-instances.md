@@ -54,7 +54,7 @@ yehuda.say("Yes");
 
 ```javascript
 var person = Person.create();
-person.say("Hello") // alerts "Hello"
+person.say("Hello") // alerts " says: Hello"
 ```
 
 当创建一个类的实例时，可以将实例属性的初始值以`hash`形式的参数传给`create()`方法，从而实现对属性的初始化。例如：
