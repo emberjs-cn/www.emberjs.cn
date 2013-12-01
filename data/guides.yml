@@ -128,7 +128,7 @@
     url: "routing/redirection"
   - title: "指定地址API"
     url: "routing/specifying-the-location-api"
-  - title: "Query Parameters"
+  - title: "查询参数"
     url: "routing/query-params"
     warning: "query-params-warning"
   - title: "Asynchronous Routing"
