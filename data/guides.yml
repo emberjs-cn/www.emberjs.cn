@@ -131,7 +131,7 @@
   - title: "查询参数"
     url: "routing/query-params"
     warning: "query-params-warning"
-  - title: "Asynchronous Routing"
+  - title: "异步路由"
     url: "routing/asynchronous-routing"
   - title: "Loading / Error Substates"
     url: "routing/loading-and-error-substates"
