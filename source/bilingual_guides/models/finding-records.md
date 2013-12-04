@@ -73,7 +73,7 @@ Data. Just return the requested record from the `model` hook, and let
 Ember deal with figuring out whether a network request is needed or not:
 
 这使得使用Ember
-Data的异步数据来编写应用变得容易。只需要通过`model`钩子返回请求的记录，交个Ember来处理是否需要一个网络请求：
+Data的异步数据来编写应用变得容易。只需要通过`model`钩子返回请求的记录，交给Ember来处理是否需要一个网络请求：
 
 ```js
 App.Router.map(function() {
