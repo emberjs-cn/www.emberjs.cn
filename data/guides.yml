@@ -133,7 +133,7 @@
     warning: "query-params-warning"
   - title: "异步路由"
     url: "routing/asynchronous-routing"
-  - title: "Loading / Error Substates"
+  - title: "加载中/错误子状态"
     url: "routing/loading-and-error-substates"
   - title: "Preventing and Retrying Transitions"
     url: "routing/preventing-and-retrying-transitions"
