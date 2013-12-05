@@ -135,7 +135,7 @@
     url: "routing/asynchronous-routing"
   - title: "加载中/错误子状态"
     url: "routing/loading-and-error-substates"
-  - title: "Preventing and Retrying Transitions"
+  - title: "阻止和重试过渡"
     url: "routing/preventing-and-retrying-transitions"
   #- title: "Dynamic Segments"
     #url: "routing/dynamic-segments"
