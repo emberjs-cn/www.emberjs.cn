@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/object-model/classes-and-instances/](http://emberjs.com/guides/object-model/classes-and-instances/)
 
-## 类与实例
-
 定义一个新的`Ember`的_类_，只需要调用`Ember.Object`的`extend()`方法即可：
 
 ```javascript
