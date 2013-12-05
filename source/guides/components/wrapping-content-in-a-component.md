@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/wrapping-content-in-a-component/](http://emberjs.com/guides/components/wrapping-content-in-a-component/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/wrapping-content-in-a-component/](http://emberjs.cn/bilingual_guides/components/wrapping-content-in-a-component/)
-
 有时候，可能需要定义一个组件来包裹其他模板提供的内容。
 
 例如，假设正在创建一个用于显示一篇博客的`blog-post`组件：

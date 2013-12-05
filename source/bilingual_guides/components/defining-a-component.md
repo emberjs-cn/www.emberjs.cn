@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/defining-a-component/](http://emberjs.com/guides/components/defining-a-component/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/defining-a-component/](http://emberjs.cn/bilingual_guides/components/defining-a-component/)
-
 To define a component, create a template whose name starts with
 `components/`. To define a new component, `{{blog-post}}` for example,
 create a `components/blog-post` template.

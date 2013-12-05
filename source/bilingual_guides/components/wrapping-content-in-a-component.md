@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/wrapping-content-in-a-component/](http://emberjs.com/guides/components/wrapping-content-in-a-component/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/wrapping-content-in-a-component/](http://emberjs.cn/bilingual_guides/components/wrapping-content-in-a-component/)
-
 Sometimes, you may want to define a component that wraps content
 provided by other templates.
 

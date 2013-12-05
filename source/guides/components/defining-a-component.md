@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/defining-a-component/](http://emberjs.com/guides/components/defining-a-component/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/defining-a-component/](http://emberjs.cn/bilingual_guides/components/defining-a-component/)
-
 为了定义一个组件，需要先创建一个名字以`components/`开始的模板。例如：如果需要定义一个新组建`{{blog-post}}`，需要创建`components/blog-post`模板。
 
 <aside>

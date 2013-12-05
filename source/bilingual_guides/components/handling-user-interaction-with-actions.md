@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/handling-user-interaction-with-actions/](http://emberjs.com/guides/components/ndling-user-interaction-with-actions/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/handling-user-interaction-with-actions/](http://emberjs.cn/bilingual_guides/components/handling-user-interaction-with-actions/)
-
 Components allow you to define controls that you can reuse throughout
 your application. If they're generic enough, they can also be shared
 with others and used in multiple applications.

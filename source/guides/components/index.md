@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/](http://emberjs.com/guides/components/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/](http://emberjs.cn/bilingual_guides/components/)
-
 HTML设计之初浏览器还只是一个简单的文档阅读器。而今开发者需要更多东西来构建精彩的Web应用。
 
 Ember.js没有选择去尝试替换掉HTML，而是通过增强HTML，来添加一些非常有用的新特性给HTML，使其能跟上时代的脚步，可以用来构建Web应用。

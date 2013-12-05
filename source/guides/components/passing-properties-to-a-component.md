@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/passing-properties-to-a-component/](http://emberjs.com/guides/components/passing-properties-to-a-component/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/](http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/)
-
 默认情况下，组件不能访问模板作用域下的属性。
 
 例如，假设有一个用于显示一篇博客的`blog-post`组件：

@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/passing-properties-to-a-component/](http://emberjs.com/guides/components/passing-properties-to-a-component/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/](http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/)
-
 By default a component does not have access to properties in the
 template scope in which it is used.
 

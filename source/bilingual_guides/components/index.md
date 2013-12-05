@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/](http://emberjs.com/guides/components/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/](http://emberjs.cn/bilingual_guides/components/)
-
 HTML was designed in a time when the browser was a simple document
 viewer. Developers building great web apps need something more.
 

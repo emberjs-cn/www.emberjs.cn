@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/handling-user-interaction-with-actions/](http://emberjs.com/guides/components/handling-user-interaction-with-actions/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/handling-user-interaction-with-actions/](http://emberjs.cn/bilingual_guides/components/handling-user-interaction-with-actions/)
-
 组件可以定义能在整个应用中使用的控件。如果组件非常通用，组件可以在很多应用中共享。
 
 为了使得可重用控件有用，那么首先需要应用的用户可以与其交互。

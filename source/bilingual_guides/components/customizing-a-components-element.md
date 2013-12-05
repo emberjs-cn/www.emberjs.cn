@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/customizing-a-components-element/](http://emberjs.com/guides/components/customizing-a-components-element/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/customizing-a-components-element/](http://emberjs.cn/bilingual_guides/components/customizing-a-components-element/)
-
 By default, each component is backed by a `<div>` element. If you were
 to look at a rendered component in your developer tools, you would see
 a DOM representation that looked something like:

@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/components/customizing-a-components-element/](http://emberjs.com/guides/components/customizing-a-components-element/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/components/customizing-a-components-element/](http://emberjs.cn/bilingual_guides/components/customizing-a-components-element/)
-
 默认情况下，每个组件是一个`<div>`元素。如果使用开发工具查看渲染后的组件，将看到一个如下所示的DOM表示：
 
 ```html
