@@ -1,30 +1,41 @@
 英文原文：[http://emberjs.com/guides/models/finding-records/](http://emberjs.com/guides/models/finding-records/)
 
-`store.find()`用于查询所有的记录，包括单一记录，或基于条件查询的记录。方法的第一个参数是需要查询的记录的类型，例如：`post`，第二个参数是可选参数，可以是一个用作查询条件的对象，也可以只是一个记录的ID。下面给出一些具体的例子：
+Ember Data仓库提供了一个非常简单的查询一类记录的接口，该接口就是`store`对象的`find`方法。在内部，`store`根据传入的参数使用`find`、`findAll`和`findQuery`完成查询。`store.find()`的第一个参数是记录的类型，第二个可选参数确定查询是获取所有记录，还是一条记录，还是特定的记录。
 
 ### 查询一个类型的所有记录
 
-```js
+```javascript
 var posts = this.store.find('post');
 ```
 
-这里将返回一个`DS.RecordArray`对象。跟记录一样，记录数组对象一开始也是正在加载的状态，其`length`为`0`。当服务器返回结果时，所有引用了记录数组对象的地方都会自动更新。
+如果希望获取已经加载到仓库中的记录的列表，而不希望通过一个网络请求去获取，可以使用`all`方法。
 
-**注意**：`DS.RecordArray`不是一个Javascript的数组，它是一个实现了`Ember.Enumerable`的对象。如果希望通过索引来获取记录，那么需要使用`objectAt(index)`方法来实现。由于记录数组对象不是一个Javascript数组，因此不能是`[]`来获取。更多的信息请参看[Ember.Enumerable][1]和[Ember.Array][2]。
+```javascript
+var posts = this.store.all('post'); // => no network request
+```
 
-获取已经加载到仓库中的记录，而不触发一个新的网络请求，可以使用`store.all('post')`方法。
+`find`会返回一个将使用`DS.RecordArray`来履行的`DS.PromiseArray`，而`all`直接返回`DS.RecordArray`。
+
+需要重点注意的一点是`DS.RecordArray`不是一个Javascript数组。它是一个实现了[`Ember.Enumerable`][1]的对象。这一点非常重要，因为例如希望通过索引获取记录，那么`[]`将无法工作，需要使用`objectAt(index)`来获取。
 
 [1]: http://emberjs.com/api/classes/Ember.Enumerable.html
-[2]: http://emberjs.com/api/classes/Ember.Array.html
 
 ### 查询一个记录
 
-调用`find()`方法时，指定记录模型的名称和记录唯一的ID就可以获取对应的这个记录。ID可以是字符串或者数字。`find()`方法会返回一个会使用被请求的对象来履行的承诺：
+如果调用`store.find()`方法时，第二个参数是一个数字或者字符串，Ember Data将尝试获取对应ID的记录。`find()`方法将返回一个用请求的记录来履行的承诺。
 
-```js
-this.store.find('post', 1).then(function(post) {
-  post.set('title', "My Dark Twisted Fantasy");
-});
+```javascript
+var aSinglePost = this.store.find('post', 1); // => GET /posts/1
+```
+
+### 查询记录
+
+如果传递给`find`方法的第二个参数是一个对象，Ember Data会发送一个使用该对象来序列化出来的查询参数的`GET`请求。这是方法返回与不加第二个参数时候一样的`DS.PromiseArray`。
+
+例如，可以查询名为`Peter`的`person`模型的所有记录：
+
+```javascript
+var peters = this.store.find('person', { name: "Peter" }); // => GET to /persons?name='Peter'
 ```
 
 #### 与路由的模型钩子集成
@@ -33,12 +44,18 @@ this.store.find('post', 1).then(function(post) {
 
 `Ember.Route`的`model`钩子支持立即可用的异步值。如果`model`钩子返回一个承诺，路由将等待承诺履行条件满足时才渲染模板。
 
-这使得使用Ember
-Data的异步数据来编写应用变得容易。只需要通过`model`钩子返回请求的记录，交个Ember来处理是否需要一个网络请求：
+这使得使用Ember Data的异步数据来编写应用变得容易。只需要通过`model`钩子返回请求的记录，交个Ember来处理是否需要一个网络请求。
 
-```js
+```javascript
 App.Router.map(function() {
+  this.resource('posts');
   this.resource('post', { path: ':post_id' });
+});
+
+App.PostsRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('post');
+  }
 });
 
 App.PostRoute = Ember.Route.extend({
@@ -47,22 +64,3 @@ App.PostRoute = Ember.Route.extend({
   }
 });
 ```
-
-由于上述的场景非常常用，上面的`model`钩子是具有动态端的路由的一个缺省实现。如果使用Ember Data，且希望使用一个不是与提供的ID对应的模型时，可以重现`model`钩子来实现。
-
-### 查询记录
-
-通过传递一个哈希值作为`find()`方法的第二个参数，就能实现发起一个到服务器端的查询请求。该方法返回一个将使用返回的查询结果数组来履行的承诺。
-
-例如，可以查询名为`Peter`的`person`模型的所有记录：
-
-```js
-this.store.find('person', { name: "Peter" }).then(function(people) {
-  console.log("Found " + people.get('length') + " people named Peter.");
-});
-```
-
-传递给`find()`方法的查询参数对于Ember
-Data是不透明的。默认情况下，这些参数将作为HTTP的`GET`请求的`body`来发送到服务器端。
-
-**使用查询特性需要服务器端能够正确解析查询参数。**

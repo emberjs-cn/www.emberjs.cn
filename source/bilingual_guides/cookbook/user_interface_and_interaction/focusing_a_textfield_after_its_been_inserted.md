@@ -24,6 +24,14 @@ App.FocusInputComponent = Ember.TextField.extend({
 });
 ```
 
+For the component's template:
+
+组件模板：
+
+```handlebars
+Focus Input component!
+```
+
 ```handlebars
 {{focus-input}}
 ```

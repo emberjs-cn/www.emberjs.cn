@@ -16,6 +16,12 @@ App.FocusInputComponent = Ember.TextField.extend({
 });
 ```
 
+组件模板：
+
+```handlebars
+Focus Input component!
+```
+
 ```handlebars
 {{focus-input}}
 ```
@@ -34,4 +40,4 @@ App.FocusInputComponent = Ember.TextField.extend({
 
 #### 示例
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/iZiWaZE/2/edit?js,output">JS Bin</a>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/OlUGODo/4/edit?html,js,output">JS Bin</a>

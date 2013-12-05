@@ -17,7 +17,7 @@
 `Ember.js`会将`application`模板作为主模板来渲染。如果存在`App.ApplicationController`,
 `Ember.js`将使用`App.ApplicationController`的一个实例作为此模板的控制器。这意味着此模板将从这个控制器获得属性。
 
-如果你的应用提供了`App.ApplicationRoute`,`Ember.js`将在渲染`application`模板前先调用[此][1][路由][2]的[钩子程序][3]。
+如果你的应用提供了`App.ApplicationRoute`,`Ember.js`将在渲染`application`模板前先调用[此][1][路由][2]的[钩子程序][3]。钩子都作为方法来实现，提供了对Ember对象生命周期的访问点，可以拦截和执行代码来改变这些点的缺省行为，以符合实际需求。Ember为各种需求提供了一系列钩子（例如：`model`，`setupController`等等）。在下面的实例中，`App.ApplicationRoute`是一个实现了`setupController`钩子的`Ember.Route`对象。
 
 [1]: /guides/routing/specifying-a-routes-model
 [2]: /guides/routing/setting-up-a-controller

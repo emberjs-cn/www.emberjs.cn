@@ -137,9 +137,9 @@ are using Ember without prototype extensions:
 
 ```javascript
 Person.reopen({
-  fullNameChanged: Ember.observer(function() {
+  fullNameChanged: Ember.observer('fullName', function() {
     // 这是内联式版本的 .addObserver
-  }, 'fullName')
+  })
 });
 ```
 

@@ -23,11 +23,11 @@ template. Visiting `/favs` will render the `favorites` template.
 现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
 
 <aside>
-**Heads up!** You get a few routes for free: the `ApplicationRoute`,
-the `IndexRoute` (corresponding to the `/` path), and the `LoadingRoute` (useful for 
-AJAX requests). [See below](#toc_initial-routes) for more details.
+**Heads up!** You get a few routes for free: the `ApplicationRoute` and
+the `IndexRoute` (corresponding to the `/` path).
+[See below](#toc_initial-routes) for more details.
 
-**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）和`LoadingRoute`（用于Ajax请求）。详细的内容[如下所示](#toc_initial-routes)
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)
 </aside>
 
 Note that you can leave off the path if it is the same as the route
@@ -96,7 +96,7 @@ automatically generate one for you.)
 
 （如果你没有显式的声明`IndexController`，`Ember.js`会自动生成一个。）
 
-Ember.js automatically figures out the names of routes and controllers based on
+Ember.js automatically figures out the names of the routes and controllers based on
 the name you pass to `this.route`.
 
 `Ember.js`会自动地根据你在`this.route`设置的名字来找出对应的路由与控制器。
@@ -247,9 +247,12 @@ then render the `posts/new` template into its outlet.
 
 NOTE: You should use `this.resource` for URLs that represent a **noun**,
 and `this.route` for URLs that represent **adjectives** or **verbs**
-modifying those nouns.
+modifying those nouns. For example, in the code sample above, when
+specifying URLs for posts (a noun), the route was defined with
+`this.resource('posts')`. However, when defining the `new` action
+(a verb), the route was defined with `this.route('new')`.
 
-注意：你应该使用this.resource来定义一个URL中的**名词**字段，而对于用来改变名词字段的**形容词**或**动词**字段 ，使用this.route来定义。
+注意：你应该使用this.resource来定义一个URL中的**名词**字段，而对于用来改变名词字段的**形容词**或**动词**字段 ，使用this.route来定义。例如，在上例中的代码，当指定`posts`（名词）的URL时，路由被定义为`this.resource('posts')`。然而，当定义`new`操作（动词）时，那么路由被定义为`this.route('new')`。
 
 ### 动态段（Dynamic Segments）
 

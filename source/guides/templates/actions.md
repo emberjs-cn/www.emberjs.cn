@@ -62,6 +62,24 @@ App.PostRoute = Ember.Route.extend({
 
 正如在上例中所示，操作处理器在执行的时候被调用，`this`是路由的实例，而非`actions`这个哈希。
 
+为了记录将操作冒泡，需要在处理器中返回`true`：
+ 
+```js
+App.PostRoute = Ember.Route.extend({
+ actions: {
+   expand: function() {
+     this.controller.set('isExpanded', true);
+   },
+
+   contract: function() {
+     // ...
+     if (actionShouldAlsoBeTriggeredOnParentRoute) {
+       return true;
+   }
+ }
+});
+```
+
 如果模板对应的控制器和关联的路由都没有实现操作处理器，这个操作将被冒泡到其父级的路由。如果应用定义了`ApplicationRoute`，这里是能处理该操作的最后地方。
 
 当一个操作被触发时，如果在控制器中没有实现对应的操作处理器，当前路由或当前路由的任意一个父节点也没有实现时，将抛出一个错误。

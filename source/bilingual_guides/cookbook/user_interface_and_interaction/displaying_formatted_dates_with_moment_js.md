@@ -25,7 +25,7 @@ We will use [MomentJs](http://momentjs.com) for formatting dates.
 这里将使用[Moment.js](http://momentjs.com)来做日期格式化。
 
 Let's look at a simple example. You're working on a website for your
-client, and one of the requirements is to have the current date on the index page in human readble format. This is a perfect place to use a
+client, and one of the requirements is to have the current date on the index page in human readable format. This is a perfect place to use a
 Handlebars helper that "pretty prints" the current date:
 
 下面来看一个简单的例子。假设正在给客户开发一个网站，其中的一个需求是在首页显示一个易读的当前时间。这是一个非常适合使用Handlebars助手来实现的应用场景：

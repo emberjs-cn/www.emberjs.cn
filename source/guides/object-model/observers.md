@@ -127,9 +127,9 @@ just get it in your init method.
 
 ```javascript
 Person.reopen({
-  fullNameChanged: Ember.observer(function() {
+  fullNameChanged: Ember.observer('fullName', function() {
     // 这是内联式版本的 .addObserver
-  }, 'fullName')
+  })
 });
 ```
 

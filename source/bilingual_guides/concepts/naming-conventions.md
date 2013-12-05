@@ -35,9 +35,15 @@ the controller.
 
 If your app provides an `App.ApplicationRoute`, Ember.js will invoke
 [the][1] [router's][2] [hooks][3] first, before rendering the
-`application` template.
+`application` template. Hooks are implemented as methods and provide 
+you access points within an Ember objects lifecycle to intercept and 
+execute code to modify the default behavior at these points to meet 
+your needs. Ember provides several hooks for you to utilize for
+various purposes (e.g. `model`, `setupController`, etc). In the example below 
+`App.ApplicationRoute`, which is a `Ember.Route` object, implements 
+the `setupController` hook.
 
-如果你的应用提供了`App.ApplicationRoute`,`Ember.js`将在渲染`application`模板前先调用[此][1][路由][2]的[钩子程序][3]。
+如果你的应用提供了`App.ApplicationRoute`,`Ember.js`将在渲染`application`模板前先调用[此][1][路由][2]的[钩子程序][3]。钩子都作为方法来实现，提供了对Ember对象生命周期的访问点，可以拦截和执行代码来改变这些点的缺省行为，以符合实际需求。Ember为各种需求提供了一系列钩子（例如：`model`，`setupController`等等）。在下面的实例中，`App.ApplicationRoute`是一个实现了`setupController`钩子的`Ember.Route`对象。
 
 [1]: /guides/routing/specifying-a-routes-model
 [2]: /guides/routing/setting-up-a-controller

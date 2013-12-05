@@ -107,7 +107,7 @@ fullNameDidChange: function() {
 
 // Instead, do this:
 //你需要这样做：
-fullNameDidChange: Ember.observer(function() {
+fullNameDidChange: Ember.observer('fullName', function() {
   console.log("Full name changed");
-}, 'fullName')
+})
 ```
