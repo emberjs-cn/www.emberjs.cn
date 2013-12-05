@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/models/modifying-attributes/](http://emberjs.com/guides/models/modifying-attributes/)
+英文原文：[http://emberjs.com/guides/models/working-with-records/](http://emberjs.com/guides/models/working-with-records/)
 
 ## 修改属性
 

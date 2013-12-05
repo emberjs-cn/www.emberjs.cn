@@ -17,11 +17,11 @@ Using the fixture adapter entails three very simple setup steps:
 
 Simply attach it to your instance of `Ember.Store`:
 
-```
+```javascript
 var App = Ember.Application.create();
 App.Store = DS.Store.extend({
   revision: 13,
-  adapter: DS.FixtureAdapter.create()
+  adapter: DS.FixtureAdapter
 });
 ```
 
@@ -31,7 +31,7 @@ You should refer to [Defining a Model][1] for a more in-depth guide on using
 Ember Data Models, but for the purposes of demonstration we'll use an example
 modeling people who document Ember.js.
 
-```
+```javascript
 App.Documenter = DS.Model.extend({
   firstName: DS.attr( 'string' ),
   lastName: DS.attr( 'string' )
@@ -43,7 +43,7 @@ App.Documenter = DS.Model.extend({
 Attaching fixtures couldn't be simpler. Just attach a collection of plain
 JavaScript objects to your Model's class under the `FIXTURES` property:
 
-```
+```javascript
 App.Documenter.FIXTURES = [
   { id: 1, firstName: 'Trek', lastName: 'Glowacki' },
   { id: 2, firstName: 'Tom' , lastName: 'Dale'     }
@@ -53,8 +53,14 @@ App.Documenter.FIXTURES = [
 That's it! You can now use all of methods for [Finding Models][2] in your
 application. For example:
 
-```
-App.Documenter.find(1); // returns the record representing Trek Glowacki
+```javascript
+App.DocumenterRoute = Ember.Route.extend({
+ model: function() {
+   var store = this.get('store');
+   return store.find('documenter', 1); // returns a promise that will resolve
+                                       // with the record representing Trek Glowacki
+ }
+});
 ```
 
 #### Naming Conventions

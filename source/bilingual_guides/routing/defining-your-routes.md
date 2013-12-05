@@ -23,11 +23,11 @@ template. Visiting `/favs` will render the `favorites` template.
 现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
 
 <aside>
-**Heads up!** You get a few routes for free: the `ApplicationRoute`,
-the `IndexRoute` (corresponding to the `/` path), and the `LoadingRoute` (useful for 
-AJAX requests). [See below](#toc_initial-routes) for more details.
+**Heads up!** You get a few routes for free: the `ApplicationRoute` and
+the `IndexRoute` (corresponding to the `/` path).
+[See below](#toc_initial-routes) for more details.
 
-**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）和`LoadingRoute`（用于Ajax请求）。详细的内容[如下所示](#toc_initial-routes)
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)
 </aside>
 
 Note that you can leave off the path if it is the same as the route
@@ -96,7 +96,7 @@ automatically generate one for you.)
 
 （如果你没有显式的声明`IndexController`，`Ember.js`会自动生成一个。）
 
-Ember.js automatically figures out the names of routes and controllers based on
+Ember.js automatically figures out the names of the routes and controllers based on
 the name you pass to `this.route`.
 
 `Ember.js`会自动地根据你在`this.route`设置的名字来找出对应的路由与控制器。
@@ -218,7 +218,7 @@ and `resource` template.
 
 
 注意：如果你通过`this.resource`定义了一个资源，但是*没有*提供一个函数作为参数，
-那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/reosurce`只会用到
+那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/resource`只会用到
 `ResourceRoute`，`RescourceController`和`resource`模板。
 
 Routes nested under a resource take the name of the resource plus their
@@ -247,9 +247,12 @@ then render the `posts/new` template into its outlet.
 
 NOTE: You should use `this.resource` for URLs that represent a **noun**,
 and `this.route` for URLs that represent **adjectives** or **verbs**
-modifying those nouns.
+modifying those nouns. For example, in the code sample above, when
+specifying URLs for posts (a noun), the route was defined with
+`this.resource('posts')`. However, when defining the `new` action
+(a verb), the route was defined with `this.route('new')`.
 
-注意：你应该使用this.resource来定义一个URL中的**名词**字段，而对于用来改变名词字段的**形容词**或**动词**字段 ，使用this.route来定义。
+注意：你应该使用this.resource来定义一个URL中的**名词**字段，而对于用来改变名词字段的**形容词**或**动词**字段 ，使用this.route来定义。例如，在上例中的代码，当指定`posts`（名词）的URL时，路由被定义为`this.resource('posts')`。然而，当定义`new`操作（动词）时，那么路由被定义为`this.route('new')`。
 
 ### 动态段（Dynamic Segments）
 
@@ -258,10 +261,10 @@ into a model.
 
 在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（`model`）中。
 
-For example, if we have the resource `this.resource('/blog_posts');`, our
+For example, if we have the resource `this.resource('/blog_posts')`, our
 route handler might look like this:
 
-例如，如果我们有一个资源`this.resource('/blog_posts');`，那么我们的路由处理器看起来
+例如，如果我们有一个资源`this.resource('/blog_posts')`，那么我们的路由处理器看起来
 可能像这样：
 
 ```js
@@ -328,10 +331,10 @@ as expected out of the box.
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
-If your model does not use the `id` property in the url, you should
+If your model does not use the `id` property in the URL, you should
 define a serialize method on your route:
 
-如果模型没有在url中使用`id`属性，那么应该在路由中定义一个序列化方法：
+如果模型没有在URL中使用`id`属性，那么应该在路由中定义一个序列化方法：
 
 ```javascript
 App.Router.map(function() {

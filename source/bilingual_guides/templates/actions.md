@@ -94,6 +94,26 @@ that when executed, `this` is the route, not the `actions` hash.
 
 正如在上例中所示，操作处理器在执行的时候被调用，`this`是路由的实例，而非`actions`这个哈希。
 
+To continue bubbling the action, you must return true from the handler:
+
+为了记录将操作冒泡，需要在处理器中返回`true`：
+ 
+```js
+App.PostRoute = Ember.Route.extend({
+ actions: {
+   expand: function() {
+     this.controller.set('isExpanded', true);
+   },
+
+   contract: function() {
+     // ...
+     if (actionShouldAlsoBeTriggeredOnParentRoute) {
+       return true;
+   }
+ }
+});
+```
+
 If neither the template's controller nor its associated route implements
 a handler, the action will continue to bubble to any parent routes.
 Ultimately, if an `ApplicationRoute` is defined, it will have an

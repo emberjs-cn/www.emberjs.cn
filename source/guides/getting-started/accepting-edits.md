@@ -58,7 +58,7 @@ actions: {
     if (Ember.isEmpty(this.get('model.title'))) {
       this.send('removeTodo');
     } else {
-      this.get('model')save();
+      this.get('model').save();
     }       
   }
 }

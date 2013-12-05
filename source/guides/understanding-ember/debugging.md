@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/understanding-ember/debugging/](http://emberjs.com/guides/understanding-ember/debugging/)
 
-中英对照：[http://emberjs.cn/bilingual_guides/understanding-ember/debugging/](http://emberjs.cn/bilingual_guides/understanding-ember/debugging/)
-
 ### 调试Ember和Ember Data
 
 下面是一些调试Ember应用的小技巧。
@@ -152,4 +150,14 @@ Ember = {
 Ember.RSVP.configure('onerror', function(error) {
   Ember.Logger.assert(false, error);
 });
+```
+
+#### `Ember.run.later`([Backburner.js](https://github.com/ebryn/backburner.js))中的错误
+
+Backburner支持将堆栈记录汇合在一起，以便跟踪`Ember.run.later`中的错误实在什么地方发生的。不幸的是，这非常的缓慢，并不适用与生产环境，甚至是开发环境。
+
+启用该模式需要设置：
+
+```javascript
+Ember.run.backburner.DEBUG = true;
 ```

@@ -2,7 +2,7 @@
 
 接下来，我们将更新我们的应用，使其可以显示动态的待办事项，而不再是显示我们在`todos`模板中硬编码的内容。
 
-在`js/router.js`这个文件中，通过`model`函数实现了一个`TodosRoute`对象，这个函数的返回值是所有现存的待办事项：
+在`js/router.js`这个文件中，通过`model`函数实现了一个`TodosRoute`类，这个函数的返回值是所有现存的待办事项：
 
 ```javascript
 Todos.TodosRoute = Ember.Route.extend({
@@ -12,7 +12,7 @@ Todos.TodosRoute = Ember.Route.extend({
 });
 ```
 
-由于之前我们一直都没有实现这个对象，所以Ember.js默认根据[对象创建的命名惯例](/guides/concepts/naming-conventions/)为我们创建了一个`Route`，这个被Ember.js自动创建的`Route`将会默认渲染一个名为`todos`的模板。
+由于之前我们一直都没有实现这个类，所以Ember.js默认根据[对象创建的命名惯例](/guides/concepts/naming-conventions/)为我们创建了一个`Route`，这个被Ember.js自动创建的`Route`将会默认渲染一个名为`todos`的模板。
 
 现在我们需要自定义的行为（返回一个指定的对象集合），因此我们实现了这个类，并为其添加了期望的行为。
 

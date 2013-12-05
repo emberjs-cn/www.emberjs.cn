@@ -163,11 +163,19 @@ module TOC
       }
       elsif whats_next = next_guide
         next_chapter = whats_next[1][0]
-        %Q{
-          <a class="next-guide" href="/#{scope}/#{next_chapter.url}">
-             #{current_section[0]}结束 下一章: #{whats_next[0]} - #{next_chapter.title} \u2192
-          </a>
-        }
+        if section_slug == 'index.html'
+          %Q{
+            <a class="next-guide" href="/guides/#{next_chapter.url}">
+              #{next_chapter.title} \u2192
+            </a>
+          }
+        else
+          %Q{
+            <a class="next-guide" href="/guides/#{next_chapter.url}">
+              本章#{current_section[0]}完毕。下一章： #{whats_next[0]} - #{next_chapter.title} \u2192
+            </a>
+          }
+        end
       else
         ''
       end
@@ -258,6 +266,15 @@ module TOC
             <h3>
               <div class="msg">
                 WARNING: this guide refers to a feature only available in canary (nightly/unstable) builds of Ember Data.
+              </div>
+            </h3>
+          </div>
+        },
+        "query-params-warning"=> %Q{
+          <div class="under_construction_warning">
+            <h3>
+              <div class="msg">
+                <strong>WARNING:</strong> query params are an experimental feature. You must be using a recent canary build of Ember, and e~
               </div>
             </h3>
           </div>

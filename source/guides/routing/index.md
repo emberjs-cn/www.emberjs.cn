@@ -36,13 +36,13 @@ App = Ember.Application.create({
 });
 ```
 
-###Specifying a Root URL
+### 指定根URL
 
-If your Ember application is one of multiple web applications served from the same domain, it may be necessary to indicate to the router what the root URL for your Ember application is. By default, Ember will assume it is served from the root of your domain.
+如果Ember应用是部署在同一域下的多个Web应用中的一个，这时需要在路由器处指定Ember应用的根URL。在默认情况下，Ember假定部署在域的根路径下。
 
-If for example, you wanted to serve your blogging application from www.emberjs.com/blog/, it would be necessary to specify a root URL of `/blog/`.
+例如如果需要将博客应用部署在`www.emberjs.com/blog`下，那么需要指定根URL为`/blog/`。
 
-This can be achieved by setting the rootURL on the router:
+这可以通过在路由器中设置`rootURL`来实现：
 
 ```js
 App.Router.reopen({

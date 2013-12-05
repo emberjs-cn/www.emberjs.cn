@@ -72,7 +72,7 @@ instances:
 
 ```javascript
 var person = Person.create();
-person.say("Hello") // alerts "Hello"
+person.say("Hello") // alerts " says: Hello"
 ```
 
 When creating an instance, you can initialize the value of its properties
@@ -103,7 +103,7 @@ properties, create a new subclass and instantiate that.
 考虑到性能问题，实例的计算属性或方法不能在调用`create()`方法的时候进行重定义。同样也不可以在此时定义新的计算属性或方法。因此，在调用`create()`方法时，只能设置基本属性。如果需要定义或者重新定义计算属性或方法，可以通过定义一个新的子类来实现。
 
 By convention, properties or variables that hold classes are
-capitalized, while instances are not. So, for example, the variable
+CamelCased, while instances are not. So, for example, the variable
 `Person` would contain a class, while `person` would contain an instance
 (usually of the `Person` class). You should stick to these naming
 conventions in your Ember applications.

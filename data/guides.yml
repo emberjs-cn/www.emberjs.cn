@@ -102,6 +102,8 @@
     url: "templates/links"
   - title: "操作"
     url: "templates/actions"
+  - title: "输入助手"
+    url: "templates/input-helpers"
   - title: "用助手来渲染"
     url: "templates/rendering-with-helpers"
   #- title: "Keywords"
@@ -126,9 +128,14 @@
     url: "routing/redirection"
   - title: "指定地址API"
     url: "routing/specifying-the-location-api"
-  - title: "Asynchronous Routing"
+  - title: "查询参数"
+    url: "routing/query-params"
+    warning: "query-params-warning"
+  - title: "异步路由"
     url: "routing/asynchronous-routing"
-  - title: "Preventing and Retrying Transitions"
+  - title: "加载中/错误子状态"
+    url: "routing/loading-and-error-substates"
+  - title: "阻止和重试过渡"
     url: "routing/preventing-and-retrying-transitions"
   #- title: "Dynamic Segments"
     #url: "routing/dynamic-segments"
@@ -152,7 +159,7 @@
     url: "components/customizing-a-components-element"
   - title: "使用Action处理用户交互"
     url: "components/handling-user-interaction-with-actions"
-  - title: "Sending Actions from Components to Your Application"
+  - title: "从组件发送操作给应用"
     url: "components/sending-actions-from-components-to-your-application"
 
 控制器:
@@ -168,27 +175,25 @@
 模型:
   - title: "介绍"
     url: "models"
-  - title: "Using the Store"
-    url: "models/using-the-store"
   - title: "定义模型"
     url: "models/defining-models"
-  - title: "Finding a Record"
-    url: "models/finding-a-record"
-  - title: "Finding All Records of a Type"
-    url: "models/finding-all-records-of-a-type"
-  - title: "Pushing Records into the Store"                                                                                                                
-    url: "models/pushing-records-into-the-store" 
-  - title: "Querying the Server for Records"
-    url: "models/querying-the-server-for-records"
+  - title: "创建和删除记录"
+    url: "models/creating-and-deleting-records"
+  - title: "将记录推入仓库"
+    url: "models/pushing-records-into-the-store"
+  - title: "持久化记录"
+    url: "models/persisting-records"
+  - title: "查询记录"
+    url: "models/finding-records"
   # - title: "Filtering Records"
   #   url: "models/filtering-records"
-  - title: "Working with Records"
+  - title: "使用记录"
     url: "models/working-with-records"
-  - title: "Connecting to an HTTP Server"
+  - title: "连接HTTP服务器"
     url: "models/connecting-to-an-http-server"
-  - title: "Handling Metadata"
+  - title: "处理元数据"
     url: "models/handling-metadata"
-  - title: "Frequently Asked Questions"
+  - title: "常见问题"
     url: "models/frequently-asked-questions"
 
 视图:
@@ -214,63 +219,65 @@
 枚举:
   - title: "介绍"
     url: "enumerables"
-Testing:
-  - title: "Integration Testing"
+测试:
+  - title: "集成测试"
     url: "testing/integration"
 配置Ember.js:
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
   - title: "嵌入式应用"
     url: "configuring-ember/embedding-applications"
+  - title: "特性标识"
+    url: "configuring-ember/feature-flags"
 Cookbook:
-  - title: "Introduction"
+  - title: "简介"
     url: "cookbook"
   # contributing
-  - title: "Contributing"
-    url: "cookbook/contributing"
-  - title: "Understanding the Cookbook Format"
-    url: "cookbook/contributing/understanding_the_cookbook_format"
-    skip_sidebar_item: true
-  - title: "Participating If You Know Ember"
-    url: "cookbook/contributing/participating_if_you_know_ember"
-    skip_sidebar_item: true
-  - title: "Participating If You Don't Know Ember"
-    url: "cookbook/contributing/participating_if_you_dont_know_ember"
-    skip_sidebar_item: true
-  - title: "Deciding If A Recipe is a Good Fit"
-    url: "cookbook/contributing/deciding_if_a_recipe_is_a_good_fit"
-    skip_sidebar_item: true
-  - title: "Suggesting A Recipe"
-    url: "cookbook/contributing/suggesting_a_recipe"
-    skip_sidebar_item: true
+  #- title: "Contributing"
+    #url: "cookbook/contributing"
+  #- title: "Understanding the Cookbook Format"
+    #url: "cookbook/contributing/understanding_the_cookbook_format"
+    #skip_sidebar_item: true
+  #- title: "Participating If You Know Ember"
+    #url: "cookbook/contributing/participating_if_you_know_ember"
+    #skip_sidebar_item: true
+  #- title: "Participating If You Don't Know Ember"
+    #url: "cookbook/contributing/participating_if_you_dont_know_ember"
+    #skip_sidebar_item: true
+  #- title: "Deciding If A Recipe is a Good Fit"
+    #url: "cookbook/contributing/deciding_if_a_recipe_is_a_good_fit"
+    #skip_sidebar_item: true
+  #- title: "Suggesting A Recipe"
+    #url: "cookbook/contributing/suggesting_a_recipe"
+    #skip_sidebar_item: true
   # ui and ux
-  - title: "User Interface and Interaction"
+  - title: "用户界面与交互"
     url: "cookbook/user_interface_and_interaction"
-  - title: "Adding CSS Classes to Your Components"
+  - title: "为组件添加CSS类"
     url: "cookbook/user_interface_and_interaction/adding_css_classes_to_your_components"
     skip_sidebar_item: true
-  - title: "Adding CSS Classes to Your Components Based on Properties"
+  - title: "通过属性为组件添加CSS类"
     url: "cookbook/user_interface_and_interaction/adding_css_classes_to_your_components_based_on_properties"
     skip_sidebar_item: true
-  - title: "Focusing a Textfield after It's Been Inserted"
+  - title: "实现将焦点放置在添加的文本框"
     url: "cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted"
     skip_sidebar_item: true
-  - title: "Displaying Formatted Dates With Moment.js"
+  - title: "使用Moment.js显示格式化日期"
     url: "cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js"
     skip_sidebar_item: true
-  - title: "Specifying Data-Driven Areas of Templates That Do Not Need To Update"
+  - title: "指定模板中无需更新的数据驱动区域"
     url: "cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update"
     skip_sidebar_item: true
-  - title: "Using Modal Dialogs"
+  - title: "使用模态对话框"
     url: "cookbook/user_interface_and_interaction/using_modal_dialogs"
     skip_sidebar_item: true
   # - title: "Converting Strings to Currency With Accounting.js"
   #   url: "cookbook/user_interface_and_interaction/converting_strings_to_currency_with_accounting_js"
   #   skip_sidebar_item: true
   # events and bindings
-  - title: "Event Handling & Data Binding"
+  - title: "事件处理和数据绑定"
     url: "cookbook/event_handling_and_data_binding"
-  - title: "Binding Properties of an Object to Its Own Properties"
+  - title: "绑定对象属性到自有其他属性"
     url: "cookbook/event_handling_and_data_binding/binding_properties_of_an_object_to_its_own_properties"
     skip_sidebar_item: true
   # - title: "Responding to User Events"
@@ -298,7 +305,7 @@ Cookbook:
   #   url: "cookbook/client_server_interaction/serving_compiled_templates_using_nodejs"
   #   skip_sidebar_item: true
   # helpers & components
-  - title: "Helpers & Components"
+  - title: "助手与组件"
     url: "cookbook/helpers_and_components"
   # - title: "Writing a Custom Handlebars Helper"
   #   url: "cookbook/helpers_and_components/writing_a_custom_handlebars_helper"
@@ -306,19 +313,19 @@ Cookbook:
   # - title: "Creating a Handlebars Helper to Truncate Text"
   #   url: "cookbook/helpers_and_components/creating_a_handlebars_helper_to_truncate_text"
   #   skip_sidebar_item: true
-  - title: "Creating Reusable Social Share Buttons"
+  - title: "创建可以重用的社交分享按钮"
     url: "cookbook/helpers_and_components/creating_reusable_social_share_buttons"
     skip_sidebar_item: true
   # objects
-  - title: "Working with Objects"
+  - title: "使用对象"
     url: "cookbook/working_with_objects"
   # - title: "Displaying Content Arrays in Reverse Order"
   #   url: "cookbook/working_with_objects/displaying_content_arrays_in_reverse_order"
   #   skip_sidebar_item: true
-  - title: "Incrementing Or Decrementing A Property"
+  - title: "增加或减少一个属性值"
     url: "cookbook/working_with_objects/incrementing_or_decrementing_a_property"
     skip_sidebar_item: true
-  - title: "Setting Multiple Properties At Once"
+  - title: "一次设置多个属性值"
     url: "cookbook/working_with_objects/setting_multiple_properties_at_once"
     skip_sidebar_item: true
   # - title: "Continuous Redrawing of Views"
@@ -343,9 +350,9 @@ Cookbook:
     url: "understanding-ember/keeping-templates-up-to-date"
   - title: "调试"
     url: "understanding-ember/debugging"
-Contributing to Ember.js:                                                                                                                                  
-  - title: "Adding New Features"                                                                                                                           
-    url: "contributing/adding-new-features"
+#Contributing to Ember.js:                                                                                                                                  
+  #- title: "Adding New Features"                                                                                                                           
+    #url: "contributing/adding-new-features"
 #Understanding Ember Data:
   #- title: "Record Lifecycle"
     #url: "understanding-ember-data/record-lifecycle"

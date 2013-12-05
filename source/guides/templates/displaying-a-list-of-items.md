@@ -36,7 +36,7 @@
   {{#each friend in friends}}
     <li>{{name}}'s friend {{friend.name}}</li>
   {{/each}}
-<ul>
+</ul>
 ```
 
 上面语句将输出这样一个列表：

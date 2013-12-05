@@ -15,7 +15,7 @@ App.Router.map(function() {
 现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
 
 <aside>
-**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）和`LoadingRoute`（用于Ajax请求）。详细的内容[如下所示](#toc_initial-routes)
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)
 </aside>
 
 提示：如果路径（path）的名字跟路由（route）的名字是一样的话，你可以不用写上路径。
@@ -167,7 +167,7 @@ App.Router.map(function() {
 到`posts.index`或链接到`posts.index`。</small>
 
 注意：如果你通过`this.resource`定义了一个资源，但是*没有*提供一个函数作为参数，
-那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/reosurce`只会用到
+那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/resource`只会用到
 `ResourceRoute`，`RescourceController`和`resource`模板。
 
 一个资源下的嵌套路由的名字会是资源名加上路由名。如果你想跳转到一个路由（用`transitionTo`或
@@ -180,13 +180,13 @@ App.Router.map(function() {
 
 最后，访问`/posts/new`会先渲染`posts`模板，然后渲染`posts/new`模板到它的出口上。
 
-注意：你应该使用this.resource来定义一个URL中的**名词**字段，而对于用来改变名词字段的**形容词**或**动词**字段 ，使用this.route来定义。
+注意：你应该使用this.resource来定义一个URL中的**名词**字段，而对于用来改变名词字段的**形容词**或**动词**字段 ，使用this.route来定义。例如，在上例中的代码，当指定`posts`（名词）的URL时，路由被定义为`this.resource('posts')`。然而，当定义`new`操作（动词）时，那么路由被定义为`this.route('new')`。
 
 ### 动态段
 
 在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（`model`）中。
 
-例如，如果我们有一个资源`this.resource('/blog_posts');`，那么我们的路由处理器看起来
+例如，如果我们有一个资源`this.resource('/blog_posts')`，那么我们的路由处理器看起来
 可能像这样：
 
 ```js
@@ -228,7 +228,7 @@ App.PostRoute = Ember.Route.extend({
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。
 
-如果模型没有在url中使用`id`属性，那么应该在路由中定义一个序列化方法：
+如果模型没有在URL中使用`id`属性，那么应该在路由中定义一个序列化方法：
 
 ```javascript
 App.Router.map(function() {

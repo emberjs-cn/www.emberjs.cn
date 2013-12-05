@@ -12,7 +12,7 @@ gem "rack"
 gem "listen"
 gem "builder"
 
-group :development do
+group :development, :test do
   gem "pry"
 end
 

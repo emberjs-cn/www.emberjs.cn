@@ -23,7 +23,7 @@ remaining: function () {
 inflection: function () {
   var remaining = this.get('remaining');
   return remaining === 1 ? 'item' : 'items';
-}.property('remaining')
+}.property('remaining'),
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
 

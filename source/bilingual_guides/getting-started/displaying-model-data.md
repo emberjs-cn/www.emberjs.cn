@@ -6,9 +6,9 @@ Next we'll update our application to display dynamic todos, replacing our hard c
 
 接下来，我们将更新我们的应用，使其可以显示动态的待办事项，而不再是显示我们在`todos`模板中硬编码的内容。
 
-Inside the file `js/router.js` implement a `TodosRoute` object with a `model` function that returns all the existing todos:
+Inside the file `js/router.js` implement a `TodosRoute` class with a `model` function that returns all the existing todos:
 
-在`js/router.js`这个文件中，通过`model`函数实现了一个`TodosRoute`对象，这个函数的返回值是所有现存的待办事项：
+在`js/router.js`这个文件中，通过`model`函数实现了一个`TodosRoute`类，这个函数的返回值是所有现存的待办事项：
 
 ```javascript
 Todos.TodosRoute = Ember.Route.extend({
@@ -18,9 +18,9 @@ Todos.TodosRoute = Ember.Route.extend({
 });
 ```
 
-Because we hadn't implemented this object before, Ember.js provided a `Route` for us with the default behavior of rendering a matching template named `todos` using its [naming conventions for object creation](/guides/concepts/naming-conventions/).
+Because we hadn't implemented this class before, Ember.js provided a `Route` for us with the default behavior of rendering a matching template named `todos` using its [naming conventions for object creation](/guides/concepts/naming-conventions/).
 
-由于之前我们一直都没有实现这个对象，所以Ember.js默认根据[对象创建的命名惯例](/guides/concepts/naming-conventions/)为我们创建了一个`Route`，这个被Ember.js自动创建的`Route`将会默认渲染一个名为`todos`的模板。
+由于之前我们一直都没有实现这个类，所以Ember.js默认根据[对象创建的命名惯例](/guides/concepts/naming-conventions/)为我们创建了一个`Route`，这个被Ember.js自动创建的`Route`将会默认渲染一个名为`todos`的模板。
 
 Now that we need custom behavior (returning a specific set of models), we implement the class and add the desired behavior.
 
