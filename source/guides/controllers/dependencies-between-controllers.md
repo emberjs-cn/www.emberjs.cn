@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/controllers/dependencies-between-controllers/](http://emberjs.com/guides/controllers/dependencies-between-controllers/)
 
-## 管理控制器间的依赖
-
 有时候，特别是在嵌套资源时，可能需要为两个控制器建立某种联系。以下面的路由为例：
 
 ```javascript

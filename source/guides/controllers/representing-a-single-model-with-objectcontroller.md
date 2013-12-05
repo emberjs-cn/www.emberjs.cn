@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/controllers/representing-a-single-model-with-objectcontroller/](http://emberjs.com/guides/controllers/representing-a-single-model-with-objectcontroller/)
 
-## 代表单一模型
-
 `Ember.ObjectController`用于代表单一模型。通过在路由的`setupController`方法中设置`ObjectController`的`model`属性，来指定其代表的模型。
 
 当模板向`ObjectController`请求属性时，控制器将首先检查是否定义有该属性，如果有，则返回其当前值。

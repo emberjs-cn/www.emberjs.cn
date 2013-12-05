@@ -1,13 +1,8 @@
 英文原文： [http://emberjs.com/guides/templates/rendering-with-helpers/](http://emberjs.com/guides/templates/rendering-with-helpers/)
 
-## 用助手来渲染
-
-
 Ember.js提供了数个助手来协助你以不同的方式来渲染其他视图或模板
 
-
 ### `{{partial}}` 助手
-
 
 `{{partial}}`接收一个模板作为其参数，然后恰当地渲染这个模板
 

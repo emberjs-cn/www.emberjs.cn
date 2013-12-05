@@ -1,9 +1,5 @@
 英文原文：[http://emberjs.com/guides/configuring-ember/embedding-applications/](http://emberjs.com/guides/configuring-ember/embedding-applications/)
 
-中英对照：[/bilingual_guides/configuring-ember/embedding-applications/](/bilingual_guides/configuring-ember/embedding-applications/)
-
-## 嵌入式应用
-
 大多数情况下，应用所有的UI都将通过路由器管理的模板来创建。
 
 但是如果需要将一个Ember.js应用嵌入一个现有的网页，与其他的Javascript框架共存应该怎么做呢？

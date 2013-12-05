@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/conditionals/](http://emberjs.com/guides/templates/conditionals/)
 
-## 条件语句
-
 有些时候，或许我们只希望在一个属性存在的时候显示一部分模板。
 
 这时，我们就可以使用`{{#if}}`助手按条件渲染一个代码块,如下所示：

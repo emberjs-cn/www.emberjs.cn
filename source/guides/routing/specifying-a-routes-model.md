@@ -1,7 +1,5 @@
 英文原文: [http://emberjs.com/guides/routing/specifying-a-routes-model/](http://emberjs.com/guides/routing/specifying-a-routes-model/)
 
-## 指定路由的模型
-
 Templates in your application are backed by models. But how do templates
 know which model they should display?
 

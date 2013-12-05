@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/controllers/](http://emberjs.com/guides/controllers/)
 
-## 控制器
-
 在`Ember.js`中，控制器用于将显示逻辑与模型绑定在一起。通常模型包含需要保存到服务器端的属性，而控制器的属性可以不需要保存至服务器端。
 
 例如，构建博客系统时，`blog_post`模板用于呈现`BlogPost`模型。

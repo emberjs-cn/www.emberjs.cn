@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/displaying-a-list-of-items/](http://emberjs.com/guides/templates/displaying-a-list-of-items/)
 
-## 显示项目列表
-
 如果你需要枚举一个对象列表，可以使用`Handlebar`的`{{#each}}`助手:
 
 ```handlebars

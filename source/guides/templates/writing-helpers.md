@@ -1,7 +1,5 @@
 英文原文： [http://emberjs.com/guides/templates/writing-helpers/](http://emberjs.com/guides/templates/writing-helpers/)
 
-## 编写助手方法
-
 有时，你想在程序里多次使用同一段 HTML 代码。这种情况下，你就可以自定义一个任何 Handlebars 模板都能调用的助手方法。
 
 比如，你频繁地用一个拥有 class（译注：这个class为css中的class，非JavaScript中的类） 的 `<span>`来包裹特定的值。你可以这样注册一个助手方法：

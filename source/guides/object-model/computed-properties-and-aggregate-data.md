@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/object-model/computed-properties-and-aggregate-data/](http://emberjs.com/guides/object-model/computed-properties-and-aggregate-data/)
 
-## 计算属性和带@each的集合数据
-
 计算属性时常依赖一个数组中的全部元素来计算其值。例如，要知道有多少已经完成的待办事项，那么需要计算控制器中所有的待办事项才能得出结果。
 
 下面是一个计算属性的示例：

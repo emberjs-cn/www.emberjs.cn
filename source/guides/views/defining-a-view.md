@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/defining-a-view/](http://emberjs.com/guides/views/defining-a-view/)
 
-## 定义视图
-
 你可以使用`Ember.View`来渲染一个`Handlebars`模板并将它插入到`DOM`中。
 
 为了告诉视图要用哪个模板，可以设置它的`temaplateName`属性。例如，如果我有一个像这样的`<script>`标签:

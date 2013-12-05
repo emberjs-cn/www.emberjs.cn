@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/adding-layouts-to-views/](http://emberjs.com/guides/views/adding-layouts-to-views/)
 
-## 为视图添加布局
-
 视图可以拥有一个次模板来包裹其主模板。如同模板一样，布局是可以插入到视图标签下的Handlebars模板。
 
 通过设置`layoutName`属性来配置视图的布局模板。

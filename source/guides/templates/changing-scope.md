@@ -1,7 +1,5 @@
 英文原文:[http://emberjs.com/guides/templates/changing-scope/](http://emberjs.com/guides/templates/changing-scope/)
 
-## 切换作用域
-
 有些时候，你可能希望在模版中的一个特定部分使用不同的上下文：
 
 例如，通过切换上下文，我们可以不需重复的指定属性的上下文路径，如下所示：

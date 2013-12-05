@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/inserting-views-in-templates/](http://emberjs.com/guides/views/inserting-views-in-templates/)
 
-## 在模板中插入视图
-
 到目前为止，我们已经讨论了如何为单独的视图编写模板。然而，随着应用开发的深入，为了封装页面上的不同区域，你可能会经常需要创建一个层次化的视图结构。每个视图负责处理事件和维护需要显示的属性。
 
 ### `{{view}}`

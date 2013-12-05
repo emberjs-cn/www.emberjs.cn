@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/handling-a-view/](http://emberjs.com/guides/views/handling-a-view/)
 
-## 处理事件
-
 你只需简单地将想要响应事件的名字作为你的视图的方法名实现即可，而不必为响应的每个元素上注册事件监听器。
 
 例如，假设我们有这样一个模板：

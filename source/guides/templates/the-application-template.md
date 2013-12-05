@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/application/the-application-template/](http://emberjs.com/guides/application/the-application-template/)
 
-## 应用模板
-
 应用模板是应用启动的时候默认渲染的模板。
 
 你应该把你的header、footer和其他装饰性的内容放在应用模板里面。另外，应用模版中至少需要一个`{{outlet}}`占位符，以便路由能根据当前的URL将适当的模版渲染进来。

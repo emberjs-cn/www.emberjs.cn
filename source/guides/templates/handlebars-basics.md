@@ -1,8 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/handlebars-basics/](http://emberjs.com/guides/templates/handlebars-basics/)
 
-
-## `Handlebars`基础
-
 `Ember.js` 使用 [Handlebars模板库](http://www.handlebarsjs.com)
 来增强你的应用程序的用户界面。`Handlebars`模板与普通的HTML类似，但是它还提供了嵌入
 改变显示内容的表达式的功能。

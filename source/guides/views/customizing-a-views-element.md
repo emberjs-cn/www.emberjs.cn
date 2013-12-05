@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/customizing-a-views-element](http://emberjs.com/guides/views/customizing-a-views-element)
 
-## 自定义视图元素
-
 视图在页面上表现为一个单一的DOM元素。通过修改`tagName`属性，可以改变视图生成的元素的类型。
 
 ```javascript

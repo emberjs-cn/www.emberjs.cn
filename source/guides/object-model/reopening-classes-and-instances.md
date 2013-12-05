@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/object-model/reopening-classes-and-instances/](http://emberjs.com/guides/object-model/reopening-classes-and-instances/)
 
-### 重新打开类和实例
-
 Ember.js的类不需要一次性完成所有的定义。可以通过`reopen`方法重新打开一个类来定义新的属性。
 
 ```javascript

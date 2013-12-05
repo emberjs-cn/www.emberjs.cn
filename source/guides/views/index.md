@@ -1,5 +1,4 @@
 英文原文：[http://emberjs.com/guides/views/](http://emberjs.com/guides/views/)
-## 视图介绍
 
 因为`Ember.js`的`Handlebars`模板十分强大，所以你的应用中的大部分用户界面将采用模版来描述。如果你之前使用其他的`JavaScript`库，那么你可能会惊叹为什么`Ember.js`只需要创建这么少的视图。
 

@@ -1,7 +1,5 @@
 英文原文:[http://emberjs.com/guides/templates/binding-element-class-names/](http://emberjs.com/guides/templates/binding-element-class-names/)
 
-## 绑定元素类名称
-
 像其他所有属性一样，HTML元素的`class`属性也可以被绑定，如下所示：
 
 ```handlebars

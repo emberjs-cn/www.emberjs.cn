@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.cn/guides/configuring-ember/disabling-prototype-extensions/](http://emberjs.cn/guides/configuring-ember/disabling-prototype-extensions/)
 
-## 禁用基本类型扩展
-
 默认情况下，Ember.js 以下列方式对原生的JavaScript对象进行基于原型的扩展：
 
 

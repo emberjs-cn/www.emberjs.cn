@@ -1,7 +1,4 @@
-英文原文:
-[http://emberjs.com/guides/routing/setting-up-a-controller/](http://emberjs.com/guides/routing/setting-up-a-controller/)
-
-## 设置控制器
+英文原文: [http://emberjs.com/guides/routing/setting-up-a-controller/](http://emberjs.com/guides/routing/setting-up-a-controller/)
 
 URL的改变同时也可能改变显示的模板。而模板只有当其搭载了需要呈现的信息才有用。
 

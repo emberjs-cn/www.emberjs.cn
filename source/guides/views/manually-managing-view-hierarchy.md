@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/manually-managing-view-hierarchy/](http://emberjs.com/guides/views/manually-managing-view-hierarchy/)
 
-## 采用Ember.ContainerView手动管理视图
-
 视图通常采用`{{view}}`助手来创建其子视图。然而有时手动管理视图的子视图非常有用。[`Ember.ContainerView`](http://emberjs.com/api/classes/Ember.ContainerView.html) 便是用来完成该功能的。
 
 当在代码中添加和删除一个`ContainerView`的视图时，这些渲染的视图的HTML将被添加，或从匹配的DOM中删除。

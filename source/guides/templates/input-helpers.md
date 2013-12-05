@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/input-helpers/](http://emberjs.com/guides/templates/input-helpers/)
 
-## 输入助手
-
 Ember.js中的`{{input}}`和`{{textarea}}`助手是创建通用表单控件最简单的方法。`{{input}}`包裹了Ember.js内置的[Ember.TextField][1]和[Ember.Checkbox][2]视图，而`{{textarea}}`则包裹了[Ember.TextArea][3]视图。使用这些助手使得创建这些输入视图跟使用传统的`<input>`或`<textarea>`元素完全一样。
 
 [1]: /api/classes/Ember.TextField.html

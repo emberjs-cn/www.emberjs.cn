@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/configuring-ember/feature-flags/](http://emberjs.com/guides/configuring-ember/feature-flags/)
 
-## 关于特性
-
 在Ember.js中，当添加一个新特性时，会为这个特性添加一个标识。这个标识用来标记该特性是在构建Ember.js的时候被启用并包含在构建中，还是完全被移除。这样新开发的特性可以在满足生产环境需求之前，有选择的进行发布。
 
 ## 特性生命周期

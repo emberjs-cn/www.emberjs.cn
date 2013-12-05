@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/views/built-in-views/](http://emberjs.com/guides/views/built-in-views/)
 
-## 内置视图
-
 Ember中定义了一套用于构建一些非常基础的控件的视图，比如文本输入框、勾选框和选择列表。
 
 这些视图有：

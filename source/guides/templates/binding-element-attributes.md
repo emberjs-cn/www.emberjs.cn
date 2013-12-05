@@ -1,7 +1,5 @@
 英文原文：[http://emberjs.com/guides/templates/binding-element-attributes/](http://emberjs.com/guides/templates/binding-element-attributes/)
 
-## 绑定元素属性
-
 除了普通文本，你可能也希望在模板中包含可以将其属性绑定到控制器的HTML元素。
 
 例如，想象一下你的控制器中包含这样一个属性，它包含指向一幅图像的URL地址：
