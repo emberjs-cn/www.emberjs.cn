@@ -34,11 +34,11 @@ person.set('firstName', "Brohuda"); // 观察器将被触发
 
 由于 `fullName` 这个计算后属性依赖于 `firstName` 的变化，所以在更新 `firstName` 时也将触发 `fullName` 上的观察器。
 
-### Observers and asynchrony
+### 观察模式与异步调用
 
-Observers in Ember are currently synchronous. This means that they will fire
-as soon as one of the properties they observe changes. Because of this, it
-is easy to introduce bugs where properties are not yet synchronized:
+目前Ember的观察模式是同步的. 这意味着更新将在properties发生改变的时候触发，因此，在properties没有被同步的时候很容易
+导致Bug。
+
 
 ```javascript
 Person.reopen({
@@ -51,13 +51,12 @@ Person.reopen({
 });
 ```
 
-This synchronous behaviour can also lead to observers being fired multiple
-times when observing multiple properties:
+当观察绑定在多个properties上时，同步的更新将会被触发多次
 
 ```javascript
 Person.reopen({
   partOfNameChanged: function() {
-    // Because both firstName and lastName were set, this observer will fire twice.
+    // 因为firstName 和 lastName 都被设置了，将触发两次更新
   }.observes('firstName', 'lastName')
 });
 
@@ -65,9 +64,7 @@ person.set('firstName', 'John');
 person.set('lastName', 'Smith');
 ```
 
-To get around these problems, you should make use of `Ember.run.once`. This will
-ensure that any processing you need to do only happens once, and happens in the
-next run loop once all bindings are synchronized:
+解决这类问题的方法是，利用`Ember.run.once`. 它可以保证任何你所需要的同步更新在一次全部完成；
 
 ```javascript
 Person.reopen({
@@ -76,8 +73,7 @@ Person.reopen({
   }.observes('firstName', 'lastName'),
 
   processFullName: function() {
-    // This will only fire once if you set two properties at the same time, and
-    // will also happen in the next run loop once all properties are synchronized
+    // 如果两个属性都被设置，同步更新会一步到位
     console.log(this.get('fullName'));
   }
 });
@@ -86,13 +82,11 @@ person.set('firstName', 'John');
 person.set('lastName', 'Smith');
 ```
 
-### Observers and object initialization
+### 观察者与对象初始化
 
-Observers never fire until after the initialization of an object is complete.
+观察模式的更新在对象初始化完成后才会被触发。
 
-If you need an observer to fire as part of the initialization process, you
-cannot rely on the side effect of set. Instead, specify that the observer
-should also run after init by using `.on('init')`:
+如果你需要在初始化过程中触发一个更新,你不能依赖set方法. 观察绑定更新只能在init完成后通过`.on('init')`来完成:
 
 ```javascript
 App.Person = Ember.Object.extend({
@@ -106,22 +100,18 @@ App.Person = Ember.Object.extend({
 });
 ```
 
-### Unconsumed Computed Properties Do Not Trigger Observers
+### 未被使用的计算属性，不要触发观察绑定
 
-If you never `get` a computed property, its observers will not fire even if
-its dependent keys change. You can think of the value changing from one unknown
-value to another.
+如果你从未 `get`某个计算属性,即使它依赖的属性发生改变也不会触发绑定的更新， 你可以把它想象成从某个“unknown”值
+变成了另一个“unknown“值。
 
-This doesn't usually affect application code because computed properties are
-almost always observed at the same time as they are fetched. For example, you get
-the value of a computed property, put it in DOM (or draw it with D3), and then
-observe it so you can update the DOM once the property changes.
-
-If you need to observe a computed property but aren't currently retrieving it,
-just get it in your init method.
+这通常不会影响代码，因为计算属性通常在他们的值被获取到的同时完成绑定更新。例如， 你获得了一个计算属性的值，将其放在DOM 上(或者利用D3渲染出来),然后对其开始”观察“，以在属性值发生变化的同时更新DOM。
 
 
-### Without prototype extensions
+如果你需要观察一个计算属性但是目前没有获得其值，可以在init方法中获得它。
+
+
+### 无 prototype extensions
 
 在没有原型扩展的前提下使用 Ember 的时候，你可以用 `Ember.observer` 方法来定义内联式观察器
 
@@ -133,13 +123,12 @@ Person.reopen({
 });
 ```
 
-### Outside of class definitions
+### Class定义之外进行观察者绑定
 
-You can also add observers to an object outside of a class definition
-using addObserver:
+同样，你可以利用addObserver在class定义之外，将observers绑定到对象上：
 
 ```javascript
 person.addObserver('fullName', function() {
-  // deal with the change
+  // 更新的处理
 });
 ```
