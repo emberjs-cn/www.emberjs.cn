@@ -1,6 +1,6 @@
 ---
 title: Ember 1.0 Released
-author: The Core Team
+author: debbbbie
 tags: Releases, Recent Posts
 ---
 
