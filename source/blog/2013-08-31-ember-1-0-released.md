@@ -4,63 +4,41 @@ author: debbbbie
 tags: Releases, Recent Posts
 ---
 
-Today, we're excited to announce the final release of Ember.js 1.0.
+怀着激动的心情向大家发布 Ember.js 1.0 最终版。为 Ember.js 第一次提交代码是在 2013 年 4 月 30 号，
+距今已经将近两年半。
 
-The first commit to the repository that would become Ember.js happened on April
-30th, 2011, almost two and a half years ago.
+当时 Backbone.js 发展非常迅速。因为像 SproutCore, Cappuccino, 还有 Dojo 等这些大型类库，
+他们都试图从 HTML 中抽象出来，越来越多的开发者反对他们，因为不能做到一个小屋就阅读完源代码。使得“小
+型代码库”迅速发展。
 
-At the time, Backbone.js was rocketing to popularity. In response to large
-JavaScript frameworks like SproutCore, Cappuccino, and Dojo, which tried to
-abstract away HTML, most web developers began rejecting any solution whose
-source code they couldn't read over in an afternoon. The "microlibrary" frenzy
-had hit full tilt.
+浏览器正在变得越来越强大,用户开始需要这种简单的抽象，并不会急剧增大应用的代码规模。
 
-However, we knew that as web browsers became more and more powerful, these
-simplistic abstractions wouldn't scale up to the kind of apps that users would
-begin to demand.
+我们认识到，只要用 HTML 和 CSS 开发出简单好用的工具，开发者们就会抛弃 100% 用 JavaScript 写的网站。
 
-We realized that helping developers grapple with the complexity of building
-100% JavaScript web applications could only happen if we embraced the tools
-that they were most comfortable with: HTML and CSS.
+鉴于目前流行的类库，比如 Ember, Angular 和 Knockout 等，这个策略被证明了是正确的。
 
-Based on the current popularity of frameworks like Ember, Angular and Knockout,
-it's clear that this strategy turned out to be the right one.
+当我面开始用 Ember.js 开始工作的时候，我们很快的认识到有个很大的问题：仅仅拥有可以绑定到 models
+的模板是不够的。我们还需要帮助开发者决定 _哪些_ 模板和 models 应该在要求的时间显示出来。
 
-As we began work on Ember.js, however, we soon realized that there was a
-fundamental problem. Just having templates that were bound to models was
-not enough. We also needed to help developers decide _which_ templates and
-models to display at any given time.
+当我们试图找出最好的解决方式，发现好难，不过发现许多 JavaScript 应用都濒临崩溃。
+仅仅是因为点了一下浏览器的后退键，就破坏了好多应用，我们还以为这期间有二十年之久。
 
-While struggling to figure out the best solution, we couldn't help but notice
-that many JavaScript applications on the web felt broken. Basic things that
-we had taken for granted for two decades all of a sudden stopped working.
-Just clicking the browser's back button was enough to break many of these apps.
+想到解决问题的办法竟然是发现了一个显而易见的真理：决定网站显示什么的是 URL ！
 
-We realized that the solution to our problem had been sitting under our noses
-all along: the URL is what web applications use to decide what to display!
+我们再一次来到小黑板前边，我们重新开始了项目，不再仅仅构建大而且多页的 JavaScript 应用，还尽可能
+的不破坏网站的整体结构。
 
-We knew that we had to go back to the drawing board. We rebooted the entire
-project mid-course to refocus on how to build JavaScript apps that not only
-helped you architect large, multi-page applications, but helped you to do so
-without breaking the basic building blocks of the web.
+这期间，我们增加了很多新特性，比如组件，用于构建一直的 UI 风格。很高兴看到组织贡献的代码奠定了扎实的基础。
 
-Over time, we've added even more features, like components, that help bring
-solid UI architecture to the web. We are incredibly proud of the job that
-the community has done to lay a solid foundation that we can build upon for the
-years to come.
+1.0 最终版履行了我们的承诺：怎样为将来的网站构建一个 JavaScript 类库已经完成。通过 spec 你将会
+发现，直到Ember 2.0 都不会有大的修改了。
 
-This 1.0 release is a promise from us: the pain that many experienced while we
-were figuring out how to build a JavaScript framework for the future of the web
-is now over. In keeping with the Semantic Versioning spec, there will be no
-more intentional breaking changes until we release Ember 2.0, which we don't
-anticipate happening for some time.
-
-## Recent Developments
+## 近期开发内容 Recent Developments
 
 ### Router Facelift
 
-Over the past few months, Alex Matchneer has taken the Ember router to the next
-level. Alex's changes focus on making the router an excellent tool for managing
+在过去的几个月里边， Alex Matchneer 已经将 the Ember router 开发到又一等级。
+ Alex 的修改 focus on making the router an excellent tool for managing
 complex asynchronous flows (like authentication), and you can learn all about it
 in his recently completed guides:
 
