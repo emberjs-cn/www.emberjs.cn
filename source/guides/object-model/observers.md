@@ -50,7 +50,7 @@ Person.reopen({
 ```javascript
 Person.reopen({
   partOfNameChanged: function() {
-    // Because both firstName and lastName were set, this observer will fire twice.
+    // 因为firstName 和 lastName 都被设置了，将触发两次更新
   }.observes('firstName', 'lastName')
 });
 
@@ -67,8 +67,7 @@ Person.reopen({
   }.observes('firstName', 'lastName'),
 
   processFullName: function() {
-    // This will only fire once if you set two properties at the same time, and
-    // will also happen in the next run loop once all properties are synchronized
+    // 如果两个属性都被设置，同步更新会一步到位
     console.log(this.get('fullName'));
   }
 });
@@ -121,6 +120,6 @@ Person.reopen({
 
 ```javascript
 person.addObserver('fullName', function() {
-  // deal with the change
+  // 更新的处理
 });
 ```
