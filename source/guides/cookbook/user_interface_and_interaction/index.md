@@ -8,3 +8,4 @@
 1. [使用Moment.js显示格式化日期](/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js)
 1. [指定模板中无需更新的数据驱动区域](/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update)
 1. [使用模态对话框](/guides/cookbook/user_interface_and_interaction/using_modal_dialogs)
+1. [路由改变时重置滚动条](/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes)

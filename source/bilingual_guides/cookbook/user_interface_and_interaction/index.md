@@ -8,6 +8,7 @@ Here are some recipes that will help you provide a better user experience.
 1. [Displaying Formatted Dates With Moment.js](/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js)
 1. [Specifying Data-Driven Areas of Templates That Do Not Need To Update](/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update)
 1. [Using Modal Dialogs](/guides/cookbook/user_interface_and_interaction/using_modal_dialogs)
+1. [Resetting scroll on route changes](/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes)
 
 1. [为组件添加CSS类](/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components)
 1. [通过属性为组件添加CSS类](/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components_based_on_properties)
@@ -15,3 +16,4 @@ Here are some recipes that will help you provide a better user experience.
 1. [使用Moment.js显示格式化日期](/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js)
 1. [指定模板中无需更新的数据驱动区域](/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update)
 1. [使用模态对话框](/guides/cookbook/user_interface_and_interaction/using_modal_dialogs)
+1. [路由改变时重置滚动条](/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes)
