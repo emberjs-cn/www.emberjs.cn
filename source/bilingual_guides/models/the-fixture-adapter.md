@@ -56,8 +56,7 @@ application. For example:
 ```javascript
 App.DocumenterRoute = Ember.Route.extend({
  model: function() {
-   var store = this.get('store');
-   return store.find('documenter', 1); // returns a promise that will resolve
+   return this.store.find('documenter', 1); // returns a promise that will resolve
                                        // with the record representing Trek Glowacki
  }
 });

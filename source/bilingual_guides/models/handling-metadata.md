@@ -7,15 +7,15 @@ Pagination is a common example of using metadata. Imagine a blog with far more p
 分页是常见的一种元数据。例如一个博客拥有一次无法显示完的文章，那么就需要使用如下的查询：
 
 ```js
-this.get("store").findQuery("post", {
+this.store.findQuery("post", {
   limit: 10,
   offset: 0
 });
 ```
 
-To get different *pages* of data, you'd simply change your offset in increments of 100. So far, so good. But how do you know how many pages of data you have? Your server would need to return the total number of records as a piece of metadata.
+To get different *pages* of data, you'd simply change your offset in increments of 10. So far, so good. But how do you know how many pages of data you have? Your server would need to return the total number of records as a piece of metadata.
 
-为了获取不同页面的数据，只需要以100为增量来修改`offset`。到目前为止，一切都正常。现在有一个问题，就是如何知道拥有多少页数据呢？服务器需要以元数据的形式返回所有的记录数。
+为了获取不同页面的数据，只需要以10为增量来修改`offset`。到目前为止，一切都正常。现在有一个问题，就是如何知道拥有多少页数据呢？服务器需要以元数据的形式返回所有的记录数。
 
 By default, Ember Data's JSON deserializer looks for a `meta` key:
 
@@ -44,7 +44,7 @@ The metadata for a specific type is then set to the contents of `meta`. You can 
 特定类型的元数据将被设置到`meta`中。可以使用`store.metadataFor`来获取。
 
 ```js
-var meta = this.get("store").metadataFor("post");
+var meta = this.store.metadataFor("post");
 ```
 
 Now, `meta.total` can be used to calculate how many pages of posts you'll have.
@@ -60,7 +60,7 @@ You can also customize metadata extraction by overriding the `extractMeta` metho
   "post": [
     // ...
   ],
-  "total": 10
+  "total": 100
 }
 ```
 

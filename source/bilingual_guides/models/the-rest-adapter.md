@@ -124,20 +124,19 @@ be nested inside a property called `person`:
 ```js
 {
   "person": {
-    "first_name": "Jeff",
-    "last_name": "Atwood"
+    "firstName": "Jeff",
+    "lastName": "Atwood"
   }
 }
 ```
 
-#### Underscored Attribute Names
+#### Attribute Names
 
-#### 以下划线分割额属性名称
+#### 属性名称
 
-Attribute names should be the underscored version of the attribute name
-in your Ember Data models. For example, if you have a model like this:
+Attribute names should be  camelized.  For example, if you have a model like this:
 
-属性名称在`Ember Data`模型中应该是以下划线分割的形式。例如，有一个如下的模型：
+属性命名应该采用驼峰命名法。例如，假如有如下的模型：
 
 ```js
 App.Person = DS.Model.extend({
@@ -155,9 +154,9 @@ The JSON returned from your server should look like this:
 ```js
 {
   "person": {
-    "first_name": "Barack",
-    "last_name": "Obama",
-    "is_person_of_the_year": true
+    "firstName": "Barack",
+    "lastName": "Obama",
+    "isPersonOfTheYear": true
   }
 }
 ```
@@ -188,7 +187,7 @@ have a model with a `hasMany` relationship:
 
 ```js
 App.Post = DS.Model.extend({
-  comments: DS.hasMany('App.Comment')
+  comments: DS.hasMany('App.Comment', { async: true })
 });
 ```
 
@@ -199,7 +198,7 @@ JSON应该将该关联编码成一个ID的数组：
 ```js
 {
   "post": {
-    "comment_ids": [1, 2, 3]
+    "commentIds": [1, 2, 3]
   }
 }
 ```
@@ -210,11 +209,10 @@ will send a `GET` request to `/comments?ids[]=1&ids[]=2&ids[]=3`
 一篇文章的评论可以通过`post.get('comments')`来进行获取。REST适配器将发送一个`GET`请求至`/comments?ids[]=1&ids[]=2&ids[]=3`。
 
 Any `belongsTo` relationships in the JSON representation should be the
-underscored version of the Ember Data model's name, with the string
-`_id` appended. For example, if you have a model:
+camelized version of the Ember Data model's name, with the string
+`Id` appended. For example, if you have a model:
 
-而JSON表示中的任何`belongsTo`关联，应该为以下划线分割的`Ember
-Data`模型名称加上`_id`后缀，例如，有如下模型：
+而JSON表示中的任何`belongsTo`关联，应该为以驼峰命名的`Ember Data`模型名称加上`Id`后缀，例如，有如下模型：
 
 ```js
 App.Comment = DS.Model.extend({
@@ -229,7 +227,7 @@ JSON应该将关联编码为另外一个记录的ID：
 ```js
 {
   "comment": {
-    "post_id": 1
+    "postId": 1
   }
 }
 ```
@@ -248,8 +246,8 @@ outside the JSON root, and are represented as an array of hashes:
 {
   "post": {
     "id": 1,
-    "title": "Rails is omakase",
-    "comment_ids": [1, 2, 3]
+    "title": "Node is not omakase",
+    "commentIds": [1, 2, 3]
   },
 
   "comments": [{

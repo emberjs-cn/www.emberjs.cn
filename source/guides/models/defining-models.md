@@ -28,7 +28,7 @@ store.find('person', 1);
     <td><code>App.Photo</code></td>
   </tr>
   <tr>
-    <td><code>admin-user-profile</code></td>
+    <td><code>adminUserProfile</code></td>
     <td><code>App.AdminUserProfile</code></td>
   </tr>
 </table>
@@ -77,6 +77,27 @@ App.Person = DS.Model.extend({
 默认情况下，REST 适配器支持的属性类型有`string`, `number`, `boolean`和`date`。
 传统的适配器会提供额外的属性类型，并支持你注册自定义的属性类型。
 详情请查看[documentation section on the REST Adapter](/guides/models/the-rest-adapter)。
+
+#### 选项
+
+`DS.attr`第二个参数是一个可选的哈希对象，当前支持的选项是：
+
+- `defaultValue`：传入一个字符串或者将被调用来设置属性的初始值的函数。
+
+  示例
+
+  ```JavaScript
+  var attr = DS.attr;
+
+  App.User = DS.Model.extend({
+      username: attr('string'),
+      email: attr('string'),
+      verified: attr('boolean', {defaultValue: false}),
+      createdAt: DS.attr('string', {
+          defaultValue: function() { return new Date(); }
+      }
+  });
+  ```
 
 ### 定义关联模型
 
@@ -150,21 +171,3 @@ App.Post = DS.Model.extend({
 ```
 
 当然也可以在`belongsTo`一侧指定，它将按照预期那样工作。
-
-#### 嵌套对象
-
-当有数据结构的嵌套数据不使用或者需要IDS，必须指定`hasMany`包含的`belongsTo`。
-
-为了这样，需要扩展应用使用的适配器来加载包含嵌套结构的数据。
-
-```javascript
-App.Comment = DS.Model.extend({});
-
-App.Post = DS.Model.extend({
-  comments: DS.hasMany('comment')
-});
-
-App.Adapter.map('App.Post', {
-  comments: { embedded: 'always' }
-});
-```

@@ -184,20 +184,20 @@ App.Router.map(function() {
 
 在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（`model`）中。
 
-例如，如果我们有一个资源`this.resource('/blog_posts')`，那么我们的路由处理器看起来
+例如，如果我们有一个资源`this.resource('posts')`，那么我们的路由处理器看起来
 可能像这样：
 
 ```js
-App.BlogPostsRoute = Ember.Route.extend({
+App.PostsRoute = Ember.Route.extend({
   model: function() {
-    return this.get('store').find('blogPost');
+    return this.store.find('post');
   }
 });
 ```
 
-`blog_posts`模板将会接收到一张所有可用的posts清单并将它们当做是上下文环境。
+`posts`模板将会接收到一张所有可用的posts清单并将它们当做是上下文环境。
 
-由于`/blog_posts`映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
+由于`/posts`映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
 运行。然而，如果我们想要路由映射到某个post上，我们可不想通过在路由器中
 写死每一个可能的post来实现。
 
@@ -213,7 +213,7 @@ App.Router.map(function() {
 
 App.PostRoute = Ember.Route.extend({
   model: function(params) {
-    return this.get('store').find('post', params.post_id);
+    return this.store.find('post', params.post_id);
   }
 });
 ```
@@ -221,7 +221,7 @@ App.PostRoute = Ember.Route.extend({
 由于这种模式很常用，所以上面的模型（`model`）钩子函数就是默认的行为。
 
 例如，如果动态段是`:post_id`，`ember.js`会智能地使用`App.post`（加上`URL`提供的`ID`)。
-特别地，如果你没有重写了模型（`model`），路由将会自动地返回`this.get('store').find('post', params.post_id)`。
+特别地，如果你没有重写了模型（`model`），路由将会自动地返回`this.store.find('post', params.post_id)`。
 
 这不是巧合，而是`Ember Data`所想要的。所以如果你使用`Ember`路由和`Ember Data`，
 你的动态段将会以默认的方式工作。

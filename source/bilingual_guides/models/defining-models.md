@@ -43,7 +43,7 @@ The table below shows how model names map to model classes.
     <td><code>App.Photo</code></td>
   </tr>
   <tr>
-    <td><code>admin-user-profile</code></td>
+    <td><code>adminUserProfile</code></td>
     <td><code>App.AdminUserProfile</code></td>
   </tr>
 </table>
@@ -115,6 +115,36 @@ attribute types, and new types can be registered as transforms. See the
 默认情况下，REST 适配器支持的属性类型有`string`, `number`, `boolean`和`date`。
 传统的适配器会提供额外的属性类型，并支持你注册自定义的属性类型。
 详情请查看[documentation section on the REST Adapter](/guides/models/the-rest-adapter)。
+
+#### Options
+
+#### 选项
+
+`DS.attr` takes an optional hash as a second parameter, current options are:
+
+`DS.attr`第二个参数是一个可选的哈希对象，当前支持的选项是：
+
+- `defaultValue`: Pass a string or a function to be called to set the
+                  attribute to a default value if none is supplied.
+
+- `defaultValue`：传入一个字符串或者将被调用来设置属性的初始值的函数。
+
+  Example
+
+  示例
+
+  ```JavaScript
+  var attr = DS.attr;
+
+  App.User = DS.Model.extend({
+      username: attr('string'),
+      email: attr('string'),
+      verified: attr('boolean', {defaultValue: false}),
+      createdAt: DS.attr('string', {
+          defaultValue: function() { return new Date(); }
+      }
+  });
+  ```
 
 ### 定义关联模型（Defining Relationships）
 
@@ -215,30 +245,3 @@ You can also specify an inverse on a `belongsTo`, which works how you'd
 expect.
 
 当然也可以在`belongsTo`一侧指定，它将按照预期那样工作。
-
-#### Embedded Objects
-
-#### 嵌套对象
-
-When you have a data structure where the embedded data doesn't use or
-need ids, you have to specify that the `belongsTo` relationship is
-contained by the `hasMany` relationship.
-
-当有数据结构的嵌套数据不使用或者需要IDS，必须指定`hasMany`包含的`belongsTo`。
-
-To do this, you need to extend the adapter that your app is using to
-load the data with the embedded structure.
-
-为了这样，需要扩展应用使用的适配器来加载包含嵌套结构的数据。
-
-```javascript
-App.Comment = DS.Model.extend({});
-
-App.Post = DS.Model.extend({
-  comments: DS.hasMany('comment')
-});
-
-App.Adapter.map('App.Post', {
-  comments: { embedded: 'always' }
-});
-```

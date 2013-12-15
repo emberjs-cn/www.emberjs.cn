@@ -30,7 +30,7 @@ _过滤器_是对仓库中缓存的对象执行实时的查询。一旦新的记
 ```js
 App.PostsFavoritedRoute = Ember.Route.extend({
   model: function() {
-    var store = this.get('store');
+    var store = this.store;
 
     // Create a filter for all favorited posts that will be displayed in
     // the template. Any favorited posts that are already in the store

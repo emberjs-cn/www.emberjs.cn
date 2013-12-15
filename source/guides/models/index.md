@@ -47,8 +47,7 @@ Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSocke
 ```js
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    var store = this.get('store');
-    return store.find('person', 1)
+    return this.store.find('person', 1);
   }
 });
 ```
@@ -77,12 +76,12 @@ App.Person = DS.Model.extend({
 模型也声明了其与其他对象的关系。例如，一个`Order`可以有许多`LineItems`，一个`LineItem`可以属于一个特定的`Order`。
 
 ```js
-App.LineItem = DS.Model.extend({
-       orders: DS.hasMany('order')
-});
-
 App.Order = DS.Model.extend({
   lineItems: DS.belongsTo('lineItem')
+});
+
+App.LineItem = DS.Model.extend({
+  orders: DS.hasMany('order')
 });
 ```
 
