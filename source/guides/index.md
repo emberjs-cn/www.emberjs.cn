@@ -4,7 +4,7 @@
 
 为了帮助你们更加快速的入门，Ember.js精心制作了一个30分钟的视频，这个视频将指导你构建一个完整的Ember.js应用。
 
-<iframe width="640" height="360" src="http://www.youtube.com/embed/1QHrlFlaXdI?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+<iframe height=498 width=510 src="http://player.youku.com/embed/XNjQ5ODE4ODYw" frameborder=0 allowfullscreen></iframe>
 
 视频中所演示的应用的源代码位于：<a href="https://github.com/tildeio/bloggr-client">https://github.com/tildeio/bloggr-client</a>
 
