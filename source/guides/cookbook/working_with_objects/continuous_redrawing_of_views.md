@@ -115,7 +115,7 @@ App.CommentsController = Ember.ArrayController.extend({
   {{nyan-middle}}
 {{/if}}
 <h3>You&apos;ve nyaned for {{digital_clock seconds}} (h:m:s)</h3>
-{{render comments}}
+{{render 'comments'}}
 ```
 
 评论列表的一个模板：
