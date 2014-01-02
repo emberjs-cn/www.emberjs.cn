@@ -13,7 +13,7 @@ TodoMVC通过在`<li>`元素上应用了一个名为`completed`的CSS类来标�
 
 以上代码将在待办事项的`isCompleted`属性为真的时候设置`completed`这个CSS类，当`isCompleted`为假的时候移除该CSS类。
 
-为我们应用构造的第一条待办事项的`isCompleted`属性是`true`，因此重载应用将会看到第一个待办事项有一条中划线，这表面其已经完成。
+为我们应用构造的第一条待办事项的`isCompleted`属性是`true`，因此重载应用将会看到第一个待办事项有一条中划线，这表示其已经完成。
 
 ### 在线演示
 <a class="jsbin-embed" href="http://jsbin.com/oKuwomo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
