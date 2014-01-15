@@ -19,7 +19,7 @@
 ```javascript
 // ... additional lines truncated for brevity ...
 allAreDone: function (key, value) {
-  return !!this.get('length') && this.everyBy('isCompleted', true);
+  return !!this.get('length') && this.everyProperty('isCompleted', true);
 }.property('@each.isCompleted')
 // ... additional lines truncated for brevity ...
 ```

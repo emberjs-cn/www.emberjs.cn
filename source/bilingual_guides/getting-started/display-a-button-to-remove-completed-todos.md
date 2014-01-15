@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/getting-started/displaying-a-button-to-remove-completed-todos/](http://emberjs.com/guides/getting-started/displaying-a-button-to-remove-completed-todos/)
 
-TodoMVC allows users to delete all completed todos at once by clicking a button. This button is visible only when there are any completed todos, displays the number of completed todos, and removes all todos from the application when clicked.
+TodoMVC allows users to delete all completed todos at once by clicking a button. This button is visible only when there are any completed todos, displays the number of completed todos, and removes all completed todos from the application when clicked.
 
 TodoMVC允许用户通过点击一个按钮来删除所有已完成的待办事项。这个按钮只在存在已完成的待办事项的时候才显示，并显示已完成的数量。当点击该按钮时，所有已完成的待办事项将被删除。
 

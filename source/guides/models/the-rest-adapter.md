@@ -9,7 +9,7 @@
 REST适配器通过模型的名称来生成需要进行通信的URLs。例如，如下代码展示了如何通过ID来获取对应的`Post`：
 
 ```js
-var post = App.Post.find(1);
+var post = store.find('post', 1);
 ```
 
 REST适配器会自动发送一个`GET`请求到`/posts/1`。
@@ -106,14 +106,20 @@ App.Person = DS.Model.extend({
 }
 ```
 
-不规则的`keys`可以在适配器中进行映射。如果返回的JSON包含一个名为`lastNameOfPerson`的`key`，而期望的属性名称为`lastName`，在适配器里配置即可：
+不规则的`keys`可以通过自定义序列化来完成映射。如果返回的JSON包含一个名为`lastNameOfPerson`的`key`，而期望的属性名称为`lastName`，那么创建一个自定义的序列化类并重写`normalizeHash`属性。
 
 ```js
 App.Person = DS.Model.extend({
   lastName: DS.attr('string')
 });
-DS.RESTAdapter.map('App.Person', {
-  lastName: { key: 'lastNameOfPerson' }
+App.PersonSerializer = DS.RESTSerializer.extend({
+  normalizeHash: {
+    lastNameOfPerson: function(hash) {
+      hash.lastName = hash.lastNameOfPerson;
+      delete hash.lastNameOfPerson;
+      return hash;
+    }
+  }
 });
 ```
 
@@ -132,7 +138,7 @@ JSON应该将该关联编码成一个ID的数组：
 ```js
 {
   "post": {
-    "commentIds": [1, 2, 3]
+    "comments": [1, 2, 3]
   }
 }
 ```
@@ -152,10 +158,20 @@ JSON应该将关联编码为另外一个记录的ID：
 ```js
 {
   "comment": {
-    "postId": 1
+    "post": 1
   }
 }
 ```
+
+如果需要遵从这样的命名惯例，可以通过重写`keyForRelationship`方法来实现。
+
+```js
+ App.ApplicationSerializer = DS.RESTSerializer.extend({
+   keyForRelationship: function(key, relationship) {
+      return key + 'Ids';
+   }
+ });
+ ```
 
 #### 旁路加载关联
 
@@ -166,7 +182,7 @@ JSON应该将关联编码为另外一个记录的ID：
   "post": {
     "id": 1,
     "title": "Node is not omakase",
-    "commentIds": [1, 2, 3]
+    "comments": [1, 2, 3]
   },
 
   "comments": [{

@@ -90,7 +90,7 @@ actions: {
       this.get('model')save();
     }       
   }
-}
+},
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```

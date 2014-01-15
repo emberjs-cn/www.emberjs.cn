@@ -42,7 +42,7 @@ important because, for example, if you want to retrieve records by index, the
 
 ### 查询一个记录
 
-If you provide an number or string as the second argument to
+If you provide a number or string as the second argument to
 `store.find()`, Ember Data will attempt to retrieve a record of that with that ID.
 This will return a promise that fulfills with the requested record:
 

@@ -286,12 +286,12 @@ people.some(function(person, index, self) {
 // returns true
 ```
 
-Just like the filtering methods, the `every` and `some` methods have analogous `everyBy` and `anyBy` methods.
+Just like the filtering methods, the `every` and `some` methods have analogous `isEvery` and `isAny` methods.
 
-如同过滤方法一样，`every`和`some`也有`everyBy`和`anyBy`方法。
+如同过滤方法一样，`every`和`some`也有`isEvery`和`isAny`方法。
 
 ```javascript
-people.everyBy('isHappy', true) // false
-people.anyBy('isHappy', true)  // true
+people.isEvery('isHappy', true) // false
+people.isAny('isHappy', true)  // true
 ```
 

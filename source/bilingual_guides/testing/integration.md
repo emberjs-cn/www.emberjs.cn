@@ -119,15 +119,15 @@ test("creating a post displays the new post", function(){
 
 ### 创建自己的测试助手
 
-`Ember.Test.registerHelper` and `Ember.test.registerAsyncHelper` are
+`Ember.Test.registerHelper` and `Ember.Test.registerAsyncHelper` are
 used to register test helpers that will be injected when
 `App.injectTestHelpers` is called. The difference between
-`Ember.Test.registerHelper` and `Ember.test.registerAsyncHelper` is that
+`Ember.Test.registerHelper` and `Ember.Test.registerAsyncHelper` is that
 the latter will not run until any previous async helper has completed
 and any subsequent async helper will wait for it to finish before
 running.
 
-`Ember.Test.registerHelper`和`Ember.test.registerAsyncHelper`都是用来在调用`App.injectTestHelpers`调用时，注册将被注入的测试助手的。两者的不同之处在于，`Ember.test.registerAsyncHelper`只有所有之前的异步助手都完成了，并且后续的助手不需要等待其完成来运行的时候才会运行。
+`Ember.Test.registerHelper`和`Ember.Test.registerAsyncHelper`都是用来在调用`App.injectTestHelpers`调用时，注册将被注入的测试助手的。两者的不同之处在于，`Ember.Test.registerAsyncHelper`只有所有之前的异步助手都完成了，并且后续的助手不需要等待其完成来运行的时候才会运行。
 
 The helper method will always be called with the current Application
 as the first parameter. 

@@ -2,8 +2,9 @@
 
 ## REST适配器
 
-By default, your store will use `DS.RESTAdapter` to load and save
-records. The REST adapter assumes that the URLs and JSON associated with
+By default, your store will use
+[DS.RESTAdapter](/api/data/classes/DS.RESTAdapter.html) to load and save
+records. The RESTAdapter assumes that the URLs and JSON associated with
 each model are conventional; this means that, if you follow the rules,
 you will not need to configure the adapter or write any code in order to
 get started.
@@ -21,7 +22,7 @@ with based on the name of the model. For example, if you ask for a
 REST适配器通过模型的名称来生成需要进行通信的URLs。例如，如下代码展示了如何通过ID来获取对应的`Post`：
 
 ```js
-var post = App.Post.find(1);
+var post = store.find('post', 1);
 ```
 
 The REST adapter will automatically send a `GET` request to `/posts/1`.
@@ -134,7 +135,7 @@ be nested inside a property called `person`:
 
 #### 属性名称
 
-Attribute names should be  camelized.  For example, if you have a model like this:
+Attribute names should be camelized.  For example, if you have a model like this:
 
 属性命名应该采用驼峰命名法。例如，假如有如下的模型：
 
@@ -161,18 +162,25 @@ The JSON returned from your server should look like this:
 }
 ```
 
-Irregular keys can be mapped on the adapter. If the JSON
-has a key of `lastNameOfPerson`, and the desired attribute
-name is simply `lastName`, inform the adapter:
+Irregular keys can be mapped with a custom serializer. If the JSON for
+the `Person` model has a key of `lastNameOfPerson`, and the desired
+attribute name is simply `lastName`, then create a custom Serializer
+for the model and override the `normalizeHash` property.
 
-不规则的`keys`可以在适配器中进行映射。如果返回的JSON包含一个名为`lastNameOfPerson`的`key`，而期望的属性名称为`lastName`，在适配器里配置即可：
+不规则的`keys`可以通过自定义序列化来完成映射。如果返回的JSON包含一个名为`lastNameOfPerson`的`key`，而期望的属性名称为`lastName`，那么创建一个自定义的序列化类并重写`normalizeHash`属性。
 
 ```js
 App.Person = DS.Model.extend({
   lastName: DS.attr('string')
 });
-DS.RESTAdapter.map('App.Person', {
-  lastName: { key: 'lastNameOfPerson' }
+App.PersonSerializer = DS.RESTSerializer.extend({
+  normalizeHash: {
+    lastNameOfPerson: function(hash) {
+      hash.lastName = hash.lastNameOfPerson;
+      delete hash.lastNameOfPerson;
+      return hash;
+    }
+  }
 });
 ```
 
@@ -198,7 +206,7 @@ JSON应该将该关联编码成一个ID的数组：
 ```js
 {
   "post": {
-    "commentIds": [1, 2, 3]
+    "comments": [1, 2, 3]
   }
 }
 ```
@@ -227,10 +235,23 @@ JSON应该将关联编码为另外一个记录的ID：
 ```js
 {
   "comment": {
-    "postId": 1
+    "post": 1
   }
 }
 ```
+
+If needed these naming conventions can be overwritten by implementing
+the `keyForRelationship` method.
+
+如果需要遵从这样的命名惯例，可以通过重写`keyForRelationship`方法来实现。
+
+```js
+ App.ApplicationSerializer = DS.RESTSerializer.extend({
+   keyForRelationship: function(key, relationship) {
+      return key + 'Ids';
+   }
+ });
+ ```
 
 #### Sideloaded Relationships
 
@@ -247,7 +268,7 @@ outside the JSON root, and are represented as an array of hashes:
   "post": {
     "id": 1,
     "title": "Node is not omakase",
-    "commentIds": [1, 2, 3]
+    "comments": [1, 2, 3]
   },
 
   "comments": [{

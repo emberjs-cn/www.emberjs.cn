@@ -30,7 +30,7 @@ The count of remaining todos and completed todos used elsewhere in the template 
 
 在模板中被使用的未完成或已完成待办事项的统计数，将会自动进行更新。
 
-Reload your web browser to ensure that there are no errors and the behavior described above occurs. 
+Reload your web browser to ensure that there are no errors and the behavior described above occurs.
 
 重载浏览器确保没有发生任何错误，并且上面描述的功能正常。
 

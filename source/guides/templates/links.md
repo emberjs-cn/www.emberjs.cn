@@ -38,9 +38,8 @@ App.Router.map(function() {
 
 * 路由名称。在上面例子中，可以是`index`, `photos`或者 `photos.edit`。
 * 每个[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)最多对应一个模型。默认情况下，Ember.js将使用对应对象的`id`属性来替换动态段。
+  如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)，并确保`model`钩子被触发。
 * 此外，我们也可以提供一个链接名称绑定到`a`标签的`title`属性。
-
-如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的[动态段](/guides/routing/defining-your-routes/#toc_dynamic-segments)，并确保`model`钩子被触发。
 
 ```handlebars
 {{! photos.handlebars }}
@@ -52,7 +51,7 @@ App.Router.map(function() {
 
 ### 多动态段示例
 
-如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型，如下所示：
+如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型或者模型标识符，如下所示：
 
 ```js
 App.Router.map(function() {
@@ -87,4 +86,16 @@ App.Router.map(function() {
 </p>
 ```
 
-在上述情况下，指定的模型将用来表示`:photo_id`和`:comment_id`。
+在上述示例中，`PhotoRoute`的模型钩子的参数会包含`params.photo_id = 5`。`CommentRoute`的`model`钩子不会执行，因为传入了一个`comment`段的模型对象。评论的ID会根据`CommentRoute`的`serialize`钩子来填写URL。
+
+### 给链接添加附加属性
+
+当生成一个链接时，有时候还需要为其添加附加属性。通过`link-to`助手的附加参数，可以完成该功能：
+
+```handlebars
+<p>
+  {{link-to 'photo.edit' photo class="btn btn-primary"}}
+</p>
+```
+
+大部分HTML属性如`class`和`rel`都可以这样来添加。当添加样式类名时，Ember还会添加`ember-view`和可能的`active`样式类。

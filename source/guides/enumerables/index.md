@@ -194,9 +194,9 @@ people.some(function(person, index, self) {
 // returns true
 ```
 
-如同过滤方法一样，`every`和`some`也有`everyBy`和`anyBy`方法。
+如同过滤方法一样，`every`和`some`也有`isEvery`和`isAny`方法。
 
 ```javascript
-people.everyBy('isHappy', true) // false
-people.anyBy('isHappy', true)  // true
+people.isEvery('isHappy', true) // false
+people.isAny('isHappy', true)  // true
 ```

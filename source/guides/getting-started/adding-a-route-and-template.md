@@ -39,11 +39,6 @@ Todos.Router.map(function () {
   
   </script>
 
-  <script src="js/libs/jquery.min.js"></script>
-  <script src="js/libs/handlebars.js"></script>
-  <script src="js/libs/ember.js"></script>
-  <script src="js/libs/ember-data.js"></script>
-  
   <script src="js/application.js"></script>
   <script src="js/router.js"></script>
 <!-- ... 为确保简洁，略去头尾代码 ... -->

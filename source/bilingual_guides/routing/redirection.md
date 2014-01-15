@@ -1,3 +1,28 @@
+### Transitioning and Redirecting
+
+### 过渡与重定向
+
+Calling `transitionTo` from a route or `transitionToRoute` from a controller
+will stop any transition currently in progress and start a new one, functioning
+as a redirect. `transitionTo` takes parameters and behaves exactly
+like the [link-to](/guides/templates/links) helper:
+
+在路由中调用`transitionTo`或者在控制器中调用`transitionToRoute`，将停止当前正在进行的过渡，并开启一个新的，这也用作重定向。`transitionTo`具有参数，其行为与[link-to](/guides/templates/links)助手相同。
+
+* If you transition into a route without dynamic segments that route's `model` hook
+will always run.
+
+* 如果过渡到一个没有动态段的路由，路由的`model`钩子始终都会运行。
+
+* If the new route has dynamic segments, you need to pass either a
+_model_ or an _identifier_ for each segment.
+Passing a model will skip that segment's `model` hook.  Passing an
+identifier will run the `model` hook and you'll be able to access the
+identifier in the params. See [Links](/guides/templates/links) for more
+detail.
+
+* 如果路由具有动态段，那么需要传入一个模型或者一个标识符给每个段。传入一个模型不会调用`model`钩子，传入一个标识符会触发`model`钩子，标识符可以通过参数获取。详细内容请查看[链接](/guides/templates/links)。
+
 ### Before the model is known
 
 ### 在获取模型之前
@@ -46,8 +71,8 @@ App.PostsRoute = Ember.Route.extend({
 });
 ```
 
-When transitioning to the `PostsRoute` it turns out that there is only one post,
-the current transition is aborted in favor of redirecting to the `PostRoute`
+When transitioning to the `PostsRoute` if it turns out that there is only one post,
+the current transition will be aborted in favor of redirecting to the `PostRoute`
 with the single post object being its model.
 
 当过渡到`PostsRoute`路由时，如果发现只有一篇文章，那么当前的过渡会被取消，并重定向到`PostRoute`路由，来显示这一篇文章。

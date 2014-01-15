@@ -95,7 +95,7 @@ App.Person = DS.Model.extend({
       verified: attr('boolean', {defaultValue: false}),
       createdAt: DS.attr('string', {
           defaultValue: function() { return new Date(); }
-      }
+      })
   });
   ```
 

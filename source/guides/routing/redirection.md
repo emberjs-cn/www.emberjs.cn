@@ -1,5 +1,13 @@
 英文原文：[http://emberjs.com/guides/routing/redirection/](http://emberjs.com/guides/routing/redirection/)
 
+### 过渡与重定向
+
+在路由中调用`transitionTo`或者在控制器中调用`transitionToRoute`，将停止当前正在进行的过渡，并开启一个新的，这也用作重定向。`transitionTo`具有参数，其行为与[link-to](/guides/templates/links)助手相同。
+
+* 如果过渡到一个没有动态段的路由，路由的`model`钩子始终都会运行。
+
+* 如果路由具有动态段，那么需要传入一个模型或者一个标识符给每个段。传入一个模型不会调用`model`钩子，传入一个标识符会触发`model`钩子，标识符可以通过参数获取。详细内容请查看[链接](/guides/templates/links)。
+
 ### 在获取模型之前
 
 如果希望从一个路由重定向到另一个路由，可以在`beforeModel`钩子中进行过渡。
