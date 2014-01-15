@@ -18,7 +18,7 @@ this.store.findQuery("post", {
 ```js
 {
   "post": {
-    "id": 1
+    "id": 1,
     "title": "Progressive Enhancement is Dead",
     "comments": ["1", "2"],
     "_links": {

@@ -53,9 +53,11 @@ Reload your web browser to ensure that all files have been referenced correctly 
   * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1)
   * [Using the Store Guide](/guides/models/using-the-store)
   * [Defining Models Guide](/guides/models/defining-models)
+  * [Models Guide](/guides/models)
 
 ### 附加资源
 
   * [采用`diff`格式显示这步骤所作的修改](https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1)
   * [Store使用指南](/guides/models/using-the-store)
   * [定义模型指南](/guides/models/defining-models)
+  * [模型指南](/guides/models)

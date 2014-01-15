@@ -62,7 +62,7 @@ App.ApplicationRoute = Ember.Route.extend({
       songCount: 10
     });
 
-    store.push('album', {
+    this.store.push('album', {
       id: 2,
       title: "Calgary b/w I Can't Make You Love Me/Nick Of Time",
       artist: "Bon Iver",

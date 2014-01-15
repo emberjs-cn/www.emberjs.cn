@@ -49,6 +49,9 @@
     url: "getting-started/toggle-all-todos"
   - title: "更换FixtureAdapter"
     url: "getting-started/using-other-adapters"
+"Getting Ember":
+  - title: "Getting Ember"
+    url: "getting-ember"
 概念:
   - title: "核心概念"
     url: "concepts/core-concepts"

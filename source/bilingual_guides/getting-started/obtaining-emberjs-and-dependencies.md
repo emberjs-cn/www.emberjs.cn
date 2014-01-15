@@ -33,6 +33,12 @@ Reload your web browser to ensure that all files have been referenced correctly 
 
 重新加载浏览器页面，确保所有的文件被正确引用，且没有错误产生。
 
+If you are using a package manager, such as [bower](http://bower.io),
+make sure to checkout the [Getting Ember](/guides/getting-ember) guide
+for info on other ways to get Ember.js.
+
+如果使用包管理工具，例如[bower](http://bower.io)，请阅读[获取Ember](/guides/getting-ember)指南来获取更多关于获取Ember.js的方法。
+
 ### Live Preview
 ### 在线演示
 <a class="jsbin-embed" href="http://jsbin.com/ijefig/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>

@@ -218,9 +218,9 @@ Data会尽最大努力去自动发现关联关系的映射关系。在上例的�
 
 However, sometimes you may have multiple `belongsTo`/`hasMany`s for the
 same type. You can specify which property on the related model is the
-inverse using `DS.attr`'s `inverse` option:
+inverse using `DS.hasMany`'s `inverse` option:
 
-但是，有时候对同一个类型有多个`belongsTo`/`hasMany`关联关系。这时可以通过指定在反向端使用`DS.attr`的`inverse`选项来指定其关联的模型：
+但是，有时候对同一个类型有多个`belongsTo`/`hasMany`关联关系。这时可以通过指定在反向端使用`DS.hasMany`的`inverse`选项来指定其关联的模型：
 
 ```javascript
 var belongsTo = DS.belongsTo,

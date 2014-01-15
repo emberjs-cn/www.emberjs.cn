@@ -150,7 +150,7 @@ App.Tag = DS.Model.extend({
 Ember
 Data会尽最大努力去自动发现关联关系的映射关系。在上例的一对多的情况下，修改了`comments`会自动更新`post`，应为这是唯一的一个关联模型。
 
-但是，有时候对同一个类型有多个`belongsTo`/`hasMany`关联关系。这时可以通过指定在反向端使用`DS.attr`的`inverse`选项来指定其关联的模型：
+但是，有时候对同一个类型有多个`belongsTo`/`hasMany`关联关系。这时可以通过指定在反向端使用`DS.hasMany`的`inverse`选项来指定其关联的模型：
 
 ```javascript
 var belongsTo = DS.belongsTo,

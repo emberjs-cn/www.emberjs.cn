@@ -76,10 +76,6 @@ module("Integration Tests", {
 * `keyEvent(selector, type, keyCode)` -
   模拟一个键盘事件，例如：在选定元素上的带有`keyCode`的`keypress`，`keydown`，`keyup`事件。
 
-* `wait()` - Returns a promise that fulfills when all async behavior is complete.
-
-* `wait()` - 返回一个在所有异步行为完成后会履行的承诺。
-
 ### Writing tests
 
 ### 编写测试
@@ -94,43 +90,25 @@ Examples:
 
 ```javascript
 test("root lists first page of posts", function(){
-  visit("/").then(function() {
+  visit("/");
+  andThen(function() {
     equal(find(".post").length, 5, "The first page should have 5 posts");
     // Assuming we know that 5 posts display per page and that there are more than 5 posts
   });
 });
 ```
 
-The helpers that perform actions return a promise that fulfills when all asynchronous behavior has completed.
+The helpers that perform actions use a global promise object and automatically chain onto that promise object if it exists. This allows you write your tests without worrying about async behaviour your helper might trigger.
 
-执行操作的测试助手都会返回在所有异步行为完成后会履行的承诺。
+执行操作的测试助手使用一个全局的承诺对象，如果这个对象存在，会自动的链接到这个承诺对象上。这样在编写测试代码的时候就不需要关心助手可能触发的异步行为。
 
 ```javascript
 test("creating a post displays the new post", function(){
-  visit("/posts/new").then(function() {
-    return fillIn(".post-title", "A new post");
-  }).then(function() {
-    return fillIn(".post-author", "John Doe");
-  }).then(function() {
-    return click("button.create");
-  }).then(function() {
-    ok(find("h1:contains('A new post')").length, "The post's title should display");
-    ok(find("a[rel=author]:contains('John Doe')").length, "A link to the author should display");
-  });
-});
-```
-
-For convenience, helpers can be chained:
-
-为了方便，测试助手还可以进行链式调用：
-
-```javascript
-test("creating a post displays the new post", function() {
-  visit("/posts/new")
-  .fillIn(".post-title", "A new post")
-  .fillIn(".post-author", "John Doe")
-  .click("button.create")
-  .then(function() {
+  visit("/posts/new");
+  fillIn(".post-title", "A new post");
+  fillIn(".post-author", "John Doe");
+  click("button.create");
+  andThen(function() {
     ok(find("h1:contains('A new post')").length, "The post's title should display");
     ok(find("a[rel=author]:contains('John Doe')").length, "A link to the author should display");
   });
@@ -141,23 +119,31 @@ test("creating a post displays the new post", function() {
 
 ### 创建自己的测试助手
 
-`Ember.Test.registerHelper` is used to register a test helper that will be injected when `App.injectTestHelpers` is called.
+`Ember.Test.registerHelper` and `Ember.test.registerAsyncHelper` are
+used to register test helpers that will be injected when
+`App.injectTestHelpers` is called. The difference between
+`Ember.Test.registerHelper` and `Ember.test.registerAsyncHelper` is that
+the latter will not run until any previous async helper has completed
+and any subsequent async helper will wait for it to finish before
+running.
 
-`Ember.Test.registerHelper`用于注册测试助手，这些助手会在`App.injectTestHelpers`被调用时被注入。
+`Ember.Test.registerHelper`和`Ember.test.registerAsyncHelper`都是用来在调用`App.injectTestHelpers`调用时，注册将被注入的测试助手的。两者的不同之处在于，`Ember.test.registerAsyncHelper`只有所有之前的异步助手都完成了，并且后续的助手不需要等待其完成来运行的时候才会运行。
 
-The helper method will always be called with the current Application as the first parameter. Helpers that cause asynchronous behavior should return `wait()` to return a promise that will resolve when that asynchronous behavior is complete.
+The helper method will always be called with the current Application
+as the first parameter. 
 
-测试助手总是作为当前应用的第一个参数来调用。如果一个测试助手会触发异步行为，那么它需要返回`wait()`，从而实现返回一个在异步行为完成后会履行的承诺。
+助手方法将总是作为当前应用的第一个参数来被调用。
 
 For example:
 
+例如：
+
 ```javascript
-Ember.Test.registerHelper('dblclick', function(app, selector, context) {
+Ember.Test.registerAsyncHelper('dblclick', function(app, selector, context) {
   var $el = findWithAssert(selector, context);
   Ember.run(function() {
     $el.dblclick();
   });
-  return wait();
 });
 ```
 

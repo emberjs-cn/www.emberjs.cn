@@ -34,3 +34,4 @@ Todos.Todo = DS.Model.extend({
   * [采用`diff`格式显示这步骤所作的修改](https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1)
   * [Store使用指南](/guides/models/using-the-store)
   * [定义模型指南](/guides/models/defining-models)
+  * [模型指南](/guides/models)
