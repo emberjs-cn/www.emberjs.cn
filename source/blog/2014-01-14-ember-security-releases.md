@@ -1,6 +1,6 @@
 ---
 title: 安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1
-tags: 发布, 安全, 最近文章
+tags: Releases, Recent Posts
 ---
 
 因为开发者信任Ember.js在生产环境下来处理敏感的用户数据，因此Ember团队非常关注项目的安全问题。实际上，Ember是少数具有[清晰的安全策略](http://emberjs.com/security/)和一个[为安全问题专设的邮件列表](https://groups.google.com/forum/#!forum/ember-security)的Javascript项目之一。
