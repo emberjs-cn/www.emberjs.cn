@@ -148,7 +148,7 @@ App.ArticlesController = Ember.ArrayController.extend({
 1. 因为传入`false`是用来清除一个参数的
 2. 而字符串的`"false"`在javascript中是一个真值。例如，`if ("false") { alert('oops'); }`将会显示一个告警。
 
-## Examples
+## 示例
 
 - [查询](http://emberjs.jsbin.com/ucanam/3008)
 - [排序: 客户端，不重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2937)
