@@ -6,154 +6,249 @@ There can also be more global information that you want to serialize into the ur
 
 当然URL中还可以被序列化一些更为全局性的信息，例如包含一个身份令牌到URL中，或者在应用里全局的过滤模型。除此之外，还可以包含任何不适合包含在常规动态段中的一些参数。必须在一个地图视图上，可能需要保存一系列在地图上可见图层的横坐标、纵坐标和缩放比例等参数。虽然这些也可以通过动态段来实现，不过那样就显得不那么自然。对于这样的一些应用场景，就可以考虑使用查询参数来替代了。
 
+### Query Parameters are Controller-Driven
+
+### 控制器驱动查询参数
+
+Support for query parameters is built right into controllers, unlike
+other aspects of the URL which are specified and managed entirely at
+the router level. First class support for query params at the
+controller level allows for a simple yet powerful API for updating and
+responding to changes in query params without requiring the developer to
+manually install and manage bindings/observers to keep the URL and
+controller state in sync.
+
+对查询参数的支持被内置到控制器中，这与在路由层指定和管理的URL的其他部分不同。在控制器层实现的对查询参数的一流支持，使得可以提供一个强大的API来更新和响应查询参数的变更，而不需要开发者手动的安装和管理绑定/观察器来保持URL与控制器状态的同步。
+
 ### Specifying Query Parameters
 
 ### 指定查询参数
 
-Query params are baked right into your routes. This is essential so that the router and helpers can know what valid transitions and query parameter states are. Here is an example of defining which query params some routes respond to:
+Query params can be specified by route-driven controllers. Recall that,
+given a route specified by `this.route('articles');`, the value resolved
+from the `ArticlesRoute`'s `model` hook will be loaded into
+`ArticlesController` as its `model` property. While `ArticlesRoute` has
+the option of loading data into different controllers in the
+`setupController` hook, `ArticlesController` is considered to be the
+"route-driven" controller in this case, and therefore has the ability to
+specify query params.
 
-查询参数的设定被放置在路由中，这一点非常重要，因为只有这样路由和助手才能知道哪些是正确的过渡和查询参数状态。下面是一个定义一些路由的查询参数的示例：
-
-```javascript
-App.Router.map(function() {
-  this.resource('posts', {queryParams: ['sort', 'direction']}, function() {
-    this.resource('post', {path: "/:id", queryParams: ['showDetails']});
-  });
-});
-```
-
-### Route Hooks
-
-### 路由钩子
-
-Query params are passed into the hooks on your routes when you have defined them. Only query params that have been defined to apply to the route in the router.map call will be passed in. If no query params are active for this route,
-an empty object `{}` is passed in.
-
-如果定义了查询参数，这些参数都会被传入对应路由的钩子。只有在`router.map`中定义的查询参数才会被传入。如果没有定义任何查询参数，会传入一个空的对象`{}`。
-
-```javascript
-App.PostsRoute = Ember.Route.extend({
-  beforeModel:      function( queryParams, transition ) {},
-  model:            function( params, queryParams, transition ) {},
-  afterModel:       function( resolvedModel, queryParams, transition ) {},
-  setupController:  function( controller, context, queryParams ) {},
-  renderTemplate:   function( controller, context, queryParams ) {}
-});
-```
-
-Only the query parameters that you specify to apply to a route are passed in, even if the parameters apply to parent routes.
-
-只有应用到一个特定的路由上，查询参数才会被传入，即使在父级路由上设定了，在子路由上也不会被传入。
-
-```javascript
-App.Router.map(function() {
-  this.resource('posts', {queryParams: ['sort', 'direction']}, function() {
-    this.resource('post', {path: "/:id", queryParams: ['showDetails', 'sort']});
-  });
-});
-
-// If the user visits the URL:
-// /posts/1?sort=name&direction=asc&showDetails=yes&otherQueryParam=something
-
-App.PostsRoute = Ember.Route.extend({
-  model: function( params, queryParams, transition ) {
-
-    // queryParams is {sort: 'name', direction: 'asc'}
-    // showDetails is not passed in because it's only registered on the child route
-    // otherQueryParam is not passed in because it's not registered on any route
-
-  }
-});
-
-App.PostRoute = Ember.Route.extend({
-  model: function( params, queryParams, transition ) {
-    // queryParams is {sort: 'name', showDetails: 'yes'}
-    // direction is not passed in because it's only registered on the parent route
-    // otherQueryParam is not passed in because it's not registered on any route
-  }
-});
-
-
-```
+查询参数可以通过路由驱动的控制器来设置。回想一下，给定一个`this.route('articles');`指定的路由，`ArticlesRoute`的`model`钩子获取到的值将被加载到`ArticlesController`作为`model`属性。虽然`ArticlesRoute`可以在`setupController`钩子中加载数据到其他的控制器，但`ArticlesController`被认为是“路由驱动”的控制器，因此能够设定查询参数。
 
 <aside>
-  **Note:** If you don't specify query params for a given route, then the parameters passed in to the route hooks remains unchanged.
+  **Note:** The controller associated with a given route can be changed
+  by specifying the `controllerName` property on that route.
 
-  **注意：**如果没有给路由指定任何查询参数，路由钩子的参数列表不会发生改变。
+  **注意：** 给定的路由关联的控制器可以通过路由的`controllerName`属性来指定。
 </aside>
 
-```javascript
-// IndexRoute has no query params defined
+Let's say we'd like to add a `category`
+query parameter that will filter out all the articles that haven't
+been categorized as popular. To do this, we specify `'category'`
+as one of `ArticlesController`'s `queryParams`:
 
-App.IndexRoute = Ember.Route.extend({
-    beforeModel:      function( transition ) {},
-    model:            function( params, transition ) {},
-    afterModel:       function( resolvedModel, transition ) {},
-    setupController:  function( controller, context ) {},
-    renderTemplate:   function( controller, context ) {}
+这里假设需要添加一个`category`查询参数，用来过滤那些没有被分类到流行的分类的文章。为了实现这个功能，可以指定`'category'`为`ArticlesController`的`queryParams`：
+
+```js
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: ['category'],
+  category: null
 });
 ```
 
-### Transitioning Query Params
+This sets up a binding between the `category` query param in the URL,
+and the `category` property on `ArticlesController`. In other words,
+once the `articles` route has been entered, any changes to the
+`category` query param in the URL will update the `category` property
+on `ArticlesController`, and vice versa.
 
-### 过渡查询参数
+上述代码设定了URL查询参数`category`与`ArticlesController`的`category`属性之间的绑定。换句话说，当进入到`articles`路由时，URL中查询参数`category`的改变都会自动更新`ArticlesController`中的`category`属性，反之亦然。
 
-`transitionTo` now accepts a final argument, which is an object with the key `queryParams`.
+Now we just need to define a computed property of our category-filtered
+array that `articles` template will render:
 
-`transitionTo`函数在最后添加了一个参数，用来接收名为`queryParams`的对象作为查询参数。
+接下来只需要定义一个`articles`模板渲染时需要使用的分类数组的计算属性即可：
+
+```js
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: ['category'],
+  category: null,
+
+  filteredArticles: function() {
+    var category = this.get('category');
+    var articles = this.get('model');
+
+    if (category) {
+      return articles.filterProperty('category', category);
+    } else {
+      return articles;
+    }
+  }.property('category', 'model')
+});
+```
+
+With this code, we have established the following behaviors:
+
+上述代码主要完成了：
+
+1. If the user navigates to `/articles`, `category` will be `null`, so
+   the articles won't be filtered.
+2. If the user navigates to `/articles?articles[category]=recent`,
+   `category` will be set to `"recent"`, so articles will be filtered.
+3. Once inside the `articles` route, any changes to the `category`
+   property on `ArticlesController` will cause the URL to update the
+   query param. By default, a query param property change won't cause a
+   full router transition (i.e. it won't call `model` hooks and
+   `setupController`, etc.); it will only update the URL.
+
+1. 如果用户导航到`/articles`，`category`值为`null`，因此文章不会被过滤。
+2. 如果用户导航到`/articles?articles[category]=recent`，`category`被设置为`"recent"`，因此文章将被过滤。
+3. 一旦在`articles`路由里，改变`ArticlesController`中`category`属性的值，便会导致URL中对应的查询参数被更新。默认情况下，一个查询参数的改变并不会导致一次完整的路由过渡（例如：不会调用`model`和`setupController`钩子等）；只会更新URL。
+
+### link-to Helper
+
+### link-to助手
+
+The `link-to` helper supports specifying query params by way of the
+`query-params` subexpression helper.
+
+`link-to`助手通过`query-params`子表达式助手可以支持指定查询参数。
+
+```handlebars
+// Explicitly set target query param
+{{#link-to 'posts' (query-params direction="asc")}}Sort{{/link-to}}
+
+// Binding is also supported
+{{#link-to 'posts' (query-params
+direction=otherDirection)}}Sort{{/link-to}}
+```
+
+In the above examples, `direction` is presumably a query param property
+on `PostsController`, but it could also refer to a `direction` property
+on any of the controllers associated with the `posts` route hierarchy,
+matching the leaf-most controller with the supplied property name.
+
+上例中，`direction`是`PostsController`的一个假定的查询参数，它可以是`posts`路由层次结构上关联任意一个控制器的`direction`属性，该属性定义在匹配的一个叶节点控制器。
+
+<aside>
+  **Note:** Subexpressions are only available in Handlebars 1.3
+  or later.
+
+  **注意：** 子表达式只在Handlebars 1.3或更高版本中支持。
+</aside>
+
+The link-to helper takes into account query parameters when determining
+its "active" state, and will set the class appropriately. The active
+state
+is determined by working out if you clicked on the link, would the query
+params end up the same? You don't have to supply all of the current,
+active query params for this to be true.
+
+`link-to`助手当判断其是否是`active`状态的时候会考虑查询参数，并正确的设定样式类。`active`状态在点击一个链接的时候被计算出来，那么查询参数是否也是一样呢？其实并不需要提供所有的当前的活跃的查询参数。
+
+### transitionTo
+
+`Route#transitionTo` (and `Controller#transitionToRoute`) now
+accepts a final argument, which is an object with
+the key `queryParams`.
+
+`Route#transitionTo`（和`Controller#transitionToRoute`）增加了一个参数，该参数一个键值为`queryParams`的对象。
 
 ```javascript
 this.transitionTo('post', object, {queryParams: {showDetails: true}});
 this.transitionTo('posts', {queryParams: {sort: 'title'}});
 
-// if you just want to transition the query parameters without changing the route
+// if you just want to transition the query parameters without changing
+the route
 this.transitionTo({queryParams: {direction: 'asc'}});
 ```
 
-You can also use add query params to URL transitions:
+You can also add query params to URL transitions:
 
-此外也可以在URL上直接添加查询参数：
+当然也可以将查询参数加到URL过渡中：
 
 ```javascript
 this.transitionTo("/posts/1?sort=date&showDetails=true");
 ```
 
-### link-to Helper
+### Opting into a full transition
 
-### `{{link-to}}`助手
+### 选择进入一个完整过渡
 
+Keep in mind that if the arguments provided to `transitionTo`
+or `link-to` only correspond to a change in query param values,
+and not a change in the route hierarchy, it is not considered a
+full transition, which means that hooks like `model` and
+`setupController` won't fire by default, but rather only
+controller properties will be updated with new query param values, as
+will the URL.
 
-The link-to helper supports specifying query params.
+需要记住一点，`transitionTo`和`link-to`提供的参数只负责改变查询参数的值，并不改变路由的层次结构，也不会当做一个完整的过渡，这也就意味着`model`和`setupController`钩子默认不会被触发，仅仅会使用新的查询参数的值，更新控制器的属性的值和URL。
 
-`{{link-to}}`助手也支持指定查询参数。
+But some query param changes necessitate loading data from the server,
+in which case it is desirable to opt into a full-on transition. To opt
+into a full transition, you can provide a handler for the
+`queryParamsDidChange` action that calls `Route#refresh`, e.g.:
 
-```handlebars
-{{#link-to 'posts' direction=asc}}Sort{{/link-to}}
+但是也有时查询参数的改变需要重新从服务器端加载数据，这种情况下就需要一次完整的过渡。为了实现一个完整的过渡，那么可以提供一个`queryParamsDidChange`的处理器，来调用`Route#refresh`，例如：
 
-// Binding is also supported
-{{#link-to 'posts' directionBinding=otherDirection}}Sort{{/link-to}}
+```js
+App.ArticlesRoute = Ember.Route.extend({
+  model: function(params) {
+    // This gets called upon entering 'articles' route
+    // for the first time, and we opt in refiring it
+    // upon query param changes via `queryParamsDidChange` action
+
+    // params has format of { category: "someValueOrJustNull" },
+    // which we can just forward to the server.
+    return this.store.findQuery('articles', params);
+  },
+  actions: {
+    queryParamsDidChange: function() {
+      this.refresh();
+    }
+  }
+});
+
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: ['category'],
+  category: null
+});
 ```
 
-The link-to helper takes into account query parameters when determining its "active" state, and will set the class appropriately. The active state is determined by working out if you clicked on the link, would the query params end up the same? You don't have to supply all of the current, active query params for this to be true.
+`Route#refresh` is a general purpose method that essentially invalidates
+the data currently loaded into a route hierarchy, causing `model`
+hooks on the route you call it on (and any child routes) to refire. If
+the new models returned from the hooks are different from what was
+previously loaded, `setupController` hooks will refire as well, similar
+to what would happen when navigating between `/users/123` and
+`/users/456`.
 
-`{{link-to}}`助手在确定'active'状态时，会顾及到查询参数，并且会适当的设置样式。当点击链接的时候，激活状态会通过计算得到，那么查询参数是否也是这样呢？其实并不需要提供为此提供所有的当前活动的查询参数。
+`Route#refresh`是一个用来使之前加载到路由层次结构的数据失效的一个通用方法，并会导致调用该方法的路由（及任意子路由）的`model`钩子被重新触发。如果钩子返回的模型与之前加载的不同，`setupController`钩子也将被触发，这与导航到`/users/123`和`/users/456`时发生的情况类似。
+
+In the case of query parameters, we can use `Route#refresh` to opt into
+a full transition in response to a query param change which otherwise
+would have only caused controller properties to update.
+
+在这种情况下的查询参数，可以使用`Route#refresh`来进入一个完整过渡来响应查询参数的改变，否则只需要更新控制器的属性即可。
+
+<aside>
+  **Note:** `Route#refresh` is general purpose, but resides behind the
+  `query-params-new` feature flag along with all of the API being
+  described by this guide.
+</aside>
 
 ### "Stickiness"
 
 ### 粘性
 
-By default, query params are "sticky". This means that if you are on a url like `/posts?sort=name`, and you executed `transitionTo({queryParams: {direction: 'desc'}})` or clicked `{{#link-to 'posts' direction=desc}}`, the resulting url will be `/posts?sort=name&direction=desc`.
+By default, query params are "sticky". This means that if you are on a url like `/posts?sort=name`, and you executed `transitionTo({queryParams: {direction: 'desc'}})` or clicked `{{#link-to 'posts' (query-params direction=desc)}}`, the resulting url will be `/posts?sort=name&direction=desc`.
 
-默认情况下，查询参数都具有“粘性的”。这意味着如果在一个如`/posts?sort=name`这样的URL时，如果执行`transitionTo({ queryParams: { direction: 'desc' }})`或者点击`{{#link-to 'posts' direction=desc}}'，那么URL会自动变为`/posts?sort=name&directions=desc`。
+默认情况下，查询参数都具有“粘性的”。这意味着如果在一个如`/posts?sort=name`这样的URL时，如果执行`transitionTo({ queryParams: { direction: 'desc' }})`或者点击`{{#link-to 'posts' (query-params direction=desc)}}`，那么URL会自动变为`/posts?sort=name&directions=desc`。
 
-To clear query params, give a falsy value (but **not** `undefined`), e.g.
-`transitionTo({queryParams: {direction: null}})` or `{{#link-to 'posts' direction=false}}`
+To clear query params, give a falsy value, e.g. `transitionTo({queryParams: {direction: null}})` or `{{#link-to 'posts' (query-params direction=false)}}`
 
-如果需要去掉某一个查询参数，那么需要将其设置为假值（而**不是**`undefined`），例如`transitionTo({ queryParams: { direction: null }})`或者`{{#link-to 'posts' direction=false }}`。
-
-It's also possible to clear all query params by passing false, e.g. `transitionTo({queryParams: false})` or `{{#link-to 'posts' queryParams=false}}`
-
-通过将`queryParams`设置为`false`也可以一次清除所有的查询参数，例如，`transitionTo({ queryParams: false })`或者`{{#link-to 'posts' queryParams=false }}`
+如果需要去掉某一个查询参数，那么需要将其设置为假值，例如`transitionTo({ queryParams: { direction: null }})`或者`{{#link-to 'posts' (query-params direction=false)}}`。
 
 ### Boolean Query params
 
@@ -172,3 +267,33 @@ This is for two reasons:
 
 1. 因为传入`false`是用来清除一个参数的
 2. 而字符串的`"false"`在javascript中是一个真值。例如，`if ("false") { alert('oops'); }`将会显示一个告警。
+
+## Examples
+
+## 示例
+
+- [Search queries](http://emberjs.jsbin.com/ucanam/3008)
+- [Sort: client-side, no refiring of model hook](http://emberjs.jsbin.com/ucanam/2937)
+- [Sort: server-side, refire model hook](http://emberjs.jsbin.com/ucanam/2942)
+- [Pagination + Sorting](http://emberjs.jsbin.com/ucanam/2950)
+- [Boolean values. False value removes QP from URL](http://emberjs.jsbin.com/ucanam/2708/edit)
+- [Global query params on app route](http://emberjs.jsbin.com/ucanam/2719/edit)
+- [Opt-in to full transition via refresh()](http://emberjs.jsbin.com/ucanam/2711/edit)
+- [replaceUrl by changing controller QP property](http://emberjs.jsbin.com/ucanam/2710/edit)
+- [w/ {{partial}} helper for easy tabbing](http://emberjs.jsbin.com/ucanam/2706)
+- [link-to with no route name, only QP change](http://emberjs.jsbin.com/ucanam/2718#/about?about[showThing])
+- [Complex: serializing textarea content into URL (and subexpressions))](http://emberjs.jsbin.com/ucanam/2703/edit)
+- [Arrays](http://emberjs.jsbin.com/ucanam/2849)
+
+- [查询](http://emberjs.jsbin.com/ucanam/3008)
+- [排序: 客户端，不重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2937)
+- [排序: 服务器端，重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2942)
+- [分页和排序](http://emberjs.jsbin.com/ucanam/2950)
+- [布尔值。从URL中移除假值查询参数](http://emberjs.jsbin.com/ucanam/2708/edit)
+- [在应用路由中的全局查询参数](http://emberjs.jsbin.com/ucanam/2719/edit)
+- [通过refresh()实现完整过渡](http://emberjs.jsbin.com/ucanam/2711/edit)
+- [replaceUrl通过改变控制器查询参数](http://emberjs.jsbin.com/ucanam/2710/edit)
+- [易实现标签的w/ {{partial}}助手](http://emberjs.jsbin.com/ucanam/2706)
+- [不带路由名只有查询参数的link-to](http://emberjs.jsbin.com/ucanam/2718#/about?about[showThing])
+- [合成：序列化多行文本输入框内容到URL（子表达式）](http://emberjs.jsbin.com/ucanam/2703/edit)
+- [数组](http://emberjs.jsbin.com/ucanam/2849)
