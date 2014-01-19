@@ -9,6 +9,16 @@
       </ol>
     </li>
   <% end %>
+  <% if blog.tags['Releases'] %>
+    <li class='level-1'>
+      <a href="<%= tag_path 'Releases'%>">发布说明</a>
+      <ol style="display:block">
+        <% blog.tags['Releases'].sort_by(&:date).reverse.each_with_index do |article, i| %>
+          <li class='level-3'><%= link_to article.title, article %></li>
+        <% end %>
+      </ol>
+    </li>
+  <% end %>
   <% if blog.tags['Weekly'] %>
     <li class='level-1'>
       <a href="<%= tag_path 'Weekly'%>">Ember.js周报</a>
