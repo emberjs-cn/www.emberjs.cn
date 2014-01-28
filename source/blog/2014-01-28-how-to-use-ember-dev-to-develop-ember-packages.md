@@ -38,7 +38,7 @@ Ember Dev是由Ember核心团队开发的一个用来辅助开发Ember包的工�
 
 #### 目录与文件用途
 
-1. `Assetfile`：
+1. `Assetfile`：rake-pipeline配置文件。
 2. `Gemfile`：定义项目依赖的RubyGems。
 3. `README.md`：项目说明文件，通常包括项目的简介、使用说明、开发指南等等。
 4. `Rakefile`：项目开发过程中常使用的构建任务，通过`rake -T`可以查看任务清单。
