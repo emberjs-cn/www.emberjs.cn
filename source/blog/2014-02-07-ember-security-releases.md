@@ -6,9 +6,6 @@ tags: Releases, Security, Recent Posts
 
 因为开发者信任Ember.js在生产环境下来处理敏感的用户数据，因此Ember团队非常关注项目的安全问题。实际上，Ember是少数具有[清晰的安全策略](http://emberjs.com/security/)和一个[为安全问题专设的邮件列表](https://groups.google.com/forum/#!forum/ember-security)的Javascript项目之一。
 
-Today we are announcing the release of Ember.js 1.2.2,
-1.3.2, and 1.4.0-beta.6 that contain an important security fix:
-
 今天Ember.js发布了1.2.2，1.3.2和1.4.0-beta.6，其中包含了一个重要安全问题的修复：
 
 * 1.4.0-beta.6 -- [对比视图](https://github.com/emberjs/ember.js/compare/v1.4.0-beta.5...v1.4.0-beta.6)
