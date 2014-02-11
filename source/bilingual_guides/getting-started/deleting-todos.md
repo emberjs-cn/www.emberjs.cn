@@ -28,6 +28,8 @@ In `js/controllers/todo_controller.js` implement the `removeTodo` method referen
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 actions: {
+  // ... additional lines truncated for brevity ...
+  // ... 为保持代码简洁，在此省略了其他代码 ...
 	removeTodo: function () {
 	  var todo = this.get('model');
 	  todo.deleteRecord();
@@ -46,7 +48,7 @@ Because the todo is no longer part of the collection of all todos, its `<li>` el
 
 因为删除的待办事项不再是所有待办事项集合的一部分，因此其对应的`<li>`元素将自动的从页面上移除。如果被删除的待办事项是未完成的，那么对应的未完成待办事项的数量将减一，显示该数字的部分也将自动重新渲染。如果数量的变化导致`item`和`items`间的变形，那么对应的页面部分也将自动重新渲染。
 
-Reload your web browser to ensure that there are no errors and the behaviors described above occurs. 
+Reload your web browser to ensure that there are no errors and the behaviors described above occurs.
 
 重新载入Web浏览器以确保没有任何错误发生，并且之前描述的行为均工作正常。
 

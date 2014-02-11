@@ -30,7 +30,8 @@ actions: {
     completed.invoke('deleteRecord');
 
     this.get('store').commit();
-  }
+  },
+  // ... additional lines truncated for brevity ...
 },
 hasCompleted: function () {
   return this.get('completed') > 0;
@@ -38,11 +39,11 @@ hasCompleted: function () {
 
 completed: function () {
   return this.filterBy('isCompleted', true).get('length');
-}.property('@each.isCompleted')
+}.property('@each.isCompleted'),
 // ... additional lines truncated for brevity ...
 ```
 
-Reload your web browser to ensure that there are no errors and the behavior described above occurs. 
+Reload your web browser to ensure that there are no errors and the behavior described above occurs.
 
 重载浏览器确保没有任何错误，并且上面描述的功能正常。
 

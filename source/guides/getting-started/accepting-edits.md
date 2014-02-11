@@ -33,7 +33,7 @@ Ember.Handlebars.helper('edit-todo', Todos.EditTodoView);
 ```handlebars
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 {{#if isEditing}}
-  {{edit-todo class="edit" value=title focus-out="acceptChanges" 
+  {{edit-todo class="edit" value=title focus-out="acceptChanges"
                            insert-newline="acceptChanges"}}
 {{else}}
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->

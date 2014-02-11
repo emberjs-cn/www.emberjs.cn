@@ -1,4 +1,4 @@
-"Ember.js 指南":
+"指南与教程":
   - title: 'Ember.js 指南'
     url: 'index.html'
     skip_sidebar: true
@@ -359,6 +359,8 @@ Cookbook:
     url: "understanding-ember/keeping-templates-up-to-date"
   - title: "调试"
     url: "understanding-ember/debugging"
+  - title: "The Run Loop"
+    url: "understanding-ember/run-loop"
 #Contributing to Ember.js:                                                                                                                                  
   #- title: "Adding New Features"                                                                                                                           
     #url: "contributing/adding-new-features"

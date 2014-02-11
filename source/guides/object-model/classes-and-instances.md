@@ -27,7 +27,6 @@ App.PersonView = Ember.View.extend({
 App.Person = Ember.Object.extend({
   say: function(thing) {
     var name = this.get('name');
-
     alert(name + " says: " + thing);
   }
 });
@@ -42,8 +41,7 @@ var yehuda = App.Soldier.create({
   name: "Yehuda Katz"
 });
 
-yehuda.say("Yes");
-// alerts "Yehuda Katz says: Yes, sir!"
+yehuda.say("Yes"); // alerts "Yehuda Katz says: Yes, sir!"
 ```
 
 ### 创建实例
@@ -51,43 +49,43 @@ yehuda.say("Yes");
 当定义了一个类之后，就可以通过调用`create()`方法来创建类的_实例_。所有定义在类中的方法、属性、计算属性，都可以通过创建的实例来访问或调用。例如：
 
 ```javascript
-var person = Person.create();
-person.say("Hello") // alerts " says: Hello"
+var person = App.Person.create();
+person.say("Hello"); // alerts " says: Hello"
 ```
 
 当创建一个类的实例时，可以将实例属性的初始值以`hash`形式的参数传给`create()`方法，从而实现对属性的初始化。例如：
 
 ```javascript
-Person = Ember.Object.extend({
+App.Person = Ember.Object.extend({
   helloWorld: function() {
     alert("Hi, my name is " + this.get('name'));
   }
 });
 
-var tom = Person.create({
+var tom = App.Person.create({
   name: "Tom Dale"
 });
 
-tom.helloWorld() // alerts "Hi my name is Tom Dale"
+tom.helloWorld(); // alerts "Hi my name is Tom Dale"
 ```
 
 考虑到性能问题，实例的计算属性或方法不能在调用`create()`方法的时候进行重定义。同样也不可以在此时定义新的计算属性或方法。因此，在调用`create()`方法时，只能设置基本属性。如果需要定义或者重新定义计算属性或方法，可以通过定义一个新的子类来实现。
 
-按照惯例，用来保存类名的属性和变量名需首字母大写，而实例名首字母不大写。例如：变量`Person`代表一个类，而`person`则代表一个实例（通常是类`Person`的实例）。在`Ember`应用中，应该采用这样的命名惯例。
+按照惯例，用来保存类名的属性和变量名需首字母大写，而实例名首字母不大写。例如：变量`App.Person`代表一个类，而`person`则代表一个实例（通常是类`App.Person`的实例）。在`Ember`应用中，应该采用这样的命名惯例。
 
 ### 初始化实例
 
 当一个实例被创建后，实例的`init`方法会被自动调用。可以通过自定义`init`方法，来对新实例进行初始化。
 
 ```js
-Person = Ember.Object.extend({
+App.Person = Ember.Object.extend({
   init: function() {
     var name = this.get('name');
     alert(name + ", reporting for duty!");
   }
 });
 
-Person.create({
+App.Person.create({
   name: "Stefan Penner"
 });
 

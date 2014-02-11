@@ -10,7 +10,7 @@ Ember的发布管理团队针对Ember和Ember Data维护了不同的发布方法
 
 ### 频道
 
-The latest [Release](/builds#/release), [Beta](/builds#/beta), and [Canary](/builds#/canary) builds of Ember and Ember data can be found [here](/builds). For each channel a development, minified, and production version is available. For more on the differnt channels read the [Post 1.0 Release Cycle](http://emberjs.com/blog/2013/09/06/new-ember-release-process.html) blog post.
+The latest [Release](/builds#/release), [Beta](/builds#/beta), and [Canary](/builds#/canary) builds of Ember and Ember data can be found [here](/builds). For each channel a development, minified, and production version is available. For more on the different channels read the [Post 1.0 Release Cycle](http://emberjs.com/blog/2013/09/06/new-ember-release-process.html) blog post.
 
 最新的Ember和Ember Data的[Release](/builds#/release)，[Beta](/builds#/beta)和[Canary](/builds#/canary)构建可以在[这里](/builds)找到。每一个频道都提供了一个开发版、最小化版和生产版。更多关于不同频道的信息可以查看博客[1.0后发布周期](http://emberjs.com/blog/2013/09/06/new-ember-release-process.html)。
 

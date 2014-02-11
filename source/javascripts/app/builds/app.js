@@ -184,31 +184,33 @@ App.Project.reopenClass({
       projectName: "Ember",
       projectFilter: "ember",
       projectRepo: 'emberjs/ember.js',
-      lastRelease: "1.3.1",
-      futureVersion: "1.3.2",
+      initialVersion: "1.3.0",
+      initialReleaseDate: "2014-01-06",
+      lastRelease: "1.3.2",
+      futureVersion: "1.3.3",
       channel: "release",
-      date: "2014-01-14",
+      date: "2014-02-07",
       changelogPath: "CHANGELOG.md"
     }, {
       projectName: "Ember",
       projectFilter: "ember",
       projectRepo: 'emberjs/ember.js',
-      lastRelease: "1.4.0-beta.2",
-      futureVersion: "1.4.0-beta.3",
+      lastRelease: "1.4.0-beta.6",
+      futureVersion: "1.4.0",
       finalVersion: '1.4.0',
       channel: "beta",
       cycleEstimatedFinishDate: '2014-02-10',
-      date: "2014-01-14",
-      nextDate: "2014-01-21",
+      date: "2014-02-07",
+      nextDate: "2014-02-10",
       changelogPath: "CHANGELOG.md"
     }, {
       projectName: "Ember Data",
       projectFilter: "ember-data",
       projectRepo: 'emberjs/data',
-      lastRelease: "1.0.0-beta.5",
-      futureVersion: "1.0.0-beta.6",
+      lastRelease: "1.0.0-beta.6",
+      futureVersion: "1.0.0-beta.7",
       channel: "beta",
-      date: "2014-01-11",
+      date: "2014-01-25",
       changelogPath: "CHANGELOG.md"
     }, {
       projectName: "Ember",
@@ -303,8 +305,8 @@ App.ProjectsMixin = Ember.Mixin.create({
 
         // no releases exist for ember-data (yet)
         if (release) {
-          project.lastStableVersion = release.lastRelease;
-          project.lastStableDate = release.date;
+          project.lastStableVersion = release.initialVersion;
+          project.lastStableDate = release.initialReleaseDate;
         }
       }
 

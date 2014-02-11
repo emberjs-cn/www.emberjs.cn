@@ -26,9 +26,9 @@ generated within the application, like a list of comments.
 
 ## 讨论
 
-<a class="jsbin-embed" href="http://jsbin.com/iLETUTI/10/embed?output">Cookbook: Continuous Redrawing of Views</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/iLETUTI/17/embed?output">Cookbook: Continuous Redrawing of Views</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
-<a class="jsbin-embed" href="http://jsbin.com/iLETUTI/10/embed?output">Cookbook: 持续重绘视图</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/iLETUTI/17/embed?output">Cookbook: 持续重绘视图</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### ClockService object
 
@@ -115,27 +115,26 @@ App.IntervalController = Ember.ObjectController.extend({
 });
 ```
 
-A controller for a list of comments, which creates a new clock instance
-for each comment. Each comment in the list also has a controller. When a
-comment is created the `init` method adds a clock instance to the comment.
+A controller for a list of comments, each comment will have a new clock
+instance when added to the list. The comment item controller sets up
+the `seconds` binding, used by the template to show the time since the
+comment was created.
 
-一个评论列表的控制器，为每条评论创建一个时钟实例。列表中的每条评论都有一个控制器。当一条评论被创建时，`init`方法添加一个时钟实例到评论。
+一个评论列表的控制器，每条评论在被添加到列表时，会得到一个新的时钟实例。评论条目控制器设置`seconds`绑定，用于在模板中显示评论创建了多长时间。
 
 ```javascript
 App.CommentItemController = Ember.ObjectController.extend({
-  init: function() {
-    this.set('clock', ClockService.create());
-  }
+  seconds: Ember.computed.oneWay('clock.pulse').readOnly()
 })
 
 App.CommentsController = Ember.ArrayController.extend({
   needs: ['interval'],
-  clockBinding: 'controllers.interval.clock',
   itemController: 'commentItem',
   actions: {
     add: function () {
       this.addObject(Em.Object.create({
-        comment: $('#comment').val()
+        comment: $('#comment').val(),
+        clock: ClockService.create()
       }));
     }
   }
@@ -229,7 +228,7 @@ The source code:
 
 源代码：
 
-* <http://jsbin.com/iLETUTI/8/>
+* <http://jsbin.com/iLETUTI/17/edit?html,js,output>
 
 Further reading:
 

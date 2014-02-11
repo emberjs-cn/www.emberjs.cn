@@ -2,7 +2,7 @@ In general, the dynamic segments of a URL are a serialized representation of a m
 
 通常情况下，URL的动态段是模型的一种序列化表示，最常见的是模型的ID。然后，有时候还需要将应用的其他状态也序列化到URL中。这可能是对从服务器端加载模型有影响的一些参数，比如要查看的是那一页结果；也可能是一些关于客户端状态的信息，比如在客户端实现排序时的记录排序规则。
 
-There can also be more global information that you want to serialize into the url, for example if you want to store an auth token in the URL, or filter all models in your application globally. It's also possible that there is a lot of parameters that you want to serialize in the url that are inconvenient to store in normal dynamic segments. This might apply when you have a map view and need to store X, Y, and zoom coordinates along with a set of visible layers on the map. Although this is possible to do with dynamic segments, it can be inconvenient. For any of these use case, you can consider using query params instead.
+There can also be more global information that you want to serialize into the url, for example if you want to store an auth token in the URL, or filter all models in your application globally. It's also possible that there is a lot of parameters that you want to serialize in the url that are inconvenient to store in normal dynamic segments. This might apply when you have a map view and need to store X, Y, and zoom coordinates along with a set of visible layers on the map. Although this is possible to do with dynamic segments, it can be inconvenient. For any of these use cases, you can consider using query params instead.
 
 当然URL中还可以被序列化一些更为全局性的信息，例如包含一个身份令牌到URL中，或者在应用里全局的过滤模型。除此之外，还可以包含任何不适合包含在常规动态段中的一些参数。必须在一个地图视图上，可能需要保存一系列在地图上可见图层的横坐标、纵坐标和缩放比例等参数。虽然这些也可以通过动态段来实现，不过那样就显得不那么自然。对于这样的一些应用场景，就可以考虑使用查询参数来替代了。
 

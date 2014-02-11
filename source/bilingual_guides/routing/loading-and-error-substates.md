@@ -260,24 +260,27 @@ more control, but if you'd like to emulate something similar to legacy
 之前的Ember版本（有些不慎）支持通过定义一个全局的`LoadingRoute`，该路由将在过渡遇到一个较慢的承诺或者完全退出一个过渡时被激活。因为`loading`模板作为顶层的视图来渲染，并没有放入到一个插口中，那么在这里处理可以显示一个加载中的指示器外几乎不能做其他的事情。与此相比较，`loading`事件/子状态提供了更强的控制力，如果希望模拟与遗留的`LoadingRoute`类似的行为，可以按照如下的例子来实现：
 
 ```js
+App.LoadingView = Ember.View.extend({
+  templateName: 'global-loading',
+  elementId: 'global-loading'
+});
+
 App.ApplicationRoute = Ember.Route.extend({
   actions: {
     loading: function() {
-      var view = Ember.View.create({
-        templateName: 'global-loading',
-        elementId: 'global-loading'
-      }).append();
-      
-      this.router.one('didTransition', function() {
-        view.destroy();
-      });
+      var view = this.container.lookup('view:loading').append();
+      this.router.one('didTransition', view, 'destroy');
     }
   }
 });
 ```
 
+[Example JSBin](http://emberjs.jsbin.com/ucanam/3307)
+
 This will, like legacy `LoadingRoute`, append a top-level view when the
 router goes into a loading state, and tear down the view once the
 transition finishes.
+
+[JSBin示例](http://emberjs.jsbin.com/ucanam/3307)
 
 上例实现了一个与`LoadingRoute`类型的行为，当路由进入一个`loading`状态时，在顶层添加了一个视图，并在完成过渡时删除加入的视图。

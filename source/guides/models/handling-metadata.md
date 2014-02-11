@@ -21,7 +21,7 @@ this.store.findQuery("post", {
     "id": 1,
     "title": "Progressive Enhancement is Dead",
     "comments": ["1", "2"],
-    "_links": {
+    "links": {
       "user": "/people/tomdale"
     },
     // ...

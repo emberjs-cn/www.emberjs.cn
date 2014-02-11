@@ -4,8 +4,8 @@ TodoMVC的依赖：
   
 * [jQuery](http://code.jquery.com/jquery-1.10.2.min.js)
 * [Handlebars](http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-1.0.0.js)
-* [Ember.js 1.0](http://builds.emberjs.com/tags/v1.0.0/ember.js)
-* [Ember Data 1.0 beta](http://builds.emberjs.com/tags/v1.0.0-beta.3/ember-data.js)
+* [Ember.js 1.3](http://builds.emberjs.com/tags/v1.3.0/ember.js)
+* [Ember Data 1.0 beta](http://builds.emberjs.com/tags/v1.0.0-beta.5/ember-data.js)
   
 本示例中，所有的这些资源要放在与 `index.html` 相同目录的 `js/libs` 文件夹下。更新 `index.html` 代码，在 `</body>` 标签之前加入如下几个 `<script>` 标签，加载这些资源文件。
 

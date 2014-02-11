@@ -41,6 +41,7 @@ Todos.Router.map(function () {
 
   <script src="js/application.js"></script>
   <script src="js/router.js"></script>
+</body>
 <!-- ... 为确保简洁，略去头尾代码 ... -->
 ```
 

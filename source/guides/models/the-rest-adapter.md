@@ -129,7 +129,7 @@ App.PersonSerializer = DS.RESTSerializer.extend({
 
 ```js
 App.Post = DS.Model.extend({
-  comments: DS.hasMany('App.Comment', { async: true })
+  comments: DS.hasMany('comment', { async: true })
 });
 ```
 
@@ -149,7 +149,7 @@ JSON应该将该关联编码成一个ID的数组：
 
 ```js
 App.Comment = DS.Model.extend({
-  post: DS.belongsTo('App.Post')
+  post: DS.belongsTo('post')
 });
 ```
 

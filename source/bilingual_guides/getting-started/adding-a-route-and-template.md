@@ -60,6 +60,7 @@ Next, update your `index.html` to wrap the inner contents of `<body>` in a Handl
 
   <script src="js/application.js"></script>
   <script src="js/router.js"></script>
+</body>
 <!-- ... additional lines truncated for brevity ... -->
 <!-- ... 为确保简洁，略去头尾代码 ... -->
 ```

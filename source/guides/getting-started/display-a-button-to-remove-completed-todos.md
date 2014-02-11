@@ -24,7 +24,8 @@ actions: {
     completed.invoke('deleteRecord');
 
     completed.invoke('save');
-  }
+  },
+  // ... additional lines truncated for brevity ...
 },
 hasCompleted: function () {
   return this.get('completed') > 0;
@@ -32,7 +33,7 @@ hasCompleted: function () {
 
 completed: function () {
   return this.filterBy('isCompleted', true).get('length');
-}.property('@each.isCompleted')
+}.property('@each.isCompleted'),
 // ... additional lines truncated for brevity ...
 ```
 

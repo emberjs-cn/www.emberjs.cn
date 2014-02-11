@@ -45,4 +45,4 @@ Twitter的控件库希望能在页面上找到一个设置了特定`data-`属性
 
 #### 示例
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/OriZITU/3/edit?js,output">JS Bin</a>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/OpocEPu/1/edit?js,output">JS Bin</a>
