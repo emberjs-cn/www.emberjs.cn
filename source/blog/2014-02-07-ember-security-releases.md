@@ -1,48 +1,30 @@
 ---
-title: Security Releases - Ember 1.2.2, and 1.3.2
+title: 安全性发布 - Ember 1.2.2, and 1.3.2
 author: Robert Jackson
 tags: Releases, Security, Recent Posts
 ---
 
-Because developers trust Ember.js to handle sensitive customer data in
-production, we take the security of the project extremely seriously.  In
-fact, we're one of the few JavaScript projects that has a [clearly
-outlined security policy](http://emberjs.com/security/) and a
-[low-traffic mailing list exclusively for security
-announcements](https://groups.google.com/forum/#!forum/ember-security).
+因为开发者信任Ember.js在生产环境下来处理敏感的用户数据，因此Ember团队非常关注项目的安全问题。实际上，Ember是少数具有[清晰的安全策略](http://emberjs.com/security/)和一个[为安全问题专设的邮件列表](https://groups.google.com/forum/#!forum/ember-security)的Javascript项目之一。
 
 Today we are announcing the release of Ember.js 1.2.2,
 1.3.2, and 1.4.0-beta.6 that contain an important security fix:
 
-* 1.4.0-beta.6 -- [Compare View](https://github.com/emberjs/ember.js/compare/v1.4.0-beta.5...v1.4.0-beta.6)
-* 1.3.2 -- [Compare View](https://github.com/emberjs/ember.js/compare/v1.3.1...v1.3.2)
-* 1.2.2 -- [Compare View](https://github.com/emberjs/ember.js/compare/v1.2.1...v1.2.2)
+今天Ember.js发布了1.2.2，1.3.2和1.4.0-beta.6，其中包含了一个重要安全问题的修复：
 
-These releases contain the fix for an XSS vulnerability that
-you can learn more about on our security mailing list:
+* 1.4.0-beta.6 -- [对比视图](https://github.com/emberjs/ember.js/compare/v1.4.0-beta.5...v1.4.0-beta.6)
+* 1.3.2 -- [对比视图](https://github.com/emberjs/ember.js/compare/v1.3.1...v1.3.2)
+* 1.2.2 -- [对比视图](https://github.com/emberjs/ember.js/compare/v1.2.1...v1.2.2)
+
+本次发布修复了一个XSS漏洞，在安全问题邮件列表中可以得到关于该漏洞的信息：
 
 * [CVE-2014-0046](https://groups.google.com/forum/#!topic/ember-security/1h6FRgr8lXQ)
 
-It is recommended that you update immediately. In order to ease
-upgrading, the only major change in each release is the security fix
-(other than 1.4.0-beta.6, which is a normal beta channel release with
-the fix rolled in).
+推荐马上更新项目。为了方便升级，本次发布的版本主要只包含了安全修复（1.4.0-beta.6除外，该版本是一个常规的beta发布，并包含了此次的安全修复）。
 
-We would like to thank Hyder Ali of [Zoho](https://www.zoho.com)
-for responsibly disclosing and working with us on the patch
-and the advisory.
+如果在生产环境下使用Ember.js，请考虑订阅[安全通知邮件列表](https://groups.google.com/forum/#!forum/ember-security)。该邮件列表流量非常低，且只包含安全通知。
 
-If you discover what you believe may be a security issue in Ember.js, we
-ask that you follow our [responsible disclosure
-policy](http://emberjs.com/security/).
+## 更多内容
 
-If you are using Ember.js in production, please consider subscribing to
-our [security announcements mailing
-list](https://groups.google.com/forum/#!forum/ember-security).  It is
-extremely low-traffic and only contains announcements such as these.
-
-## Additional Reading
-
-* [Ember.js Security Policy Announcement](http://emberjs.com/blog/2013/04/05/announcing-the-ember-security-policy.html)
-* [Ember.js Security Policy](http://emberjs.com/security/)
-* [Ember.js Security Group](https://groups.google.com/forum/#!forum/ember-security)
+* [Ember.js安全策略公告](http://emberjs.com/blog/2013/04/05/announcing-the-ember-security-policy.html)
+* [Ember.js安全策略](http://emberjs.com/security/)
+* [Ember.js安全组](https://groups.google.com/forum/#!forum/ember-security)
