@@ -107,6 +107,8 @@
     url: "templates/actions"
   - title: "输入助手"
     url: "templates/input-helpers"
+  - title: "开发助手"
+    url: "templates/development-helpers"
   - title: "用助手来渲染"
     url: "templates/rendering-with-helpers"
   #- title: "Keywords"
