@@ -359,7 +359,7 @@ Cookbook:
     url: "understanding-ember/keeping-templates-up-to-date"
   - title: "调试"
     url: "understanding-ember/debugging"
-  - title: "The Run Loop"
+  - title: "运行循环"
     url: "understanding-ember/run-loop"
 #Contributing to Ember.js:                                                                                                                                  
   #- title: "Adding New Features"                                                                                                                           
