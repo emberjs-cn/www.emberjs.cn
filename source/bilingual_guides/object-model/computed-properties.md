@@ -136,6 +136,6 @@ captainAmerica.get('firstName'); // William
 captainAmerica.get('lastName'); // Burnside
 ```
 
-Ember will call the computed property for both setters and getters, so if you want to use a computed property as a setter, you'll need to check the number of arguments to determine whether it is being called as a getter or a setter.
+Ember will call the computed property for both setters and getters, so if you want to use a computed property as a setter, you'll need to check the number of arguments to determine whether it is being called as a getter or a setter. Note that if a value is returned from the setter, it will be cached as the property’s value.
 
-Ember在设置或者获取的时候都将调用计算属性，因此如果需要定义一个计算属性的设置器时，需要通过判断传入的参数的数量来判断是设置还获取。
+Ember在设置或者获取的时候都将调用计算属性，因此如果需要定义一个计算属性的设置器时，需要通过判断传入的参数的数量来判断是设置还获取。需要注意的是，如果设置器具有返回值，该值将作为属性的值进行缓存。

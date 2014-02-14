@@ -129,10 +129,9 @@ running.
 
 `Ember.Test.registerHelper`和`Ember.Test.registerAsyncHelper`都是用来在调用`App.injectTestHelpers`调用时，注册将被注入的测试助手的。两者的不同之处在于，`Ember.Test.registerAsyncHelper`只有所有之前的异步助手都完成了，并且后续的助手不需要等待其完成来运行的时候才会运行。
 
-The helper method will always be called with the current Application
-as the first parameter. 
+The helper method will always be called with the current Application as the first parameter. Helpers need to be registered prior to calling `App.injectTestHelpers()`. 
 
-助手方法将总是作为当前应用的第一个参数来被调用。
+助手方法将总是作为当前应用的第一个参数来被调用。助手需要在调用`App.injectTestHelpers()`之前进行注册。
 
 For example:
 

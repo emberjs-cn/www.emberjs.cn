@@ -36,7 +36,7 @@
 
 `{{outlet}}`Handlebars助手指定了模板中的一部分，将根据我们在不同的路由间切换而动态更新。我们第一个子路由将在此列出所有的待办事项。
 
-在`js/router.js`中，更新路由中`todos`的映射，使其可以接受子路由，并为其添加`index`路由：
+在`js/router.js`中，使用一个额外的空函数作为参数，来更新路由中`todos`的映射，使其可以接受子路由，并为其添加`index`路由：
 
 ```javascript
 Todos.Router.map(function () {
