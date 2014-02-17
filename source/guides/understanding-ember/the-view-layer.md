@@ -184,7 +184,7 @@ App.Search = Ember.View.extend({
 * `willInsertElement`：本钩子在视图被渲染后，但还未插入到DOM中时被调用。它不访问视图的`element`。
 * `didInsertElement`：本钩子在视图一插入DOM后立即被调用。它可以访问视图的`element`，这在集成外部的库的时候尤为有用。任何显式的设置DOM代码都应该被限定在本钩子内。
 * `willDestroyElement`：本钩子在元素从DOM中移除之前调用。在此有机会来清理关联到DOM节点的一些外部状态。就像`didInsertElement`有助于集成外部库一般。
-* `willRerender`：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。
+* `willClearRender`：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。
 * `becameVisible`：本钩子在视图的`isVisible`属性或者其某个父视图的`isVisible`属性变为真，且关联的元素变为可见之后调用。注意本钩子只适用于所有可见性都通过`isVisible`属性来控制的情况。
 
 * `becameHidden`：本钩子在视图的`isVisible`属性或者其某个父视图的`isVisible`属性变为假，且关联的元素变为不可见之后调用。注意本钩子只适用于所有可见性都通过`isVisible`属性来控制的情况。
@@ -192,7 +192,7 @@ App.Search = Ember.View.extend({
 应用可以通过在视图中定义一个与钩子名称相同的方法来实现钩子。另外，也可以在视图上注册一个钩子的监听器：
 
 ```javascript
-view.on('willRerender', function() {
+view.on('willClearRender', function() {
   // do something with view
 });
 ```

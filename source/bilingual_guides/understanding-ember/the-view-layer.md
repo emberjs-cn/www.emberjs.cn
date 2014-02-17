@@ -311,14 +311,14 @@ In order to make it easy to take action at different points during your view's l
 * `willInsertElement`: This hook is called after the view has been rendered but before it has been inserted into the DOM. It does not provide access to the view's `element`.
 * `didInsertElement`: This hook is called immediately after the view has been inserted into the DOM. It provides access to the view's `element` and is most useful for integration with an external library. Any explicit DOM setup code should be limited to this hook.
 * `willDestroyElement`: This hook is called immediately before the element is removed from the DOM. This is your opportunity to tear down any external state associated with the DOM node. Like `didInsertElement`, it is most useful for integration with external libraries.
-* `willRerender`: This hook is called immediately before a view is re-rendered. This is useful if you want to perform some teardown immediately before a view is re-rendered.
+* `willClearRender`: This hook is called immediately before a view is re-rendered. This is useful if you want to perform some teardown immediately before a view is re-rendered.
 * `becameVisible`: This hook is called after a view's `isVisible` property, or one of its ancestor's `isVisible` property, changes to true and the associated element becomes visible. Note that this hook is only reliable if all visibility is routed through the `isVisible` property.
 * `becameHidden`: This hook is called after a view's `isVisible` property, or one of its ancestor's `isVisible` property, changes to false and the associated element becomes hidden. Note that this hook is only reliable if all visibility is routed through the `isVisible` property.
 
 * `willInsertElement`：本钩子在视图被渲染后，但还未插入到DOM中时被调用。它不访问视图的`element`。
 * `didInsertElement`：本钩子在视图一插入DOM后立即被调用。它可以访问视图的`element`，这在集成外部的库的时候尤为有用。任何显式的设置DOM代码都应该被限定在本钩子内。
 * `willDestroyElement`：本钩子在元素从DOM中移除之前调用。在此有机会来清理关联到DOM节点的一些外部状态。就像`didInsertElement`有助于集成外部库一般。
-* `willRerender`：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。
+* `willClearRender`：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。
 * `becameVisible`：本钩子在视图的`isVisible`属性或者其某个父视图的`isVisible`属性变为真，且关联的元素变为可见之后调用。注意本钩子只适用于所有可见性都通过`isVisible`属性来控制的情况。
 
 * `becameHidden`：本钩子在视图的`isVisible`属性或者其某个父视图的`isVisible`属性变为假，且关联的元素变为不可见之后调用。注意本钩子只适用于所有可见性都通过`isVisible`属性来控制的情况。
