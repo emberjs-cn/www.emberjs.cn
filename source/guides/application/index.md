@@ -15,7 +15,7 @@ window.App = Ember.Application.create();
 
 1. 它是你应用的命名空间，应用里面所有的类都会作为它的属性去定义（例如：`App.PostsView`和`App.PostsController`）。这样避免你污染了公共的域。
 
-2. 它为你添加了网页时间监听器，并且负责把事件委派到你的视图。（参看[视图层](/guides/understanding-ember/the-view-layer)）
+2. 它为你添加了网页事件监听器，并且负责把事件委派到你的视图。（参看[视图层](/guides/understanding-ember/the-view-layer)）
 
 3. 它会自动帮你渲染[_应用模板_](/guides/templates/the-application-template)模板。
 

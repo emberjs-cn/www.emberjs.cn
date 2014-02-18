@@ -28,7 +28,7 @@ What does creating an `Ember.Application` instance get you?
 
 2. It adds event listeners to the document and is responsible for delegating events to your views. (See [The View Layer](/guides/understanding-ember/the-view-layer)
 
-   它为你添加了网页时间监听器，并且负责把事件委派到你的视图。（参看[视图层](/guides/understanding-ember/the-view-layer)）
+   它为你添加了网页事件监听器，并且负责把事件委派到你的视图。（参看[视图层](/guides/understanding-ember/the-view-layer)）
 
 3. It automatically renders the [_application
    template_](/guides/templates/the-application-template).
