@@ -15,7 +15,7 @@ set :markdown, :layout_engine => :erb,
 activate :directory_indexes
 activate :toc
 activate :highlighter
-activate :i18n, mount_as_root: 'zh-CN'
+activate :i18n, mount_at_root: 'zh-CN'
 
 #activate :api_docs,
   #default_class: 'Ember',
