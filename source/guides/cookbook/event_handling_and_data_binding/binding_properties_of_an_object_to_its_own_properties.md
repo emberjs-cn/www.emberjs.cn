@@ -6,14 +6,14 @@
 
 ### 解决方案
 
-使用计算属性宏来定义，如：`Ember.computed.alias`或`Ember.computed.equal`。
+使用计算属性宏来定义，如：`Ember.computed.alias`或`Ember.computed.gte`。
 
 ```js
 App.Person = Ember.Object.extend({
 	firstName : null,
 	lastName : null,
 	surname : Ember.computed.alias("lastName"),
-	eligibleForRetirement: Ember.computed.get("age", 65)
+	eligibleForRetirement: Ember.computed.gte("age", 65)
 });
 ```
 

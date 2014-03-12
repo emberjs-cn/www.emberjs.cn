@@ -52,7 +52,7 @@ var User = Ember.Object.extend({
   fullName: function() {
     return this.get('firstName') + ' ' + this.get('lastName');
   }.property('firstName', 'lastName')
-})
+});
 ```
 
 下面的模板用来显示其属性：
@@ -166,7 +166,7 @@ $('a').click(function(){
   Ember.run(function(){  // begin loop
     // Code that results in jobs being scheduled goes here
   }); // end loop, jobs are flushed and executed
-})
+});
 ```
 
 #### 如果忘记在一个异步处理器中启动一个运行循环会发生什么？
@@ -184,7 +184,7 @@ $('a').click(function(){
   nextTick(function() { 
     Ember.run.end()
   }, 0);
-})
+});
 ```
 
 这样做并没有达到最佳效果，因为当前的JS依然允许在运行循环清空前结束，这样就意味着有时候浏览器会有机会去做一些其他的事情，例如垃圾回收。垃圾回收如果在数据变更和DOM重新渲染的过程中执行，会导致明显的延迟，应该竟可能避免。

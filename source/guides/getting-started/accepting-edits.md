@@ -41,7 +41,7 @@ Ember.Handlebars.helper('edit-todo', Todos.EditTodoView);
 
 点击`<enter>`键会触发`TodoController`实例的`acceptChanges`事件。焦点离开`<input>`时会出发`focus-out`事件，并调用视图的`TodoController`实例的`acceptChanges`方法。
 
-此外，`TodoController`实例的`title`属性与`<input>`的`value`属性进行了绑定。控制器中并没有定义`title`属性，这样控制就保持默认的行为，将所有请求代理到其`model`之上。
+此外，`TodoController`实例的`title`属性与`<input>`的`value`属性进行了绑定。控制器中并没有定义`title`属性，这样控制就保持默认的行为，将[所有请求代理](../controllers/#toc_representing-models)到其`model`之上。
 
 增加一个CSS类`edit`。
 

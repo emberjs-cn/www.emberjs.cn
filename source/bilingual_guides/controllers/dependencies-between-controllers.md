@@ -64,6 +64,17 @@ App.CommentsController = Ember.ArrayController.extend({
 });
 ```
 
+If you want to connect multiple controllers together, you can specify an
+array of controller names:
+
+如果希望连接多个控制器，那么可以使用数组来指定控制器的名称：
+
+```javascript
+App.AnotherController = Ember.Controller.extend({
+  needs: ['post', 'comments']
+});
+```
+
 For more information about aliased property, see the API docs for
 [aliased properties](http://emberjs.com/api/#method_computed_alias).
 

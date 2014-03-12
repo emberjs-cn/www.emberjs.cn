@@ -97,10 +97,15 @@ this.transitionTo("/posts/1?sort=date&showDetails=true");
 
 需要记住一点，`transitionTo`和`link-to`提供的参数只负责改变查询参数的值，并不改变路由的层次结构，也不会当做一个完整的过渡，这也就意味着`model`和`setupController`钩子默认不会被触发，仅仅会使用新的查询参数的值，更新控制器的属性的值和URL。
 
-但是也有时查询参数的改变需要重新从服务器端加载数据，这种情况下就需要一次完整的过渡。为了实现一个完整的过渡，那么可以提供一个`queryParamsDidChange`的处理器，来调用`Route#refresh`，例如：
+但是也有时查询参数的改变需要重新从服务器端加载数据，这种情况下就需要一次完整的过渡。当控制器查询参数属性变化时，为了实现一个完整的过渡，可以使用·`Route`中与对应控制器关联的可选的`queryParams`配置哈希，并将查询参数的`refreshModel`配置属性设置为`true`：
 
 ```js
 App.ArticlesRoute = Ember.Route.extend({
+  queryParams: {
+    category: {
+      refreshModel: true
+    }
+  },
   model: function(params) {
     // This gets called upon entering 'articles' route
     // for the first time, and we opt in refiring it
@@ -109,11 +114,6 @@ App.ArticlesRoute = Ember.Route.extend({
     // params has format of { category: "someValueOrJustNull" },
     // which we can just forward to the server.
     return this.store.findQuery('articles', params);
-  },
-  actions: {
-    queryParamsDidChange: function() {
-      this.refresh();
-    }
   }
 });
 
@@ -123,42 +123,64 @@ App.ArticlesController = Ember.ArrayController.extend({
 });
 ```
 
-`Route#refresh`是一个用来使之前加载到路由层次结构的数据失效的一个通用方法，并会导致调用该方法的路由（及任意子路由）的`model`钩子被重新触发。如果钩子返回的模型与之前加载的不同，`setupController`钩子也将被触发，这与导航到`/users/123`和`/users/456`时发生的情况类似。
+### 使用`replaceState`来更新URL
 
-在这种情况下的查询参数，可以使用`Route#refresh`来进入一个完整过渡来响应查询参数的改变，否则只需要更新控制器的属性即可。
+缺省情况下，Ember使用`pushState`来更新地址栏中的URL来响应控制器查询参数属性的变化，然而也可以通过使用`replaceState`来实现（这会阻止在浏览器的历史中增加附加的条目），通过设定`Route`的`queryParams`配置哈希来启用，例如（接上例）：
 
-<aside>
-  **Note:** `Route#refresh` is general purpose, but resides behind the
-  `query-params-new` feature flag along with all of the API being
-  described by this guide.
-</aside>
+```js
+App.ArticlesRoute = Ember.Route.extend({
+  queryParams: {
+    category: {
+      replace: true
+    }
+  }
+});
+```
 
-### 粘性
+需要注意配置属性名及其默认`false`值与`link-to`助手的相似，需要通过设定`replace=true`来启用`replaceState`过渡。
 
-默认情况下，查询参数都具有“粘性的”。这意味着如果在一个如`/posts?sort=name`这样的URL时，如果执行`transitionTo({ queryParams: { direction: 'desc' }})`或者点击`{{#link-to 'posts' (query-params direction=desc)}}`，那么URL会自动变为`/posts?sort=name&directions=desc`。
+### 将控制器的属性映射到不同的查询参数键值
 
-如果需要去掉某一个查询参数，那么需要将其设置为假值，例如`transitionTo({ queryParams: { direction: null }})`或者`{{#link-to 'posts' (query-params direction=false)}}`。
+缺省情况下，指定`foo`作为控制器的查询参数属性将会绑定一个键值为`foo`的查询参数，例如`?foo=123`。采用类似`classNameBindings`的冒号语法[示例](/guides/views/customizing-a-views-element/)可以将控制器的属性绑定到一个不同的查询参数键值。
 
-### 布尔型查询参数
+```js
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: ['category:articles_category'],
+  category: null
+});
+```
 
-布尔型不会序列化真值，例如，`transitionTo('posts', { queryParams: { sort: true }})`，URL将会被序列化为`/posts?sort`。
+上述代码会使得改变`ArticlesController`的`category`时更新`articles_category`查询参数，反之亦然。
 
-这有两个原因：
+### 默认值和反序列化
 
-1. 因为传入`false`是用来清除一个参数的
-2. 而字符串的`"false"`在javascript中是一个真值。例如，`if ("false") { alert('oops'); }`将会显示一个告警。
+在下述例子中，控制器查询参数`page`默认值被设置为`1`。
+
+```js
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: 'page',
+  page: 1
+});
+```
+
+这对查询参数行为的影响有两种方式：
+
+1. 在设置控制器值前，会使用默认值的类型来完成在URL中的查询参数值的类型转换。因此，在给定的上例中，如果用户点击后退按钮使得URL从`/?page=3`变为`/?page=2`，Ember会采用转换后的数值`2`来更新控制器的`page`属性，而非字符串的`"2"`，这是因为默认值`1`是数值型。这也使得布尔型参数的缺省值能在反序列化的时候被正确的转换。
+
+2. 当控制器的查询参数被设置为默认值时，该值不会被序列化到URL中。因此在上例中，如果`page`值为`1`，URL可能就是`/articles`，但是如果`page`的值被设置为`2`，那么URL应该就是`/articles?page=2`。
 
 ## 示例
 
-- [查询](http://emberjs.jsbin.com/ucanam/3008)
+- [查询](http://emberjs.jsbin.com/ucanam/4059)
 - [排序: 客户端，不重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2937)
-- [排序: 服务器端，重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2942)
-- [分页和排序](http://emberjs.jsbin.com/ucanam/2950)
-- [布尔值。从URL中移除假值查询参数](http://emberjs.jsbin.com/ucanam/2708/edit)
-- [在应用路由中的全局查询参数](http://emberjs.jsbin.com/ucanam/2719/edit)
-- [通过refresh()实现完整过渡](http://emberjs.jsbin.com/ucanam/2711/edit)
-- [replaceUrl通过改变控制器查询参数](http://emberjs.jsbin.com/ucanam/2710/edit)
-- [易实现标签的w/ {{partial}}助手](http://emberjs.jsbin.com/ucanam/2706)
-- [不带路由名只有查询参数的link-to](http://emberjs.jsbin.com/ucanam/2718#/about?about[showThing])
-- [合成：序列化多行文本输入框内容到URL（子表达式）](http://emberjs.jsbin.com/ucanam/2703/edit)
-- [数组](http://emberjs.jsbin.com/ucanam/2849)
+- [排序: 服务器端，重新触发模型钩子](http://emberjs.jsbin.com/ucanam/4073)
+- [分页和排序](http://emberjs.jsbin.com/ucanam/4075)
+- [布尔值](http://emberjs.jsbin.com/ucanam/4076/edit)
+- [在应用路由中的全局查询参数](http://emberjs.jsbin.com/ucanam/4077/edit)
+- [通过设置refreshModel:true实现完整过渡](http://emberjs.jsbin.com/ucanam/4079/edit)
+- [通过设置replace:true实现replaceState](http://emberjs.jsbin.com/ucanam/4080/edit)
+- [易实现标签的w/ {{partial}}助手](http://emberjs.jsbin.com/ucanam/4081)
+- [不带路由名只有查询参数的link-to](http://emberjs.jsbin.com/ucanam/4082#/about?showThing=true)
+- [合成：序列化多行文本输入框内容到URL（子表达式）](http://emberjs.jsbin.com/ucanam/4083/edit)
+- [数组](http://emberjs.jsbin.com/ucanam/4084)
+- [使用冒号语法映射不同的URL键值](http://emberjs.jsbin.com/ucanam/4090/edit)

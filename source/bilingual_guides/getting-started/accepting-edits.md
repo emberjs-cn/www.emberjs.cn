@@ -63,9 +63,9 @@ Pressing the `<enter>` key  will trigger the `acceptChanges` event on the instan
 
 点击`<enter>`键会触发`TodoController`实例的`acceptChanges`事件。焦点离开`<input>`时会出发`focus-out`事件，并调用视图的`TodoController`实例的`acceptChanges`方法。
 
-Additionally, we connect the `value` property of this `<input>` to the `title` property of this instance of `TodoController`. We will not implement a `title` property on the controller so it will retain the default behavior of proxying all requests to its `model`.
+Additionally, we connect the `value` property of this `<input>` to the `title` property of this instance of `TodoController`. We will not implement a `title` property on the controller so it will retain the default behavior of [proxying all requests](../controllers/#toc_representing-models) to its `model`.
 
-此外，`TodoController`实例的`title`属性与`<input>`的`value`属性进行了绑定。控制器中并没有定义`title`属性，这样控制就保持默认的行为，将所有请求代理到其`model`之上。
+此外，`TodoController`实例的`title`属性与`<input>`的`value`属性进行了绑定。控制器中并没有定义`title`属性，这样控制就保持默认的行为，将[所有请求代理](../controllers/#toc_representing-models)到其`model`之上。
 
 A CSS class `edit` is applied for styling.
 

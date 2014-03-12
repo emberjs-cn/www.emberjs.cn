@@ -73,7 +73,7 @@ var User = Ember.Object.extend({
   fullName: function() {
     return this.get('firstName') + ' ' + this.get('lastName');
   }.property('firstName', 'lastName')
-})
+});
 ```
 
 and a template to display its attributes:
@@ -274,7 +274,7 @@ $('a').click(function(){
   Ember.run(function(){  // begin loop
     // Code that results in jobs being scheduled goes here
   }); // end loop, jobs are flushed and executed
-})
+});
 ```
 
 #### What happens if I forget to start a run loop in an async handler?
@@ -298,7 +298,7 @@ $('a').click(function(){
   nextTick(function() { 
     Ember.run.end()
   }, 0);
-})
+});
 ```
 
 This is suboptimal because the current JS frame is allowed to end before the run loop is

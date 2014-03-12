@@ -155,9 +155,9 @@ fullName: function() {
 
 // Instead, do this:
 //你需要这样做：
-fullName: Ember.computed(function() {
+fullName: Ember.computed('firstName', 'lastName', function() {
   return this.get('firstName') + ' ' + this.get('lastName');
-}).property('firstName', 'lastName')
+})
 ```
 
 Observers are annotated using `Ember.observer()`:

@@ -71,7 +71,7 @@ Todos.TodosIndexRoute = Ember.Route.extend({
 });
 ```
 
-When the application loads at the url `'/'` Ember.js will enter the `todos` route and render the `todos` template as before. It will also transition into the `todos.index` route and fill the `{{outlet}}` in the `todos` template with the `todos/index` template.  The model data for this template is the result of the `model` method of `TodosIndexRoute`, which indicates that the model for this route is the same model for the `TodosRoute`.
+When the application loads at the url `'/'` Ember.js will enter the `todos` route and render the `todos` template as before. It will also transition into the `todos.index` route and fill the `{{outlet}}` in the `todos` template with the `todos/index` template.  The model data for this template is the result of the `model` method of `TodosIndexRoute`, which indicates that the model for this route is the same model as for the `TodosRoute`.
 
 当应用从`'/'`加载时，Ember.js将进入`todos`路由并跟之前一样渲染`todos`模板。这也将转换到`todos.index`路由，并使用`todos/index`模板来填充`todos`模板中的`{{outlet}}`。模板使用的模型数据是`TodosIndexRoute`的`model`方法的返回的值。这表示该路由的模型与`TodoRoute`的模型相同。
 

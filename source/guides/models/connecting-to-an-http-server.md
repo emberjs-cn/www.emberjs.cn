@@ -117,3 +117,25 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
 ```
 
 现在请求一个ID为`1`的`person`就会发送请求到`https://api.example.com/people/1`。
+
+#### 自定义HTTP头
+
+一些API需要指定HTTP头，例如提供一个API密钥。任意键值对HTTP头可以通过`RESTAdapter`的`headers`属性来进行设置，Ember Data会将这些头设置到到每个Ajax请求中去。
+
+例如：
+
+```js
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  headers: {
+    "API_KEY": "secret key",
+    "ANOTHER_HEADER": "Some header value"
+  }
+});
+```
+
+请求任意资源都会包含如下的HTTP头。
+
+```http
+ANOTHER_HEADER: Some header value
+API_KEY: secret key
+```

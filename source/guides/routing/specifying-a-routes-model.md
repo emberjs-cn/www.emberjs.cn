@@ -48,7 +48,7 @@ App.PullRequestsRoute = Ember.Route.extend({
 });
 ```
  
-为了使得代码更加易读，这个例子看上去跟同步的没有什么两样，但是实际上它是异步完成的。这是因为jQuery的`getJSON()`方法返回了一个承诺。Ember会检测到`model`钩子返回的是一个承诺，然后一直等待直至承诺被履行时才渲染`pullRequest`模板。
+为了使得代码更加易读，这个例子看上去跟同步的没有什么两样，但是实际上它是异步完成的。这是因为jQuery的`getJSON()`方法返回了一个承诺。Ember会检测到`model`钩子返回的是一个承诺，然后一直等待直至承诺被履行时才渲染`pullRequests`模板。
 
 （更多关于jQuery的XHR函数，请查看jQuery文档[jQuery.ajax](http://api.jquery.com/jQuery.ajax/)。）
 

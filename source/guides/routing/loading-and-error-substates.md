@@ -55,9 +55,9 @@ App.FooSlowModelRoute = Ember.Route.extend({
 
 ```js
 App.Router.map(function() {
-  this.resource('foo', function() {   // -> FooRoute
-    this.resource('bar', function() { // -> BarRoute
-      this.route('baz');              // -> BarBazRoute
+  this.resource('foo', function() {       // -> FooRoute
+    this.resource('for.bar', function() { // -> FooBarRoute
+      this.route('baz');                  // -> FooBarBazRoute
     });
   });
 });
@@ -71,13 +71,13 @@ App.Router.map(function() {
 
 Ember会在上述的`loading`路由地址找一个路由，a) 该路由可能是如下所示定义的一个路由的子类：
 
-1. `App.BarLoadingRoute`
+1. `App.FooBarLoadingRoute`
 2. `App.FooLoadingRoute`
 3. `App.LoadingRoute`
 
 b) 又或者是一个按照一定规则进行命名的`loading`模板：
 
-1. `bar/loading`
+1. `foo/bar/loading`
 2. `foo/loading`
 3. `loading`
 

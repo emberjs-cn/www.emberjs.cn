@@ -1,11 +1,13 @@
 <h1 class="api-header"><%= @module['name'] %> Module</h1>
 
+<hr>
+
 <% if @module['module'] %>
   <p>Parent: <%= link_to @module['module'], "#{@module['module']}.html" %></p>
 <% end %>
 
 <% if @module['requires'] %>
-  <p>Requires: <%= @module['requires'].map{|r| link_to(r['name'], "#{r['name']}.html") }.join(", ") %></p>
+  <p>Requires: <%= @module['requires'].map{|r| link_to(r, "#{r}.html") }.join(", ") %></p>
 <% end %>
 
 <p><%= api_markdown @module['description'] %></p>

@@ -25,7 +25,7 @@ In `index.html` update your template to wrap each todo in its own controller by 
 <!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
-When this `{{input}}` is rendered it will ask for the current value of the controller's `isCompleted` property. When a user clicks this input, it will call the controller's `isCompleted` property with an argument of either `true` or `false` depending on the new checked value of the input.
+When this `{{input}}` is rendered it will ask for the current value of the controller's `isCompleted` property. When a user clicks this input, it will set the value of the controller's `isCompleted` property to either `true` or `false` depending on the new checked value of the input.
 
 当`{{input}}`被渲染时，将询问控制器属性`isCompleted`属性的当前值是什么。当有用户点击了这个输入时，将调用控制器的`isCompleted`属性，参数是真或假依赖于输入的选中属性的值。
 

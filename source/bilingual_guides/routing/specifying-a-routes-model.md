@@ -94,9 +94,9 @@ While this example looks like it's synchronous, making it easy to read
 and reason about, it's actually completely asynchronous. That's because
 jQuery's `getJSON()` method returns a promise. Ember will detect the
 fact that you've returned a promise from the `model` hook, and wait
-until that promise resolves to render the `pullRequest` template.
+until that promise resolves to render the `pullRequests` template.
 
-为了使得代码更加易读，这个例子看上去跟同步的没有什么两样，但是实际上它是异步完成的。这是因为jQuery的`getJSON()`方法返回了一个承诺。Ember会检测到`model`钩子返回的是一个承诺，然后一直等待直至承诺被履行时才渲染`pullRequest`模板。
+为了使得代码更加易读，这个例子看上去跟同步的没有什么两样，但是实际上它是异步完成的。这是因为jQuery的`getJSON()`方法返回了一个承诺。Ember会检测到`model`钩子返回的是一个承诺，然后一直等待直至承诺被履行时才渲染`pullRequests`模板。
 
 (For more information on jQuery's XHR functionality, see
 [jQuery.ajax](http://api.jquery.com/jQuery.ajax/) in the jQuery

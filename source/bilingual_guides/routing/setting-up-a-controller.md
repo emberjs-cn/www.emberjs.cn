@@ -1,5 +1,4 @@
-英文原文:
-[http://emberjs.com/guides/routing/setting-up-a-controller/](http://emberjs.com/guides/routing/setting-up-a-controller/)
+英文原文: [http://emberjs.com/guides/routing/setting-up-a-controller/](http://emberjs.com/guides/routing/setting-up-a-controller/)
 
 ## 设置控制器（Setting Up a Controller）
 
@@ -32,6 +31,9 @@ App.Router.map(function() {
 });
 
 App.PostRoute = Ember.Route.extend({
+  // The code below is the default behavior, so if this is all you
+  // need, you do not need to provide a setupController implementation
+  // at all.
   setupController: function(controller, model) {
     controller.set('model', model);
   }

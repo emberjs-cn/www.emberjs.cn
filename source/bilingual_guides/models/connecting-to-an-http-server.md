@@ -184,3 +184,35 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
 Requests for a `person` with ID `1` would now target `https://api.example.com/people/1`.
 
 现在请求一个ID为`1`的`person`就会发送请求到`https://api.example.com/people/1`。
+
+#### Custom HTTP Headers
+
+#### 自定义HTTP头
+
+Some APIs require HTTP headers, e.g. to provide an API key. Arbitrary
+headers can be set as key/value pairs on the `RESTAdapter`'s `headers`
+property and Ember Data will send them along with each ajax request.
+
+一些API需要指定HTTP头，例如提供一个API密钥。任意键值对HTTP头可以通过`RESTAdapter`的`headers`属性来进行设置，Ember Data会将这些头设置到到每个Ajax请求中去。
+
+For Example
+
+例如：
+
+```js
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  headers: {
+    "API_KEY": "secret key",
+    "ANOTHER_HEADER": "Some header value"
+  }
+});
+```
+
+Requests for any resource will include the following HTTP headers.
+
+请求任意资源都会包含如下的HTTP头。
+
+```http
+ANOTHER_HEADER: Some header value
+API_KEY: secret key
+```

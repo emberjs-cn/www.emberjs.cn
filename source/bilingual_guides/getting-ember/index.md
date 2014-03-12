@@ -18,7 +18,7 @@ The latest [Release](/builds#/release), [Beta](/builds#/beta), and [Canary](/bui
 
 ### 标签发布
 
-Past release and beta builds  of Ember and Ember Data are availabe at [Tagged Releases](/builds#/tagged). These builds can be useful to track down regressions in your application, but it is recommended to use the latest stable release in production.
+Past release and beta builds  of Ember and Ember Data are available at [Tagged Releases](/builds#/tagged). These builds can be useful to track down regressions in your application, but it is recommended to use the latest stable release in production.
 
 所有之前的Ember和Ember
 Data的发布版本和beta版本构建都包含在[标签发布](/builds#/tagged)中。这些构建可以用来跟踪应用中的回归，不过还是建议在生产环境中使用最新的稳定版本的发布。

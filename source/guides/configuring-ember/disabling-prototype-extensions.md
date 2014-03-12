@@ -88,9 +88,9 @@ fullName: function() {
 
 // Instead, do this:
 //你需要这样做：
-fullName: Ember.computed(function() {
+fullName: Ember.computed('firstName', 'lastName', function() {
   return this.get('firstName') + ' ' + this.get('lastName');
-}).property('firstName', 'lastName')
+})
 ```
 
 用`Ember.observer()`来标记观察者：

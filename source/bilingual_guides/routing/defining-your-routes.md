@@ -223,7 +223,7 @@ and `resource` template.
 
 Routes nested under a resource take the name of the resource plus their
 name as their route name. If you want to transition to a route (either
-via `transitionTo` or `{{#link-to}}`, make sure to use the full route
+via `transitionTo` or `{{#link-to}}`), make sure to use the full route
 name (`posts.new`, not `new`).
 
 一个资源下的嵌套路由的名字会是资源名加上路由名。如果你想跳转到一个路由（用`transitionTo`或

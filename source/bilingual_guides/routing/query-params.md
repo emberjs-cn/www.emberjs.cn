@@ -1,4 +1,4 @@
-In general, the dynamic segments of a URL are a serialized representation of a model, commonly for example the model's ID. However, sometimes you need to serialize other application state into the URL. This could be further parameters that affect the loading of the model from the server, e.g. what page of a result set you are viewing, or it could be information about client side state, e.g. sort order when the records are sorted on the client.
+In general, the dynamic segments of a URL are a serialized representation of a model, commonly the model's ID. However, sometimes you need to serialize other application state into the URL. This could be further parameters that affect the loading of the model from the server, e.g. what page of a result set you are viewing, or it could be information about client side state, e.g. sort order when the records are sorted on the client.
 
 通常情况下，URL的动态段是模型的一种序列化表示，最常见的是模型的ID。然后，有时候还需要将应用的其他状态也序列化到URL中。这可能是对从服务器端加载模型有影响的一些参数，比如要查看的是那一页结果；也可能是一些关于客户端状态的信息，比如在客户端实现排序时的记录排序规则。
 
@@ -187,13 +187,20 @@ will the URL.
 
 But some query param changes necessitate loading data from the server,
 in which case it is desirable to opt into a full-on transition. To opt
-into a full transition, you can provide a handler for the
-`queryParamsDidChange` action that calls `Route#refresh`, e.g.:
+into a full transition when a controller query param property changes, 
+you can use the optional `queryParams` configuration hash on the `Route`
+associated with that controller, and set that query param's
+`refreshModel` config property to `true`:
 
-但是也有时查询参数的改变需要重新从服务器端加载数据，这种情况下就需要一次完整的过渡。为了实现一个完整的过渡，那么可以提供一个`queryParamsDidChange`的处理器，来调用`Route#refresh`，例如：
+但是也有时查询参数的改变需要重新从服务器端加载数据，这种情况下就需要一次完整的过渡。当控制器查询参数属性变化时，为了实现一个完整的过渡，可以使用·`Route`中与对应控制器关联的可选的`queryParams`配置哈希，并将查询参数的`refreshModel`配置属性设置为`true`：
 
 ```js
 App.ArticlesRoute = Ember.Route.extend({
+  queryParams: {
+    category: {
+      refreshModel: true
+    }
+  },
   model: function(params) {
     // This gets called upon entering 'articles' route
     // for the first time, and we opt in refiring it
@@ -202,11 +209,6 @@ App.ArticlesRoute = Ember.Route.extend({
     // params has format of { category: "someValueOrJustNull" },
     // which we can just forward to the server.
     return this.store.findQuery('articles', params);
-  },
-  actions: {
-    queryParamsDidChange: function() {
-      this.refresh();
-    }
   }
 });
 
@@ -216,84 +218,126 @@ App.ArticlesController = Ember.ArrayController.extend({
 });
 ```
 
-`Route#refresh` is a general purpose method that essentially invalidates
-the data currently loaded into a route hierarchy, causing `model`
-hooks on the route you call it on (and any child routes) to refire. If
-the new models returned from the hooks are different from what was
-previously loaded, `setupController` hooks will refire as well, similar
-to what would happen when navigating between `/users/123` and
-`/users/456`.
+### Update URL with `replaceState` instead
 
-`Route#refresh`是一个用来使之前加载到路由层次结构的数据失效的一个通用方法，并会导致调用该方法的路由（及任意子路由）的`model`钩子被重新触发。如果钩子返回的模型与之前加载的不同，`setupController`钩子也将被触发，这与导航到`/users/123`和`/users/456`时发生的情况类似。
+### 使用`replaceState`来更新URL
 
-In the case of query parameters, we can use `Route#refresh` to opt into
-a full transition in response to a query param change which otherwise
-would have only caused controller properties to update.
+By default, Ember will use `pushState` to update the URL in the
+address bar in response to a controller query param property change, but
+if you would like to use `replaceState` instead (which prevents an
+additional item from being added to your browser's history), you can
+specify this on the `Route`'s `queryParams` config hash, e.g. (continued
+from the example above):
 
-在这种情况下的查询参数，可以使用`Route#refresh`来进入一个完整过渡来响应查询参数的改变，否则只需要更新控制器的属性即可。
+缺省情况下，Ember使用`pushState`来更新地址栏中的URL来响应控制器查询参数属性的变化，然而也可以通过使用`replaceState`来实现（这会阻止在浏览器的历史中增加附加的条目），通过设定`Route`的`queryParams`配置哈希来启用，例如（接上例）：
 
-<aside>
-  **Note:** `Route#refresh` is general purpose, but resides behind the
-  `query-params-new` feature flag along with all of the API being
-  described by this guide.
-</aside>
+```js
+App.ArticlesRoute = Ember.Route.extend({
+  queryParams: {
+    category: {
+      replace: true
+    }
+  }
+});
+```
 
-### "Stickiness"
+Note that the name of this config property and its default value of
+`false` is similar to the `link-to` helper's, which also lets
+you opt into a `replaceState` transition via `replace=true`. 
 
-### 粘性
+需要注意配置属性名及其默认`false`值与`link-to`助手的相似，需要通过设定`replace=true`来启用`replaceState`过渡。
 
-By default, query params are "sticky". This means that if you are on a url like `/posts?sort=name`, and you executed `transitionTo({queryParams: {direction: 'desc'}})` or clicked `{{#link-to 'posts' (query-params direction=desc)}}`, the resulting url will be `/posts?sort=name&direction=desc`.
+### Map a controller's property to a different query param key
 
-默认情况下，查询参数都具有“粘性的”。这意味着如果在一个如`/posts?sort=name`这样的URL时，如果执行`transitionTo({ queryParams: { direction: 'desc' }})`或者点击`{{#link-to 'posts' (query-params direction=desc)}}`，那么URL会自动变为`/posts?sort=name&directions=desc`。
+### 将控制器的属性映射到不同的查询参数键值
 
-To clear query params, give a falsy value, e.g. `transitionTo({queryParams: {direction: null}})` or `{{#link-to 'posts' (query-params direction=false)}}`
+By default, specifying `foo` as a controller query param property will
+bind to a query param whose key is `foo`, e.g. `?foo=123`. You can also map
+a controller property to a different query param key using an optional
+colon syntax similar to the `classNameBindings` syntax 
+[demonstrated here](/guides/views/customizing-a-views-element/).
 
-如果需要去掉某一个查询参数，那么需要将其设置为假值，例如`transitionTo({ queryParams: { direction: null }})`或者`{{#link-to 'posts' (query-params direction=false)}}`。
+缺省情况下，指定`foo`作为控制器的查询参数属性将会绑定一个键值为`foo`的查询参数，例如`?foo=123`。采用类似`classNameBindings`的冒号语法[示例](/guides/views/customizing-a-views-element/)可以将控制器的属性绑定到一个不同的查询参数键值。
 
-### Boolean Query params
+```js
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: ['category:articles_category'],
+  category: null
+});
+```
 
-### 布尔型查询参数
+This will cause changes to the `ArticlesController`'s `category`
+property to update the `articles_category` query param, and vice versa.
 
-Boolean query params are serialized without the truth value, e.g. `transitionTo('posts', {queryParams: {sort: true}})` would result in the url `/posts?sort`
+上述代码会使得改变`ArticlesController`的`category`时更新`articles_category`查询参数，反之亦然。
 
-布尔型不会序列化真值，例如，`transitionTo('posts', { queryParams: { sort: true }})`，URL将会被序列化为`/posts?sort`。
+### Default values and deserialization
 
-This is for two reasons:
+### 默认值和反序列化
 
-这有两个原因：
+In the following example, the controller query param property `page` is
+considered to have a default value of `1`. 
 
-1. passing false is the way to clear query parameters
-2. The string "false" is truthy in javascript. i.e. `if ("false") { alert('oops'); }` will show an alert.
+在下述例子中，控制器查询参数`page`默认值被设置为`1`。
 
-1. 因为传入`false`是用来清除一个参数的
-2. 而字符串的`"false"`在javascript中是一个真值。例如，`if ("false") { alert('oops'); }`将会显示一个告警。
+```js
+App.ArticlesController = Ember.ArrayController.extend({
+  queryParams: 'page',
+  page: 1
+});
+```
+
+This affects query param behavior in two ways:
+
+这对查询参数行为的影响有两种方式：
+
+1. The type of the default value is used to cast changed query param
+   values in the URL before setting values on the controller. So, given
+   the above example, if the user clicks the back button to change from
+   `/?page=3` to `/?page=2`, Ember will update the `page` controller
+   property to the properly cast number `2` rather than the string `"2"`, which it
+   knows to do because the default value (`1`) is a number. This also
+   allows boolean default values to be correctly cast when deserializing
+   from URL changes.
+
+1. 在设置控制器值前，会使用默认值的类型来完成在URL中的查询参数值的类型转换。因此，在给定的上例中，如果用户点击后退按钮使得URL从`/?page=3`变为`/?page=2`，Ember会采用转换后的数值`2`来更新控制器的`page`属性，而非字符串的`"2"`，这是因为默认值`1`是数值型。这也使得布尔型参数的缺省值能在反序列化的时候被正确的转换。
+
+2. When a controller's query param property is currently set to its
+   default value, this value won't be serialized into the URL. So in the
+   above example, if `page` is `1`, the URL might look like `/articles`,
+   but once someone sets the controller's `page` value to `2`, the URL
+   will become `/articles?page=2`.
+
+2. 当控制器的查询参数被设置为默认值时，该值不会被序列化到URL中。因此在上例中，如果`page`值为`1`，URL可能就是`/articles`，但是如果`page`的值被设置为`2`，那么URL应该就是`/articles?page=2`。
 
 ## Examples
 
 ## 示例
 
-- [Search queries](http://emberjs.jsbin.com/ucanam/3008)
+- [Search queries](http://emberjs.jsbin.com/ucanam/4059)
 - [Sort: client-side, no refiring of model hook](http://emberjs.jsbin.com/ucanam/2937)
-- [Sort: server-side, refire model hook](http://emberjs.jsbin.com/ucanam/2942)
-- [Pagination + Sorting](http://emberjs.jsbin.com/ucanam/2950)
-- [Boolean values. False value removes QP from URL](http://emberjs.jsbin.com/ucanam/2708/edit)
-- [Global query params on app route](http://emberjs.jsbin.com/ucanam/2719/edit)
-- [Opt-in to full transition via refresh()](http://emberjs.jsbin.com/ucanam/2711/edit)
-- [replaceUrl by changing controller QP property](http://emberjs.jsbin.com/ucanam/2710/edit)
-- [w/ {{partial}} helper for easy tabbing](http://emberjs.jsbin.com/ucanam/2706)
-- [link-to with no route name, only QP change](http://emberjs.jsbin.com/ucanam/2718#/about?about[showThing])
-- [Complex: serializing textarea content into URL (and subexpressions))](http://emberjs.jsbin.com/ucanam/2703/edit)
-- [Arrays](http://emberjs.jsbin.com/ucanam/2849)
+- [Sort: server-side, refire model hook](http://emberjs.jsbin.com/ucanam/4073)
+- [Pagination + Sorting](http://emberjs.jsbin.com/ucanam/4075)
+- [Boolean values](http://emberjs.jsbin.com/ucanam/4076/edit)
+- [Global query params on app route](http://emberjs.jsbin.com/ucanam/4077/edit)
+- [Opt-in to full transition via refreshModel:true](http://emberjs.jsbin.com/ucanam/4079/edit)
+- [opt into replaceState via replace:true](http://emberjs.jsbin.com/ucanam/4080/edit)
+- [w/ {{partial}} helper for easy tabbing](http://emberjs.jsbin.com/ucanam/4081)
+- [link-to with no route name, only QP change](http://emberjs.jsbin.com/ucanam/4082#/about?showThing=true)
+- [Complex: serializing textarea content into URL (and subexpressions))](http://emberjs.jsbin.com/ucanam/4083/edit)
+- [Arrays](http://emberjs.jsbin.com/ucanam/4084)
+- [Map to different URL key with colon syntax](http://emberjs.jsbin.com/ucanam/4090/edit)
 
-- [查询](http://emberjs.jsbin.com/ucanam/3008)
+- [查询](http://emberjs.jsbin.com/ucanam/4059)
 - [排序: 客户端，不重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2937)
-- [排序: 服务器端，重新触发模型钩子](http://emberjs.jsbin.com/ucanam/2942)
-- [分页和排序](http://emberjs.jsbin.com/ucanam/2950)
-- [布尔值。从URL中移除假值查询参数](http://emberjs.jsbin.com/ucanam/2708/edit)
-- [在应用路由中的全局查询参数](http://emberjs.jsbin.com/ucanam/2719/edit)
-- [通过refresh()实现完整过渡](http://emberjs.jsbin.com/ucanam/2711/edit)
-- [replaceUrl通过改变控制器查询参数](http://emberjs.jsbin.com/ucanam/2710/edit)
-- [易实现标签的w/ {{partial}}助手](http://emberjs.jsbin.com/ucanam/2706)
-- [不带路由名只有查询参数的link-to](http://emberjs.jsbin.com/ucanam/2718#/about?about[showThing])
-- [合成：序列化多行文本输入框内容到URL（子表达式）](http://emberjs.jsbin.com/ucanam/2703/edit)
-- [数组](http://emberjs.jsbin.com/ucanam/2849)
+- [排序: 服务器端，重新触发模型钩子](http://emberjs.jsbin.com/ucanam/4073)
+- [分页和排序](http://emberjs.jsbin.com/ucanam/4075)
+- [布尔值](http://emberjs.jsbin.com/ucanam/4076/edit)
+- [在应用路由中的全局查询参数](http://emberjs.jsbin.com/ucanam/4077/edit)
+- [通过设置refreshModel:true实现完整过渡](http://emberjs.jsbin.com/ucanam/4079/edit)
+- [通过设置replace:true实现replaceState](http://emberjs.jsbin.com/ucanam/4080/edit)
+- [易实现标签的w/ {{partial}}助手](http://emberjs.jsbin.com/ucanam/4081)
+- [不带路由名只有查询参数的link-to](http://emberjs.jsbin.com/ucanam/4082#/about?showThing=true)
+- [合成：序列化多行文本输入框内容到URL（子表达式）](http://emberjs.jsbin.com/ucanam/4083/edit)
+- [数组](http://emberjs.jsbin.com/ucanam/4084)
+- [使用冒号语法映射不同的URL键值](http://emberjs.jsbin.com/ucanam/4090/edit)

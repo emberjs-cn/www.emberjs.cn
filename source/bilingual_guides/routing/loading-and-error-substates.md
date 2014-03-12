@@ -102,9 +102,9 @@ the following loading substate behavior we've been alluding to.
 
 ```js
 App.Router.map(function() {
-  this.resource('foo', function() {   // -> FooRoute
-    this.resource('bar', function() { // -> BarRoute
-      this.route('baz');              // -> BarBazRoute
+  this.resource('foo', function() {       // -> FooRoute
+    this.resource('foo.bar', function() { // -> FooBarRoute
+      this.route('baz');                  // -> FooBarBazRoute
     });
   });
 });
@@ -126,7 +126,7 @@ Route subclass has been defined for such a route, e.g.
 
 Ember会在上述的`loading`路由地址找一个路由，a) 该路由可能是如下所示定义的一个路由的子类：
 
-1. `App.BarLoadingRoute`
+1. `App.FooBarLoadingRoute`
 2. `App.FooLoadingRoute`
 3. `App.LoadingRoute`
 
@@ -134,7 +134,7 @@ or b) a properly-named loading template has been found, e.g.
 
 b) 又或者是一个按照一定规则进行命名的`loading`模板：
 
-1. `bar/loading`
+1. `foo/bar/loading`
 2. `foo/loading`
 3. `loading`
 
@@ -254,7 +254,7 @@ a transition and exited upon completion of the transition. Because the
 `loading` template rendered as a top-level view and not within an
 outlet, it could be used for little more than displaying a loading
 spinner during slow transitions. Loading events/substates give you far
-more control, but if you'd like to emulate something similar to legacy
+more control, but if you'd like to emulate something similar to the legacy
 `LoadingRoute` behavior, you could do as follows:
 
 之前的Ember版本（有些不慎）支持通过定义一个全局的`LoadingRoute`，该路由将在过渡遇到一个较慢的承诺或者完全退出一个过渡时被激活。因为`loading`模板作为顶层的视图来渲染，并没有放入到一个插口中，那么在这里处理可以显示一个加载中的指示器外几乎不能做其他的事情。与此相比较，`loading`事件/子状态提供了更强的控制力，如果希望模拟与遗留的`LoadingRoute`类似的行为，可以按照如下的例子来实现：
@@ -277,7 +277,7 @@ App.ApplicationRoute = Ember.Route.extend({
 
 [Example JSBin](http://emberjs.jsbin.com/ucanam/3307)
 
-This will, like legacy `LoadingRoute`, append a top-level view when the
+This will, like the legacy `LoadingRoute`, append a top-level view when the
 router goes into a loading state, and tear down the view once the
 transition finishes.
 

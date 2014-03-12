@@ -55,3 +55,78 @@ If `isAdministrator` is `false`, Handlebars will produce the following:
 ```html
 <input type="checkbox">
 ```
+
+### Adding data attributes
+
+### 添加数据属性
+
+By default, view helpers do not accept *data attributes*. For example
+
+缺省情况下，视图助手不接受*数据属性*。例如：
+
+```handlebars
+{{#link-to "photos" data-toggle="dropdown"}}Photos{{/link-to}}
+
+{{input type="text" data-toggle="tooltip" data-placement="bottom" title="Name"}}
+```
+
+renders the following HTML:
+
+渲染出如下所示HTML：
+
+```html
+<a id="ember239" class="ember-view" href="#/photos">Photos</a>
+
+<input id="ember257" class="ember-view ember-text-field" type="text">
+```
+
+There are two ways to enable support for data attributes. One way would be to add an 
+attribute binding on the view, e.g. `Ember.LinkView` or `Ember.TextField` for the specific attribute:
+
+启用数据属性支持有两种方法。第一种是在视图中添加一个属性绑定，例如`Ember.LinkView`或者`Ember.TextField`的特殊属性：
+
+```javascript
+Ember.LinkView.reopen({
+  attributeBindings: ['data-toggle']
+});
+
+Ember.TextField.reopen({
+  attributeBindings: ['data-toggle', 'data-placement']
+});
+```
+
+Now the same handlebars code above renders the following HTML:
+
+那么之前的`handlebars`代码渲染出如下所示的HTML：
+
+```html
+<a id="ember240" class="ember-view" href="#/photos" data-toggle="dropdown">Photos</a>
+
+<input id="ember259" class="ember-view ember-text-field" 
+       type="text" data-toggle="tooltip" data-placement="bottom">
+```
+
+You can also automatically bind data attributes on the base view with the
+following:
+
+此外也可以在视图基类上自动绑定数据属性，如下所示：
+
+```javascript
+Ember.View.reopen({
+  init: function() {
+    this._super();
+    var self = this;
+
+    // bind attributes beginning with 'data-'
+    Em.keys(this).forEach(function(key) {
+      if (key.substr(0, 5) === 'data-') {
+        self.get('attributeBindings').pushObject(key);
+      }
+    });
+  }
+});
+```
+
+Now you can add as many data-attributes as you want without having to specify them by name.
+
+现在可以添加任意的`data-attributes`，且不需要在视图中指定属性名称。

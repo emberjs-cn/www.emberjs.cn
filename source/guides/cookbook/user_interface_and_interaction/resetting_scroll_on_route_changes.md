@@ -10,19 +10,19 @@
 
 ```js
 App.ResetScroll = Ember.Mixin.create({
-  enter: function() {
+  activate: function() {
     this._super();
     window.scrollTo(0,0);
   }
 });
 ```
 
-只要想在`enter`方法中做点什么，就需要在一开始的时候调用`this._super()`：
+只要想在`activate`方法中做点什么，就需要在一开始的时候调用`this._super()`：
 
 ```js
 App.IndexRoute = Ember.Route.extend(App.ResetScroll, {
-  //I need to do other things with enter
-  enter: function() {
+  //I need to do other things with activate 
+  activate: function() {
     this._super.apply(this, arguments); // Call super at the beginning
     // Your stuff
   }
@@ -31,4 +31,4 @@ App.IndexRoute = Ember.Route.extend(App.ResetScroll, {
 
 #### 示例
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/IxERoxoy/4/embed?html,css,js,output">Ember Starter Kit</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/kixowati/1/embed?html,js,output">Ember Starter Kit</a><script src="http://static.jsbin.com/js/embed.js"></script>
