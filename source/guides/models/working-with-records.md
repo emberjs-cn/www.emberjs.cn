@@ -17,14 +17,25 @@ person.incrementProperty('age');
 // Happy birthday!
 ```
 
-你可以通过isDirty属性来判断一条记录是否被更改，且尚未保存。
+你可以通过isDirty属性来判断一条记录是否被更改，且尚未保存。此外使用`changedAttributes`函数还可以查看记录哪些部分被修改了，以及这些部分被修改前的值是什么。`changedAttributes`返回一个对象，其键值是被改变的属性，而值是一个数组`[oldValue, newValue]`。
 
 ```js
-person.get('isDirty');
-//=> false
-
+person.get('isAdmin');      //=> false
+person.get('isDirty');      //=> false
 person.set('isAdmin', true);
+person.get('isDirty');      //=> true
+person.changedAttributes(); //=> { isAdmin: [false, true] }
+```
 
-person.get('isDirty');
-//=> true
+此时，可以通过`save()`将改变持久化，也可以回滚做的改变。调用`rollback()`会将所有`changedAttributes`设置回其原来的值。
+
+```js
+person.get('isDirty');      //=> true
+person.changedAttributes(); //=> { isAdmin: [false, true] }
+
+person.rollback();
+
+person.get('isDirty');      //=> false
+person.get('isAdmin');      //=> false
+person.changedAttributes(); //=> {}
 ```

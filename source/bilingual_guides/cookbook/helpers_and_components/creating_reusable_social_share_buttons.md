@@ -61,14 +61,9 @@ attributes will be updated to match the new values.
 
 组件通过`attributeBindings`属性，定义了一些作为对象绑定属性的HTML表示的属性。当这些属性的值发生改变时，组件的HTML元素属性也会发生相应的变化。
 
-
 An appropriate tag and css class are applied through the `tagName` and `classNames` properties.
 
 通过`tagName`和`classNames`属性设定了对应的标签和CSS类。
-
-Note: Your component must have a matching template named `share-twitter`. Because there is no HTML inside our `<a>` tag, this template will be empty.
-
-注意：组件必须有一个命名为`share-twitter`的模板。由于`<a>`中不需要任何HTML代码，所以该模板的内容为空。
 
 #### Example
 

@@ -27,14 +27,35 @@ person.incrementProperty('age'); // Happy birthday!
 ```
 
 You can tell if a record has outstanding changes that have not yet been
-saved by checking its `isDirty` property.
+saved by checking its `isDirty` property. You can also see what parts of
+the record were changed and what the original value was using the
+`changedAttributes` function.  `changedAttributes` returns an object,
+whose keys are the changed properties and values are an array of values
+`[oldValue, newValue]`.
 
-你可以通过isDirty属性来判断一条记录是否被更改，且尚未保存。
+你可以通过isDirty属性来判断一条记录是否被更改，且尚未保存。此外使用`changedAttributes`函数还可以查看记录哪些部分被修改了，以及这些部分被修改前的值是什么。`changedAttributes`返回一个对象，其键值是被改变的属性，而值是一个数组`[oldValue, newValue]`。
 
-```javascript
-person.get('isDirty'); //=> false
-
+```js
+person.get('isAdmin');      //=> false
+person.get('isDirty');      //=> false
 person.set('isAdmin', true);
+person.get('isDirty');      //=> true
+person.changedAttributes(); //=> { isAdmin: [false, true] }
+```
 
-person.get('isDirty'); //=> true
+At this point, you can either persist your changes via `save()` or you
+can rollback your changes. Calling `rollback()` reverts all the
+`changedAttributes` to their original value
+
+此时，可以通过`save()`将改变持久化，也可以回滚做的改变。调用`rollback()`会将所有`changedAttributes`设置回其原来的值。
+
+```js
+person.get('isDirty');      //=> true
+person.changedAttributes(); //=> { isAdmin: [false, true] }
+
+person.rollback();
+
+person.get('isDirty');      //=> false
+person.get('isAdmin');      //=> false
+person.changedAttributes(); //=> {}
 ```

@@ -41,8 +41,6 @@ Twitter的控件库希望能在页面上找到一个设置了特定`data-`属性
 
 通过`tagName`和`classNames`属性设定了对应的标签和CSS类。
 
-注意：组件必须有一个命名为`share-twitter`的模板。由于`<a>`中不需要任何HTML代码，所以该模板的内容为空。
-
 #### 示例
 
 <a class="jsbin-embed" href="http://emberjs.jsbin.com/OpocEPu/1/edit?js,output">JS Bin</a>

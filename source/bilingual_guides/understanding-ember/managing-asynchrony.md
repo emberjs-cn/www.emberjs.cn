@@ -295,13 +295,13 @@ have to worry about deferred insertion.
 
 生命周期回调的方法能带来很多好处，即使并非需要担心延迟添加。
 
-First, relying on synchronous insertion means leaving it up to the
+*First*, relying on synchronous insertion means leaving it up to the
 caller of `appendTo` to trigger any behavior that needs to run
 immediately after appending. As your application grows, you may find
 that you create the same view in many places, and now need to worry
 about that concern everywhere.
 
-首先，如果依赖同步插入，就意味着把触发需要在追加后需要立刻执行的操作交给了`appendTo`的调用者。当应用不断的膨胀，就会发现在很多地方使用了相同的视图，这时就需要很多地方担心同步的问题了。
+*首先*，如果依赖同步插入，就意味着把触发需要在追加后需要立刻执行的操作交给了`appendTo`的调用者。当应用不断的膨胀，就会发现在很多地方使用了相同的视图，这时就需要很多地方担心同步的问题了。
 
 The lifecycle callback eliminates the coupling between the code that
 instantiates the view and its post-append behavior. In general, we find
@@ -310,11 +310,11 @@ better design in general.
 
 生命周期回调将实例化视图和在视图被追加后的行为的代码解耦。一般来说，不依赖同步附带效应会导向更好的设计。
 
-Second, because everything about the lifecycle of a view is inside the
+*Second*, because everything about the lifecycle of a view is inside the
 view itself, it is very easy for Ember to re-render parts of the DOM
 on-demand.
 
-接着，由于所有关于视图的生命周期都在视图自身里面，这使得Ember可以在需要的是否非常容易重新渲染DOM的一部分。
+*接着*，由于所有关于视图的生命周期都在视图自身里面，这使得Ember可以在需要的是否非常容易重新渲染DOM的一部分。
 
 For example, if this button was inside of an `{{#if}}` block, and Ember
 needed to switch from the main branch to the `else` section, Ember can
@@ -397,7 +397,7 @@ App.PostView = Ember.View.extend({
   template: Ember.Handlebars.compile("<h1>{{title}}</h1><h2>{{author}}</h2><div>{{body}}</div>"),
 
   didInsertElement: function() {
-    this.addObserver('controller.name', function() {
+    this.addObserver('controller.author', function() {
       alert("New author name: " + this.get('controller.author'));
     });
   }
@@ -425,13 +425,13 @@ App.PostView = Ember.View.extend({
   template: Ember.Handlebars.compile("<h1>{{title}}</h1><h2>{{author}}</h2><div>{{body}}</div>"),
 
   didInsertElement: function() {
-    this.addObserver('controller.name', function() {
+    this.addObserver('controller.author', function() {
       alert("New author name: " + this.get('controller.author'));
     });
   },
 
   willDestroyElement: function() {
-    this.removeObserver('controller.name');
+    this.removeObserver('controller.author');
   }
 });
 ```

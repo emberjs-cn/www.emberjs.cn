@@ -175,9 +175,10 @@ once the transition is complete. But once you provide a destination
 route loading substate, you are opting into an "eager" transition, which
 is to say that, unlike the "lazy" default, you will eagerly exit the
 source routes (and tear down their templates, etc) in order to
-transition into this substate. 
+transition into this substate. URLs always update immediately unless the
+transition was aborted or redirected within the same run loop.
 
-`loading`子状态都是可选的，如果提供了`loading`子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的`loading`子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的`loading`子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到`loading`子状态。
+`loading`子状态都是可选的，如果提供了`loading`子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的`loading`子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的`loading`子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到`loading`子状态。除非过渡被取消或者在同一运行循环中被重定向，否则URL都会理解更新。
 
 This has implications on error handling, i.e. when a transition into
 another route fails, a lazy transition will (by default) just remain on the
@@ -243,6 +244,53 @@ that `error` events will continue to bubble above a transition's pivot
 route.
 
 `loading`/`error`子状态处理的唯一区别是，`error`从过渡的中心路由开始向上冒泡。
+
+### `error` substates with dynamic segments
+
+### 带动态段的`error`子状态
+
+Routes with dynamic segments are often mapped to a mental model of "two
+separate levels." Take for example:
+
+带动态段的路由通常映射到一个模型的两个不同的层面。例如：
+
+```js
+App.Router.map(function() {
+  this.resource('foo', {path: '/foo/:id'}, function() {
+    this.route('baz');
+  });
+});
+
+App.FooRoute = Ember.Route.extend({
+  model: function(params) {
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+       reject("Error");
+    });
+  }
+});
+```
+
+In the URL hierarchy you would visit `/foo/12` which would result in rendering
+the `foo` template into the `application` template's `outlet`. In the event of
+an error while attempting to load the `foo` route you would also render the
+top-level `error` template into the `application` template's `outlet`. This is
+intentionally parallel behavior as the `foo` route is never successfully
+entered. In order to create a `foo` scope for errors and render `foo/error`
+into `foo`'s `outlet` you would need to split the dynamic segment:
+
+在URL层次中，访问`/foo/12`将会导致将`foo`模板渲染到`application`模板的`outlet`处。当尝试加载一个`foo`路由发生一个错误事件，会将顶层的`error`模板渲染到`application`模板的`outlet`。这感觉就好像`foo`路由就从未正确进入过一般。为了创建一个`foo`范围的错误信息，并渲染`foo/error`到`foo`的`outlet`中，那么需要将动态段分离：
+
+```js
+App.Router.map(function() {
+  this.resource('foo', {path: '/foo'}, function() {
+    this.resource('elem', {path: ':id'}, function() {
+      this.route('baz');
+    });
+  });
+});
+```
+
+[Example JSBin](http://emberjs.jsbin.com/ucanam/4279)
 
 ## Legacy `LoadingRoute`
 

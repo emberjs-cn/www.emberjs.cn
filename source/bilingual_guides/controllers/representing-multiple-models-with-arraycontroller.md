@@ -2,11 +2,11 @@
 
 ## 代表多模型（Representing Multiple Models）
 
-You can use `Ember.ArrayController` to represent an array of models. To tell an
+You can use [Ember.ArrayController](/api/classes/Ember.ArrayController.html) to represent an array of models. To tell an
 `ArrayController` which model to represent, set its `model` property
 in your route's `setupController` method.
 
-`Ember.ArrayController`用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`model`属性，来指定其代表的模型。
+[Ember.ArrayController](/api/classes/Ember.ArrayController.html)用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`model`属性，来指定其代表的模型。
 
 You can treat an `ArrayController` just like its underlying array. For
 example, imagine we want to display the current playlist. In our router,
@@ -73,11 +73,11 @@ Now we can use this property in our template:
 
 ### 排序
 
-The `Ember.ArrayController` uses the `Ember.SortableMixin` to allow
+The [Ember.ArrayController](/api/classes/Ember.ArrayController.html) uses the `Ember.SortableMixin` to allow
 sorting of content. There are two properties that can be set in order to set up
 sorting:
 
-`Ember.ArrayController`使用`Ember.SortableMixin`来支持排序。为了支持排序，需要设置两个属性：
+[Ember.ArrayController](/api/classes/Ember.ArrayController.html)使用`Ember.SortableMixin`来支持排序。为了支持排序，需要设置两个属性：
 
 ```javascript
 App.SongsController = Ember.ArrayController.extend({

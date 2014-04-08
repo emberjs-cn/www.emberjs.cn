@@ -4,7 +4,7 @@
 
 In Ember.js, an Enumerable is any object that contains a number of child
 objects, and which allows you to work with those children using the
-`Ember.Enumerable` API. The most common Enumerable in the majority of
+[Ember.Enumerable](/api/classes/Ember.Enumerable.html) API. The most common Enumerable in the majority of
 apps is the native JavaScript array, which Ember.js extends to conform
 to the Enumerable interface.
 

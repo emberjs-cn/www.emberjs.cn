@@ -48,16 +48,16 @@ A feature can have one of a few different statuses:
 
 一个特性可以有如下的状态：
 
-* `true` - The feature is enabled: the code behind the flag is always enabled in
+* `true` - The feature is **enabled**: the code behind the flag is always enabled in
   the generated build.
-* `false` - The feature is disabled the code behind the flag is not present in
+* `false` - The feature is **disabled**: the code behind the flag is not present in
   the generated build at all.
-* `null` - The feature is present in the build output, but must be enabled at
+* `null` - The feature is **present** in the build output, but must be enabled at
   runtime (it is still behind feature flags).
 
-* `true` - 特性被启用：标识背后的代码将在之后的构建中被启用。
-* `false` - 特性被启用：标识背后的代码完全不会被包含在构建中。
-* `null` - 特性会包含在构建中，但是必须在运行期启用才生效（依然处于标识之后）。
+* `true` - 特性被**启用**：标识背后的代码将在之后的构建中被启用。
+* `false` - 特性被**禁用**：标识背后的代码完全不会被包含在构建中。
+* `null` - 特性会**包含**在构建中，但是必须在运行期启用才生效（依然处于标识之后）。
 
 The process of removing the feature flags from the resulting build output is
 handled by `defeatureify`.
@@ -86,24 +86,24 @@ than `true` or `false` will do, but `null` is the chosen value).
 
 只有当`features.json`文件中指定一个特性的状态为`null`时，该特性才能在运行期被启用。（从技术上说，任何`true`或`false`之外的值都可以，不过这里使用`null`来表示）。
 
-A global `ENV` object will be used to initialize the `Ember.ENV`
+A global `EmberENV` object will be used to initialize the `Ember.ENV`
 object, and any feature flags that are enabled/disabled under
-`ENV.FEATURES` will be migrated to `Ember.FEATURES`, those features
+`EmberENV.FEATURES` will be migrated to `Ember.FEATURES`, those features
 will be enabled based on the flag value. **Ember only reads** the
-`ENV` value upon initial load so setting this value after Ember has
+`EmberENV` value upon initial load so setting this value after Ember has
 been loaded will have no affect.
 
-Ember使用一个全局变量`ENV`对象来初始化`Ember.ENV`，所有`ENV.FEATURES`中的特性标识都会被移植到`Ember.FEATURES`中，这些特性将根据标识的值来启用。Ember紧在初始加载时读取`ENV`的值，因此在Ember加载后再设置这些标识不会起任何作用。
+Ember使用一个全局变量`EmberENV`对象来初始化`Ember.ENV`，所有`EmberENV.FEATURES`中的特性标识都会被移植到`Ember.FEATURES`中，这些特性将根据标识的值来启用。Ember紧在初始加载时读取`EmberENV`的值，因此在Ember加载后再设置这些标识不会起任何作用。
 
 Example:
 
 例子：
 
 ```javascript
-ENV = {FEATURES: {'link-to': true}};
+EmberENV = {FEATURES: {'link-to': true}};
 ```
 
-Additionally you can define `ENV.ENABLE_ALL_FEATURES` to force all
+Additionally you can define `EmberENV.ENABLE_ALL_FEATURES` to force all
 features to be enabled.
 
-此外，也可以通过定义`ENV.ENABLE_ALL_FEATURES`来启用所有的特性。
+此外，也可以通过定义`EmberENV.ENABLE_ALL_FEATURES`来启用所有的特性。

@@ -18,7 +18,7 @@ Add property names to the `classNameBindings` property of subclassed components.
 
 ### 讨论
 
-You can apply classes based on properties of the component, or even by properties bound to data passed into the component.This is done by binding the class attribute using `classNameBindings`.
+You can apply classes based on properties of the component, or even by properties bound to data passed into the component. This is done by binding the class attribute using `classNameBindings`.
 
 可以基于组件属性应用CSS类，或通过绑定到传入组件的数据来实现。这是通过绑定元素的`class`属性到`classNameBindings`来实现的。
 

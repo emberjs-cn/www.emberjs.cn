@@ -25,7 +25,7 @@ Data的发布版本和beta版本构建都包含在[标签发布](/builds#/tagged
 
 ## Bower
 
-Bower is a package manager for the web. Bower makes it easy to manage dependencies in your application including Ember and Ember Data. To learn more about Bower vist [http://bower.io/](http://bower.io/).
+Bower is a package manager for the web. Bower makes it easy to manage dependencies in your application including Ember and Ember Data. To learn more about Bower visit [http://bower.io/](http://bower.io/).
 
 Bower是Web的包管理器。Bower可以方便的管理应用的依赖，包括Ember和Ember
 Data。希望了解更多关于Bower的信息，可以访问[http://bower.io](http://bower.io)。

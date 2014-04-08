@@ -2,7 +2,7 @@
 
 ## 枚举
 
-在Ember.js中，任何包含子对象集合的，并允许使用`Ember.Enumerable`接口来访问这些子对象的对象称为枚举。在大部分应用中最为常见的枚举是Ember.js为了确保枚举接口的一致性，而进行过扩展的Javascript的原生数组。
+在Ember.js中，任何包含子对象集合的，并允许使用[Ember.Enumerable](/api/classes/Ember.Enumerable.html)接口来访问这些子对象的对象称为枚举。在大部分应用中最为常见的枚举是Ember.js为了确保枚举接口的一致性，而进行过扩展的Javascript的原生数组。
 
 通过提供一个标准接口来处理枚举，Ember.js允许在不改变应用程序其他使用到枚举的部分的情况下，完全的改变数据的存储方式。
 

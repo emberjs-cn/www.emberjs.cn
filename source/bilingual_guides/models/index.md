@@ -265,7 +265,7 @@ Data将这些数据作为非透明的对象来处理，它们可能是以二进�
 The store will automatically cache records for you. If a record had already
 been loaded, asking for it a second time will always return the same
 object instance. This minimizes the number of round-trips to the
-server, and allows your application to render UI to the user as fast as
+server, and allows your application to render its UI to the user as fast as
 possible.
 
 仓库会自动缓存记录。如果一个记录已经被加载了，那么再次访问它的时候，会返回同一个对象实例。这样大大减少了与服务器端的通信，使得应用可以更快的为用户渲染所需的UI。

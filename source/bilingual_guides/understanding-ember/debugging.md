@@ -172,9 +172,9 @@ Ember.ENV.RAISE_ON_DEPRECATION = true
 Ember.LOG_STACKTRACE_ON_DEPRECATION = true
 ```
 
-#### Implement a `Ember.onerror` hook to log all errors in production
+#### Implement an Ember.onerror hook to log all errors in production
 
-#### 实现一个`Ember.oneerror`钩子来记录生产环境下的所有错误
+#### 实现一个Ember.onerror钩子来记录生产环境下的所有错误
 
 ```javascript
 Ember.onerror = function(error) {

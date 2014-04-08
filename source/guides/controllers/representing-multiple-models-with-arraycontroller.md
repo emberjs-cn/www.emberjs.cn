@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/](http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/)
 
-`Ember.ArrayController`用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`model`属性，来指定其代表的模型。
+[Ember.ArrayController](/api/classes/Ember.ArrayController.html)用于代表一组模型。通过在路由的`setupController`方法中设置`ArrayController`的`model`属性，来指定其代表的模型。
 
 可以将`ArrayController`作为一个数组来对待。例如，音乐播放器希望显示当前播放列表。在路由中，通过设置`SongsController`来代表播放列表中的歌曲。
 
@@ -51,7 +51,7 @@ App.SongsController = Ember.ArrayController.extend({
 
 ### 排序
 
-`Ember.ArrayController`使用`Ember.SortableMixin`来支持排序。为了支持排序，需要设置两个属性：
+[Ember.ArrayController](/api/classes/Ember.ArrayController.html)使用`Ember.SortableMixin`来支持排序。为了支持排序，需要设置两个属性：
 
 ```javascript
 App.SongsController = Ember.ArrayController.extend({

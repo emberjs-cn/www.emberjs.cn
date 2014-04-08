@@ -170,11 +170,11 @@ of this application run, you should store it on a controller.
 不是所有在应用中的属性都需要保存到服务器端。当需要只为本次运行的应用保存一些信息的时候，可以将其保存到控制器中。
 
 For example, imagine your application has a search field that is 
-always present. You could store a `query` property on your
+always present. You could store a `search` property on your
 `ApplicationController`, and bind the `search` field in the `
 application` template to that property.
 
-例如，应用中有一个一直存在的搜索框，那么就可以在`ApplicationController`中存储一个`query`属性，并将在`application`模板中的搜索框绑定到该属性。
+例如，应用中有一个一直存在的搜索框，那么就可以在`ApplicationController`中存储一个`search`属性，并将在`application`模板中的搜索框绑定到该属性。
 
 ```handlebars
 <!-- application.handlebars -->
@@ -205,4 +205,4 @@ actions to the `ApplicationController`. In this case, when the user
 hits enter, the application will transition to the `search` route,
 passing the query as a parameter.
 
-`application`模板保存搜索框的属性，并将其操作发送给`ApplicationController`。在此情形下，当用户敲回车时，应用将转换至`search`路由，并将`query`作为参数传递。
+`application`模板保存搜索框的属性，并将其操作发送给`ApplicationController`。在此情形下，当用户敲回车时，应用将转换至`search`路由，并将查询作为参数传递。

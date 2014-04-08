@@ -46,16 +46,11 @@ store.find('user', 1).then(function(user) {
 
 ```js
 var post = store.find('post', 1);
-
 post.deleteRecord();
-
 post.get('isDeleted'); // => true
-
 post.save(); // => DELETE to /posts/1
 
 // OR
-
 var post = store.find('post', 2);
-
 post.destroyRecord(); // => DELETE to /posts/2
 ```

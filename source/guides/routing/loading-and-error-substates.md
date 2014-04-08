@@ -89,7 +89,7 @@ b) 又或者是一个按照一定规则进行命名的`loading`模板：
 
 ### 渴望型 VS 延迟型异步过渡
 
-`loading`子状态都是可选的，如果提供了`loading`子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的`loading`子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的`loading`子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到`loading`子状态。
+`loading`子状态都是可选的，如果提供了`loading`子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的`loading`子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的`loading`子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到`loading`子状态。除非过渡被取消或者在同一运行循环中被重定向，否则URL都会理解更新。
 
 这里也暗含了一个错误处理，例如，当过渡到一个路由失败时，延迟过渡（默认）会依然停留在原路由，而一个渴望过渡早就离开了之前的状态路由进入到`loading`子状态中了。
 
@@ -118,6 +118,40 @@ App.Router.map(function() {
 如果没有找到可以访问的`error`子状态，那么一条错误消息会在控制台中输出。
 
 `loading`/`error`子状态处理的唯一区别是，`error`从过渡的中心路由开始向上冒泡。
+
+### 带动态段的`error`子状态
+
+带动态段的路由通常映射到一个模型的两个不同的层面。例如：
+
+```js
+App.Router.map(function() {
+  this.resource('foo', {path: '/foo/:id'}, function() {
+    this.route('baz');
+  });
+});
+
+App.FooRoute = Ember.Route.extend({
+  model: function(params) {
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+       reject("Error");
+    });
+  }
+});
+```
+
+在URL层次中，访问`/foo/12`将会导致将`foo`模板渲染到`application`模板的`outlet`处。当尝试加载一个`foo`路由发生一个错误事件，会将顶层的`error`模板渲染到`application`模板的`outlet`。这感觉就好像`foo`路由就从未正确进入过一般。为了创建一个`foo`范围的错误信息，并渲染`foo/error`到`foo`的`outlet`中，那么需要将动态段分离：
+
+```js
+App.Router.map(function() {
+  this.resource('foo', {path: '/foo'}, function() {
+    this.resource('elem', {path: ':id'}, function() {
+      this.route('baz');
+    });
+  });
+});
+```
+
+[Example JSBin](http://emberjs.jsbin.com/ucanam/4279)
 
 ## 遗留的`LoadingRoute`
 
