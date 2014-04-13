@@ -85,3 +85,29 @@ App.SongsController = Ember.ArrayController.extend({
   sortAscending: true // false for descending
 });
 ```
+
+### Item Controller
+
+### 条目控制器
+
+It is often useful to specify a controller to decorate individual items in
+the `ArrayController` while iterating over them. This can be done in the
+`ArrayController` definition:
+
+在遍历`ArrayController`的条目时，指定一个控制器来装饰单个条目非常有用。这可以在`ArrayController`中进行定义：
+
+```javascript
+App.SongsController = Ember.ArrayController.extend({
+  itemController: 'song'
+});
+```
+
+or directly in the template:
+
+或者在模板中指定：
+
+```handlebars
+{{#each itemController="song"}}
+  <li>{{name}} by {{artist}}</li>
+{{/each}}
+```

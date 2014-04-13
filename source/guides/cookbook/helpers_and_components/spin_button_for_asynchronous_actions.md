@@ -45,8 +45,8 @@ App.ApplicationController = Ember.Controller.extend({
 App.SpinButtonComponent = Ember.Component.extend({
 	classNames: ['button'],
     buttonText:"Save",
+    isLoading:false,
     actions:{
-        isLoading:false,
         showLoading:function(){
             if(!this.get('isLoading')){
                 this.set('isLoading', true);
@@ -71,4 +71,4 @@ true`，而执行异步操作的控制器负责将`isLoading`设回`false`。
 
 #### 示例
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/EXaxEfE/8">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/EXaxEfE/14">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>

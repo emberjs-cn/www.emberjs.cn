@@ -50,17 +50,17 @@ module("Integration Tests", {
 });
 ```
 
-### Helpers
+### Asynchronous Helpers
 
-### 助手
+### 异步助手
+
+Asynchronous helpers will wait for other asynchronous helpers triggered prior to complete before starting.
+
+异步助手将等待之前的其他异步助手被触发并完成才开始执行。
 
 * `visit(url)` - Visits the given route and returns a promise that fulfills when all resulting async behavior is complete.
 
 * `visit(url)` - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。
-
-* `find(selector, context)` - Finds an element within the app's root element and within the context (optional). Scoping to the root element is especially useful to avoid conflicts with the test framework's reporter.
-
-* `find(selector, context)` - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。
 
 * `fillIn(input_selector, text)` - Fills in the selected input with the given text and returns a promise that fulfills when all resulting async behavior is complete.
 
@@ -75,6 +75,63 @@ module("Integration Tests", {
 
 * `keyEvent(selector, type, keyCode)` -
   模拟一个键盘事件，例如：在选定元素上的带有`keyCode`的`keypress`，`keydown`，`keyup`事件。
+
+* `triggerEvent(selector, type, options)`
+  - Triggers the given event, e.g. `blur`, `dblclick` on the element identified by the provided selector.
+
+* `triggerEvent(selector, type, options)` -
+  触发指定事件，如指定选择器的元素上的`blur`，`dblclick`事件。
+
+### Synchronous Helpers
+
+### 同步助手
+
+Synchronous helpers are performed immediately when triggered.
+
+同步助手在触发时立即执行。
+
+* `find(selector, context)` - Finds an element within the app's root element and within the context (optional). Scoping to the root element is especially useful to avoid conflicts with the test framework's reporter.
+
+* `find(selector, context)` - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。
+
+* `currentPath()` - Returns the current path.
+
+* `currentPath()` - 返回当前路径。
+
+* `currentRouteName()` - Returns the currently active route name.
+
+* `currentRouteName()` - 返回当前活动路由名。
+
+* `currentURL()` - Returns the current URL.
+
+* `currentURL()` - 返回当前URL。
+
+### Wait Helpers
+
+### 等待助手
+
+The `andThen` helper will wait for all preceding asynchronous helpers to complete prior to progressing forward. Let's take a look at the following example.
+
+`andThen`助手将等待之前所有异步助手完成才开始执行。下面通过一个示例来说明：
+
+```javascript
+test("simple test", function(){
+  expect(1); // Ensure that we will perform one assertion
+
+  visit("/posts/new");
+  fillIn("input.title", "My new post");
+  click("button.submit");
+
+  // Wait for asynchronous helpers above to complete
+  andThen(function() {
+    equal(find("ul.posts li:last").text(), "My new post");
+  });
+});
+```
+
+Note that in the example above we are using the `andThen` helper. This will wait for the preceding asynchronous test helpers to complete and then calls the function which was passed to it as an argument.
+
+注意上例中使用了`andThen`助手。也就是说会等待之前所有的异步测试助手完成处理后，才会执行传给`andThen`的函数中得代码。
 
 ### Writing tests
 

@@ -234,11 +234,18 @@ Further reading:
 
 更多相关内容：
 
-* <http://emberjs.com/api/classes/Ember.Object.html>
-* <http://emberjs.com/api/classes/Ember.Application.html>, See section on "Initializers"
-* <http://emberjs.com/api/classes/Ember.Application.html>, 查看"Initializers"部分
-* <http://emberjs.com/api/classes/Ember.Application.html#method_inject>
-* <http://emberjs.com/guides/templates/conditionals/>
-* <http://emberjs.com/guides/templates/writing-helpers/>
-* <http://emberjs.com/guides/components/defining-a-component/>
-* <http://emberjs.com/api/classes/Ember.ArrayController.html>
+* [Ember Object](http://emberjs.com/api/classes/Ember.Object.html)
+* [Ember Application Initializers](http://emberjs.com/api/classes/Ember.Application.html#toc_initializers)
+* [Method Inject](http://emberjs.com/api/classes/Ember.Application.html#method_inject)
+* [Conditionals](http://emberjs.com/guides/templates/conditionals/)
+* [Writing Helpers](http://emberjs.com/guides/templates/writing-helpers/)
+* [Defining a Component](http://emberjs.com/guides/components/defining-a-component/)
+* [Ember Array Controller](http://emberjs.com/api/classes/Ember.ArrayController.html)
+
+* [Ember对象](http://emberjs.com/api/classes/Ember.Object.html)
+* [Ember应用初始化](http://emberjs.com/api/classes/Ember.Application.html#toc_initializers)
+* [方法注入](http://emberjs.com/api/classes/Ember.Application.html#method_inject)
+* [条件表达式](http://emberjs.com/guides/templates/conditionals/)
+* [编写助手](http://emberjs.com/guides/templates/writing-helpers/)
+* [定义组件](http://emberjs.com/guides/components/defining-a-component/)
+* [Ember数组控制器](http://emberjs.com/api/classes/Ember.ArrayController.html)

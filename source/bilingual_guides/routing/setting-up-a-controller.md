@@ -47,6 +47,17 @@ controller as its first argument. In this case, the `PostRoute`'s
 
 `setupController`钩子将路由处理器关联的控制器作为第一个参数。上例中`PostRoute`的`setupController`的第一个参数是应用中`App.PostController`的实例。
 
+To specify a controller other than the default, set the route's
+`controllerName` property:
+
+如果需要指定一个非缺省名称的控制器给路由，那么设置`controllerName`属性即可：
+
+```js
+App.SpecialPostRoute = Ember.Route.extend({
+  controllerName: 'post'
+});
+```
+
 As a second argument, it receives the route handler's model. For more
 information, see [Specifying a Route's Model][1].
 

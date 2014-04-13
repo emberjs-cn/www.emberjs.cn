@@ -55,8 +55,8 @@ App.ApplicationController = Ember.Controller.extend({
 App.SpinButtonComponent = Ember.Component.extend({
 	classNames: ['button'],
     buttonText:"Save",
+    isLoading:false,
     actions:{
-        isLoading:false,
         showLoading:function(){
             if(!this.get('isLoading')){
                 this.set('isLoading', true);
@@ -94,4 +94,4 @@ Also note that the component does not let multiple clicks get in the way of load
 
 #### 示例
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/EXaxEfE/8">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/EXaxEfE/14">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>

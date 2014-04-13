@@ -25,6 +25,14 @@ App.PostRoute = Ember.Route.extend({
 
 `setupController`钩子将路由处理器关联的控制器作为第一个参数。上例中`PostRoute`的`setupController`的第一个参数是应用中`App.PostController`的实例。
 
+如果需要指定一个非缺省名称的控制器给路由，那么设置`controllerName`属性即可：
+
+```js
+App.SpecialPostRoute = Ember.Route.extend({
+  controllerName: 'post'
+});
+```
+
 而第二个参数是路由处理器的模型。更多相关信息请参看[指定路由的模型][1]一节。
 
 [1]: /guides/routing/specifying-a-routes-model

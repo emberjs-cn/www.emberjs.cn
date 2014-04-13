@@ -98,7 +98,7 @@ Ember.js支持传递参数给操作处理器。任何在操作名称之后传递
  <p><button {{action "select" post}}>✓</button> {{post.title}}</p>
  ```
  
-路由的`select`操作处理器被调用，并且将博客模型作为参数：
+控制器的`select`操作处理器被调用，并且将博客模型作为参数：
 
 ```js
 App.PostController = Ember.ObjectController.extend({

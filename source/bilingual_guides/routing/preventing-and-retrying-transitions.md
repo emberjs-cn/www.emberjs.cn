@@ -46,6 +46,16 @@ App.FormRoute = Ember.Route.extend({
 });
 ```
 
+When the user clicks on a `{{link-to}}` helper, or when the app
+initiates a transition by using `transitionTo`, the transition will be aborted and
+the URL will remain unchanged. However, if the browser back button is used to 
+navigate away from `FormRoute`, or if the user manually changes the
+URL, the new URL will be navigated to before the `willTransition` action is 
+called. This will result in the browser displaying the new URL, even
+if `willTransition` calls `transition.abort()`.
+
+当用户点击`{{link-to}}`助手时，或者应用使用`transitionTo`初始化一个过渡时，过渡将被取消并且URL也将保持不变。但是如果使用浏览器的后退按钮来退出`FormRoute`，或者如果用户手动的修改URL，那么在`willTransition`操作被调用之前，将被导航到新的URL。这样浏览器就会显示新的URl，即便在`willTransition`中调用了`transition.abort()`。
+
 ### Aborting Transitions Within `model`, `beforeModel`, `afterModel`
 
 ### 在`model`，`beforeModel`或`afterModel`中取消过渡

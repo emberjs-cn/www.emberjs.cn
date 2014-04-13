@@ -36,19 +36,48 @@ module("Integration Tests", {
 });
 ```
 
-### 助手
+### 异步助手
+
+异步助手将等待之前的其他异步助手被触发并完成才开始执行。
 
 * `visit(url)` - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。
-
-* `find(selector, context)` - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。
-
 * `fillIn(input_selector, text)` - 在选定的输入出填入给定的文本，并返回一个在所有异步行为完成后会履行的承诺。
-
 * `click(selector)` -
   点击选定的元素，触发元素`click`事件会触发的所有操作，并返回一个在所有异步行为完成后会履行的承诺。
-
 * `keyEvent(selector, type, keyCode)` -
   模拟一个键盘事件，例如：在选定元素上的带有`keyCode`的`keypress`，`keydown`，`keyup`事件。
+* `triggerEvent(selector, type, options)` -
+  触发指定事件，如指定选择器的元素上的`blur`，`dblclick`事件。
+
+### 同步助手
+
+同步助手在触发时立即执行。
+
+* `find(selector, context)` - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。
+* `currentPath()` - 返回当前路径。
+* `currentRouteName()` - 返回当前活动路由名。
+* `currentURL()` - 返回当前URL。
+
+### 等待助手
+
+`andThen`助手将等待之前所有异步助手完成才开始执行。下面通过一个示例来说明：
+
+```javascript
+test("simple test", function(){
+  expect(1); // Ensure that we will perform one assertion
+
+  visit("/posts/new");
+  fillIn("input.title", "My new post");
+  click("button.submit");
+
+  // Wait for asynchronous helpers above to complete
+  andThen(function() {
+    equal(find("ul.posts li:last").text(), "My new post");
+  });
+});
+```
+
+注意上例中使用了`andThen`助手。也就是说会等待之前所有的异步测试助手完成处理后，才会执行传给`andThen`的函数中得代码。
 
 ### 编写测试
 

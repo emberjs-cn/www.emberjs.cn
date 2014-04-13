@@ -110,3 +110,89 @@ App.PostsFavoritedRoute = Ember.Route.extend({
   }
 });
 ```
+
+#### How do I inform Ember Data about new records created on the backend?
+
+#### 如何将后台创建的记录通知Ember Data
+
+When you request a record using Ember Data's `store.find` method, Ember
+will automatically load the data into the store. This allows Ember to
+avoid the latency of making a round trip to the backend next time
+that record is requested. Additionally, loading a record into the
+store will update any `RecordArray`s (e.g. the result of
+`store.filter` or `store.all`) that should include that record. This
+means any data bindings or computed properties that depend on the
+`RecordArray` will automatically be synced to include the new or
+updated record values.
+
+当通过Ember
+Data的`store.find`方法来请求一条记录时，Ember会自动将数据加载到`store`中。这样Ember就避免了在之后在发起一个请求来获取已经获取到的记录。此外，加载一条记录到`store`时，所有的包含该条记录的`RecordArray`都会被更新（例如`store.filter`或者`store.all`构造的）。这就意味着所有依赖与`RecordArray`的数据绑定或者计算属性都会在添加新的或者更新记录值的时候自动进行同步。
+
+Some applications may want to add or update records in the store
+without requesting the record via `store.find`. To accomplish this you
+can use the `DS.Store`'s `push`, `pushPayload`, or `update`
+methods. This is useful for web applications that have a channel
+(such as [SSE](http://dev.w3.org/html5/eventsource/) or
+[Web Sockets](http://www.w3.org/TR/2009/WD-websockets-20091222/)) to
+notify it of new or updated records on the backend.
+
+而一些应用可能希望能不通过`store.find`请求记录来添加或者更新`store`中得记录。为了实现这种需求，可以通过使用`DS.Store`的`push`，`pushPayload`，或者`update`方法。这对于那些有一个通道（例如[SSE](http://dev.w3.org/html5/eventsource/)或者[Web Socket](http://www.w3.org/TR/2009/WD-websockets-20091222/)）通知应用后台有新记录创建或者更新非常有用。
+
+[push](http://emberjs.com/api/data/classes/DS.Store.html#method_push)
+is the simplest way to load records to Ember Data's store. When using
+`push` it is important to remember to deserialize the JSON object
+before pushing it into the store. `push` only accepts one record at a
+time. If you would like to load an array of records to the store you
+can call
+[pushMany](http://emberjs.com/api/data/classes/DS.Store.html#method_pushMany).
+
+[push](http://emberjs.com/api/data/classes/DS.Store.html#method_push)是加载记录到Ember
+Data的`store`的最简单方法。当使用`push`时，一定要记住将JSON对象推入`store`之前将其反序列化。`push`一次只接受一条记录。如果希望一次加载一组记录到`store`那么可以调用[pushMany](http://emberjs.com/api/data/classes/DS.Store.html#method_pushMany).
+
+```js
+socket.on('message', function (message) {
+  var type = store.modelFor(message.model);
+  var serializer = store.serializerFor(type.typeKey);
+  var record = serializer.extractSingle(store, type, message.data);
+  store.push(message.model, record);
+});
+```
+
+[pushPayload](http://emberjs.com/api/data/classes/DS.Store.html#method_pushPayload)
+is a convenience wrapper for `store#push` that will deserialize
+payloads if the model's Serializer implements a `pushPayload`
+method. It is important to note this method will not work with the
+`JSONSerializer` because it does not implement a `pushPayload`
+method.
+
+[pushPayload](http://emberjs.com/api/data/classes/DS.Store.html#method_pushPayload)是一个`store#push`方法的便利封装，它将使用模型实现了`pushPayload`方法的序列化对象来反序列化有效载荷。需要注意的是这个方法并不能与`JSONSerializer`一同使用，因为其并没有实现`pushPayload`方法。
+
+```js
+socket.on('message', function (message) {
+  store.pushPayload(message.model, message.data);
+});
+```
+
+[update](http://emberjs.com/api/data/classes/DS.Store.html#method_update)
+works likea `push` except it can handle partial attributes without
+overwriting the existing record properties. This method is useful if
+your web application only receives notifications of the changed
+attributes on a model. Like `push` it is important to remember to
+deserialize the JSON object before calling `update`.
+
+[update](http://emberjs.com/api/data/classes/DS.Store.html#method_update)与`push`方法类似，不同的是其可以处理部分属性，而不需要覆盖整个记录的属性。这个方法对于只接收到记录改变的属性的通知的应用尤为有用。与`push`方法一样，`update`需要在调用之前将JSON对象反序列化。
+
+```js
+socket.on('message', function (message) {
+  var hash = message.data;
+  var type = store.modelFor(message.model);
+  var fields = Ember.get(type, 'fields');
+  fields.forEach(function(field) {
+    var payloadField = Ember.String.underscore(field);
+    if (field === payloadField) { return; }
+      hash[field] = hash[payloadField];
+      delete hash[payloadField];
+  });
+  store.push(message.model, hash);
+});
+```

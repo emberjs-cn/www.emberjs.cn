@@ -59,3 +59,21 @@ App.SongsController = Ember.ArrayController.extend({
   sortAscending: true // false for descending
 });
 ```
+
+### 条目控制器
+
+在遍历`ArrayController`的条目时，指定一个控制器来装饰单个条目非常有用。这可以在`ArrayController`中进行定义：
+
+```javascript
+App.SongsController = Ember.ArrayController.extend({
+  itemController: 'song'
+});
+```
+
+或者在模板中指定：
+
+```handlebars
+{{#each itemController="song"}}
+  <li>{{name}} by {{artist}}</li>
+{{/each}}
+```
