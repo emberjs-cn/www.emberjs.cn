@@ -6,7 +6,7 @@ In Ember, every route has an associated model. This model is set by
 implementing a route's `model` hook, by passing the model as an argument
 to `{{link-to}}`, or by calling a route's `transitionTo()` method.
 
-在Ember中，每个路由都有与之相关联的一个模型。这个模型通过路由的`model`钩子进行设置，可以是通过`{{link-to}}`传入的一个参数，也可以是调用路由的`transitionTo()`方法。
+在Ember中，每个路由都有与之相关联的一个模型。这个模型可以通过路由的`model`钩子进行设置，可以通过给`{{link-to}}`传入一个参数，也可以通过调用路由的`transitionTo()`方法。
 
 See [Specifying a Route's Model](/guides/routing/specifying-a-routes-model) for more information
 on setting a route's model.
@@ -16,53 +16,49 @@ on setting a route's model.
 For simple applications, you can get by using jQuery to load JSON data
 from a server, then use those JSON objects as models.
 
-对于简单的应用来说，可以通过jQuery来从服务器加载JSON数据，并将这些数据对象作为模型。
+对于简单的应用来说，可以通过jQuery来从服务器加载JSON数据，并将这些JSON数据对象作为模型。
 
 However, using a model library that manages finding models, making
 changes, and saving them back to the server can dramatically simplify
 your code while improving the robustness and performance of your
 application.
 
-但是，使用一个模型库来管理查询、更改和将更改保存会服务器，将能大大的简化代码，也能提升应用的健壮性和性能。
+但是，使用一个模型库来管理查询、更改和将更改保存回服务器，将会大大的简化代码，同时也能提升应用的健壮性和性能。
 
 Many Ember apps use [Ember Data][emberdata] to handle this.
 Ember Data is a library that integrates tightly with Ember.js to make it
 easy to retrieve records from a server, cache them for performance,
 save updates back to the server, and create new records on the client.
 
-许多Ember应用使用[Ember Data][emberdata]来这里模型。Ember
-Data是一个与Ember.js紧密结合在一起，简化了客户端从服务器获取记录，在本地进行缓存，保存修改到服务器，创建新的记录等一系列的操作。
+许多Ember应用使用[Ember Data][emberdata]来处理模型。Ember Data是一个与Ember.js紧密结合在一起的代码库，简化了客户端从服务器获取记录，在本地进行缓存以提高性能，保存修改到服务器，创建新的记录等一系列的操作。
 
 Without any configuration, Ember Data can load and save records and
 their relationships served via a RESTful JSON API, provided it follows certain
 conventions.
 
-Ember Data不需要进行任何配置，就可以实现通过服务端提供的RESTful JSON
-API加载和保存记录以及它们的管理关系，这些操作都遵从于特定的惯例。
+Ember Data不需要进行任何配置，就可以实现通过服务端提供的RESTful JSON API加载和保存记录以及它们的管理关系，这些操作都遵从于特定的惯例。
 
 If you need to integrate your Ember.js app with existing JSON APIs that
 do not follow strong conventions, Ember Data is designed to be easily
 configurable to work with whatever data your server returns.
 
-如果需要将Ember.js应用与现有的、未遵从惯例的JSON APIs进行集成，Ember
-Data也进行了充分的设计，通过简单的配置就可以实现使用服务端返回的数据。
+如果需要将Ember.js应用与现有的、未遵从惯例的JSON APIs进行集成，Ember Data也进行了充分的设计，通过简单的配置就可以使用服务端返回的数据。
 
 Ember Data is also designed to work with streaming APIs like
 socket.io, Firebase, or WebSockets. You can open a socket to your server
 and push changes to records into the store whenever they occur.
 
-Ember
-Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSockets。通过建立一个与服务器端的Socket连接，在记录发生变化的时候，将这些变更推送到本地仓库中（Store）。
+Ember Data同样适用于使用流式的API，例如socket.io、Firebase或WebSockets。通过建立一个与服务器端的Socket连接，在记录发生变化的时候，将这些变更推送到本地仓库中（Store）。
 
 Currently, Ember Data ships as a separate library from Ember.js. Until Ember Data is included
 as part of the standard distribution, you can get your copy of the latest
 passing build from [builds.emberjs.com][builds]:
 
-目前，Ember Data还是作为Ember.js的一个独立的库。在Ember Data被作为标准配置的一部分之前，你可以从其[builds.emberjs.com][builds]下载最新的版本。
+目前，Ember Data还是一个独立于Ember.js的库。在Ember Data被作为标准发行版的一部分之前，你可以从[builds.emberjs.com][builds]下载最新的版本。
 
 * [Development][development-build]
 * [Minified][minified-build]
- 
+
 [emberdata]: https://github.com/emberjs/data
 [builds]: http://emberjs.com/builds
 [development-build]: http://builds.emberjs.com/canary/ember-data.js
@@ -87,7 +83,7 @@ your app. Both your application's controllers and routes have access to this
 shared store; when they need to display or modify a record, they will
 first ask the store for it.
 
-**仓库**是应用用于存放记录的中心仓库。可以认为仓库是应用的所有数据的一个缓存。应用的控制器和路由都可以访问这个共享的仓库；当它们需要显示或者修改一个记录时，首先就需要访问仓库。
+**仓库**是应用存放记录的中心仓库。你可以认为仓库是应用的所有数据的缓存。应用的控制器和路由都可以访问这个共享的仓库；当它们需要显示或者修改一个记录时，首先就需要访问仓库。
 
 This instance of `DS.Store` is created for you automatically and is shared
 among all of the objects in your application.
@@ -117,7 +113,7 @@ data that you present to the user. Anything that the user expects to see
 if they leave your app and come back later (or if they refresh the page)
 should be represented by a model.
 
-**模型**是一个类，它定义了需要呈现给用户的数据的属性和行为。任何用户期望在其离开应用或者回到应用时应该可见的数据，都应该通过一个模型来表示。
+**模型**是一个类，它定义了需要呈现给用户的数据的属性和行为。任何用户期望在其离开应用然后再回到应用时能够看见的数据，都应该通过模型来表示。
 
 For example, if you were writing a web application for placing orders at
 a restaurant, you might have models like `Order`, `LineItem`, and
@@ -150,7 +146,7 @@ A model also describes its relationships with other objects. For
 example, an `Order` may have many `LineItems`, and a `LineItem` may
 belong to a particular `Order`.
 
-模型也声明了其与其他对象的关系。例如，一个`Order`可以有许多`LineItems`，一个`LineItem`可以属于一个特定的`Order`。
+模型也声明了它与其他对象的关系。例如，一个`Order`可以有许多`LineItems`，一个`LineItem`可以属于一个特定的`Order`。
 
 ```js
 App.Order = DS.Model.extend({
@@ -175,7 +171,7 @@ A **record** is an instance of a model that contains data loaded from a
 server. Your application can also create new records and save them back
 to the server.
 
-**记录**是模型的实例，包含了从服务器端加载而来的数据。应用本身也可以创建新的记录，并将新记录保存到服务器端。
+**记录**是模型的实例，包含了从服务器端加载而来的数据。应用本身也可以创建新的记录，以及将新记录保存到服务器端。
 
 Records are uniquely identified by two things:
 
@@ -210,7 +206,7 @@ An **adapter** is an object that knows about your particular server
 backend and is responsible for translating requests for and changes to
 records into the appropriate calls to your server.
 
-**适配器**是一个知道特定的服务器后端的对象，主要负责将记录的变更转换为服务器端定义的接口类型，然后发送请求给服务器端。
+**适配器**是一个了解特定的服务器后端的对象，主要负责将对记录的请求和变更转换为正确的向服务器端的请求调用。
 
 For example, if your application asks for a `person` record with an ID
 of `1`, how should Ember Data load it? Is it over HTTP or a WebSocket?
@@ -225,7 +221,7 @@ it, the store will hand the record to the adapter to send the
 appropriate data to your server and confirm that the save was
 successful.
 
-适配器负责处理类似以上的所有问题。无论何时，当应用需要从仓库中获取一个没有被缓存的记录时，应用就会访问适配器来获取这个记录。如果改变了一个记录并准备保存改变时，仓库会将记录传递给适配器，然后由适配器负责将数据发送给服务器端，并确认保存是否成功。
+适配器负责处理所有类似的问题。无论何时，当应用需要从仓库中获取一个没有被缓存的记录时，应用就会访问适配器来获取这个记录。如果改变了一个记录并准备保存改变时，仓库会将记录传递给适配器，然后由适配器负责将数据发送给服务器端，并确认保存是否成功。
 
 #### Serializer
 
@@ -234,7 +230,7 @@ successful.
 A **serializer** is responsible for turning a raw JSON payload returned
 from your server into a record object.
 
-序列化主要负责将服务器端返回的原生JSON数据序列化为记录对象。
+序列化主要负责将服务器端返回的原生JSON数据转化为记录对象。
 
 JSON APIs may represent attributes and relationships in many different
 ways. For example, some attribute names may be `camelCased` and others
@@ -242,7 +238,7 @@ may be `under_scored`. Representing relationships is even more diverse:
 they may be encoded as an array of IDs, an array of embedded objects, or
 as foreign keys.
 
-JSON API可能将属性、关联关系用不同的方式表示。例如，一些属性名可能采用了`驼峰式`命名规则，而另一些又使用了`下划线隔离`的命名规则。关联关系的表示方法更是五花八门：它们有可能会是一个ID数组，一个内嵌的对象集合，也可能是外键。
+JSON API可能将属性、关联关系用不同的方式表示。例如，一些属性名可能采用了`驼峰式`命名规则，而另一些又使用了`下划线隔离`的命名规则。关联关系的表示方法更是五花八门：它们有可能会是一个ID数组，一个内嵌的对象集合，也可能是作为外键。
 
 When the adapter gets a payload back for a particular record, it will
 give that payload to the serializer to normalize into the form that
@@ -255,8 +251,7 @@ Ember Data treats these payloads as opaque objects, there's no reason
 they couldn't be binary data stored in a `Blob` or
 [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays/ArrayBuffer).
 
-大部分人都需要使用序列化来完成JSON数据的转换，因为Ember
-Data将这些数据作为非透明的对象来处理，它们可能是以二进制数据被存储的，也可能是[ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays/ArrayBuffer)。
+大部分人都需要使用序列化来完成JSON数据的转换，因为Ember Data将这些数据作为非透明的对象来处理，它们可能是以二进制数据被存储的，也可能是[ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays/ArrayBuffer)。
 
 #### Automatic Caching
 
@@ -268,7 +263,7 @@ object instance. This minimizes the number of round-trips to the
 server, and allows your application to render its UI to the user as fast as
 possible.
 
-仓库会自动缓存记录。如果一个记录已经被加载了，那么再次访问它的时候，会返回同一个对象实例。这样大大减少了与服务器端的通信，使得应用可以更快的为用户渲染所需的UI。
+仓库会自动缓存记录。如果一个记录已经被加载了，那么再次访问它的时候，会返回同一个对象实例。这样大大减少了与服务器端的往返通信，使得应用可以更快的为用户渲染所需的UI。
 
 For example, the first time your application asks the store for a
 `person` record with an ID of `1`, it will fetch that information from
@@ -284,7 +279,7 @@ provided it the first time.  This feature—always returning the same
 record object, no matter how many times you look it up—is sometimes
 called an _identity map_.
 
-但是，当应用再次需要ID为`1`的`person`记录时，仓库会发现这个记录已经获取到了，并且缓存了该记录。那么仓库就不会再向服务器端发送请求去获取记录的数据，而是直接返回第一次时候获取到并构造出来的记录。这个特性使得不论请求这个记录多少次，都会返回同一个记录对象，这也被称为_Identity Map_
+但是，当应用再次需要ID为`1`的`person`记录时，仓库会发现这个记录已经获取到了，并且缓存了该记录。那么仓库就不会再向服务器端发送请求去获取记录的数据，而是直接返回第一次时候获取到并构造出来的记录。这个特性使得不论请求这个记录多少次，都会返回同一个记录对象，这也被称为_Identity Map_（标识符映射）。
 
 Using an identity map is important because it ensures that changes you
 make in one part of your UI are propagated to other parts of the UI. It
@@ -292,7 +287,7 @@ also means that you don't have to manually keep records in sync—you can
 ask for a record by ID and not have to worry about whether other parts
 of your application have already asked for and loaded it.
 
-使用标识符映射非常重要，因为这样确保了在一个UI上对一个记录的修改会自动传播到UI其他使用到该记录的UI。这样意味着不要手动去保持对象的同步，只需要使用ID来获取应用已经获取到的记录就可以了。
+使用标识符映射非常重要，因为这样确保了在一个UI上对一个记录的修改会自动传播到UI其他使用到该记录的UI。同时这意味着你无须手动去保持对象的同步，只需要使用ID来获取应用已经获取到的记录就可以了。
 
 ### Architecture Overview
 
@@ -315,13 +310,13 @@ requested record immediately. In this case, the adapter must make an
 _asynchronous_ request to the server, and only when that request finishes 
 loading can the record be created with its backing data.
 
-如上图所示，适配器有时不能立即返回请求的记录。这时适配器必须向服务器发起一个_异步_的请求，当请求完成加载后，才能通过返回的数据创建请求的记录。
+如上图所示，适配器有时不能立即返回请求的记录。这时适配器必须向服务器发起一个_异步_的请求，当请求完成加载后，才能通过返回的数据创建的记录。
 
 Because of this asynchronicity, the store immediately returns a
 _promise_ from the `find()` method. Similarly, any requests that the
 store makes to the adapter also return promises.
 
-由于存在这样的异步性，仓库会从`find()`方法立即返回一个_承诺_。另外，所有请求需要仓库与适配器发生交互的话，都会返回承诺。
+由于存在这样的异步性，仓库会从`find()`方法立即返回一个_承诺_（promise）。另外，所有请求需要仓库与适配器发生交互的话，都会返回承诺。
 
 Once the request to the server returns with a JSON payload for the
 requested record, the adapter resolves the promise it returned to the
@@ -361,4 +356,4 @@ These are the core concepts you should understand to get the most out of
 Ember Data. The following sections go into more depth about each of
 these concepts, and how to use them together.
 
-以上是理解Ember Data工作原理的核心概念。下面的章节将一个个的深入讨论这些概念，介绍如何将它们串在一起使用。
+以上是需要理解的Ember Data工作原理的核心概念。下面的章节将一个个的深入讨论这些概念，介绍如何将它们串在一起使用。
