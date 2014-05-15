@@ -20,8 +20,8 @@ actions: {
 	  var todo = this.get('model');
 	  todo.deleteRecord();
 	  todo.save();
-	},
-}
+	}
+},
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
 
