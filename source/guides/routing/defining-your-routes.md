@@ -174,7 +174,7 @@ App.Router.map(function() {
 正如你期望的一样，访问`/`会渲染`index`模板。
 
 访问`/posts`会有点不同。它会先渲染`posts`模板，然后再渲染`posts/index`模板到
-`post`模板的出口（`outlet`）上。
+`posts`模板的出口（`outlet`）上。
 
 最后，访问`/posts/new`会先渲染`posts`模板，然后渲染`posts/new`模板到它的出口上。
 
