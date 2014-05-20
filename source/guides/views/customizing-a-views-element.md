@@ -33,7 +33,7 @@ App.MyView = Ember.View.extend({
 
 如果`isUrgent`变为`false`，那么`is-urgent`样式将被删除。
 
-默认情况下，布尔属性的名称会采用中划线分割的方式命名。通过使用分号来定界，可以自定义样式的名称。
+默认情况下，布尔属性的名称会采用中划线分割的方式命名。通过使用冒号来定界，可以自定义样式的名称。
 
 ```javascript
 App.MyView = Ember.View.extend({
