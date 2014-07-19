@@ -26,4 +26,4 @@ TodoMVC包含了以下几个主要功能：
 
   1. 使用 `本地存储(localstorage)` 机制保存用户的todos列表，在应用程序启动时重新加载。
 
-你可以通过访问[the TodoMVC site](http://addyosmani.github.com/todomvc/)来体验一下完整的版本。
+你可以通过访问[the TodoMVC site](http://todomvc.com/architecture-examples/emberjs/)来体验一下完整的版本。
