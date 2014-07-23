@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/components/sending-actions-from-components-to-your-application/](http://emberjs.com/guides/components/sending-actions-from-components-to-your-application/)
 
-当组件被用于一个模板中时，其可以发送操作给模板的控制器和路由。这样使得组件在一些重要的事件发生时（如一个用户点击了组件中的一个特定的元素，通知应用。
+当组件被用于一个模板中时，其能够发送操作（action）给模板的控制器和路由。这样可以允许组件在一些重要的事件发生时通知应用。比如一个用户点击了组件中的一个特定的元素，可以触发此操作。
 
 就像`{{action}}`Handlebars助手一样，组件发出的操作首先到达模板的控制器。如果控制器没有实现一个操作的处理方法，那么操作会被抛到模板的路由，然后再路由的层级中一路往上冒泡。想知道关于冒泡机制的详细细节，可以查看[操作冒泡](/guides/templates/actions/#toc_action-bubbling)。
 

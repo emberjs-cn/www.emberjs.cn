@@ -39,6 +39,7 @@ Todos.Router.map(function () {
   
   </script>
 
+<!-- ... Ember.js 和其他 javascript 依赖库 ... -->
   <script src="js/application.js"></script>
   <script src="js/router.js"></script>
 </body>
