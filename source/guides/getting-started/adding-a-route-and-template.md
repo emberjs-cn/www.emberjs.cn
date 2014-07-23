@@ -10,7 +10,7 @@
 window.Todos = Ember.Application.create();
 ```
 
-这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
+这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个名为`Todos`的变量供使用。
 
 在 `js/router.js` 文件中添加如下代码：
 

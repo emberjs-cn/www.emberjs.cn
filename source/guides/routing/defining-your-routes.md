@@ -399,3 +399,27 @@ App.Router.map(function() {
   - `App.IndexRoute`是默认路由，当用户访问`/`时，将渲染`index`模板（除非`/`被自定义的路由覆盖）。
 
    请记住，这些路由是每个应用的一部分，因此不需要在`App.Router.map`中指定。
+
+### 通配符路由
+
+可以定义通配符路由来匹配多个路由。这种方法很有用，比如如果想获取用户进入应用的错误路由的时候。
+
+```javascript
+App.Router.map(function() {
+  this.route('catchall', {path: '/*wildcard'});
+});
+```
+
+通配符路由与动态路由一样，在使用`{{link-to}}或者`transitionTo`来进入这个路由的时候，需要提供一个上下文。
+
+```javascript
+App.ApplicationRoute = Ember.Route.extend({
+  actions: {
+    error: function () {
+      this.transitionTo('catchall', "application-error");
+    }
+  }
+});
+```
+
+在上述代码中，如果一个错误冒泡到应用路由，那么应用将进入`catchall`路由，并在URL中显示`/application-error`。

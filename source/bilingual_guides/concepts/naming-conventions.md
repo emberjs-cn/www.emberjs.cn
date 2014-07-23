@@ -86,8 +86,8 @@ your entire application shares a single instance of each controller.
 
 ## 简单的路由（Simple Routes)
 
-Each of your routes will have a controller and a template with the 
-+same name as the route.
+Each of your routes will have a controller, and a template with the 
+same name as the route.
 
 对于应用中的每一个路由，都会有以路由名称命名的控制器和模板。
 

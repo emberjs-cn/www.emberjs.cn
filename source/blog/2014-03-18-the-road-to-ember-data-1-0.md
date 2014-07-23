@@ -71,10 +71,6 @@ Data更好的工作，花费了比设想要多很多的事件，不过现在其�
 
 例如，如果在一条评论上修改了`belongs-to`，那意味着改变了`has-many`一端，即便文章并没有加载到应用中。当应用最终加载这篇文章时，应该可以将`belongs-to`的改变应用到这篇文章。
 
-The long and short of it is that the two sides of a two-way relationship will
-remain in sync in Ember Data 1.0, regardless of the order the records were
-loaded, the way they were loaded, or how the relationships were represented in
-the payloads.
 
 简单地说就是Ember Data 1.0维护关联关系的两端，使其一直保持同步，不论记录加载的顺序是如何的，也不理会加载的方式是什么，或者载荷中关联关系的表示是什么形式的。
 
@@ -152,4 +148,3 @@ Data也将按照被Chrome影响的[六周发布方法](http://emberjs.com/blog/2
 现在需要保证1.0发布前所有的都能正确工作。Ember.js中得路由也经过了几个类似的迭代，就如同现在Ember Data遇到的苦恼一样，不过相信最终结果会为自己发声的。真实的使用对于设计过程非常的重要和有用，在发布之前仔细的思考问题也非常的重要。
 
 鉴于此，希望当宣布Ember Data符合1.0的质量要求时能得到大家的信任。如果现在开始使用Ember Data来构建应用，那么会因为将带来的有一个能分享理解的社区的向前的动力而高兴。
-

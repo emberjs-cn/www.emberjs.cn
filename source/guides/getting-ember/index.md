@@ -26,7 +26,7 @@ Data。希望了解更多关于Bower的信息，可以访问[http://bower.io](ht
 {
 	"name": "your-app",
 	"dependencies": {
-		"ember": "~1.2",
+		"ember": "~1.5",
 		"ember-data": "~1.0.0-beta.4"
 	}
 }

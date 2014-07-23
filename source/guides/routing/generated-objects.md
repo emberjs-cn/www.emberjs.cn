@@ -11,7 +11,7 @@
 
 ```javascript
 App.Router.map(function() {
-  this.route('posts');
+  this.resource('posts');
 });
 ```
 

@@ -66,7 +66,7 @@ var tom = App.Person.create({
   name: "Tom Dale"
 });
 
-tom.helloWorld(); // alerts "Hi my name is Tom Dale"
+tom.helloWorld(); // alerts "Hi, my name is Tom Dale"
 ```
 
 考虑到性能问题，实例的计算属性或方法不能在调用`create()`方法的时候进行重定义。同样也不可以在此时定义新的计算属性或方法。因此，在调用`create()`方法时，只能设置基本属性。如果需要定义或者重新定义计算属性或方法，可以通过定义一个新的子类来实现。

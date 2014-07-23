@@ -8,7 +8,7 @@ Ember中定义了一套用于构建一些非常基础的控件的视图，比如
 
 ```handlebars
 <label>
-  {{view Ember.Checkbox checkedBinding="model.isDone"}}
+  {{view Ember.Checkbox checked=model.isDone}}
   {{model.title}}
 </label>
 ```
@@ -28,11 +28,11 @@ App.MyText = Ember.TextField.extend({
 
 ```handlebars
 {{view Ember.Select viewName="select"
-                    contentBinding="people"
-                    optionLabelPath="model.fullName"
-                    optionValuePath="model.id"
+                    content=people
+                    optionLabelPath="content.fullName"
+                    optionValuePath="content.id"
                     prompt="Pick a person:"
-                    selectionBinding="selectedPerson"}}
+                    selection=selectedPerson}}
 ```
 
 #### Ember.TextArea

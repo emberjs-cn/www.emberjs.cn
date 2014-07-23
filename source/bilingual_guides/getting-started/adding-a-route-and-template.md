@@ -20,9 +20,9 @@ Inside `js/application.js` add the following code:
 window.Todos = Ember.Application.create();
 ```
 
-This will create a new instance of `Ember.Application` and make it available as a variable within your browser's JavaScript environment.
+This will create a new instance of `Ember.Application` and make it available as a variable named `Todos` within your browser's JavaScript environment.
 
-这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
+这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个名为`Todos`的变量供使用。
 
 Inside `js/router.js` add the following code:
 

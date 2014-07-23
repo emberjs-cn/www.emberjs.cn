@@ -62,4 +62,4 @@ App.ApplicationRoute = Ember.Route.extend({
   1. 将通用模态对话框标记和操作包裹到一个组件中。
   1. 处理叠加层被点击的事件，来关闭模态对话框 。
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/lokozegi/4/embed?output">JS Bin</a>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/lokozegi/110/embed">JS Bin</a>

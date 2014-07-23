@@ -20,7 +20,7 @@ Given you have the following route:
 
 ```javascript
 App.Router.map(function() {
-  this.route('posts');
+  this.resource('posts');
 });
 ```
 

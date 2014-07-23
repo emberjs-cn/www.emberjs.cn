@@ -538,3 +538,39 @@ Remember, these routes are part of every application, so you don't need
 to specify them in `App.Router.map`.
 
 请记住，这些路由是每个应用的一部分，因此不需要在`App.Router.map`中指定。
+
+### Wildcard / globbing routes
+
+### 通配符路由
+
+You can define wildcard routes that will match mutliple routes. This could be used, for example,
+if you'd like a catchall route which is useful when the user enters an incorrect URL not managed
+by your app.
+
+可以定义通配符路由来匹配多个路由。这种方法很有用，比如如果想获取用户进入应用的错误路由的时候。
+
+```javascript
+App.Router.map(function() {
+  this.route('catchall', {path: '/*wildcard'});
+});
+```
+
+Like all routes with a dynamic segment, you must provide a context when using a `{{link-to}}`
+or `transitionTo` to programatically enter this route.
+
+通配符路由与动态路由一样，在使用`{{link-to}}或者`transitionTo`来进入这个路由的时候，需要提供一个上下文。
+
+```javascript
+App.ApplicationRoute = Ember.Route.extend({
+  actions: {
+    error: function () {
+      this.transitionTo('catchall', "application-error");
+    }
+  }
+});
+```
+
+With this code, if an error bubbles up to the Application route, your application will enter
+the `catchall` route and display `/application-error` in the URL.
+
+在上述代码中，如果一个错误冒泡到应用路由，那么应用将进入`catchall`路由，并在URL中显示`/application-error`。

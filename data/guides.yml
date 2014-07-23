@@ -229,8 +229,35 @@
   - title: "介绍"
     url: "enumerables"
 测试:
+  - title: "介绍"
+    url: "testing"
   - title: "集成测试"
     url: "testing/integration"
+  - title: "测试助手"
+    url: "testing/test-helpers"
+  - title: "测试用户交互"
+    url: "testing/testing-user-interaction"
+  - title: "单元测试"
+    url: "testing/unit"
+  - title: "单元测试基础"
+    url: "testing/unit-testing-basics"
+  - title: "测试组件"
+    url: "testing/testing-components"
+  # - title: "Testing Handlebars Helpers"
+  #   url: "testing/testing-handlebars-helpers"
+  - title: "测试控制器"
+    url: "testing/testing-controllers"
+  - title: "测试路由"
+    url: "testing/testing-routes"
+  # - title: "Testing Views"
+  #   url: "testing/testing-views"
+  - title: "测试模型"
+    url: "testing/testing-models"
+  # - title: "Testing XHR"
+  #   url: "testing/testing-xhr"
+  - title: "自动化测试"
+    url: "testing/test-runners"
+
 配置Ember.js:
   - title: "禁用基本类型扩展"
     url: "configuring-ember/disabling-prototype-extensions"
@@ -327,6 +354,12 @@ Cookbook:
   #   skip_sidebar_item: true
   - title: "创建可以重用的社交分享按钮"
     url: "cookbook/helpers_and_components/creating_reusable_social_share_buttons"
+    skip_sidebar_item: true
+  - title: "异步操作的旋转按钮"
+    url: "cookbook/helpers_and_components/spin_button_for_asynchronous_actions"
+    skip_sidebar_item: true
+  - title: "添加Google Analytics跟踪"
+    url: "cookbook/helpers_and_components/adding_google_analytics_tracking"
     skip_sidebar_item: true
   # objects
   - title: "使用对象"
