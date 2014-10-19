@@ -73,11 +73,11 @@ App.Person = DS.Model.extend({
 
 ```js
 App.Order = DS.Model.extend({
-  lineItems: DS.belongsTo('lineItem')
+  lineItems: DS.hasMany('lineItem')
 });
 
 App.LineItem = DS.Model.extend({
-  orders: DS.hasMany('order')
+  order: DS.belongsTo('order')
 });
 ```
 
