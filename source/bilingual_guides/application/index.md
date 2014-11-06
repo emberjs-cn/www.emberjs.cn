@@ -14,7 +14,7 @@ Most people call their application `App`, but you can call it whatever
 makes the most sense to you. Just make sure it starts with a capital
 letter.
 
-大部分人都选择将他们的应用命名为`App`，但是你可以将其命名为任何其他多余你来说更有意义的名字，只需要保证名称的首字母大写即可。
+大部分人都选择将他们的应用命名为`App`，但是你可以将其命名为任何其他对于你来说更有意义的名字，只需要保证名称的首字母大写即可。
 
 What does creating an `Ember.Application` instance get you?
 
