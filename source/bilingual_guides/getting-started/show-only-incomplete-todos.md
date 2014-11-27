@@ -2,14 +2,15 @@
 
 Next we'll update the application so a user can navigate to a url where only todos that are not complete are displayed.
 
-接下来我们将对应用进行进一步的修改，使得用户可以导航只一个只显示未完成的待办事项列表的URL。
+接下来我们将对应用进行进一步的修改，使得用户可以导航至一个只显示未完成的待办事项列表的URL。
 
-In `index.html` convert the `<a>` tag for 'Active' todos into a Handlebars `{{link-to}}` helper:
+In `index.html` convert the `<a>` tag for 'Active' todos into a Handlebars `{{link-to}}` helper and remove the active class from the `<a>` tag for 'All':
 
-在`index.html`中，将‘活动的’待办事项的`<a>`标签改为Handlebars的`{{link-to}}`助手：
+在`index.html`中，将‘活动的’待办事项的`<a>`标签改为Handlebars的`{{link-to}}`助手，然后把所有(All)中的`<a>`标签里的 active class 移除：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <li>
   <a href="all">All</a>
 </li>
@@ -19,7 +20,8 @@ In `index.html` convert the `<a>` tag for 'Active' todos into a Handlebars `{{li
 <li>
   <a href="completed">Completed</a>
 </li>
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 In `js/router.js` update the router to recognize this new path and implement a matching route:
@@ -27,18 +29,18 @@ In `js/router.js` update the router to recognize this new path and implement a m
 在`js/router.js`中修改路由，使其可以识别新的路径，并实现对应的路由：
 
 ```javascript
-Todos.Router.map(function () {
-  this.resource('todos', { path: '/' }, function () {
-    // additional child routes    
+Todos.Router.map(function() {
+  this.resource('todos', { path: '/' }, function() {
+    // additional child routes
     this.route('active');
   });
 });
 
 // ... additional lines truncated for brevity ...
-
+// ... 为保持代码简洁，在此省略了其他代码 ... 
 Todos.TodosActiveRoute = Ember.Route.extend({
-  model: function() {
-    return this.store.filter('todo', function (todo) {
+  model: function(){
+    return this.store.filter('todo', function(todo) {
       return !todo.get('isCompleted');
     });
   },
@@ -64,7 +66,7 @@ Reload your web browser to ensure that there are no errors and the behavior desc
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/arITiZu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/gaqey/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 

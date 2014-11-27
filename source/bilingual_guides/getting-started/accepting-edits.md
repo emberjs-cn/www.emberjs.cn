@@ -16,13 +16,14 @@ Create a new file `js/views/edit_todo_view.js`. You may place this file anywhere
 
 首先我们需要创建一个新的文件`js/views/edit_todo_view.js`。你可以将该文件放置到任意你喜欢的地方（即使将所有代码放置在同一个文件中），不过本指南将假设你按照指定的方式创建和命名该文件。
 
-In `js/views/edit_todo_view.js` create an extension of `Ember.TextField`:
+In `js/views/edit_todo_view.js` create an extension of `Ember.TextField` and register it as
+a [helper](/api/classes/Ember.Handlebars.html#method_helper):
 
-在`js/views/edit_todo_view.js`中创建一个`Ember.TextField`的扩展：
+在`js/views/edit_todo_view.js`中创建一个`Ember.TextField`的扩展并注册成为一个[助手](/api/classes/Ember.Handlebars.html#method_helper)：
 
 ```javascript
 Todos.EditTodoView = Ember.TextField.extend({
-  didInsertElement: function () {
+  didInsertElement: function() {
     this.$().focus();
   }
 });
@@ -49,23 +50,23 @@ In `index.html` replace the static `<input>` element with our custom `{{edit-tod
 在`index.html`中，将静态的`<input>`元素替换为自定义的`{{edit-todo}}`组件，连接`value`和操作：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#if isEditing}}
-  {{edit-todo class="edit" value=title focus-out="acceptChanges"
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+{{#if todo.isEditing}}
+  {{edit-todo class="edit" value=todo.title focus-out="acceptChanges"
                            insert-newline="acceptChanges"}}
 {{else}}
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 Pressing the `<enter>` key  will trigger the `acceptChanges` event on the instance of `TodoController`. Moving focus away from the `<input>` will trigger the `focus-out` event, calling a method `acceptChanges` on this view's instance of `TodoController`.
 
 点击`<enter>`键会触发`TodoController`实例的`acceptChanges`事件。焦点离开`<input>`时会出发`focus-out`事件，并调用视图的`TodoController`实例的`acceptChanges`方法。
 
-Additionally, we connect the `value` property of this `<input>` to the `title` property of this instance of `TodoController`. We will not implement a `title` property on the controller so it will retain the default behavior of [proxying all requests](../controllers/#toc_representing-models) to its `model`.
+Additionally, we connect the `value` property of this `<input>` to the `title` property of this instance of `TodoController`. We will not implement a `title` property on the controller so it will retain the default behavior of [proxying all requests](/guides/controllers/#toc_representing-models) to its `model`.
 
-此外，`TodoController`实例的`title`属性与`<input>`的`value`属性进行了绑定。控制器中并没有定义`title`属性，这样控制就保持默认的行为，将[所有请求代理](../controllers/#toc_representing-models)到其`model`之上。
+此外，`TodoController`实例的`title`属性与`<input>`的`value`属性进行了绑定。控制器中并没有定义`title`属性，这样控制就保持默认的行为，将[所有请求代理](/guides/controllers/#toc_representing-models)到其`model`之上。
 
 A CSS class `edit` is applied for styling.
 
@@ -79,16 +80,22 @@ In `js/controllers/todo_controller.js`, add the method `acceptChanges` that we c
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 actions: {
-  editTodo: function () {
+  editTodo: function() {
     this.set('isEditing', true);
   },
-  acceptChanges: function () {
+  acceptChanges: function() {
     this.set('isEditing', false);
+
     if (Ember.isEmpty(this.get('model.title'))) {
       this.send('removeTodo');
     } else {
-      this.get('model')save();
-    }       
+      this.get('model').save();
+    }
+  },
+  removeTodo: function () {
+    var todo = this.get('model');
+    todo.deleteRecord();
+    todo.save();
   }
 },
 // ... additional lines truncated for brevity ...
@@ -103,7 +110,7 @@ This method will set the controller's `isEditing` property to false and commit a
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/USOlAna/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/gureki/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 
@@ -111,8 +118,8 @@ This method will set the controller's `isEditing` property to false and commit a
 
   * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/a7e2f40da4d75342358acdfcbda7a05ccc90f348)
   * [Controller Guide](/guides/controllers)
-  * [Ember.TextField API documentation](http://emberjs.com/api/classes/Ember.TextField.html)
+  * [Ember.TextField API documentation](/api/classes/Ember.TextField.html)
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/a7e2f40da4d75342358acdfcbda7a05ccc90f348)
   * [控制器指南](/guides/controllers)
-  * [Ember.TextField API文档](http://emberjs.com/api/classes/Ember.TextField.html)
+  * [Ember.TextField API文档](/api/classes/Ember.TextField.html)

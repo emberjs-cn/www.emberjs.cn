@@ -10,9 +10,10 @@ To implement this behavior update the `allAreDone` property in `js/controllers/t
 
 ```javascript
 // ... additional lines truncated for brevity ...
-allAreDone: function (key, value) {
+// ... 为确保简洁，略去头尾代码 ...
+allAreDone: function(key, value) {
   if (value === undefined) {
-    return !!this.get('length') && this.everyProperty('isCompleted', true);
+    return !!this.get('length') && this.isEvery('isCompleted', true);
   } else {
     this.setEach('isCompleted', value);
     this.invoke('save');
@@ -20,6 +21,7 @@ allAreDone: function (key, value) {
   }
 }.property('@each.isCompleted')
 // ... additional lines truncated for brevity ...
+// ... 为确保简洁，略去头尾代码 ...
 ```
 
 If no `value` argument is passed this property is being used to populate the current value of the checkbox. If a `value` is passed it indicates the checkbox was used by a user and we should set the `isCompleted` property of each todo to this new value.
@@ -38,7 +40,7 @@ Reload your web browser to ensure that there are no errors and the behavior desc
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/AViZATE/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/jipil/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 

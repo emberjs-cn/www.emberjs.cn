@@ -3,13 +3,12 @@
 接下来我们将修改模板来提示所有待办事项都已经完成。在`index.html`中替换静态的复选框`<input>`为`{{input}}`：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <section id="main">
   {{outlet}}
-
   {{input type="checkbox" id="toggle-all" checked=allAreDone}}
 </section>
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 这个复选框将在控制器的属性`allAreDone`为`true`的时候被自动选中，为`false`的时候不选中。
@@ -18,8 +17,8 @@
 
 ```javascript
 // ... additional lines truncated for brevity ...
-allAreDone: function (key, value) {
-  return !!this.get('length') && this.everyProperty('isCompleted', true);
+allAreDone: function(key, value) {
+  return !!this.get('length') && this.isEvery('isCompleted');
 }.property('@each.isCompleted')
 // ... additional lines truncated for brevity ...
 ```
@@ -31,7 +30,7 @@ allAreDone: function (key, value) {
 ### 在线演示
 
 <a class="jsbin-embed" href="http://jsbin.com/IcItARE/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
-    
+
 ### 附加资源
 
   * [用`diff`格式显示改动](https://github.com/emberjs/quickstart-code-sample/commit/9bf8a430bc4afb06f31be55f63f1d9806e6ab01c)

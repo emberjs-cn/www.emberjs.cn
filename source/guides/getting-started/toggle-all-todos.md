@@ -5,17 +5,17 @@ TodoMVC允许用户在已完成和未完成状态之间切换所有待办事项�
 为了实现这一功能，需要修改`js/controllers/todos_controller.js`中的`allAreDone`属性，使其可以处理获取和设置行为：
 
 ```javascript
-// ... additional lines truncated for brevity ...
-allAreDone: function (key, value) {
+// ... 为确保简洁，略去头尾代码 ...
+allAreDone: function(key, value) {
   if (value === undefined) {
-    return !!this.get('length') && this.everyProperty('isCompleted', true);
+    return !!this.get('length') && this.isEvery('isCompleted', true);
   } else {
     this.setEach('isCompleted', value);
     this.invoke('save');
     return value;
   }
 }.property('@each.isCompleted')
-// ... additional lines truncated for brevity ...
+// ... 为确保简洁，略去头尾代码 ...
 ```
 
 如果没有传递`value`参数，该属性用于获取选择框当前的状态。如果`value`参数被传入，这就意味着选择框被用户操作了，我们需要设置每个待办事项的`isCompleted`属性为这个传入的值。
@@ -26,7 +26,7 @@ allAreDone: function (key, value) {
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/AViZATE/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/jipil/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

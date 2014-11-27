@@ -6,7 +6,7 @@
 
 ```javascript
 Todos.TodosRoute = Ember.Route.extend({
-  model: function () {
+  model: function() {
     return this.store.find('todo');
   }
 });
@@ -19,16 +19,16 @@ Todos.TodosRoute = Ember.Route.extend({
 通过删除`index.html`中的静态元素`<li>`，用Handlebars的`{{each}}`助手和每项元素的动态`{{title}}`来替代。
 
 ```handlebars
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <ul id="todo-list">
-  {{#each}}
+  {{#each todo in model}}
     <li>
       <input type="checkbox" class="toggle">
-      <label>{{title}}</label><button class="destroy"></button>
+      <label>{{todo.title}}</label><button class="destroy"></button>
     </li>
   {{/each}}
 </ul>
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 上面的模板遍历了其控制器的`content`。这里的控制器是一个`ArrayController`的实例，`ArrayController`是Ember.js提供的用于存储我们的对象的容器。因为我们这里并不需要为这个对象添加自定义行为，所以可以使用框架提供的缺省对象。
@@ -36,8 +36,8 @@ Todos.TodosRoute = Ember.Route.extend({
 重新载入你的Web浏览器，以确保所有文件均被正确引用，且没有发生任何错误。
 
 ### 在线演示
-<a class="jsbin-embed" href="http://jsbin.com/EJISAne/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
-  
+<a class="jsbin-embed" href="http://jsbin.com/simixi/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
 ### 附加资源
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/87bd57700110d9dd0b351c4d4855edf90baac3a8)

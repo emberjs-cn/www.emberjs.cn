@@ -6,14 +6,14 @@ TodoMVC strikes through completed todos by applying a CSS class `completed` to t
 
 TodoMVC通过在`<li>`元素上应用了一个名为`completed`的CSS类来标识已完成的待办事项。因此需要在一个待办事项的`isCompleted`属性为真的时候，更新`index.html`，为这个待办事项的元素添加一个CSS类：
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-<li {{bind-attr class="isCompleted:completed"}}>
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+<li {{bind-attr class="todo.isCompleted:completed"}}>
   <input type="checkbox" class="toggle">
-  <label>{{title}}</label><button class="destroy"></button>
+  <label>{{todo.title}}</label><button class="destroy"></button>
 </li>
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 This code will apply the CSS class `completed` when the todo's `isCompleted` property is `true` and remove it when the property becomes `false`.
@@ -26,8 +26,8 @@ The first fixture todo in our application has an `isCompleted` property of `true
 
 ### Live Preview
 ### 在线演示
-<a class="jsbin-embed" href="http://jsbin.com/oKuwomo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
-  
+<a class="jsbin-embed" href="http://jsbin.com/sejelu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
 ### Additional Resources
 ### 附加资源
 

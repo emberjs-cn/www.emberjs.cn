@@ -13,23 +13,23 @@ We'll update the application to allow users to toggle into this editing state fo
 接下来我们将更新我们的应用，使其支持用户切换到待办事项的编辑状态。我们在`index.html`中更新Handlebars的`{{each}}`助手的内容为：
 
 ```handlebars
- <!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#each itemController="todo"}}
-  <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-    {{#if isEditing}}
-      <input class='edit'>
+ {{! ... additional lines truncated for brevity ... }}
+ {{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+{{#each todo in model itemController="todo"}}
+  <li {{bind-attr class="todo.isCompleted:completed todo.isEditing:editing"}}>
+    {{#if todo.isEditing}}
+      <input class="edit">
     {{else}}
-      {{input type="checkbox" checked=isCompleted class="toggle"}}
-      <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
+      {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+      <label {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label><button class="destroy"></button>
     {{/if}}
   </li>
 {{/each}}
- <!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+ {{! ... additional lines truncated for brevity ... }}
+ {{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
-The above code applies three new behaviors to our application: it applies the CSS class `editing` when the controller's `isEditing` property is true and removes it when the `isEditing` property is false. We add a new `{{action}}` helper to the `<label>` so double-clicks will call `editTodo` on 
+The above code applies three new behaviors to our application: it applies the CSS class `editing` when the controller's `isEditing` property is true and removes it when the `isEditing` property is false. We add a new `{{action}}` helper to the `<label>` so double-clicks will call `editTodo` on
 this todo's controller. Finally, we wrap our todo in a Handlebars `{{if}}` helper so a text `<input>` will display when we are editing and the todos title will display when we are not editing.
 
 上述代码为我们的应用增加了三个新的行为：
@@ -43,14 +43,15 @@ Inside `js/controllers/todo_controller.js` we'll implement the matching logic fo
 下面我们在`js/controllers/todo_controller.js`中为模板行为实现对应的逻辑：
 
 ```javascript
-// ... additional lines truncated for brevity ...
-// ... 为保持代码简洁，在此省略了其他代码 ...
-actions: {
-  editTodo: function () {
-    this.set('isEditing', true);
-  }
-},
-isEditing: false,
+Todos.TodoController = Ember.ObjectController.extend({
+  actions: {
+    editTodo: function() {
+      this.set('isEditing', true);
+    }
+  },
+
+  isEditing: false,
+
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
@@ -67,7 +68,7 @@ Reload your web browser to ensure that no errors occur. You can now double-click
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/usiXemu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/tucapa/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
   
 ### Additional Resources
 
@@ -75,12 +76,12 @@ Reload your web browser to ensure that no errors occur. You can now double-click
 
   * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/616bc4f22900bbaa2bf9bdb8de53ba41209d8cc0)
   * [Handlebars Conditionals Guide](/guides/templates/conditionals)
-  * [bind-attr API documentation](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
-  * [action API documentation](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)
-  * [bind and bind-attr article by Peter Wagenet](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
+  * [bind-attr API documentation](/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
+  * [action API documentation](/api/classes/Ember.Handlebars.helpers.html#method_action)
+  * [bind and bindAttr article by Peter Wagenet](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/616bc4f22900bbaa2bf9bdb8de53ba41209d8cc0)
   * [Handlebars条件表达式指南](/guides/templates/conditionals)
-  * [bind-attr API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
-  * [action API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)
-  * [Peter Wagenet编写的bind和bind-attr文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
+  * [bind-attr API文档](/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
+  * [action API文档](/api/classes/Ember.Handlebars.helpers.html#method_action)
+  * [Peter Wagenet编写的bind和bindAttr文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)

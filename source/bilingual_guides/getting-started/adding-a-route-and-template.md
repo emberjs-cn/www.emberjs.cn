@@ -20,16 +20,16 @@ Inside `js/application.js` add the following code:
 window.Todos = Ember.Application.create();
 ```
 
-This will create a new instance of `Ember.Application` and make it available as a variable within your browser's JavaScript environment.
+This will create a new instance of `Ember.Application` and make it available as a variable named `Todos` within your browser's JavaScript environment.
 
-这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。
+这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个名为 `Todos` 的变量供使用。
 
 Inside `js/router.js` add the following code:
 
 在 `js/router.js` 文件中添加如下代码：
 
 ```javascript
-Todos.Router.map(function () {
+Todos.Router.map(function() {
   this.resource('todos', { path: '/' });
 });
 ```
@@ -38,9 +38,9 @@ This will tell Ember.js to detect when the application's URL matches `'/'` and t
 
 这会告诉Ember.js，当应用的URL与 `'/'` 匹配时，渲染（render） `todos` 模板。
 
-Next, update your `index.html` to wrap the inner contents of `<body>` in a Handlebars script tag and include `js/application.js` and `js/router.js`:
+Next, update your `index.html` to wrap the inner contents of `<body>` in a Handlebars script tag and include `js/application.js` and `js/router.js` after Ember.js and other javascript dependencies:
 
-接着，更新 `index.html` 里的代码，将 `<body>` 里的内容包在一个Handlebars的 `<script>` 标签中，并引用 `js/application.js` 和 `js/router.js`：
+接着，更新 `index.html` 里的代码，将 `<body>` 里的内容包在一个Handlebars的 `<script>` 标签中，并在 Ember.js 和其他 javascript 依赖后面引用 `js/application.js` 和 `js/router.js`：
 
 ```html
 <!-- ... additional lines truncated for brevity ... -->
@@ -49,15 +49,17 @@ Next, update your `index.html` to wrap the inner contents of `<body>` in a Handl
   <script type="text/x-handlebars" data-template-name="todos">
 
     <section id="todoapp">
-      ... additional lines truncated for brevity ...
+      {{! ... additional lines truncated for brevity ... }}
     </section>
 
     <footer id="info">
       <p>Double-click to edit a todo</p>
     </footer>
-  
+
   </script>
 
+  <!-- ... Ember.js and other javascript dependencies ... -->
+  <!-- ... Ember.js 和其他 javascript 依赖库 ... -->
   <script src="js/application.js"></script>
   <script src="js/router.js"></script>
 </body>
