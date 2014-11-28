@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/routing/rendering-a-template/](http://emberjs.com/guides/routing/rendering-a-template/)
 
-路由处理方法最主要的指责之一就是将恰当的模板渲染到屏幕上去。
+路由处理方法最主要的职责之一就是将恰当的模板渲染到屏幕上去。
 默认情况下，路由处理方法将模板渲染到离它最近的带有模板的父级模板中去。
 
 ```js

@@ -19,6 +19,7 @@ window.Todos = Ember.Application.create();
 Todos.ApplicationAdapter = DS.FixtureAdapter.extend();
 ```
 
+
 Next, update the file at `js/models/todo.js` to include the following fixture data:
 
 接下来，更新 `js/models/todo.js` ，添加如下数据：

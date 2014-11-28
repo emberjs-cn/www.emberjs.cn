@@ -8,11 +8,11 @@
 window.Todos = Ember.Application.create();
 
 Todos.ApplicationAdapter = DS.LSAdapter.extend({
-   namespace: 'todos-emberjs'
- });
+  namespace: 'todos-emberjs'
+});
 ```
 
-`localstorage`适配器由Ryan Florence编写，可以从[其源](https://github.com/rpflorence/ember-localstorage-adapter)下载。将其添加至项目的`js/libs/localstorage_adapter.js`。当然你也可以将其放置到任何你喜欢的位置（或者将所有代码放置到一个文件中），不过本指南假设你按照指定的路径保存文件和对其命名。
+`localstorage`适配器由Ryan Florence编写，可以从[其源](https://raw.github.com/rpflorence/ember-localstorage-adapter/master/localstorage_adapter.js)下载。将其添加至项目的`js/libs/localstorage_adapter.js`。当然你也可以将其放置到任何你喜欢的位置（或者将所有代码放置到一个文件中），不过本指南假设你按照指定的路径保存文件和对其命名。
 
 在`index.html`引入`js/libs/localstorage_adapter.js`依赖：
 
@@ -28,7 +28,7 @@ Todos.ApplicationAdapter = DS.LSAdapter.extend({
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/aZIXaYo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/pewiki/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

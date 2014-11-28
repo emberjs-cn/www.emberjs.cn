@@ -10,19 +10,19 @@
 window.Todos = Ember.Application.create();
 ```
 
-这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个名为`Todos`的变量供使用。
+这会创建一个 `Ember.Application` 的实例，并将它作为你本地浏览器JavaScript环境的一个名为 `Todos` 的变量供使用。
 
 在 `js/router.js` 文件中添加如下代码：
 
 ```javascript
-Todos.Router.map(function () {
+Todos.Router.map(function() {
   this.resource('todos', { path: '/' });
 });
 ```
 
 这会告诉Ember.js，当应用的URL与 `'/'` 匹配时，渲染（render） `todos` 模板。
 
-接着，更新 `index.html` 里的代码，将 `<body>` 里的内容包在一个Handlebars的 `<script>` 标签中，并引用 `js/application.js` 和 `js/router.js`：
+接着，更新 `index.html` 里的代码，将 `<body>` 里的内容包在一个Handlebars的 `<script>` 标签中，并在 Ember.js 和其他 javascript 依赖后面引用 `js/application.js` 和 `js/router.js`：
 
 ```html
 <!-- ... 为确保简洁，略去头尾代码 ... -->
@@ -30,13 +30,13 @@ Todos.Router.map(function () {
   <script type="text/x-handlebars" data-template-name="todos">
 
     <section id="todoapp">
-      ... additional lines truncated for brevity ...
+      {{! ... additional lines truncated for brevity ... }}
     </section>
 
     <footer id="info">
       <p>Double-click to edit a todo</p>
     </footer>
-  
+
   </script>
 
 <!-- ... Ember.js 和其他 javascript 依赖库 ... -->

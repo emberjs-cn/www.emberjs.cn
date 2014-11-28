@@ -3,29 +3,29 @@
 接下来，我们将修改我们的应用，使其能反映实际完成的待办事项数量，取缔我们之前的硬编码。我们使用下面两个属相来更新`index.html`：
 
 ```handlebars
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <span id="todo-count">
   <strong>{{remaining}}</strong> {{inflection}} left
 </span>
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 在模板的控制器`Todos.TodosController`中实现以上的属性：
 
 ```javascript
+// ... 为保持代码简洁，在此省略了其他代码 ...
 actions: {
   // ... 为保持代码简洁，在此省略了其他代码 ...
 },
 
-// ... 为保持代码简洁，在此省略了其他代码 ...
-remaining: function () {
+remaining: function() {
   return this.filterBy('isCompleted', false).get('length');
 }.property('@each.isCompleted'),
 
-inflection: function () {
+inflection: function() {
   var remaining = this.get('remaining');
-  return remaining === 1 ? 'todo' : 'todos';
-}.property('remaining'),
+  return remaining === 1 ? 'item' : 'items';
+}.property('remaining')
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
 
@@ -37,8 +37,8 @@ inflection: function () {
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/onOCIrA/74/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
-  
+<a class="jsbin-embed" href="http://jsbin.com/cotoyu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
 ### 附加资源
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/b418407ed9666714c82d894d6b70f785674f7a45)

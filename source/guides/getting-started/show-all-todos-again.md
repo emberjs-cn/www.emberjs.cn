@@ -5,7 +5,7 @@
 在`index.html`中，将‘全部’待办事项的`<a>`标签改为Handlebars的`{{link-to}}`助手：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <li>
   {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
 </li>
@@ -15,14 +15,14 @@
 <li>
   {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
 </li>
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 重载浏览器确保没有任何错误。现在应该可以在不同状态（全部、活动和已完成）的待办事项的URL之间进行切换了。
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/uYuGA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/jowipi/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

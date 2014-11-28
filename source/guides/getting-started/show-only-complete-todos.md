@@ -5,7 +5,7 @@
 在`index.html`中，将‘已完成’待办事项的`<a>`标签改为Handlebars的`{{link-to}}`助手：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <li>
   <a href="all">All</a>
 </li>
@@ -15,14 +15,14 @@
 <li>
   {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
 </li>
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 在`js/router.js`中修改路由，使其可以识别新的路径，并实现对应的路由：
 
 ```javascript
-Todos.Router.map(function () {
-  this.resource('todos', { path: '/' }, function () {
+Todos.Router.map(function() {
+  this.resource('todos', { path: '/' }, function() {
     // additional child routes
     this.route('active');
     this.route('completed');
@@ -33,7 +33,7 @@ Todos.Router.map(function () {
 
 Todos.TodosCompletedRoute = Ember.Route.extend({
   model: function() {
-    return this.store.filter('todo', function (todo) {
+    return this.store.filter('todo', function(todo) {
       return todo.get('isCompleted');
     });
   },
@@ -45,13 +45,15 @@ Todos.TodosCompletedRoute = Ember.Route.extend({
 
 本路由的模型数据是待办事项集合中`isCompleted`属性为`true`的子集。当一个待办事项的`isCompleted`属性发生改变，这个子集就会自动更新来添加或者删除对应的待办事项。
 
-通常情况下，切换至一个新的路由，都会改变渲染到父`{{outlet}}`中的模板，但是在这里，我们更希望可以重用`todos/index`模板。通过重写`renderTemplete`方法，并指定`render`方法调用时的模板和对应的控制器选项就可以实现。
+本路由的模型数据是待办事项集合中`isCompleted`属性为`true`的子集。就像我们最近看到的激活待办事项的类似功能，改变待办事项的 `isCompleted` 属性会自动触发该子集的刷新，因此更新UI。
+
+`TodosCompletedRoute` 也有类似的目的来激活待办事项 - 复用现存的 `todos/index` 模板，而不必创建一个新的模板。
 
 重载浏览器确保没有发生任何错误，并且上面定义的行为出现。
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/OzUvuPu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/heviqo/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

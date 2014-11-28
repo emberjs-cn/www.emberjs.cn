@@ -5,33 +5,35 @@
 在`index.html`中，添加一个新的Handlebars模板标签`<script>`到文档的`<body>`中，并命名为`todos/index`，然后将整个`<ul>`移入到其中：
 
 ```html
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+<body>
 <script type="text/x-handlebars" data-template-name="todos/index">
   <ul id="todo-list">
-    {{#each itemController="todo"}}
-      <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-        {{#if isEditing}}
-          {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
+    {{#each todo in model itemController="todo"}}
+      <li {{bind-attr class="todo.isCompleted:completed todo.isEditing:editing"}}>
+        {{#if todo.isEditing}}
+          {{edit-todo class="edit" value=todo.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
         {{else}}
-          {{input type="checkbox" checked=isCompleted class="toggle"}}
-          <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button {{action "removeTodo"}} class="destroy"></button>
+          {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+          <label {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label><button {{action "removeTodo"}} class="destroy"></button>
         {{/if}}
       </li>
     {{/each}}
   </ul>
 </script>
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
 在`<ul>`原来所处位置添加一个Handlebars的`{{outlet}}`助手：
 
-
 ```handlebars
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <section id="main">
   {{outlet}}
 
   <input type="checkbox" id="toggle-all">
 </section>
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 `{{outlet}}`Handlebars助手指定了模板中的一部分，将根据我们在不同的路由间切换而动态更新。我们第一个子路由将在此列出所有的待办事项。
@@ -41,14 +43,14 @@
 ```javascript
 Todos.Router.map(function () {
   this.resource('todos', { path: '/' }, function () {
-    // 其他子路由
+    // 其他子路由以后在这里添加
   });
 });
 
 // ... 为保持代码简洁，在此省略了其他代码 ...
 
 Todos.TodosIndexRoute = Ember.Route.extend({
-  model: function () {
+  model: function() {
     return this.modelFor('todos');
   }
 });
@@ -60,11 +62,11 @@ Todos.TodosIndexRoute = Ember.Route.extend({
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/oweNovo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/teheni/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附件资源
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/3bab8f1519ffc1ca2d5a12d1de35e4c764c91f05)
   * [Ember路由指南](/guides/routing)
   * [Ember控制器指南](/guides/controllers)
-  * [outlet API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_outlet)
+  * [outlet API文档](/api/classes/Ember.Handlebars.helpers.html#method_outlet)

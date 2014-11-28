@@ -2,17 +2,17 @@
 
 接下来我们将更新我们的应用，允许用户将一个待办事项标记为完成或者为完成，并将更新信息持久化。
 
-在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`{{input}}`：
+在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`{{input}}`助手：
 
 ```handlebars
-<!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#each itemController="todo"}}
-  <li {{bind-attr class="isCompleted:completed"}}>
-    {{input type="checkbox" checked=isCompleted class="toggle"}}
-    <label>{{title}}</label><button class="destroy"></button>
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+{{#each todo in model itemController="todo"}}
+  <li {{bind-attr class="todo.isCompleted:completed"}}>
+    {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+    <label>{{todo.title}}</label><button class="destroy"></button>
   </li>
 {{/each}}
-<!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 当`{{input}}`被渲染时，将询问控制器属性`isCompleted`属性的当前值是什么。当有用户点击了这个输入时，将调用控制器的`isCompleted`属性，参数是真或假依赖于输入的选中属性的值。
@@ -47,10 +47,10 @@ Todos.TodoController = Ember.ObjectController.extend({
 
 ```html
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-    <script src="js/models/todo.js"></script>
-    <script src="js/controllers/todos_controller.js"></script>
-    <script src="js/controllers/todo_controller.js"></script>
-  </body>
+   <script src="js/models/todo.js"></script>
+   <script src="js/controllers/todos_controller.js"></script>
+   <script src="js/controllers/todo_controller.js"></script>
+ </body>
   <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
@@ -58,7 +58,7 @@ Todos.TodoController = Ember.ObjectController.extend({
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/UDoPajA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/gizopu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

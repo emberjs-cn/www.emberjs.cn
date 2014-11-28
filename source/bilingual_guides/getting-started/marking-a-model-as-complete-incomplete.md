@@ -8,21 +8,21 @@ In this step we'll update our application to allow a user to mark a todo as comp
 
 接下来我们将更新我们的应用，允许用户将一个待办事项标记为完成或者为完成，并将更新信息持久化。
 
-In `index.html` update your template to wrap each todo in its own controller by adding an `itemController` argument to the `{{each}}` Handlebars helper. Then convert our static `<input type="checkbox">` into an `{{input}}`:
+In `index.html` update your template to wrap each todo in its own controller by adding an `itemController` argument to the `{{each}}` Handlebars helper. Then convert our static `<input type="checkbox">` into a `{{input}}` helper:
 
-在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`{{input}}`：
+在`index.html`中更新模板，通过添加一个`itemController`参数在Handlebars的`{{each}}`助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的`<input type="checkbox">`转换为一个`{{input}}`助手：
 
 ```handlebars
-<!-- ... additional lines truncated for brevity ... -->
-<!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#each itemController="todo"}}
-  <li {{bind-attr class="isCompleted:completed"}}>
-    {{input type="checkbox" checked=isCompleted class="toggle"}}
-    <label>{{title}}</label><button class="destroy"></button>
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+{{#each todo in model itemController="todo"}}
+  <li {{bind-attr class="todo.isCompleted:completed"}}>
+    {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+    <label>{{todo.title}}</label><button class="destroy"></button>
   </li>
 {{/each}}
-<!-- ... additional lines truncated for brevity ... -->
-<!-- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 When this `{{input}}` is rendered it will ask for the current value of the controller's `isCompleted` property. When a user clicks this input, it will set the value of the controller's `isCompleted` property to either `true` or `false` depending on the new checked value of the input.
@@ -55,7 +55,7 @@ Todos.TodoController = Ember.ObjectController.extend({
 });
 ```
 
-When called from the template to display the current `isCompleted` state of the todo, this property will proxy that question to its underlying `model`. When called with a value because a user has toggled the checkbox in the template, this property will set the `isCompleted` property of its `model` to the passed value (`true` or `false`), persist the model update, and return the passed value so the checkbox will display correctly. 
+When called from the template to display the current `isCompleted` state of the todo, this property will [proxy that question](http://emberjs.com/api/classes/Ember.ObjectController.html) to its underlying `model`. When called with a value because a user has toggled the checkbox in the template, this property will set the `isCompleted` property of its `model` to the passed value (`true` or `false`), persist the model update, and return the passed value so the checkbox will display correctly.
 
 The `isCompleted` function is marked a [computed property](/guides/object-model/computed-properties/) whose value is dependent on the value of `model.isCompleted`.
 
@@ -70,11 +70,11 @@ In `index.html` include `js/controllers/todo_controller.js` as a dependency:
 ```html
 <!--- ... additional lines truncated for brevity ... -->
 <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-    <script src="js/models/todo.js"></script>
-    <script src="js/controllers/todos_controller.js"></script>
-    <script src="js/controllers/todo_controller.js"></script>
-  </body>
-  <!--- ... additional lines truncated for brevity ... -->
+   <script src="js/models/todo.js"></script>
+   <script src="js/controllers/todos_controller.js"></script>
+   <script src="js/controllers/todo_controller.js"></script>
+ </body>
+ <!--- ... additional lines truncated for brevity ... -->
   <!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
@@ -86,7 +86,7 @@ In `index.html` include `js/controllers/todo_controller.js` as a dependency:
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/UDoPajA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/gizopu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 
