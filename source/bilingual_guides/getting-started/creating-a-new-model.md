@@ -4,18 +4,22 @@
 
 ## 创建新的模型实例
 
-Next we'll update our static HTML `<input>` to an Ember view that can expose more complex behaviors.  Update `index.html` to replace the new todo `<input>` with an `Ember.TextField`:
+Next we'll update our static HTML `<input>` to an Ember view that can expose more complex behaviors.  Update `index.html` to replace the new todo `<input>` with an `{{input}}` helper:
 
-接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`{{input}}`：
+接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`{{input}}`助手：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <h1>todos</h1>
-{{input type="text" id="new-todo" placeholder="What needs to be done?" 
-              value=newTitle action="createTodo"}}
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{input
+  type="text"
+  id="new-todo"
+  placeholder="What needs to be done?"
+  value=newTitle
+  action="createTodo"}}
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 This will render an `<input>` element at this location with the same `id` and `placeholder` attributes applied. It will also connect the `newTitle` property of this template's controller to the `value` attribute of the `<input>`. When one changes, the other will automatically update to remain synchronized.
@@ -41,13 +45,13 @@ Inside `js/controllers/todos_controller.js` implement the controller Ember.js ex
 ```javascript
 Todos.TodosController = Ember.ArrayController.extend({
   actions: {
-    createTodo: function () {
+    createTodo: function() {
       // Get the todo title set by the "New Todo" text field
       var title = this.get('newTitle');
       if (!title.trim()) { return; }
 
       // Create the new Todo model
-      var todo = this.get('store').createRecord('todo', {
+      var todo = this.store.createRecord('todo', {
         title: title,
         isCompleted: false
       });
@@ -88,7 +92,7 @@ Reload your web browser to ensure that all files have been referenced correctly 
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/ImukUZO/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/cobuzo/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 

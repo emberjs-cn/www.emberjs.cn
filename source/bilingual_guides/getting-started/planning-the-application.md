@@ -18,15 +18,15 @@ TodoMVC包含了以下几个主要功能：
 
   1. 为用户提供一个todos的列表，并且会随着用户添加或移除todos进行增长与缩减。
 
-  1. It accepts text in an `<input>` for entry of new todos. Hitting the `<enter>` creates the new item and displays it in the list below.
+  1. It accepts text in an `<input>` for entry of new todos. Hitting the `<enter>` key creates the new item and displays it in the list below.
 
-  1. 从一个 `<input>` 框接收文本作为新建todos的入口，当点击 `<enter>` 时，创建一项，并在列表下方显示。
+  1. 从一个 `<input>` 框接收文本作为新建todos的入口，当点击 `<enter>` 键时，创建一项，并在列表下方显示。
 
   1. It provides a checkbox to toggle between complete and incomplete states for each todo. New todos start as incomplete.
 
   1. 为每一个todo提供一个 `checkbox` 用于切换完成与未完成状态。新建的todo默认为未完成状态。
 
-  1. It display the number of incomplete todos and keeps this count updated as new todos are added and existing todos are completed.
+  1. It displays the number of incomplete todos and keeps this count updated as new todos are added and existing todos are completed.
 
   1. 显示所有未完成的todos的数量，并在添加新todos和现有todos完成时，动态改变显示的值。
 
@@ -34,26 +34,26 @@ TodoMVC包含了以下几个主要功能：
 
   1. 提供导航链接，使用户能切换显示全部（all）、未完成（incomplete）与完成（completed）的todos。
 
-  1. It provide a button to remove all completed todos and informs the user of the number of completed todos. This button will not be visible if there are no completed todos.
+  1. It provides a button to remove all completed todos and informs the user of the number of completed todos. This button will not be visible if there are no completed todos.
 
   1. 提供一个按钮用于提示用户当前已完成的todos数目，并在点击时移除所有已完成的todos。当无已完成todos时，此按钮不显示。
 
-  1. It provide a button to remove a single specific todo. This button displays as a user hovers over a todo and takes the form of a red X.
+  1. It provides a button to remove a single specific todo. This button displays as a user hovers over a todo and takes the form of a red X.
 
   1. 为每一个todo提供一个删除按钮，这个按钮显示为一个红色的X，并只在用户鼠标移动到这个todo上时显示。
 
-  1. It provide a checkbox to toggle all existing todos between complete and incomplete states. Further, when all todos are completed this checkbox becomes checked without user interaction.
+  1. It provides a checkbox to toggle all existing todos between complete and incomplete states. Further, when all todos are completed this checkbox becomes checked without user interaction.
 
   1. 提供一个 `checkbox` 用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。
 
-  1. It allows a user to double click to show a textfield for editing a single todo. Hitting the `<enter>` or moving focus outside of this textfield will persist the changed text.
+  1. It allows a user to double click to show a textfield for editing a single todo. Hitting the `<enter>` key or moving focus outside of this textfield will persist the changed text.
 
-  1. 允许用户双击某一个todo，显示一个 `textfield` 用于修改这个todo。点击 `<enter>` 或者当鼠标焦点从这个 `textfield` 移除时，持久化更改的内容。
+  1. 允许用户双击某一个todo，显示一个 `textfield` 用于修改这个todo。点击 `<enter>` 键或者当鼠标焦点从这个 `textfield` 移除时，持久化更改的内容。
 
   1. It retains a user's todos between application loads by using the browser's `localstorage` mechanism.
 
   1. 使用 `本地存储(localstorage)` 机制保存用户的todos列表，在应用程序启动时重新加载。
 
-You can interact with a completed version of the application by visiting the [TodoMVC site](http://todomvc.com/architecture-examples/emberjs/).
+You can interact with a completed version of the application by visiting the [TodoMVC site](http://todomvc.com/examples/emberjs/).
 
-你可以通过访问[TodoMVC站点](http://todomvc.com/architecture-examples/emberjs/)来体验一下完整的版本。
+你可以通过访问[TodoMVC站点](http://todomvc.com/examples/emberjs/)来体验一下完整的版本。

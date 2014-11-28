@@ -13,9 +13,9 @@ Todos.Todo = DS.Model.extend({
 
 这段代码创建了一个新的 `Todo` 类，并将它置于你应用的命名空间下。每一个todo有两个属性： `title` 和 `isCompleted`。
 
-你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。
+你可以将这个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你创建了一个文件并按照前面讲的进行命名。
 
-最后，更新 `index.html` ，将下列引用添加到其中：
+最后，更新 `index.html` ，将下列引用添加到这个新文件中：
 
 ```html
 <!-- ... 为确保简洁，略去头尾代码 ... -->
@@ -32,6 +32,4 @@ Todos.Todo = DS.Model.extend({
 ### 附加资源
 
   * [采用`diff`格式显示这步骤所作的修改](https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1)
-  * [Store使用指南](/guides/models/using-the-store)
-  * [定义模型指南](/guides/models/defining-models)
   * [模型指南](/guides/models)

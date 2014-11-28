@@ -11,8 +11,10 @@ Inside the file `js/router.js` implement a `TodosRoute` class with a `model` fun
 在`js/router.js`这个文件中，通过`model`函数实现了一个`TodosRoute`类，这个函数的返回值是所有现存的待办事项：
 
 ```javascript
+// ... additional lines truncated for brevity ...
+// ... 为保持代码简洁，在此省略了其他代码 ...
 Todos.TodosRoute = Ember.Route.extend({
-  model: function () {
+  model: function() {
     return this.store.find('todo');
   }
 });
@@ -31,18 +33,18 @@ Update `index.html` to replace the static `<li>` elements with a Handlebars `{{e
 通过删除`index.html`中的静态元素`<li>`，用Handlebars的`{{each}}`助手和每项元素的动态`{{title}}`来替代。
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <ul id="todo-list">
-  {{#each}}
+  {{#each todo in model}}
     <li>
       <input type="checkbox" class="toggle">
-      <label>{{title}}</label><button class="destroy"></button>
+      <label>{{todo.title}}</label><button class="destroy"></button>
     </li>
   {{/each}}
 </ul>
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 The template loops over the content of its controller. This controller is an instance of `ArrayController` that Ember.js has provided for us as the container for our models. Because we don't need custom behavior for this object yet, we can use the default object provided by the framework.
@@ -55,8 +57,8 @@ Reload your web browser to ensure that all files have been referenced correctly 
 
 ### Live Preview
 ### 在线演示
-<a class="jsbin-embed" href="http://jsbin.com/EJISAne/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
-  
+<a class="jsbin-embed" href="http://jsbin.com/simixi/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
 ### Additional Resources
 ### 附加资源
 

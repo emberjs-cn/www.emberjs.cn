@@ -5,18 +5,18 @@ TodoMVC支持用户通过双击每个待办事项来显示一个`<input>`文本�
 接下来我们将更新我们的应用，使其支持用户切换到待办事项的编辑状态。我们在`index.html`中更新Handlebars的`{{each}}`助手的内容为：
 
 ```handlebars
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
-{{#each itemController="todo"}}
-  <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-    {{#if isEditing}}
-      <input class='edit'>
+ {{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+{{#each todo in model itemController="todo"}}
+  <li {{bind-attr class="todo.isCompleted:completed todo.isEditing:editing"}}>
+    {{#if todo.isEditing}}
+      <input class="edit">
     {{else}}
-      {{input type="checkbox" checked=isCompleted class="toggle"}}
-      <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
+      {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+      <label {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label><button class="destroy"></button>
     {{/if}}
   </li>
 {{/each}}
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+ {{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 上述代码为我们的应用增加了三个新的行为：
@@ -28,13 +28,15 @@ TodoMVC支持用户通过双击每个待办事项来显示一个`<input>`文本�
 下面我们在`js/controllers/todo_controller.js`中为模板行为实现对应的逻辑：
 
 ```javascript
-// ... 为保持代码简洁，在此省略了其他代码 ...
-actions: {
-  editTodo: function () {
-    this.set('isEditing', true);
-  }
-},
-isEditing: false,
+Todos.TodoController = Ember.ObjectController.extend({
+  actions: {
+    editTodo: function() {
+      this.set('isEditing', true);
+    }
+  },
+
+  isEditing: false,
+
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
 
@@ -44,12 +46,12 @@ isEditing: false,
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/usiXemu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/tucapa/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
   
 ### 附加资源
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/616bc4f22900bbaa2bf9bdb8de53ba41209d8cc0)
   * [Handlebars条件表达式指南](/guides/templates/conditionals)
-  * [bind-attr API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
-  * [action API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action)
-  * [Peter Wagenet编写的bind和bind-attr文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
+  * [bind-attr API文档](/api/classes/Ember.Handlebars.helpers.html#method_bind-attr)
+  * [action API文档](/api/classes/Ember.Handlebars.helpers.html#method_action)
+  * [Peter Wagenet编写的bind和bindAttr文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)

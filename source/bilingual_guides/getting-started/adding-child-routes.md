@@ -13,20 +13,25 @@ In `index.html` move the entire `<ul>` of todos into a new template named `todos
 在`index.html`中，添加一个新的Handlebars模板标签`<script>`到文档的`<body>`中，并命名为`todos/index`，然后将整个`<ul>`移入到其中：
 
 ```html
+<!--- ... additional lines truncated for brevity ... -->
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+<body>
 <script type="text/x-handlebars" data-template-name="todos/index">
   <ul id="todo-list">
-    {{#each itemController="todo"}}
-      <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-        {{#if isEditing}}
-          {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
+    {{#each todo in model itemController="todo"}}
+      <li {{bind-attr class="todo.isCompleted:completed todo.isEditing:editing"}}>
+        {{#if todo.isEditing}}
+          {{edit-todo class="edit" value=todo.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
         {{else}}
-          {{input type="checkbox" checked=isCompleted class="toggle"}}
-          <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button {{action "removeTodo"}} class="destroy"></button>
+          {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+          <label {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label><button {{action "removeTodo"}} class="destroy"></button>
         {{/if}}
       </li>
     {{/each}}
   </ul>
 </script>
+<!--- ... additional lines truncated for brevity ... -->
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
 ```
 
 Still within `index.html` place a Handlebars `{{outlet}}` helper where the `<ul>` was previously:
@@ -34,15 +39,15 @@ Still within `index.html` place a Handlebars `{{outlet}}` helper where the `<ul>
 在`<ul>`原来所处位置添加一个Handlebars的`{{outlet}}`助手：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <section id="main">
   {{outlet}}
 
   <input type="checkbox" id="toggle-all">
 </section>
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 The `{{outlet}}` Handlebars helper designates an area of a template that will dynamically update as we transition between routes. Our first new child route will fill this area with the list of all todos in the application.
@@ -56,8 +61,8 @@ In `js/router.js` update the router to change the `todos` mapping, with an addit
 ```javascript
 Todos.Router.map(function () {
   this.resource('todos', { path: '/' }, function () {
-    // additional child routes
-    // 其他子路由
+    // additional child routes will go here later
+    // 其他子路由以后在这里添加
   });
 });
 
@@ -65,13 +70,14 @@ Todos.Router.map(function () {
 // ... 为保持代码简洁，在此省略了其他代码 ...
 
 Todos.TodosIndexRoute = Ember.Route.extend({
-  model: function () {
+  model: function() {
     return this.modelFor('todos');
   }
 });
 ```
 
-When the application loads at the url `'/'` Ember.js will enter the `todos` route and render the `todos` template as before. It will also transition into the `todos.index` route and fill the `{{outlet}}` in the `todos` template with the `todos/index` template.  The model data for this template is the result of the `model` method of `TodosIndexRoute`, which indicates that the model for this route is the same model as for the `TodosRoute`.
+When the application loads at the url `'/'` Ember.js will enter the `todos` route and render the `todos` template as before. It will also transition into the `todos.index` route and fill the `{{outlet}}` in the `todos` template with the `todos/index` template.  The model data for this template is the result of the `model` method of `TodosIndexRoute`, which indicates that the
+model for this route is the same model as for the `TodosRoute`.
 
 当应用从`'/'`加载时，Ember.js将进入`todos`路由并跟之前一样渲染`todos`模板。这也将转换到`todos.index`路由，并使用`todos/index`模板来填充`todos`模板中的`{{outlet}}`。模板使用的模型数据是`TodosIndexRoute`的`model`方法的返回的值。这表示该路由的模型与`TodoRoute`的模型相同。
 
@@ -83,7 +89,7 @@ This mapping is described in more detail in the [Naming Conventions Guide](/guid
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/oweNovo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/teheni/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 
@@ -92,9 +98,9 @@ This mapping is described in more detail in the [Naming Conventions Guide](/guid
   * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/3bab8f1519ffc1ca2d5a12d1de35e4c764c91f05)
   * [Ember Router Guide](/guides/routing)
   * [Ember Controller Guide](/guides/controllers)
-  * [outlet API documentation](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_outlet)
+  * [outlet API documentation](/api/classes/Ember.Handlebars.helpers.html#method_outlet)
 
   * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/3bab8f1519ffc1ca2d5a12d1de35e4c764c91f05)
   * [Ember路由指南](/guides/routing)
   * [Ember控制器指南](/guides/controllers)
-  * [outlet API文档](http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_outlet)
+  * [outlet API文档](/api/classes/Ember.Handlebars.helpers.html#method_outlet)

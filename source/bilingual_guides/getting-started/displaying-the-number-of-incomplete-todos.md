@@ -9,13 +9,13 @@ Next we'll update our template's hard-coded count of completed todos to reflect 
 接下来，我们将修改我们的应用，使其能反映实际完成的待办事项数量，取缔我们之前的硬编码。我们使用下面两个属相来更新`index.html`：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <span id="todo-count">
   <strong>{{remaining}}</strong> {{inflection}} left
 </span>
-<!--- ... additional lines truncated for brevity ... -->
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 Implement these properties as part of this template's controller, the `Todos.TodosController`:
@@ -23,21 +23,21 @@ Implement these properties as part of this template's controller, the `Todos.Tod
 在模板的控制器`Todos.TodosController`中实现以上的属性：
 
 ```javascript
+// ... additional lines truncated for brevity ...
+// ... 为保持代码简洁，在此省略了其他代码 ...
 actions: {
   // ... additional lines truncated for brevity ...
   // ... 为保持代码简洁，在此省略了其他代码 ...
 },
 
-// ... additional lines truncated for brevity ...
-// ... 为保持代码简洁，在此省略了其他代码 ...
-remaining: function () {
+remaining: function() {
   return this.filterBy('isCompleted', false).get('length');
 }.property('@each.isCompleted'),
 
-inflection: function () {
+inflection: function() {
   var remaining = this.get('remaining');
   return remaining === 1 ? 'item' : 'items';
-}.property('remaining'),
+}.property('remaining')
 // ... additional lines truncated for brevity ...
 // ... 为保持代码简洁，在此省略了其他代码 ...
 ```
@@ -58,8 +58,8 @@ The `inflection` property will return either a plural or singular version of the
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/onOCIrA/74/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
-  
+<a class="jsbin-embed" href="http://jsbin.com/cotoyu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
 ### Additional Resources
 
 ### 附加资源

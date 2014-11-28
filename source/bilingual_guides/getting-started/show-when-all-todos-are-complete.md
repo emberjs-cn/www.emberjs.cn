@@ -1,17 +1,18 @@
 英文原文：[http://emberjs.com/guides/getting-started/show-when-all-todos-are-complete/](http://emberjs.com/guides/getting-started/show-when-all-todos-are-complete/)
 
-Next we'll update our template to indicate when all todos have been completed. In `index.html` replace the static checkbox `<input>` with `{{input}}`:
+Next we'll update our template to indicate when all todos have been completed. In `index.html` replace the static checkbox `<input>` with an `{{input}}`:
 
 接下来我们将修改模板来提示所有待办事项都已经完成。在`index.html`中替换静态的复选框`<input>`为`{{input}}`：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <section id="main">
   {{outlet}}
-
   {{input type="checkbox" id="toggle-all" checked=allAreDone}}
 </section>
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 This checkbox will be checked when the controller property `allAreDone` is `true` and unchecked when the property `allAreDone` is `false`.
@@ -24,8 +25,8 @@ In `js/controllers/todos_controller.js` implement the matching `allAreDone` prop
 
 ```javascript
 // ... additional lines truncated for brevity ...
-allAreDone: function (key, value) {
-  return !!this.get('length') && this.everyProperty('isCompleted', true);
+allAreDone: function(key, value) {
+  return !!this.get('length') && this.isEvery('isCompleted');
 }.property('@each.isCompleted')
 // ... additional lines truncated for brevity ...
 ```
@@ -43,7 +44,7 @@ Reload your web browser to ensure that there are no errors and the behavior desc
 ### 在线演示
 
 <a class="jsbin-embed" href="http://jsbin.com/IcItARE/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
-    
+
 ### Additional Resources
 
 ### 附加资源

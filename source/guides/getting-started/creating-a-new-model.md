@@ -1,13 +1,17 @@
 英文原文：[http://emberjs.com/guides/getting-started/creating-a-new-model/](http://emberjs.com/guides/getting-started/creating-a-new-model/)
 
-接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`{{input}}`：
+接下来，我们将更新我们的静态HTML`<input>`为一个Ember视图，以便能够提供更多复杂一些的行为。我们将`index.html`中的新建待办事项的`<input>`替换为一个`{{input}}`助手：
 
 ```handlebars
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <h1>todos</h1>
-{{input type="text" id="new-todo" placeholder="What needs to be done?" 
-              value=newTitle action="createTodo"}}
-<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+{{input
+  type="text"
+  id="new-todo"
+  placeholder="What needs to be done?"
+  value=newTitle
+  action="createTodo"}}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 上述模板将在这渲染一个具有相同`id`和`placeholder`属性的`<input>`元素。并且将这个模板对应的控制器的`newTitle`属性与`<input>`的`value`属性相连。当一个发生改变时，另外一个将自动保持同步。
@@ -23,13 +27,13 @@
 ```javascript
 Todos.TodosController = Ember.ArrayController.extend({
   actions: {
-    createTodo: function () {
+    createTodo: function() {
       // Get the todo title set by the "New Todo" text field
       var title = this.get('newTitle');
       if (!title.trim()) { return; }
 
       // Create the new Todo model
-      var todo = this.get('store').createRecord('todo', {
+      var todo = this.store.createRecord('todo', {
         title: title,
         isCompleted: false
       });
@@ -60,7 +64,7 @@ Todos.TodosController = Ember.ArrayController.extend({
 
 ### 在线示例
 
-<a class="jsbin-embed" href="http://jsbin.com/ImukUZO/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> 
+<a class="jsbin-embed" href="http://jsbin.com/cobuzo/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### 附加资源
 

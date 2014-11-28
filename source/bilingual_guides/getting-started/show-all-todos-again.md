@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/getting-started/show-all-todos-again/](http://emberjs.com/guides/getting-started/show-all-todos-again/)
 
-Next we can update the application to allow navigating back to the list of all todos. 
+Next we can update the application to allow navigating back to the list of all todos.
 
 接下来我们将对应用进行进一步的修改，使得用户可以查看所有待办事项。
 
@@ -9,7 +9,8 @@ In `index.html` convert the `<a>` tag for 'All' todos into a Handlebars `{{link-
 在`index.html`中，将‘全部’待办事项的`<a>`标签改为Handlebars的`{{link-to}}`助手：
 
 ```handlebars
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 <li>
   {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
 </li>
@@ -19,7 +20,8 @@ In `index.html` convert the `<a>` tag for 'All' todos into a Handlebars `{{link-
 <li>
   {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
 </li>
-<!--- ... additional lines truncated for brevity ... -->
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 ```
 
 Reload your web browser to ensure that there are no errors. You should be able to navigate between urls for all, active, and completed todos.
@@ -30,7 +32,7 @@ Reload your web browser to ensure that there are no errors. You should be able t
 
 ### 在线演示
 
-<a class="jsbin-embed" href="http://jsbin.com/uYuGA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/jowipi/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 
