@@ -679,7 +679,7 @@ direct, programmatic control of a view's children. In that case, you can
 use `Ember.ContainerView`, which explicitly exposes a public API for
 doing so.
 
-虽然模板可以处理大部分情形，但是偶尔也会需要直接通过编程来控制视图的子。在这种情况下，可以使用`Ember.ContainerView`，它显式的暴露了一个公有API来完成这项任务。
+虽然模板可以处理大部分情形，但是偶尔也会需要直接通过编程来控制视图的子元素。在这种情况下，可以使用`Ember.ContainerView`，它显式的暴露了一个公有API来完成这项任务。
 
 ### Container Views
 
