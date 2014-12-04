@@ -14,7 +14,7 @@ Person.create().get('isPerson') // true
 
 ```javascript
 Person.reopen({
-  // override `say` to add an ! at the end
+  // 在末尾加 ! 来重载 `say`
   say: function(thing) {
     this._super(thing + "!");
   }
