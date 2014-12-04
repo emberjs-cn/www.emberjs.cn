@@ -15,7 +15,7 @@ App.husband = Ember.Object.create({
 
 App.husband.get('householdIncome'); // 80000
 
-// Someone gets raise.
+// 有人涨薪了。
 App.husband.set('householdIncome', 90000);
 App.wife.get('householdIncome'); // 90000
 ```
@@ -35,13 +35,11 @@ App.userView = Ember.View.create({
   userNameBinding: Ember.Binding.oneWay('App.user.fullName')
 });
 
-// Changing the name of the user object changes
-// the value on the view.
+// 改变 user 对象的 name 属性同时也改变了视图的值。
 App.user.set('fullName', "Krang Gates");
-// App.userView.userName will become "Krang Gates"
+// App.userView.userName 会变成 "Krang Gates"
 
-// ...but changes to the view don't make it back to
-// the object.
+// ...但是对视图的改变将不会反应到对象中。
 App.userView.set('userName', "Truckasaurus Gates");
 App.user.get('fullName'); // "Krang Gates"
 ```
