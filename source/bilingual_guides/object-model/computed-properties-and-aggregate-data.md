@@ -76,4 +76,4 @@ App.todosController.get('remaining');
 Note that `@each` only works one level deep. You cannot use nested forms
 like `todos.@each.owner.name` or `todos.@each.owner.@each.name`.
 
-注意`@each`只工作在第一级。不能嵌套使用，如：`todos.@ech.owner.name`或者`todos.@each.owner.@each.name`
+注意`@each`只工作在第一级。不能嵌套使用，如：`todos.@each.owner.name`或者`todos.@each.owner.@each.name`。

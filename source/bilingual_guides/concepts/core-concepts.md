@@ -28,7 +28,7 @@ superior shareability and collaboration. Today, most JavaScript
 frameworks treat the URL as an afterthought, instead of the primary
 reason for the web's success.
 
-相反，**Web应用是通过能收藏和分析链接来凸显它的作用的**。URL是Web应用的一个最核心的特性，正是URL使得Web应用有了卓越的可共享性和可协作性。现今，很多Javascript框架都是时候才考虑URL，没有考虑这个让Web成功的主要因素。
+相反，**Web应用是通过能收藏和分析链接来凸显它的作用的**。URL是Web应用的一个最核心的特性，正是URL使得Web应用有了卓越的可共享性和可协作性。现今，很多Javascript框架都事后才考虑URL，没有考虑这个让Web成功的主要因素。
 
 Ember.js, therefore, marries the tools and concepts of native
 GUI frameworks with support for the feature that makes the web so
