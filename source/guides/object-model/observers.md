@@ -1,6 +1,6 @@
 英文原文：[http://emberjs.com/guides/object-model/observers/](http://emberjs.com/guides/object-model/observers/)
 
-Ember 为包括计算后属性在内的任意一种属性提供了观察器。可以通过使用 `addObserver` 方法来为一个对象设置一个观察器。
+Ember 为包括计算后属性在内的任意一种属性提供了观察器。可以通过使用 `addObserver` 方法来为一个对象设置一个观察器：
 
 ```javascript
 Person = Ember.Object.extend({
@@ -50,7 +50,7 @@ Person.reopen({
 ```javascript
 Person.reopen({
   partOfNameChanged: function() {
-    // 因为firstName 和 lastName 都被设置了，将触发两次更新
+    // 因为 firstName 和 lastName 都被设置了，将触发两次更新
   }.observes('firstName', 'lastName')
 });
 
@@ -89,7 +89,7 @@ App.Person = Ember.Object.extend({
   },
 
   salutationDidChange: function() {
-    // some side effect of salutation changing
+    // 一些 salutation 的负效应正在改变
   }.observes('salutation').on('init')
 });
 ```
