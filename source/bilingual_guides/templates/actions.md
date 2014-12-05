@@ -73,7 +73,7 @@ triggering a method directly on the controller, it is strongly recommended that
 you put your action handling methods inside an `actions` hash for forward
 compatibility.
 
-路由和控制器处理操作**必须将操作处理函数定义在`actions`哈希中**。即便一个路由有一个与操作同名的的方法，如果不定义在`ations`哈希中也不会被触发。对于一个控制器，强烈推荐将操作处理函数定义在`actions`哈希中来保证向前兼容。
+路由和控制器处理操作**必须将操作处理函数定义在`actions`哈希中**。即便一个路由有一个与操作同名的的方法，如果不定义在`actions`哈希中也不会被触发。对于一个控制器，强烈推荐将操作处理函数定义在`actions`哈希中来保证向前兼容。
 
 ```js
 App.PostRoute = Ember.Route.extend({

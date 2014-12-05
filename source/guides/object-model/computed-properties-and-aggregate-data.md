@@ -49,4 +49,4 @@ App.todosController.get('remaining');
 // 1
 ```
 
-注意`@each`只工作在第一级。不能嵌套使用，如：`todos.@ech.owner.name`或者`todos.@each.owner.@each.name`
+注意`@each`只工作在第一级。不能嵌套使用，如：`todos.@each.owner.name`或者`todos.@each.owner.@each.name`。

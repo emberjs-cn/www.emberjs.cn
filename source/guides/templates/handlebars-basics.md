@@ -1,11 +1,9 @@
 英文原文：[http://emberjs.com/guides/templates/handlebars-basics/](http://emberjs.com/guides/templates/handlebars-basics/)
 
 `Ember.js` 使用 [Handlebars模板库](http://www.handlebarsjs.com)
-来增强你的应用程序的用户界面。`Handlebars`模板与普通的HTML类似，但是它还提供了嵌入
-改变显示内容的表达式的功能。
+来增强你的应用程序的用户界面。`Handlebars`模板与普通的HTML类似，但是它还提供了嵌入表达式来改变显示内容的功能。
 
-我们采用了`Handlebars`,并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可以认为`Handlebars`模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用`Ember.js`在屏幕上渲染一个
-模板,开发人员就不需要编写额外的代码来确保其更新。
+我们采用了`Handlebars`，并且还使用许多强大的功能对其进行了扩展。为了有助于理解，你可以认为`Handlebars`模板是一种用于描述你的应用程序界面的类HTML的DSL。而且，一旦使用`Ember.js`在屏幕上渲染一个模板，开发人员就不需要编写额外的代码来确保其更新。
 
 在熟悉了`Handlebars`之后，如果相对`Handlebars`语法而言，你更加习惯基于缩进的写法，那么可以试试使用[Emblem.js](http://www.emblemjs.com)。
 
@@ -25,7 +23,7 @@
 
 这个模板将会被自动编译成为你的应用程序的主模板,它将在应用程序加载时通过路由显示在页面上。
 
-你也可以为模板定义一个名称,以便复用。例如,你可能想定义一个在多个不同的应用程序用户界面处都可以使用的可重用控件。
+你也可以为模板定义一个名称，以便复用。例如，你可能想定义一个在多个不同的应用程序用户界面处都可以使用的可重用控件。
 如果只是希望`Ember.js`先保存模板留做复用，而不是即时显示，那么可以使用`data-template-name`属性：
 
 ```html
