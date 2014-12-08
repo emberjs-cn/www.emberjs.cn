@@ -37,9 +37,8 @@ Ember中的观察器目前都是同步的。这就意味着一旦其观察的属
 ```javascript
 Person.reopen({
   lastNameChanged: function() {
-    // The observer depends on lastName and so does fullName. Because observers
-    // are synchronous, when this function is called the value of fullName is
-    // not updated yet so this will log the old value of fullName
+    // 该观察器和 fullName 都依赖于 lastName。因为观察器都是异步的，当该函数被调用时， 
+    // fullName 还没有被更新，因此这里会打印出 fullName 的旧值。
     console.log(this.get('fullName'));
   }.observes('lastName')
 });
@@ -78,9 +77,9 @@ person.set('lastName', 'Smith');
 
 ### 观察器与对象初始化
 
-观察器只有直到对象完成了初始化过程才会被触发。
+观察器只有对象完成了初始化过程之后才会被触发。
 
-如果需要在初始化过程中就触发一个观察器，那么不能依赖于`set`的负效应。而应该在观察器上,通过使用`.on('init')`指定观察器应该在初始化后执行：
+如果需要在初始化过程中就触发一个观察器，那么不能依赖于`set`的负效应。而应该在观察器上，通过使用`.on('init')`指定观察器应该在初始化后执行：
 
 ```javascript
 App.Person = Ember.Object.extend({
