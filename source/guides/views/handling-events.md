@@ -53,7 +53,7 @@ App.PlaybackController = Ember.ObjectController.extend({
 App.PlaybackRoute = Ember.Route.extend({
   actions: {
     turnItUp: function(level){
-      //This won't be called if it's defined on App.PlaybackController
+      //如果定义在 App.PlaybackController 了那么这里就不会被调用
     }
   }
 });
