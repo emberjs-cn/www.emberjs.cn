@@ -14,10 +14,8 @@ var firstView = App.FirstView.create(),
 container.pushObject(firstView);
 container.pushObject(secondView);
 
-// When the rendering completes, the DOM
-// will contain a `div` for the ContainerView
-// and nested inside of it, a `div` for each of
-// firstView and secondView.
+// 当渲染完成时，DOM 会在 ContainerView 的 `div` 内
+// 嵌入 firstView 和 secondView 两个 `div`。
 ```
 
 ### 定义容器视图的初始视图
