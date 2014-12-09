@@ -307,7 +307,7 @@ Cookbook:
   - title: "使用模态对话框"
     url: "cookbook/user_interface_and_interaction/using_modal_dialogs"
     skip_sidebar_item: true
-  - title: "Resetting scroll on route changes"
+  - title: "路由改变时重置滚动条"
     url: "cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes"
     skip_sidebar_item: true
   # - title: "Converting Strings to Currency With Accounting.js"
@@ -373,7 +373,7 @@ Cookbook:
   - title: "一次设置多个属性值"
     url: "cookbook/working_with_objects/setting_multiple_properties_at_once"
     skip_sidebar_item: true
-  - title: "Continuous Redrawing of Views"
+  - title: "持续重绘视图"
     url: "cookbook/working_with_objects/continuous_redrawing_of_views"
     skip_sidebar_item: true
   # - title: "Continuous Redrawing of Views"
