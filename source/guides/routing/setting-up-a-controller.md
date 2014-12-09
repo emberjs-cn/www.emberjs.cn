@@ -14,9 +14,8 @@ App.Router.map(function() {
 });
 
 App.PostRoute = Ember.Route.extend({
-  // The code below is the default behavior, so if this is all you
-  // need, you do not need to provide a setupController implementation
-  // at all.
+  // 下面的代码是默认行为，因此如果这就是你想要的，
+  // 那么你根本不用提供一个 setupController 的实现
   setupController: function(controller, model) {
     controller.set('model', model);
   }
