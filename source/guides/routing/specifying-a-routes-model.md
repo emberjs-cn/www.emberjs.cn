@@ -34,11 +34,11 @@ App.PhotosRoute = Ember.Route.extend({
 
 在数据是异步加载时，在`model`钩子里面只需要返回一个承诺，Ember就会等待承诺履行后才开始渲染模板。
 
-如果对承诺不属性，可以姑且将其认为承诺就是代表了最终加载的数据的对象。例如，使用jQuery的`getJSON`方法，该方法就返回一个代表最终从网络加载的JSON的承诺。Ember使用这个承诺对象知道何时拥有了足够用来渲染的数据。
+如果对承诺不熟悉，可以姑且将其认为承诺就是代表了最终加载的数据的对象。例如，使用jQuery的`getJSON`方法，该方法就返回一个代表最终从网络加载的JSON的承诺。Ember使用这个承诺对象知道何时拥有了足够用来渲染的数据。
 
 更多关于承诺的详细介绍，请参看异步路由指南中的[关于承诺](/guides/routing/asynchronous-routing/#toc_a-word-on-promises)部分。
 
-下面看一个实际的例子。这里有一个从GitHub商获取最近的Ember.js的PR的路由：
+下面看一个实际的例子。这里有一个从GitHub上获取最近的Ember.js的PR的路由：
 
 ```js
 App.PullRequestsRoute = Ember.Route.extend({
@@ -54,7 +54,7 @@ App.PullRequestsRoute = Ember.Route.extend({
 
 因为Ember支持承诺，这使得Ember可以与所有采用承诺作为公共API一部分的持久化库一起工作。此外，利用关于承诺的内置惯例，还可以让代码变得更加清晰。
 
-例如，假设需要修改上例，让模板只显示最近三个PR。通过采用承诺链，可以在将数据传递给模板之前修改请求返回的JSON。
+例如，假设需要修改上例，让模板只显示最近三个PR。通过采用承诺链，可以在将数据传递给模板之前修改请求返回的JSON：
 
 ```js
 App.PullRequestsRoute = Ember.Route.extend({
