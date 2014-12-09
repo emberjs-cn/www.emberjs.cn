@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/](http://emberjs.com/guides/cookbook/user_interface_and_interaction/)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/](http://emberjs.com/guides/cookbook/user_interface_and_interaction/)
 
 下面是一些可以帮助提供更好用户体验的技巧：
 

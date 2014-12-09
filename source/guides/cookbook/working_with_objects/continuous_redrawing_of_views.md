@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/working_with_objects/continuous_redrawing_of_views](http://emberjs.com/guides/cookbook/working_with_objects/continuous_redrawing_of_views)
+英文原文：[http://emberjs.com/guides/cookbook/working\_with\_objects/continuous\_redrawing\_of\_views](http://emberjs.com/guides/cookbook/working_with_objects/continuous_redrawing_of_views)
 
 ## 问题
 

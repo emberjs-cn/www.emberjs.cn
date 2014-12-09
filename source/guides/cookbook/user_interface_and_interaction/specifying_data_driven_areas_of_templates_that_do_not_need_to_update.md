@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update](http://emberjs.com/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/specifying\_data\_driven\_areas\_of\_templates\_that\_do\_not\_need\_to\_update](http://emberjs.com/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update)
 
 ### 问题
 

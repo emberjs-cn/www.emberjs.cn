@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components_based_on_properties](http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components_based_on_properties)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/adding\_css\_classes\_to\_your\_components\_based\_on\_properties](http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components_based_on_properties)
 
 ### 问题
 

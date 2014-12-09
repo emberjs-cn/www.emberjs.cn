@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js](http://emberjs.com/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/displaying\_formatted\_dates\_with\_moment\_js](http://emberjs.com/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js)
 
 ### 问题
 

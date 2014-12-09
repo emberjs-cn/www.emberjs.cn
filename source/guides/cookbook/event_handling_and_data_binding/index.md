@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/event_handling_and_data_binding/](http://emberjs.com/guides/cookbook/event_handling_and_data_binding/)
+英文原文：[http://emberjs.com/guides/cookbook/event\_handling\_and\_data\_binding/](http://emberjs.com/guides/cookbook/event_handling_and_data_binding/)
 
 下面是一些管理事件和处理绑定的技巧：
 
