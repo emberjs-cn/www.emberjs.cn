@@ -58,13 +58,13 @@ or more of the following:
 3. Change the template on screen, or place a new template into an
    existing outlet.
 
-   更改屏幕(浏览器窗口）上的模板，或者在已存在的出口（outlet）上替换新的模板
+   更改屏幕（浏览器窗口）上的模板，或者在已存在的出口（outlet）上替换新的模板
 
 ###（记录追踪路由的变化）Logging Route Changes
 
 As your application increases in complexity, it can be helpful to see exactly what is going on with the router. To have Ember write out transition events to the log, simply modify your `Ember.Application`:
 
-当你的应用变得越来越复杂，明白路由究竟发生了什么是很有帮助的。只要简单的修改一下你的Ember.Application，就可以让ember记录路由的事件转换。
+当你的应用变得越来越复杂，明白路由究竟发生了什么是很有帮助的。只要简单的修改一下你的 `Ember.Application`，就可以让ember记录路由的事件转换：
 
 ```javascript
 App = Ember.Application.create({
