@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/working_with_objects/incrementing_or_decrementing_a_property](http://emberjs.com/guides/cookbook/working_with_objects/incrementing_or_decrementing_a_property)
+英文原文：[http://emberjs.com/guides/cookbook/working\_with\_objects/incrementing\_or\_decrementing\_a\_property](http://emberjs.com/guides/cookbook/working_with_objects/incrementing_or_decrementing_a_property)
 
 ### 问题
 

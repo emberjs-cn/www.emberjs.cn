@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/working_with_objects/setting_multiple_properties_at_once](http://emberjs.com/guides/cookbook/working_with_objects/setting_multiple_properties_at_once)
+英文原文：[http://emberjs.com/guides/cookbook/working\_with\_objects/setting\_multiple\_properties\_at\_once](http://emberjs.com/guides/cookbook/working_with_objects/setting_multiple_properties_at_once)
 
 ### 问题
 

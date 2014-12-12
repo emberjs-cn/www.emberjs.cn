@@ -69,7 +69,7 @@ objects that represent eventual values. For example, if you use jQuery's
 eventually returned over the network. Ember uses this promise object to
 know when it has enough data to continue rendering.
 
-如果对承诺不属性，可以姑且将其认为承诺就是代表了最终加载的数据的对象。例如，使用jQuery的`getJSON`方法，该方法就返回一个代表最终从网络加载的JSON的承诺。Ember使用这个承诺对象知道何时拥有了足够用来渲染的数据。
+如果对承诺不熟悉，可以姑且将其认为承诺就是代表了最终加载的数据的对象。例如，使用jQuery的`getJSON`方法，该方法就返回一个代表最终从网络加载的JSON的承诺。Ember使用这个承诺对象知道何时拥有了足够用来渲染的数据。
 
 For more about promises, see [A Word on
 Promises](/guides/routing/asynchronous-routing/#toc_a-word-on-promises)
@@ -80,7 +80,7 @@ in the Asynchronous Routing guide.
 Let's look at an example in action. Here's a route that loads the most
 recent pull requests sent to Ember.js on GitHub:
 
-下面看一个实际的例子。这里有一个从GitHub商获取最近的Ember.js的PR的路由：
+下面看一个实际的例子。这里有一个从GitHub上获取最近的Ember.js的PR的路由：
 
 ```js
 App.PullRequestsRoute = Ember.Route.extend({
@@ -115,7 +115,7 @@ the template only displayed the three most recent pull requests. We can
 rely on promise chaining to modify the data returned from the JSON
 request before it gets passed to the template:
 
-例如，假设需要修改上例，让模板只显示最近三个PR。通过采用承诺链，可以在将数据传递给模板之前修改请求返回的JSON。
+例如，假设需要修改上例，让模板只显示最近三个PR。通过采用承诺链，可以在将数据传递给模板之前修改请求返回的JSON：
 
 ```js
 App.PullRequestsRoute = Ember.Route.extend({

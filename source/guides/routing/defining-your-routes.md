@@ -10,10 +10,10 @@ App.Router.map(function() {
 });
 ```
 
-现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
+现在当用户访问`/about`时，Ember.js就会渲染`about`的模板。访问`/favs`将渲染`favorites`的模板。
 
 <aside>
-**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)。
 </aside>
 
 提示：如果路径（path）的名字跟路由（route）的名字是一样的话，你可以不用写上路径。
@@ -26,8 +26,8 @@ App.Router.map(function() {
 });
 ```
 
-在模板里面，你可以用{{link-to}}来导向路由，这需要用到你在route方法中定义的名字
-（对于'/'来说，名字就是index）。
+在模板里面，你可以用`{{link-to}}`来导向路由，这需要用到你在`route`方法中定义的名字
+（对于`/`来说，名字就是`index`）。
 
 ```handlebars
 {{#link-to 'index'}}<img class="logo">{{/link-to}}
@@ -38,10 +38,10 @@ App.Router.map(function() {
 </nav>
 ```
 
-{{link-to}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。
+`{{link-to}}`助手会在链接上面加上`active`的类名（class）来指出当前活跃的路由。
 
 你也可以通过创建一个`Ember.Route`的子类来对路由的行为进行自定义。例如，创建
-`App.IndexRoute`类来定义当用户访问'/'时会发生什么。
+`App.IndexRoute`类来定义当用户访问`/`时会发生什么。
 
 ```javascript
 App.IndexRoute = Ember.Route.extend({
@@ -161,8 +161,7 @@ App.Router.map(function() {
   </tr>
 </table>
 
-<small><sup>1</sup> 跳转到`posts`或者链接到`posts`，等效于跳转
-到`posts.index`或链接到`posts.index`。</small>
+<small><sup>1</sup> 跳转到`posts`或者链接到`posts`，等效于跳转到`posts.index`或链接到`posts.index`。</small>
 
 注意：如果你通过`this.resource`定义了一个资源，但是*没有*提供一个函数作为参数，
 那么隐式的`resource.index`是*不会*被创建的。在这种情况下，`/resource`只会用到
@@ -184,8 +183,7 @@ App.Router.map(function() {
 
 在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（`model`）中。
 
-例如，如果我们有一个资源`this.resource('posts')`，那么我们的路由处理器看起来
-可能像这样：
+例如，如果我们有一个资源`this.resource('posts')`，那么我们的路由处理器看起来可能像这样：
 
 ```js
 App.PostsRoute = Ember.Route.extend({
@@ -197,9 +195,7 @@ App.PostsRoute = Ember.Route.extend({
 
 `posts`模板将会接收到一张所有可用的posts清单并将它们当做是上下文环境。
 
-由于`/posts`映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
-运行。然而，如果我们想要路由映射到某个post上，我们可不想通过在路由器中
-写死每一个可能的post来实现。
+由于`/posts`映射到一个特定的模型上，所以我们不需要其他额外的信息就可以运行。然而，如果我们想要路由映射到某个post上，我们可不想通过在路由器中写死每一个可能的post来实现。
 
 探究_动态段_
 

@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/using_modal_dialogs](http://emberjs.com/guides/cookbook/user_interface_and_interaction/using_modal_dialogs)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/using\_modal\_dialogs](http://emberjs.com/guides/cookbook/user_interface_and_interaction/using_modal_dialogs)
 
 ### 问题
 

@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/helpers_and_components/creating_reusable_social_share_buttons](http://emberjs.com/guides/cookbook/helpers_and_components/creating_reusable_social_share_buttons)
+英文原文：[http://emberjs.com/guides/cookbook/helpers\_and\_components/creating\_reusable\_social\_share\_buttons](http://emberjs.com/guides/cookbook/helpers_and_components/creating_reusable_social_share_buttons)
 
 ### 问题
 

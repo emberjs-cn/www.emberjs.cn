@@ -26,7 +26,7 @@ App.IndexRoute = Ember.Route.extend({
 
 ### 在获取模型之后
 
-如果需要从当前模型中获取重定向的信息来决定跳转到哪里，可以使用`afterModel`和`redirect`这两个钩子来实现。`afterModel`和`redirect`的第一个参数都是路由的模型，过渡对象作为第二个参数，两个钩子本质是一样的。（`afterModel`钩子的缺省实现只是对`redirect`钩子的调用。
+如果需要从当前模型中获取重定向的信息来决定跳转到哪里，可以使用`afterModel`和`redirect`这两个钩子来实现。`afterModel`和`redirect`的第一个参数都是路由的模型，过渡对象作为第二个参数，两个钩子本质是一样的。（实际上`afterModel`钩子的缺省实现只是对`redirect`钩子的调用）。
 
 ```javascript
 

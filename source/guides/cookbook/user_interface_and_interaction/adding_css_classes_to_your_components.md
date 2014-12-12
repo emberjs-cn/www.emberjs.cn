@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components](http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/adding\_css\_classes\_to\_your\_components](http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components)
 
 ### 问题
 

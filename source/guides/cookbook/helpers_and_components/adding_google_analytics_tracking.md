@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/helpers_and_components/adding_google_analytics_tracking](http://emberjs.com/guides/cookbook/helpers_and_components/adding_google_analytics_tracking)
+英文原文：[http://emberjs.com/guides/cookbook/helpers\_and\_components/adding\_google\_analytics\_tracking](http://emberjs.com/guides/cookbook/helpers_and_components/adding_google_analytics_tracking)
 
 ### 问题
 

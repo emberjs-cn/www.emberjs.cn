@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted](http://emberjs.com/guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/focusing\_a\_textfield\_after\_its\_been\_inserted](http://emberjs.com/guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted)
 
 ### 问题
 

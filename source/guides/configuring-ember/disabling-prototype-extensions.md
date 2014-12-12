@@ -44,12 +44,9 @@ ENV.EXTEND_PROTOTYPES = false;
 ```javascript
 var islands = ['Oahu', 'Kauai'];
 islands.contains('Oahu');
-//=> TypeError: Object Oahu,Kauai has no method 'contains'
 //=> 类型错误: Oahu,Kauai 对象没有 'contains' 方法
 
-// Convert `islands` to an array that implements the
-// Ember enumerable and array interfaces
-//将`islands`转换为实现了Ember枚举以及数组接口的数组
+// 将`islands`转换为实现了Ember枚举以及数组接口的数组
 Ember.A(islands);
 
 islands.contains('Oahu');
@@ -64,7 +61,6 @@ islands.contains('Oahu');
 
 ```javascript
 "my_cool_class".camelize();
-//=> TypeError: Object my_cool_class has no method 'camelize'
 //=> 类型错误: my_cool_class 对象没有`camelize`方法
 
 Ember.String.camelize("my_cool_class");
@@ -79,14 +75,12 @@ Ember.String.camelize("my_cool_class");
 用`Ember.computed()`方法来包裹函数以标记计算属性。
 
 ```javascript
-// This won't work:
 //这样的代码不会起作用：
 fullName: function() {
   return this.get('firstName') + ' ' + this.get('lastName');
 }.property('firstName', 'lastName')
 
 
-// Instead, do this:
 //你需要这样做：
 fullName: Ember.computed('firstName', 'lastName', function() {
   return this.get('firstName') + ' ' + this.get('lastName');
@@ -96,14 +90,12 @@ fullName: Ember.computed('firstName', 'lastName', function() {
 用`Ember.observer()`来标记观察者：
 
 ```javascript
-// This won't work:
 //这样的代码不会起作用：
 fullNameDidChange: function() {
   console.log("Full name changed");
 }.observes('fullName')
 
 
-// Instead, do this:
 //你需要这样做：
 fullNameDidChange: Ember.observer('fullName', function() {
   console.log("Full name changed");

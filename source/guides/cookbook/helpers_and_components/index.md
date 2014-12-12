@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/helpers_and_components/](http://emberjs.com/guides/cookbook/helpers_and_components/)
+英文原文：[http://emberjs.com/guides/cookbook/helpers\_and\_components/](http://emberjs.com/guides/cookbook/helpers_and_components/)
 
 下面是一些可以用于封装代码到组件和构建助手的技巧：
 

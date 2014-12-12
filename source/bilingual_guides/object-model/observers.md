@@ -103,13 +103,13 @@ person.set('lastName', 'Smith');
 
 Observers never fire until after the initialization of an object is complete.
 
-观察器只有直到对象完成了初始化过程才会被触发。
+观察器只有对象完成了初始化过程之后才会被触发。
 
 If you need an observer to fire as part of the initialization process, you
 cannot rely on the side effect of set. Instead, specify that the observer
 should also run after init by using `.on('init')`:
 
-如果需要在初始化过程中就触发一个观察器，那么不能依赖于`set`的负效应。而应该在观察器上,通过使用`.on('init')`指定观察器应该在初始化后执行：
+如果需要在初始化过程中就触发一个观察器，那么不能依赖于`set`的负效应。而应该在观察器上，通过使用`.on('init')`指定观察器应该在初始化后执行：
 
 ```javascript
 App.Person = Ember.Object.extend({

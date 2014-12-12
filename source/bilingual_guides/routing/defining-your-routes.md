@@ -20,14 +20,14 @@ App.Router.map(function() {
 Now, when the user visits `/about`, Ember.js will render the `about` 
 template. Visiting `/favs` will render the `favorites` template.
 
-现在当用户访问'/about'时，Ember.js就会渲染`about`的模板。访问'/favs'将渲染`favorites`的模板。
+现在当用户访问`/about`时，Ember.js就会渲染`about`的模板。访问`/favs`将渲染`favorites`的模板。
 
 <aside>
 **Heads up!** You get a few routes for free: the `ApplicationRoute` and
 the `IndexRoute` (corresponding to the `/` path).
 [See below](#toc_initial-routes) for more details.
 
-**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)
+**注意！**Ember会自动创建一些路由：`ApplicationRoute`、`IndexRoute`（响应`/`路径）。详细的内容[如下所示](#toc_initial-routes)。
 </aside>
 
 Note that you can leave off the path if it is the same as the route
@@ -47,8 +47,8 @@ Inside your templates, you can use `{{link-to}}` to navigate between
 routes, using the name that you provided to the `route` method (or, in
 the case of `/`, the name `index`).
 
-在模板里面，你可以用{{link-to}}来导向路由，这需要用到你在route方法中定义的名字
-（对于'/'来说，名字就是index）。
+在模板里面，你可以用`{{link-to}}`来导向路由，这需要用到你在`route`方法中定义的名字
+（对于`/`来说，名字就是`index`）。
 
 ```handlebars
 {{#link-to 'index'}}<img class="logo">{{/link-to}}
@@ -62,14 +62,14 @@ the case of `/`, the name `index`).
 The `{{link-to}}` helper will also add an `active` class to the link that
 points to the currently active route.
 
-{{link-to}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。
+`{{link-to}}`助手会在链接上面加上`active`的类名（class）来指出当前活跃的路由。
 
 You can customize the behavior of a route by creating an `Ember.Route`
 subclass. For example, to customize what happens when your user visits
 `/`, create an `App.IndexRoute`:
 
 你也可以通过创建一个`Ember.Route`的子类来对路由的行为进行自定义。例如，创建
-`App.IndexRoute`类来定义当用户访问'/'时会发生什么。
+`App.IndexRoute`类来定义当用户访问`/`时会发生什么。
 
 ```javascript
 App.IndexRoute = Ember.Route.extend({
@@ -208,8 +208,7 @@ This router creates three routes:
 `posts` is equivalent to transitioning to `posts.index` or linking to
 `posts.index`</small>
 
-<small><sup>1</sup> 跳转到`posts`或者链接到`posts`，等效于跳转
-到`posts.index`或链接到`posts.index`。</small>
+<small><sup>1</sup> 跳转到`posts`或者链接到`posts`，等效于跳转到`posts.index`或链接到`posts.index`。</small>
 
 NOTE: If you define a resource using `this.resource` and **do not** supply
 a function, then the implicit `resource.index` route is **not** created. In
@@ -264,8 +263,7 @@ into a model.
 For example, if we have the resource `this.resource('posts')`, our
 route handler might look like this:
 
-例如，如果我们有一个资源`this.resource('posts')`，那么我们的路由处理器看起来
-可能像这样：
+例如，如果我们有一个资源`this.resource('posts')`，那么我们的路由处理器看起来可能像这样：
 
 ```js
 App.PostsRoute = Ember.Route.extend({
@@ -285,9 +283,7 @@ additional information to know what to use.  However, if we want a route
 to represent a single post, we would not want to have to hardcode every
 possible post into the router.
 
-由于`/posts`映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
-运行。然而，如果我们想要路由映射到某个post上，我们可不想通过在路由器中
-写死每一个可能的post来实现。
+由于`/posts`映射到一个特定的模型上，所以我们不需要其他额外的信息就可以运行。然而，如果我们想要路由映射到某个post上，我们可不想通过在路由器中写死每一个可能的post来实现。
 
 Enter _dynamic segments_.
 

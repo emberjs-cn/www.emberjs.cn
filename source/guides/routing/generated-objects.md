@@ -1,7 +1,6 @@
 英文原文：[http://emberjs.com/guides/routing/generated-objects/](http://emberjs.com/guides/routing/generated-objects/)
 
-正如在[定义路由][1]中所说的，无论何时，只要你定义了一个新的路由，`Ember.js`都会试着根据命名惯例
-寻找相对应的路由，控制器，视图还有模板类。一旦有任何一个对象找不到，那么在内存中，相对应的对象将会被生成。
+正如在[定义路由][1]中所说的，无论何时，只要你定义了一个新的路由，`Ember.js`都会试着根据命名惯例寻找相对应的路由，控制器，视图还有模板类。一旦有任何一个对象找不到，那么在内存中，相对应的对象将会被生成。
 
 [1]: /guides/routing/defining-your-routes
 

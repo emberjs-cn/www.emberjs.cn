@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/working_with_objects/](http://emberjs.com/guides/cookbook/working_with_objects/)
+英文原文：[http://emberjs.com/guides/cookbook/working\_with\_objects/](http://emberjs.com/guides/cookbook/working_with_objects/)
 
 下面是一些可以帮助理解如何使用Ember对象的技巧：
 

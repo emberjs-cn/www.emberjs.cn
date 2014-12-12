@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/event_handling_and_data_binding/binding_properties_of_an_object_to_its_own_properties](http://emberjs.com/guides/cookbook/event_handling_and_data_binding/binding_properties_of_an_object_to_its_own_properties)
+英文原文：[http://emberjs.com/guides/cookbook/event\_handling\_and\_data\_binding/binding\_properties\_of\_an\_object\_to\_its\_own\_properties](http://emberjs.com/guides/cookbook/event_handling_and_data_binding/binding_properties_of_an_object_to_its_own_properties)
 
 ### 问题
 

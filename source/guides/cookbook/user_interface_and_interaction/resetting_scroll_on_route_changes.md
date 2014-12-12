@@ -1,4 +1,4 @@
-英文原文：[http://emberjs.com/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes](http://emberjs.com/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes)
+英文原文：[http://emberjs.com/guides/cookbook/user\_interface\_and\_interaction/resetting\_scroll\_on\_route\_changes](http://emberjs.com/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes)
 
 ### 问题
 
